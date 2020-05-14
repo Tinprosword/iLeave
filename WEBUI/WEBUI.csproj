@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pages\Test.aspx" />
     <Content Include="Pages\Test.html" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\css\bootstrap-theme.css" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\css\bootstrap-theme.min.css" />
@@ -76,9 +77,18 @@
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\bootstrap.min.js" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\npm.js" />
     <Content Include="Res\jquery\jquery.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +108,16 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{69a9688d-85c1-4c00-b678-645386b68102}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MODEL\MODEL.csproj">
+      <Project>{21757f81-d90d-4cc1-bb72-4a832bf5aed5}</Project>
+      <Name>MODEL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
