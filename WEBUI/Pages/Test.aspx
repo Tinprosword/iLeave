@@ -19,6 +19,7 @@
         <asp:TextBox ID="tb_employmentCode" runat="server"></asp:TextBox>
         <asp:Button ID="Button1" runat="server" Text="Add" OnClick="Button1_Click" />
         <asp:Button ID="Button2" runat="server" Text="Logout" OnClick="Button2_Click" />
+        <asp:FileUpload ID="FileUpload1" runat="server" />
     </form>
     <script src="../Res/jquery/jquery.min.js"></script>
     <script src="../Res/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>

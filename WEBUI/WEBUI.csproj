@@ -67,10 +67,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Pages\detail.aspx" />
-    <Content Include="Pages\login.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="Pages\Test.aspx" />
     <Content Include="Pages\Test.html" />
+    <Content Include="Res\App\appcss.css" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\css\bootstrap-theme.css" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\css\bootstrap-theme.min.css" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\css\bootstrap.css" />
@@ -92,19 +92,12 @@
     <Compile Include="AppLibraly\PageTemplate.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\detail.aspx.cs">
-      <DependentUpon>detail.aspx</DependentUpon>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\detail.aspx.designer.cs">
-      <DependentUpon>detail.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\login.aspx.cs">
-      <DependentUpon>login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\login.aspx.designer.cs">
-      <DependentUpon>login.aspx</DependentUpon>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
@@ -126,6 +119,7 @@
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
