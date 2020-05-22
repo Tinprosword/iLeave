@@ -34,7 +34,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><asp:Button ID="Button1" runat="server" Text="Login"  Width="120px"/></td>
+                        <td><asp:Button ID="Button1" runat="server" Text="Login"  Width="120px" OnClick="Button1_Click"/></td>
                     </tr>
                     <tr style="height:20px;">
                         <td></td>
@@ -44,27 +44,6 @@
                 <dialog></dialog>
             </div>
         </div>
-        <%--<div id="banner" class="bgblue textCenter" style="line-height:80px;height:80px;vertical-align:middle;">
-            <span style="font-size:30px; color:white">Leave Manager</span>
-        </div>
-        <div id="setting2" style="text-align:right">
-            <img src="a" style="width:40px;height:40px;"/>
-        </div>
-
-        <table>
-            <tr style="height:60px;font-size:23px; ">
-                <td style="padding-left:46px; width:120px">User</td>
-                <td style="padding-left:8px; width:360px"><asp:TextBox ID="tb_user" runat="server" Width="100%"></asp:TextBox></td>
-            </tr>
-            <tr style="height:60px;font-size:23px">
-                <td style="padding-left:46px; width:120px">Password</td>
-                <td style="padding-left:8px; width:360px"><asp:TextBox ID="tb_password" runat="server" Width="100%"></asp:TextBox></td>
-            </tr>
-        </table>
-
-        <div id="bottom">
-            <div id=""></div>
-        </div>--%>
         </form>
     <script src="../Res/jquery/jquery.min.js"></script>
     <script src="../Res/App/onLoad.js"></script>

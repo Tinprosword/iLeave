@@ -7,9 +7,24 @@ using System.Web.UI.WebControls;
 
 namespace WEBUI
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class Login : AppLibraly.PageTemplate_Common
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected override void InitPageDataOnEachLoad()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void InitUIOnFirstLoad()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void ResetUIOnEachLoad()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
         {
 
         }

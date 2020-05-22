@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 namespace WEBUI.Pages
 {
     //1写流程.  2.写最佳实践(要注意ResetUIOnEachLoad,只做一些清除工作, 会有很多工作其实是放入到 事件结尾处,由某个事件所带来的ui更新,并非每次都要)
-    public partial class Test : AppLibraly.PageTemplate
+    public partial class Test : AppLibraly.PageTemplate_logined
     {
         private List<Model.t_attendanceClockGoGo> data = null;
 

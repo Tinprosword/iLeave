@@ -5,14 +5,20 @@ using System.Web;
 
 namespace WEBUI.AppLibraly
 {
-    public class CheckLogin : System.Web.UI.Page
+    public class CheckLogin
     {
-        protected virtual void Page_Init(object sender, EventArgs e)
+        public delegate void OnSessionTimeOut();
+        public event OnSessionTimeOut event_OnSessionTimeOut;
+
+        public void CheckIsLogin()
         {
             //check weather user login and do some progress.
             if (LoginUser.IsLogin() == false)
             {
-                Response.Redirect("login.aspx");
+                if (event_OnSessionTimeOut != null)
+                {
+                    event_OnSessionTimeOut();
+                }
             }
         }
     }
