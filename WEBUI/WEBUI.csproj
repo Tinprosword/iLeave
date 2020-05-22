@@ -68,9 +68,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Login.aspx" />
+    <Content Include="Pages\Demo.html" />
     <Content Include="Pages\Test.aspx" />
     <Content Include="Pages\Test.html" />
     <Content Include="Res\App\appcss.css" />
+    <Content Include="Res\App\CommonJS.js" />
+    <Content Include="Res\App\autoScale.js" />
+    <Content Include="Res\App\onLoad.js" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\css\bootstrap-theme.css" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\css\bootstrap-theme.min.css" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\css\bootstrap.css" />

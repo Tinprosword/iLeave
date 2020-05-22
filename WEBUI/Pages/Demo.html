@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head runat="server">
+    <link href="../Res/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Res/App/appcss.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../Res/App/autoScale.js"></script>
+    <title></title>
+</head>
+<body>
+    <div class="container-fluid">
+        左边
+        <div class="row">
+            <div id="left" class="col-xs-4 lsf-redborder">
+                <label class="lsf-redborder">left</label>
+            </div>
+        </div>
+        右边
+        <div class="row">
+            <div id="right" class="col-xs-4 col-xs-offset-8 lsf-redborder">
+                <label class="lsf-redborder">right</label>
+            </div>
+        </div>
+        中间
+        <div class="row">
+            <div id="center" class="col-xs-4 col-xs-offset-4 lsf-redborder" style="text-align:center">
+                <label class="lsf-redborder">center</label>
+            </div>
+        </div>
+        平分一行[大屏幕4列,小屏幕2列]
+        <div class="row">
+            <div id="left" class="col-xs-6 col-sm-3 lsf-redborder">
+                <label class="lsf-redborder">left half</label>
+            </div>
+            <div id="right" class="col-xs-6 col-sm-3 lsf-redborder">
+                <label class="lsf-redborder">right half</label>
+            </div>
+            <div id="left" class="col-xs-6 col-sm-3 lsf-redborder">
+                <label class="lsf-redborder">left half</label>
+            </div>
+            <div id="right" class="col-xs-6 col-sm-3 lsf-redborder">
+                <label class="lsf-redborder">right half</label>
+            </div>
+        </div>
+        一行:左固定宽度,右边适应
+        <div class="row">
+            <div id="fixWidth" class="lsf-redborder col-xs-1" style="width:120px;">
+                <label>fixleft</label>
+            </div>
+            <div id="autoright" class="lsf-redborder" style="margin-left:120px;">
+                <label style="width:320px;">right</label>
+            </div>
+        </div>
+    </div>
+    <script src="../Res/jquery/jquery.min.js"></script>
+    <script src="../Res/App/onLoad.js"></script>
+    <script src="../Res/App/CommonJS.js"></script>
+    <script src="../Res/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</body>
+</html>
