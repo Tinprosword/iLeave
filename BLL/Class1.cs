@@ -44,6 +44,7 @@ namespace BLL
         {
             return dal.Delete(autoid);
         }
+
         /// <summary>
         /// 批量删除一批数据
         /// </summary>

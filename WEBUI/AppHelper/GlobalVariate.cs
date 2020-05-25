@@ -5,9 +5,13 @@ using System.Web;
 
 namespace WEBUI.AppHelper
 {
-    public abstract class GlobalVariate
+    public class GlobalVariate
     {
+        //bll
         public static BLL.t_attendanceClockGoGo bll_t_Attendance = new BLL.t_attendanceClockGoGo();
 
+
+        //global string
+        public static string login_error = "invalid user and password.";
     }
 }

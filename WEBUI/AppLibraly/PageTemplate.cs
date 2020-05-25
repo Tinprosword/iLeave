@@ -32,9 +32,8 @@ namespace WEBUI.AppLibraly
     {
         protected override void Page_Init(object sender, EventArgs e)
         {
-            CheckLogin checkLogin = new CheckLogin();
-            checkLogin.event_OnSessionTimeOut += CheckLogin_event_OnSessionTimeOut;
-            checkLogin.CheckIsLogin();
+            LoginManager.event_OnSessionTimeOut += CheckLogin_event_OnSessionTimeOut;
+            LoginManager.CheckIsLogin();
             base.Page_Init(sender,e);
         }
 

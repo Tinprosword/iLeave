@@ -7,72 +7,63 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace WEBUI {
+namespace WEBUI.Pages {
     
     
-    public partial class Login {
+    public partial class Main {
         
         /// <summary>
-        /// form1 控件。
+        /// apply 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.ImageButton apply;
         
         /// <summary>
-        /// btn_setting 控件。
+        /// application 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btn_setting;
+        protected global::System.Web.UI.WebControls.ImageButton application;
         
         /// <summary>
-        /// tb_user 控件。
+        /// approval 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_user;
+        protected global::System.Web.UI.WebControls.ImageButton approval;
         
         /// <summary>
-        /// tb_password 控件。
+        /// roster 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_password;
+        protected global::System.Web.UI.WebControls.ImageButton roster;
         
         /// <summary>
-        /// Button1 控件。
+        /// money 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.ImageButton money;
         
         /// <summary>
-        /// cb_remember 控件。
+        /// tax 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cb_remember;
-        
-        /// <summary>
-        /// lt_js 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_js;
+        protected global::System.Web.UI.WebControls.ImageButton tax;
     }
 }

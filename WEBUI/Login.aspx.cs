@@ -11,22 +11,53 @@ namespace WEBUI
     {
         protected override void InitPageDataOnEachLoad()
         {
-            throw new NotImplementedException();
         }
 
         protected override void InitUIOnFirstLoad()
         {
-            throw new NotImplementedException();
         }
 
         protected override void ResetUIOnEachLoad()
         {
-            throw new NotImplementedException();
+            
         }
+
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            string userid = this.tb_user.Text.Trim();
+            string password = this.tb_password.Text.Trim();
 
+            if (string.IsNullOrWhiteSpace(userid) == false && string.IsNullOrWhiteSpace(password) == false)
+            {
+                bool isLogin = BLL.User.CheckLogin(userid, password);
+                if (isLogin)
+                {
+                    AppLibraly.LoginManager.Login(new AppLibraly.LoginUser(0, userid));
+                    Response.Redirect("~/Pages/Main.aspx");
+                }
+                else
+                {
+                    this.lt_js.Text = LSLibrary.JavasScriptHelper.AlertMessage(AppHelper.GlobalVariate.login_error);
+                    CleanInput();
+                }
+            }
+            else
+            {
+                this.lt_js.Text = LSLibrary.JavasScriptHelper.AlertMessage(AppHelper.GlobalVariate.login_error);
+                CleanInput();
+            }
+        }
+
+        private void CleanInput()
+        {
+            this.tb_user.Text = "";
+            this.tb_password.Text = "";
+        }
+
+        protected void btn_setting_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("~/setting.aspx");
         }
     }
 }
