@@ -15,7 +15,7 @@ namespace WEBUI.Pages
 
         protected override void InitUIOnFirstLoad()
         {
-
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(false, "", "","");
         }
 
         protected override void ResetUIOnEachLoad()
@@ -24,7 +24,7 @@ namespace WEBUI.Pages
 
         protected void apply_Click(object sender, ImageClickEventArgs e)
         {
-
+            Response.Redirect("~/pages/apply.aspx");
         }
 
         protected void application_Click(object sender, ImageClickEventArgs e)

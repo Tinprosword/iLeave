@@ -13,5 +13,13 @@ namespace WEBUI.Controls
         {
 
         }
+
+        public void SetupNaviagtion(bool isVisitable,string backLink,string title,string backlinkurl)
+        {
+            this.Navigation.Visible = isVisitable;
+            this.lable_navigation.Text = backLink;
+            this.label_title.Text = title;
+            this.linkNavigation.NavigateUrl = backlinkurl;
+        }
     }
 }

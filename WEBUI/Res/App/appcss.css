@@ -1,57 +1,44 @@
-﻿.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
-    padding-right: 15px;
-    padding-left: 15px;
-}
-/*grid 通常有头部、主体、主栏、侧栏、尾部等*/
+﻿/*grid 通常有头部、主体、主栏、侧栏、尾部等*/
 
 
 /*module 个语义化的可以重复使用的较大的整体！比如导航、登录、注册、各种列表、评论、搜索等*/
 
 
 /*uint 通常是一个不可再分的较为小巧的个体，通常被重复用于各种模块中！比如按钮、输入框、loading、图标等*/
-.lsu-table {
-    font-size:16px;
-}
-.lsu-table tr
-{
-    height:38px
-}
-.lsu-table td {
-    padding-left:5px;
-}
+.lsu-table-xs {font-size: 16px;}
+.lsu-table-xs tr {height: 30px}
+.lsu-table-xs td {padding-left: 2px !important;padding-right: 2px !important;}
+
+.lsu-table-sm {font-size: 16px;}
+.lsu-table-sm tr {height: 34px}
+.lsu-table-sm td {padding-left: 5px !important;padding-right: 2px !important;}
+
+.lsu-table {font-size:16px;}
+.lsu-table tr{height:38px}
+.lsu-table td {padding-left:5px !important;padding-right: 2px !important;}
+
+.lsu-bigtable {font-size: 16px;}
+.lsu-bigtable tr {height: 44px}
+.lsu-bigtable td {padding-left: 15px !important;padding-right: 2px !important;}
 
 
-.lsu-bigtable {
-    font-size: 16px;
-}
-    .lsu-bigtable tr {
-        height: 44px
-    }
-
-    .lsu-bigtable td {
-        padding-left: 15px;
-    }
+.lsu-btn {font-size: 16px; width:110px;height:30px}
 
 /*function 为方便一些常用样式的使用，我们将这些使用率较高的样式剥离出来，按需使用，通常这些选择器具有固定样式表现，比如清除浮动等！不可滥用*/
 .lsf-redborder{border: 1px solid red}
 .lsf-blueborder{border: 1px solid blue}
+
 .lsf-center {text-align:center;vertical-align:middle;}
 .lsf-maringTop3px {margin-top: 3px}
-.lsf-fontsizem2 {
-    font-size: 20px
-}
-.lsf-fontsizem1 {
-    font-size: 18px
-}
-.lsf-fontsize {
-    font-size: 16px
-}
-.lsf-fontsizes1 {
-    font-size: 14px
-}
-.lsf-fontsizes1 {
-    font-size: 12px
-}
+
+.lsf-fontsizem2 {font-size: 20px}
+.lsf-fontsizem1 {font-size: 18px}
+.lsf-fontsize {font-size: 16px}
+.lsf-fontsizes1 {font-size: 14px}
+.lsf-fontsizes1 {font-size: 12px}
+
+.lsf-clearPadding {padding:0px}
+
 
 
 /*skin 非换肤型网站通常只提取文字色！非换肤型网站不可滥用此类*/

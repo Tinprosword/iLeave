@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Login.aspx" />
+    <Content Include="Pages\Apply.aspx" />
     <Content Include="Pages\Demo.html" />
     <Content Include="Pages\Main.aspx" />
     <Content Include="Pages\Test.aspx" />
@@ -81,6 +82,7 @@
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\css\bootstrap.min.css" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\bootstrap.js" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\bootstrap.min.js" />
+    <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\modal.js" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\npm.js" />
     <Content Include="Res\images\Content_Page_Color_Botton_A.png" />
     <Content Include="Res\images\Content_Page_Color_Botton_B.png" />
@@ -116,6 +118,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Apply.aspx.cs">
+      <DependentUpon>Apply.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Apply.aspx.designer.cs">
+      <DependentUpon>Apply.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Main.aspx.cs">
       <DependentUpon>Main.aspx</DependentUpon>
