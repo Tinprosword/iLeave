@@ -18,7 +18,7 @@
             </div>
             <div class="row">
                 <div id="setting" class=" col-xs-6 col-xs-push-6" style="text-align:right;padding-right:10px; padding-top:5px">
-                    <asp:ImageButton ID="btn_setting" runat="server" ImageUrl="Res/images/setting.gif" OnClick="btn_setting_Click"  Width="30px" Height="30px" TabIndex="1"/>
+                    <asp:ImageButton ID="btn_setting" runat="server" ImageUrl="Res/images/setting.gif" OnClick="Btn_setting_Click"  Width="30px" Height="30px" TabIndex="1"/>
                 </div>
                 <table class="col-xs-12 lsf-maringTop3px lsu-bigtable">
                     <tr>

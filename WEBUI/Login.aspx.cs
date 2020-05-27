@@ -32,7 +32,7 @@ namespace WEBUI
                 bool isLogin = BLL.User.CheckLogin(userid, password);
                 if (isLogin)
                 {
-                    MODEL.UserInfo userInfo = new MODEL.UserInfo();
+                    MODEL.UserInfo userInfo = new MODEL.UserInfo(0,userid,"管理员","AD");
                     LSLibrary.WebAPP.LoginManager.Login(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(userid,userInfo));
                     Response.Redirect("~/Pages/Main.aspx");
                 }
@@ -49,11 +49,13 @@ namespace WEBUI
             }
         }
 
+
         private void CleanInput()
         {
             this.tb_user.Text = "";
             this.tb_password.Text = "";
         }
+
 
         protected void Btn_setting_Click(object sender, ImageClickEventArgs e)
         {

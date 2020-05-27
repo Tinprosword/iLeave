@@ -16,6 +16,7 @@ namespace WEBUI.Pages
         protected override void InitUIOnFirstLoad()
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "Home", "Apply","~/pages/main.aspx");
+            this.literal_applier.Text = BLL.User.loginer.loginID +"  "+ BLL.User.loginer.userInfo.nickname;
         }
 
         protected override void ResetUIOnEachLoad()

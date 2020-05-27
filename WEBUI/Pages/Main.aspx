@@ -2,22 +2,22 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <div class="col-xs-12 lsf-center" style="margin-top:6px;">
-            <asp:ImageButton ID="apply" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_B.png" Width="318px" Height="82px" OnClick="apply_Click"/>
+            <asp:ImageButton ID="apply" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_B.png" Width="318px" Height="82px" OnClick="Apply_Click"/>
         </div>
         <div class="col-xs-12 lsf-center" style="margin-top:6px;">
-            <asp:ImageButton ID="application" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_B.png" Width="318px" Height="82px" OnClick="application_Click"/>
+            <asp:ImageButton ID="application" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_B.png" Width="318px" Height="82px" OnClick="Application_Click"/>
         </div>
         <div class="col-xs-12 lsf-center" style="margin-top:6px;">
-            <asp:ImageButton ID="approval" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_C.png" Width="318px" Height="82px" OnClick="approval_Click"/>
+            <asp:ImageButton ID="approval" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_C.png" Width="318px" Height="82px" OnClick="Approval_Click"/>
         </div>
         <div class="col-xs-12 lsf-center" style="margin-top:6px;">
-            <asp:ImageButton ID="roster" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_D.png" Width="318px" Height="82px" OnClick="roster_Click"/>
+            <asp:ImageButton ID="roster" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_D.png" Width="318px" Height="82px" OnClick="Roster_Click"/>
         </div>
         <div class="col-xs-12 lsf-center" style="margin-top:6px;">
-            <asp:ImageButton ID="money" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_E.png" Width="318px" Height="82px" OnClick="money_Click"/>
+            <asp:ImageButton ID="money" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_E.png" Width="318px" Height="82px" OnClick="Money_Click"/>
         </div>
         <div class="col-xs-12 lsf-center" style="margin-top:6px;">
-            <asp:ImageButton ID="tax" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_F.png" Width="318px" Height="82px" OnClick="tax_Click"/>
+            <asp:ImageButton ID="tax" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_F.png" Width="318px" Height="82px" OnClick="Tax_Click"/>
         </div>
     </div>
 </asp:Content>
