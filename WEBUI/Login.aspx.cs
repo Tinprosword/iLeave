@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace WEBUI
 {
-    public partial class Login : AppLibraly.PageTemplate_Common
+    public partial class Login : LSLibrary.WebAPP.PageTemplate_Common
     {
         protected override void InitPageDataOnEachLoad()
         {
@@ -32,7 +32,8 @@ namespace WEBUI
                 bool isLogin = BLL.User.CheckLogin(userid, password);
                 if (isLogin)
                 {
-                    AppLibraly.LoginManager.Login(new AppLibraly.LoginUser(0, userid));
+                    MODEL.UserInfo userInfo = new MODEL.UserInfo();
+                    LSLibrary.WebAPP.LoginManager.Login(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(userid,userInfo));
                     Response.Redirect("~/Pages/Main.aspx");
                 }
                 else
@@ -54,7 +55,7 @@ namespace WEBUI
             this.tb_password.Text = "";
         }
 
-        protected void btn_setting_Click(object sender, ImageClickEventArgs e)
+        protected void Btn_setting_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("~/setting.aspx");
         }

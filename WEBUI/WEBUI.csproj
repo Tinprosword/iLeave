@@ -32,6 +32,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>CS1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -99,12 +100,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppLibraly\LoginManager.cs" />
     <Compile Include="AppHelper\GlobalVariate.cs" />
-    <Compile Include="AppLibraly\LoginUser.cs" />
-    <Compile Include="AppLibraly\PageTemplate.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Controls\leave.Master.cs">
       <DependentUpon>leave.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -183,7 +179,9 @@
       <Name>MODEL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="AppLibraly\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

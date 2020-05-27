@@ -58,6 +58,7 @@
                 </td>
             </tr>
         </table>
+        <div class=" col-xs-12" style="height:2px"> </div>
         <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
             <tr><td class="col-xs-3">Data</td><td class="col-xs-5">Type</td><td class="col-xs-3">Section</td><td class="col-xs-1">  </td></tr>
         </table>
@@ -82,18 +83,14 @@
                     <td style="padding-right:10px"><asp:Image ID="Image1" runat="server" ImageUrl="../res/images/setting.gif"  Width="78px" Height="78px"/></td>
                     <td style="padding-right:10px"><asp:Image ID="Image2" runat="server" ImageUrl="../res/images/setting.gif"  Width="78px" Height="78px"/></td>
                     <td style="padding-right:10px"><asp:Image ID="Image3" runat="server" ImageUrl="../res/images/setting.gif"  Width="78px" Height="78px"/></td><td style="padding-right:10px"><asp:Image ID="Image4" runat="server" ImageUrl="../res/images/setting.gif"  Width="78px" Height="78px"/></td>
-
                     <td style="padding-right:10px"><asp:Image ID="Image5" runat="server" ImageUrl="../res/images/setting.gif"  Width="78px" Height="78px"/></td><td style="padding-right:10px"><asp:Image ID="Image6" runat="server" ImageUrl="../res/images/setting.gif"  Width="78px" Height="78px"/></td>
-
                     <td style="padding-right:10px"><asp:Image ID="Image7" runat="server" ImageUrl="../res/images/setting.gif"  Width="78px" Height="78px"/></td><td style="padding-right:10px"><asp:Image ID="Image8" runat="server" ImageUrl="../res/images/setting.gif"  Width="78px" Height="78px"/></td>
-
                     <td style="padding-right:10px"><asp:Image ID="Image9" runat="server" ImageUrl="../res/images/setting.gif"  Width="78px" Height="78px"/></td><td style="padding-right:10px"><asp:Image ID="Image10" runat="server" ImageUrl="../res/images/setting.gif"  Width="78px" Height="78px"/></td>
-
                 </tr>
             </table>
         </div>
-        <div class="col-xs-12 lsf-center" style="padding-top:20px;padding-bottom:20px">
-            <asp:Button ID="button_apply" runat="server" Text="    Apply    " CssClass="btn btn-primary"/>
+        <div class="col-xs-12 lsf-center" style="padding-top:16px;">
+            <asp:Button ID="button_apply" runat="server" Text="Apply"  CssClass="btn btn-primary" Width="160px"/>
         </div>
     </div>
     <!-- Modal -->
@@ -101,17 +98,16 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h4 class="modal-title" id="staticBackdropLabel">Upload Picture</h4>
       </div>
       <div class="modal-body">
-        ...
+          <asp:FileUpload ID="FileUpload1" runat="server"  AllowMultiple="true"/>
+          <br />
+          <asp:Literal ID="literal_uploadMsg" runat="server"></asp:Literal>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
+        <button type="button" class="btn btn-primary">Upload</button>
       </div>
     </div>
   </div>

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace WEBUI.Pages
 {
-    public partial class Apply : AppLibraly.PageTemplate_logined
+    public partial class Apply : LSLibrary.WebAPP.PageTemplate_logined
     {
         protected override void InitPageDataOnEachLoad()
         {

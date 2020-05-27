@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace WEBUI.Pages
 {
-    public partial class Main : AppLibraly.PageTemplate_logined
+    public partial class Main : LSLibrary.WebAPP.PageTemplate_logined
     {
         protected override void InitPageDataOnEachLoad()
         {
@@ -22,32 +22,32 @@ namespace WEBUI.Pages
         {
         }
 
-        protected void apply_Click(object sender, ImageClickEventArgs e)
+        protected void Apply_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("~/pages/apply.aspx");
         }
 
-        protected void application_Click(object sender, ImageClickEventArgs e)
+        protected void Application_Click(object sender, ImageClickEventArgs e)
         {
 
         }
 
-        protected void approval_Click(object sender, ImageClickEventArgs e)
+        protected void Approval_Click(object sender, ImageClickEventArgs e)
         {
 
         }
 
-        protected void roster_Click(object sender, ImageClickEventArgs e)
+        protected void Roster_Click(object sender, ImageClickEventArgs e)
         {
 
         }
 
-        protected void money_Click(object sender, ImageClickEventArgs e)
+        protected void Money_Click(object sender, ImageClickEventArgs e)
         {
 
         }
 
-        protected void tax_Click(object sender, ImageClickEventArgs e)
+        protected void Tax_Click(object sender, ImageClickEventArgs e)
         {
 
         }
