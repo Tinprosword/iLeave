@@ -7,9 +7,13 @@ using System.Web.UI.WebControls;
 
 namespace WEBUI.Pages
 {
-    public partial class Main : LSLibrary.WebAPP.PageTemplate_logined
+    public partial class Main : AppHelper.CustomLoginTemplate
     {
         protected override void InitPageDataOnEachLoad()
+        {
+        }
+
+        protected override void InitPageDataOnFirstLoad()
         {
         }
 

@@ -8,7 +8,28 @@ namespace BLL
 {
     public class DataDemo
     {
-        public class UserDemo
+        public static bool checklogin(string uid, string password)
+        {
+            bool res = false;
+            List<UserDemo> users = getUser();
+            foreach (UserDemo user in users)
+            {
+                if (user.uername == uid && user.password == password)
+                {
+                    res = true;
+                }
+            }
+
+            return res;
+        }
+
+        public static decimal GetBalance(string leaveType)
+        {
+            return 10.5M;
+        }
+
+
+        private class UserDemo
         {
             public string uername;
             public string password;
@@ -22,7 +43,7 @@ namespace BLL
             }
         }
 
-        public static List<UserDemo> getUser()
+        private static List<UserDemo> getUser()
         {
             List<UserDemo> users = new List<UserDemo>();
 
@@ -32,19 +53,6 @@ namespace BLL
         }
 
 
-        public static bool checklogin(string uid, string password)
-        {
-            bool res = false;
-            List<UserDemo> users = getUser();
-            foreach (UserDemo user in users)
-            {
-                if (user.uername == uid && user.password == password)
-                {
-                    res= true;
-                }
-            }
-
-            return res;
-        }
+        
     }
 }

@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="container-fluid">
-<%--            <div class="row">
+<%--            <div class="row" id="bannerdiv" runat="server" visible="false">
                 <div id="banner" class="lss-bgcolor-blue lsf-center lsf-fontsizem2" style="line-height:35px;height:35px;">
                     ILeave
                 </div>
@@ -27,9 +27,9 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
         </div>
         <script src="../Res/jquery/jquery.min.js"></script>
-        <asp:Literal ID="lt_js" runat="server"/>
-        <script src="../Res/App/CommonJS.js"></script>
         <script src="../Res/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+        <script src="../Res/App/CommonJS.js"></script>
+        <asp:ContentPlaceHolder ID="contentjs" runat="server"></asp:ContentPlaceHolder>
     </form>
 </body>
 </html>

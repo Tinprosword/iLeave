@@ -24,6 +24,17 @@
 
 .lsu-btn {font-size: 16px; width:110px;height:30px}
 
+
+.lsu-box {position: relative;padding-right:15px;padding-top:15px; width:80px}
+.lsu-box .msg
+{
+    position: absolute;right:-15px;top: -1px;
+    width: 30px;height: 30px;line-height: 30px;
+    color: white;font-size: 18px;background-color: red;
+    text-align: center;border-radius: 30px;
+}
+
+
 /*function 为方便一些常用样式的使用，我们将这些使用率较高的样式剥离出来，按需使用，通常这些选择器具有固定样式表现，比如清除浮动等！不可滥用*/
 .lsf-redborder{border: 1px solid red}
 .lsf-blueborder{border: 1px solid blue}

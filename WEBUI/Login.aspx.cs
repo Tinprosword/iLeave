@@ -9,6 +9,11 @@ namespace WEBUI
 {
     public partial class Login : LSLibrary.WebAPP.PageTemplate_Common
     {
+        protected override void InitPageDataOnFirstLoad()
+        {
+
+        }
+
         protected override void InitPageDataOnEachLoad()
         {
         }
@@ -19,7 +24,6 @@ namespace WEBUI
 
         protected override void ResetUIOnEachLoad()
         {
-            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -61,5 +65,7 @@ namespace WEBUI
         {
             Response.Redirect("~/setting.aspx");
         }
+
+        
     }
 }
