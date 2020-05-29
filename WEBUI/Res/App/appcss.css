@@ -51,6 +51,69 @@
 .lsf-clearPadding {padding:0px}
 
 
-
 /*skin 非换肤型网站通常只提取文字色！非换肤型网站不可滥用此类*/
 .lss-bgcolor-blue{background-color :#588da7}
+
+
+/*custom define*/
+.btnBox 
+{
+  display: inline-block;
+  padding: 1px 2px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+}
+
+.btnBox:focus,
+.btnBox:active:focus,
+.btnBox.active:focus,
+.btnBox.focus,
+.btnBox:active.focus,
+.btnBox.active.focus 
+{
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.btnBox:hover,
+.btnBox:focus,
+.btnBox.focus 
+{
+  color: #333;
+  text-decoration: none;
+}
+.btnBox:active,
+.btnBox.active 
+{
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.btnBlueBoxSelect
+{
+  color: #ffffff;
+  background-color: #588da7;
+  border-color: #588da7;
+}
+
+.btnBlueBoxUnSelect
+{
+  color: #588da7;
+  background-color: #ffffff;
+  border-color: #588da7;
+}

@@ -33,7 +33,7 @@ namespace WEBUI.Pages
 
         protected void Application_Click(object sender, ImageClickEventArgs e)
         {
-
+            Response.Redirect("~/pages/myapplications.aspx");
         }
 
         protected void Approval_Click(object sender, ImageClickEventArgs e)
