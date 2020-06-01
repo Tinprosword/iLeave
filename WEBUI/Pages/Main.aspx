@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="Main.aspx.cs" Inherits="WEBUI.Pages.Main" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row" id="bannerdiv" runat="server" >
-                <div id="banner" class="lss-bgcolor-blue lsf-center lsf-fontsizem2" style="line-height:35px;height:35px;">
+                <div id="banner" class="lss-bgcolor-blue lsf-center lsf-fontsizem2" style="line-height:35px;height:35px; color:white">
                     ILeave
                 </div>
     </div>

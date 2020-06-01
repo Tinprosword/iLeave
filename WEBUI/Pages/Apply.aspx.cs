@@ -45,10 +45,7 @@ namespace WEBUI.Pages
 
         
 
-        protected void button_uploadpic_Click(object sender, EventArgs e)
-        {
-            this.lt_model_upload.Text = LSLibrary.JavasScriptHelper.CustomJS("$('#modal_upload').modal('show')");
-        }
+
 
         protected void btn_closemodel_ServerClick(object sender, EventArgs e)
         {
@@ -93,6 +90,8 @@ namespace WEBUI.Pages
             LSLibrary.WebAPP.PageSessionHelper.SetValue(datesCache, SESSION_DATELIST);
             this.repeater_leave.DataSource = datesCache;
             this.repeater_leave.DataBind();
+            this.tb_from.Text = "";
+            this.tb_to.Text = "";
         }
 
 
@@ -133,6 +132,7 @@ namespace WEBUI.Pages
             {
                 this.lt_AlertJS.Text = LSLibrary.JavasScriptHelper.AlertMessage(errorMsg);
             }
+            //
         }
 
 
@@ -197,5 +197,9 @@ namespace WEBUI.Pages
             }
         }
 
+        protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
+        {
+            this.lt_model_upload.Text = LSLibrary.JavasScriptHelper.CustomJS("$('#modal_upload').modal('show')");
+        }
     }
 }

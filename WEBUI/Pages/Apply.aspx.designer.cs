@@ -22,6 +22,15 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Literal literal_applier;
         
         /// <summary>
+        /// ImageButton1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
+        
+        /// <summary>
         /// ddl_leavetype 控件。
         /// </summary>
         /// <remarks>
@@ -103,24 +112,6 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.TextBox tb_remarks;
         
         /// <summary>
-        /// button_addleave 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_addleave;
-        
-        /// <summary>
-        /// button_uploadpic 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_uploadpic;
-        
-        /// <summary>
         /// repeater_leave 控件。
         /// </summary>
         /// <remarks>
@@ -128,6 +119,15 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater repeater_leave;
+        
+        /// <summary>
+        /// ImageButton2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
         
         /// <summary>
         /// repeater_pic 控件。

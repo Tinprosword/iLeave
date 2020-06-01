@@ -4,8 +4,9 @@
         <table class="col-xs-12 lsu-table-sm">
             <tr>
                 <td style="width:100px">Applier</td>
-                <td>
-                    <asp:Literal ID="literal_applier" runat="server"></asp:Literal>
+                <td style="vertical-align:bottom">
+                    <div style="float:left;"><asp:Literal ID="literal_applier" runat="server"></asp:Literal></div>
+                    <div style="float:right;padding-right:25px;"><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/add.png" Width="26px" Height="26px" OnClick="button_addleave_Click"  /></div>
                 </td>
             </tr>
             <tr>
@@ -32,7 +33,7 @@
                 <td><asp:DropDownList ID="dropdl_section" runat="server" Width="90%">
                     <asp:ListItem Text="Full day" Value="0"  Selected="true"/>
                     <asp:ListItem Text="AM" Value="1"/>
-                    <asp:ListItem Text="DM" Value="2"/>
+                    <asp:ListItem Text="PM" Value="2"/>
                     <asp:ListItem Text="3Part" Value="3"/>
                     </asp:DropDownList>
                 </td>
@@ -49,20 +50,14 @@
             </tr>
             <tr>
                 <td>Remarks</td>
-                <td><asp:TextBox ID="tb_remarks" runat="server" Width="90%" TextMode="MultiLine" Rows="2"></asp:TextBox> </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><asp:Button ID="button_addleave" runat="server" Text="Add Date" CssClass="btn lss-bgcolor-blue" OnClick="button_addleave_Click"/>&nbsp&nbsp
-                    <asp:Button ID="button_uploadpic" runat="server" Text="Upload Pic" CssClass="btn lss-bgcolor-blue" OnClick="button_uploadpic_Click"/>
-                </td>
+                <td><asp:TextBox ID="tb_remarks" runat="server" Width="90%"></asp:TextBox> </td>
             </tr>
         </table>
-        <div class=" col-xs-12" style="height:2px"> </div>
+        <div class=" col-xs-12" style="height:15px"> </div>
         <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
             <tr><td class="col-xs-3">Data</td><td class="col-xs-5">Type</td><td class="col-xs-3">Section</td><td class="col-xs-1">  </td></tr>
         </table>
-        <div class="col-xs-12 lsf-clearPadding" style="height:92px; overflow:scroll;">
+        <div class="col-xs-12 lsf-clearPadding" style="height:122px; overflow:scroll;">
             <table class="col-xs-12 lsu-table-xs">
                 <asp:Repeater ID="repeater_leave" runat="server">
                     <ItemTemplate>
@@ -77,19 +72,24 @@
        <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
             <tr><td class="col-xs-12">Pic Refence</td></tr>
         </table>
-        <div class="col-xs-12" style="height:80px;  overflow-y:hidden; overflow-x:scroll; padding-left:5px">
-            <table class="col-xs-12 lsu-table-xs" style="height:78px;">
-                <tr>
-                    <asp:Repeater ID="repeater_pic" runat="server">
-                        <ItemTemplate>
-                            <td style="padding-right:10px; width:90px"><asp:Image ID="Image" runat="server" ImageUrl="<%# ((WEBUI.Pages.Apply.UploadPic)Container.DataItem).path %>"  Width="50px" Height="50px"/>
-                            <br><asp:ImageButton ID="btn_close" runat="server" ImageUrl="~/Res/images/close.png" Width="30px" Height="30px" OnClick="btn_close_Click" CommandArgument="<%#Container.ItemIndex%>" /></td>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </tr>
-            </table>
+        <div class="col-xs-12" style="height:80px;">
+            <div class="col-xs-2" style="height:80px;line-height:80px; vertical-align:middle;padding:0px; width:40px" onclick="button_uploadpic_Click">
+                <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Res/images/add.png"  Width="35px" Height="35px" OnClick="ImageButton2_Click"/>
+            </div>
+            <div class="col-xs-9 lsu-table-xs" style="height:78px;overflow-y:hidden; overflow-x:scroll; padding-left:5px">
+                <table >
+                    <tr>
+                        <asp:Repeater ID="repeater_pic" runat="server">
+                            <ItemTemplate>
+                                <td style="padding-right:10px; width:90px"><asp:Image ID="Image" runat="server" ImageUrl="<%# ((WEBUI.Pages.Apply.UploadPic)Container.DataItem).path %>"  Width="50px" Height="50px"/>
+                                <br><asp:ImageButton ID="btn_close" runat="server" ImageUrl="~/Res/images/close.png" Width="30px" Height="30px" OnClick="btn_close_Click" CommandArgument="<%#Container.ItemIndex%>" /></td>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </tr>
+                </table>
+            </div>
         </div>
-        <div class="col-xs-12 lsf-center" style="padding-top:16px;">
+        <div class="col-xs-12 lsf-center" style="padding-top:16px; color:white; font-weight:bold">
             <asp:Button ID="button_apply" runat="server" Text="Apply"  CssClass="btn lss-bgcolor-blue" Width="160px" OnClick="button_apply_Click"/>
         </div>
     </div>

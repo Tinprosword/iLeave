@@ -14,7 +14,7 @@
     <form id="form1" runat="server">
         <div class="container-fluid">
             <div class="row">
-                <div id="banner" class="lss-bgcolor-blue lsf-center lsf-fontsizem2" style="line-height:53px;height:53px;">
+                <div id="banner" class="lss-bgcolor-blue lsf-center lsf-fontsizem2" style="line-height:53px;height:53px; color:white">
                     ILeave
                 </div>
             </div>
