@@ -40,42 +40,6 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.DropDownList ddl_leavetype;
         
         /// <summary>
-        /// tb_from 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_from;
-        
-        /// <summary>
-        /// btn_from 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_from;
-        
-        /// <summary>
-        /// tb_to 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_to;
-        
-        /// <summary>
-        /// btn_to 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_to;
-        
-        /// <summary>
         /// literal_balance 控件。
         /// </summary>
         /// <remarks>
@@ -184,22 +148,13 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlButton btn_uploadpic;
         
         /// <summary>
-        /// calendarfrom 控件。
+        /// calendar 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar calendarfrom;
-        
-        /// <summary>
-        /// calendarto 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar calendarto;
+        protected global::System.Web.UI.WebControls.Calendar calendar;
         
         /// <summary>
         /// lt_AlertJS 控件。

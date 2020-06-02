@@ -16,6 +16,7 @@ namespace WEBUI.Pages
         private string SESSION_DATELIST = "DATE";
         private string SESSION_UPLOADPIC = "PIC";
 
+        #region [page event]
         protected override void InitPageDataOnEachLoad()
         {
             datesCache = (List<LeaveData>)LSLibrary.WebAPP.PageSessionHelper.GetValue(SESSION_DATELIST);
@@ -39,13 +40,14 @@ namespace WEBUI.Pages
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "Home", "Apply", "~/pages/main.aspx");
             this.literal_applier.Text = loginer.loginID + "  " + loginer.userInfo.nickname;
-            this.tb_from.Attributes["onclick"] += ClientScript.GetPostBackEventReference(btn_from, null);
-            this.tb_to.Attributes["onclick"] += ClientScript.GetPostBackEventReference(btn_to, null);
         }
+        #endregion
 
-        
-
-
+        #region [module] upload pic
+        protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
+        {
+            this.lt_model_upload.Text = LSLibrary.JavasScriptHelper.CustomJS("$('#modal_upload').modal('show')");
+        }
 
         protected void btn_closemodel_ServerClick(object sender, EventArgs e)
         {
@@ -61,40 +63,56 @@ namespace WEBUI.Pages
             this.lt_model_upload.Text= LSLibrary.JavasScriptHelper.CustomJS("$('#modal_upload').modal('hide')");
         }
 
-        protected void btn_from_Click(object sender, EventArgs e)
+        private void uploadPic()
         {
-            this.lt_model_datafrom.Text = LSLibrary.JavasScriptHelper.CustomJS("$('#modal_calendarfrom').modal('show')");
+            string absoluteDir = Server.MapPath("~/" + AppHelper.GlobalVariate.path_uploadPic);
+
+            List<string> types = new List<string>(new string[] { "png", "gif" });
+            string errorMsg;
+
+            List<string> files = LSLibrary.UploadFile.SaveFiles(Request, absoluteDir, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg);
+
+            foreach (string file in files)
+            {
+                string imagepath = "~/" + WEBUI.AppHelper.GlobalVariate.path_uploadPic + "/" + file;
+                uploadPicCache.Add(new UploadPic(imagepath));
+            }
+
+            this.repeater_pic.DataSource = uploadPicCache;
+            this.repeater_pic.DataBind();
+            LSLibrary.WebAPP.PageSessionHelper.SetValue(uploadPicCache, SESSION_UPLOADPIC);
+
+            if (string.IsNullOrWhiteSpace(errorMsg) == false)
+            {
+                this.lt_AlertJS.Text = LSLibrary.JavasScriptHelper.AlertMessage(errorMsg);
+            }
         }
 
-        protected void btn_to_Click(object sender, EventArgs e)
+        protected void btn_close_Click(object sender, ImageClickEventArgs e)
         {
-            this.lt_model_datato.Text = LSLibrary.JavasScriptHelper.CustomJS("$('#modal_calendarto').modal('show')");
-        }
+            ImageButton senderObj = (ImageButton)sender;
+            string strIndex = senderObj.CommandArgument;
+            int intIndex = int.Parse(strIndex);
+            if (intIndex <= uploadPicCache.Count - 1)
+            {
+                uploadPicCache.RemoveAt(intIndex);
+                LSLibrary.WebAPP.PageSessionHelper.SetValue(uploadPicCache, SESSION_UPLOADPIC);
 
-        protected void calendar_SelectionChanged(object sender, EventArgs e)
-        {
-            this.tb_from.Text = this.calendarfrom.SelectedDate.ToString("yyyy-MM-dd");
-            this.lt_model_datafrom.Text = LSLibrary.JavasScriptHelper.CustomJS("$('#modal_calendarfrom').modal('hide')");
+                this.repeater_pic.DataSource = uploadPicCache;
+                this.repeater_pic.DataBind();
+            }
         }
+        #endregion
 
-        protected void calendar_SelectionChanged2(object sender, EventArgs e)
-        {
-            this.tb_to.Text = this.calendarto.SelectedDate.ToString("yyyy-MM-dd");
-            this.lt_model_datato.Text = LSLibrary.JavasScriptHelper.CustomJS("$('#modal_calendarto').modal('hide')");
-            this.literal_balance.Text = BLL.DataDemo.GetBalance(this.tb_to.Text)+" as of "+tb_to.Text;
-        }
-
+        #region [module] leave
         protected void button_addleave_Click(object sender, EventArgs e)
         {
-            datesCache.AddRange(getListSource(DateTime.Now, DateTime.Now));
-            LSLibrary.WebAPP.PageSessionHelper.SetValue(datesCache, SESSION_DATELIST);
-            this.repeater_leave.DataSource = datesCache;
-            this.repeater_leave.DataBind();
-            this.tb_from.Text = "";
-            this.tb_to.Text = "";
+
+            //datesCache.AddRange(getListSource(DateTime.Now, DateTime.Now));
+            //LSLibrary.WebAPP.PageSessionHelper.SetValue(datesCache, SESSION_DATELIST);
+            //this.repeater_leave.DataSource = datesCache;
+            //this.repeater_leave.DataBind();
         }
-
-
         protected void delete_Click(object sender, ImageClickEventArgs e)
         {
             ImageButton senderObj = (ImageButton)sender;
@@ -107,35 +125,18 @@ namespace WEBUI.Pages
             this.repeater_leave.DataSource = datesCache;
             this.repeater_leave.DataBind();
         }
+        #endregion
 
-
-        private void uploadPic()
+        #region [module] apply
+        protected void button_apply_Click(object sender, EventArgs e)
         {
-            string absoluteDir = Server.MapPath("~/" + AppHelper.GlobalVariate.path_uploadPic);
-
-            List<string> types = new List<string>(new string[] { "png", "gif" });
-            string errorMsg;
-
-            List<string> files= LSLibrary.UploadFile.SaveFiles(Request, absoluteDir, types, System.DateTime.Now.ToString("yyyyMMdd"),out errorMsg);
-
-            foreach (string file in files)
-            {
-                string imagepath = "~/"+WEBUI.AppHelper.GlobalVariate.path_uploadPic+"/" + file;
-                uploadPicCache.Add(new UploadPic(imagepath));
-            }
-
-            this.repeater_pic.DataSource = uploadPicCache;
-            this.repeater_pic.DataBind();
-            LSLibrary.WebAPP.PageSessionHelper.SetValue(uploadPicCache, SESSION_UPLOADPIC);
-
-            if (string.IsNullOrWhiteSpace(errorMsg)==false)
-            {
-                this.lt_AlertJS.Text = LSLibrary.JavasScriptHelper.AlertMessage(errorMsg);
-            }
-            //
+            LSLibrary.WebAPP.PageSessionHelper.CleanValue(SESSION_DATELIST);
+            LSLibrary.WebAPP.PageSessionHelper.CleanValue(SESSION_UPLOADPIC);
+            Response.Redirect("~/pages/main.aspx");
         }
+        #endregion
 
-
+        #region [common function]
         private List<LeaveData> getListSource(DateTime from, DateTime to)
         {
             List<LeaveData> data = new List<LeaveData>();
@@ -146,8 +147,9 @@ namespace WEBUI.Pages
             data.Add(new LeaveData("05-05周五", "AL", "FULL DAY", 0));
             return data;
         }
+        #endregion
 
-
+        #region [innerclass]
         public class LeaveData
         {
             public string date;
@@ -174,32 +176,6 @@ namespace WEBUI.Pages
             }
         }
 
-        protected void button_apply_Click(object sender, EventArgs e)
-        {
-            LSLibrary.WebAPP.PageSessionHelper.CleanValue(SESSION_DATELIST);
-            LSLibrary.WebAPP.PageSessionHelper.CleanValue(SESSION_UPLOADPIC);
-            Response.Redirect("~/pages/main.aspx");
-        }
-
-
-        protected void btn_close_Click(object sender, ImageClickEventArgs e)
-        {
-            ImageButton senderObj = (ImageButton)sender;
-            string strIndex = senderObj.CommandArgument;
-            int intIndex = int.Parse(strIndex);
-            if (intIndex <= uploadPicCache.Count - 1)
-            {
-                uploadPicCache.RemoveAt(intIndex);
-                LSLibrary.WebAPP.PageSessionHelper.SetValue(uploadPicCache, SESSION_UPLOADPIC);
-
-                this.repeater_pic.DataSource = uploadPicCache;
-                this.repeater_pic.DataBind();
-            }
-        }
-
-        protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
-        {
-            this.lt_model_upload.Text = LSLibrary.JavasScriptHelper.CustomJS("$('#modal_upload').modal('show')");
-        }
+        #endregion
     }
 }

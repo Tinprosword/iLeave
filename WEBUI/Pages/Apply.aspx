@@ -19,12 +19,6 @@
                 </td>
             </tr>
             <tr>
-                <td>Leave date</td>
-                <td>
-                    <asp:TextBox ID="tb_from" runat="server" Width="40%" ReadOnly="true"></asp:TextBox><asp:Button ID="btn_from" runat="server" Text="from" Visible="false" OnClick="btn_from_Click" /> To <asp:TextBox ID="tb_to" runat="server" Width="40%" ReadOnly="true"></asp:TextBox><asp:Button ID="btn_to" runat="server" Text="To" Visible="false" OnClick="btn_to_Click" />
-                </td>
-            </tr>
-            <tr>
                 <td>Balance</td>
                 <td><asp:Literal ID="literal_balance" runat="server"></asp:Literal></td>
             </tr>
@@ -34,7 +28,7 @@
                     <asp:ListItem Text="Full day" Value="0"  Selected="true"/>
                     <asp:ListItem Text="AM" Value="1"/>
                     <asp:ListItem Text="PM" Value="2"/>
-                    <asp:ListItem Text="3Part" Value="3"/>
+                    <asp:ListItem Text="3 Sections" Value="3"/>
                     </asp:DropDownList>
                 </td>
             </tr>
@@ -113,15 +107,15 @@
       </div>
     </div>
 
-    <!-- Modal upload pic -->
-    <div class="modal fade" id="modal_calendarfrom" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <!-- Modal calandar -->
+    <div class="modal fade" id="modal_calendar" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Pick Date</h4>
           </div>
           <div class="modal-body">
-              <asp:Calendar ID="calendarfrom" runat="server" OnSelectionChanged="calendar_SelectionChanged"></asp:Calendar>
+              <asp:Calendar ID="calendar" runat="server" OnSelectionChanged="calendar_SelectionChanged"></asp:Calendar>
           </div>
           <div class="modal-footer">
           </div>
@@ -129,19 +123,7 @@
       </div>
     </div>
 
-    <!-- Modal upload calendar2 -->
-    <div class="modal fade" id="modal_calendarto" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Pick Date</h4>
-          </div>
-          <div class="modal-body">
-              <asp:Calendar ID="calendarto" runat="server" OnSelectionChanged="calendar_SelectionChanged2"></asp:Calendar>
-          </div>
-        </div>
-      </div>
-    </div>
+   
 
 </asp:Content>
 <asp:Content ContentPlaceHolderID="contentjs" runat="server">
