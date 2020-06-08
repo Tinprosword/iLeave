@@ -18,7 +18,8 @@ namespace WEBUI.Pages
 
         protected override void InitPageDataOnFirstLoad2()
         {
-            BLL.Apply.InitPageSession_DateList();
+            LSLibrary.WebAPP.PageSessionHelper.CleanValue(BLL.Apply.SESSION_DATELIST);
+            LSLibrary.WebAPP.PageSessionHelper.SetValue(new List<BLL.Apply.LeaveData>(), BLL.Apply.SESSION_DATELIST);
         }
 
         protected override void ResetUIOnEachLoad3()
@@ -38,10 +39,9 @@ namespace WEBUI.Pages
 
         protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
         {
-            this.lt_model_upload.Text = LSLibrary.JavasScriptHelper.CustomJS("$('#modal_upload').modal('show')");
+            //save session
+            //reponse.redirct("abc.aspx");
         }
-
-
 
         //protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
         //{
@@ -106,9 +106,9 @@ namespace WEBUI.Pages
         #region [module] leave
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
-            List<BLL.Apply.LeaveData> datesCache = BLL.Apply.GetPageSession_DateList();
+            List<BLL.Apply.LeaveData> datesCache = (List<BLL.Apply.LeaveData>)LSLibrary.WebAPP.PageSessionHelper.GetValue(BLL.Apply.SESSION_DATELIST);
             datesCache.AddRange(getListSource(DateTime.Now, DateTime.Now));
-            BLL.Apply.SetPageSession_DateList(datesCache);
+            LSLibrary.WebAPP.PageSessionHelper.SetValue(datesCache, BLL.Apply.SESSION_DATELIST);
             this.repeater_leave.DataSource = datesCache;
             this.repeater_leave.DataBind();
         }
@@ -119,9 +119,9 @@ namespace WEBUI.Pages
             string strIndex = senderObj.CommandArgument;
             int intIndex = int.Parse(strIndex);
 
-            List<BLL.Apply.LeaveData> datesCache = BLL.Apply.GetPageSession_DateList();
+            List<BLL.Apply.LeaveData> datesCache = (List<BLL.Apply.LeaveData>)LSLibrary.WebAPP.PageSessionHelper.GetValue(BLL.Apply.SESSION_DATELIST);
             datesCache.RemoveAt(intIndex);
-            BLL.Apply.SetPageSession_DateList(datesCache);
+            LSLibrary.WebAPP.PageSessionHelper.SetValue(datesCache, BLL.Apply.SESSION_DATELIST);
 
             this.repeater_leave.DataSource = datesCache;
             this.repeater_leave.DataBind();
@@ -131,7 +131,7 @@ namespace WEBUI.Pages
         #region [module] apply
         protected void button_apply_Click(object sender, EventArgs e)
         {
-            BLL.Apply.RemovePageSession_DateList();
+            LSLibrary.WebAPP.PageSessionHelper.CleanValue(BLL.Apply.SESSION_DATELIST);
             Response.Redirect("~/pages/main.aspx");
         }
         #endregion
@@ -151,6 +151,5 @@ namespace WEBUI.Pages
             return data;
         }
         #endregion
-
     }
 }
