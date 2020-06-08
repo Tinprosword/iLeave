@@ -43,7 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Apply.cs" />
+    <Compile Include="CustomLoginTemplate.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="DataDemo.cs" />
+    <Compile Include="GlobalVariate.cs" />
+    <Compile Include="MultiLanguageHelper.cs" />
     <Compile Include="MyApplications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />

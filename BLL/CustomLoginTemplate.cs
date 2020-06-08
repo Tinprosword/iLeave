@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace WEBUI.AppHelper
+namespace BLL
 {
-    public abstract class CustomLoginTemplate:LSLibrary.WebAPP.PageTemplate_logined
+    public abstract class CustomLoginTemplate : LSLibrary.WebAPP.PageTemplate_logined
     {
         public LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> loginer;
         protected override void Page_Init(object sender, EventArgs e)

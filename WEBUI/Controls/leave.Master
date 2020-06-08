@@ -11,11 +11,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="container-fluid">
-<%--            <div class="row" id="bannerdiv" runat="server" visible="false">
-                <div id="banner" class="lss-bgcolor-blue lsf-center lsf-fontsizem2" style="line-height:35px;height:35px;">
-                    ILeave
-                </div>
-            </div>--%>
+
             <div class="row">
                 <div id="Navigation" class="lss-bgcolor-blue" style="line-height:46px;height:46px;" runat="server" visible="false">
                     <div class="col-xs-3" >

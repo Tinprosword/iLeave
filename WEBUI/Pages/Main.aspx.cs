@@ -7,22 +7,22 @@ using System.Web.UI.WebControls;
 
 namespace WEBUI.Pages
 {
-    public partial class Main : AppHelper.CustomLoginTemplate
+    public partial class Main : BLL.CustomLoginTemplate
     {
-        protected override void InitPageDataOnEachLoad()
+        protected override void InitPageDataOnEachLoad1()
         {
         }
 
-        protected override void InitPageDataOnFirstLoad()
+        protected override void InitPageDataOnFirstLoad2()
         {
         }
 
-        protected override void InitUIOnFirstLoad()
+        protected override void InitUIOnFirstLoad4()
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(false, "", "","");
         }
 
-        protected override void ResetUIOnEachLoad()
+        protected override void ResetUIOnEachLoad3()
         {
         }
 

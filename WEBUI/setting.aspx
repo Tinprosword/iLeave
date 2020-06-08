@@ -21,8 +21,22 @@
             <div class="row">
                 <table class="col-xs-12 lsf-maringTop3px lsu-bigtable">
                     <tr>
-                        <td style="width:130px;">Services address</td>
-                        <td><asp:TextBox ID="tb_user" runat="server" Width="90%"/></td>
+                        <td style="width:130px;"><asp:Literal ID="lt_address" runat="server">Server address</asp:Literal></td>
+                        <td><asp:TextBox ID="tb_address" runat="server" Width="90%"/></td>
+                    </tr>
+                    <tr>
+                        <td>Https</td>
+                        <td><asp:CheckBox ID="cb" runat="server" /></td>
+                    </tr>
+                    <tr>
+                        <td><asp:Literal ID="lt_language" runat="server">Language</asp:Literal></td>
+                        <td>
+                            <asp:RadioButtonList ID="cb_languagea" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
+                                <asp:ListItem Text="Engligh　" Value="0" Selected="True"></asp:ListItem>
+                                <asp:ListItem Text="简体　" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="繁體　" Value="2"></asp:ListItem>
+                            </asp:RadioButtonList>
+                        </td>
                     </tr>
                     <tr style="height:15px;">
                         <td></td>

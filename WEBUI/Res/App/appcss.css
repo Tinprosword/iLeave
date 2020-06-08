@@ -17,9 +17,13 @@
 .lsu-table tr{height:38px}
 .lsu-table td {padding-left:5px !important;padding-right: 2px !important;}
 
+.lsu-tablem1 {font-size:16px;}
+.lsu-tablem1 tr{height:40px}
+.lsu-tablem1 td {padding-left:5px !important;padding-right: 2px !important;}
+
 .lsu-bigtable {font-size: 16px;}
 .lsu-bigtable tr {height: 44px}
-.lsu-bigtable td {padding-left: 15px !important;padding-right: 2px !important;}
+.lsu-bigtable td {padding-left: 6px !important;padding-right: 2px !important;}
 
 
 .lsu-btn {font-size: 16px; width:110px;height:30px}
@@ -53,7 +57,7 @@
 
 /*skin 非换肤型网站通常只提取文字色！非换肤型网站不可滥用此类*/
 .lss-bgcolor-blue{background-color :#588da7}
-
+.lss-btncolor-blue{background-color :#2573a4; font-weight:bold}
 
 /*custom define*/
 .btnBox 

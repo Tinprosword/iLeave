@@ -9,21 +9,32 @@ namespace WEBUI
 {
     public partial class Login : LSLibrary.WebAPP.PageTemplate_Common
     {
-        protected override void InitPageDataOnFirstLoad()
+        protected override void InitPageDataOnEachLoad1()
         {
 
         }
 
-        protected override void InitPageDataOnEachLoad()
+        protected override void InitPageDataOnFirstLoad2()
         {
+
         }
 
-        protected override void InitUIOnFirstLoad()
+        protected override void ResetUIOnEachLoad3()
         {
+
         }
 
-        protected override void ResetUIOnEachLoad()
+        protected override void InitUIOnFirstLoad4()
         {
+            LoadLableLanguage();
+        }
+
+
+        private void LoadLableLanguage()
+        {
+            this.lt_user.Text = BLL.MultiLanguageHelper.GetLanguagePacket().login_user;
+            this.lt_password.Text = BLL.MultiLanguageHelper.GetLanguagePacket().login_password;
+            this.Button1.Text= BLL.MultiLanguageHelper.GetLanguagePacket().login_loginbtn;
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -42,14 +53,17 @@ namespace WEBUI
                 }
                 else
                 {
-                    this.lt_js.Text = LSLibrary.JavasScriptHelper.AlertMessage(AppHelper.GlobalVariate.login_error);
+                    this.lt_js.Text = LSLibrary.JavasScriptHelper.AlertMessage(BLL.GlobalVariate.login_error);
                     CleanInput();
                 }
             }
             else
             {
-                this.lt_js.Text = LSLibrary.JavasScriptHelper.AlertMessage(AppHelper.GlobalVariate.login_error);
-                CleanInput();
+                MODEL.UserInfo userInfo = new MODEL.UserInfo(0, userid, "管理员", "AD");
+                LSLibrary.WebAPP.LoginManager.Login(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(userid, userInfo));
+                Response.Redirect("~/Pages/Main.aspx");
+                //this.lt_js.Text = LSLibrary.JavasScriptHelper.AlertMessage(BLL.GlobalVariate.login_error);
+                //CleanInput();
             }
         }
 

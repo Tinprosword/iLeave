@@ -22,11 +22,11 @@
                 </div>
                 <table class="col-xs-12 lsf-maringTop3px lsu-bigtable">
                     <tr>
-                        <td style="width:90px;">User</td>
+                        <td style="width:90px;"><asp:Literal ID="lt_user" runat="server" Text="User" /></td>
                         <td><asp:TextBox ID="tb_user" runat="server" Width="90%"/></td>
                     </tr>
                     <tr>
-                        <td>Password</td>
+                        <td><asp:Literal ID="lt_password" runat="server" Text="Password" /></td>
                         <td><asp:TextBox ID="tb_password" runat="server" Width="90%" TextMode="Password"/></td>
                     </tr>
                     <tr style="height:15px;">

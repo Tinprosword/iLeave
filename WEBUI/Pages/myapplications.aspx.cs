@@ -7,22 +7,22 @@ using System.Web.UI.WebControls;
 
 namespace WEBUI.Pages
 {
-    public partial class myapplications:WEBUI.AppHelper.CustomLoginTemplate
+    public partial class myapplications:BLL.CustomLoginTemplate
     {
         private readonly string css_select = "btnBox btnBlueBoxSelect";
         private readonly string css_unselect = "btnBox btnBlueBoxUnSelect";
 
-        protected override void InitUIOnFirstLoad()
+        protected override void InitUIOnFirstLoad4()
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "Home", "My Applications", "~/pages/main.aspx");
         }
 
-        protected override void InitPageDataOnEachLoad()
+        protected override void InitPageDataOnEachLoad1()
         {
 
         }
 
-        protected override void InitPageDataOnFirstLoad()
+        protected override void InitPageDataOnFirstLoad2()
         {
             this.btn_approved.CssClass = css_unselect;
             this.btn_wait.CssClass = css_select;
@@ -32,7 +32,7 @@ namespace WEBUI.Pages
             this.repeater_myapplications.DataBind();
         }
 
-        protected override void ResetUIOnEachLoad()
+        protected override void ResetUIOnEachLoad3()
         {
 
         }

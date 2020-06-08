@@ -52,7 +52,5 @@ namespace BLL
             return users;
         }
 
-
-        
     }
 }

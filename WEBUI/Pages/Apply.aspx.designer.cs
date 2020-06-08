@@ -13,6 +13,15 @@ namespace WEBUI.Pages {
     public partial class Apply {
         
         /// <summary>
+        /// lt_name 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_name;
+        
+        /// <summary>
         /// literal_applier 控件。
         /// </summary>
         /// <remarks>
@@ -22,13 +31,13 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Literal literal_applier;
         
         /// <summary>
-        /// ImageButton1 控件。
+        /// lt_leave 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
+        protected global::System.Web.UI.WebControls.Literal lt_leave;
         
         /// <summary>
         /// ddl_leavetype 控件。
@@ -40,13 +49,94 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.DropDownList ddl_leavetype;
         
         /// <summary>
-        /// literal_balance 控件。
+        /// lt_apply 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal literal_balance;
+        protected global::System.Web.UI.WebControls.Literal lt_apply;
+        
+        /// <summary>
+        /// lt_applydays 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lt_applydays;
+        
+        /// <summary>
+        /// lt_balance 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lt_balance;
+        
+        /// <summary>
+        /// lt_balancedays 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lt_balancedays;
+        
+        /// <summary>
+        /// lt_date 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_date;
+        
+        /// <summary>
+        /// tb_from 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_from;
+        
+        /// <summary>
+        /// btn_from 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_from;
+        
+        /// <summary>
+        /// tb_to 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_to;
+        
+        /// <summary>
+        /// btn_to 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_to;
+        
+        /// <summary>
+        /// lt_section 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_section;
         
         /// <summary>
         /// dropdl_section 控件。
@@ -58,13 +148,13 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.DropDownList dropdl_section;
         
         /// <summary>
-        /// checkbl 控件。
+        /// lt_remarks 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList checkbl;
+        protected global::System.Web.UI.WebControls.Literal lt_remarks;
         
         /// <summary>
         /// tb_remarks 控件。
@@ -76,13 +166,13 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.TextBox tb_remarks;
         
         /// <summary>
-        /// repeater_leave 控件。
+        /// ImageButton1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeater_leave;
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
         
         /// <summary>
         /// ImageButton2 控件。
@@ -94,13 +184,13 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
         
         /// <summary>
-        /// repeater_pic 控件。
+        /// repeater_leave 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeater_pic;
+        protected global::System.Web.UI.WebControls.Repeater repeater_leave;
         
         /// <summary>
         /// button_apply 控件。
@@ -110,6 +200,15 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button button_apply;
+        
+        /// <summary>
+        /// Button1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
         /// FileUpload1 控件。
@@ -146,15 +245,6 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btn_uploadpic;
-        
-        /// <summary>
-        /// calendar 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar calendar;
         
         /// <summary>
         /// lt_AlertJS 控件。

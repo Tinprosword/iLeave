@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="Login.aspx" />
     <Content Include="Pages\Apply.aspx" />
+    <Content Include="Pages\Apply_Upload.aspx" />
     <Content Include="Pages\Demo.html" />
     <Content Include="Pages\Main.aspx" />
     <Content Include="Pages\myapplications.aspx" />
@@ -77,6 +78,7 @@
     <Content Include="Pages\Test.aspx" />
     <Content Include="Pages\Test.html" />
     <Content Include="Res\App\appcss.css" />
+    <Content Include="Res\App\apply.js" />
     <Content Include="Res\App\CommonJS.js" />
     <Content Include="Res\App\autoScale.js" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\css\bootstrap-theme.css" />
@@ -90,6 +92,8 @@
     <Content Include="Res\images\add.png" />
     <Content Include="Res\images\close.png" />
     <Content Include="Res\images\close1.png" />
+    <Content Include="Res\images\comIcon_addattence.png" />
+    <Content Include="Res\images\comIcon_canlendar.png" />
     <Content Include="Res\images\Content_Page_Color_Botton_A.png" />
     <Content Include="Res\images\Content_Page_Color_Botton_B.png" />
     <Content Include="Res\images\Content_Page_Color_Botton_C.png" />
@@ -105,10 +109,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppHelper\CustomLoginTemplate.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AppHelper\GlobalVariate.cs" />
     <Compile Include="Controls\leave.Master.cs">
       <DependentUpon>leave.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -129,6 +129,13 @@
     </Compile>
     <Compile Include="Pages\Apply.aspx.designer.cs">
       <DependentUpon>Apply.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Apply_Upload.aspx.cs">
+      <DependentUpon>Apply_Upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Apply_Upload.aspx.designer.cs">
+      <DependentUpon>Apply_Upload.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Main.aspx.cs">
       <DependentUpon>Main.aspx</DependentUpon>
@@ -200,9 +207,7 @@
       <Name>MODEL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AppLibraly\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
