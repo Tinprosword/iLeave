@@ -43,10 +43,10 @@
             <table class="col-xs-12 lsu-table-xs">
                 <asp:Repeater ID="repeater_leave" runat="server">
                     <ItemTemplate>
-                        <tr><td class="col-xs-3"><%# ((BLL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-5"><%#((BLL.Apply.LeaveData)Container.DataItem).type %></td><td class="col-xs-3"><%#((BLL.Apply.LeaveData)Container.DataItem).section %></td><td class="col-xs-1"><asp:ImageButton ID="delete" Width="18px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="18px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((BLL.Apply.LeaveData)Container.DataItem).type %>" /></td></tr>
+                        <tr><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-5"><%#((MODEL.Apply.LeaveData)Container.DataItem).type %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).section %></td><td class="col-xs-1"><asp:ImageButton ID="delete" Width="18px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="18px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.LeaveData)Container.DataItem).type %>" /></td></tr>
                     </ItemTemplate>
                     <AlternatingItemTemplate>
-                        <tr style="background-color:aliceblue"><td class="col-xs-3"><%# ((BLL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-5"><%#((BLL.Apply.LeaveData)Container.DataItem).type %></td><td class="col-xs-3"><%#((BLL.Apply.LeaveData)Container.DataItem).section %></td><td class="col-xs-1"><asp:ImageButton ID="delete" Width="18px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="18px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((BLL.Apply.LeaveData)Container.DataItem).type %>" /></td></tr>
+                        <tr style="background-color:aliceblue"><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-5"><%#((MODEL.Apply.LeaveData)Container.DataItem).type %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).section %></td><td class="col-xs-1"><asp:ImageButton ID="delete" Width="18px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="18px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.LeaveData)Container.DataItem).type %>" /></td></tr>
                     </AlternatingItemTemplate>
                 </asp:Repeater>
             </table>
@@ -60,7 +60,7 @@
                     <tr>
                         <asp:Repeater ID="repeater_pic" runat="server">
                             <ItemTemplate>
-                                <td style="padding-right:10px; width:90px"><asp:Image ID="Image" runat="server" ImageUrl="<%# ((BLL.Apply.UploadPic)Container.DataItem).path %>"  Width="50px" Height="50px"/></td>
+                                <td style="padding-right:10px; width:90px"><asp:Image ID="Image" runat="server" ImageUrl="<%# ((MODEL.Apply.UploadPic)Container.DataItem).path %>"  Width="50px" Height="50px"/></td>
                             </ItemTemplate>
                         </asp:Repeater>
                     </tr>
