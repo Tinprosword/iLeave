@@ -58,7 +58,7 @@
         </table>
         <div class=" col-xs-12" style="height:2px"></div>
         <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
-            <tr><td class="col-xs-3">Date</td><td class="col-xs-4">Type</td><td class="col-xs-3">Section</td><td class="col-xs-2">  </td></tr>
+            <tr><td class="col-xs-3">Date</td><td class="col-xs-5">Type</td><td class="col-xs-3">Section</td><td class="col-xs-1">  </td></tr>
         </table>
         <div class="col-xs-12 lsf-clearPadding" style="height:200px; overflow:scroll;">
             <table class="col-xs-12 lsu-table-sm">

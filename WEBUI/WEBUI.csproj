@@ -102,6 +102,8 @@
     <Content Include="Res\images\Content_Page_Color_Botton_F.png" />
     <Content Include="Res\images\Content_Page_Color_Botton_G.png" />
     <Content Include="Res\images\setting.gif" />
+    <Content Include="Res\images\upload.png" />
+    <Content Include="Res\images\upload2.png" />
     <Content Include="Res\jquery\jquery.min.js" />
     <Content Include="setting.aspx" />
     <Content Include="Web.config">

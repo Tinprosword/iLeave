@@ -38,15 +38,44 @@ namespace WEBUI.Pages
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
             //upload pic and save to view state
+            string errmsg;
+            List<string> uploadFiles = uploadPic(out  errmsg);
+
             MODEL.Apply.ApplyPage applyPage = (MODEL.Apply.ApplyPage)LSLibrary.WebAPP.PageSessionHelper.GetValue(Apply.Session_pageName);
-            applyPage.uploadpic.Add(new MODEL.Apply.UploadPic());
-            applyPage.uploadpic.Add(new MODEL.Apply.UploadPic());
+            for (int i = 0; i < uploadFiles.Count; i++)
+            {
+                MODEL.Apply.UploadPic temppic= new MODEL.Apply.UploadPic();
+                temppic.path = uploadFiles[i];
+                applyPage.uploadpic.Add(temppic);
+            }
             LSLibrary.WebAPP.PageSessionHelper.SetValue(applyPage, Apply.Session_pageName);
-
-
 
             this.repeater_attandance.DataSource = applyPage.uploadpic;
             this.repeater_attandance.DataBind();
         }
+
+        private List<string> uploadPic(out string errorMsg)
+        {
+            List<string> attachments = new List<string>();
+            string absoluteDir = Server.MapPath("~/" + BLL.GlobalVariate.path_uploadPic);
+
+            List<string> types = new List<string>(new string[] { "png", "gif" });
+
+            List<string> files = LSLibrary.UploadFile.SaveFiles(Request, absoluteDir, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg);
+
+            foreach (string file in files)
+            {
+                string imagepath = "~/" + BLL.GlobalVariate.path_uploadPic + "/" + file;
+                attachments.Add(imagepath);
+            }
+
+            return attachments;
+        }
+
+        protected void button_apply_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/pages/Apply.aspx?action=back", true);
+        }
+
     }
 }
