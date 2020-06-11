@@ -12,18 +12,19 @@ namespace WEBUI.Pages
     {
         //session 和viewstate 使用总则，sesion 只使用于页面之间. 页面的所有数据靠viewstate, 获取不到的就手动用viewstate.
         private static string ViewState_LeaveListName = "leavelist";//页面第一次进入初始化一次, viewstate不用管理清除.
+        private static string ViewState_attachmentName = "attachment";//页面第一次进入初始化一次, viewstate不用管理清除.
         public static string Session_pageName = "APPLYSESSION";//页面第一次进入时就清除。 离开页面的时候初始化.  sesion只用于页面间.
 
 
         #region [page event]
         protected override void InitPageDataOnEachLoad1()
         {
-            
+
         }
 
         protected override void InitPageDataOnFirstLoad2()
         {
-           
+
         }
 
         protected override void ResetUIOnEachLoad3()
@@ -40,6 +41,7 @@ namespace WEBUI.Pages
                 LSLibrary.WebAPP.PageSessionHelper.CleanValue(Session_pageName);
                 //reload viewstate
                 LSLibrary.WebAPP.ViewStateHelper.SetValue(applypage.LeaveList, ViewState_LeaveListName, ViewState);
+                LSLibrary.WebAPP.ViewStateHelper.SetValue(applypage.uploadpic, ViewState_attachmentName, ViewState);
 
                 //init ui
                 this.literal_applier.Text = loginer.loginID + "  " + loginer.userInfo.nickname;
@@ -60,6 +62,7 @@ namespace WEBUI.Pages
                 //init viewstate
                 List<MODEL.Apply.LeaveData> LeaveList = new List<MODEL.Apply.LeaveData>();
                 LSLibrary.WebAPP.ViewStateHelper.SetValue(LeaveList, ViewState_LeaveListName, ViewState);
+                LSLibrary.WebAPP.ViewStateHelper.SetValue(new List<MODEL.Apply.UploadPic>(), ViewState_attachmentName, ViewState);
 
                 //init ui
                 this.literal_applier.Text = loginer.loginID + "  " + loginer.userInfo.nickname;
@@ -85,7 +88,8 @@ namespace WEBUI.Pages
             applyPage.remarks = this.tb_remarks.Text;
             applyPage.uploadpic = new List<MODEL.Apply.UploadPic>();
             applyPage.LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<List<MODEL.Apply.LeaveData>>(ViewState_LeaveListName, ViewState);
-         
+            applyPage.uploadpic = LSLibrary.WebAPP.ViewStateHelper.GetValue<List<MODEL.Apply.UploadPic>>(ViewState_attachmentName, ViewState);
+
 
             LSLibrary.WebAPP.PageSessionHelper.SetValue(applyPage,Session_pageName);
 
