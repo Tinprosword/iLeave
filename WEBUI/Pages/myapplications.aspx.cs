@@ -19,7 +19,6 @@ namespace WEBUI.Pages
 
         protected override void InitPageDataOnEachLoad1()
         {
-
         }
 
         protected override void InitPageDataOnFirstLoad2()
@@ -36,7 +35,6 @@ namespace WEBUI.Pages
         {
 
         }
-
 
         protected void btn_wait_Click(object sender, EventArgs e)
         {
@@ -67,5 +65,11 @@ namespace WEBUI.Pages
             this.repeater_myapplications.DataSource = new string[20];
             this.repeater_myapplications.DataBind();
         }
+
+        protected void lb_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Pages/myDetail.aspx?appid=1", true);
+        }
+
     }
 }

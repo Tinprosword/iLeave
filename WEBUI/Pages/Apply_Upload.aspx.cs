@@ -44,8 +44,7 @@ namespace WEBUI.Pages
             MODEL.Apply.ApplyPage applyPage = (MODEL.Apply.ApplyPage)LSLibrary.WebAPP.PageSessionHelper.GetValue(Apply.Session_pageName);
             for (int i = 0; i < uploadFiles.Count; i++)
             {
-                MODEL.Apply.UploadPic temppic= new MODEL.Apply.UploadPic();
-                temppic.path = uploadFiles[i];
+                MODEL.Apply.UploadPic temppic= new MODEL.Apply.UploadPic(uploadFiles[i]);
                 applyPage.uploadpic.Add(temppic);
             }
             LSLibrary.WebAPP.PageSessionHelper.SetValue(applyPage, Apply.Session_pageName);

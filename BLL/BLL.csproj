@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application.cs" />
     <Compile Include="Apply.cs" />
     <Compile Include="CustomLoginTemplate.cs">
       <SubType>ASPXCodeBehind</SubType>

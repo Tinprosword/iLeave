@@ -1,52 +1,51 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="myDetail.aspx.cs" Inherits="WEBUI.Pages.myDetail" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <table class="col-xs-12 lsu-table-xs">
+        <table class="col-xs-12 lsu-table">
             <tr>
-                <td style="width:100px">Applier</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Total days</td>
-                <td></td>
+                <td style="width:100px">Name</td>
+                <td>黄景田 json</td>
             </tr>
             <tr>
                 <td>Status</td>
+                <td><asp:Label ID="Label_status" runat="server" Text="Waiting for approval"/></td>
+            </tr>
+            <tr>
+                <td>Leave</td>
+                <td>SL</td>
+            </tr>
+            <tr>
+                <td><asp:Literal ID="lt_apply" runat="server">Apply</asp:Literal></td>
                 <td>
+                    <asp:label ID="lt_applydays" runat="server" Width="80px">0 Days</asp:label>
+                    <asp:label ID="lt_balance" runat="server" Width="80px">Banlance</asp:label>
+                    <asp:label ID="lt_balancedays" runat="server" Width="80px">9.2 Days</asp:label>
+
                 </td>
             </tr>
             <tr>
-                <td>Leave type</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>Balance</td>
-                <td>
-                </td>
-            </tr>
-            <tr>
-                <td>Leave date</td>
+                <td>Date</td>
                 <td>
                     
-                </td>
+                    2015-01-01 -&gt;2015-01-05</td>
             </tr>
             <tr>
                 <td>Remarks</td>
-                <td></td>
+                <td>I need to see doctor.</td>
             </tr>
         </table>
 
         <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
-            <tr><td class="col-xs-3">Data</td><td class="col-xs-5">Type</td><td class="col-xs-3">Section</td><td class="col-xs-1">  </td></tr>
+            <tr><td class="col-xs-3">Date</td><td class="col-xs-5">Type</td><td class="col-xs-3">Section</td></tr>
         </table>
-        <div class="col-xs-12 lsf-clearPadding" style="height:122px; overflow:scroll;">
-            <table class="col-xs-12 lsu-table-xs">
-                <asp:Repeater ID="repeater_leave" runat="server">
+        <div class="col-xs-12 lsf-clearPadding" style="height:200px; overflow:scroll;">
+            <table class="col-xs-12 lsu-table-sm">
+                <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                     <ItemTemplate>
-                        <tr><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-5"><%#((MODEL.Apply.LeaveData)Container.DataItem).type %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).section %></td><td class="col-xs-1"><asp:ImageButton ID="delete" Width="18px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="18px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.LeaveData)Container.DataItem).type %>" /></td></tr>
+                        <tr><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-5"><%#((MODEL.Apply.LeaveData)Container.DataItem).type %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).section %></td><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.LeaveData)Container.DataItem).type %>" /></td></tr>
                     </ItemTemplate>
                     <AlternatingItemTemplate>
-                        <tr style="background-color:aliceblue"><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-5"><%#((MODEL.Apply.LeaveData)Container.DataItem).type %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).section %></td><td class="col-xs-1"><asp:ImageButton ID="delete" Width="18px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="18px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.LeaveData)Container.DataItem).type %>" /></td></tr>
+                        <tr style="background-color:aliceblue"><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-5"><%#((MODEL.Apply.LeaveData)Container.DataItem).type %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).section %></td><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.LeaveData)Container.DataItem).type %>" /></td></tr>
                     </AlternatingItemTemplate>
                 </asp:Repeater>
             </table>
@@ -66,6 +65,9 @@
                     </tr>
                 </table>
             </div>
+        </div>
+        <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
+            <asp:Button ID="button_apply" runat="server" Text="Cancel"  CssClass="btn lss-btncolor-blue" Width="160px" OnClick="button_apply_Click"/>
         </div>
     </div>
 </asp:Content>

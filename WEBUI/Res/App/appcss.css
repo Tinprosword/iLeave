@@ -115,9 +115,35 @@
   border-color: #588da7;
 }
 
+
 .btnBlueBoxUnSelect
 {
   color: #588da7;
   background-color: #ffffff;
   border-color: #588da7;
+}
+
+/*red:bd4f8b ;yellow:f3e926 .*/
+.redborderCircle 
+{    
+    width: 42px;
+    height: 42px;
+    border: 3px #bd4f8b solid;
+    -webkit-border-radius: 21px;
+}
+
+.blackCircle 
+{
+    width: 42px;
+    height: 42px;
+    background-color: #000000;
+    -webkit-border-radius: 21px;
+}
+
+.yellowCircle 
+{
+    width: 42px;
+    height: 42px;
+    background-color: #f3e926;
+    -webkit-border-radius: 21px;
 }

@@ -25,7 +25,6 @@
                     <asp:label ID="lt_applydays" runat="server" Width="80px">0 Days</asp:label>
                     <asp:label ID="lt_balance" runat="server" Width="80px">Banlance</asp:label>
                     <asp:label ID="lt_balancedays" runat="server" Width="80px">9.2 Days</asp:label>
-
                 </td>
             </tr>
             <tr>

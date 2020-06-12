@@ -19,7 +19,6 @@ namespace MODEL
             public string remarks;
 
             public List<UploadPic> uploadpic;
-
             public List<LeaveData> LeaveList;
         }
 
@@ -45,6 +44,11 @@ namespace MODEL
         public class UploadPic
         {
             public string path;
+
+            public UploadPic(string path)
+            {
+                this.path = path;
+            }
         }
     }
 }

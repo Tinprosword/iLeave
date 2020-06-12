@@ -38,22 +38,20 @@ namespace WEBUI.Pages
 
         protected void Approval_Click(object sender, ImageClickEventArgs e)
         {
-
+            Response.Redirect("~/pages/calendar.aspx");
         }
 
         protected void Roster_Click(object sender, ImageClickEventArgs e)
         {
-
         }
 
         protected void Money_Click(object sender, ImageClickEventArgs e)
         {
-
         }
 
         protected void Tax_Click(object sender, ImageClickEventArgs e)
         {
-
         }
+
     }
 }

@@ -22,8 +22,5 @@
         <div class="col-xs-12 lsf-center" style="margin-top:6px;">
             <asp:ImageButton ID="money" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_E.png" Width="318px" Height="82px" OnClick="Money_Click"/>
         </div>
-        <div class="col-xs-12 lsf-center" style="margin-top:6px;">
-            <asp:ImageButton ID="tax" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_F.png" Width="318px" Height="82px" OnClick="Tax_Click"/>
-        </div>
     </div>
 </asp:Content>
