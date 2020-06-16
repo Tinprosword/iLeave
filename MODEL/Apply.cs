@@ -26,17 +26,21 @@ namespace MODEL
         [Serializable]
         public class LeaveData
         {
+            public string name;
             public string date;
             public string type;
             public string section;
             public int typeid;
+            public int status;
 
-            public LeaveData(string date, string type, string section, int typeid)
+            public LeaveData(string name, string date, string type, string section, int typeid, int status)
             {
+                this.name = name;
                 this.date = date;
                 this.type = type;
                 this.section = section;
                 this.typeid = typeid;
+                this.status = status;
             }
         }
 

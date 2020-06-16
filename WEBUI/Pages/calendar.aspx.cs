@@ -27,15 +27,17 @@ namespace WEBUI.Pages
         protected override void InitUIOnFirstLoad4()
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "Home", "Calander", "~/pages/main.aspx");
-            this.Calendar1.SelectedDate = System.DateTime.Now;
+
             TableItemStyle obj = this.Calendar1.SelectedDayStyle;
             obj.BorderStyle = BorderStyle.Solid;
             obj.BorderColor = LSLibrary.MyColors.ParseColor("#bd4f8b");
-            obj.BorderWidth = 3;
+            obj.BorderWidth = 2;
             obj.BackColor= LSLibrary.MyColors.ParseColor("#ffffff");
             obj.ForeColor= LSLibrary.MyColors.ParseColor("#000000");
 
-            int a = 4;
+            this.Calendar1.SelectedDate = System.DateTime.Now;
+            this.repeater_leave.DataSource = BLL.Calendar.getListSource(loginer.loginID,this.Calendar1.SelectedDate);
+            this.repeater_leave.DataBind();
         }
 
 
@@ -56,6 +58,14 @@ namespace WEBUI.Pages
                 e.Cell.BackColor = LSLibrary.MyColors.ParseColor("#f3e926");
                 e.Cell.ForeColor = LSLibrary.MyColors.ParseColor("#ffffff");
             }
+        }
+
+
+        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+        {
+            Calendar calendar = (Calendar)sender;
+            this.repeater_leave.DataSource = BLL.Calendar.getListSource(loginer.loginID,calendar.SelectedDate);
+            this.repeater_leave.DataBind();
         }
 
     }

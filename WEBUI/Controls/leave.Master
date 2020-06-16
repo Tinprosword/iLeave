@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="leave.master.cs" Inherits="WEBUI.Controls.leave" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="leave.master.cs" Inherits="WEBUI.Controls.leave"  %>
 <!DOCTYPE html>
 <html>
 <head runat="server">

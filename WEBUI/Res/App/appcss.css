@@ -58,6 +58,7 @@
 /*skin 非换肤型网站通常只提取文字色！非换肤型网站不可滥用此类*/
 .lss-bgcolor-blue{background-color :#588da7}
 .lss-btncolor-blue{background-color :#2573a4; font-weight:bold}
+.lss-color-blue{ color:#588da7}
 
 /*custom define*/
 .btnBox 
@@ -145,5 +146,5 @@
     width: 42px;
     height: 42px;
     background-color: #f3e926;
-    -webkit-border-radius: 21px;
+    -webkit-border-radius: 21: 24px;
 }
