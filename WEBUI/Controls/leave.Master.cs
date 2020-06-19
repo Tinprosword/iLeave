@@ -12,7 +12,10 @@ namespace WEBUI.Controls
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                this.appcss.Href += "?lastmodify=" + BLL.GlobalVariate.appcssLastmodify;
+            }
         }
         public void SetupNaviagtion(bool isVisitable,string backLink,string title,string url)
         {

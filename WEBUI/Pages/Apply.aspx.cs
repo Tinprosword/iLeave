@@ -14,7 +14,6 @@ namespace WEBUI.Pages
         private static string ViewState_LeaveListName = "leavelist";//页面第一次进入初始化一次, viewstate不用管理清除.
         public static string Session_pageName = "APPLYSESSION";//页面第一次进入时就清除。 离开页面的时候初始化.  sesion只用于页面间.
 
-
         #region [page event]
         protected override void InitPageDataOnEachLoad1()
         {
@@ -41,7 +40,7 @@ namespace WEBUI.Pages
 
                 //init ui
                 this.literal_applier.Text = loginer.loginID + "  " + loginer.userInfo.nickname;
-                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "Home", "Apply", "~/pages/main.aspx");
+                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
                 this.ddl_leavetype.SelectedValue = applypage.LeaveTypeSelectValue.ToString();
                 this.repeater_leave.DataSource = applypage.LeaveList;
                 this.lt_applydays.Text = applypage.applylabel;
@@ -61,10 +60,11 @@ namespace WEBUI.Pages
 
                 //init ui
                 this.literal_applier.Text = loginer.loginID + "  " + loginer.userInfo.nickname;
-                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "Home", "Apply", "~/pages/main.aspx");
+                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
                 this.repeater_leave.DataSource = LeaveList;
                 this.repeater_leave.DataBind();
             }
+            SetMultiLanguage();
         }
         #endregion
 
@@ -139,6 +139,21 @@ namespace WEBUI.Pages
         #endregion
 
         #region [common function]
+        private void SetMultiLanguage()
+        {
+            this.lt_name.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_name;
+            this.lt_leave.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_leave;
+            this.lt_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_apply;
+            this.lt_balance.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_banlance;
+            this.lt_date.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_date;
+            this.lt_section.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_section;
+            this.lt_remarks.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_remarks;
+            this.ltlistdate.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_list_data;
+            this.ltlisttype.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_list_type;
+            this.lt_listsection.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_list_section;
+            this.button_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_button;
+        }
+
         private List<MODEL.Apply.LeaveData> getListSource(DateTime from, DateTime to)
         {
             List<MODEL.Apply.LeaveData> data = new List<MODEL.Apply.LeaveData>();
@@ -153,5 +168,10 @@ namespace WEBUI.Pages
             return data;
         }
         #endregion
+
+        protected void ImageButton3_Click(object sender, ImageClickEventArgs e)
+        {
+            
+        }
     }
 }

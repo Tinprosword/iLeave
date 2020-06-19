@@ -4,14 +4,16 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="../Res/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../Res/App/appcss.css" rel="stylesheet"/>
-    <script src="../Res/App/autoScale.js"></script>
+    <link href="../Res/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+    <link href="../Res/App/appcss.css" rel="stylesheet" id="appcss" runat="server"/>
+    <script src="../Res/App/autoScale.js?lasttime=<%=BLL.GlobalVariate.autoscalejsLastmodify %>"></script>
     <title></title>
 </head>
 <body>
     <form id="form1" runat="server">
+        <input type="hidden" name="mypostback_target" id="mypostback_target" value="" />
+        <input type="hidden" name="mypostback_argument" id="mypostback_argument" value="" />
         <div class="container-fluid">
-
             <div class="row">
                 <div id="Navigation" class="lss-bgcolor-blue" style="line-height:46px;height:46px;" runat="server" visible="false">
                     <div class="col-xs-3" >
@@ -24,7 +26,8 @@
         </div>
         <script src="../Res/jquery/jquery.min.js"></script>
         <script src="../Res/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-        <script src="../Res/App/CommonJS.js"></script>
+        <script type="text/javascript" src="../Res/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+        <script src="../Res/App/CommonJS.js?lastmodify=<%=BLL.GlobalVariate.commonjsLastmodify %>"></script>
         <asp:ContentPlaceHolder ID="contentjs" runat="server"></asp:ContentPlaceHolder>
     </form>
 </body>

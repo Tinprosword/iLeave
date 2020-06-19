@@ -11,7 +11,6 @@ namespace WEBUI
     {
         protected override void InitPageDataOnEachLoad1()
         {
-
         }
 
         protected override void InitPageDataOnFirstLoad2()
@@ -27,6 +26,7 @@ namespace WEBUI
         protected override void InitUIOnFirstLoad4()
         {
             LoadLableLanguage();
+            this.appcss.Href += "?lastmodify="+BLL.GlobalVariate.appcssLastmodify;
         }
 
 

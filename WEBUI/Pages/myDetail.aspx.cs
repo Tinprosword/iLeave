@@ -21,7 +21,7 @@ namespace WEBUI.Pages
 
         protected override void InitUIOnFirstLoad4()
         {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "Applications", "Detail", "~/pages/myapplications.aspx");
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "&lt;Applications", "Detail", "~/pages/myapplications.aspx");
             List<MODEL.Apply.LeaveData> LeaveList = BLL.Application.getListSource(loginer.loginID, 3);
             if (LeaveList != null)
             {

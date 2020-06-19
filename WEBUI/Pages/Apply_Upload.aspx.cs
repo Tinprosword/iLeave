@@ -29,7 +29,7 @@ namespace WEBUI.Pages
             List<MODEL.Apply.UploadPic> pics = applyPage.uploadpic;
 
 
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "Apply", "Attachment", "~/pages/Apply.aspx?action=back");
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "&lt;Apply", "Attachment", "~/pages/Apply.aspx?action=back");
             this.repeater_attandance.DataSource = pics;
             this.repeater_attandance.DataBind();
         }
@@ -71,9 +71,32 @@ namespace WEBUI.Pages
             return attachments;
         }
 
+
         protected void button_apply_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/pages/Apply.aspx?action=back", true);
+        }
+
+
+        protected void imagebutton_close_Click(object sender, ImageClickEventArgs e)
+        {
+            ImageButton imageButton_close = (ImageButton)sender;
+            string commandArgument = imageButton_close.CommandArgument;
+
+            MODEL.Apply.ApplyPage applyPage = (MODEL.Apply.ApplyPage)LSLibrary.WebAPP.PageSessionHelper.GetValue(Apply.Session_pageName);
+            List<MODEL.Apply.UploadPic> pics = applyPage.uploadpic;
+            for (int i = 0; i < pics.Count; i++)
+            {
+                if (pics[i].tempID == commandArgument)
+                {
+                    pics.RemoveAt(i);
+                }
+            }
+
+            this.repeater_attandance.DataSource = pics;
+            this.repeater_attandance.DataBind();
+
+            LSLibrary.WebAPP.PageSessionHelper.SetValue(applyPage, Apply.Session_pageName);
         }
 
     }

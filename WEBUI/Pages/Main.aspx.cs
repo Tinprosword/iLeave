@@ -19,39 +19,53 @@ namespace WEBUI.Pages
 
         protected override void InitUIOnFirstLoad4()
         {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(false, "", "","");
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(false, "", "", "");
+            SetMultiLanguage();
+        }
+
+        private void SetMultiLanguage()
+        {
+            this.lt_applyleaveabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_apply;
+            this.lt_applicationsabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_applications;
+            this.lt_calendarabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_calendar;
+            this.lt_downloadsplitabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_downplaylisp;
+            this.lt_downloadtaxabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_downtax;
         }
 
         protected override void ResetUIOnEachLoad3()
         {
         }
 
-        protected void Apply_Click(object sender, ImageClickEventArgs e)
+        protected void Apply_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/pages/apply.aspx");
         }
 
-        protected void Application_Click(object sender, ImageClickEventArgs e)
+        protected void Application_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/pages/myapplications.aspx");
         }
 
-        protected void Approval_Click(object sender, ImageClickEventArgs e)
+        protected void Approval_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/pages/calendar.aspx");
         }
 
-        protected void Roster_Click(object sender, ImageClickEventArgs e)
+        protected void Roster_Click(object sender, EventArgs e)
         {
         }
 
-        protected void Money_Click(object sender, ImageClickEventArgs e)
+        protected void Money_Click(object sender, EventArgs e)
         {
         }
 
-        protected void Tax_Click(object sender, ImageClickEventArgs e)
+        protected void Tax_Click(object sender, EventArgs e)
         {
         }
 
+        protected void lt_applyleaveabc_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

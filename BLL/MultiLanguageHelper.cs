@@ -31,7 +31,7 @@ namespace BLL
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_LANGUAGE, strvalue.ToString(), 30);
         }
 
-        public static LSLibrary.WebAPP.MulitiLanguage GetLanguagePacket()
+        public static LSLibrary.WebAPP.BaseLanguage GetLanguagePacket()
         {
             return LSLibrary.WebAPP.MulitiLanguageFactory.GetLanguagePacket(GetChoose());
         }

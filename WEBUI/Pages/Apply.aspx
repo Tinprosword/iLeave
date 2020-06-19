@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="Apply.aspx.cs" Inherits="WEBUI.Pages.Apply" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+    <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
     <div class="row" id="mainpage">
         <div class="col-xs-12" style="height:16px; padding:0px"/>
         <table class="col-xs-12 lsu-tablem1">
@@ -12,7 +14,7 @@
             <tr>
                 <td><asp:Literal ID="lt_leave" runat="server">Leave</asp:Literal></td>
                 <td>
-                    <asp:DropDownList ID="ddl_leavetype" runat="server" Width="90%">
+                    <asp:DropDownList ID="ddl_leavetype" runat="server" Width="90%" AutoPostBack="true">
                         <asp:ListItem Text="Please Select" Value="-1"  Selected="true"/>
                         <asp:ListItem Text="AL" Value="0"/>
                         <asp:ListItem Text="SL" Value="1"/>
@@ -30,7 +32,7 @@
             <tr>
                 <td><asp:Literal ID="lt_date" runat="server">Date</asp:Literal></td>
                 <td>
-                    <asp:TextBox ID="tb_from" runat="server" Width="40%" ReadOnly="true"></asp:TextBox><asp:Button ID="btn_from" runat="server" Text="from" Visible="false"  /> To <asp:TextBox ID="tb_to" runat="server" Width="40%" ReadOnly="true"></asp:TextBox><asp:Button ID="btn_to" runat="server" Text="To" Visible="false"/>
+                    <asp:TextBox ID="tb_from" data-date-format="yyyy-mm-dd" fixname="tb_from" runat="server" Width="40%" ReadOnly="true"></asp:TextBox>To <asp:TextBox ID="tb_to" data-date-format="yyyy-mm-dd" fixname="tb_to" runat="server" Width="40%" ReadOnly="true"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -48,16 +50,17 @@
                 <td><asp:TextBox ID="tb_remarks" runat="server" Width="90%"></asp:TextBox> </td>
             </tr>
             <tr>
-                <td></td>
-                <td>
-                    <div class="col-xs-8"><asp:ImageButton ID="ImageButton1" runat="server"   ImageUrl="~/Res/images/comIcon_canlendar.png" Width="40px" Height="40px" OnClick="ImageButton1_Click"/></div>
-                    <div class="col-xs-2"><asp:ImageButton ID="ImageButton2" runat="server"   ImageUrl="~/Res/images/comIcon_addattence.png" Width="40px" Height="40px" OnClick="ImageButton2_Click"/></div>
+                
+                <td colspan="2">
+                    <div class="col-xs-2"><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/comIcon_canlendar.png" Width="40px" Height="40px" OnClick="ImageButton1_Click"/></div>
+                    <div class="col-xs-7"><asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Res/images/comIcon_addattence.png" Width="40px" Height="40px" OnClick="ImageButton2_Click"/></div>
+                    <div class="col-xs-2"><asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="~/Res/images/calendar.png" Width="40px" Height="40px" OnClick="ImageButton3_Click"/></div>
                 </td>
             </tr>
         </table>
         <div class=" col-xs-12" style="height:2px"></div>
-        <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
-            <tr><td class="col-xs-3">Date</td><td class="col-xs-5">Type</td><td class="col-xs-3">Section</td><td class="col-xs-1">  </td></tr>
+        <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white">
+            <tr><td class="col-xs-3"><asp:Literal ID="ltlistdate" runat="server"></asp:Literal></td><td class="col-xs-5"><asp:Literal ID="ltlisttype" runat="server"></asp:Literal></td><td class="col-xs-3"><asp:Literal ID="lt_listsection" runat="server"></asp:Literal></td><td class="col-xs-1">  </td></tr>
         </table>
         <div class="col-xs-12 lsf-clearPadding" style="height:200px; overflow:scroll;">
             <table class="col-xs-12 lsu-table-sm">
@@ -78,7 +81,7 @@
     </div>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="contentjs" runat="server">
-    <script src="../Res/App/apply.js"></script>
+    <script src="../Res/App/apply.js?lastmodify=<%=BLL.GlobalVariate.applyjsLastmodify %>"></script>
     <asp:Literal ID="lt_AlertJS" runat="server" EnableViewState="false"/>
     <asp:Literal ID="lt_model_datafrom" runat="server"/>
     <asp:Literal ID="lt_model_datato" runat="server"/>

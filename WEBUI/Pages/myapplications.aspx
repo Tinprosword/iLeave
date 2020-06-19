@@ -9,8 +9,8 @@
         <div class="col-xs-12;" style="padding-left:7px;">
             <table>
                 <tr>
-                    <td style="padding-left:0px;padding-right:5px">name</td><td><asp:TextBox ID="tb_name" runat="server" Width="90px" ReadOnly="true"></asp:TextBox></td>
-                    <td style="padding-left:15px;padding-right:5px">Date From</td><td><asp:TextBox ID="tb_date" runat="server" Width="90px"></asp:TextBox></td>
+                    <td style="padding-left:0px;padding-right:5px"><asp:Literal ID="lt_name" runat="server">name</asp:Literal></td><td><asp:TextBox ID="tb_name" runat="server" fixname="searchName" Width="90px"  OnTextChanged="tb_name_TextChanged" AutoPostBack="true"></asp:TextBox></td>
+                    <td style="padding-left:15px;padding-right:5px"><asp:Literal ID="ltdatefrom" runat="server">Date From</asp:Literal></td><td><asp:TextBox ID="tb_date"  data-date-format="yyyy-mm-dd" fixname="datefrom" runat="server" Width="90px" OnTextChanged="tb_date_TextChanged1" AutoPostBack="true"></asp:TextBox></td>
                 </tr>
             </table>
         </div>
@@ -30,6 +30,13 @@
         </div>
     </div>
 
+
+    <div class="modalWindow" fixname="myModalee">
+        <div class="modalContent">
+            <div onclick="HiddenDivByfixname('myModalee')" style="color:red;font-size:20px; float:right">x</div>
+        </div>
+</div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
+    <script src="../Res/App/myapplication.js?lastmodify=<%=BLL.GlobalVariate.myapplicationjsLastmodify %>"></script>
 </asp:Content>

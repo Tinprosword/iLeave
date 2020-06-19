@@ -9,6 +9,9 @@ namespace WEBUI.Pages
 {
     public partial class calendar : BLL.CustomLoginTemplate
     {
+        private readonly string css_select = "btnBox btnBlueBoxSelect";
+        private readonly string css_unselect = "btnBox btnBlueBoxUnSelect";
+
         protected override void InitPageDataOnEachLoad1()
         {
             
@@ -26,7 +29,7 @@ namespace WEBUI.Pages
 
         protected override void InitUIOnFirstLoad4()
         {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "Home", "Calander", "~/pages/main.aspx");
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "&lt;Home", "Calander", "~/pages/main.aspx");
 
             TableItemStyle obj = this.Calendar1.SelectedDayStyle;
             obj.BorderStyle = BorderStyle.Solid;
@@ -68,5 +71,32 @@ namespace WEBUI.Pages
             this.repeater_leave.DataBind();
         }
 
+        protected void btn_myself_Click(object sender, EventArgs e)
+        {
+            this.repeater_leave.DataSource = BLL.Calendar.getListSource(loginer.loginID, System.DateTime.Now);
+            this.repeater_leave.DataBind();
+            this.btn_myself.CssClass = css_select;
+            this.btn_team.CssClass = css_unselect;
+        }
+
+        protected void btn_team_Click(object sender, EventArgs e)
+        {
+            this.repeater_leave.DataSource = BLL.Calendar.getListSource(loginer.loginID,  System.DateTime.Now.AddDays(1));
+            this.repeater_leave.DataBind();
+            this.btn_myself.CssClass = css_unselect;
+            this.btn_team.CssClass = css_select;
+        }
+
+        protected void cb_leave_CheckedChanged(object sender, EventArgs e)
+        {
+            this.repeater_leave.DataSource = BLL.Calendar.getListSource(loginer.loginID, System.DateTime.Now.AddDays(1));
+            this.repeater_leave.DataBind();
+        }
+
+        protected void cb_holiday_CheckedChanged(object sender, EventArgs e)
+        {
+            this.repeater_leave.DataSource = BLL.Calendar.getListSource(loginer.loginID, System.DateTime.Now.AddDays(1));
+            this.repeater_leave.DataBind();
+        }
     }
 }

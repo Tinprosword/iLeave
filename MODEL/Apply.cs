@@ -48,10 +48,12 @@ namespace MODEL
         public class UploadPic
         {
             public string path;
+            public string tempID;
 
             public UploadPic(string path)
             {
                 this.path = path;
+                this.tempID = System.DateTime.Now.ToString("yyyyMMddhhmmss");
             }
         }
     }

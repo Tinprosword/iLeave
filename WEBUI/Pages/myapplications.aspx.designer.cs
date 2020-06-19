@@ -40,6 +40,15 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Button btn_rejectWith;
         
         /// <summary>
+        /// lt_name 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_name;
+        
+        /// <summary>
         /// tb_name 控件。
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tb_name;
+        
+        /// <summary>
+        /// ltdatefrom 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltdatefrom;
         
         /// <summary>
         /// tb_date 控件。

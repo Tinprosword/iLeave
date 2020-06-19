@@ -3,9 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="Res/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="Res/App/appcss.css" rel="stylesheet"/>
+    
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <script src="Res/App/autoScale.js"></script>
+    <link href="Res/App/appcss.css" rel="stylesheet" id="appcss" runat="server"/>
+    <script src="Res/App/autoScale.js?lasttime=<%=BLL.GlobalVariate.autoscalejsLastmodify %>"></script>
     <title></title>
 </head>
 <body>

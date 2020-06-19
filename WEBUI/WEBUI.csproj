@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
     <Content Include="Pages\Apply.aspx" />
     <Content Include="Pages\Apply_Upload.aspx" />
@@ -82,12 +83,20 @@
     <Content Include="Res\App\apply.js" />
     <Content Include="Res\App\CommonJS.js" />
     <Content Include="Res\App\autoScale.js" />
+    <Content Include="Res\App\myapplication.js" />
+    <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\css\bootstrap-datetimepicker.min.css" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\css\bootstrap-theme.css" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\css\bootstrap-theme.min.css" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\css\bootstrap.css" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\css\bootstrap.min.css" />
+    <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\bootstrap-datepicker.min.js" />
+    <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\bootstrap-datetimepicker.js" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\bootstrap.js" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\bootstrap.min.js" />
+    <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\locales\bootstrap-datetimepicker.ar.js" />
+    <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\locales\bootstrap-datetimepicker.fr.js" />
+    <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\locales\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\locales\bootstrap-datetimepicker.zh-TW.js" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\modal.js" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\npm.js" />
     <Content Include="Res\images\add.png" />
@@ -119,6 +128,9 @@
     </Compile>
     <Compile Include="Controls\leave.Master.designer.cs">
       <DependentUpon>leave.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -171,6 +183,7 @@
     </Compile>
     <Compile Include="Pages\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
