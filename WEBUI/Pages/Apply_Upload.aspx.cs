@@ -13,6 +13,7 @@ namespace WEBUI.Pages
 
         protected override void InitPageDataOnEachLoad1()
         {
+            
         }
 
         protected override void InitPageDataOnFirstLoad2()
@@ -42,9 +43,18 @@ namespace WEBUI.Pages
             List<string> uploadFiles = uploadPic(out  errmsg);
 
             MODEL.Apply.ApplyPage applyPage = (MODEL.Apply.ApplyPage)LSLibrary.WebAPP.PageSessionHelper.GetValue(Apply.Session_pageName);
+            
             for (int i = 0; i < uploadFiles.Count; i++)
             {
-                MODEL.Apply.UploadPic temppic= new MODEL.Apply.UploadPic(uploadFiles[i]);
+                string reducePath = "~/" + BLL.GlobalVariate.path_uploadPic + "\\" + BLL.Apply.reducePath + "\\"+uploadFiles[i];
+                string bigPath = "~/" + BLL.GlobalVariate.path_uploadPic +  "\\" + uploadFiles[i];
+
+                if (!LSLibrary.FileUtil.FileIsExist( Server.MapPath(reducePath)))
+                {
+                    reducePath = "~/Res/images/file.png";
+                }
+
+                MODEL.Apply.UploadPic temppic= new MODEL.Apply.UploadPic(bigPath,reducePath);
                 applyPage.uploadpic.Add(temppic);
             }
             LSLibrary.WebAPP.PageSessionHelper.SetValue(applyPage, Apply.Session_pageName);
@@ -55,20 +65,10 @@ namespace WEBUI.Pages
 
         private List<string> uploadPic(out string errorMsg)
         {
-            List<string> attachments = new List<string>();
             string absoluteDir = Server.MapPath("~/" + BLL.GlobalVariate.path_uploadPic);
-
             List<string> types = new List<string>(new string[] { "png", "gif" });
-
-            List<string> files = LSLibrary.UploadFile.SaveFiles(Request, absoluteDir, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg);
-
-            foreach (string file in files)
-            {
-                string imagepath = "~/" + BLL.GlobalVariate.path_uploadPic + "/" + file;
-                attachments.Add(imagepath);
-            }
-
-            return attachments;
+            List<string> files = BLL.Apply.UploadAttendance(Request, absoluteDir, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg);
+            return files;
         }
 
 

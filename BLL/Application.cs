@@ -28,16 +28,16 @@ namespace BLL
             List<MODEL.Apply.UploadPic> data = new List<MODEL.Apply.UploadPic>();
             for (int i = 0; i < 1; i++)
             {
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
             }
             return data;
         }

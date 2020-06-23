@@ -49,11 +49,13 @@ namespace MODEL
         {
             public string path;
             public string tempID;
+            public string reduceImage;
 
-            public UploadPic(string path)
+            public UploadPic(string path,string _reduceImage)
             {
                 this.path = path;
                 this.tempID = System.DateTime.Now.ToString("yyyyMMddhhmmss");
+                this.reduceImage = _reduceImage;
             }
         }
     }

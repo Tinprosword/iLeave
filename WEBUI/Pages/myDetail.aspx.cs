@@ -19,9 +19,14 @@ namespace WEBUI.Pages
             
         }
 
+        protected override void ResetUIOnEachLoad3()
+        {
+
+        }
+
         protected override void InitUIOnFirstLoad4()
         {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "&lt;Applications", "Detail", "~/pages/myapplications.aspx");
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().application_detailback, BLL.MultiLanguageHelper.GetLanguagePacket().application_detailcurrent, "~/pages/myapplications.aspx");
             List<MODEL.Apply.LeaveData> LeaveList = BLL.Application.getListSource(loginer.loginID, 3);
             if (LeaveList != null)
             {
@@ -35,16 +40,30 @@ namespace WEBUI.Pages
                 this.repeater_pic.DataSource = attandance;
                 this.repeater_pic.DataBind();
             }
+
+            SetupMultiLanguage();
         }
 
-        protected override void ResetUIOnEachLoad3()
+        private void SetupMultiLanguage()
         {
-            
+            this.lt_name.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_name;
+            this.lt_status.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_status;
+            this.lt_leave.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_leave;
+            this.lt_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_apply;
+            this.lt_date.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_date;
+            this.lt_remarks.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_remarks;
+            this.lt_balance.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_balance;
+            this.lt_listdate.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_date;
+            this.lt_listtype.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_listtype;
+            this.lt_listsection.Text= BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_listsection;
+            this.lt_attendance.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_attendance;
+            this.lt_balance.Text= BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_balance;
         }
 
         protected void button_apply_Click(object sender, EventArgs e)
         {
-            this.Label_status.Text = "Cancel";
+            this.lt_status.Text = "Cancel";
         }
+
     }
 }

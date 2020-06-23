@@ -13,13 +13,40 @@ namespace WEBUI.Pages {
     public partial class myDetail {
         
         /// <summary>
-        /// Label_status 控件。
+        /// lt_name 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label_status;
+        protected global::System.Web.UI.WebControls.Literal lt_name;
+        
+        /// <summary>
+        /// lt_status 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_status;
+        
+        /// <summary>
+        /// lt_wait 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lt_wait;
+        
+        /// <summary>
+        /// lt_leave 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_leave;
         
         /// <summary>
         /// lt_apply 控件。
@@ -58,6 +85,51 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Label lt_balancedays;
         
         /// <summary>
+        /// lt_date 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_date;
+        
+        /// <summary>
+        /// lt_remarks 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_remarks;
+        
+        /// <summary>
+        /// lt_listdate 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_listdate;
+        
+        /// <summary>
+        /// lt_listtype 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_listtype;
+        
+        /// <summary>
+        /// lt_listsection 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_listsection;
+        
+        /// <summary>
         /// repeater_leave 控件。
         /// </summary>
         /// <remarks>
@@ -65,6 +137,15 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater repeater_leave;
+        
+        /// <summary>
+        /// lt_attendance 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_attendance;
         
         /// <summary>
         /// repeater_pic 控件。

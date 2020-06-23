@@ -41,7 +41,6 @@ namespace WEBUI.Pages
             this.btn_wait.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_wait;
             this.lt_name.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_name;
             this.ltdatefrom.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_datefrom;
-
         }
 
         protected void btn_wait_Click(object sender, EventArgs e)

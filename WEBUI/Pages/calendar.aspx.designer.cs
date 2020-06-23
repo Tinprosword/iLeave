@@ -67,6 +67,15 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Image Image1;
         
         /// <summary>
+        /// lt_approval 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_approval;
+        
+        /// <summary>
         /// Image2 控件。
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Image Image2;
         
         /// <summary>
+        /// lt_wait 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_wait;
+        
+        /// <summary>
         /// Label1 控件。
         /// </summary>
         /// <remarks>
@@ -83,6 +101,42 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// lt_name 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_name;
+        
+        /// <summary>
+        /// lt_type 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_type;
+        
+        /// <summary>
+        /// lt_section 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_section;
+        
+        /// <summary>
+        /// lt_status 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_status;
         
         /// <summary>
         /// repeater_leave 控件。

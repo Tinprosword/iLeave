@@ -8,12 +8,12 @@
         <div class="col-xs-12 lsf-center">
             <asp:Calendar ID="Calendar1" runat="server" Width="310px" Height="260px" Font-Size="Larger" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
         </div>
-        <div class="col-xs-4"><asp:Image ID="Image1" runat="server" ImageUrl="~/Res/images/square.png" BackColor="Black" />&nbsp Approved</div>
-        <div class="col-xs-8"><asp:Image ID="Image2" runat="server" ImageUrl="~/Res/images/square.png" BackColor="#f3e926" />&nbsp Contain wait for approval</div>
+        <div class="col-xs-4"><asp:Image ID="Image1" runat="server" ImageUrl="~/Res/images/square.png" BackColor="Black" />&nbsp;<asp:Literal ID="lt_approval" runat="server">approval</asp:Literal></div>
+        <div class="col-xs-8"><asp:Image ID="Image2" runat="server" ImageUrl="~/Res/images/square.png" BackColor="#f3e926" />&nbsp;<asp:Literal ID="lt_wait" runat="server">wait for approval</asp:Literal></div>
 
         <div class="col-xs-12 lss-color-blue" style=" font-weight:bold; font-size:18px;margin-top:15px"><asp:Label ID="Label1" runat="server" Text="lb_date">2020-01-01</asp:Label></div>
         <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
-            <tr><td class="col-xs-2">Name</td><td class="col-xs-3">Type</td><td class="col-xs-3">Section</td><td class="col-xs-4">Status</td></tr>
+            <tr><td class="col-xs-2"><asp:Literal ID="lt_name" runat="server">Name</asp:Literal></td><td class="col-xs-3"><asp:Literal ID="lt_type" runat="server">Type</asp:Literal></td><td class="col-xs-3"><asp:Literal ID="lt_section" runat="server">Section</asp:Literal></td><td class="col-xs-4"><asp:Literal ID="lt_status" runat="server">Status</asp:Literal></td></tr>
         </table>
         <div class="col-xs-12 lsf-clearPadding" style="height:200px; overflow:scroll;">
             <table class="col-xs-12 lsu-table-sm">

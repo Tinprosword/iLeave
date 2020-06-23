@@ -3,15 +3,15 @@
     <div class="row">
         <table class="col-xs-12 lsu-table">
             <tr>
-                <td style="width:100px">Name</td>
+                <td style="width:100px"><asp:Literal ID="lt_name" runat="server">Name</asp:Literal></td>
                 <td>黄景田 json</td>
             </tr>
             <tr>
-                <td>Status</td>
-                <td><asp:Label ID="Label_status" runat="server" Text="Waiting for approval"/></td>
+                <td><asp:Literal ID="lt_status" runat="server">Status</asp:Literal></td>
+                <td><asp:Label ID="lt_wait" runat="server" Text="Waiting for approval"/></td>
             </tr>
             <tr>
-                <td>Leave</td>
+                <td><asp:Literal ID="lt_leave" runat="server">Leave</asp:Literal></td>
                 <td>SL</td>
             </tr>
             <tr>
@@ -24,19 +24,17 @@
                 </td>
             </tr>
             <tr>
-                <td>Date</td>
-                <td>
-                    
-                    2015-01-01 -&gt;2015-01-05</td>
+                <td><asp:Literal ID="lt_date" runat="server">Date</asp:Literal></td>
+                <td>2015-01-01 -&gt;2015-01-05</td>
             </tr>
             <tr>
-                <td>Remarks</td>
+                <td><asp:Literal ID="lt_remarks" runat="server">Remarks</asp:Literal></td>
                 <td>I need to see doctor.</td>
             </tr>
         </table>
 
         <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
-            <tr><td class="col-xs-3">Date</td><td class="col-xs-5">Type</td><td class="col-xs-3">Section</td></tr>
+            <tr><td class="col-xs-3"><asp:Literal ID="lt_listdate" runat="server">Date</asp:Literal></td><td class="col-xs-5"><asp:Literal ID="lt_listtype" runat="server">Type</asp:Literal></td><td class="col-xs-3"><asp:Literal ID="lt_listsection" runat="server">Section</asp:Literal></td></tr>
         </table>
         <div class="col-xs-12 lsf-clearPadding" style="height:200px; overflow:scroll;">
             <table class="col-xs-12 lsu-table-sm">
@@ -51,7 +49,7 @@
             </table>
         </div>
         <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
-            <tr><td class="col-xs-12">Pic Refence</td></tr>
+            <tr><td class="col-xs-12"><asp:Literal ID="lt_attendance" runat="server">Attendance</asp:Literal></td></tr>
         </table>
         <div class="col-xs-12" style="height:80px;">
             <div class="col-xs-12 lsu-table-xs" style="height:78px;overflow-y:hidden; overflow-x:scroll; padding-left:5px">

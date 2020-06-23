@@ -29,20 +29,34 @@ namespace WEBUI.Pages
 
         protected override void InitUIOnFirstLoad4()
         {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "&lt;Home", "Calander", "~/pages/main.aspx");
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
 
             TableItemStyle obj = this.Calendar1.SelectedDayStyle;
             obj.BorderStyle = BorderStyle.Solid;
             obj.BorderColor = LSLibrary.MyColors.ParseColor("#bd4f8b");
             obj.BorderWidth = 2;
-            obj.BackColor= LSLibrary.MyColors.ParseColor("#ffffff");
-            obj.ForeColor= LSLibrary.MyColors.ParseColor("#000000");
+            obj.BackColor = LSLibrary.MyColors.ParseColor("#ffffff");
+            obj.ForeColor = LSLibrary.MyColors.ParseColor("#000000");
 
             this.Calendar1.SelectedDate = System.DateTime.Now;
-            this.repeater_leave.DataSource = BLL.Calendar.getListSource(loginer.loginID,this.Calendar1.SelectedDate);
+            this.repeater_leave.DataSource = BLL.Calendar.getListSource(loginer.loginID, this.Calendar1.SelectedDate);
             this.repeater_leave.DataBind();
+            SetupMultiLanguage();
         }
 
+        private void SetupMultiLanguage()
+        {
+            this.btn_myself.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_me;
+            this.btn_team.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_team;
+            this.cb_leave.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_leave;
+            this.cb_holiday.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_holiday;
+            this.lt_approval.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_approved;
+            this.lt_wait.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_containwait;
+            this.lt_name.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_listname;
+            this.lt_type.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_listtype;
+            this.lt_section.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_listsection;
+            this.lt_status.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_liststatus;
+        }
 
         private void Calendar1_DayRender(object sender, DayRenderEventArgs e)
         {

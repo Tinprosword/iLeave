@@ -157,7 +157,7 @@ namespace WEBUI.Pages
         private List<MODEL.Apply.LeaveData> getListSource(DateTime from, DateTime to)
         {
             List<MODEL.Apply.LeaveData> data = new List<MODEL.Apply.LeaveData>();
-            for (int i = 0; i <25; i++)
+            for (int i = 0; i <1; i++)
             {
                 data.Add(new MODEL.Apply.LeaveData("Admin","05-01周一", "AL", "FULL DAY", 0, 0));
                 data.Add(new MODEL.Apply.LeaveData("Admin", "05-02周二", "AL", "FULL DAY", 0, 0));

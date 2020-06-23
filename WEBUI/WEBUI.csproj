@@ -100,6 +100,7 @@
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\modal.js" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\npm.js" />
     <Content Include="Res\images\add.png" />
+    <Content Include="Res\images\calendar.png" />
     <Content Include="Res\images\close.png" />
     <Content Include="Res\images\close1.png" />
     <Content Include="Res\images\comIcon_addattence.png" />
@@ -111,6 +112,7 @@
     <Content Include="Res\images\Content_Page_Color_Botton_E.png" />
     <Content Include="Res\images\Content_Page_Color_Botton_F.png" />
     <Content Include="Res\images\Content_Page_Color_Botton_G.png" />
+    <Content Include="Res\images\file.png" />
     <Content Include="Res\images\setting.gif" />
     <Content Include="Res\images\square.png" />
     <Content Include="Res\images\upload.png" />
