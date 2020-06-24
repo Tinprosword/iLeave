@@ -32,7 +32,7 @@
             <tr>
                 <td><asp:Literal ID="lt_date" runat="server">Date</asp:Literal></td>
                 <td>
-                    <asp:TextBox ID="tb_from" data-date-format="yyyy-mm-dd" fixname="tb_from" runat="server" Width="40%" ReadOnly="true"></asp:TextBox>To <asp:TextBox ID="tb_to" data-date-format="yyyy-mm-dd" fixname="tb_to" runat="server" Width="40%" ReadOnly="true"></asp:TextBox>
+                    <asp:TextBox ID="tb_from" data-date-format="yyyy-mm-dd" fixname="tb_from" runat="server" Width="40%"></asp:TextBox>To <asp:TextBox ID="tb_to" data-date-format="yyyy-mm-dd" fixname="tb_to" runat="server" Width="40%"></asp:TextBox>
                 </td>
             </tr>
             <tr>

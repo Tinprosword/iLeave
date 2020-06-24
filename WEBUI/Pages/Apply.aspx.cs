@@ -15,6 +15,14 @@ namespace WEBUI.Pages
         public static string Session_pageName = "APPLYSESSION";//页面第一次进入时就清除。 离开页面的时候初始化.  sesion只用于页面间.
 
         #region [page event]
+
+        protected override void InitPageVaralbal0()
+        {
+            //回调用法+匿名函数用法，单语句用匿名还是可以。否则尽量别用匿名函数，降低了复用性和之后的扩展。只限于单语句并无复用可能。
+            //为了一个匿名函数写说明，还不如不用匿名函数，所以匿名函数完全可以禁止使用。
+            this.OnF5Doit = () => { Response.Redirect("~/pages/apply.aspx"); };
+        }
+
         protected override void InitPageDataOnEachLoad1()
         {
         }

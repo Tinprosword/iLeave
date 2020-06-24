@@ -12,6 +12,11 @@ namespace WEBUI.Pages
         private readonly string css_select = "btnBox btnBlueBoxSelect";
         private readonly string css_unselect = "btnBox btnBlueBoxUnSelect";
 
+        protected override void InitPageVaralbal0()
+        {
+            
+        }
+
         protected override void InitPageDataOnEachLoad1()
         {
             

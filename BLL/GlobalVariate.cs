@@ -38,7 +38,7 @@ namespace BLL
         {
             get
             {
-                string filePath = pageServer.MapPath("~/Res/App/apply.css");
+                string filePath = pageServer.MapPath("~/Res/App/apply.js");
                 return LSLibrary.FileUtil.GetLastWriteTime(filePath).ToString("yyyyMMddhhmmss");
 
             }

@@ -18,3 +18,7 @@ $("input[fixname='tb_to']").datetimepicker({
     minView: 2,
     forceParse: 0
 });
+
+
+$("input[fixname='tb_from']").attr("readonly", true);
+$("input[fixname='tb_to']").attr("readonly", true);

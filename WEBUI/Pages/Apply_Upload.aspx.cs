@@ -9,7 +9,10 @@ namespace WEBUI.Pages
 {
     public partial class Apply_Upload : BLL.CustomLoginTemplate
     {
-
+        protected override void InitPageVaralbal0()
+        {
+            OnF5Doit = onf5;//回调这里的处理方式，刷新提交就重新载入吧。
+        }
 
         protected override void InitPageDataOnEachLoad1()
         {
@@ -34,6 +37,7 @@ namespace WEBUI.Pages
             this.repeater_attandance.DataSource = pics;
             this.repeater_attandance.DataBind();
         }
+
 
 
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
@@ -97,6 +101,12 @@ namespace WEBUI.Pages
             this.repeater_attandance.DataBind();
 
             LSLibrary.WebAPP.PageSessionHelper.SetValue(applyPage, Apply.Session_pageName);
+        }
+
+
+        private void onf5()
+        {
+            Response.Redirect("~/pages/apply_upload.aspx");
         }
 
     }

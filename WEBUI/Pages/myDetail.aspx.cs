@@ -9,19 +9,21 @@ namespace WEBUI.Pages
 {
     public partial class myDetail : BLL.CustomLoginTemplate
     {
+
+        protected override void InitPageVaralbal0()
+        {
+        }
+
         protected override void InitPageDataOnEachLoad1()
         {
-            
         }
 
         protected override void InitPageDataOnFirstLoad2()
         {
-            
         }
 
         protected override void ResetUIOnEachLoad3()
         {
-
         }
 
         protected override void InitUIOnFirstLoad4()

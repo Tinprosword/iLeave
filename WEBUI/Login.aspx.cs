@@ -9,6 +9,11 @@ namespace WEBUI
 {
     public partial class Login : LSLibrary.WebAPP.PageTemplate_Common
     {
+        protected override void InitPageVaralbal0()
+        {
+            
+        }
+
         protected override void InitPageDataOnEachLoad1()
         {
         }
