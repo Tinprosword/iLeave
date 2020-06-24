@@ -14,17 +14,14 @@ namespace WEBUI.Pages
 
         protected override void InitPageVaralbal0()
         {
-            
         }
 
         protected override void InitPageDataOnEachLoad1()
         {
-            
         }
 
         protected override void InitPageDataOnFirstLoad2()
         {
-            
         }
 
         protected override void ResetUIOnEachLoad3()

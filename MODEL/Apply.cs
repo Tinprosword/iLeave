@@ -32,8 +32,9 @@ namespace MODEL
             public string section;
             public int typeid;
             public int status;
+            public string statusstr;
 
-            public LeaveData(string name, string date, string type, string section, int typeid, int status)
+            public LeaveData(string name, string date, string type, string section, int typeid, int status, string statusstr)
             {
                 this.name = name;
                 this.date = date;
@@ -41,6 +42,7 @@ namespace MODEL
                 this.section = section;
                 this.typeid = typeid;
                 this.status = status;
+                this.statusstr = statusstr;
             }
         }
 

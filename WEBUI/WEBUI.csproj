@@ -77,6 +77,7 @@
     <Content Include="Pages\Main.aspx" />
     <Content Include="Pages\myapplications.aspx" />
     <Content Include="Pages\myDetail.aspx" />
+    <Content Include="Pages\Setting.aspx" />
     <Content Include="Pages\Test.aspx" />
     <Content Include="Pages\Test.html" />
     <Content Include="Res\App\appcss.css" />
@@ -182,6 +183,13 @@
     </Compile>
     <Compile Include="Pages\myDetail.aspx.designer.cs">
       <DependentUpon>myDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Setting.aspx.cs">
+      <DependentUpon>Setting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Setting.aspx.designer.cs">
+      <DependentUpon>Setting.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>

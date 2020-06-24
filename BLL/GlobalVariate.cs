@@ -10,6 +10,7 @@ namespace BLL
 {
     public class GlobalVariate
     {
+
         //global string
         public static string login_error = "invalid user and password.";
         public static string path_uploadPic = "uploadPic";
@@ -20,6 +21,20 @@ namespace BLL
         public static readonly string COOKIE_HTTPS = "cookie_https";
 
 
+        public static Dictionary<int, string> LeaveType
+        {
+            get
+            {
+                Dictionary<int, string>  LeaveType = new Dictionary<int, string>();
+                LeaveType.Add(0, "Wait for approval");
+                LeaveType.Add(1, "Accept");
+                LeaveType.Add(2, "Reject");
+                LeaveType.Add(3, "Wait for WithDraw");
+                LeaveType.Add(4, "WithDraw");
+                LeaveType.Add(5, "Cancel");
+                return LeaveType;
+            }
+        }
 
         //用于js css文件的修改后自动重新下载.
         public static HttpServerUtility pageServer;

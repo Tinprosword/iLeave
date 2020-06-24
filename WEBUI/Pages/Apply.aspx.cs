@@ -167,11 +167,11 @@ namespace WEBUI.Pages
             List<MODEL.Apply.LeaveData> data = new List<MODEL.Apply.LeaveData>();
             for (int i = 0; i <1; i++)
             {
-                data.Add(new MODEL.Apply.LeaveData("Admin","05-01周一", "AL", "FULL DAY", 0, 0));
-                data.Add(new MODEL.Apply.LeaveData("Admin", "05-02周二", "AL", "FULL DAY", 0, 0));
-                data.Add(new MODEL.Apply.LeaveData("Admin", "05-03周三", "AL", "FULL DAY", 0, 0));
-                data.Add(new MODEL.Apply.LeaveData("Admin", "05-04周四", "AL", "FULL DAY", 0, 0));
-                data.Add(new MODEL.Apply.LeaveData("Admin", "05-05周五", "AL", "FULL DAY", 0, 0));
+                data.Add(new MODEL.Apply.LeaveData("Admin","05-01周一", "AL", "FULL DAY", 0, 0,BLL.GlobalVariate.LeaveType[0]));
+                data.Add(new MODEL.Apply.LeaveData("Admin", "05-02周二", "AL", "FULL DAY", 0, 1, BLL.GlobalVariate.LeaveType[1]));
+                data.Add(new MODEL.Apply.LeaveData("Admin", "05-03周三", "AL", "FULL DAY", 0, 2, BLL.GlobalVariate.LeaveType[2]));
+                data.Add(new MODEL.Apply.LeaveData("Admin", "05-04周四", "AL", "FULL DAY", 0, 0, BLL.GlobalVariate.LeaveType[0]));
+                data.Add(new MODEL.Apply.LeaveData("Admin", "05-05周五", "AL", "FULL DAY", 0, 0, BLL.GlobalVariate.LeaveType[0]));
             }
             return data;
         }

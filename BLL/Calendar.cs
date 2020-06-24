@@ -14,8 +14,8 @@ namespace BLL
             int modday = dt.Day % 5;
             for (int i = 0; i < modday; i++)
             {
-                data.Add(new MODEL.Apply.LeaveData(uid, "05-01周一", "AL", "FULL DAY", 0, 0));
-                data.Add(new MODEL.Apply.LeaveData(uid, "05-02周二", "AL", "FULL DAY", 0, 0));
+                data.Add(new MODEL.Apply.LeaveData(uid, "05-01周一", "AL", "FULL DAY", 0, 0, BLL.GlobalVariate.LeaveType[0]));
+                data.Add(new MODEL.Apply.LeaveData(uid, "05-02周二", "AL", "FULL DAY", 0, 1, BLL.GlobalVariate.LeaveType[1]));
             }
             return data;
         }

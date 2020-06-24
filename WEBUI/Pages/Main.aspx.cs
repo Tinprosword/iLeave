@@ -35,6 +35,7 @@ namespace WEBUI.Pages
             this.lt_calendarabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_calendar;
             this.lt_downloadsplitabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_downplaylisp;
             this.lt_downloadtaxabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_downtax;
+            this.lt_setting.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_setting;
         }
 
         protected override void ResetUIOnEachLoad3()
@@ -69,6 +70,11 @@ namespace WEBUI.Pages
         }
 
         protected void lt_applyleaveabc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Setting_Click(object sender, EventArgs e)
         {
 
         }

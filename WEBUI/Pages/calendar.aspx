@@ -19,7 +19,7 @@
             <table class="col-xs-12 lsu-table-sm">
                 <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                     <ItemTemplate>
-                        <tr><td class="col-xs-2"><%# ((MODEL.Apply.LeaveData)Container.DataItem).name %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).type %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).section %></td><td class="col-xs-4"><%#((MODEL.Apply.LeaveData)Container.DataItem).status %></td></tr>
+                        <tr><td class="col-xs-2"><%# ((MODEL.Apply.LeaveData)Container.DataItem).name %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).type %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).section %></td><td class="col-xs-4"><%#((MODEL.Apply.LeaveData)Container.DataItem).statusstr %></td></tr>
                     </ItemTemplate>
                     
                 </asp:Repeater>

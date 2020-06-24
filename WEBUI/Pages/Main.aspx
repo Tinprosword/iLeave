@@ -27,5 +27,9 @@
             <asp:ImageButton ID="money" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_E.png" Width="318px" Height="82px" OnClick="Money_Click"/>
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_downloadtaxabc" runat="server" OnClick="Money_Click" CssClass="fixLink"></asp:LinkButton></div>
         </div>
+        <div class="col-xs-12 lsf-center" style="margin-top:6px;">
+            <asp:ImageButton ID="Setting" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_F.png" Width="318px" Height="82px" OnClick="Setting_Click"/>
+            <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_setting" runat="server" OnClick="Setting_Click" CssClass="fixLink"></asp:LinkButton></div>
+        </div>
     </div>
 </asp:Content>
