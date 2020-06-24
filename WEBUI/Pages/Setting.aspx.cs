@@ -11,26 +11,24 @@ namespace WEBUI.Pages
     {
         protected override void InitPageVaralbal0()
         {
-
         }
 
         protected override void InitPageDataOnEachLoad1()
         {
-
         }
 
         protected override void InitPageDataOnFirstLoad2()
         {
-
         }
 
         protected override void ResetUIOnEachLoad3()
         {
-
         }
 
         protected override void InitUIOnFirstLoad4()
         {
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().setting_back, BLL.MultiLanguageHelper.GetLanguagePacket().setting_current, "~/pages/main.aspx");
+
             LoadLableLanguage();
             this.lb_serveraddress.Text = LSLibrary.WebAPP.CookieHelper.GetCookie(BLL.GlobalVariate.COOKIE_SERVERADDRESS) ?? "";
             string check = LSLibrary.WebAPP.CookieHelper.GetCookie(BLL.GlobalVariate.COOKIE_HTTPS) ?? "";
@@ -49,16 +47,23 @@ namespace WEBUI.Pages
         {
             this.lt_address.Text = BLL.MultiLanguageHelper.GetLanguagePacket().setting_service;
             this.lt_language.Text = BLL.MultiLanguageHelper.GetLanguagePacket().setting_language;
-            this.Button1.Text = BLL.MultiLanguageHelper.GetLanguagePacket().setting_btn_ok;
         }
 
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //LSLibrary.WebAPP.CookieHelper.SetCookie(BLL.GlobalVariate.COOKIE_SERVERADDRESS, this.tb_address.Text, 3600);
-            //LSLibrary.WebAPP.CookieHelper.SetCookie(BLL.GlobalVariate.COOKIE_HTTPS, this.cb.Checked.ToString(), 3600);
+
+        }
+
+        protected void cb_languagea_SelectedIndexChanged(object sender, EventArgs e)
+        {
             BLL.MultiLanguageHelper.SaveChoose((LSLibrary.WebAPP.LanguageType)int.Parse(this.cb_languagea.SelectedValue));
-            Response.Redirect("~/pages/main.aspx");
+            Response.Redirect("~/pages/setting.aspx");
+        }
+
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("~/login.aspx");
         }
     }
 }

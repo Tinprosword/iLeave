@@ -13,19 +13,20 @@
                     <tr>
                         <td><asp:Literal ID="lt_language" runat="server">Language</asp:Literal></td>
                         <td>
-                            <asp:RadioButtonList ID="cb_languagea" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
+                            <asp:RadioButtonList ID="cb_languagea" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" OnSelectedIndexChanged="cb_languagea_SelectedIndexChanged" AutoPostBack="true">
                                 <asp:ListItem Text="Engligh　" Value="0" Selected="True"></asp:ListItem>
                                 <asp:ListItem Text="简体　" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="繁體　" Value="2"></asp:ListItem>
                             </asp:RadioButtonList>
                         </td>
                     </tr>
-                    <tr style="height:15px;">
-                        <td></td>
-                    </tr>
                     <tr>
-                        <td></td>
-                        <td><asp:Button ID="Button1" runat="server" Text="Save"  Width="120px" OnClick="Button1_Click"/></td>
+                        <td>
+                            <asp:Literal ID="lt_language0" runat="server">退出帐户</asp:Literal>
+                        </td>
+                        <td>
+                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/exit.png"  Width="30px" OnClick="ImageButton1_Click"/>
+                        </td>
                     </tr>
                 </table>
             </div>

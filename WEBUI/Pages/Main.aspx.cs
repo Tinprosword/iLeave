@@ -76,7 +76,7 @@ namespace WEBUI.Pages
 
         protected void Setting_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/pages/setting.aspx");
         }
     }
 }
