@@ -47,6 +47,7 @@ namespace WEBUI.Pages
         {
             this.lt_address.Text = BLL.MultiLanguageHelper.GetLanguagePacket().setting_service;
             this.lt_language.Text = BLL.MultiLanguageHelper.GetLanguagePacket().setting_language;
+            this.lt_language0.Text= BLL.MultiLanguageHelper.GetLanguagePacket().setting_logout;
         }
 
 
@@ -63,7 +64,8 @@ namespace WEBUI.Pages
 
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("~/login.aspx");
+            LSLibrary.WebAPP.LoginManager.Logoff();
+            BLL.User.OnLoginOff();
         }
     }
 }

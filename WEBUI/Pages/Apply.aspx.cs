@@ -10,6 +10,7 @@ namespace WEBUI.Pages
 {
     public partial class Apply : BLL.CustomLoginTemplate
     {
+        //todo page页面的多层继承写的不错，可以总结下了。
         //session 和viewstate 使用总则，sesion 只使用于页面之间. 页面的所有数据靠viewstate, 获取不到的就手动用viewstate.
         private static string ViewState_LeaveListName = "leavelist";//页面第一次进入初始化一次, viewstate不用管理清除.
         public static string Session_pageName = "APPLYSESSION";//页面第一次进入时就清除。 离开页面的时候初始化.  sesion只用于页面间.
@@ -34,6 +35,16 @@ namespace WEBUI.Pages
         protected override void ResetUIOnEachLoad3()
         {
             this.lt_AlertJS.Text = "";
+
+            this.repeater_leave.ItemDataBound += Repeater_leave_ItemDataBound;
+        }
+
+        private void Repeater_leave_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            RepeaterItem item = e.Item;
+            DropDownList ddl = (DropDownList)item.FindControl("rp_dropdl_section");
+            object itemdata = item.DataItem;
+            ddl.Items[1].Selected = true;
         }
 
         protected override void InitUIOnFirstLoad4()
@@ -59,6 +70,7 @@ namespace WEBUI.Pages
                 this.tb_remarks.Text = applypage.remarks;
 
                 this.repeater_leave.DataBind();
+
             }
             else
             {
@@ -135,6 +147,28 @@ namespace WEBUI.Pages
                 this.repeater_leave.DataBind();
             }
         }
+
+
+
+        protected void rp_dropdl_section_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList senderObj = (DropDownList)sender;
+            string strIndex = senderObj.Attributes["fix"];
+            int intIndex = int.Parse(strIndex);
+
+            string abc = senderObj.SelectedItem.Text;
+
+            List<MODEL.Apply.LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<List<MODEL.Apply.LeaveData>>(ViewState_LeaveListName, ViewState);
+            if (LeaveList != null)
+            {
+                LeaveList[intIndex].section = abc;
+
+                LSLibrary.WebAPP.ViewStateHelper.SetValue(LeaveList, ViewState_LeaveListName, ViewState);
+                this.repeater_leave.DataSource = LeaveList;
+                this.repeater_leave.DataBind();
+            }
+        }
+
         #endregion
 
         #region [module] apply
@@ -181,5 +215,7 @@ namespace WEBUI.Pages
         {
             
         }
+
+        
     }
 }

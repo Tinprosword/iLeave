@@ -180,3 +180,12 @@ a:link.fixLink  { text-decoration: none;color: white}
 a:visited.fixLink  { text-decoration: none;color: white}
 a:hover.fixLink  { text-decoration:none;color: white}
 a:active.fixLink  { text-decoration:none;color: white}
+
+
+a  { text-decoration: none}
+a:link  { text-decoration: none}
+a:visited  { text-decoration: none}
+a:hover  { text-decoration:none}
+a:active  { text-decoration:none}
+
+input,button,a {outline:0 none;}

@@ -8,27 +8,27 @@
     <br />
     <div class="row">
         <div class="col-xs-12 lsf-center" style="margin-top:6px;">
-            <asp:ImageButton ID="apply" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_A.png" Width="318px" Height="82px" OnClick="Apply_Click"/>
+            <asp:ImageButton ID="apply" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_A.png" Width="318px" Height="80px" OnClick="Apply_Click"/>
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_applyleaveabc" runat="server" OnClick="Apply_Click" CssClass="fixLink"></asp:LinkButton></div>
         </div>
         <div class="col-xs-12 lsf-center" style="margin-top:6px;">
-            <asp:ImageButton ID="application" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_B.png" Width="318px" Height="82px" OnClick="Application_Click"/>
+            <asp:ImageButton ID="application" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_B.png" Width="318px" Height="80px" OnClick="Application_Click"/>
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_applicationsabc" runat="server" OnClick="Application_Click" CssClass="fixLink"></asp:LinkButton></div>
         </div>
         <div class="col-xs-12 lsf-center" style="margin-top:6px;">
-            <asp:ImageButton ID="approval" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_C.png" Width="318px" Height="82px" OnClick="Approval_Click"/>
+            <asp:ImageButton ID="approval" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_C.png" Width="318px" Height="80px" OnClick="Approval_Click"/>
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_calendarabc" runat="server" OnClick="Approval_Click" CssClass="fixLink"></asp:LinkButton></div>
         </div>
         <div class="col-xs-12 lsf-center" style="margin-top:6px;">
-            <asp:ImageButton ID="roster" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_D.png" Width="318px" Height="82px" OnClick="Roster_Click"/>
+            <asp:ImageButton ID="roster" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_D.png" Width="318px" Height="80px" OnClick="Roster_Click"/>
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_downloadsplitabc" runat="server" OnClick="Roster_Click" CssClass="fixLink"></asp:LinkButton></div>
         </div>
         <div class="col-xs-12 lsf-center" style="margin-top:6px;">
-            <asp:ImageButton ID="money" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_E.png" Width="318px" Height="82px" OnClick="Money_Click"/>
+            <asp:ImageButton ID="money" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_E.png" Width="318px" Height="80px" OnClick="Money_Click"/>
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_downloadtaxabc" runat="server" OnClick="Money_Click" CssClass="fixLink"></asp:LinkButton></div>
         </div>
         <div class="col-xs-12 lsf-center" style="margin-top:6px;">
-            <asp:ImageButton ID="Setting" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_F.png" Width="318px" Height="82px" OnClick="Setting_Click"/>
+            <asp:ImageButton ID="Setting" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_F.png" Width="318px" Height="80px" OnClick="Setting_Click"/>
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_setting" runat="server" OnClick="Setting_Click" CssClass="fixLink"></asp:LinkButton></div>
         </div>
     </div>

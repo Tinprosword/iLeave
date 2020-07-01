@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
+    <Content Include="MobilLogin.aspx" />
     <Content Include="Pages\Apply.aspx" />
     <Content Include="Pages\Apply_Upload.aspx" />
     <Content Include="Pages\calendar.aspx" />
@@ -143,6 +144,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MobilLogin.aspx.cs">
+      <DependentUpon>MobilLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MobilLogin.aspx.designer.cs">
+      <DependentUpon>MobilLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Apply.aspx.cs">
       <DependentUpon>Apply.aspx</DependentUpon>

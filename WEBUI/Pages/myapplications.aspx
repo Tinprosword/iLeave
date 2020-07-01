@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="myapplications.aspx.cs" Inherits="WEBUI.Pages.myapplications" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row" style="margin-top:5px;">
+    <div class ="col-xs-12" style="height:10px; padding:0px">&nbsp</div>
+    <div class="row">
+        
         <div class ="col-xs-4" style=" padding-left:5px;padding-right:0px"><asp:Button ID="btn_wait" runat="server" Text="Wait for approval"  Width="100%" Height="42px" CssClass="btnBox btnBlueBoxSelect" OnClick="btn_wait_Click" /></div>
         <div class ="col-xs-3" style="padding:0px;"><asp:Button ID="btn_approved" runat="server" Text="Approved"  Width="100%" Height="42px" CssClass="btnBox btnBlueBoxUnSelect" OnClick="btn_approved_Click" /></div>
         <div class ="col-xs-5" style="padding:0px; padding-right:5px;"><asp:Button ID="btn_rejectWith" runat="server" Text="Rejected/Withdrawed"  Width="100%" Height="42px" CssClass="btnBox btnBlueBoxUnSelect" OnClick="btn_rejectWith_Click" /></div>

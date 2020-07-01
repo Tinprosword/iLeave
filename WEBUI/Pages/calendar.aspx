@@ -1,9 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="calendar.aspx.cs" Inherits="WEBUI.Pages.calendar" MaintainScrollPositionOnPostback="true" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class ="col-xs-12" style="height:10px; padding:0px">&nbsp</div>
     <div class="row">
-        <div class="col-xs-2" style="padding-right:0px"><asp:Button ID="btn_myself" runat="server" Text="Me"  Width="100%" Height="32px" CssClass="btnBox btnBlueBoxSelect" OnClick="btn_myself_Click"/></div>
-        <div class="col-xs-2" style="padding-left:0px;padding-right:0px"><asp:Button ID="btn_team" runat="server" Text="Team"  Width="100%" Height="32px" CssClass="btnBox btnBlueBoxUnSelect" OnClick="btn_team_Click"  /></div>
-        <div class="col-xs-7" style="padding-left:25px;height:32px;line-height:32px;"><asp:CheckBox ID="cb_leave" runat="server" Text="假期" OnCheckedChanged="cb_leave_CheckedChanged"  AutoPostBack="true"/>&nbsp&nbsp&nbsp<asp:CheckBox ID="cb_holiday" runat="server" Text="更期" OnCheckedChanged="cb_holiday_CheckedChanged" AutoPostBack="true"/></div>
+        <div class="col-xs-3" style="padding-right:0px;"><asp:Button ID="btn_myself" runat="server" Text="Me"  Width="100%" Height="32px" CssClass="btnBox btnBlueBoxSelect" OnClick="btn_myself_Click"/></div>
+        <div class="col-xs-3" style="padding-left:0px;padding-right:0px;"><asp:Button ID="btn_team" runat="server" Text="Team"  Width="100%" Height="32px" CssClass="btnBox btnBlueBoxUnSelect" OnClick="btn_team_Click"  /></div>
+        <div class="col-xs-6" style="padding-left:15px;height:32px;line-height:32px;padding-right:0px"><asp:CheckBox ID="cb_leave" runat="server" Text="假期" OnCheckedChanged="cb_leave_CheckedChanged"  AutoPostBack="true"/>&nbsp&nbsp&nbsp<asp:CheckBox ID="cb_holiday" runat="server" Text="更期" OnCheckedChanged="cb_holiday_CheckedChanged" AutoPostBack="true"/></div>
         <div class="col-xs-12" style="margin-top:8px; margin-bottom:8px; font-weight:bold">Unit A</div>
         <div class="col-xs-12 lsf-center">
             <asp:Calendar ID="Calendar1" runat="server" Width="310px" Height="260px" Font-Size="Larger" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>

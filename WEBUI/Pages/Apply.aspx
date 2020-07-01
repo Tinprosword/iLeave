@@ -3,7 +3,7 @@
     <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
     <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
     <div class="row" id="mainpage">
-        <div class="col-xs-12" style="height:16px; padding:0px"/>
+        <div class ="col-xs-12" style="height:2px; padding:0px">&nbsp</div>
         <table class="col-xs-12 lsu-tablem1">
             <tr>
                 <td style="width:90px"><asp:Literal ID="lt_name" runat="server">Name</asp:Literal></td>
@@ -66,10 +66,28 @@
             <table class="col-xs-12 lsu-table-sm">
                 <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                     <ItemTemplate>
-                        <tr><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-5"><%#((MODEL.Apply.LeaveData)Container.DataItem).type %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).section %></td><td class="col-xs-1"><asp:ImageButton ID="delete" Width="28px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="20px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.LeaveData)Container.DataItem).type %>" /></td></tr>
+                        <tr><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-5"><%#((MODEL.Apply.LeaveData)Container.DataItem).type %></td>
+                            <td class="col-xs-3">
+                                <asp:DropDownList ID="rp_dropdl_section" runat="server" Width="90%"  OnSelectedIndexChanged="rp_dropdl_section_SelectedIndexChanged" AutoPostBack="true" fix="<%#Container.ItemIndex%>">
+                                    <asp:ListItem Text="Full day" Value="0"  Selected="true"/>
+                                    <asp:ListItem Text="AM" Value="1"/>
+                                    <asp:ListItem Text="PM" Value="2"/>
+                                    <asp:ListItem Text="3 Sections" Value="3"/>
+                                </asp:DropDownList>
+                            </td>
+                            <td class="col-xs-1"><asp:ImageButton ID="delete" Width="28px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="20px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.LeaveData)Container.DataItem).type %>" /></td></tr>
                     </ItemTemplate>
                     <AlternatingItemTemplate>
-                        <tr style="background-color:aliceblue"><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-5"><%#((MODEL.Apply.LeaveData)Container.DataItem).type %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).section %></td><td class="col-xs-1"><asp:ImageButton ID="delete" Width="28px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="20px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.LeaveData)Container.DataItem).type %>" /></td></tr>
+                        <tr style="background-color:aliceblue"><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-5"><%#((MODEL.Apply.LeaveData)Container.DataItem).type %></td>
+                            <td class="col-xs-3">
+                                <asp:DropDownList ID="rp_dropdl_section" runat="server" Width="90%" OnSelectedIndexChanged="rp_dropdl_section_SelectedIndexChanged" AutoPostBack="true" fix="<%#Container.ItemIndex%>">
+                                    <asp:ListItem Text="Full day" Value="0"  Selected="true"/>
+                                    <asp:ListItem Text="AM" Value="1"/>
+                                    <asp:ListItem Text="PM" Value="2"/>
+                                    <asp:ListItem Text="3 Sections" Value="3"/>
+                                </asp:DropDownList>                                                                                                                                                                                           
+                            </td>
+                            <td class="col-xs-1"><asp:ImageButton ID="delete" Width="28px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="20px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.LeaveData)Container.DataItem).type %>" /></td></tr>
                     </AlternatingItemTemplate>
                 </asp:Repeater>
             </table>
