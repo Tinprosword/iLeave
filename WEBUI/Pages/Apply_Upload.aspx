@@ -20,7 +20,6 @@
                 </ItemTemplate>
             </asp:Repeater>
         </div>
-
         <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
             <asp:Button ID="button_apply" runat="server" Text="Back"  CssClass="btn lss-btncolor-blue" Width="160px" OnClick="button_apply_Click"/>
         </div>

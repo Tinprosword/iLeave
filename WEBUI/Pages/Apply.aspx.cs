@@ -43,8 +43,19 @@ namespace WEBUI.Pages
         {
             RepeaterItem item = e.Item;
             DropDownList ddl = (DropDownList)item.FindControl("rp_dropdl_section");
-            object itemdata = item.DataItem;
-            ddl.Items[1].Selected = true;
+            MODEL.Apply.LeaveData itemdata = (MODEL.Apply.LeaveData)item.DataItem;
+            for (int i = 0; i < ddl.Items.Count;i++)
+            {
+                if (itemdata.section== ddl.Items[i].Text)
+                {
+                    ddl.Items[i].Selected = true;
+                }
+                else
+                {
+                    ddl.Items[i].Selected = false;
+                }
+            }
+            
         }
 
         protected override void InitUIOnFirstLoad4()

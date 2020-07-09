@@ -32,13 +32,8 @@ namespace WEBUI.Pages
             LoadLableLanguage();
             this.lb_serveraddress.Text = LSLibrary.WebAPP.CookieHelper.GetCookie(BLL.GlobalVariate.COOKIE_SERVERADDRESS) ?? "";
             string check = LSLibrary.WebAPP.CookieHelper.GetCookie(BLL.GlobalVariate.COOKIE_HTTPS) ?? "";
-            if (check.ToUpper() == "TRUE")
-            {
-                this.cb.Checked = true;
-            }
-
+            this.cb.Checked = check.ToUpper() == "TRUE" ? true : false;
             int intLanguagae = (int)BLL.MultiLanguageHelper.GetChoose();
-
             this.cb_languagea.SelectedValue = intLanguagae.ToString();
         }
 
@@ -58,6 +53,7 @@ namespace WEBUI.Pages
 
         protected void cb_languagea_SelectedIndexChanged(object sender, EventArgs e)
         {
+            BLL.User.OnChangeSetting(int.Parse(this.cb_languagea.SelectedValue));
             BLL.MultiLanguageHelper.SaveChoose((LSLibrary.WebAPP.LanguageType)int.Parse(this.cb_languagea.SelectedValue));
             Response.Redirect("~/pages/setting.aspx");
         }
@@ -67,5 +63,6 @@ namespace WEBUI.Pages
             LSLibrary.WebAPP.LoginManager.Logoff();
             BLL.User.OnLoginOff();
         }
+
     }
 }
