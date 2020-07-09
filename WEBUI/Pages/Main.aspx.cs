@@ -39,8 +39,7 @@ namespace WEBUI.Pages
         }
 
         protected override void ResetUIOnEachLoad3()
-        {
-        }
+        {}
 
         protected void Apply_Click(object sender, EventArgs e)
         {
@@ -58,21 +57,16 @@ namespace WEBUI.Pages
         }
 
         protected void Roster_Click(object sender, EventArgs e)
-        {
-        }
+        {}
 
         protected void Money_Click(object sender, EventArgs e)
-        {
-        }
+        {}
 
         protected void Tax_Click(object sender, EventArgs e)
-        {
-        }
+        {}
 
         protected void lt_applyleaveabc_Click(object sender, EventArgs e)
-        {
-
-        }
+        {}
 
         protected void Setting_Click(object sender, EventArgs e)
         {
