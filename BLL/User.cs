@@ -41,7 +41,6 @@ namespace BLL
             }
             else//pc
             {
-          
             }
         }
 

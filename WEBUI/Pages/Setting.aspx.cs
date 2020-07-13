@@ -55,7 +55,7 @@ namespace WEBUI.Pages
         {
             BLL.User.OnChangeSetting(int.Parse(this.cb_languagea.SelectedValue));
             BLL.MultiLanguageHelper.SaveChoose((LSLibrary.WebAPP.LanguageType)int.Parse(this.cb_languagea.SelectedValue));
-            Response.Redirect("~/pages/setting.aspx");
+            LoadLableLanguage();
         }
 
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
