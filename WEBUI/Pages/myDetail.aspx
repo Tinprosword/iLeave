@@ -37,7 +37,7 @@
         <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
             <tr><td class="col-xs-3"><asp:Literal ID="lt_listdate" runat="server">Date</asp:Literal></td><td class="col-xs-5"><asp:Literal ID="lt_listtype" runat="server">Type</asp:Literal></td><td class="col-xs-3"><asp:Literal ID="lt_listsection" runat="server">Section</asp:Literal></td></tr>
         </table>
-        <div class="col-xs-12 lsf-clearPadding" style="height:200px; overflow:scroll;">
+        <div class="col-xs-12 lsf-clearPadding" style="height:145px; overflow:scroll;">
             <table class="col-xs-12 lsu-table-sm">
                 <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                     <ItemTemplate>

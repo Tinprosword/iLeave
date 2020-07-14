@@ -5,7 +5,7 @@
             <div class="col-xs-9" style="padding-top:5px"><asp:FileUpload ID="FileUpload1" runat="server"  AllowMultiple="true" Width="150px" Style="padding-bottom:5px;height:50px; font-size:16px"/></div>
             <div class="col-xs-2"><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/upload2.png" Width="50px" Height="50px" OnClick="ImageButton1_Click" /></div>
         </div>
-        <div class="col-xs-12" style="padding:0px; overflow-y:scroll; height:410px;">
+        <div class="col-xs-12" style="padding:0px; overflow-y:scroll; height:448px;">
             <asp:Repeater ID="repeater_attandance" runat="server" EnableViewState="true">
                 <ItemTemplate>
                     <div class="col-xs-6" style="height:150px;float:left;border:1px solid #f4f4f4">

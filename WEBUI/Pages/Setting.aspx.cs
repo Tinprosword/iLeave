@@ -48,7 +48,6 @@ namespace WEBUI.Pages
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
         }
 
         protected void cb_languagea_SelectedIndexChanged(object sender, EventArgs e)
@@ -59,6 +58,7 @@ namespace WEBUI.Pages
             LSLibrary.WebAPP.BaseLanguage NewLanguage= BLL.MultiLanguageHelper.GetLanguagePacket(chooseLanguage);//只有这个页面特殊，无法立即读cooike,因为是立即修改，还未写到cooike.
             LoadLableLanguage(NewLanguage);
         }
+
 
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
@@ -79,13 +79,12 @@ namespace WEBUI.Pages
             }
             else if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone)//ios
             {
-                string js = LSLibrary.WebAPP.MyJSHelper.GetAndroidJs("savesetting", languagetype.ToString(), HttpContext.Current.Server);
+                string js = LSLibrary.WebAPP.MyJSHelper.GetIphoneJs("savesetting", languagetype.ToString(), HttpContext.Current.Server);
                 literal.Text = js;
             }
             else//pc
             {
             }
         }
-
     }
 }
