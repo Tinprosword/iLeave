@@ -19,7 +19,9 @@ namespace BLL
                 {
                     type = (LSLibrary.WebAPP.LanguageType)(int.Parse(cookieValue));
                 }
-                catch { }
+                catch(Exception ex) {
+                    throw ex;
+                }
             }
             return type;
         }
@@ -34,6 +36,10 @@ namespace BLL
         public static LSLibrary.WebAPP.BaseLanguage GetLanguagePacket()
         {
             return LSLibrary.WebAPP.MulitiLanguageFactory.GetLanguagePacket(GetChoose());
+        }
+        public static LSLibrary.WebAPP.BaseLanguage GetLanguagePacket(LSLibrary.WebAPP.LanguageType type)
+        {
+            return LSLibrary.WebAPP.MulitiLanguageFactory.GetLanguagePacket(type);
         }
     }
 }

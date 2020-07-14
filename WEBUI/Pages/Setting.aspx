@@ -32,4 +32,5 @@
             </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
+    <asp:Literal ID="js_webview" runat="server"></asp:Literal>
 </asp:Content>

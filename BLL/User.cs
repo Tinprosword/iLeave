@@ -22,29 +22,6 @@ namespace BLL
         }
 
 
-        public static void OnChangeSetting(int languagetype)
-        {
-            string agent = HttpContext.Current.Request.UserAgent;
-
-            LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
-            if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android)//android
-            {
-                //HttpContext.Current.Response.Clear();
-                HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.GetAndroidJs("savesetting", languagetype.ToString(), HttpContext.Current.Server));
-                //HttpContext.Current.Response.End();
-            }
-            else if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone)//ios
-            {
-                //HttpContext.Current.Response.Clear();
-                HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.GetIphoneJs("savesetting", languagetype.ToString(), HttpContext.Current.Server));
-                //HttpContext.Current.Response.End();
-            }
-            else//pc
-            {
-            }
-        }
-
-
         public static void OnLoginOff()
         {
             string agent = HttpContext.Current.Request.UserAgent;
