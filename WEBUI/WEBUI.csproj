@@ -81,6 +81,7 @@
     <Content Include="Pages\Setting.aspx" />
     <Content Include="Pages\Test.aspx" />
     <Content Include="Pages\Test.html" />
+    <Content Include="readme.txt" />
     <Content Include="Res\App\appcss.css" />
     <Content Include="Res\App\apply.js" />
     <Content Include="Res\App\CommonJS.js" />
@@ -251,7 +252,9 @@
       <Name>MODEL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

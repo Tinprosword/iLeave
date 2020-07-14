@@ -13,7 +13,7 @@ namespace BLL
 
         public static bool CheckLogin(string uid, string password)
         {
-            return DataDemo.checklogin(uid, password);
+            return DAL.User.CheckLogin(uid, password) > 0 ? true : false;
         }
 
         public static LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> GetLoginer()

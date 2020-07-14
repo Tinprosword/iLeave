@@ -42,12 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DalHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DBHelper\LSDBUtility_dotnet\LSDBUtility.csproj">
       <Project>{0203b78e-4424-48ab-bfc0-9dd82e3584d4}</Project>
       <Name>LSDBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Function\LSLibrary_dotNet\LSLibrary.csproj">
+      <Project>{53ac195e-dcff-47c4-bc02-7e0241ff520c}</Project>
+      <Name>LSLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\MODEL\MODEL.csproj">
       <Project>{21757f81-d90d-4cc1-bb72-4a832bf5aed5}</Project>
