@@ -9,14 +9,16 @@ namespace WEBUI.Pages
 {
     public partial class Apply_Upload : BLL.CustomLoginTemplate
     {
+        public StateBag myviewState;
         protected override void InitPageVaralbal0()
         {
+            WEBUI.Pages.Apply prepage = PreviousPage as WEBUI.Pages.Apply;//todo 查选为什么必须放到第一行,否则会线程中止.
+            myviewState = ViewState;
             OnF5Doit = onf5;//回调这里的处理方式，刷新提交就重新载入吧。
         }
 
         protected override void InitPageDataOnEachLoad1()
         {
-            
         }
 
         protected override void InitPageDataOnFirstLoad2()
@@ -29,43 +31,54 @@ namespace WEBUI.Pages
 
         protected override void InitUIOnFirstLoad4()
         {
-            MODEL.Apply.ApplyPage applyPage = (MODEL.Apply.ApplyPage)LSLibrary.WebAPP.PageSessionHelper.GetValue(Apply.Session_pageName);
-            List<MODEL.Apply.UploadPic> pics = applyPage.uploadpic;
+            WEBUI.Pages.Apply prepage = PreviousPage as WEBUI.Pages.Apply;
+            if (prepage != null)
+            {
+                MODEL.Apply.ViewState_page applyPage2 = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, prepage.myviewState);
+                LSLibrary.WebAPP.ViewStateHelper.SetValue(applyPage2, Apply.ViewState_PageName, ViewState);
+            }
+            else
+            {
+                Response.Redirect("~/pages/apply.aspx", true);
+            }
+
 
 
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "&lt;Apply", "Attachment", "~/pages/Apply.aspx?action=back");
-            this.repeater_attandance.DataSource = pics;
+
+            MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, ViewState);
+            this.repeater_attandance.DataSource = applyPage.uploadpic;
             this.repeater_attandance.DataBind();
         }
-
 
 
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
             //upload pic and save to view state
             string errmsg;
-            List<string> uploadFiles = uploadPic(out  errmsg);
+            List<string> uploadFiles = uploadPic(out errmsg);
 
-            MODEL.Apply.ApplyPage applyPage = (MODEL.Apply.ApplyPage)LSLibrary.WebAPP.PageSessionHelper.GetValue(Apply.Session_pageName);
-            
+            MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, ViewState);
+
             for (int i = 0; i < uploadFiles.Count; i++)
             {
-                string reducePath = "~/" + BLL.GlobalVariate.path_uploadPic + "\\" + BLL.Apply.reducePath + "\\"+uploadFiles[i];
-                string bigPath = "~/" + BLL.GlobalVariate.path_uploadPic +  "\\" + uploadFiles[i];
+                string reducePath = "~/" + BLL.GlobalVariate.path_uploadPic + "\\" + BLL.Apply.reducePath + "\\" + uploadFiles[i];
+                string bigPath = "~/" + BLL.GlobalVariate.path_uploadPic + "\\" + uploadFiles[i];
 
-                if (!LSLibrary.FileUtil.FileIsExist( Server.MapPath(reducePath)))
+                if (!LSLibrary.FileUtil.FileIsExist(Server.MapPath(reducePath)))
                 {
                     reducePath = "~/Res/images/file.png";
                 }
 
-                MODEL.Apply.UploadPic temppic= new MODEL.Apply.UploadPic(bigPath,reducePath);
+                MODEL.Apply.UploadPic temppic = new MODEL.Apply.UploadPic(bigPath, reducePath);
                 applyPage.uploadpic.Add(temppic);
             }
-            LSLibrary.WebAPP.PageSessionHelper.SetValue(applyPage, Apply.Session_pageName);
+            LSLibrary.WebAPP.ViewStateHelper.SetValue(applyPage, Apply.ViewState_PageName, ViewState);
 
             this.repeater_attandance.DataSource = applyPage.uploadpic;
             this.repeater_attandance.DataBind();
         }
+
 
         private List<string> uploadPic(out string errorMsg)
         {
@@ -78,7 +91,7 @@ namespace WEBUI.Pages
 
         protected void button_apply_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/pages/Apply.aspx?action=back", true);
+
         }
 
 
@@ -87,20 +100,20 @@ namespace WEBUI.Pages
             ImageButton imageButton_close = (ImageButton)sender;
             string commandArgument = imageButton_close.CommandArgument;
 
-            MODEL.Apply.ApplyPage applyPage = (MODEL.Apply.ApplyPage)LSLibrary.WebAPP.PageSessionHelper.GetValue(Apply.Session_pageName);
-            List<MODEL.Apply.UploadPic> pics = applyPage.uploadpic;
-            for (int i = 0; i < pics.Count; i++)
+            MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, ViewState);
+
+            for (int i = 0; i < applyPage.uploadpic.Count; i++)
             {
-                if (pics[i].tempID == commandArgument)
+                if (applyPage.uploadpic[i].tempID == commandArgument)
                 {
-                    pics.RemoveAt(i);
+                    applyPage.uploadpic.RemoveAt(i);
                 }
             }
 
-            this.repeater_attandance.DataSource = pics;
+            this.repeater_attandance.DataSource = applyPage.uploadpic;
             this.repeater_attandance.DataBind();
 
-            LSLibrary.WebAPP.PageSessionHelper.SetValue(applyPage, Apply.Session_pageName);
+            LSLibrary.WebAPP.ViewStateHelper.SetValue(applyPage, Apply.ViewState_PageName, ViewState);
         }
 
 

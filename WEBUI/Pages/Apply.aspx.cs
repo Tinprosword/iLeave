@@ -11,21 +11,20 @@ namespace WEBUI.Pages
     public partial class Apply : BLL.CustomLoginTemplate
     {
         //todo page页面的多层继承写的不错，可以总结下了。
-        //session 和viewstate 使用总则，sesion 只使用于页面之间. 页面的所有数据靠viewstate, 获取不到的就手动用viewstate.
-        private static string ViewState_LeaveListName = "leavelist";//页面第一次进入初始化一次, viewstate不用管理清除.
-        public static string Session_pageName = "APPLYSESSION";//页面第一次进入时就清除。 离开页面的时候初始化.  sesion只用于页面间.
+        public static string ViewState_PageName = "PageView";
+        public StateBag myviewState;
 
         #region [page event]
 
         protected override void InitPageVaralbal0()
         {
-            //回调用法+匿名函数用法，单语句用匿名还是可以。否则尽量别用匿名函数，降低了复用性和之后的扩展。只限于单语句并无复用可能。
-            //为了一个匿名函数写说明，还不如不用匿名函数，所以匿名函数完全可以禁止使用。
+            Apply_Upload prepage = PreviousPage as Apply_Upload;
             this.OnF5Doit = () => { Response.Redirect("~/pages/apply.aspx"); };
         }
 
         protected override void InitPageDataOnEachLoad1()
         {
+            myviewState = ViewState;
         }
 
         protected override void InitPageDataOnFirstLoad2()
@@ -55,7 +54,6 @@ namespace WEBUI.Pages
                     ddl.Items[i].Selected = false;
                 }
             }
-            
         }
 
         protected override void InitUIOnFirstLoad4()
@@ -63,48 +61,55 @@ namespace WEBUI.Pages
             if (Request.QueryString["action"] != null && Request.QueryString["action"] == "back")
             {
                 //get session value
-                MODEL.Apply.ApplyPage applypage = (MODEL.Apply.ApplyPage)LSLibrary.WebAPP.PageSessionHelper.GetValue(Session_pageName);
+                Apply_Upload prepage = PreviousPage as Apply_Upload;
+                if (prepage != null)
+                {
+                    MODEL.Apply.ViewState_page applypage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, prepage.myviewState);
+                    LSLibrary.WebAPP.ViewStateHelper.SetValue(applypage, ViewState_PageName, ViewState);
 
-                //reload viewstate
-                LSLibrary.WebAPP.ViewStateHelper.SetValue(applypage.LeaveList, ViewState_LeaveListName, ViewState);
+                    //init ui
+                    this.literal_applier.Text = loginer.loginID + "  " + loginer.userInfo.nickname;
+                    ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
+                    this.ddl_leavetype.SelectedValue = applypage.LeaveTypeSelectValue.ToString();
+                    this.repeater_leave.DataSource = applypage.LeaveList;
+                    this.lt_applydays.Text = applypage.applylabel;
+                    this.lt_balancedays.Text = applypage.balancelabel;
+                    this.tb_from.Text = applypage.datefrom;
+                    this.tb_to.Text = applypage.dateto;
+                    this.dropdl_section.SelectedValue = applypage.ddlsectionSelectvalue;
+                    this.tb_remarks.Text = applypage.remarks;
 
-                //init ui
-                this.literal_applier.Text = loginer.loginID + "  " + loginer.userInfo.nickname;
-                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
-                this.ddl_leavetype.SelectedValue = applypage.LeaveTypeSelectValue.ToString();
-                this.repeater_leave.DataSource = applypage.LeaveList;
-                this.lt_applydays.Text = applypage.applylabel;
-                this.lt_balancedays.Text = applypage.balancelabel;
-                this.tb_from.Text = applypage.datefrom;
-                this.tb_to.Text = applypage.dateto;
-                this.dropdl_section.SelectedValue = applypage.ddlsectionSelectvalue;
-                this.tb_remarks.Text = applypage.remarks;
-
-                this.repeater_leave.DataBind();
+                    this.repeater_leave.DataBind();
+                }
 
             }
             else
             {
                 //init viewstate
-                List<MODEL.Apply.LeaveData> LeaveList = new List<MODEL.Apply.LeaveData>();
-                LSLibrary.WebAPP.ViewStateHelper.SetValue(LeaveList, ViewState_LeaveListName, ViewState);
+                if (ViewState[ViewState_PageName] == null)
+                {
+                    MODEL.Apply.ViewState_page viewState_Page = new MODEL.Apply.ViewState_page();
+                    viewState_Page.LeaveList = new List<MODEL.Apply.LeaveData>();
+                    viewState_Page.uploadpic = new List<MODEL.Apply.UploadPic>();
+                    LSLibrary.WebAPP.ViewStateHelper.SetValue(viewState_Page, ViewState_PageName, ViewState);
+                }
 
                 //init ui
                 this.literal_applier.Text = loginer.loginID + "  " + loginer.userInfo.nickname;
                 ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
-                this.repeater_leave.DataSource = LeaveList;
+                this.repeater_leave.DataSource = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).LeaveList;
                 this.repeater_leave.DataBind();
             }
             SetMultiLanguage();
         }
+
         #endregion
 
         #region [module] upload pic
-
         protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
         {
-            //save session
-            MODEL.Apply.ApplyPage applyPage = new MODEL.Apply.ApplyPage();
+            //save viewstate' other data
+            MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
             applyPage.LeaveTypeSelectValue = this.ddl_leavetype.SelectedValue;
             applyPage.applylabel = this.lt_applydays.Text;
             applyPage.balancelabel = this.lt_balancedays.Text;
@@ -112,32 +117,20 @@ namespace WEBUI.Pages
             applyPage.dateto = this.tb_to.Text;
             applyPage.ddlsectionSelectvalue = this.dropdl_section.SelectedValue;
             applyPage.remarks = this.tb_remarks.Text;
-            applyPage.LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<List<MODEL.Apply.LeaveData>>(ViewState_LeaveListName, ViewState);
-            if (LSLibrary.WebAPP.PageSessionHelper.GetValue(Session_pageName) != null)
-            {
-                applyPage.uploadpic = ((MODEL.Apply.ApplyPage)LSLibrary.WebAPP.PageSessionHelper.GetValue(Session_pageName)).uploadpic;
-            }
-            else
-            {
-                applyPage.uploadpic = new List<MODEL.Apply.UploadPic>();
-            }
-            
-            LSLibrary.WebAPP.PageSessionHelper.SetValue(applyPage,Session_pageName);
-            Response.Redirect("~/pages/apply_upload.aspx", true);
+            LSLibrary.WebAPP.ViewStateHelper.SetValue(applyPage, ViewState_PageName, ViewState);
         }
-
         #endregion
 
         #region [module] leave
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
-            List<MODEL.Apply.LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<List<MODEL.Apply.LeaveData>>(ViewState_LeaveListName,ViewState);
-            if (LeaveList != null)
+            MODEL.Apply.ViewState_page pagedate = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
+            if (pagedate.LeaveList != null)
             {
-                LeaveList.AddRange(getListSource(DateTime.Now, DateTime.Now));
-                LSLibrary.WebAPP.ViewStateHelper.SetValue(LeaveList, ViewState_LeaveListName, ViewState);
+                pagedate.LeaveList.AddRange(getListSource(DateTime.Now, DateTime.Now));
 
-                this.repeater_leave.DataSource = LeaveList;
+                LSLibrary.WebAPP.ViewStateHelper.SetValue(pagedate, ViewState_PageName, ViewState);
+                this.repeater_leave.DataSource = pagedate.LeaveList;
                 this.repeater_leave.DataBind();
             }
         }
@@ -148,13 +141,13 @@ namespace WEBUI.Pages
             string strIndex = senderObj.CommandArgument;
             int intIndex = int.Parse(strIndex);
 
-            List<MODEL.Apply.LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<List<MODEL.Apply.LeaveData>>(ViewState_LeaveListName, ViewState);
-            if (LeaveList != null)
+            MODEL.Apply.ViewState_page pagedate = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
+            if (pagedate.LeaveList != null)
             {
-                LeaveList.RemoveAt(intIndex);
+                pagedate.LeaveList.RemoveAt(intIndex);
 
-                LSLibrary.WebAPP.ViewStateHelper.SetValue(LeaveList, ViewState_LeaveListName, ViewState);
-                this.repeater_leave.DataSource = LeaveList;
+                LSLibrary.WebAPP.ViewStateHelper.SetValue(pagedate, ViewState_PageName, ViewState);
+                this.repeater_leave.DataSource = pagedate.LeaveList;
                 this.repeater_leave.DataBind();
             }
         }
@@ -168,31 +161,30 @@ namespace WEBUI.Pages
 
             string abc = senderObj.SelectedItem.Text;
 
-            List<MODEL.Apply.LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<List<MODEL.Apply.LeaveData>>(ViewState_LeaveListName, ViewState);
-            if (LeaveList != null)
+            MODEL.Apply.ViewState_page pagedate = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
+            if (pagedate.LeaveList != null)
             {
-                LeaveList[intIndex].section = abc;
+                pagedate.LeaveList[intIndex].section = abc;
 
-                LSLibrary.WebAPP.ViewStateHelper.SetValue(LeaveList, ViewState_LeaveListName, ViewState);
-                this.repeater_leave.DataSource = LeaveList;
+                LSLibrary.WebAPP.ViewStateHelper.SetValue(pagedate, ViewState_PageName, ViewState);
+                this.repeater_leave.DataSource = pagedate.LeaveList;
                 this.repeater_leave.DataBind();
             }
         }
-
         #endregion
 
         #region [module] apply
         protected void button_apply_Click(object sender, EventArgs e)
         {
-            //1,获得数据   2,调用ws,进行插入.  3,clean session.
-            List<MODEL.Apply.LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<List<MODEL.Apply.LeaveData>>(ViewState_LeaveListName, ViewState);
+            ////1,获得数据   2,调用ws,进行插入.  3,clean session.
+            //List<MODEL.Apply.LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<List<MODEL.Apply.LeaveData>>(ViewState_LeaveListName, ViewState);
 
 
 
-            //clean session
-            LSLibrary.WebAPP.PageSessionHelper.CleanValue(Session_pageName);
+            ////clean session
+            //LSLibrary.WebAPP.PageSessionHelper.CleanValue(Session_pageName);
             
-            Response.Redirect("~/pages/main.aspx");
+            //Response.Redirect("~/pages/main.aspx");
         }
         #endregion
 

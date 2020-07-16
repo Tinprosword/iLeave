@@ -8,7 +8,8 @@ namespace MODEL
 {
     public class Apply
     {
-        public class ApplyPage
+        [Serializable]
+        public class ViewState_page
         {
             public string LeaveTypeSelectValue;
             public string applylabel;

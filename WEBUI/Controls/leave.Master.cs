@@ -22,7 +22,7 @@ namespace WEBUI.Controls
             this.Navigation.Visible = isVisitable;
             this.lable_navigation.Text = backLink;
             this.label_title.Text = title;
-            this.linkNavigation.NavigateUrl = url;
+            this.linkNavigation.PostBackUrl = url;
         }
 
     }

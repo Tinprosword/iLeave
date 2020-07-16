@@ -20,6 +20,6 @@ namespace BLL
             loginer = BLL.User.GetLoginer();
             base.Page_Init(sender, e);
         }
-
     }
+
 }

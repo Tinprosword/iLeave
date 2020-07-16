@@ -17,7 +17,7 @@
             <div class="row">
                 <div id="Navigation" class="lss-bgcolor-blue" style="line-height:46px;height:46px;" runat="server" visible="false">
                     <div class="col-xs-3" >
-                        <asp:HyperLink ID="linkNavigation" runat="server" style="color:white; font-weight:bold" CssClass="lsf-fontsizes1"><asp:Literal ID="lable_navigation" runat="server"></asp:Literal></asp:HyperLink>
+                        <asp:LinkButton ID="linkNavigation" runat="server" style="color:white; font-weight:bold" CssClass="lsf-fontsizes1"><asp:Literal ID="lable_navigation" runat="server"></asp:Literal></asp:LinkButton>
                     </div>
                     <div class="col-xs-6 lsf-center lsf-fontsizem1" style="color:white;font-weight:bold" ><asp:Literal ID="label_title" runat="server"></asp:Literal></div>
                 </div>
