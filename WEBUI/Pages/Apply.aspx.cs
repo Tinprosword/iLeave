@@ -160,7 +160,6 @@ namespace WEBUI.Pages
         }
 
 
-
         protected void rp_dropdl_section_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList senderObj = (DropDownList)sender;
@@ -185,8 +184,14 @@ namespace WEBUI.Pages
         #region [module] apply
         protected void button_apply_Click(object sender, EventArgs e)
         {
+            //1,获得数据   2,调用ws,进行插入.  3,clean session.
+            List<MODEL.Apply.LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<List<MODEL.Apply.LeaveData>>(ViewState_LeaveListName, ViewState);
+
+
+
             //clean session
             LSLibrary.WebAPP.PageSessionHelper.CleanValue(Session_pageName);
+            
             Response.Redirect("~/pages/main.aspx");
         }
         #endregion
@@ -222,11 +227,5 @@ namespace WEBUI.Pages
         }
         #endregion
 
-        protected void ImageButton3_Click(object sender, ImageClickEventArgs e)
-        {
-            
-        }
-
-        
     }
 }

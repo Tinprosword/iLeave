@@ -127,6 +127,7 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="webservices\webservices.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\leave.Master.cs">
@@ -216,6 +217,13 @@
     </Compile>
     <Compile Include="setting.aspx.designer.cs">
       <DependentUpon>setting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webservices\webservices.aspx.cs">
+      <DependentUpon>webservices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webservices\webservices.aspx.designer.cs">
+      <DependentUpon>webservices.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

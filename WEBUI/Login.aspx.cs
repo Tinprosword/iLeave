@@ -49,11 +49,12 @@ namespace WEBUI
 
             if (string.IsNullOrWhiteSpace(userid) == false && string.IsNullOrWhiteSpace(password) == false)
             {
-                bool isLogin = BLL.User.CheckLogin(userid, password);
+                int uid = BLL.User.CheckLogin(userid, password);
+                bool isLogin = uid > 0 ? true : false;
                 if (isLogin)
                 {
-                    MODEL.UserInfo userInfo = new MODEL.UserInfo(0,userid,"管理员","AD");
-                    LSLibrary.WebAPP.LoginManager.Login(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(userid,userInfo));
+                    MODEL.UserInfo userInfo = new MODEL.UserInfo(uid,userid,"","");
+                    LSLibrary.WebAPP.LoginManager.SaveLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(userid,userInfo));
                     Response.Redirect("~/Pages/Main.aspx");
                 }
                 else
@@ -64,11 +65,7 @@ namespace WEBUI
             }
             else
             {
-                MODEL.UserInfo userInfo = new MODEL.UserInfo(0, userid, "管理员", "AD");
-                LSLibrary.WebAPP.LoginManager.Login(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(userid, userInfo));
-                Response.Redirect("~/Pages/Main.aspx");
-                //this.lt_js.Text = LSLibrary.JavasScriptHelper.AlertMessage(BLL.GlobalVariate.login_error);
-                //CleanInput();
+                
             }
         }
 

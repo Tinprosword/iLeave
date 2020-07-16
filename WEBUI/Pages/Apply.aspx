@@ -54,7 +54,6 @@
                 <td colspan="2">
                     <div class="col-xs-2"><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/comIcon_canlendar.png" Width="40px" Height="40px" OnClick="ImageButton1_Click"/></div>
                     <div class="col-xs-7"><asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Res/images/comIcon_addattence.png" Width="40px" Height="40px" OnClick="ImageButton2_Click"/></div>
-                    <div class="col-xs-2"><asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="~/Res/images/calendar.png" Width="40px" Height="40px" OnClick="ImageButton3_Click"/></div>
                 </td>
             </tr>
         </table>
