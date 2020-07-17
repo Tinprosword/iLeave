@@ -11,6 +11,8 @@ namespace WEBUI.Pages
     public partial class Apply : BLL.CustomLoginTemplate
     {
         //todo page页面的多层继承写的不错，可以总结下了。
+        //2. myself my team 4.canleder datetime=> show detail (^)[not version 1]
+        //todo 1.server address secretery, 3.unit dropdown list  5.app's icon 
         public static string ViewState_PageName = "PageView";
         public StateBag myviewState;
 
@@ -81,7 +83,6 @@ namespace WEBUI.Pages
 
                     this.repeater_leave.DataBind();
                 }
-
             }
             else
             {
