@@ -12,12 +12,12 @@ namespace BLL
         
         protected override void InitPageVaralbal0_sessionout()
         {
-            LSLibrary.WebAPP.LoginManager.OnSessionTimeOutHandler = BLL.User.OnLoginOff;
+            LSLibrary.WebAPP.LoginManager.OnSessionTimeOutHandler = BLL.LoginManager.GoBackToLogin;
         }
 
         protected override void Page_Init(object sender, EventArgs e)
         {
-            loginer = BLL.User.GetLoginer();
+            loginer = BLL.LoginManager.GetLoginer();
             base.Page_Init(sender, e);
         }
     }

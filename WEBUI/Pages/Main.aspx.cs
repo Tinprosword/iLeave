@@ -11,7 +11,6 @@ namespace WEBUI.Pages
     {
         protected override void InitPageVaralbal0()
         {
-            
         }
 
         protected override void InitPageDataOnEachLoad1()
@@ -26,7 +25,7 @@ namespace WEBUI.Pages
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(false, "", "", "");
             SetMultiLanguage();
-            int abc= BLL.User.test_add(2, 3);
+            int abc= BLL.User_wsref.test_add(2, 3);
             int aa = 4;
         }
 
@@ -74,5 +73,6 @@ namespace WEBUI.Pages
         {
             Response.Redirect("~/pages/setting.aspx");
         }
+
     }
 }

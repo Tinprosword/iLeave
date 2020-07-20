@@ -28,6 +28,8 @@ namespace DAL
             private static WebServicesHelper webServicesHelper;
 
             public WebReference_User.UserManagementV2 ws_user = new WebReference_User.UserManagementV2();
+
+
             public System.Net.CookieContainer cookieContainer = new System.Net.CookieContainer();
 
             public static WebServicesHelper GetInstance()

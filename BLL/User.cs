@@ -9,54 +9,14 @@ namespace BLL
 {
     public class User
     {
-        public static MODEL.LoginResult CheckLogin(string uid, string password)
-        {
-            return DAL.User.CheckLogin(uid, password);
-        }
+        //public static MODEL.LoginResult CheckLogin(string uid, string password)
+        //{
+        //    return DAL.User.CheckLogin(uid, password);
+        //}
 
-        public static MODEL.LoginResult CheckLoginRef(string uid, string password)
-        {
-            return DAL.User.CheckLogin_webref(uid, password);
-        }
-
-        public static LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> GetLoginer()
-        {
-            return LSLibrary.WebAPP.LoginManager.GetLoinger<MODEL.UserInfo>();
-        }
-
-
-        public static void OnLoginOff()
-        {
-            string agent = HttpContext.Current.Request.UserAgent;
-
-            LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
-            if(ClientType== LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android)//android
-            {
-                HttpContext.Current.Response.Clear();
-                HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.GetAndroidJs("sys", "loginout", HttpContext.Current.Server));
-                HttpContext.Current.Response.End();
-            }
-            else if(ClientType== LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone)//ios
-            {
-                HttpContext.Current.Response.Clear();
-                HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.GetIphoneJs("sys", "loginout", HttpContext.Current.Server));
-                HttpContext.Current.Response.End();
-            }
-            else//pc
-            {
-                HttpContext.Current.Response.Redirect("~/login.aspx");
-            }
-        }
-
-        public static int test_add(int a, int b, string sessionid)
-        {
-            return DAL.User.test_add(a, b, sessionid);
-        }
-
-
-        public static int test_add(int a, int b)
-        {
-            return DAL.User.test_add(a, b);
-        }
+        //public static int test_add(int a, int b, string sessionid)
+        //{
+        //    return DAL.User.test_add(a, b, sessionid);
+        //}
     }
 }

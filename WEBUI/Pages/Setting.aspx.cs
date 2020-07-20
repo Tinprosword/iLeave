@@ -63,7 +63,7 @@ namespace WEBUI.Pages
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
             LSLibrary.WebAPP.LoginManager.Logoff();
-            BLL.User.OnLoginOff();
+            BLL.LoginManager.GoBackToLogin();
         }
 
 

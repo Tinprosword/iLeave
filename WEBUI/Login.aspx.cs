@@ -49,7 +49,7 @@ namespace WEBUI
 
             if (string.IsNullOrWhiteSpace(userid) == false && string.IsNullOrWhiteSpace(password) == false)
             {
-                MODEL.LoginResult loginResult = BLL.User.CheckLoginRef(userid, password);
+                MODEL.LoginResult loginResult = BLL.User_wsref.CheckLogin(userid, password);
                 bool isLogin = loginResult.Result > 0 ? true : false;
                 if (isLogin)
                 {

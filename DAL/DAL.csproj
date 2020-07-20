@@ -55,6 +55,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
+    <Compile Include="User_ref.cs" />
     <Compile Include="Web References\WebReference_User\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

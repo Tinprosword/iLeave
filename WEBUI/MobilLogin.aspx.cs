@@ -23,6 +23,7 @@ namespace WEBUI
                 bool bhttps = https == "1" ? true : false;
                 string address = Request.Form["server"];
                 string sessionID = Request.Form["sessionid"];
+                string password = Request.Form["password"];
 
 
                 LSLibrary.WebAPP.CookieHelper.SetCookie(BLL.GlobalVariate.COOKIE_SERVERADDRESS, address, 3600);
@@ -31,7 +32,16 @@ namespace WEBUI
 
                 MODEL.UserInfo userInfo = new MODEL.UserInfo(int.Parse(id), uid, "", "", sessionID);
                 LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(uid, userInfo));
-                Response.Redirect("~/Pages/Main.aspx");
+
+                MODEL.LoginResult loginResult= BLL.User_wsref.CheckLogin(uid, password);//这个登陆是完全没有必要的.但是为了免去手写sessionid.就再登陆一次.让系统自动写sessionid.如果后期了解正确写sessionid的方法 ,可以去掉.
+                if (loginResult.Result > 0)
+                {
+                    Response.Redirect("~/Pages/Main.aspx");
+                }
+                else
+                {
+                    BLL.LoginManager.GoBackToLogin();
+                }
             }
         }
 
