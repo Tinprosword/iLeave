@@ -58,6 +58,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{69a9688d-85c1-4c00-b678-645386b68102}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Function\LSLibrary_dotNet\LSLibrary.csproj">
       <Project>{53ac195e-dcff-47c4-bc02-7e0241ff520c}</Project>
       <Name>LSLibrary</Name>

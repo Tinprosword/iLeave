@@ -22,16 +22,19 @@ namespace WEBUI
                 string https= Request.Form["https"];
                 bool bhttps = https == "1" ? true : false;
                 string address = Request.Form["server"];
+                string sessionID = Request.Form["sessionid"];
 
 
                 LSLibrary.WebAPP.CookieHelper.SetCookie(BLL.GlobalVariate.COOKIE_SERVERADDRESS, address, 3600);
                 LSLibrary.WebAPP.CookieHelper.SetCookie(BLL.GlobalVariate.COOKIE_HTTPS, bhttps.ToString(), 3600);
                 BLL.MultiLanguageHelper.SaveChoose((LSLibrary.WebAPP.LanguageType)intLanguage);
 
-                MODEL.UserInfo userInfo = new MODEL.UserInfo(int.Parse(id), uid, "", "");
-                LSLibrary.WebAPP.LoginManager.SaveLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(uid, userInfo));
+                MODEL.UserInfo userInfo = new MODEL.UserInfo(int.Parse(id), uid, "", "", sessionID);
+                LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(uid, userInfo));
                 Response.Redirect("~/Pages/Main.aspx");
             }
         }
+
+
     }
 }

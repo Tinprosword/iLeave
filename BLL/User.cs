@@ -9,11 +9,14 @@ namespace BLL
 {
     public class User
     {
-
-
-        public static int CheckLogin(string uid, string password)
+        public static MODEL.LoginResult CheckLogin(string uid, string password)
         {
             return DAL.User.CheckLogin(uid, password);
+        }
+
+        public static MODEL.LoginResult CheckLoginRef(string uid, string password)
+        {
+            return DAL.User.CheckLogin_webref(uid, password);
         }
 
         public static LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> GetLoginer()
@@ -43,6 +46,17 @@ namespace BLL
             {
                 HttpContext.Current.Response.Redirect("~/login.aspx");
             }
+        }
+
+        public static int test_add(int a, int b, string sessionid)
+        {
+            return DAL.User.test_add(a, b, sessionid);
+        }
+
+
+        public static int test_add(int a, int b)
+        {
+            return DAL.User.test_add(a, b);
         }
     }
 }

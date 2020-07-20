@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="IsLogin">
+        <s:complexType />
+      </s:element>
+      <s:element name="IsLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsLoginResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PasswordHash" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthenticateUserResult" type="tns:LoginResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LoginResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Result" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Test_ADD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="a" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="b" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Test_ADDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Test_ADDResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="LoginResult" nillable="true" type="tns:LoginResult" />
+      <s:element name="int" type="s:int" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="IsLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:IsLogin" />
+  </wsdl:message>
+  <wsdl:message name="IsLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:IsLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateUser" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="Test_ADDSoapIn">
+    <wsdl:part name="parameters" element="tns:Test_ADD" />
+  </wsdl:message>
+  <wsdl:message name="Test_ADDSoapOut">
+    <wsdl:part name="parameters" element="tns:Test_ADDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsLoginHttpPostIn" />
+  <wsdl:message name="IsLoginHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserHttpPostIn">
+    <wsdl:part name="UserName" type="s:string" />
+    <wsdl:part name="PasswordHash" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:LoginResult" />
+  </wsdl:message>
+  <wsdl:message name="Test_ADDHttpPostIn">
+    <wsdl:part name="a" type="s:string" />
+    <wsdl:part name="b" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Test_ADDHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:portType name="UserManagementV2Soap">
+    <wsdl:operation name="IsLogin">
+      <wsdl:input message="tns:IsLoginSoapIn" />
+      <wsdl:output message="tns:IsLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <wsdl:input message="tns:AuthenticateUserSoapIn" />
+      <wsdl:output message="tns:AuthenticateUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Test_ADD">
+      <wsdl:input message="tns:Test_ADDSoapIn" />
+      <wsdl:output message="tns:Test_ADDSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="UserManagementV2HttpPost">
+    <wsdl:operation name="IsLogin">
+      <wsdl:input message="tns:IsLoginHttpPostIn" />
+      <wsdl:output message="tns:IsLoginHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <wsdl:input message="tns:AuthenticateUserHttpPostIn" />
+      <wsdl:output message="tns:AuthenticateUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Test_ADD">
+      <wsdl:input message="tns:Test_ADDHttpPostIn" />
+      <wsdl:output message="tns:Test_ADDHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserManagementV2Soap" type="tns:UserManagementV2Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IsLogin">
+      <soap:operation soapAction="http://tempuri.org/IsLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <soap:operation soapAction="http://tempuri.org/AuthenticateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Test_ADD">
+      <soap:operation soapAction="http://tempuri.org/Test_ADD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UserManagementV2Soap12" type="tns:UserManagementV2Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IsLogin">
+      <soap12:operation soapAction="http://tempuri.org/IsLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <soap12:operation soapAction="http://tempuri.org/AuthenticateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Test_ADD">
+      <soap12:operation soapAction="http://tempuri.org/Test_ADD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UserManagementV2HttpPost" type="tns:UserManagementV2HttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="IsLogin">
+      <http:operation location="/IsLogin" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <http:operation location="/AuthenticateUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Test_ADD">
+      <http:operation location="/Test_ADD" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserManagementV2">
+    <wsdl:port name="UserManagementV2Soap" binding="tns:UserManagementV2Soap">
+      <soap:address location="http://192.168.19.200:8889/ServicesWithSession/UserManagementV2.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UserManagementV2Soap12" binding="tns:UserManagementV2Soap12">
+      <soap12:address location="http://192.168.19.200:8889/ServicesWithSession/UserManagementV2.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UserManagementV2HttpPost" binding="tns:UserManagementV2HttpPost">
+      <http:address location="http://192.168.19.200:8889/ServicesWithSession/UserManagementV2.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

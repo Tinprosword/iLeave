@@ -49,12 +49,12 @@ namespace WEBUI
 
             if (string.IsNullOrWhiteSpace(userid) == false && string.IsNullOrWhiteSpace(password) == false)
             {
-                int uid = BLL.User.CheckLogin(userid, password);
-                bool isLogin = uid > 0 ? true : false;
+                MODEL.LoginResult loginResult = BLL.User.CheckLoginRef(userid, password);
+                bool isLogin = loginResult.Result > 0 ? true : false;
                 if (isLogin)
                 {
-                    MODEL.UserInfo userInfo = new MODEL.UserInfo(uid,userid,"","");
-                    LSLibrary.WebAPP.LoginManager.SaveLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(userid,userInfo));
+                    MODEL.UserInfo userInfo = new MODEL.UserInfo(loginResult.Result, userid,"","",loginResult.SessionID);
+                    LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(userid,userInfo));
                     Response.Redirect("~/Pages/Main.aspx");
                 }
                 else
