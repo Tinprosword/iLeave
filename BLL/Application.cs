@@ -13,11 +13,11 @@ namespace BLL
             List<MODEL.Apply.LeaveData> data = new List<MODEL.Apply.LeaveData>();
             for (int i = 0; i < 1; i++)
             {
-                data.Add(new MODEL.Apply.LeaveData(uid,"05-01周一", 1, 2 ,0, BLL.GlobalVariate.LeaveSatus[0],System.DateTime.Now));
-                data.Add(new MODEL.Apply.LeaveData(uid, "05-01周一", 1, 2, 0, BLL.GlobalVariate.LeaveSatus[0], System.DateTime.Now));
-                data.Add(new MODEL.Apply.LeaveData(uid, "05-01周一", 1, 2, 0, BLL.GlobalVariate.LeaveSatus[0], System.DateTime.Now));
-                data.Add(new MODEL.Apply.LeaveData(uid, "05-01周一", 1, 2, 0, BLL.GlobalVariate.LeaveSatus[0], System.DateTime.Now));
-                data.Add(new MODEL.Apply.LeaveData(uid, "05-01周一", 1, 2, 0, BLL.GlobalVariate.LeaveSatus[0], System.DateTime.Now));
+                data.Add(new MODEL.Apply.LeaveData(uid,"05-01周一", 1, 2 ,0, BLL.GlobalVariate.LeaveSatus[0],System.DateTime.Now,"Al"));
+                data.Add(new MODEL.Apply.LeaveData(uid, "05-01周一", 1, 2, 0, BLL.GlobalVariate.LeaveSatus[0], System.DateTime.Now, "Al"));
+                data.Add(new MODEL.Apply.LeaveData(uid, "05-01周一", 1, 2, 0, BLL.GlobalVariate.LeaveSatus[0], System.DateTime.Now, "Al"));
+                data.Add(new MODEL.Apply.LeaveData(uid, "05-01周一", 1, 2, 0, BLL.GlobalVariate.LeaveSatus[0], System.DateTime.Now, "Al"));
+                data.Add(new MODEL.Apply.LeaveData(uid, "05-01周一", 1, 2, 0, BLL.GlobalVariate.LeaveSatus[0], System.DateTime.Now, "Al"));
             }
             return data;
         }

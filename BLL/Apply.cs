@@ -13,6 +13,7 @@ namespace BLL
     {
         public static string reducePath = "reduce";
 
+
         public static List<string> UploadAttendance(HttpRequest httpRequest, string fpath, List<string> fileExtendsType, string NameAppendStr, out string errmsg, int filesizeM = 10)
         {
             List<string> res= LSLibrary.UploadFile.SaveFiles(httpRequest, fpath, fileExtendsType, System.DateTime.Now.ToString("yyyyMMdd"), out errmsg, filesizeM);
@@ -47,5 +48,15 @@ namespace BLL
             DAL.Leave.InsertLeave(originDetail, userid, staffid);
         }
 
+
+        public static List<LSLibrary.WebAPP.ValueText> GetLeaveType()
+        {
+            List<LSLibrary.WebAPP.ValueText> res = new List<LSLibrary.WebAPP.ValueText>();
+            res.Add(new LSLibrary.WebAPP.ValueText(-1, "Please Select"));
+            res.Add(new LSLibrary.WebAPP.ValueText(0, "AL"));
+            res.Add(new LSLibrary.WebAPP.ValueText(1, "SL"));
+            res.Add(new LSLibrary.WebAPP.ValueText(2, "SL2"));
+            return res;
+        }
     }
 }

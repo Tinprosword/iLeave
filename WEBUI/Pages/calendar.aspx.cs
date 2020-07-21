@@ -197,8 +197,9 @@ namespace WEBUI.Pages
                     {
                         int leavetype = int.Parse(data.LeaveTypeSelectValue);
                         int sectiontype =int.Parse(data.ddlsectionSelectvalue);
+                        string leavename = LSLibrary.WebAPP.ValueText.GetText(data.leavetype, int.Parse(data.LeaveTypeSelectValue));
 
-                        var newitem = new MODEL.Apply.LeaveData(loginer.loginID, dateTime.ToString("MM-dd"), sectiontype, leavetype, 0,  BLL.GlobalVariate.LeaveSatus[0], dateTime);
+                        var newitem = new MODEL.Apply.LeaveData(loginer.loginID, dateTime.ToString("MM-dd"), sectiontype, leavetype, 0,  BLL.GlobalVariate.LeaveSatus[0], dateTime, leavename);
                         data.LeaveList.Add(newitem);
                     }
                     else

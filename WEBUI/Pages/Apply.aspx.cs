@@ -83,20 +83,27 @@ namespace WEBUI.Pages
             }
             else
             {
-                //init viewstate
-                if (ViewState[ViewState_PageName] == null)
-                {
-                    MODEL.Apply.ViewState_page viewState_Page = new MODEL.Apply.ViewState_page();
-                    viewState_Page.LeaveList = new List<MODEL.Apply.LeaveData>();
-                    viewState_Page.uploadpic = new List<MODEL.Apply.UploadPic>();
-                    LSLibrary.WebAPP.ViewStateHelper.SetValue(viewState_Page, ViewState_PageName, ViewState);
-                }
-
                 //init ui
-                this.literal_applier.Text = loginer.loginID + "  " + loginer.userInfo.nickname;
                 ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
-                this.repeater_leave.DataSource = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).LeaveList;
+                this.literal_applier.Text = loginer.loginID + "  " + loginer.userInfo.nickname;
+
+                List<LSLibrary.WebAPP.ValueText> typedata=BLL.Apply.GetLeaveType();
+                this.ddl_leavetype.DataSource = typedata;
+                this.ddl_leavetype.DataValueField = "mvalue";
+                this.ddl_leavetype.DataTextField = "mtext";
+                this.ddl_leavetype.DataBind();
+                this.repeater_leave.DataSource = new List<MODEL.Apply.LeaveData>();
                 this.repeater_leave.DataBind();
+
+                //set viewstate
+                MODEL.Apply.ViewState_page viewState_Page = new MODEL.Apply.ViewState_page();
+                viewState_Page.LeaveList = new List<MODEL.Apply.LeaveData>();
+                viewState_Page.uploadpic = new List<MODEL.Apply.UploadPic>();
+                viewState_Page.leavetype = new List<LSLibrary.WebAPP.ValueText>();
+                viewState_Page.leavetype = typedata;
+
+                LSLibrary.WebAPP.ViewStateHelper.SetValue(viewState_Page, ViewState_PageName, ViewState);
+
             }
             SetMultiLanguage();
         }
@@ -104,10 +111,16 @@ namespace WEBUI.Pages
         private void LoadUI(MODEL.Apply.ViewState_page applypage)
         {
             //init ui
+            this.ddl_leavetype.DataSource = applypage.leavetype;
+            this.ddl_leavetype.DataValueField = "mvalue";
+            this.ddl_leavetype.DataTextField = "mtext";
+            this.ddl_leavetype.DataBind();
+
             this.literal_applier.Text = loginer.loginID + "  " + loginer.userInfo.nickname;
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
             this.ddl_leavetype.SelectedValue = applypage.LeaveTypeSelectValue.ToString();
             this.repeater_leave.DataSource = applypage.LeaveList;
+            
             this.lt_applydays.Text = applypage.applylabel;
             this.lt_balancedays.Text = applypage.balancelabel;
             this.dropdl_section.SelectedValue = applypage.ddlsectionSelectvalue;
@@ -208,7 +221,6 @@ namespace WEBUI.Pages
             this.lt_listsection.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_list_section;
             this.button_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_button;
         }
-
         
         #endregion
 
