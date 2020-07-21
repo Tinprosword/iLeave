@@ -14,8 +14,6 @@ namespace MODEL
             public string LeaveTypeSelectValue;
             public string applylabel;
             public string balancelabel;
-            public string datefrom;
-            public string dateto;
             public string ddlsectionSelectvalue;
             public string remarks;
 
@@ -29,21 +27,20 @@ namespace MODEL
         {
             public string name;
             public string date;
-            public string type;
-            public string section;
+            public int sectionid;
             public int typeid;
             public int status;
-            public string statusstr;
+            public DateTime DateTime;
 
-            public LeaveData(string name, string date, string type, string section, int typeid, int status, string statusstr)
+            public LeaveData(string name, string date, int section, int typeid, int status, string statusstr,DateTime _dateTime)
             {
                 this.name = name;
                 this.date = date;
-                this.type = type;
-                this.section = section;
+                this.typeid = typeid;
+                this.sectionid = section;
                 this.typeid = typeid;
                 this.status = status;
-                this.statusstr = statusstr;
+                this.DateTime = _dateTime;
             }
         }
 

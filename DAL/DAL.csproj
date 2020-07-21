@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DalHelper.cs" />
+    <Compile Include="Leave.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -56,6 +57,11 @@
     </Compile>
     <Compile Include="User.cs" />
     <Compile Include="User_ref.cs" />
+    <Compile Include="Web References\WebReference_leave\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\WebReference_User\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -85,6 +91,14 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Web References\WebReference_leave\ErrorMessageInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebReference_leave\LeaveManagementV2.wsdl" />
+    <None Include="Web References\WebReference_leave\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <None Include="Web References\WebReference_User\LoginResult.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -98,6 +112,17 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
+    <WebReferenceUrl Include="http://192.168.19.200:8889/ServicesWithSession/LeaveManagementV2.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WebReference_leave\</RelPath>
+      <UpdateFromURL>http://192.168.19.200:8889/ServicesWithSession/LeaveManagementV2.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DAL_WebReference_leave_LeaveManagementV2</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://192.168.19.200:8889/ServicesWithSession/UserManagementV2.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WebReference_User\</RelPath>
@@ -112,6 +137,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\WebReference_User\UserManagementV2.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WebReference_leave\LeaveManagementV2.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

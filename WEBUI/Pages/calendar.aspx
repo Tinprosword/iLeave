@@ -7,7 +7,7 @@
         <div class="col-xs-6" style="padding-left:15px;height:32px;line-height:32px;padding-right:0px"><asp:CheckBox ID="cb_leave" runat="server" Text="假期" OnCheckedChanged="cb_leave_CheckedChanged"  AutoPostBack="true"/>&nbsp&nbsp&nbsp<asp:CheckBox ID="cb_holiday" runat="server" Text="更期" OnCheckedChanged="cb_holiday_CheckedChanged" AutoPostBack="true"/></div>
         <div class="col-xs-12" style="margin-top:8px; margin-bottom:8px; font-weight:bold">Unit A</div>
         <div class="col-xs-12 lsf-center">
-            <asp:Calendar ID="Calendar1" runat="server" Width="310px" Height="250px" Font-Size="Larger" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
+            <asp:Calendar ID="Calendar1" runat="server" Width="310px" Height="250px" Font-Size="Larger"></asp:Calendar>
         </div>
         <div class="col-xs-4"><asp:Image ID="Image1" runat="server" ImageUrl="~/Res/images/square.png" BackColor="Black" />&nbsp;<asp:Literal ID="lt_approval" runat="server">approval</asp:Literal></div>
         <div class="col-xs-8"><asp:Image ID="Image2" runat="server" ImageUrl="~/Res/images/square.png" BackColor="#f3e926" />&nbsp;<asp:Literal ID="lt_wait" runat="server">wait for approval</asp:Literal></div>
@@ -20,7 +20,7 @@
             <table class="col-xs-12 lsu-table-sm">
                 <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                     <ItemTemplate>
-                        <tr><td class="col-xs-2"><%# ((MODEL.Apply.LeaveData)Container.DataItem).name %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).type %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).section %></td><td class="col-xs-4"><%#((MODEL.Apply.LeaveData)Container.DataItem).statusstr %></td></tr>
+                        <tr><td class="col-xs-2"><%# ((MODEL.Apply.LeaveData)Container.DataItem).name %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).typeid %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).sectionid %></td><td class="col-xs-4"><%#((MODEL.Apply.LeaveData)Container.DataItem).status %></td></tr>
                     </ItemTemplate>
                     
                 </asp:Repeater>

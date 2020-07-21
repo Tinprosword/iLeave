@@ -85,33 +85,6 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Label lt_balancedays;
         
         /// <summary>
-        /// lt_date 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_date;
-        
-        /// <summary>
-        /// tb_from 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_from;
-        
-        /// <summary>
-        /// tb_to 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_to;
-        
-        /// <summary>
         /// lt_section 控件。
         /// </summary>
         /// <remarks>
@@ -130,24 +103,6 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.DropDownList dropdl_section;
         
         /// <summary>
-        /// lt_remarks 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_remarks;
-        
-        /// <summary>
-        /// tb_remarks 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_remarks;
-        
-        /// <summary>
         /// ImageButton1 控件。
         /// </summary>
         /// <remarks>
@@ -164,6 +119,24 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
+        
+        /// <summary>
+        /// lt_remarks 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_remarks;
+        
+        /// <summary>
+        /// tb_remarks 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_remarks;
         
         /// <summary>
         /// ltlistdate 控件。

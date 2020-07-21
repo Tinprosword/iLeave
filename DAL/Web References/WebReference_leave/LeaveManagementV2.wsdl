@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="InsertStaffLeaveDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="poStaffLeaveDetailsArray" type="tns:ArrayOfStaffLeaveDetails" />
+            <s:element minOccurs="1" maxOccurs="1" name="piUserID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="piWorkflowDelegationToStaffID" nillable="true" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStaffLeaveDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StaffLeaveDetails" nillable="true" type="tns:StaffLeaveDetails" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StaffLeaveDetails">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmploymentNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EngName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ChiName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveTo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Unit" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeleteKey" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Section" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="WorkingHourPattern" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkingHourHalfDay" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkingHourAM" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkingHourPM" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="HolidayCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveCalculationTypeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeaveCalculationTypeDesc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveHours" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalWorkHours" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sections" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsHalfDay" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DisplaySection" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayUnit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplaySectionCombined" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecurityGroupCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApprovalStatus" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertStaffLeaveDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertStaffLeaveDetailsResult" type="tns:ErrorMessageInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ErrorMessageInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ProcessID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProcessIDList" type="tns:ArrayOfInt" />
+          <s:element minOccurs="1" maxOccurs="1" name="AffectedRecordCount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompletedRatio" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsMessageList" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessageList" type="tns:ArrayOfErrorMessageItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfErrorMessageItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ErrorMessageItem" nillable="true" type="tns:ErrorMessageItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ErrorMessageItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IsMessageList" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageParameter1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageParameter2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageParameter3" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Severity" type="tns:ErrorMessageSeverity" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ErrorMessageSeverity">
+        <s:restriction base="s:string">
+          <s:enumeration value="ERROR" />
+          <s:enumeration value="WARNING" />
+          <s:enumeration value="INFORMATION" />
+          <s:enumeration value="VALIDATION" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="InsertStaffLeaveDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertStaffLeaveDetails" />
+  </wsdl:message>
+  <wsdl:message name="InsertStaffLeaveDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertStaffLeaveDetailsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="LeaveManagementV2Soap">
+    <wsdl:operation name="InsertStaffLeaveDetails">
+      <wsdl:input message="tns:InsertStaffLeaveDetailsSoapIn" />
+      <wsdl:output message="tns:InsertStaffLeaveDetailsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LeaveManagementV2HttpPost" />
+  <wsdl:binding name="LeaveManagementV2Soap" type="tns:LeaveManagementV2Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertStaffLeaveDetails">
+      <soap:operation soapAction="http://tempuri.org/InsertStaffLeaveDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LeaveManagementV2Soap12" type="tns:LeaveManagementV2Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertStaffLeaveDetails">
+      <soap12:operation soapAction="http://tempuri.org/InsertStaffLeaveDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LeaveManagementV2HttpPost" type="tns:LeaveManagementV2HttpPost">
+    <http:binding verb="POST" />
+  </wsdl:binding>
+  <wsdl:service name="LeaveManagementV2">
+    <wsdl:port name="LeaveManagementV2Soap" binding="tns:LeaveManagementV2Soap">
+      <soap:address location="http://192.168.19.200:8889/ServicesWithSession/LeaveManagementV2.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LeaveManagementV2Soap12" binding="tns:LeaveManagementV2Soap12">
+      <soap12:address location="http://192.168.19.200:8889/ServicesWithSession/LeaveManagementV2.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LeaveManagementV2HttpPost" binding="tns:LeaveManagementV2HttpPost">
+      <http:address location="http://192.168.19.200:8889/ServicesWithSession/LeaveManagementV2.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

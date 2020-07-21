@@ -40,5 +40,12 @@ namespace BLL
             }
         }
 
+
+        public static void InsertLeave(List<MODEL.Apply.LeaveData> originDetail, int userid, int staffid)
+        {
+            BLL.LoginManager.CheckWsLogin();
+            DAL.Leave.InsertLeave(originDetail, userid, staffid);
+        }
+
     }
 }

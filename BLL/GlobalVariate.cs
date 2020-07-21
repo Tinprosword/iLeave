@@ -21,7 +21,7 @@ namespace BLL
         public static readonly string COOKIE_HTTPS = "cookie_https";
 
 
-        public static Dictionary<int, string> LeaveType
+        public static Dictionary<int, string> LeaveSatus
         {
             get
             {
