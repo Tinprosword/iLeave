@@ -148,6 +148,7 @@ namespace WEBUI.Pages
         #region [module] leave
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
+
             //save viewstate' other data
             MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
             applyPage.LeaveTypeSelectValue = this.ddl_leavetype.SelectedValue;
@@ -156,6 +157,10 @@ namespace WEBUI.Pages
             applyPage.ddlsectionSelectvalue = this.dropdl_section.SelectedValue;
             applyPage.remarks = this.tb_remarks.Text;
             LSLibrary.WebAPP.ViewStateHelper.SetValue(applyPage, ViewState_PageName, ViewState);
+
+
+            Server.Transfer("~/Pages/calendar.aspx?action=apply",false);
+
         }
 
         protected void delete_Click(object sender, ImageClickEventArgs e)

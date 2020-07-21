@@ -14,7 +14,7 @@
             <tr>
                 <td><asp:Literal ID="lt_leave" runat="server">Leave</asp:Literal></td>
                 <td>
-                    <asp:DropDownList ID="ddl_leavetype" runat="server" Width="90%" AutoPostBack="true">
+                    <asp:DropDownList ID="ddl_leavetype" runat="server" Width="90%" AutoPostBack="true" jqname="ddl_leavetype">
                     </asp:DropDownList>
                 </td>
             </tr>
@@ -39,11 +39,11 @@
             </tr>
             <tr>
                 <td></td>
-                <td><asp:ImageButton ID="ImageButton1" style="margin-left:10px" runat="server" ImageUrl="~/Res/images/comIcon_canlendar.png" Width="40px" Height="40px" PostBackUrl="~/Pages/calendar.aspx?action=apply" OnClick="ImageButton1_Click"/>
-                    <asp:ImageButton ID="ImageButton2" style="margin-left:100px" runat="server" ImageUrl="~/Res/images/comIcon_addattence.png" Width="40px" Height="40px"  PostBackUrl="~/Pages/Apply_Upload.aspx" OnClick="ImageButton2_Click" />
+                <td><asp:ImageButton ID="ImageButton1" style="margin-left:10px"  runat="server" ImageUrl="~/Res/images/comIcon_canlendar.png" Width="40px" Height="40px"  OnClick="ImageButton1_Click" OnClientClick="return checkChooseDate()"/>
+                    <asp:ImageButton ID="ImageButton2" style="margin-left:100px" runat="server" ImageUrl="~/Res/images/comIcon_addattence.png" Width="40px" Height="40px" PostBackUrl="~/Pages/Apply_Upload.aspx" OnClick="ImageButton2_Click"/>
                 </td>
             </tr>
-            
+
             <tr>
                 <td><asp:Literal ID="lt_remarks" runat="server">Remarks</asp:Literal></td>
                 <td><asp:TextBox ID="tb_remarks" runat="server" Width="90%"></asp:TextBox> </td>
