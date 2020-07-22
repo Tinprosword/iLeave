@@ -16,7 +16,6 @@ namespace DAL
             return res;
         }
 
-
         public static MODEL.LoginResult CheckLogin_webref(string login, string password)
         {
             DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();

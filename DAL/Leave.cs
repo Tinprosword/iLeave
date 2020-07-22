@@ -8,7 +8,7 @@ namespace DAL
 {
     public class Leave
     {
-        public static void InsertLeave(List<MODEL.Apply.LeaveData> originDetail,int userid,int staffid)
+        public static void InsertLeave(List<MODEL.Apply.LeaveData> originDetail,int userid,int staffid,string remarks)
         {
             DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
             List<WebReference_leave.StaffLeaveDetails> detail = new List<WebReference_leave.StaffLeaveDetails>();
@@ -20,10 +20,10 @@ namespace DAL
                 newItem.Code = null;
                 newItem.CreateDate = System.DateTime.Now;
                 newItem.Date = System.DateTime.Now;
-                newItem.DeleteKey = "2020-07-02,11";
+                newItem.DeleteKey = "2020-07-02,11";//from date, type id.
                 newItem.DisplaySection = 0;
                 newItem.DisplaySectionCombined = null;
-                newItem.DisplayUnit = "1 D";
+                newItem.DisplayUnit = "1 D";//1d: 1 day
                 newItem.EmploymentID = 19747;//19747
                 newItem.EmploymentNumber = null;
                 newItem.EngName = null;
@@ -35,14 +35,14 @@ namespace DAL
                 newItem.LeaveFrom = originDetail[i].DateTime;
                 newItem.LeaveHours = 0;
                 newItem.LeaveTo = originDetail[i].DateTime;
-                newItem.Remarks = "ws add";
+                newItem.Remarks = remarks;
                 newItem.RequestID = 0;
                 newItem.Section = 0;
                 newItem.Sections = 0;
                 newItem.SecurityGroupCode = null;
                 newItem.TotalWorkHours = 8;
-                newItem.Type = "Annual Leave 年假";
-                newItem.TypeID = 11;
+                newItem.Type = originDetail[i].typename;
+                newItem.TypeID = originDetail[i].typeid;
                 newItem.Unit = 1;
                 newItem.WorkingHourAM = 0;
                 newItem.WorkingHourHalfDay = 0;

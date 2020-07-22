@@ -12,6 +12,7 @@ namespace BLL
     public class Apply
     {
         public static string reducePath = "reduce";
+        
 
 
         public static List<string> UploadAttendance(HttpRequest httpRequest, string fpath, List<string> fileExtendsType, string NameAppendStr, out string errmsg, int filesizeM = 10)
@@ -42,20 +43,22 @@ namespace BLL
         }
 
 
-        public static void InsertLeave(List<MODEL.Apply.LeaveData> originDetail, int userid, int staffid)
+        public static void InsertLeave(List<MODEL.Apply.LeaveData> originDetail, int userid, int staffid,string remarks)
         {
             BLL.LoginManager.CheckWsLogin();
-            DAL.Leave.InsertLeave(originDetail, userid, staffid);
+            DAL.Leave.InsertLeave(originDetail, userid, staffid,remarks);
         }
 
 
         public static List<LSLibrary.WebAPP.ValueText> GetLeaveType()
         {
+            DAL.WebReference_codesetting.LeaveInfo[] array= BLL.CodeSetting.GetLeaveInfo();
             List<LSLibrary.WebAPP.ValueText> res = new List<LSLibrary.WebAPP.ValueText>();
             res.Add(new LSLibrary.WebAPP.ValueText(-1, "Please Select"));
-            res.Add(new LSLibrary.WebAPP.ValueText(0, "AL"));
-            res.Add(new LSLibrary.WebAPP.ValueText(1, "SL"));
-            res.Add(new LSLibrary.WebAPP.ValueText(2, "SL2"));
+            for (int i = 0; i < array.Count(); i++)
+            {
+                res.Add(new LSLibrary.WebAPP.ValueText(array[i].ID, array[i].Code));
+            }
             return res;
         }
 

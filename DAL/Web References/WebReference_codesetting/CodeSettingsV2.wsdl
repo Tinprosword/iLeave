@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetLeaveInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLeaveInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveInfoResult" type="tns:ArrayOfLeaveInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLeaveInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LeaveInfo" nillable="true" type="tns:LeaveInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LeaveInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayRatio" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAverageDailyRate" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PortalStatus" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAccumulableLeave" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEnforceAttachment" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsInclude713" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountCodeLeave" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaySlipReportGroup" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAdjustInNextMonth" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeaveNotes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntitleEffectiveDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsIncludeGratuity" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AccumulableLeaveType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntitledBy" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplyRequirement" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveExpiryAfterValue" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveAllowApplyBeforeValue" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveExpiryAfterUnit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveAllowApplyBeforeUnit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEnableAdvanceLeaveOnPortal" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LaunchCondition" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="ALRoundUpOption" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="CommonLeaveYear" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCompareEOLeave" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CarryForwardBy" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GrantEntitlementMethod" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntitleExpiryWays" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntitleExpiryByAfterCarryForwardDateInMonth" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntitleExpiryByAfterCarryForwardDateInDay" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntitleExpiryBySpecificDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxEntitlementFrequency" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfLeaveInfo" nillable="true" type="tns:ArrayOfLeaveInfo" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLeaveInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLeaveInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLeaveInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveInfoHttpPostIn" />
+  <wsdl:message name="GetLeaveInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfLeaveInfo" />
+  </wsdl:message>
+  <wsdl:portType name="CodeSettingsV2Soap">
+    <wsdl:operation name="GetLeaveInfo">
+      <wsdl:input message="tns:GetLeaveInfoSoapIn" />
+      <wsdl:output message="tns:GetLeaveInfoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CodeSettingsV2HttpPost">
+    <wsdl:operation name="GetLeaveInfo">
+      <wsdl:input message="tns:GetLeaveInfoHttpPostIn" />
+      <wsdl:output message="tns:GetLeaveInfoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CodeSettingsV2Soap" type="tns:CodeSettingsV2Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLeaveInfo">
+      <soap:operation soapAction="http://tempuri.org/GetLeaveInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CodeSettingsV2Soap12" type="tns:CodeSettingsV2Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLeaveInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetLeaveInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CodeSettingsV2HttpPost" type="tns:CodeSettingsV2HttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetLeaveInfo">
+      <http:operation location="/GetLeaveInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CodeSettingsV2">
+    <wsdl:port name="CodeSettingsV2Soap" binding="tns:CodeSettingsV2Soap">
+      <soap:address location="http://192.168.19.200:8889/ServicesWithSession/CodeSettingsV2.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CodeSettingsV2Soap12" binding="tns:CodeSettingsV2Soap12">
+      <soap12:address location="http://192.168.19.200:8889/ServicesWithSession/CodeSettingsV2.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CodeSettingsV2HttpPost" binding="tns:CodeSettingsV2HttpPost">
+      <http:address location="http://192.168.19.200:8889/ServicesWithSession/CodeSettingsV2.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

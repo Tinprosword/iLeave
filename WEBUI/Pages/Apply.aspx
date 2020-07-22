@@ -15,7 +15,7 @@
                 <td><asp:Literal ID="lt_leave" runat="server">Leave</asp:Literal></td>
                 <td>
                     <asp:DropDownList ID="ddl_leavetype" runat="server" Width="90%" AutoPostBack="true" jqname="ddl_leavetype">
-                    </asp:DropDownList>
+                    </asp:DropDownList><asp:label ID="literal_errormsg" runat="server" style="color:red"></asp:label>
                 </td>
             </tr>
             <tr>
@@ -40,7 +40,8 @@
             <tr>
                 <td></td>
                 <td><asp:ImageButton ID="ImageButton1" style="margin-left:10px"  runat="server" ImageUrl="~/Res/images/comIcon_canlendar.png" Width="40px" Height="40px"  OnClick="ImageButton1_Click"/>
-                    <asp:ImageButton ID="ImageButton2" style="margin-left:100px" runat="server" ImageUrl="~/Res/images/comIcon_addattence.png" Width="40px" Height="40px" PostBackUrl="~/Pages/Apply_Upload.aspx" OnClick="ImageButton2_Click"/>
+                    <asp:ImageButton ID="ImageButton2" style="margin-left:100px; margin-right:10px" runat="server" ImageUrl="~/Res/images/comIcon_addattence.png" Width="40px" Height="40px" PostBackUrl="~/Pages/Apply_Upload.aspx" OnClick="ImageButton2_Click"/>
+                    
                 </td>
             </tr>
 
@@ -53,7 +54,7 @@
         <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white">
             <tr><td class="col-xs-3"><asp:Literal ID="ltlistdate" runat="server"></asp:Literal></td><td class="col-xs-4"><asp:Literal ID="ltlisttype" runat="server"></asp:Literal></td><td class="col-xs-4"><asp:Literal ID="lt_listsection" runat="server"></asp:Literal></td><td class="col-xs-1">  </td></tr>
         </table>
-        <div class="col-xs-12 lsf-clearPadding" style="height:197px; overflow:scroll;">
+        <div class="col-xs-12 lsf-clearPadding" style="height:237px; overflow:scroll;">
             <table class="col-xs-12 lsu-table-sm">
                 <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                     <ItemTemplate>
