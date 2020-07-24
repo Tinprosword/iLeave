@@ -26,12 +26,16 @@ namespace BLL
             get
             {
                 Dictionary<int, string>  LeaveType = new Dictionary<int, string>();
-                LeaveType.Add(0, "Wait for approval");
-                LeaveType.Add(1, "Accept");
-                LeaveType.Add(2, "Reject");
-                LeaveType.Add(3, "Wait for WithDraw");
-                LeaveType.Add(4, "WithDraw");
-                LeaveType.Add(5, "Cancel");
+
+                LeaveType.Add(1, DAL.WebReference_leave.ApprovalRequestStatus.SENDEMAIL.ToString());
+                LeaveType.Add(1, DAL.WebReference_leave.ApprovalRequestStatus.NEW.ToString());
+                LeaveType.Add(2, DAL.WebReference_leave.ApprovalRequestStatus.WAIT_FOR_APPROVE.ToString());
+                LeaveType.Add(3, DAL.WebReference_leave.ApprovalRequestStatus.APPROVE.ToString());
+                LeaveType.Add(4, DAL.WebReference_leave.ApprovalRequestStatus.REJECT.ToString());
+                LeaveType.Add(5, DAL.WebReference_leave.ApprovalRequestStatus.CANCEL.ToString());
+                LeaveType.Add(6, DAL.WebReference_leave.ApprovalRequestStatus.WAIT_FOR_CANCEL.ToString());
+                LeaveType.Add(7, DAL.WebReference_leave.ApprovalRequestStatus.CONFIRM_CANCEL.ToString());
+
                 return LeaveType;
             }
         }

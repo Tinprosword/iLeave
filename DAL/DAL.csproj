@@ -56,6 +56,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Staff.cs" />
     <Compile Include="User_ref.cs" />
     <Compile Include="Web References\WebReference_codesetting\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -63,6 +64,11 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\WebReference_leave\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WebReference_staff\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -107,11 +113,31 @@
     <None Include="Web References\WebReference_leave\ErrorMessageInfo.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\WebReference_leave\LeaveCalculationType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\WebReference_leave\LeaveManagementV2.wsdl" />
     <None Include="Web References\WebReference_leave\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Web References\WebReference_leave\StaffLeaveDetailInBatch.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebReference_leave\StaffLeaveRequest.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebReference_staff\BasicStaffInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebReference_staff\EmploymentInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebReference_staff\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WebReference_staff\StaffManagementV2.wsdl" />
     <None Include="Web References\WebReference_User\LoginResult.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -147,6 +173,17 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>DAL_WebReference_leave_LeaveManagementV2</CachedSettingsPropName>
     </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.19.200:8889/ServicesWithSession/StaffManagementV2.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WebReference_staff\</RelPath>
+      <UpdateFromURL>http://192.168.19.200:8889/ServicesWithSession/StaffManagementV2.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>DAL_WebReference_staff_StaffManagementV2</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://192.168.19.200:8889/ServicesWithSession/UserManagementV2.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WebReference_User\</RelPath>
@@ -167,6 +204,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\WebReference_codesetting\CodeSettingsV2.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WebReference_staff\StaffManagementV2.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

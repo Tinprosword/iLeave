@@ -30,9 +30,9 @@ namespace DAL
             public WebReference_User.UserManagementV2 ws_user = new WebReference_User.UserManagementV2();
             public WebReference_leave.LeaveManagementV2 ws_leave = new WebReference_leave.LeaveManagementV2();
             public WebReference_codesetting.CodeSettingsV2 ws_codesetting = new WebReference_codesetting.CodeSettingsV2();
-
-
+            public WebReference_staff.StaffManagementV2 ws_staff = new WebReference_staff.StaffManagementV2();
             public System.Net.CookieContainer cookieContainer = new System.Net.CookieContainer();
+
 
             public static WebServicesHelper GetInstance()
             {
@@ -48,6 +48,7 @@ namespace DAL
                 ws_user.CookieContainer = cookieContainer;
                 ws_leave.CookieContainer = cookieContainer;
                 ws_codesetting.CookieContainer = cookieContainer;
+                ws_staff.CookieContainer = cookieContainer;
             }
         }
 

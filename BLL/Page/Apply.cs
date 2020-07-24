@@ -42,14 +42,53 @@ namespace BLL
             }
         }
 
-
-        public static void InsertLeave(List<MODEL.Apply.LeaveData> originDetail, int userid, int staffid,string remarks)
+        //0 ok. -1 check error -2.insert error
+        public static int InsertLeave(List<MODEL.Apply.LeaveData> originDetail, int userid, int? staffid,string remarks,out string errorMsg)
         {
             BLL.LoginManager.CheckWsLogin();
-            DAL.Leave.InsertLeave(originDetail, userid, staffid,remarks);
+
+            errorMsg = "";
+            int result = -1;
+            int checkResult = CheckBeforeApply();
+            if (checkResult>= 0)
+            {
+                DAL.WebReference_leave.StaffLeaveRequest[] details;
+                DAL.WebReference_leave.ErrorMessageInfo messageInfo;
+                int insertResult=DAL.Leave.InsertLeave(originDetail, userid, staffid, remarks,out details,out messageInfo);
+                if(insertResult>=0)
+                {
+                    int processID = messageInfo.ProcessID;
+                    int employID = GetEmpolyMentid(userid, details[0].LeaveDate);
+                    int workFlowResult = DAL.Leave.InsertWorkflow(details, userid, messageInfo.ProcessID, employID);
+                    int attenchMentResult = DAL.Leave.InsertAttanchMent();
+                    result = 0;
+                }
+                else
+                {
+                    errorMsg = "";
+                    result = -2;
+                }
+            }
+            else
+            {
+                errorMsg = "";
+                result = -1;
+            }
+            return result;
+        }
+
+        private static int CheckBeforeApply()
+        {
+            return 0;
+        }
+
+        public static int GetEmpolyMentid(int uid,DateTime dt)
+        {
+            return DAL.Leave.GetEmployID(uid,dt);
         }
 
 
+        //todo move loginc to ws bll. and check leave logic.
         public static List<LSLibrary.WebAPP.ValueText> GetLeaveType()
         {
             DAL.WebReference_codesetting.LeaveInfo[] array= BLL.CodeSetting.GetLeaveInfo();

@@ -49,15 +49,6 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.DropDownList ddl_leavetype;
         
         /// <summary>
-        /// literal_errormsg 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label literal_errormsg;
-        
-        /// <summary>
         /// lt_apply 控件。
         /// </summary>
         /// <remarks>
@@ -146,6 +137,15 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tb_remarks;
+        
+        /// <summary>
+        /// literal_errormsga 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal literal_errormsga;
         
         /// <summary>
         /// ltlistdate 控件。

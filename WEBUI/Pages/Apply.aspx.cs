@@ -36,7 +36,8 @@ namespace WEBUI.Pages
         protected override void ResetUIOnEachLoad3()
         {
             this.lt_AlertJS.Text = "";
-            this.literal_errormsg.Text = "";
+            this.literal_errormsga.Text = "";
+            this.literal_errormsga.Visible = false;
             this.repeater_leave.ItemDataBound += Repeater_leave_ItemDataBound;
         }
 
@@ -85,7 +86,7 @@ namespace WEBUI.Pages
             {
                 //init ui
                 ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
-                this.literal_applier.Text = loginer.loginID + "  " + loginer.userInfo.nickname;
+                this.literal_applier.Text = loginer.loginName + "  " + loginer.userInfo.nickname;
 
                 List<LSLibrary.WebAPP.ValueText> typedata=BLL.Apply.GetLeaveType();
                 this.ddl_leavetype.DataSource = typedata;
@@ -116,7 +117,7 @@ namespace WEBUI.Pages
             this.ddl_leavetype.DataTextField = "mtext";
             this.ddl_leavetype.DataBind();
 
-            this.literal_applier.Text = loginer.loginID + "  " + loginer.userInfo.nickname;
+            this.literal_applier.Text = loginer.loginName + "  " + loginer.userInfo.nickname;
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
             this.ddl_leavetype.SelectedValue = applypage.LeaveTypeSelectValue.ToString();
             this.repeater_leave.DataSource = applypage.LeaveList;
@@ -150,7 +151,7 @@ namespace WEBUI.Pages
         {
             if (ddl_leavetype.SelectedValue == "-1")
             {
-                this.literal_errormsg.Text = "*";
+                this.literal_errormsga.Text = "*";
             }
             else
             {
@@ -211,8 +212,17 @@ namespace WEBUI.Pages
         {
             //1,获得数据   2,调用ws,进行插入.  
             List<MODEL.Apply.LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).LeaveList;
-            BLL.Apply.InsertLeave(LeaveList, loginer.userInfo.id, -1,this.tb_remarks.Text.Trim());
-            Response.Redirect("~/pages/main.aspx");
+            string errorMsg = "";
+            int reslut= BLL.Apply.InsertLeave(LeaveList, loginer.userInfo.id, null,this.tb_remarks.Text.Trim(),out errorMsg);
+            if (reslut >= 0)
+            {
+                Response.Redirect("~/pages/main.aspx");
+            }
+            else
+            {
+                this.literal_errormsga.Visible = true;
+                this.literal_errormsga.Text = "Error:"+errorMsg;
+            }
         }
         #endregion
 

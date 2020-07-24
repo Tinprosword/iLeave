@@ -64,6 +64,7 @@ namespace WEBUI.Pages
             this.btn_wait.CssClass = css_unselect;
             this.btn_rejectWith.CssClass = css_unselect;
 
+
             this.repeater_myapplications.DataSource = new string[2];
             this.repeater_myapplications.DataBind();
         }

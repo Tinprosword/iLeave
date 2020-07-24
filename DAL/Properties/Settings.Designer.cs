@@ -52,5 +52,15 @@ namespace DAL.Properties {
                 return ((string)(this["DAL_WebReference_codesetting_CodeSettingsV2"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.19.200:8889/ServicesWithSession/StaffManagementV2.asmx")]
+        public string DAL_WebReference_staff_StaffManagementV2 {
+            get {
+                return ((string)(this["DAL_WebReference_staff_StaffManagementV2"]));
+            }
+        }
     }
 }

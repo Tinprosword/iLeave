@@ -8,18 +8,43 @@ namespace BLL
 {
     public class Application
     {
-        public static List<MODEL.Apply.LeaveData> getListSource(string uid,int applicationID)
+        public static List<MODEL.Apply.LeaveBatch> getListBatch(LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> user)
+        {
+            return new List<MODEL.Apply.LeaveBatch>();
+        }
+
+
+
+        public static List<MODEL.Apply.LeaveData> getListSource(LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> user)
         {
             List<MODEL.Apply.LeaveData> data = new List<MODEL.Apply.LeaveData>();
-            for (int i = 0; i < 1; i++)
+
+            int[] staffids = BLL.Staff.GetStaffids(user.userInfo.id);
+
+            DAL.WebReference_leave.StaffLeaveRequest[] leaves= BLL.Leave.getLeaveAppliationsByStaffid(staffids);
+
+            for (int i = 0; i < leaves.Count(); i++)
             {
-                data.Add(new MODEL.Apply.LeaveData(uid,"05-01周一", 1, 2 ,0, BLL.GlobalVariate.LeaveSatus[0],System.DateTime.Now,"Al"));
-                data.Add(new MODEL.Apply.LeaveData(uid, "05-01周一", 1, 2, 0, BLL.GlobalVariate.LeaveSatus[0], System.DateTime.Now, "Al"));
-                data.Add(new MODEL.Apply.LeaveData(uid, "05-01周一", 1, 2, 0, BLL.GlobalVariate.LeaveSatus[0], System.DateTime.Now, "Al"));
-                data.Add(new MODEL.Apply.LeaveData(uid, "05-01周一", 1, 2, 0, BLL.GlobalVariate.LeaveSatus[0], System.DateTime.Now, "Al"));
-                data.Add(new MODEL.Apply.LeaveData(uid, "05-01周一", 1, 2, 0, BLL.GlobalVariate.LeaveSatus[0], System.DateTime.Now, "Al"));
+                string strDate = leaves[i].LeaveDate.ToString("MM-dd");
+                int section = leaves[i].Section;
+                int typeid = leaves[i].LeaveID;
+                int status = leaves[i].Status;
+                string statusName = ((DAL.WebReference_leave.ApprovalRequestStatus)leaves[i].Status).ToString();
+                DateTime date = leaves[i].LeaveDate;
+                string typecode = leaves[i].LeaveTypeName;
+                string typeDesc= leaves[i].LeaveTypeName;//todo 
+
+
+                data.Add(new MODEL.Apply.LeaveData(user.userInfo.loginName,strDate, section, typeid ,status, statusName, date, typecode, typeDesc));
             }
             return data;
+        }
+
+        public static List<MODEL.Apply.LeaveData> getListSourceByStatus(LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> user, int applicationID, DAL.WebReference_leave.ApprovalRequestStatus status)
+        {
+            List<MODEL.Apply.LeaveData> allLeave = getListSource(user);
+            List<MODEL.Apply.LeaveData> results= allLeave.Where(x => x.status == (int)status).ToList();
+            return allLeave;
         }
 
 

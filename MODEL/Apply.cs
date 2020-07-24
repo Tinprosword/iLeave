@@ -30,11 +30,12 @@ namespace MODEL
             public string date;
             public int sectionid;
             public int typeid;
-            public string typename;
+            public string typeCode;
+            public string typeDescription;
             public int status;
-            public DateTime DateTime;
+            public DateTime LeaveDate;
 
-            public LeaveData(string name, string date, int section, int typeid, int status, string statusstr,DateTime _dateTime, string typen)
+            public LeaveData(string name, string date, int section, int typeid, int status, string statusstr,DateTime _dateTime, string _typecode,string typedesc)
             {
                 this.name = name;
                 this.date = date;
@@ -42,8 +43,9 @@ namespace MODEL
                 this.sectionid = section;
                 this.typeid = typeid;
                 this.status = status;
-                this.DateTime = _dateTime;
-                typename = typen;
+                this.LeaveDate = _dateTime;
+                typeCode = _typecode;
+                typeDescription = typedesc;
             }
         }
 
@@ -99,5 +101,27 @@ namespace MODEL
         }
 
 
+        [Serializable]
+        public class LeaveBatch
+        {
+            public int employmentIDField;
+            public string employmentNumberField;
+            public string engNameField;
+            public string codeField;
+            public string typeField;
+            public int typeIDField;
+            public System.DateTime startDateField;
+            public System.DateTime endDateField;
+            public string startDateSectionField;
+            public string endDateSectionField;
+            public double noOfDaysField;
+            public int requestIDField;
+            public int attachmentIDField;
+            public System.DateTime applyDateField;
+            public System.Nullable<int> delegationToStaffIDField;
+            public int statusField;
+            public int firstEmploymentIDField;
+            public bool isApprovedField;
+        }
     }
 }

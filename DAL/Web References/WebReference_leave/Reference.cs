@@ -29,7 +29,15 @@ namespace DAL.WebReference_leave {
     [System.Web.Services.WebServiceBindingAttribute(Name="LeaveManagementV2Soap", Namespace="http://tempuri.org/")]
     public partial class LeaveManagementV2 : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback InsertStaffLeaveDetailsOperationCompleted;
+        private System.Threading.SendOrPostCallback InsertOnlineLeaveApplicationRequestOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetLeaveCalculationTypesForLeaveTypeOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CreateNewRequestOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetOnlineStaffLeaveRecordByStaffIDBatchModeOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetOnlineStaffLeaveRecordByStaffIDOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -70,38 +78,194 @@ namespace DAL.WebReference_leave {
         }
         
         /// <remarks/>
-        public event InsertStaffLeaveDetailsCompletedEventHandler InsertStaffLeaveDetailsCompleted;
+        public event InsertOnlineLeaveApplicationRequestCompletedEventHandler InsertOnlineLeaveApplicationRequestCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertStaffLeaveDetails", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ErrorMessageInfo InsertStaffLeaveDetails(StaffLeaveDetails[] poStaffLeaveDetailsArray, int piUserID, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] System.Nullable<int> piWorkflowDelegationToStaffID) {
-            object[] results = this.Invoke("InsertStaffLeaveDetails", new object[] {
-                        poStaffLeaveDetailsArray,
+        public event GetLeaveCalculationTypesForLeaveTypeCompletedEventHandler GetLeaveCalculationTypesForLeaveTypeCompleted;
+        
+        /// <remarks/>
+        public event CreateNewRequestCompletedEventHandler CreateNewRequestCompleted;
+        
+        /// <remarks/>
+        public event GetOnlineStaffLeaveRecordByStaffIDBatchModeCompletedEventHandler GetOnlineStaffLeaveRecordByStaffIDBatchModeCompleted;
+        
+        /// <remarks/>
+        public event GetOnlineStaffLeaveRecordByStaffIDCompletedEventHandler GetOnlineStaffLeaveRecordByStaffIDCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertOnlineLeaveApplicationRequest", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ErrorMessageInfo InsertOnlineLeaveApplicationRequest(StaffLeaveRequest[] poStaffLeaveRequest, ApprovalRequestStatus p_enumStatus, int piUserID, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] System.Nullable<int> piWorkflowDelegationToStaffID) {
+            object[] results = this.Invoke("InsertOnlineLeaveApplicationRequest", new object[] {
+                        poStaffLeaveRequest,
+                        p_enumStatus,
                         piUserID,
                         piWorkflowDelegationToStaffID});
             return ((ErrorMessageInfo)(results[0]));
         }
         
         /// <remarks/>
-        public void InsertStaffLeaveDetailsAsync(StaffLeaveDetails[] poStaffLeaveDetailsArray, int piUserID, System.Nullable<int> piWorkflowDelegationToStaffID) {
-            this.InsertStaffLeaveDetailsAsync(poStaffLeaveDetailsArray, piUserID, piWorkflowDelegationToStaffID, null);
+        public void InsertOnlineLeaveApplicationRequestAsync(StaffLeaveRequest[] poStaffLeaveRequest, ApprovalRequestStatus p_enumStatus, int piUserID, System.Nullable<int> piWorkflowDelegationToStaffID) {
+            this.InsertOnlineLeaveApplicationRequestAsync(poStaffLeaveRequest, p_enumStatus, piUserID, piWorkflowDelegationToStaffID, null);
         }
         
         /// <remarks/>
-        public void InsertStaffLeaveDetailsAsync(StaffLeaveDetails[] poStaffLeaveDetailsArray, int piUserID, System.Nullable<int> piWorkflowDelegationToStaffID, object userState) {
-            if ((this.InsertStaffLeaveDetailsOperationCompleted == null)) {
-                this.InsertStaffLeaveDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertStaffLeaveDetailsOperationCompleted);
+        public void InsertOnlineLeaveApplicationRequestAsync(StaffLeaveRequest[] poStaffLeaveRequest, ApprovalRequestStatus p_enumStatus, int piUserID, System.Nullable<int> piWorkflowDelegationToStaffID, object userState) {
+            if ((this.InsertOnlineLeaveApplicationRequestOperationCompleted == null)) {
+                this.InsertOnlineLeaveApplicationRequestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertOnlineLeaveApplicationRequestOperationCompleted);
             }
-            this.InvokeAsync("InsertStaffLeaveDetails", new object[] {
-                        poStaffLeaveDetailsArray,
+            this.InvokeAsync("InsertOnlineLeaveApplicationRequest", new object[] {
+                        poStaffLeaveRequest,
+                        p_enumStatus,
                         piUserID,
-                        piWorkflowDelegationToStaffID}, this.InsertStaffLeaveDetailsOperationCompleted, userState);
+                        piWorkflowDelegationToStaffID}, this.InsertOnlineLeaveApplicationRequestOperationCompleted, userState);
         }
         
-        private void OnInsertStaffLeaveDetailsOperationCompleted(object arg) {
-            if ((this.InsertStaffLeaveDetailsCompleted != null)) {
+        private void OnInsertOnlineLeaveApplicationRequestOperationCompleted(object arg) {
+            if ((this.InsertOnlineLeaveApplicationRequestCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.InsertStaffLeaveDetailsCompleted(this, new InsertStaffLeaveDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.InsertOnlineLeaveApplicationRequestCompleted(this, new InsertOnlineLeaveApplicationRequestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLeaveCalculationTypesForLeaveType", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public LeaveCalculationType[] GetLeaveCalculationTypesForLeaveType(int LeaveID, int StaffID, int EmploymentID) {
+            object[] results = this.Invoke("GetLeaveCalculationTypesForLeaveType", new object[] {
+                        LeaveID,
+                        StaffID,
+                        EmploymentID});
+            return ((LeaveCalculationType[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetLeaveCalculationTypesForLeaveTypeAsync(int LeaveID, int StaffID, int EmploymentID) {
+            this.GetLeaveCalculationTypesForLeaveTypeAsync(LeaveID, StaffID, EmploymentID, null);
+        }
+        
+        /// <remarks/>
+        public void GetLeaveCalculationTypesForLeaveTypeAsync(int LeaveID, int StaffID, int EmploymentID, object userState) {
+            if ((this.GetLeaveCalculationTypesForLeaveTypeOperationCompleted == null)) {
+                this.GetLeaveCalculationTypesForLeaveTypeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLeaveCalculationTypesForLeaveTypeOperationCompleted);
+            }
+            this.InvokeAsync("GetLeaveCalculationTypesForLeaveType", new object[] {
+                        LeaveID,
+                        StaffID,
+                        EmploymentID}, this.GetLeaveCalculationTypesForLeaveTypeOperationCompleted, userState);
+        }
+        
+        private void OnGetLeaveCalculationTypesForLeaveTypeOperationCompleted(object arg) {
+            if ((this.GetLeaveCalculationTypesForLeaveTypeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetLeaveCalculationTypesForLeaveTypeCompleted(this, new GetLeaveCalculationTypesForLeaveTypeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CreateNewRequest", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int CreateNewRequest(MyWorkflowTask p_ExistingWorkflowTask, WorkflowTypeID TaskType, object p_ApprovalRequest, int p_intUserID, string p_strDescription, string p_strFormulatedURL, string baseURL, string p_strWorkflowInfoParameter, int p_intLeaveRequestID, int p_intEmploymentID) {
+            object[] results = this.Invoke("CreateNewRequest", new object[] {
+                        p_ExistingWorkflowTask,
+                        TaskType,
+                        p_ApprovalRequest,
+                        p_intUserID,
+                        p_strDescription,
+                        p_strFormulatedURL,
+                        baseURL,
+                        p_strWorkflowInfoParameter,
+                        p_intLeaveRequestID,
+                        p_intEmploymentID});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CreateNewRequestAsync(MyWorkflowTask p_ExistingWorkflowTask, WorkflowTypeID TaskType, object p_ApprovalRequest, int p_intUserID, string p_strDescription, string p_strFormulatedURL, string baseURL, string p_strWorkflowInfoParameter, int p_intLeaveRequestID, int p_intEmploymentID) {
+            this.CreateNewRequestAsync(p_ExistingWorkflowTask, TaskType, p_ApprovalRequest, p_intUserID, p_strDescription, p_strFormulatedURL, baseURL, p_strWorkflowInfoParameter, p_intLeaveRequestID, p_intEmploymentID, null);
+        }
+        
+        /// <remarks/>
+        public void CreateNewRequestAsync(MyWorkflowTask p_ExistingWorkflowTask, WorkflowTypeID TaskType, object p_ApprovalRequest, int p_intUserID, string p_strDescription, string p_strFormulatedURL, string baseURL, string p_strWorkflowInfoParameter, int p_intLeaveRequestID, int p_intEmploymentID, object userState) {
+            if ((this.CreateNewRequestOperationCompleted == null)) {
+                this.CreateNewRequestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateNewRequestOperationCompleted);
+            }
+            this.InvokeAsync("CreateNewRequest", new object[] {
+                        p_ExistingWorkflowTask,
+                        TaskType,
+                        p_ApprovalRequest,
+                        p_intUserID,
+                        p_strDescription,
+                        p_strFormulatedURL,
+                        baseURL,
+                        p_strWorkflowInfoParameter,
+                        p_intLeaveRequestID,
+                        p_intEmploymentID}, this.CreateNewRequestOperationCompleted, userState);
+        }
+        
+        private void OnCreateNewRequestOperationCompleted(object arg) {
+            if ((this.CreateNewRequestCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CreateNewRequestCompleted(this, new CreateNewRequestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetOnlineStaffLeaveRecordByStaffIDBatchMode", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public StaffLeaveDetailInBatch[] GetOnlineStaffLeaveRecordByStaffIDBatchMode(int[] p_intArrStaffID, System.DateTime p_dateStartDate, System.DateTime p_dateEndDate) {
+            object[] results = this.Invoke("GetOnlineStaffLeaveRecordByStaffIDBatchMode", new object[] {
+                        p_intArrStaffID,
+                        p_dateStartDate,
+                        p_dateEndDate});
+            return ((StaffLeaveDetailInBatch[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetOnlineStaffLeaveRecordByStaffIDBatchModeAsync(int[] p_intArrStaffID, System.DateTime p_dateStartDate, System.DateTime p_dateEndDate) {
+            this.GetOnlineStaffLeaveRecordByStaffIDBatchModeAsync(p_intArrStaffID, p_dateStartDate, p_dateEndDate, null);
+        }
+        
+        /// <remarks/>
+        public void GetOnlineStaffLeaveRecordByStaffIDBatchModeAsync(int[] p_intArrStaffID, System.DateTime p_dateStartDate, System.DateTime p_dateEndDate, object userState) {
+            if ((this.GetOnlineStaffLeaveRecordByStaffIDBatchModeOperationCompleted == null)) {
+                this.GetOnlineStaffLeaveRecordByStaffIDBatchModeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetOnlineStaffLeaveRecordByStaffIDBatchModeOperationCompleted);
+            }
+            this.InvokeAsync("GetOnlineStaffLeaveRecordByStaffIDBatchMode", new object[] {
+                        p_intArrStaffID,
+                        p_dateStartDate,
+                        p_dateEndDate}, this.GetOnlineStaffLeaveRecordByStaffIDBatchModeOperationCompleted, userState);
+        }
+        
+        private void OnGetOnlineStaffLeaveRecordByStaffIDBatchModeOperationCompleted(object arg) {
+            if ((this.GetOnlineStaffLeaveRecordByStaffIDBatchModeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetOnlineStaffLeaveRecordByStaffIDBatchModeCompleted(this, new GetOnlineStaffLeaveRecordByStaffIDBatchModeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetOnlineStaffLeaveRecordByStaffID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public StaffLeaveRequest[] GetOnlineStaffLeaveRecordByStaffID(int[] p_intArrStaffID) {
+            object[] results = this.Invoke("GetOnlineStaffLeaveRecordByStaffID", new object[] {
+                        p_intArrStaffID});
+            return ((StaffLeaveRequest[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetOnlineStaffLeaveRecordByStaffIDAsync(int[] p_intArrStaffID) {
+            this.GetOnlineStaffLeaveRecordByStaffIDAsync(p_intArrStaffID, null);
+        }
+        
+        /// <remarks/>
+        public void GetOnlineStaffLeaveRecordByStaffIDAsync(int[] p_intArrStaffID, object userState) {
+            if ((this.GetOnlineStaffLeaveRecordByStaffIDOperationCompleted == null)) {
+                this.GetOnlineStaffLeaveRecordByStaffIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetOnlineStaffLeaveRecordByStaffIDOperationCompleted);
+            }
+            this.InvokeAsync("GetOnlineStaffLeaveRecordByStaffID", new object[] {
+                        p_intArrStaffID}, this.GetOnlineStaffLeaveRecordByStaffIDOperationCompleted, userState);
+        }
+        
+        private void OnGetOnlineStaffLeaveRecordByStaffIDOperationCompleted(object arg) {
+            if ((this.GetOnlineStaffLeaveRecordByStaffIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetOnlineStaffLeaveRecordByStaffIDCompleted(this, new GetOnlineStaffLeaveRecordByStaffIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -130,25 +294,21 @@ namespace DAL.WebReference_leave {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class StaffLeaveDetails {
+    public partial class StaffLeaveRequest {
         
         private int idField;
         
+        private int statusField;
+        
         private int employmentIDField;
         
-        private string employmentNumberField;
+        private int leaveIDField;
         
-        private string engNameField;
+        private string leaveTypeNameField;
         
-        private string chiNameField;
+        private System.DateTime leaveDateField;
         
-        private string typeField;
-        
-        private int typeIDField;
-        
-        private System.DateTime leaveFromField;
-        
-        private System.DateTime leaveToField;
+        private bool isHalfDayField;
         
         private double unitField;
         
@@ -156,23 +316,19 @@ namespace DAL.WebReference_leave {
         
         private string deleteKeyField;
         
-        private int sectionField;
-        
-        private string codeField;
-        
-        private System.DateTime dateField;
-        
-        private string workingHourPatternField;
-        
-        private double workingHourHalfDayField;
-        
-        private double workingHourAMField;
-        
-        private double workingHourPMField;
+        private string descriptionField;
         
         private System.DateTime createDateField;
         
-        private int requestIDField;
+        private int sectionField;
+        
+        private string employmentNumberField;
+        
+        private string compareKeyField;
+        
+        private string nameField;
+        
+        private string nameCHField;
         
         private string holidayCodeField;
         
@@ -180,23 +336,29 @@ namespace DAL.WebReference_leave {
         
         private string leaveCalculationTypeDescField;
         
+        private int firstEmploymentIDField;
+        
+        private string firstEmploymentNumberField;
+        
+        private bool isApprovedField;
+        
+        private int requestIDField;
+        
+        private System.Nullable<int> delegationToStaffIDField;
+        
         private double leaveHoursField;
         
         private double totalWorkHoursField;
         
         private double sectionsField;
         
-        private bool isHalfDayField;
+        private System.DateTime leaveHoursFromField;
+        
+        private System.DateTime leaveHoursToField;
         
         private int displaySectionField;
         
         private string displayUnitField;
-        
-        private string displaySectionCombinedField;
-        
-        private string securityGroupCodeField;
-        
-        private int approvalStatusField;
         
         /// <remarks/>
         public int ID {
@@ -205,6 +367,16 @@ namespace DAL.WebReference_leave {
             }
             set {
                 this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
             }
         }
         
@@ -219,72 +391,42 @@ namespace DAL.WebReference_leave {
         }
         
         /// <remarks/>
-        public string EmploymentNumber {
+        public int LeaveID {
             get {
-                return this.employmentNumberField;
+                return this.leaveIDField;
             }
             set {
-                this.employmentNumberField = value;
+                this.leaveIDField = value;
             }
         }
         
         /// <remarks/>
-        public string EngName {
+        public string LeaveTypeName {
             get {
-                return this.engNameField;
+                return this.leaveTypeNameField;
             }
             set {
-                this.engNameField = value;
+                this.leaveTypeNameField = value;
             }
         }
         
         /// <remarks/>
-        public string ChiName {
+        public System.DateTime LeaveDate {
             get {
-                return this.chiNameField;
+                return this.leaveDateField;
             }
             set {
-                this.chiNameField = value;
+                this.leaveDateField = value;
             }
         }
         
         /// <remarks/>
-        public string Type {
+        public bool IsHalfDay {
             get {
-                return this.typeField;
+                return this.isHalfDayField;
             }
             set {
-                this.typeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int TypeID {
-            get {
-                return this.typeIDField;
-            }
-            set {
-                this.typeIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime LeaveFrom {
-            get {
-                return this.leaveFromField;
-            }
-            set {
-                this.leaveFromField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime LeaveTo {
-            get {
-                return this.leaveToField;
-            }
-            set {
-                this.leaveToField = value;
+                this.isHalfDayField = value;
             }
         }
         
@@ -319,72 +461,12 @@ namespace DAL.WebReference_leave {
         }
         
         /// <remarks/>
-        public int Section {
+        public string Description {
             get {
-                return this.sectionField;
+                return this.descriptionField;
             }
             set {
-                this.sectionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Code {
-            get {
-                return this.codeField;
-            }
-            set {
-                this.codeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime Date {
-            get {
-                return this.dateField;
-            }
-            set {
-                this.dateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string WorkingHourPattern {
-            get {
-                return this.workingHourPatternField;
-            }
-            set {
-                this.workingHourPatternField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public double WorkingHourHalfDay {
-            get {
-                return this.workingHourHalfDayField;
-            }
-            set {
-                this.workingHourHalfDayField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public double WorkingHourAM {
-            get {
-                return this.workingHourAMField;
-            }
-            set {
-                this.workingHourAMField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public double WorkingHourPM {
-            get {
-                return this.workingHourPMField;
-            }
-            set {
-                this.workingHourPMField = value;
+                this.descriptionField = value;
             }
         }
         
@@ -399,12 +481,52 @@ namespace DAL.WebReference_leave {
         }
         
         /// <remarks/>
-        public int RequestID {
+        public int Section {
             get {
-                return this.requestIDField;
+                return this.sectionField;
             }
             set {
-                this.requestIDField = value;
+                this.sectionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string EmploymentNumber {
+            get {
+                return this.employmentNumberField;
+            }
+            set {
+                this.employmentNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CompareKey {
+            get {
+                return this.compareKeyField;
+            }
+            set {
+                this.compareKeyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string NameCH {
+            get {
+                return this.nameCHField;
+            }
+            set {
+                this.nameCHField = value;
             }
         }
         
@@ -439,6 +561,57 @@ namespace DAL.WebReference_leave {
         }
         
         /// <remarks/>
+        public int FirstEmploymentID {
+            get {
+                return this.firstEmploymentIDField;
+            }
+            set {
+                this.firstEmploymentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string FirstEmploymentNumber {
+            get {
+                return this.firstEmploymentNumberField;
+            }
+            set {
+                this.firstEmploymentNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsApproved {
+            get {
+                return this.isApprovedField;
+            }
+            set {
+                this.isApprovedField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RequestID {
+            get {
+                return this.requestIDField;
+            }
+            set {
+                this.requestIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> DelegationToStaffID {
+            get {
+                return this.delegationToStaffIDField;
+            }
+            set {
+                this.delegationToStaffIDField = value;
+            }
+        }
+        
+        /// <remarks/>
         public double LeaveHours {
             get {
                 return this.leaveHoursField;
@@ -469,12 +642,22 @@ namespace DAL.WebReference_leave {
         }
         
         /// <remarks/>
-        public bool IsHalfDay {
+        public System.DateTime LeaveHoursFrom {
             get {
-                return this.isHalfDayField;
+                return this.leaveHoursFromField;
             }
             set {
-                this.isHalfDayField = value;
+                this.leaveHoursFromField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime LeaveHoursTo {
+            get {
+                return this.leaveHoursToField;
+            }
+            set {
+                this.leaveHoursToField = value;
             }
         }
         
@@ -497,34 +680,584 @@ namespace DAL.WebReference_leave {
                 this.displayUnitField = value;
             }
         }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class StaffLeaveDetailInBatch {
+        
+        private int employmentIDField;
+        
+        private string employmentNumberField;
+        
+        private string engNameField;
+        
+        private string codeField;
+        
+        private string typeField;
+        
+        private int typeIDField;
+        
+        private System.DateTime startDateField;
+        
+        private System.DateTime endDateField;
+        
+        private string startDateSectionField;
+        
+        private string endDateSectionField;
+        
+        private double noOfDaysField;
+        
+        private int requestIDField;
+        
+        private int attachmentIDField;
+        
+        private System.DateTime applyDateField;
+        
+        private System.Nullable<int> delegationToStaffIDField;
+        
+        private int statusField;
+        
+        private int firstEmploymentIDField;
+        
+        private bool isApprovedField;
         
         /// <remarks/>
-        public string DisplaySectionCombined {
+        public int EmploymentID {
             get {
-                return this.displaySectionCombinedField;
+                return this.employmentIDField;
             }
             set {
-                this.displaySectionCombinedField = value;
+                this.employmentIDField = value;
             }
         }
         
         /// <remarks/>
-        public string SecurityGroupCode {
+        public string EmploymentNumber {
             get {
-                return this.securityGroupCodeField;
+                return this.employmentNumberField;
             }
             set {
-                this.securityGroupCodeField = value;
+                this.employmentNumberField = value;
             }
         }
         
         /// <remarks/>
-        public int ApprovalStatus {
+        public string EngName {
             get {
-                return this.approvalStatusField;
+                return this.engNameField;
             }
             set {
-                this.approvalStatusField = value;
+                this.engNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int TypeID {
+            get {
+                return this.typeIDField;
+            }
+            set {
+                this.typeIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime StartDate {
+            get {
+                return this.startDateField;
+            }
+            set {
+                this.startDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime EndDate {
+            get {
+                return this.endDateField;
+            }
+            set {
+                this.endDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string StartDateSection {
+            get {
+                return this.startDateSectionField;
+            }
+            set {
+                this.startDateSectionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string EndDateSection {
+            get {
+                return this.endDateSectionField;
+            }
+            set {
+                this.endDateSectionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double NoOfDays {
+            get {
+                return this.noOfDaysField;
+            }
+            set {
+                this.noOfDaysField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RequestID {
+            get {
+                return this.requestIDField;
+            }
+            set {
+                this.requestIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int AttachmentID {
+            get {
+                return this.attachmentIDField;
+            }
+            set {
+                this.attachmentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ApplyDate {
+            get {
+                return this.applyDateField;
+            }
+            set {
+                this.applyDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> DelegationToStaffID {
+            get {
+                return this.delegationToStaffIDField;
+            }
+            set {
+                this.delegationToStaffIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int FirstEmploymentID {
+            get {
+                return this.firstEmploymentIDField;
+            }
+            set {
+                this.firstEmploymentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsApproved {
+            get {
+                return this.isApprovedField;
+            }
+            set {
+                this.isApprovedField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class MyWorkflowTask {
+        
+        private int idField;
+        
+        private int userIDField;
+        
+        private int inOutTypeIDField;
+        
+        private int typeIDField;
+        
+        private int workflowInfoIDField;
+        
+        private int currentStepField;
+        
+        private string typeNameField;
+        
+        private string descriptionField;
+        
+        private string formulatedURLField;
+        
+        private int leaveRequestIDField;
+        
+        private System.DateTime modifiedDateField;
+        
+        private int modifiedUserField;
+        
+        private System.DateTime createDateField;
+        
+        private int createUserField;
+        
+        private bool isReadField;
+        
+        private string remarkField;
+        
+        private string fromUserNameField;
+        
+        private int statusField;
+        
+        private int employmentIDField;
+        
+        private string positionDescriptionField;
+        
+        private string toUserNameField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int UserID {
+            get {
+                return this.userIDField;
+            }
+            set {
+                this.userIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int InOutTypeID {
+            get {
+                return this.inOutTypeIDField;
+            }
+            set {
+                this.inOutTypeIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int TypeID {
+            get {
+                return this.typeIDField;
+            }
+            set {
+                this.typeIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int WorkflowInfoID {
+            get {
+                return this.workflowInfoIDField;
+            }
+            set {
+                this.workflowInfoIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CurrentStep {
+            get {
+                return this.currentStepField;
+            }
+            set {
+                this.currentStepField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string TypeName {
+            get {
+                return this.typeNameField;
+            }
+            set {
+                this.typeNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string FormulatedURL {
+            get {
+                return this.formulatedURLField;
+            }
+            set {
+                this.formulatedURLField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int LeaveRequestID {
+            get {
+                return this.leaveRequestIDField;
+            }
+            set {
+                this.leaveRequestIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ModifiedDate {
+            get {
+                return this.modifiedDateField;
+            }
+            set {
+                this.modifiedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ModifiedUser {
+            get {
+                return this.modifiedUserField;
+            }
+            set {
+                this.modifiedUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CreateUser {
+            get {
+                return this.createUserField;
+            }
+            set {
+                this.createUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsRead {
+            get {
+                return this.isReadField;
+            }
+            set {
+                this.isReadField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Remark {
+            get {
+                return this.remarkField;
+            }
+            set {
+                this.remarkField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string FromUserName {
+            get {
+                return this.fromUserNameField;
+            }
+            set {
+                this.fromUserNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int EmploymentID {
+            get {
+                return this.employmentIDField;
+            }
+            set {
+                this.employmentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PositionDescription {
+            get {
+                return this.positionDescriptionField;
+            }
+            set {
+                this.positionDescriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ToUserName {
+            get {
+                return this.toUserNameField;
+            }
+            set {
+                this.toUserNameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LeaveCalculationType {
+        
+        private int idField;
+        
+        private string descriptionField;
+        
+        private System.DateTime modifiedDateField;
+        
+        private int modifiedUserField;
+        
+        private System.DateTime createDateField;
+        
+        private int createUserField;
+        
+        private int statusField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ModifiedDate {
+            get {
+                return this.modifiedDateField;
+            }
+            set {
+                this.modifiedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ModifiedUser {
+            get {
+                return this.modifiedUserField;
+            }
+            set {
+                this.modifiedUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CreateUser {
+            get {
+                return this.createUserField;
+            }
+            set {
+                this.createUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
             }
         }
     }
@@ -723,18 +1456,92 @@ namespace DAL.WebReference_leave {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public enum ApprovalRequestStatus {
+        
+        /// <remarks/>
+        SENDEMAIL,
+        
+        /// <remarks/>
+        NEW,
+        
+        /// <remarks/>
+        WAIT_FOR_APPROVE,
+        
+        /// <remarks/>
+        APPROVE,
+        
+        /// <remarks/>
+        REJECT,
+        
+        /// <remarks/>
+        CANCEL,
+        
+        /// <remarks/>
+        WAIT_FOR_CANCEL,
+        
+        /// <remarks/>
+        CONFIRM_CANCEL,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public enum WorkflowTypeID {
+        
+        /// <remarks/>
+        LEAVE_APPLICATION,
+        
+        /// <remarks/>
+        UPDATE_PERSON_INFO,
+        
+        /// <remarks/>
+        UPDATE_TRAINING_RECORD,
+        
+        /// <remarks/>
+        UPDATE_QUALIFICATION_RECORD,
+        
+        /// <remarks/>
+        PAYROLL_LOCK,
+        
+        /// <remarks/>
+        CLOT_APPLICATION,
+        
+        /// <remarks/>
+        OT_APPROVAL,
+        
+        /// <remarks/>
+        MEDICAL_CLAIM,
+        
+        /// <remarks/>
+        ATTENDANCE,
+        
+        /// <remarks/>
+        DOCTOR_VISIT,
+        
+        /// <remarks/>
+        CANCEL_LEAVE_APPLICATION,
+        
+        /// <remarks/>
+        EXPENSE_CLAIM,
+    }
+    
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void InsertStaffLeaveDetailsCompletedEventHandler(object sender, InsertStaffLeaveDetailsCompletedEventArgs e);
+    public delegate void InsertOnlineLeaveApplicationRequestCompletedEventHandler(object sender, InsertOnlineLeaveApplicationRequestCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class InsertStaffLeaveDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class InsertOnlineLeaveApplicationRequestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal InsertStaffLeaveDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal InsertOnlineLeaveApplicationRequestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -744,6 +1551,110 @@ namespace DAL.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((ErrorMessageInfo)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetLeaveCalculationTypesForLeaveTypeCompletedEventHandler(object sender, GetLeaveCalculationTypesForLeaveTypeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetLeaveCalculationTypesForLeaveTypeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetLeaveCalculationTypesForLeaveTypeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public LeaveCalculationType[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((LeaveCalculationType[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void CreateNewRequestCompletedEventHandler(object sender, CreateNewRequestCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CreateNewRequestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CreateNewRequestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetOnlineStaffLeaveRecordByStaffIDBatchModeCompletedEventHandler(object sender, GetOnlineStaffLeaveRecordByStaffIDBatchModeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetOnlineStaffLeaveRecordByStaffIDBatchModeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetOnlineStaffLeaveRecordByStaffIDBatchModeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public StaffLeaveDetailInBatch[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((StaffLeaveDetailInBatch[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetOnlineStaffLeaveRecordByStaffIDCompletedEventHandler(object sender, GetOnlineStaffLeaveRecordByStaffIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetOnlineStaffLeaveRecordByStaffIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetOnlineStaffLeaveRecordByStaffIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public StaffLeaveRequest[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((StaffLeaveRequest[])(this.results[0]));
             }
         }
     }

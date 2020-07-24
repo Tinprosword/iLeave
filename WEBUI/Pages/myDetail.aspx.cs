@@ -29,14 +29,14 @@ namespace WEBUI.Pages
         protected override void InitUIOnFirstLoad4()
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().application_detailback, BLL.MultiLanguageHelper.GetLanguagePacket().application_detailcurrent, "~/pages/myapplications.aspx");
-            List<MODEL.Apply.LeaveData> LeaveList = BLL.Application.getListSource(loginer.loginID, 3);
+            List<MODEL.Apply.LeaveData> LeaveList = BLL.Application.getListSource(loginer);
             if (LeaveList != null)
             {
                 this.repeater_leave.DataSource = LeaveList;
                 this.repeater_leave.DataBind();
             }
 
-            List<MODEL.Apply.UploadPic> attandance = BLL.Application.getAttendance(loginer.loginID, 3);
+            List<MODEL.Apply.UploadPic> attandance = BLL.Application.getAttendance(loginer.loginName, 3);
             if (attandance != null)
             {
                 this.repeater_pic.DataSource = attandance;

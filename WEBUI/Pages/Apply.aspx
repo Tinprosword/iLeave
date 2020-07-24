@@ -14,8 +14,7 @@
             <tr>
                 <td><asp:Literal ID="lt_leave" runat="server">Leave</asp:Literal></td>
                 <td>
-                    <asp:DropDownList ID="ddl_leavetype" runat="server" Width="90%" AutoPostBack="true" jqname="ddl_leavetype">
-                    </asp:DropDownList><asp:label ID="literal_errormsg" runat="server" style="color:red"></asp:label>
+                    <asp:DropDownList ID="ddl_leavetype" runat="server" Width="90%" AutoPostBack="true" jqname="ddl_leavetype"></asp:DropDownList>
                 </td>
             </tr>
             <tr>
@@ -49,6 +48,9 @@
                 <td><asp:Literal ID="lt_remarks" runat="server">Remarks</asp:Literal></td>
                 <td><asp:TextBox ID="tb_remarks" runat="server" Width="90%"></asp:TextBox> </td>
             </tr>
+            <tr>
+                <td colspan="2"><asp:Literal ID="literal_errormsga" runat="server" Visible="false"></asp:Literal></td>
+            </tr>
         </table>
         <div class=" col-xs-12" style="height:2px"></div>
         <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white">
@@ -58,7 +60,7 @@
             <table class="col-xs-12 lsu-table-sm">
                 <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                     <ItemTemplate>
-                        <tr><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-4"><%#((MODEL.Apply.LeaveData)Container.DataItem).typename %></td>
+                        <tr><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-4"><%#((MODEL.Apply.LeaveData)Container.DataItem).typeCode %></td>
                             <td class="col-xs-4">
                                 <asp:DropDownList ID="rp_dropdl_section" runat="server" Width="90%"  OnSelectedIndexChanged="rp_dropdl_section_SelectedIndexChanged" AutoPostBack="true" fix="<%#Container.ItemIndex%>">
                                     <asp:ListItem Text="Full day" Value="0"  Selected="true"/>
@@ -70,7 +72,7 @@
                             <td class="col-xs-1"><asp:ImageButton ID="delete" Width="28px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="20px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.LeaveData)Container.DataItem).typeid %>" /></td></tr>
                     </ItemTemplate>
                     <AlternatingItemTemplate>
-                        <tr style="background-color:aliceblue"><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-4"><%#((MODEL.Apply.LeaveData)Container.DataItem).typename %></td>
+                        <tr style="background-color:aliceblue"><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-4"><%#((MODEL.Apply.LeaveData)Container.DataItem).typeCode %></td>
                             <td class="col-xs-4">
                                 <asp:DropDownList ID="rp_dropdl_section" runat="server" Width="90%" OnSelectedIndexChanged="rp_dropdl_section_SelectedIndexChanged" AutoPostBack="true" fix="<%#Container.ItemIndex%>">
                                     <asp:ListItem Text="Full day" Value="0"  Selected="true"/>

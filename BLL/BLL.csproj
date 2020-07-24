@@ -43,19 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application.cs" />
+    <Compile Include="Leave.cs" />
+    <Compile Include="Page\Application.cs" />
     <Compile Include="Page\Apply.cs" />
-    <Compile Include="Calendar.cs" />
+    <Compile Include="Page\Calendar.cs" />
     <Compile Include="CodeSetting.cs" />
-    <Compile Include="CustomLoginTemplate.cs">
+    <Compile Include="Page\CustomLoginTemplate.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DataDemo.cs" />
-    <Compile Include="GlobalVariate.cs" />
-    <Compile Include="LoginManager.cs" />
-    <Compile Include="MultiLanguageHelper.cs" />
-    <Compile Include="MyApplications.cs" />
+    <Compile Include="Page\DataDemo.cs" />
+    <Compile Include="Page\GlobalVariate.cs" />
+    <Compile Include="Page\LoginManager.cs" />
+    <Compile Include="Page\MultiLanguageHelper.cs" />
+    <Compile Include="Page\MyApplications.cs" />
+    <Compile Include="Page\common.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Staff.cs" />
     <Compile Include="User_wsref.cs" />
   </ItemGroup>
   <ItemGroup>

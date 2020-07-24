@@ -9,7 +9,7 @@ namespace MODEL
     public class UserInfo
     {
         public int id;
-        public string loginid;
+        public string loginName;
         public string nickname;
         public string position_leaveType;
         public string sessionid;
@@ -17,7 +17,7 @@ namespace MODEL
         public UserInfo(int id, string loginid, string nickname, string position_leaveType, string sessionid)
         {
             this.id = id;
-            this.loginid = loginid;
+            this.loginName = loginid;
             this.nickname = nickname;
             this.position_leaveType = position_leaveType;
             this.sessionid = sessionid;
