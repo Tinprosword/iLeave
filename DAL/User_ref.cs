@@ -31,5 +31,6 @@ namespace DAL
             DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
             return webServicesHelper.ws_user.IsLogin();
         }
+
     }
 }

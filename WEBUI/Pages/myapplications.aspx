@@ -22,10 +22,10 @@
             <table class="col-xs-12 lsu-table-xs" style="font-size:15px">
                 <asp:Repeater ID="repeater_myapplications" runat="server">
                     <ItemTemplate>
-                        <tr style="height:42px"><td class="col-xs-4" style="padding:0px">Sick Leave</td><td class="col-xs-7" style="padding:0px">2020-01-05_2020-1-7 (2天)</td><td class="col-xs-1" style="padding:0px"><asp:LinkButton ID="lb" OnClick="lb_Click" runat="server" style="font-size:24px">></asp:LinkButton></td></tr>
+                        <tr style="height:42px"><td class="col-xs-4" style="padding:0px"><%# ((MODEL.Apply.LeaveBatch)Container.DataItem).typeCode %></td><td class="col-xs-7" style="padding:0px"><%# ((MODEL.Apply.LeaveBatch)Container.DataItem).leaveDasyDesc %></td><td class="col-xs-1" style="padding:0px"><asp:LinkButton ID="lb" OnClick="lb_Click" runat="server" CommandArgument="<%# ((MODEL.Apply.LeaveBatch)Container.DataItem).requestID %>" style="font-size:24px">></asp:LinkButton></td></tr>
                     </ItemTemplate>
                     <AlternatingItemTemplate>
-                        <tr style="background-color:aliceblue;height:42px"><td class="col-xs-4" style="padding:0px">Sick Leave</td><td class="col-xs-7" style="padding:0px">2020-01-05_2020-1-7 (2天)</td><td class="col-xs-1" style="padding:0px"><asp:LinkButton ID="lb" OnClick="lb_Click" runat="server" style="font-size:24px">></asp:LinkButton></td></tr>
+                        <tr style="background-color:aliceblue;height:42px"><td class="col-xs-4" style="padding:0px"><%# ((MODEL.Apply.LeaveBatch)Container.DataItem).typeCode %></td><td class="col-xs-7" style="padding:0px"><%# ((MODEL.Apply.LeaveBatch)Container.DataItem).leaveDasyDesc %></td><td class="col-xs-1" style="padding:0px"><asp:LinkButton ID="lb" CommandArgument="<%# ((MODEL.Apply.LeaveBatch)Container.DataItem).requestID %>" OnClick="lb_Click" runat="server" style="font-size:24px">></asp:LinkButton></td></tr>
                     </AlternatingItemTemplate>
                 </asp:Repeater>
             </table>

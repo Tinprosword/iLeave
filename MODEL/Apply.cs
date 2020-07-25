@@ -104,24 +104,28 @@ namespace MODEL
         [Serializable]
         public class LeaveBatch
         {
-            public int employmentIDField;
-            public string employmentNumberField;
-            public string engNameField;
-            public string codeField;
-            public string typeField;
-            public int typeIDField;
-            public System.DateTime startDateField;
-            public System.DateTime endDateField;
-            public string startDateSectionField;
-            public string endDateSectionField;
-            public double noOfDaysField;
-            public int requestIDField;
-            public int attachmentIDField;
-            public System.DateTime applyDateField;
-            public System.Nullable<int> delegationToStaffIDField;
-            public int statusField;
-            public int firstEmploymentIDField;
-            public bool isApprovedField;
+            public int requestID;
+            public string name;
+            public string leaveDasyDesc;
+            public int sectionid;
+            public int typeid;
+            public string typeCode;
+            public string typeDescription;
+            public int status;
+
+            public LeaveBatch(string name, string date, int section, int typeid, int status, string statusstr,  string _typecode, string typedesc,int _requestID)
+            {
+                this.name = name;
+                this.leaveDasyDesc = date;
+                this.typeid = typeid;
+                this.sectionid = section;
+                this.typeid = typeid;
+                this.status = status;
+                typeCode = _typecode;
+                typeDescription = typedesc;
+                requestID = _requestID;
+            }
+
         }
     }
 }

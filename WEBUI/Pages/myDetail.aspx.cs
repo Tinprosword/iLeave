@@ -29,7 +29,7 @@ namespace WEBUI.Pages
         protected override void InitUIOnFirstLoad4()
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().application_detailback, BLL.MultiLanguageHelper.GetLanguagePacket().application_detailcurrent, "~/pages/myapplications.aspx");
-            List<MODEL.Apply.LeaveData> LeaveList = BLL.Application.getListSource(loginer);
+            List<MODEL.Apply.LeaveData> LeaveList = BLL.Application.getLeaveDetails(loginer,1);
             if (LeaveList != null)
             {
                 this.repeater_leave.DataSource = LeaveList;
@@ -42,7 +42,6 @@ namespace WEBUI.Pages
                 this.repeater_pic.DataSource = attandance;
                 this.repeater_pic.DataBind();
             }
-
             SetupMultiLanguage();
         }
 
