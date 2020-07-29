@@ -11,7 +11,7 @@ namespace BLL
     {
         public static LeaveInfo[] GetLeaveInfo()
         {
-            BLL.LoginManager.CheckWsLogin();
+            BLL.User_wsref.CheckWsLogin();
             return DAL.CodeSetting.GetLeaveInfo();
         }
     }

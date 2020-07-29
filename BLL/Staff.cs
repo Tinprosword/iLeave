@@ -10,7 +10,7 @@ namespace BLL
     {
         public static DAL.WebReference_staff.BasicStaffInfo[] GetStaff(int uid)
         {
-            BLL.LoginManager.CheckWsLogin();
+            BLL.User_wsref.CheckWsLogin();
             return DAL.Staff.GetStaffByid(uid);
         }
 

@@ -136,25 +136,25 @@ namespace WEBUI.Pages
             }
             if (from == null)
             {
-                result = BLL.Application.getLeaveBatch(uid);
+                result = BLL.Leave.GetLeaveMaster(uid);
             }
             else
             {
                 DateTime datefrom = (DateTime)from;
-                result = BLL.Application.getLeaveBatch(uid, datefrom);
+                result = BLL.Leave.GetLeaveMaster(uid, datefrom);
             }
 
             if (chooseStatus == 0)
             {
-                result = result.Where(x => x.status ==(int)BLL.Application.ApprovalRequestStatus.WAIT_FOR_APPROVE).ToList();
+                result = result.Where(x => x.status ==(int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE).ToList();
             }
             else if (chooseStatus == 1)
             {
-                result = result.Where(x => x.status == (int)BLL.Application.ApprovalRequestStatus.APPROVE).ToList();
+                result = result.Where(x => x.status == (int)BLL.GlobalVariate.ApprovalRequestStatus.APPROVE).ToList();
             }
             else
             {
-                result = result.Where(x => x.status == (int)BLL.Application.ApprovalRequestStatus.REJECT).ToList();
+                result = result.Where(x => x.status == (int)BLL.GlobalVariate.ApprovalRequestStatus.REJECT).ToList();
             }
             return result;
         }

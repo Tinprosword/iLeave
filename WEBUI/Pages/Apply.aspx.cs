@@ -88,7 +88,7 @@ namespace WEBUI.Pages
                 ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
                 this.literal_applier.Text = loginer.loginName + "  " + loginer.userInfo.nickname;
 
-                List<LSLibrary.WebAPP.ValueText> typedata=BLL.Apply.GetLeaveType();
+                List<LSLibrary.WebAPP.ValueText> typedata=BLL.Leave.GetLeaveType();
                 this.ddl_leavetype.DataSource = typedata;
                 this.ddl_leavetype.DataValueField = "mvalue";
                 this.ddl_leavetype.DataTextField = "mtext";
@@ -213,7 +213,7 @@ namespace WEBUI.Pages
             //1,获得数据   2,调用ws,进行插入.  
             List<MODEL.Apply.LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).LeaveList;
             string errorMsg = "";
-            int reslut= BLL.Apply.InsertLeave(LeaveList, loginer.userInfo.id, null,this.tb_remarks.Text.Trim(),out errorMsg);
+            int reslut= BLL.Leave.InsertLeave(LeaveList, loginer.userInfo.id, null,this.tb_remarks.Text.Trim(),out errorMsg);
             if (reslut >= 0)
             {
                 Response.Redirect("~/pages/main.aspx");

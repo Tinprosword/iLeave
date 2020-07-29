@@ -77,7 +77,7 @@ namespace WEBUI.Pages
             obj.ForeColor = LSLibrary.MyColors.ParseColor("#000000");
 
             this.Calendar1.SelectedDate = System.DateTime.Now;
-            this.repeater_leave.DataSource = BLL.Calendar.getListSource(loginer.loginName, this.Calendar1.SelectedDate);
+            this.repeater_leave.DataSource = BLL.Leave.getListSource(loginer.loginName, this.Calendar1.SelectedDate);
             this.repeater_leave.DataBind();
             SetupMultiLanguage();
         }
@@ -130,7 +130,7 @@ namespace WEBUI.Pages
             System.DateTime guardTime = new DateTime(2020, 07, 21);//7507
             System.DateTime selectDate = guardTime.AddDays(date - 7507);
             calendar.SelectedDate = selectDate;
-            this.repeater_leave.DataSource = BLL.Calendar.getListSource(loginer.loginName,calendar.SelectedDate);
+            this.repeater_leave.DataSource = BLL.Leave.getListSource(loginer.loginName,calendar.SelectedDate);
             this.repeater_leave.DataBind();
 
             if (Request.QueryString["action"] != null && Request.QueryString["action"] == "apply")
@@ -141,7 +141,7 @@ namespace WEBUI.Pages
 
         protected void btn_myself_Click(object sender, EventArgs e)
         {
-            this.repeater_leave.DataSource = BLL.Calendar.getListSource(loginer.loginName, System.DateTime.Now);
+            this.repeater_leave.DataSource = BLL.Leave.getListSource(loginer.loginName, System.DateTime.Now);
             this.repeater_leave.DataBind();
             this.btn_myself.CssClass = css_select;
             this.btn_team.CssClass = css_unselect;
@@ -149,7 +149,7 @@ namespace WEBUI.Pages
 
         protected void btn_team_Click(object sender, EventArgs e)
         {
-            this.repeater_leave.DataSource = BLL.Calendar.getListSource(loginer.loginName,  System.DateTime.Now.AddDays(1));
+            this.repeater_leave.DataSource = BLL.Leave.getListSource(loginer.loginName,  System.DateTime.Now.AddDays(1));
             this.repeater_leave.DataBind();
             this.btn_myself.CssClass = css_unselect;
             this.btn_team.CssClass = css_select;
@@ -157,13 +157,13 @@ namespace WEBUI.Pages
 
         protected void cb_leave_CheckedChanged(object sender, EventArgs e)
         {
-            this.repeater_leave.DataSource = BLL.Calendar.getListSource(loginer.loginName, System.DateTime.Now.AddDays(1));
+            this.repeater_leave.DataSource = BLL.Leave.getListSource(loginer.loginName, System.DateTime.Now.AddDays(1));
             this.repeater_leave.DataBind();
         }
 
         protected void cb_holiday_CheckedChanged(object sender, EventArgs e)
         {
-            this.repeater_leave.DataSource = BLL.Calendar.getListSource(loginer.loginName, System.DateTime.Now.AddDays(1));
+            this.repeater_leave.DataSource = BLL.Leave.getListSource(loginer.loginName, System.DateTime.Now.AddDays(1));
             this.repeater_leave.DataBind();
         }
 
@@ -199,7 +199,7 @@ namespace WEBUI.Pages
                         int sectiontype =int.Parse(data.ddlsectionSelectvalue);
                         string leavename = LSLibrary.WebAPP.ValueText.GetText(data.leavetype, int.Parse(data.LeaveTypeSelectValue));
 
-                        var newitem = new MODEL.Apply.LeaveData(loginer.loginName, dateTime.ToString("MM-dd"), sectiontype, leavetype, (int)BLL.Application.ApprovalRequestStatus.WAIT_FOR_APPROVE, BLL.Application.ApprovalRequestStatus.WAIT_FOR_APPROVE.ToString(), dateTime, leavename, leavename);
+                        var newitem = new MODEL.Apply.LeaveData(loginer.loginName, dateTime.ToString("MM-dd"), sectiontype, leavetype, (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE.ToString(), dateTime, leavename, leavename);
                         data.LeaveList.Add(newitem);
                     }
                     else

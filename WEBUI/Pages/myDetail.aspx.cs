@@ -28,7 +28,7 @@ namespace WEBUI.Pages
                 requestId = int.Parse(Request.QueryString["requestid"]);
                 uid = 16;//todo get it by requestid;
                 isHandlerOfLeave = true;//todo get it by requestid.
-                LeaveList = BLL.Application.getLeaveDetails(requestId, uid);
+                LeaveList = BLL.Leave.getLeaveDetails(requestId, uid);
                 if(LeaveList!=null && LeaveList.Count()>0)
                 {
                     requestStatus = LeaveList[0].status;
@@ -61,7 +61,7 @@ namespace WEBUI.Pages
 
         private void setupAttendance()
         {
-            List<MODEL.Apply.UploadPic> attandance = BLL.Application.getAttendance(loginer.loginName, 3);
+            List<MODEL.Apply.UploadPic> attandance = BLL.Leave.getAttendance(loginer.loginName, 3);
             if (attandance != null)
             {
                 this.repeater_pic.DataSource = attandance;
@@ -85,7 +85,7 @@ namespace WEBUI.Pages
                 //todo get request info and user info ,and set value to lables
                 this.lb_name.Text = "UserName";
                 this.lb_leave.Text = "SL";
-                this.lb_status.Text = ((BLL.Application.ApprovalRequestStatus)(requestStatus)).ToString();
+                this.lb_status.Text = ((BLL.GlobalVariate.ApprovalRequestStatus)(requestStatus)).ToString();
             }
         }
 
@@ -98,23 +98,23 @@ namespace WEBUI.Pages
             this.approval_user.Visible = false;
 
             //根据状态图,按钮组合只有5种情况, 依据2个变量.所以4种情况不算多,可以全列出,用visable来控制.
-            if (requestStatus == (int)BLL.Application.ApprovalRequestStatus.WAIT_FOR_APPROVE && uid == loginer.userInfo.id && isHandlerOfLeave == true)
+            if (requestStatus == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && uid == loginer.userInfo.id && isHandlerOfLeave == true)
             {
                 this.wait_useradmin.Visible = true;
             }
-            else if (requestStatus == (int)BLL.Application.ApprovalRequestStatus.WAIT_FOR_APPROVE && uid != loginer.userInfo.id && isHandlerOfLeave == true)
+            else if (requestStatus == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && uid != loginer.userInfo.id && isHandlerOfLeave == true)
             {
                 this.wait_admin.Visible = true;
             }
-            else if (requestStatus == (int)BLL.Application.ApprovalRequestStatus.WAIT_FOR_APPROVE && uid == loginer.userInfo.id && isHandlerOfLeave == false)
+            else if (requestStatus == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && uid == loginer.userInfo.id && isHandlerOfLeave == false)
             {
                 this.wait_user.Visible = true;
             }
-            else if (requestStatus == (int)BLL.Application.ApprovalRequestStatus.APPROVE && uid == loginer.userInfo.id)
+            else if (requestStatus == (int)BLL.GlobalVariate.ApprovalRequestStatus.APPROVE && uid == loginer.userInfo.id)
             {
                 this.approval_user.Visible = true;
             }
-            else if(requestStatus== (int)BLL.Application.ApprovalRequestStatus.WAIT_FOR_CANCEL && isHandlerOfLeave==true)
+            else if(requestStatus== (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL && isHandlerOfLeave==true)
             {
                 this.withdrawing_admin.Visible = true;
             }

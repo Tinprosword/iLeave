@@ -40,7 +40,7 @@ namespace WEBUI
                 }
                 else
                 {
-                    BLL.LoginManager.GoBackToLogin();
+                    BLL.User_wsref.GoBackToLogin();
                 }
             }
         }
