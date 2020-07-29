@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+
 namespace BLL
 {
     public class User_wsref
@@ -19,6 +20,5 @@ namespace BLL
             BLL.LoginManager.CheckWsLogin();
             return DAL.User_ref.test_add(a, b);
         }
-
     }
 }
