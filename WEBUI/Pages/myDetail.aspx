@@ -5,32 +5,31 @@
         <table class="col-xs-12 lsu-table">
             <tr>
                 <td style="width:100px"><asp:Literal ID="lt_name" runat="server">Name</asp:Literal></td>
-                <td>黄景田 json</td>
+                <td><asp:Label ID="lb_name" runat="server" Text="name"/></td>
             </tr>
             <tr>
                 <td><asp:Literal ID="lt_status" runat="server">Status</asp:Literal></td>
-                <td><asp:Label ID="lt_wait" runat="server" Text="Waiting for approval"/></td>
+                <td><asp:Label ID="lb_status" runat="server" Text="Waiting for approval"/></td>
             </tr>
             <tr>
                 <td><asp:Literal ID="lt_leave" runat="server">Leave</asp:Literal></td>
-                <td>SL</td>
+                <td><asp:Label ID="lb_leave" runat="server" Text=""/></td>
             </tr>
             <tr>
                 <td><asp:Literal ID="lt_apply" runat="server">Apply</asp:Literal></td>
                 <td>
-                    <asp:label ID="lt_applydays" runat="server" Width="80px">0 Days</asp:label>
+                    <asp:label ID="lb_applydays" runat="server" Width="80px">0 Days</asp:label>
                     <asp:label ID="lt_balance" runat="server" Width="80px">Banlance</asp:label>
-                    <asp:label ID="lt_balancedays" runat="server" Width="80px">9.2 Days</asp:label>
-
+                    <asp:label ID="lb_balancedays" runat="server" Width="80px">9.2 Days</asp:label>
                 </td>
             </tr>
             <tr>
                 <td><asp:Literal ID="lt_date" runat="server">Date</asp:Literal></td>
-                <td>2015-01-01 -&gt;2015-01-05</td>
+                <td><asp:Label ID="lb_from" runat="server" Text="2015-01-05"/> -&gt;<asp:Label ID="lb_to" runat="server" Text="2015-01-05"/></td>
             </tr>
             <tr>
                 <td><asp:Literal ID="lt_remarks" runat="server">Remarks</asp:Literal></td>
-                <td>I need to see doctor.</td>
+                <td><asp:Label ID="lb_remark" runat="server" Text="remarks"/></td>
             </tr>
         </table>
 
@@ -41,7 +40,7 @@
             <table class="col-xs-12 lsu-table-sm">
                 <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                     <ItemTemplate>
-                        <tr><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-5"><%#((MODEL.Apply.LeaveData)Container.DataItem).typeid %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).sectionid %></td><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.LeaveData)Container.DataItem).typeid %>" /></td></tr>
+                        <tr><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-5"><%#((MODEL.Apply.LeaveData)Container.DataItem).typeDescription %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).sectionid %></td><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.LeaveData)Container.DataItem).typeid %>" /></td></tr>
                     </ItemTemplate>
                     <AlternatingItemTemplate>
                         <tr style="background-color:aliceblue"><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-5"><%#((MODEL.Apply.LeaveData)Container.DataItem).typeid %></td><td class="col-xs-3"><%#((MODEL.Apply.LeaveData)Container.DataItem).typeid %></td><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.LeaveData)Container.DataItem).typeid %>" /></td></tr>
@@ -65,9 +64,35 @@
                 </table>
             </div>
         </div>
-        <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
-            <asp:Button ID="button_apply" runat="server" Text="Cancel"  CssClass="btn lss-btncolor-blue" Width="160px" OnClick="button_apply_Click"/>
-        </div>
+        <asp:Panel ID="wait_useradmin" runat="server">
+            <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
+                <asp:Button ID="button_wait_useradmin_cancel" runat="server" Text="Cancel"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click" />
+                <asp:Button ID="button_wait_useradmin_approval" runat="server" Text="Approval"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+                <asp:Button ID="button_wait_useradmin_reject" runat="server" Text="Reject"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+            </div>
+        </asp:Panel>
+        <asp:Panel ID="wait_user" runat="server" Visible="false">
+            <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
+                <asp:Button ID="button_wait_user_cancel" runat="server" Text="Cancel"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click" />
+            </div>
+        </asp:Panel>
+        <asp:Panel ID="wait_admin" runat="server" Visible="false">
+            <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
+                <asp:Button ID="button_wait_admin_approval" runat="server" Text="Approval"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click" />
+                <asp:Button ID="button_wait_admin_reject" runat="server" Text="Reject"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+            </div>
+        </asp:Panel>
+        <asp:Panel ID="approval_user" runat="server" Visible="false">
+            <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
+                <asp:Button ID="button_approval_user_withdraw" runat="server" Text="Withdraw"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click" />
+            </div>
+        </asp:Panel>
+        <asp:Panel ID="withdrawing_admin" runat="server">
+            <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
+                <asp:Button ID="button_withdrawing_admin_ok" runat="server" Text="Cancel"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+                <asp:Button ID="button_withdrawing_admin_no" runat="server" Text="Cancel"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+            </div>
+        </asp:Panel>
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">

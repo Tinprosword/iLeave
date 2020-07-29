@@ -21,24 +21,6 @@ namespace BLL
         public static readonly string COOKIE_HTTPS = "cookie_https";
 
 
-        public static Dictionary<int, string> LeaveSatus
-        {
-            get
-            {
-                Dictionary<int, string>  LeaveType = new Dictionary<int, string>();
-
-                LeaveType.Add(1, DAL.WebReference_leave.ApprovalRequestStatus.SENDEMAIL.ToString());
-                LeaveType.Add(1, DAL.WebReference_leave.ApprovalRequestStatus.NEW.ToString());
-                LeaveType.Add(2, DAL.WebReference_leave.ApprovalRequestStatus.WAIT_FOR_APPROVE.ToString());
-                LeaveType.Add(3, DAL.WebReference_leave.ApprovalRequestStatus.APPROVE.ToString());
-                LeaveType.Add(4, DAL.WebReference_leave.ApprovalRequestStatus.REJECT.ToString());
-                LeaveType.Add(5, DAL.WebReference_leave.ApprovalRequestStatus.CANCEL.ToString());
-                LeaveType.Add(6, DAL.WebReference_leave.ApprovalRequestStatus.WAIT_FOR_CANCEL.ToString());
-                LeaveType.Add(7, DAL.WebReference_leave.ApprovalRequestStatus.CONFIRM_CANCEL.ToString());
-
-                return LeaveType;
-            }
-        }
 
         //用于js css文件的修改后自动重新下载.
         public static HttpServerUtility pageServer;

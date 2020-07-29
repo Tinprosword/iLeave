@@ -13,8 +13,6 @@ namespace BLL
     {
         public static string reducePath = "reduce";
         
-
-
         public static List<string> UploadAttendance(HttpRequest httpRequest, string fpath, List<string> fileExtendsType, string NameAppendStr, out string errmsg, int filesizeM = 10)
         {
             List<string> res= LSLibrary.UploadFile.SaveFiles(httpRequest, fpath, fileExtendsType, System.DateTime.Now.ToString("yyyyMMdd"), out errmsg, filesizeM);
@@ -27,7 +25,6 @@ namespace BLL
             }
             return res;
         }
-
 
         public static bool IsImagge(string filename)
         {
@@ -100,6 +97,7 @@ namespace BLL
             }
             return res;
         }
+
 
     }
 }

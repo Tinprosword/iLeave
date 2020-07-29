@@ -207,65 +207,112 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetOnlineStaffLeaveRecordByStaffIDBatchMode">
+      <s:element name="ApproveRequest">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="p_intArrStaffID" type="tns:ArrayOfInt" />
-            <s:element minOccurs="1" maxOccurs="1" name="p_dateStartDate" type="s:dateTime" />
-            <s:element minOccurs="1" maxOccurs="1" name="p_dateEndDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="WorkflowTaskObject" type="tns:MyWorkflowTask" />
+            <s:element minOccurs="1" maxOccurs="1" name="TaskType" type="tns:WorkflowTypeID" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_ApprovalRequest" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FormulatedURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="baseURL" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="StaffLeaveDetailInBatch">
+      <s:element name="ApproveRequestResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CancelRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WorkflowTaskObject" type="tns:MyWorkflowTask" />
+            <s:element minOccurs="1" maxOccurs="1" name="TaskType" type="tns:WorkflowTypeID" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_ApprovalRequest" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FormulatedURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="baseURL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelRequestResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RejectRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WorkflowTaskObject" type="tns:MyWorkflowTask" />
+            <s:element minOccurs="1" maxOccurs="1" name="TaskType" type="tns:WorkflowTypeID" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_ApprovalRequest" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_strDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FormulatedURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="baseURL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RejectRequestResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllLeaveMaster">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="LeaveRequestMaster">
         <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="EmploymentNumber" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="EngName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="StartDateSection" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="EndDateSection" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="NoOfDays" type="s:double" />
           <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="AttachmentID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ApplyDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="employmentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="createDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="leavefrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="leaveto" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="totaldays" type="s:double" />
           <s:element minOccurs="1" maxOccurs="1" name="DelegationToStaffID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="FirstEmploymentID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsApproved" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="inputSource" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:unsignedByte" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="ArrayOfStaffLeaveDetailInBatch">
+      <s:complexType name="ArrayOfLeaveRequestMaster">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="StaffLeaveDetailInBatch" nillable="true" type="tns:StaffLeaveDetailInBatch" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LeaveRequestMaster" nillable="true" type="tns:LeaveRequestMaster" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetOnlineStaffLeaveRecordByStaffIDBatchModeResponse">
+      <s:element name="GetAllLeaveMasterResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetOnlineStaffLeaveRecordByStaffIDBatchModeResult" type="tns:ArrayOfStaffLeaveDetailInBatch" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllLeaveMasterResult" type="tns:ArrayOfLeaveRequestMaster" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetOnlineStaffLeaveRecordByStaffID">
+      <s:element name="GetLeaveMasterByEmploymentID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="employmentID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeaveMasterByEmploymentIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveMasterByEmploymentIDResult" type="tns:ArrayOfLeaveRequestMaster" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOnlineStaffLeaveRecordByStaffID_discard">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="p_intArrStaffID" type="tns:ArrayOfInt" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetOnlineStaffLeaveRecordByStaffIDResponse">
+      <s:element name="GetOnlineStaffLeaveRecordByStaffID_discardResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetOnlineStaffLeaveRecordByStaffIDResult" type="tns:ArrayOfStaffLeaveRequest" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetOnlineStaffLeaveRecordByStaffID_discardResult" type="tns:ArrayOfStaffLeaveRequest" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="ArrayOfLeaveCalculationType" nillable="true" type="tns:ArrayOfLeaveCalculationType" />
-      <s:element name="ArrayOfStaffLeaveDetailInBatch" nillable="true" type="tns:ArrayOfStaffLeaveDetailInBatch" />
+      <s:element name="ArrayOfLeaveRequestMaster" nillable="true" type="tns:ArrayOfLeaveRequestMaster" />
       <s:element name="ArrayOfStaffLeaveRequest" nillable="true" type="tns:ArrayOfStaffLeaveRequest" />
     </s:schema>
     <s:schema targetNamespace="http://tempuri.org/AbstractTypes">
@@ -299,17 +346,41 @@
   <wsdl:message name="CreateNewRequestSoapOut">
     <wsdl:part name="parameters" element="tns:CreateNewRequestResponse" />
   </wsdl:message>
-  <wsdl:message name="GetOnlineStaffLeaveRecordByStaffIDBatchModeSoapIn">
-    <wsdl:part name="parameters" element="tns:GetOnlineStaffLeaveRecordByStaffIDBatchMode" />
+  <wsdl:message name="ApproveRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:ApproveRequest" />
   </wsdl:message>
-  <wsdl:message name="GetOnlineStaffLeaveRecordByStaffIDBatchModeSoapOut">
-    <wsdl:part name="parameters" element="tns:GetOnlineStaffLeaveRecordByStaffIDBatchModeResponse" />
+  <wsdl:message name="ApproveRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:ApproveRequestResponse" />
   </wsdl:message>
-  <wsdl:message name="GetOnlineStaffLeaveRecordByStaffIDSoapIn">
-    <wsdl:part name="parameters" element="tns:GetOnlineStaffLeaveRecordByStaffID" />
+  <wsdl:message name="CancelRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelRequest" />
   </wsdl:message>
-  <wsdl:message name="GetOnlineStaffLeaveRecordByStaffIDSoapOut">
-    <wsdl:part name="parameters" element="tns:GetOnlineStaffLeaveRecordByStaffIDResponse" />
+  <wsdl:message name="CancelRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="RejectRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:RejectRequest" />
+  </wsdl:message>
+  <wsdl:message name="RejectRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:RejectRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLeaveMasterSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllLeaveMaster" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLeaveMasterSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllLeaveMasterResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveMasterByEmploymentIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLeaveMasterByEmploymentID" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveMasterByEmploymentIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLeaveMasterByEmploymentIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOnlineStaffLeaveRecordByStaffID_discardSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOnlineStaffLeaveRecordByStaffID_discard" />
+  </wsdl:message>
+  <wsdl:message name="GetOnlineStaffLeaveRecordByStaffID_discardSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOnlineStaffLeaveRecordByStaffID_discardResponse" />
   </wsdl:message>
   <wsdl:message name="GetLeaveCalculationTypesForLeaveTypeHttpPostIn">
     <wsdl:part name="LeaveID" type="s:string" />
@@ -319,18 +390,20 @@
   <wsdl:message name="GetLeaveCalculationTypesForLeaveTypeHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfLeaveCalculationType" />
   </wsdl:message>
-  <wsdl:message name="GetOnlineStaffLeaveRecordByStaffIDBatchModeHttpPostIn">
+  <wsdl:message name="GetAllLeaveMasterHttpPostIn" />
+  <wsdl:message name="GetAllLeaveMasterHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfLeaveRequestMaster" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveMasterByEmploymentIDHttpPostIn">
+    <wsdl:part name="employmentID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveMasterByEmploymentIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfLeaveRequestMaster" />
+  </wsdl:message>
+  <wsdl:message name="GetOnlineStaffLeaveRecordByStaffID_discardHttpPostIn">
     <wsdl:part name="p_intArrStaffID" type="s1:StringArray" />
-    <wsdl:part name="p_dateStartDate" type="s:string" />
-    <wsdl:part name="p_dateEndDate" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetOnlineStaffLeaveRecordByStaffIDBatchModeHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfStaffLeaveDetailInBatch" />
-  </wsdl:message>
-  <wsdl:message name="GetOnlineStaffLeaveRecordByStaffIDHttpPostIn">
-    <wsdl:part name="p_intArrStaffID" type="s1:StringArray" />
-  </wsdl:message>
-  <wsdl:message name="GetOnlineStaffLeaveRecordByStaffIDHttpPostOut">
+  <wsdl:message name="GetOnlineStaffLeaveRecordByStaffID_discardHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfStaffLeaveRequest" />
   </wsdl:message>
   <wsdl:portType name="LeaveManagementV2Soap">
@@ -346,13 +419,29 @@
       <wsdl:input message="tns:CreateNewRequestSoapIn" />
       <wsdl:output message="tns:CreateNewRequestSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffIDBatchMode">
-      <wsdl:input message="tns:GetOnlineStaffLeaveRecordByStaffIDBatchModeSoapIn" />
-      <wsdl:output message="tns:GetOnlineStaffLeaveRecordByStaffIDBatchModeSoapOut" />
+    <wsdl:operation name="ApproveRequest">
+      <wsdl:input message="tns:ApproveRequestSoapIn" />
+      <wsdl:output message="tns:ApproveRequestSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffID">
-      <wsdl:input message="tns:GetOnlineStaffLeaveRecordByStaffIDSoapIn" />
-      <wsdl:output message="tns:GetOnlineStaffLeaveRecordByStaffIDSoapOut" />
+    <wsdl:operation name="CancelRequest">
+      <wsdl:input message="tns:CancelRequestSoapIn" />
+      <wsdl:output message="tns:CancelRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RejectRequest">
+      <wsdl:input message="tns:RejectRequestSoapIn" />
+      <wsdl:output message="tns:RejectRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLeaveMaster">
+      <wsdl:input message="tns:GetAllLeaveMasterSoapIn" />
+      <wsdl:output message="tns:GetAllLeaveMasterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMasterByEmploymentID">
+      <wsdl:input message="tns:GetLeaveMasterByEmploymentIDSoapIn" />
+      <wsdl:output message="tns:GetLeaveMasterByEmploymentIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffID_discard">
+      <wsdl:input message="tns:GetOnlineStaffLeaveRecordByStaffID_discardSoapIn" />
+      <wsdl:output message="tns:GetOnlineStaffLeaveRecordByStaffID_discardSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LeaveManagementV2HttpPost">
@@ -360,13 +449,17 @@
       <wsdl:input message="tns:GetLeaveCalculationTypesForLeaveTypeHttpPostIn" />
       <wsdl:output message="tns:GetLeaveCalculationTypesForLeaveTypeHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffIDBatchMode">
-      <wsdl:input message="tns:GetOnlineStaffLeaveRecordByStaffIDBatchModeHttpPostIn" />
-      <wsdl:output message="tns:GetOnlineStaffLeaveRecordByStaffIDBatchModeHttpPostOut" />
+    <wsdl:operation name="GetAllLeaveMaster">
+      <wsdl:input message="tns:GetAllLeaveMasterHttpPostIn" />
+      <wsdl:output message="tns:GetAllLeaveMasterHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffID">
-      <wsdl:input message="tns:GetOnlineStaffLeaveRecordByStaffIDHttpPostIn" />
-      <wsdl:output message="tns:GetOnlineStaffLeaveRecordByStaffIDHttpPostOut" />
+    <wsdl:operation name="GetLeaveMasterByEmploymentID">
+      <wsdl:input message="tns:GetLeaveMasterByEmploymentIDHttpPostIn" />
+      <wsdl:output message="tns:GetLeaveMasterByEmploymentIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffID_discard">
+      <wsdl:input message="tns:GetOnlineStaffLeaveRecordByStaffID_discardHttpPostIn" />
+      <wsdl:output message="tns:GetOnlineStaffLeaveRecordByStaffID_discardHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LeaveManagementV2Soap" type="tns:LeaveManagementV2Soap">
@@ -398,8 +491,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffIDBatchMode">
-      <soap:operation soapAction="http://tempuri.org/GetOnlineStaffLeaveRecordByStaffIDBatchMode" style="document" />
+    <wsdl:operation name="ApproveRequest">
+      <soap:operation soapAction="http://tempuri.org/ApproveRequest" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -407,8 +500,44 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffID">
-      <soap:operation soapAction="http://tempuri.org/GetOnlineStaffLeaveRecordByStaffID" style="document" />
+    <wsdl:operation name="CancelRequest">
+      <soap:operation soapAction="http://tempuri.org/CancelRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RejectRequest">
+      <soap:operation soapAction="http://tempuri.org/RejectRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLeaveMaster">
+      <soap:operation soapAction="http://tempuri.org/GetAllLeaveMaster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMasterByEmploymentID">
+      <soap:operation soapAction="http://tempuri.org/GetLeaveMasterByEmploymentID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffID_discard">
+      <soap:operation soapAction="http://tempuri.org/GetOnlineStaffLeaveRecordByStaffID_discard" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -446,8 +575,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffIDBatchMode">
-      <soap12:operation soapAction="http://tempuri.org/GetOnlineStaffLeaveRecordByStaffIDBatchMode" style="document" />
+    <wsdl:operation name="ApproveRequest">
+      <soap12:operation soapAction="http://tempuri.org/ApproveRequest" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -455,8 +584,44 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffID">
-      <soap12:operation soapAction="http://tempuri.org/GetOnlineStaffLeaveRecordByStaffID" style="document" />
+    <wsdl:operation name="CancelRequest">
+      <soap12:operation soapAction="http://tempuri.org/CancelRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RejectRequest">
+      <soap12:operation soapAction="http://tempuri.org/RejectRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLeaveMaster">
+      <soap12:operation soapAction="http://tempuri.org/GetAllLeaveMaster" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMasterByEmploymentID">
+      <soap12:operation soapAction="http://tempuri.org/GetLeaveMasterByEmploymentID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffID_discard">
+      <soap12:operation soapAction="http://tempuri.org/GetOnlineStaffLeaveRecordByStaffID_discard" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -476,8 +641,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffIDBatchMode">
-      <http:operation location="/GetOnlineStaffLeaveRecordByStaffIDBatchMode" />
+    <wsdl:operation name="GetAllLeaveMaster">
+      <http:operation location="/GetAllLeaveMaster" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -485,8 +650,17 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffID">
-      <http:operation location="/GetOnlineStaffLeaveRecordByStaffID" />
+    <wsdl:operation name="GetLeaveMasterByEmploymentID">
+      <http:operation location="/GetLeaveMasterByEmploymentID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffID_discard">
+      <http:operation location="/GetOnlineStaffLeaveRecordByStaffID_discard" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

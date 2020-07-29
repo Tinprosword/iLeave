@@ -9,16 +9,28 @@ namespace BLL
 {
     public class Leave
     {
-        public static DAL.WebReference_leave.StaffLeaveRequest[] getLeaveAppliationsByStaffid(int[] staffid)
+
+        public static void ApproveRequest(DAL.WebReference_leave.MyWorkflowTask WorkflowTaskObject, DAL.WebReference_leave.WorkflowTypeID TaskType, object p_ApprovalRequest, int UserID, string Description, string FormulatedURL, string baseURL)
         {
             BLL.LoginManager.CheckWsLogin();
-            return DAL.Leave.getLeaveAppliationsByStaffid(staffid);
+            DAL.Leave.ApproveRequest(WorkflowTaskObject, TaskType, p_ApprovalRequest, UserID, Description, FormulatedURL, baseURL);
         }
 
-        public static DAL.WebReference_leave.StaffLeaveDetailInBatch[] GetOnlineStaffLeaveRecordByStaffIDBatchMode(int[] staffid,DateTime from,DateTime to)
+
+        public static void CancelRequest(DAL.WebReference_leave.MyWorkflowTask WorkflowTaskObject, DAL.WebReference_leave.WorkflowTypeID TaskType, object p_ApprovalRequest, int UserID, string Description, string FormulatedURL, string baseURL)
         {
             BLL.LoginManager.CheckWsLogin();
-            return DAL.Leave.GetOnlineStaffLeaveRecordByStaffIDBatchMode(staffid, from, to);
+            DAL.Leave.CancelRequest(WorkflowTaskObject, TaskType, p_ApprovalRequest, UserID, Description, FormulatedURL, baseURL);
         }
+
+
+        public static void RejectRequest(DAL.WebReference_leave.MyWorkflowTask WorkflowTaskObject, DAL.WebReference_leave.WorkflowTypeID TaskType, object p_ApprovalRequest, int UserID, string Description, string FormulatedURL, string baseURL)
+        {
+            BLL.LoginManager.CheckWsLogin();
+            DAL.Leave.RejectRequest(WorkflowTaskObject, TaskType, p_ApprovalRequest, UserID, Description, FormulatedURL, baseURL);
+        }
+
+
+
     }
 }

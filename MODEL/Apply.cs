@@ -102,7 +102,7 @@ namespace MODEL
 
 
         [Serializable]
-        public class LeaveBatch
+        public class StaffLeaveMaster
         {
             public int requestID;
             public string name;
@@ -113,7 +113,7 @@ namespace MODEL
             public string typeDescription;
             public int status;
 
-            public LeaveBatch(string name, string date, int section, int typeid, int status, string statusstr,  string _typecode, string typedesc,int _requestID)
+            public StaffLeaveMaster(string name, string date, int section, int typeid, int status, string statusstr, string _typecode, string typedesc, int _requestID)
             {
                 this.name = name;
                 this.leaveDasyDesc = date;
@@ -125,7 +125,6 @@ namespace MODEL
                 typeDescription = typedesc;
                 requestID = _requestID;
             }
-
         }
     }
 }

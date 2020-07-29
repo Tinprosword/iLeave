@@ -8,70 +8,83 @@ namespace BLL
 {
     public class Application
     {
-        //ui 不要去 访问dal,所以在bll中,采用这种方式来映射webservice的枚举类型,也不能直接复制类型过来,违背 唯一依赖原则.这样,如果WS修改后,这里最起码会编译错误.
-        public static int status_approve = (int)DAL.WebReference_leave.ApprovalRequestStatus.APPROVE;
-        public static int status_cancel = (int)DAL.WebReference_leave.ApprovalRequestStatus.CANCEL;
-        public static int status_CONFIRM_CANCEL = (int)DAL.WebReference_leave.ApprovalRequestStatus.CONFIRM_CANCEL;
-        public static int status_NEW = (int)DAL.WebReference_leave.ApprovalRequestStatus.NEW;
-        public static int status_REJECT = (int)DAL.WebReference_leave.ApprovalRequestStatus.REJECT;
-        public static int status_SENDEMAIL = (int)DAL.WebReference_leave.ApprovalRequestStatus.SENDEMAIL;
-        public static int status_WAIT_FOR_APPROVE = (int)DAL.WebReference_leave.ApprovalRequestStatus.WAIT_FOR_APPROVE;
-        public static int status_WAIT_FOR_CANCEL = (int)DAL.WebReference_leave.ApprovalRequestStatus.WAIT_FOR_CANCEL;
-
-
-
-        public static List<MODEL.Apply.LeaveBatch> getLeaveBatch(int uid)
+        //ui 不要直接去 访问dal,所以在bll中,采用这种方式来映射webservice的枚举类型,也不能直接复制类型过来,违背 唯一依赖原则.这样,如果WS修改后,这里最起码会编译错误.
+        //上面是好的做法,但是微软居然有bug... 使用端的生成的enum居然默然从0开始.全然不管webservices的设定....只能采用会有隐患的复制的方法
+        public enum ApprovalRequestStatus
         {
-            DateTime leaveFrom = System.DateTime.Parse("1900-01-01");
-            DateTime leaveTo = System.DateTime.Parse("3000-01-01");
-            return getLeaveBatch(uid, leaveFrom, leaveTo);
+            [System.ComponentModel.Description("SendEmail")]
+            SENDEMAIL = -1,
+            [System.ComponentModel.Description("MyPortal_WF_Created")]
+            NEW = 0,
+            [System.ComponentModel.Description("MyPortal_WF_WaitForApproval")]
+            WAIT_FOR_APPROVE = 1,
+            [System.ComponentModel.Description("MyPortal_WF_Approved")]
+            APPROVE = 2,
+            [System.ComponentModel.Description("MyPortal_WF_Rejected")]
+            REJECT = 3,
+            [System.ComponentModel.Description("MyPortal_WF_Cancelled")]
+            CANCEL = 4,
+            [System.ComponentModel.Description("MyPortal_WF_WaitForCancel")]
+            WAIT_FOR_CANCEL = 5,
+            [System.ComponentModel.Description("MyPortal_WF_ConfirmCancelled")]
+            CONFIRM_CANCEL = 6,
         }
 
-        public static List<MODEL.Apply.LeaveBatch> getLeaveBatch(int uid, DateTime from)
+        public enum WorkflowTypeID
         {
-            DateTime leaveTo = System.DateTime.Parse("3000-01-01");
-            return getLeaveBatch(uid, from, leaveTo);
+            [System.ComponentModel.Description("MyPortal_LeaveApplication")]
+            LEAVE_APPLICATION = 0,
+            [System.ComponentModel.Description("MyPortal_WF_UpdatePersonInformation")]
+            UPDATE_PERSON_INFO = 1,
+            [System.ComponentModel.Description("MyPortal_WF_UpdateTrainingRecord")]
+            UPDATE_TRAINING_RECORD = 2,
+            [System.ComponentModel.Description("MyPortal_WF_UpdateQualificationRecord")]
+            UPDATE_QUALIFICATION_RECORD = 3,
+            [System.ComponentModel.Description("MyPortal_WF_PayrollLock")]
+            PAYROLL_LOCK = 4,
+            [System.ComponentModel.Description("MyPortal_WF_CLOTApplication")]
+            CLOT_APPLICATION = 5,
+            [System.ComponentModel.Description("MyPortal_WF_OTApproval")]
+            OT_APPROVAL = 6,
+            [System.ComponentModel.Description("MyPortal_WF_MedicalClaim")]
+            MEDICAL_CLAIM = 7,
+            [System.ComponentModel.Description("MyPortal_WF_Attendance")]
+            ATTENDANCE = 8,
+            //v1.6.6 - Paul - 2015.11.06 - Add Doctor Visit
+            [System.ComponentModel.Description("MyPortal_WF_DoctorVisit")]
+            DOCTOR_VISIT = 9,
+            [System.ComponentModel.Description("MyPortal_WF_CancelLeaveApplication")]
+            CANCEL_LEAVE_APPLICATION = 10,
+            //v1.7.0 Paul 2016.06.08 - Add Expense Claim
+            [System.ComponentModel.Description("MyPortal_WF_ExpenseClaim")]
+            EXPENSE_CLAIM = 11,
         }
 
-        public static List<MODEL.Apply.LeaveBatch> getLeaveBatch(int uid, DateTime from ,DateTime to)
+        public enum WorkflowInOutTypeID
         {
-            List<MODEL.Apply.LeaveData> data = new List<MODEL.Apply.LeaveData>();
-            int[] staffids = BLL.Staff.GetStaffids(uid);
-            DAL.WebReference_leave.StaffLeaveDetailInBatch[] leaves = BLL.Leave.GetOnlineStaffLeaveRecordByStaffIDBatchMode(staffids, from, to);
-            return ConverWSToLocalModal(leaves);
-        }
-
-        private static List<MODEL.Apply.LeaveBatch> ConverWSToLocalModal(DAL.WebReference_leave.StaffLeaveDetailInBatch[] DataSource)
-        {
-            List<MODEL.Apply.LeaveBatch> result = new List<MODEL.Apply.LeaveBatch>();
-            if (DataSource != null && DataSource.Count() > 0)
-            {
-                for (int i = 0; i < DataSource.Count(); i++)
-                {
-                    int RequestID = DataSource[i].RequestID;
-                    string name = DataSource[i].EngName;
-                    string date = DataSource[i].StartDate.ToString("yyy-MM-dd") + "_" + DataSource[i].EndDate.ToString("yyy-MM-dd") + "(" + DataSource[i].NoOfDays + "D)";
-                    int sectionid = 0;
-                    int typeid = DataSource[i].TypeID;
-                    string typeCode = DataSource[i].Type;
-                    string typeDescription = DataSource[i].Type;//todo
-                    int status = DataSource[i].Status;
-                    string statusStr = ((DAL.WebReference_leave.ApprovalRequestStatus)(DataSource[i].Status)).ToString();
-                    MODEL.Apply.LeaveBatch TempItem = new MODEL.Apply.LeaveBatch(name, date, sectionid, typeid, status, statusStr, typeCode, typeDescription,RequestID);
-                    result.Add(TempItem);
-                }
-            }
-            return result;
+            [System.ComponentModel.Description("IN")]
+            IN = 0,
+            [System.ComponentModel.Description("OUT")]
+            OUT = 1,
         }
 
 
-        public static List<MODEL.Apply.LeaveData> getLeaveDetails(LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> user,int leaveid)
+        #region leave Master
+        //public static List<MODEL.Apply.StaffLeaveMaster> GetMyLeaveMaster(int employmentID)
+        //{
+            
+        //}
+        #endregion
+
+
+        #region details
+        public static List<MODEL.Apply.LeaveData> getLeaveDetails(int requestid,int uid)
         {
+            string username = BLL.Staff.GetNameByid(uid);
+
             DateTime leaveFrom = System.DateTime.Now;
             List<MODEL.Apply.LeaveData> data = new List<MODEL.Apply.LeaveData>();
-            int[] staffids = BLL.Staff.GetStaffids(user.userInfo.id);
-            DAL.WebReference_leave.StaffLeaveRequest[] leaves= BLL.Leave.getLeaveAppliationsByStaffid(staffids);
-            DAL.WebReference_leave.StaffLeaveDetailInBatch[] leaves2 = BLL.Leave.GetOnlineStaffLeaveRecordByStaffIDBatchMode(staffids, leaveFrom, leaveFrom.AddDays(365));
+            DAL.WebReference_leave.StaffLeaveRequest[] leaves = null;// todo BLL.Leave.getLeaveAppliationsByRequestID(requestid);
             for (int i = 0; i < leaves.Count(); i++)
             {
                 string strDate = leaves[i].LeaveDate.ToString("MM-dd");
@@ -81,19 +94,13 @@ namespace BLL
                 string statusName = ((DAL.WebReference_leave.ApprovalRequestStatus)leaves[i].Status).ToString();
                 DateTime date = leaves[i].LeaveDate;
                 string typecode = leaves[i].LeaveTypeName;
-                string typeDesc= leaves[i].LeaveTypeName;//todo 
+                string typeDesc = leaves[i].LeaveTypeName;//todo 
 
-                data.Add(new MODEL.Apply.LeaveData(user.userInfo.loginName,strDate, section, typeid ,status, statusName, date, typecode, typeDesc));
+                data.Add(new MODEL.Apply.LeaveData(username, strDate, section, typeid, status, statusName, date, typecode, typeDesc));
             }
             return data;
         }
-
-        public static List<MODEL.Apply.LeaveBatch> getLeaveBatchByStatus(int uid, int applicationID, DAL.WebReference_leave.ApprovalRequestStatus status)
-        {
-            List<MODEL.Apply.LeaveBatch> allLeave = getLeaveBatch(uid);
-            List<MODEL.Apply.LeaveBatch> results= allLeave.Where(x => x.status == (int)status).ToList();
-            return allLeave;
-        }
+        #endregion
 
 
         public static List<MODEL.Apply.UploadPic> getAttendance(string uid, int applicationID)
@@ -114,10 +121,6 @@ namespace BLL
             }
             return data;
         }
-
-
-      
-
 
     }
 }

@@ -199,7 +199,7 @@ namespace WEBUI.Pages
                         int sectiontype =int.Parse(data.ddlsectionSelectvalue);
                         string leavename = LSLibrary.WebAPP.ValueText.GetText(data.leavetype, int.Parse(data.LeaveTypeSelectValue));
 
-                        var newitem = new MODEL.Apply.LeaveData(loginer.loginName, dateTime.ToString("MM-dd"), sectiontype, leavetype, 0,  BLL.GlobalVariate.LeaveSatus[0], dateTime, leavename, leavename);
+                        var newitem = new MODEL.Apply.LeaveData(loginer.loginName, dateTime.ToString("MM-dd"), sectiontype, leavetype, (int)BLL.Application.ApprovalRequestStatus.WAIT_FOR_APPROVE, BLL.Application.ApprovalRequestStatus.WAIT_FOR_APPROVE.ToString(), dateTime, leavename, leavename);
                         data.LeaveList.Add(newitem);
                     }
                     else
@@ -209,5 +209,9 @@ namespace WEBUI.Pages
                 }
             }
         }
+
+
+
+
     }
 }

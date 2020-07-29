@@ -49,7 +49,6 @@ namespace DAL
             return 8;
         }
 
-
         public static List<WebReference_leave.StaffLeaveRequest> GenerateLeaveRequest(List<MODEL.Apply.LeaveData> originDetail, int uid)
         {
             List<WebReference_leave.StaffLeaveRequest> result = new List<WebReference_leave.StaffLeaveRequest>();
@@ -119,12 +118,10 @@ namespace DAL
             return result;
         }
 
-
         public static int InsertAttanchMent()
         {
             return 0;
         }
-
 
         public static int InsertWorkflow(object details, int uid, int requestLeaveID, int employMentID)
         {
@@ -134,30 +131,22 @@ namespace DAL
             return result;
         }
 
-
-        public static WebReference_leave.StaffLeaveRequest[] getLeaveAppliationsByStaffid(int[] staffid)
+        public static void ApproveRequest(DAL.WebReference_leave.MyWorkflowTask WorkflowTaskObject, DAL.WebReference_leave.WorkflowTypeID TaskType, object p_ApprovalRequest, int UserID, string Description, string FormulatedURL, string baseURL)
         {
             DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
-            WebReference_leave.StaffLeaveRequest[] result= webServicesHelper.ws_leave.GetOnlineStaffLeaveRecordByStaffID(staffid);
-            return result;
+            webServicesHelper.ws_leave.ApproveRequest(WorkflowTaskObject, TaskType, p_ApprovalRequest, UserID, Description, FormulatedURL, baseURL);
         }
 
-
-        public static WebReference_leave.StaffLeaveDetailInBatch[] GetOnlineStaffLeaveRecordByStaffIDBatchMode(int[] staffid,DateTime from,DateTime to)
+        public static void CancelRequest(DAL.WebReference_leave.MyWorkflowTask WorkflowTaskObject, DAL.WebReference_leave.WorkflowTypeID TaskType, object p_ApprovalRequest, int UserID, string Description, string FormulatedURL, string baseURL)
         {
             DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
-            WebReference_leave.StaffLeaveDetailInBatch[] result= webServicesHelper.ws_leave.GetOnlineStaffLeaveRecordByStaffIDBatchMode(staffid, from, to);
-            return result;
+            webServicesHelper.ws_leave.CancelRequest(WorkflowTaskObject, TaskType, p_ApprovalRequest, UserID, Description, FormulatedURL, baseURL);
         }
 
-        public enum LeaveSectionCustom
+        public static void RejectRequest(DAL.WebReference_leave.MyWorkflowTask WorkflowTaskObject, DAL.WebReference_leave.WorkflowTypeID TaskType, object p_ApprovalRequest, int UserID, string Description, string FormulatedURL, string baseURL)
         {
-            FULLDAY = 0,
-            AM = 1,
-            PM = 2,
-            Section3 = 3,
-            Hour = 4,
+            DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
+            webServicesHelper.ws_leave.RejectRequest(WorkflowTaskObject, TaskType, p_ApprovalRequest, UserID, Description, FormulatedURL, baseURL);
         }
-
     }
 }

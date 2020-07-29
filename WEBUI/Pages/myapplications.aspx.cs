@@ -29,7 +29,7 @@ namespace WEBUI.Pages
         }
 
         protected override void ResetUIOnEachLoad3()
-        {
+        { 
 
         }
 
@@ -38,9 +38,10 @@ namespace WEBUI.Pages
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().application_back, BLL.MultiLanguageHelper.GetLanguagePacket().application_current, "~/pages/main.aspx");
             SetupMultiLanguage();
 
-            this.repeater_myapplications.DataSource = BLL.Application.getLeaveBatch(loginer.userInfo.id).Where(x => x.status == BLL.Application.status_WAIT_FOR_APPROVE);
+            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, loginer.userInfo.id, this.tb_name.Text, this.tb_date.Text, getStatus());
             this.repeater_myapplications.DataBind();
         }
+
 
         private void SetupMultiLanguage()
         {
@@ -57,8 +58,7 @@ namespace WEBUI.Pages
             this.btn_approved.CssClass = css_unselect;
             this.btn_wait.CssClass = css_select;
             this.btn_rejectWith.CssClass = css_unselect;
-
-            this.repeater_myapplications.DataSource = GetDatasource(loginer.userInfo.id, this.tb_date.Text, getStatus());
+            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, loginer.userInfo.id, this.tb_name.Text, this.tb_date.Text, getStatus());
             this.repeater_myapplications.DataBind();
         }
 
@@ -70,7 +70,7 @@ namespace WEBUI.Pages
             this.btn_rejectWith.CssClass = css_unselect;
 
 
-            this.repeater_myapplications.DataSource = GetDatasource(loginer.userInfo.id, this.tb_date.Text, getStatus());
+            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, loginer.userInfo.id, this.tb_name.Text, this.tb_date.Text, getStatus());
             this.repeater_myapplications.DataBind();
         }
 
@@ -80,7 +80,7 @@ namespace WEBUI.Pages
             this.btn_wait.CssClass = css_unselect;
             this.btn_rejectWith.CssClass = css_select;
 
-            this.repeater_myapplications.DataSource = GetDatasource(loginer.userInfo.id, this.tb_date.Text, getStatus());
+            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, loginer.userInfo.id, this.tb_name.Text, this.tb_date.Text, getStatus());
             this.repeater_myapplications.DataBind();
         }
 
@@ -88,18 +88,18 @@ namespace WEBUI.Pages
         {
             LinkButton link = (LinkButton)sender;
             string requestid = link.CommandArgument;
-            Response.Redirect("~/Pages/myDetail.aspx?appid=" + requestid, true);
+            Response.Redirect("~/Pages/myDetail.aspx?requestid=" + requestid, true);
         }
 
         protected void tb_name_TextChanged(object sender, EventArgs e)
         {
-            this.repeater_myapplications.DataSource = GetDatasource(loginer.userInfo.id, this.tb_date.Text, getStatus());
+            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, loginer.userInfo.id, this.tb_name.Text, this.tb_date.Text, getStatus());
             this.repeater_myapplications.DataBind();
         }
 
         protected void tb_date_TextChanged1(object sender, EventArgs e)
         {
-            this.repeater_myapplications.DataSource = GetDatasource(loginer.userInfo.id, this.tb_date.Text, getStatus());
+            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, loginer.userInfo.id, this.tb_name.Text, this.tb_date.Text, getStatus());
             this.repeater_myapplications.DataBind();
         }
 
@@ -125,9 +125,9 @@ namespace WEBUI.Pages
 
 
         //chooseStatus:1 ,apporve ,0 wait .2 reject
-        private static List<MODEL.Apply.LeaveBatch> GetDatasource(int uid, string datestr, int chooseStatus)
+        private static List<MODEL.Apply.StaffLeaveMaster> GetDatasource(bool ismyself, int uid,string name, string datestr, int chooseStatus)
         {
-            List<MODEL.Apply.LeaveBatch> result;
+            List<MODEL.Apply.StaffLeaveMaster> result;
 
             DateTime? from = null;
             if (!string.IsNullOrEmpty(datestr))
@@ -146,15 +146,15 @@ namespace WEBUI.Pages
 
             if (chooseStatus == 0)
             {
-                result = result.Where(x => x.status == BLL.Application.status_WAIT_FOR_APPROVE).ToList();
+                result = result.Where(x => x.status ==(int)BLL.Application.ApprovalRequestStatus.WAIT_FOR_APPROVE).ToList();
             }
             else if (chooseStatus == 1)
             {
-                result = result.Where(x => x.status == BLL.Application.status_approve).ToList();
+                result = result.Where(x => x.status == (int)BLL.Application.ApprovalRequestStatus.APPROVE).ToList();
             }
             else
             {
-                result = result.Where(x => x.status == BLL.Application.status_REJECT).ToList();
+                result = result.Where(x => x.status == (int)BLL.Application.ApprovalRequestStatus.REJECT).ToList();
             }
             return result;
         }
