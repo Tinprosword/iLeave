@@ -28,7 +28,7 @@ namespace WEBUI.Pages
         {
             myviewState = ViewState;
             
-            if (loginer.userInfo.employID==null || loginer.userInfo.employID==0)
+            if (!loginer.userInfo.hasValidEmploynumber())
             {
                 Response.Clear();
                 Response.Write(LSLibrary.WebAPP.MyJSHelper.AlertMessageAndGoto("invalid employment ID,", "main.aspx"));
@@ -76,7 +76,7 @@ namespace WEBUI.Pages
                 {
                     MODEL.Apply.ViewState_page applypage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, prepage.myviewState);
                     LSLibrary.WebAPP.ViewStateHelper.SetValue(applypage, ViewState_PageName, ViewState);
-                    LoadUI(applypage);
+                    LoadUIFromViewState(applypage);
                 }
             }
             else if (Request.QueryString["action"] != null && Request.QueryString["action"] == "backCalendar")
@@ -86,45 +86,35 @@ namespace WEBUI.Pages
                 {
                     MODEL.Apply.ViewState_page applypage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, prepage.myviewState);
                     LSLibrary.WebAPP.ViewStateHelper.SetValue(applypage, ViewState_PageName, ViewState);
-                    LoadUI(applypage);
+                    LoadUIFromViewState(applypage);
                 }
             }
             else
             {
                 //init ui
                 ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
-                this.literal_applier.Text = loginer.loginName + "  " + loginer.userInfo.nickname;
+                this.literal_applier.Text = loginer.loginName + "  " + loginer.userInfo.employNnumber;
 
-                DAL.WebReference_User.PersonBaseinfo baseinfos = null;//todo get from fun by employid;
-                DAL.WebReference_leave.LeaveInfo[] res = null;//todo  BLL.Leave.GetLeaveInfoByStaffID(baseinfos.s_id==null?0:(int)(baseinfos.s_id));
-                List<LSLibrary.WebAPP.ValueText<int>> typedata = BLL.Leave.ConvertLeaveInfo2VT(res);
+                DAL.WebReference_User.PersonBaseinfo baseinfos = BLL.User_wsref.GetPersonBaseinfoByEmploymentID(loginer.loginName, (int)loginer.userInfo.employID);
+                DAL.WebReference_leave.LeaveInfo[] res = BLL.Leave.GetLeaveInfoByStaffID((int)baseinfos.s_id);
+                List<LSLibrary.WebAPP.ValueText<int>> typedata = BLL.Leave.ConvertLeaveInfo2DropDownList(res);
+                LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.ddl_leavetype, typedata);
 
-                this.ddl_leavetype.DataSource = typedata;
-                this.ddl_leavetype.DataValueField = "mvalue";
-                this.ddl_leavetype.DataTextField = "mtext";
-                this.ddl_leavetype.DataBind();
                 this.repeater_leave.DataSource = new List<MODEL.Apply.LeaveData>();
                 this.repeater_leave.DataBind();
 
                 //set viewstate
-                MODEL.Apply.ViewState_page viewState_Page = new MODEL.Apply.ViewState_page();
-                viewState_Page.LeaveList = new List<MODEL.Apply.LeaveData>();
-                viewState_Page.uploadpic = new List<MODEL.Apply.UploadPic>();
-                viewState_Page.leavetype = new List<LSLibrary.WebAPP.ValueText<int>>();
-                viewState_Page.leavetype = typedata;
-
-                LSLibrary.WebAPP.ViewStateHelper.SetValue(viewState_Page, ViewState_PageName, ViewState);
+                //todo init and get .can it get value from viewstate?
+                initPageViewState();
+                SavePageDataToViewState(false, true, false, null, typedata, null);
             }
             SetMultiLanguage();
         }
 
-        private void LoadUI(MODEL.Apply.ViewState_page applypage)
+        private void LoadUIFromViewState(MODEL.Apply.ViewState_page applypage)
         {
             //init ui
-            this.ddl_leavetype.DataSource = applypage.leavetype;
-            this.ddl_leavetype.DataValueField = "mvalue";
-            this.ddl_leavetype.DataTextField = "mtext";
-            this.ddl_leavetype.DataBind();
+            LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.ddl_leavetype, applypage.leavetype);
 
             this.literal_applier.Text = loginer.loginName + "  " + loginer.userInfo.nickname;
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
@@ -141,18 +131,14 @@ namespace WEBUI.Pages
 
         #endregion
 
-        #region [module] upload pic
+        #region [module] on click upload pic
         protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
         {
             //save viewstate' other data
-            MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
-            applyPage.LeaveTypeSelectValue = this.ddl_leavetype.SelectedValue;
-            applyPage.applylabel = this.lt_applydays.Text;
-            applyPage.balancelabel = this.lt_balancedays.Text;
-            applyPage.ddlsectionSelectvalue = this.dropdl_section.SelectedValue;
-            applyPage.remarks = this.tb_remarks.Text;
-            LSLibrary.WebAPP.ViewStateHelper.SetValue(applyPage, ViewState_PageName, ViewState);
+            SavePageDataToViewState(false,false,false,null,null,null);
         }
+
+        
         #endregion
 
         #region [module] leave
@@ -164,16 +150,7 @@ namespace WEBUI.Pages
             }
             else
             {
-                //save viewstate' other data
-                MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
-                applyPage.LeaveTypeSelectValue = this.ddl_leavetype.SelectedValue;
-                applyPage.applylabel = this.lt_applydays.Text;
-                applyPage.balancelabel = this.lt_balancedays.Text;
-                applyPage.ddlsectionSelectvalue = this.dropdl_section.SelectedValue;
-                applyPage.remarks = this.tb_remarks.Text;
-                LSLibrary.WebAPP.ViewStateHelper.SetValue(applyPage, ViewState_PageName, ViewState);
-
-
+                SavePageDataToViewState(false, false, false, null, null, null);
                 Server.Transfer("~/Pages/calendar.aspx?action=apply", false);
             }
         }
@@ -250,7 +227,40 @@ namespace WEBUI.Pages
             this.lt_listsection.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_list_section;
             this.button_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_button;
         }
-        
+
+        private void initPageViewState()
+        {
+            MODEL.Apply.ViewState_page viewState_Page = new MODEL.Apply.ViewState_page();
+            viewState_Page.LeaveList = new List<MODEL.Apply.LeaveData>();
+            viewState_Page.uploadpic = new List<MODEL.Apply.UploadPic>();
+            viewState_Page.leavetype = new List<LSLibrary.WebAPP.ValueText<int>>();
+
+            LSLibrary.WebAPP.ViewStateHelper.SetValue(viewState_Page, ViewState_PageName, ViewState);
+        }
+
+        private void SavePageDataToViewState(bool owlist,bool owtype,bool owpics, List<MODEL.Apply.LeaveData> leavelist,List<LSLibrary.WebAPP.ValueText<int>> leavetype,List<MODEL.Apply.UploadPic> uploadPics)
+        {
+            MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
+            applyPage.LeaveTypeSelectValue = this.ddl_leavetype.SelectedValue;
+            applyPage.applylabel = this.lt_applydays.Text;
+            applyPage.balancelabel = this.lt_balancedays.Text;
+            applyPage.ddlsectionSelectvalue = this.dropdl_section.SelectedValue;
+            applyPage.remarks = this.tb_remarks.Text;
+            if (owlist)
+            {
+                applyPage.LeaveList = leavelist;
+            }
+            if (owtype)
+            {
+                applyPage.leavetype = leavetype;
+            }
+            if (owpics)
+            {
+                applyPage.uploadpic = uploadPics;
+            }
+
+            LSLibrary.WebAPP.ViewStateHelper.SetValue(applyPage, ViewState_PageName, ViewState);
+        }
         #endregion
 
     }

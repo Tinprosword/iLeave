@@ -28,6 +28,16 @@ namespace MODEL
             this.staffid = staffid;
             this.staffNumber = staffNumber;
         }
+
+        public bool hasValidEmploynumber()
+        {
+            bool result = true;
+            if (employID == null || employID == 0)
+            {
+                result = false;
+            }
+            return result;
+        }
     }
 
     public class LoginResult

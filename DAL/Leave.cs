@@ -10,13 +10,7 @@ namespace DAL
     {
         public static string LEAVE_DESC = "Leave Request";
 
-        public static DAL.WebReference_leave.LeaveInfo[] GetLeaveInfoByStaffID(int staffid)
-        {
-            DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
-            return webServicesHelper.ws_leave.GetAllLeaveTypeByStaffID(staffid);
-        }
-
-        //-1.一般插入错误.0,成功.
+        #region insert
         public static int InsertLeave(List<MODEL.Apply.LeaveData> originDetail, int userid, int? staffid, string remarks, out WebReference_leave.StaffLeaveRequest[] details, out WebReference_leave.ErrorMessageInfo messageInfo)
         {
             int result = -1;//默认为一般错误
@@ -36,24 +30,17 @@ namespace DAL
             details = detail.ToArray();
             return result;
         }
-
-        public static int GetEmployID(int uid, DateTime date)
+        public static int InsertAttanchMent()
+        {
+            return 0;
+        }
+        public static int InsertWorkflow(object details, int uid, int requestLeaveID, int employMentID)
         {
             int result = 0;
             DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
-            WebReference_staff.EmploymentInfo info = webServicesHelper.ws_staff.GetEmploymentInfoByUserIDAndValidDate(uid, date);
-            if (info != null)
-            {
-                result = info.EmploymentID;
-            }
+            result = webServicesHelper.ws_leave.CreateNewRequest(null, WebReference_leave.WorkflowTypeID.LEAVE_APPLICATION, details, uid, LEAVE_DESC, "", "", "", requestLeaveID, employMentID);
             return result;
         }
-
-        private static int GetEmployHours(int employid)
-        {//todo it
-            return 8;
-        }
-
         public static List<WebReference_leave.StaffLeaveRequest> GenerateLeaveRequest(List<MODEL.Apply.LeaveData> originDetail, int uid)
         {
             List<WebReference_leave.StaffLeaveRequest> result = new List<WebReference_leave.StaffLeaveRequest>();
@@ -122,20 +109,13 @@ namespace DAL
             }
             return result;
         }
+        #endregion
 
-        public static int InsertAttanchMent()
-        {
-            return 0;
-        }
+        #region search
 
-        public static int InsertWorkflow(object details, int uid, int requestLeaveID, int employMentID)
-        {
-            int result = 0;
-            DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
-            result = webServicesHelper.ws_leave.CreateNewRequest(null, WebReference_leave.WorkflowTypeID.LEAVE_APPLICATION, details, uid, LEAVE_DESC, "", "", "", requestLeaveID, employMentID);
-            return result;
-        }
+        #endregion
 
+        #region process
         public static void ApproveRequest(DAL.WebReference_leave.MyWorkflowTask WorkflowTaskObject, DAL.WebReference_leave.WorkflowTypeID TaskType, object p_ApprovalRequest, int UserID, string Description, string FormulatedURL, string baseURL)
         {
             DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
@@ -153,5 +133,31 @@ namespace DAL
             DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
             webServicesHelper.ws_leave.RejectRequest(WorkflowTaskObject, TaskType, p_ApprovalRequest, UserID, Description, FormulatedURL, baseURL);
         }
+        #endregion
+
+        #region utinity
+        public static int GetEmployID(int uid, DateTime date)
+        {
+            int result = 0;
+            DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
+            WebReference_staff.EmploymentInfo info = webServicesHelper.ws_staff.GetEmploymentInfoByUserIDAndValidDate(uid, date);
+            if (info != null)
+            {
+                result = info.EmploymentID;
+            }
+            return result;
+        }
+        private static int GetEmployHours(int employid)
+        {//todo it
+            return 8;
+        }
+        public static DAL.WebReference_leave.LeaveInfo[] GetLeaveInfoByStaffID(int staffid)
+        {
+            DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
+            return webServicesHelper.ws_leave.GetAllLeaveTypeByStaffID(staffid);
+        }
+
+        #endregion
+
     }
 }

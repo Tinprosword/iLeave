@@ -10,6 +10,8 @@ namespace BLL
 {
     public class Leave
     {
+        public static string reducePath = "reduce";
+
         #region insert application
         private static int CheckBeforeApply()
         {
@@ -80,11 +82,7 @@ namespace BLL
         }
 
 
-        public static DAL.WebReference_leave.LeaveInfo[] GetLeaveInfoByStaffID(int staffid)
-        {
-            BLL.User_wsref.CheckWsLogin();
-            return DAL.Leave.GetLeaveInfoByStaffID(staffid);
-        }
+        
 
 
         public static List<MODEL.Apply.LeaveData> getLeaveDetails(int requestid, int uid)
@@ -154,13 +152,6 @@ namespace BLL
         #endregion
 
 
-
-
-        
-
-        
-
-
         public static List<MODEL.Apply.LeaveData> getListSource(string uid, DateTime dt)
         {
             List<MODEL.Apply.LeaveData> data = new List<MODEL.Apply.LeaveData>();
@@ -173,20 +164,8 @@ namespace BLL
             return data;
         }
 
-        
-
-
-
-        public static string reducePath = "reduce";
-
-        
-
-        
-
-
-
         #region unity
-        public static List<LSLibrary.WebAPP.ValueText<int>> ConvertLeaveInfo2VT(LeaveInfo[] source)
+        public static List<LSLibrary.WebAPP.ValueText<int>> ConvertLeaveInfo2DropDownList(LeaveInfo[] source)
         {
             List<LSLibrary.WebAPP.ValueText<int>> result = new List<LSLibrary.WebAPP.ValueText<int>>();
             result.Add(new LSLibrary.WebAPP.ValueText<int>(0, "Please select"));
@@ -198,6 +177,13 @@ namespace BLL
             result.Add(new LSLibrary.WebAPP.ValueText<int>(0, "Please select"));
             return result;
         }
+
+        public static DAL.WebReference_leave.LeaveInfo[] GetLeaveInfoByStaffID(int staffid)
+        {
+            BLL.User_wsref.CheckWsLogin();
+            return DAL.Leave.GetLeaveInfoByStaffID(staffid);
+        }
+
         #endregion
 
     }
