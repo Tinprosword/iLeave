@@ -195,11 +195,11 @@ namespace WEBUI.Pages
                     var temp = selected.Find(x => x.LeaveDate == dateTime);
                     if (temp == null)
                     {
-                        int leavetype = int.Parse(data.LeaveTypeSelectValue);
+                        int leaveId = int.Parse(data.LeaveTypeSelectValue);
                         int sectiontype =int.Parse(data.ddlsectionSelectvalue);
-                        string leavename = LSLibrary.WebAPP.ValueText.GetText(data.leavetype, int.Parse(data.LeaveTypeSelectValue));
+                        string leavename = LSLibrary.WebAPP.ValueText<int>.GetText(data.leavetype, int.Parse(data.LeaveTypeSelectValue));
 
-                        var newitem = new MODEL.Apply.LeaveData(loginer.loginName, dateTime.ToString("MM-dd"), sectiontype, leavetype, (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE.ToString(), dateTime, leavename, leavename);
+                        var newitem = new MODEL.Apply.LeaveData(loginer.loginName, dateTime.ToString("MM-dd"), sectiontype, leaveId, (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE.ToString(), dateTime, leavename, leavename);
                         data.LeaveList.Add(newitem);
                     }
                     else

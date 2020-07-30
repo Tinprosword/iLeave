@@ -19,7 +19,7 @@ namespace MODEL
 
             public List<UploadPic> uploadpic;
             public List<LeaveData> LeaveList;
-            public List<LSLibrary.WebAPP.ValueText> leavetype;
+            public List<LSLibrary.WebAPP.ValueText<int>> leavetype;
         }
 
 
@@ -29,9 +29,9 @@ namespace MODEL
             public string name;
             public string date;
             public int sectionid;
-            public int typeid;
-            public string typeCode;
-            public string typeDescription;
+            public int leavetypeid;
+            public string leavetypeCode;
+            public string leavetypeDescription;
             public int status;
             public DateTime LeaveDate;
 
@@ -39,13 +39,13 @@ namespace MODEL
             {
                 this.name = name;
                 this.date = date;
-                this.typeid = typeid;
+                this.leavetypeid = typeid;
                 this.sectionid = section;
-                this.typeid = typeid;
+                this.leavetypeid = typeid;
                 this.status = status;
                 this.LeaveDate = _dateTime;
-                typeCode = _typecode;
-                typeDescription = typedesc;
+                leavetypeCode = _typecode;
+                leavetypeDescription = typedesc;
             }
         }
 

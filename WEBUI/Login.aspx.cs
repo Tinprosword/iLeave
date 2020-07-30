@@ -53,7 +53,17 @@ namespace WEBUI
                 bool isLogin = loginResult.Result > 0 ? true : false;
                 if (isLogin)
                 {
-                    MODEL.UserInfo userInfo = new MODEL.UserInfo(loginResult.Result, userid,"","",loginResult.SessionID);
+                    DAL.WebReference_User.PersonBaseinfo personBaseinfo = BLL.User_wsref.GetPersonBaseinfos_validateDefaultEmploymentNow(userid);
+                    MODEL.UserInfo userInfo;
+                    if (personBaseinfo!=null)
+                    {
+                        userInfo = new MODEL.UserInfo(loginResult.Result, userid, "",  loginResult.SessionID, personBaseinfo.e_id, personBaseinfo.e_EmploymentNumber, personBaseinfo.s_id, personBaseinfo.s_StaffNumber);
+                    }
+                    else
+                    {
+                        userInfo = new MODEL.UserInfo(loginResult.Result, userid, "", loginResult.SessionID, null, null,null, null);
+                    }
+                    
                     LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(userid,userInfo));
                     Response.Redirect("~/Pages/Main.aspx");
                 }

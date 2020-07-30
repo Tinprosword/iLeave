@@ -47,6 +47,8 @@ namespace DAL.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetOnlineStaffLeaveRecordByStaffID_discardOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetAllLeaveTypeByStaffIDOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -111,6 +113,9 @@ namespace DAL.WebReference_leave {
         
         /// <remarks/>
         public event GetOnlineStaffLeaveRecordByStaffID_discardCompletedEventHandler GetOnlineStaffLeaveRecordByStaffID_discardCompleted;
+        
+        /// <remarks/>
+        public event GetAllLeaveTypeByStaffIDCompletedEventHandler GetAllLeaveTypeByStaffIDCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertOnlineLeaveApplicationRequest", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -429,6 +434,35 @@ namespace DAL.WebReference_leave {
             if ((this.GetOnlineStaffLeaveRecordByStaffID_discardCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetOnlineStaffLeaveRecordByStaffID_discardCompleted(this, new GetOnlineStaffLeaveRecordByStaffID_discardCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllLeaveTypeByStaffID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public LeaveInfo[] GetAllLeaveTypeByStaffID(int staffid) {
+            object[] results = this.Invoke("GetAllLeaveTypeByStaffID", new object[] {
+                        staffid});
+            return ((LeaveInfo[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllLeaveTypeByStaffIDAsync(int staffid) {
+            this.GetAllLeaveTypeByStaffIDAsync(staffid, null);
+        }
+        
+        /// <remarks/>
+        public void GetAllLeaveTypeByStaffIDAsync(int staffid, object userState) {
+            if ((this.GetAllLeaveTypeByStaffIDOperationCompleted == null)) {
+                this.GetAllLeaveTypeByStaffIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllLeaveTypeByStaffIDOperationCompleted);
+            }
+            this.InvokeAsync("GetAllLeaveTypeByStaffID", new object[] {
+                        staffid}, this.GetAllLeaveTypeByStaffIDOperationCompleted, userState);
+        }
+        
+        private void OnGetAllLeaveTypeByStaffIDOperationCompleted(object arg) {
+            if ((this.GetAllLeaveTypeByStaffIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllLeaveTypeByStaffIDCompleted(this, new GetAllLeaveTypeByStaffIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -841,6 +875,437 @@ namespace DAL.WebReference_leave {
             }
             set {
                 this.displayUnitField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LeaveInfo {
+        
+        private int idField;
+        
+        private string codeField;
+        
+        private string descriptionField;
+        
+        private double payRatioField;
+        
+        private bool isAverageDailyRateField;
+        
+        private int statusField;
+        
+        private int portalStatusField;
+        
+        private bool isAccumulableLeaveField;
+        
+        private bool isEnforceAttachmentField;
+        
+        private bool isInclude713Field;
+        
+        private string accountCodeLeaveField;
+        
+        private int paySlipReportGroupField;
+        
+        private bool isAdjustInNextMonthField;
+        
+        private string leaveNotesField;
+        
+        private string entitleEffectiveDateField;
+        
+        private bool isIncludeGratuityField;
+        
+        private int accumulableLeaveTypeField;
+        
+        private int entitledByField;
+        
+        private int applyRequirementField;
+        
+        private decimal leaveExpiryAfterValueField;
+        
+        private decimal leaveAllowApplyBeforeValueField;
+        
+        private int leaveExpiryAfterUnitField;
+        
+        private int leaveAllowApplyBeforeUnitField;
+        
+        private bool isEnableAdvanceLeaveOnPortalField;
+        
+        private double launchConditionField;
+        
+        private double aLRoundUpOptionField;
+        
+        private string commonLeaveYearField;
+        
+        private bool isCompareEOLeaveField;
+        
+        private int carryForwardByField;
+        
+        private int grantEntitlementMethodField;
+        
+        private int entitleExpiryWaysField;
+        
+        private System.Nullable<int> entitleExpiryByAfterCarryForwardDateInMonthField;
+        
+        private System.Nullable<int> entitleExpiryByAfterCarryForwardDateInDayField;
+        
+        private string entitleExpiryBySpecificDateField;
+        
+        private int maxEntitlementFrequencyField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double PayRatio {
+            get {
+                return this.payRatioField;
+            }
+            set {
+                this.payRatioField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsAverageDailyRate {
+            get {
+                return this.isAverageDailyRateField;
+            }
+            set {
+                this.isAverageDailyRateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int PortalStatus {
+            get {
+                return this.portalStatusField;
+            }
+            set {
+                this.portalStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsAccumulableLeave {
+            get {
+                return this.isAccumulableLeaveField;
+            }
+            set {
+                this.isAccumulableLeaveField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsEnforceAttachment {
+            get {
+                return this.isEnforceAttachmentField;
+            }
+            set {
+                this.isEnforceAttachmentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsInclude713 {
+            get {
+                return this.isInclude713Field;
+            }
+            set {
+                this.isInclude713Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string AccountCodeLeave {
+            get {
+                return this.accountCodeLeaveField;
+            }
+            set {
+                this.accountCodeLeaveField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int PaySlipReportGroup {
+            get {
+                return this.paySlipReportGroupField;
+            }
+            set {
+                this.paySlipReportGroupField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsAdjustInNextMonth {
+            get {
+                return this.isAdjustInNextMonthField;
+            }
+            set {
+                this.isAdjustInNextMonthField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string LeaveNotes {
+            get {
+                return this.leaveNotesField;
+            }
+            set {
+                this.leaveNotesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string EntitleEffectiveDate {
+            get {
+                return this.entitleEffectiveDateField;
+            }
+            set {
+                this.entitleEffectiveDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsIncludeGratuity {
+            get {
+                return this.isIncludeGratuityField;
+            }
+            set {
+                this.isIncludeGratuityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int AccumulableLeaveType {
+            get {
+                return this.accumulableLeaveTypeField;
+            }
+            set {
+                this.accumulableLeaveTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int EntitledBy {
+            get {
+                return this.entitledByField;
+            }
+            set {
+                this.entitledByField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ApplyRequirement {
+            get {
+                return this.applyRequirementField;
+            }
+            set {
+                this.applyRequirementField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public decimal LeaveExpiryAfterValue {
+            get {
+                return this.leaveExpiryAfterValueField;
+            }
+            set {
+                this.leaveExpiryAfterValueField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public decimal LeaveAllowApplyBeforeValue {
+            get {
+                return this.leaveAllowApplyBeforeValueField;
+            }
+            set {
+                this.leaveAllowApplyBeforeValueField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int LeaveExpiryAfterUnit {
+            get {
+                return this.leaveExpiryAfterUnitField;
+            }
+            set {
+                this.leaveExpiryAfterUnitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int LeaveAllowApplyBeforeUnit {
+            get {
+                return this.leaveAllowApplyBeforeUnitField;
+            }
+            set {
+                this.leaveAllowApplyBeforeUnitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsEnableAdvanceLeaveOnPortal {
+            get {
+                return this.isEnableAdvanceLeaveOnPortalField;
+            }
+            set {
+                this.isEnableAdvanceLeaveOnPortalField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double LaunchCondition {
+            get {
+                return this.launchConditionField;
+            }
+            set {
+                this.launchConditionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double ALRoundUpOption {
+            get {
+                return this.aLRoundUpOptionField;
+            }
+            set {
+                this.aLRoundUpOptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CommonLeaveYear {
+            get {
+                return this.commonLeaveYearField;
+            }
+            set {
+                this.commonLeaveYearField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsCompareEOLeave {
+            get {
+                return this.isCompareEOLeaveField;
+            }
+            set {
+                this.isCompareEOLeaveField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CarryForwardBy {
+            get {
+                return this.carryForwardByField;
+            }
+            set {
+                this.carryForwardByField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int GrantEntitlementMethod {
+            get {
+                return this.grantEntitlementMethodField;
+            }
+            set {
+                this.grantEntitlementMethodField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int EntitleExpiryWays {
+            get {
+                return this.entitleExpiryWaysField;
+            }
+            set {
+                this.entitleExpiryWaysField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> EntitleExpiryByAfterCarryForwardDateInMonth {
+            get {
+                return this.entitleExpiryByAfterCarryForwardDateInMonthField;
+            }
+            set {
+                this.entitleExpiryByAfterCarryForwardDateInMonthField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> EntitleExpiryByAfterCarryForwardDateInDay {
+            get {
+                return this.entitleExpiryByAfterCarryForwardDateInDayField;
+            }
+            set {
+                this.entitleExpiryByAfterCarryForwardDateInDayField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string EntitleExpiryBySpecificDate {
+            get {
+                return this.entitleExpiryBySpecificDateField;
+            }
+            set {
+                this.entitleExpiryBySpecificDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int MaxEntitlementFrequency {
+            get {
+                return this.maxEntitlementFrequencyField;
+            }
+            set {
+                this.maxEntitlementFrequencyField = value;
             }
         }
     }
@@ -1748,6 +2213,32 @@ namespace DAL.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((StaffLeaveRequest[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetAllLeaveTypeByStaffIDCompletedEventHandler(object sender, GetAllLeaveTypeByStaffIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllLeaveTypeByStaffIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllLeaveTypeByStaffIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public LeaveInfo[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((LeaveInfo[])(this.results[0]));
             }
         }
     }

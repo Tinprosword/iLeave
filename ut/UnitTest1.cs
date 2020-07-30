@@ -128,7 +128,11 @@ namespace ut
             return ds;
         }
 
-
+        [TestMethod]
+        public void testbll()
+        {
+            var aa= BLL.User_wsref.GetPersonBaseinfoByEmploymentID("admin", 21845);
+        }
 
 
 

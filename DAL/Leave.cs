@@ -10,6 +10,11 @@ namespace DAL
     {
         public static string LEAVE_DESC = "Leave Request";
 
+        public static DAL.WebReference_leave.LeaveInfo[] GetLeaveInfoByStaffID(int staffid)
+        {
+            DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
+            return webServicesHelper.ws_leave.GetAllLeaveTypeByStaffID(staffid);
+        }
 
         //-1.一般插入错误.0,成功.
         public static int InsertLeave(List<MODEL.Apply.LeaveData> originDetail, int userid, int? staffid, string remarks, out WebReference_leave.StaffLeaveRequest[] details, out WebReference_leave.ErrorMessageInfo messageInfo)
@@ -59,14 +64,14 @@ namespace DAL
 
                 if (employmentID > 0)
                 {
-                    originDetail[i].typeid = originDetail[i].typeid;
+                    originDetail[i].leavetypeid = originDetail[i].leavetypeid;
 
                     WebReference_leave.StaffLeaveRequest newItem = new WebReference_leave.StaffLeaveRequest();
 
                     newItem.CompareKey = null;
                     newItem.CreateDate = System.DateTime.Now;
                     newItem.DelegationToStaffID = null;
-                    newItem.DeleteKey = originDetail[i].LeaveDate.ToString("yyyy-MM-dd") + "," + originDetail[i].typeid.ToString();
+                    newItem.DeleteKey = originDetail[i].LeaveDate.ToString("yyyy-MM-dd") + "," + originDetail[i].leavetypeid.ToString();
                     newItem.Description = null;
                     newItem.EmploymentID = employmentID;
                     newItem.EmploymentNumber = null;
@@ -81,8 +86,8 @@ namespace DAL
                     newItem.LeaveHours = 0;
                     newItem.LeaveHoursFrom = originDetail[i].LeaveDate;
                     newItem.LeaveHoursTo = originDetail[i].LeaveDate;
-                    newItem.LeaveID = originDetail[i].typeid;
-                    newItem.LeaveTypeName = originDetail[i].typeDescription;
+                    newItem.LeaveID = originDetail[i].leavetypeid;
+                    newItem.LeaveTypeName = originDetail[i].leavetypeDescription;
                     newItem.Name = null;
                     newItem.NameCH = null;
                     newItem.Remarks = "";

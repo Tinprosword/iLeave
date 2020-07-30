@@ -116,6 +116,9 @@
     <None Include="Web References\WebReference_leave\LeaveCalculationType.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\WebReference_leave\LeaveInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\WebReference_leave\LeaveManagementV2.wsdl" />
     <None Include="Web References\WebReference_leave\LeaveRequestMaster.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -139,6 +142,9 @@
     </None>
     <None Include="Web References\WebReference_staff\StaffManagementV2.wsdl" />
     <None Include="Web References\WebReference_User\LoginResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebReference_User\PersonBaseinfo.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebReference_User\Reference.map">

@@ -30,7 +30,6 @@ namespace WEBUI.Pages
 
         protected override void ResetUIOnEachLoad3()
         { 
-
         }
 
         protected override void InitUIOnFirstLoad4()
@@ -158,5 +157,7 @@ namespace WEBUI.Pages
             }
             return result;
         }
+
+
     }
 }

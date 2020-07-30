@@ -62,6 +62,10 @@
       <Project>{69a9688d-85c1-4c00-b678-645386b68102}</Project>
       <Name>BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{aea945fc-097f-46fa-934c-5dccd1ef6a98}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Function\LSLibrary_dotNet\LSLibrary.csproj">
       <Project>{53ac195e-dcff-47c4-bc02-7e0241ff520c}</Project>
       <Name>LSLibrary</Name>

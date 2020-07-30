@@ -22,11 +22,21 @@ namespace WEBUI.Pages
         {
             Apply_Upload prepage = PreviousPage as Apply_Upload;
             this.OnF5Doit = () => { Response.Redirect("~/pages/apply.aspx"); };
+
+
+            
         }
 
         protected override void InitPageDataOnEachLoad1()
         {
             myviewState = ViewState;
+            
+            if (loginer.userInfo.employID==0)
+            {
+                Response.Clear();
+                Response.Write(LSLibrary.WebAPP.MyJSHelper.AlertMessageAndGoto("invalid employment ID,", "main.aspx"));
+                Response.End();
+            }
         }
 
         protected override void InitPageDataOnFirstLoad2()
@@ -88,7 +98,10 @@ namespace WEBUI.Pages
                 ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
                 this.literal_applier.Text = loginer.loginName + "  " + loginer.userInfo.nickname;
 
-                List<LSLibrary.WebAPP.ValueText> typedata=BLL.Leave.GetLeaveType();
+                DAL.WebReference_User.PersonBaseinfo baseinfos = null;//todo get from fun by employid;
+                DAL.WebReference_leave.LeaveInfo[] res =BLL.Leave.GetLeaveInfoByStaffID(baseinfos.s_id==null?0:(int)(baseinfos.s_id));
+                List<LSLibrary.WebAPP.ValueText<int>> typedata = BLL.Leave.ConvertLeaveInfo2VT(res);
+
                 this.ddl_leavetype.DataSource = typedata;
                 this.ddl_leavetype.DataValueField = "mvalue";
                 this.ddl_leavetype.DataTextField = "mtext";
@@ -100,11 +113,10 @@ namespace WEBUI.Pages
                 MODEL.Apply.ViewState_page viewState_Page = new MODEL.Apply.ViewState_page();
                 viewState_Page.LeaveList = new List<MODEL.Apply.LeaveData>();
                 viewState_Page.uploadpic = new List<MODEL.Apply.UploadPic>();
-                viewState_Page.leavetype = new List<LSLibrary.WebAPP.ValueText>();
+                viewState_Page.leavetype = new List<LSLibrary.WebAPP.ValueText<int>>();
                 viewState_Page.leavetype = typedata;
 
                 LSLibrary.WebAPP.ViewStateHelper.SetValue(viewState_Page, ViewState_PageName, ViewState);
-
             }
             SetMultiLanguage();
         }

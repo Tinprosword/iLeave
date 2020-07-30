@@ -10,6 +10,13 @@ namespace BLL
 {
     public class Leave
     {
+       
+
+        public static DAL.WebReference_leave.LeaveInfo[] GetLeaveInfoByStaffID(int staffid)
+        {
+            BLL.User_wsref.CheckWsLogin();
+            return DAL.Leave.GetLeaveInfoByStaffID(staffid);
+        }
 
         public static void ApproveRequest(DAL.WebReference_leave.MyWorkflowTask WorkflowTaskObject, DAL.WebReference_leave.WorkflowTypeID TaskType, object p_ApprovalRequest, int UserID, string Description, string FormulatedURL, string baseURL)
         {
@@ -152,20 +159,6 @@ namespace BLL
         }
 
 
-        //todo move loginc to ws bll. and check leave logic.
-        public static List<LSLibrary.WebAPP.ValueText> GetLeaveType()
-        {
-            DAL.WebReference_codesetting.LeaveInfo[] array = BLL.CodeSetting.GetLeaveInfo();
-            List<LSLibrary.WebAPP.ValueText> res = new List<LSLibrary.WebAPP.ValueText>();
-            res.Add(new LSLibrary.WebAPP.ValueText(-1, "Please Select"));
-            for (int i = 0; i < array.Count(); i++)
-            {
-                res.Add(new LSLibrary.WebAPP.ValueText(array[i].ID, array[i].Code));
-            }
-            return res;
-        }
-
-
         public static List<MODEL.Apply.StaffLeaveMaster> GetLeaveMaster(int uid)
         {
             return new List<MODEL.Apply.StaffLeaveMaster>();
@@ -175,5 +168,22 @@ namespace BLL
         {
             return new List<MODEL.Apply.StaffLeaveMaster>();
         }
+
+
+        #region unity
+        public static List<LSLibrary.WebAPP.ValueText<int>> ConvertLeaveInfo2VT(LeaveInfo[] source)
+        {
+            List<LSLibrary.WebAPP.ValueText<int>> result = new List<LSLibrary.WebAPP.ValueText<int>>();
+            result.Add(new LSLibrary.WebAPP.ValueText<int>(0, "Please select"));
+            for(int i=0;i<source.Count();i++)
+            {
+                LSLibrary.WebAPP.ValueText<int> item = new LSLibrary.WebAPP.ValueText<int>(source[i].ID, source[i].Code+" -"+source[i].Description);
+                result.Add(item);
+            }
+            result.Add(new LSLibrary.WebAPP.ValueText<int>(0, "Please select"));
+            return result;
+        }
+        #endregion
+
     }
 }

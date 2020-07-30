@@ -61,5 +61,47 @@ namespace BLL
             CheckWsLogin();
             return DAL.User_ref.test_add(a, b);
         }
+
+
+        public static DAL.WebReference_User.PersonBaseinfo[] GetPersonBaseinfos(string loginname)
+        {
+
+            return DAL.User_ref.GetPersonBaseinfos(loginname);
+        }
+
+        public static DAL.WebReference_User.PersonBaseinfo[] GetPersonBaseinfos_validateEmployment(string loginname, DateTime date)
+        {
+
+            DAL.WebReference_User.PersonBaseinfo[] res = DAL.User_ref.GetPersonBaseinfos_validateEmployment(loginname, date);
+            return res;
+        }
+
+        public static DAL.WebReference_User.PersonBaseinfo GetPersonBaseinfos_validateDefaultEmploymentNow(string loginname)
+        {
+            DAL.WebReference_User.PersonBaseinfo result = null;
+            DAL.WebReference_User.PersonBaseinfo[] res = DAL.User_ref.GetPersonBaseinfos_validateEmployment(loginname, System.DateTime.Now);
+            if (res != null && res.Count() > 0)
+            {
+                result = res[0];
+            }
+            return result ;
+        }
+
+
+        public static DAL.WebReference_User.PersonBaseinfo GetPersonBaseinfoByEmploymentID(string loginname, int employmentid)
+        {
+            DAL.WebReference_User.PersonBaseinfo result = null;
+            DAL.WebReference_User.PersonBaseinfo[] res = DAL.User_ref.GetPersonBaseinfos(loginname);
+            if (res != null && res.Count() > 0)
+            {
+                var tempres = res.Where(x => x.e_id == employmentid);
+                if (tempres != null && tempres.Count() > 0)
+                {
+                    result = tempres.First();
+                }
+            }
+            return result;
+        }
+
     }
 }
