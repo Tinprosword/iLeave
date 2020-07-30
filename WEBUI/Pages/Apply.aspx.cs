@@ -22,16 +22,13 @@ namespace WEBUI.Pages
         {
             Apply_Upload prepage = PreviousPage as Apply_Upload;
             this.OnF5Doit = () => { Response.Redirect("~/pages/apply.aspx"); };
-
-
-            
         }
 
         protected override void InitPageDataOnEachLoad1()
         {
             myviewState = ViewState;
             
-            if (loginer.userInfo.employID==0)
+            if (loginer.userInfo.employID==null || loginer.userInfo.employID==0)
             {
                 Response.Clear();
                 Response.Write(LSLibrary.WebAPP.MyJSHelper.AlertMessageAndGoto("invalid employment ID,", "main.aspx"));
@@ -99,7 +96,7 @@ namespace WEBUI.Pages
                 this.literal_applier.Text = loginer.loginName + "  " + loginer.userInfo.nickname;
 
                 DAL.WebReference_User.PersonBaseinfo baseinfos = null;//todo get from fun by employid;
-                DAL.WebReference_leave.LeaveInfo[] res =BLL.Leave.GetLeaveInfoByStaffID(baseinfos.s_id==null?0:(int)(baseinfos.s_id));
+                DAL.WebReference_leave.LeaveInfo[] res = null;//todo  BLL.Leave.GetLeaveInfoByStaffID(baseinfos.s_id==null?0:(int)(baseinfos.s_id));
                 List<LSLibrary.WebAPP.ValueText<int>> typedata = BLL.Leave.ConvertLeaveInfo2VT(res);
 
                 this.ddl_leavetype.DataSource = typedata;
@@ -225,7 +222,7 @@ namespace WEBUI.Pages
             //1,获得数据   2,调用ws,进行插入.  
             List<MODEL.Apply.LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).LeaveList;
             string errorMsg = "";
-            int reslut= BLL.Leave.InsertLeave(LeaveList, loginer.userInfo.id, null,this.tb_remarks.Text.Trim(),out errorMsg);
+            int reslut= BLL.Leave.InsertLeave(LeaveList, loginer.userInfo.id,(int)loginer.userInfo.employID,  null,this.tb_remarks.Text.Trim(),out errorMsg);
             if (reslut >= 0)
             {
                 Response.Redirect("~/pages/main.aspx");

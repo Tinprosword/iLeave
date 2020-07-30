@@ -124,9 +124,9 @@ namespace WEBUI.Pages
 
 
         //chooseStatus:1 ,apporve ,0 wait .2 reject
-        private static List<MODEL.Apply.StaffLeaveMaster> GetDatasource(bool ismyself, int uid,string name, string datestr, int chooseStatus)
+        private static List<DAL.WebReference_leave.LeaveRequestMaster> GetDatasource(bool ismyself, int uid,string name, string datestr, int chooseStatus)
         {
-            List<MODEL.Apply.StaffLeaveMaster> result;
+            List<DAL.WebReference_leave.LeaveRequestMaster> result;
 
             DateTime? from = null;
             if (!string.IsNullOrEmpty(datestr))
@@ -145,15 +145,15 @@ namespace WEBUI.Pages
 
             if (chooseStatus == 0)
             {
-                result = result.Where(x => x.status ==(int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE).ToList();
+                result = result.Where(x => x.Status ==(int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE).ToList();
             }
             else if (chooseStatus == 1)
             {
-                result = result.Where(x => x.status == (int)BLL.GlobalVariate.ApprovalRequestStatus.APPROVE).ToList();
+                result = result.Where(x => x.Status == (int)BLL.GlobalVariate.ApprovalRequestStatus.APPROVE).ToList();
             }
             else
             {
-                result = result.Where(x => x.status == (int)BLL.GlobalVariate.ApprovalRequestStatus.REJECT).ToList();
+                result = result.Where(x => x.Status == (int)BLL.GlobalVariate.ApprovalRequestStatus.REJECT).ToList();
             }
             return result;
         }

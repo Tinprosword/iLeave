@@ -64,67 +64,6 @@ namespace MODEL
             }
         }
 
-        public class StaffLeaveDetails
-        {
-            public int idField;
-            public int employmentIDField;
-            public string employmentNumberField;
-            public string engNameField;
-            public string chiNameField;
-            public string typeField;
-            public int typeIDField;
-            public System.DateTime leaveFromField;
-            public System.DateTime leaveToField;
-            public double unitField;
-            public string remarksField;
-            public string deleteKeyField;
-            public int sectionField;
-            public string codeField;
-            public System.DateTime dateField;
-            public string workingHourPatternField;
-            public double workingHourHalfDayField;
-            public double workingHourAMField;
-            public double workingHourPMField;
-            public System.DateTime createDateField;
-            public int requestIDField;
-            public string holidayCodeField;
-            public int leaveCalculationTypeIDField;
-            public string leaveCalculationTypeDescField;
-            public double leaveHoursField;
-            public double totalWorkHoursField;
-            public double sectionsField;
-            public bool isHalfDayField;
-            public int displaySectionField;
-            public string displayUnitField;
-            public string displaySectionCombinedField;
-            public string securityGroupCodeField;
-        }
 
-
-        [Serializable]
-        public class StaffLeaveMaster
-        {
-            public int requestID;
-            public string name;
-            public string leaveDasyDesc;
-            public int sectionid;
-            public int typeid;
-            public string typeCode;
-            public string typeDescription;
-            public int status;
-
-            public StaffLeaveMaster(string name, string date, int section, int typeid, int status, string statusstr, string _typecode, string typedesc, int _requestID)
-            {
-                this.name = name;
-                this.leaveDasyDesc = date;
-                this.typeid = typeid;
-                this.sectionid = section;
-                this.typeid = typeid;
-                this.status = status;
-                typeCode = _typecode;
-                typeDescription = typedesc;
-                requestID = _requestID;
-            }
-        }
     }
 }

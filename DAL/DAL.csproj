@@ -56,7 +56,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Staff.cs" />
     <Compile Include="User_ref.cs" />
     <Compile Include="Web References\WebReference_codesetting\Reference.cs">
       <AutoGen>True</AutoGen>

@@ -32,10 +32,10 @@
             <table class="col-xs-12 lsu-table-xs" style="font-size:15px">
                 <asp:Repeater ID="repeater_myapplications" runat="server">
                     <ItemTemplate>
-                        <tr style="height:42px"><td class="col-xs-4" style="padding:0px"><%# ((MODEL.Apply.StaffLeaveMaster)Container.DataItem).typeCode %></td><td class="col-xs-7" style="padding:0px"><%# ((MODEL.Apply.StaffLeaveMaster)Container.DataItem).leaveDasyDesc %></td><td class="col-xs-1" style="padding:0px"><asp:LinkButton ID="lb" OnClick="lb_Click" runat="server" CommandArgument="<%# ((MODEL.Apply.StaffLeaveMaster)Container.DataItem).requestID %>" style="font-size:24px">></asp:LinkButton></td></tr>
+                        <tr style="height:42px"><td class="col-xs-4" style="padding:0px"><%# ((DAL.WebReference_leave.LeaveRequestMaster)Container.DataItem).employmentID %></td><td class="col-xs-7" style="padding:0px"><%# ((DAL.WebReference_leave.LeaveRequestMaster)Container.DataItem).totaldays %></td><td class="col-xs-1" style="padding:0px"><asp:LinkButton ID="lb" OnClick="lb_Click" runat="server" CommandArgument="<%# ((DAL.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID %>" style="font-size:24px">></asp:LinkButton></td></tr>
                     </ItemTemplate>
                     <AlternatingItemTemplate>
-                        <tr style="background-color:aliceblue;height:42px"><td class="col-xs-4" style="padding:0px"><%# ((MODEL.Apply.StaffLeaveMaster)Container.DataItem).typeCode %></td><td class="col-xs-7" style="padding:0px"><%# ((MODEL.Apply.StaffLeaveMaster)Container.DataItem).leaveDasyDesc %></td><td class="col-xs-1" style="padding:0px"><asp:LinkButton ID="lb" CommandArgument="<%# ((MODEL.Apply.StaffLeaveMaster)Container.DataItem).requestID %>" OnClick="lb_Click" runat="server" style="font-size:24px">></asp:LinkButton></td></tr>
+                        <tr style="background-color:aliceblue;height:42px"><td class="col-xs-4" style="padding:0px"><%# ((DAL.WebReference_leave.LeaveRequestMaster)Container.DataItem).employmentID %></td><td class="col-xs-7" style="padding:0px"><%# ((DAL.WebReference_leave.LeaveRequestMaster)Container.DataItem).totaldays %></td><td class="col-xs-1" style="padding:0px"><asp:LinkButton ID="lb" CommandArgument="<%# ((DAL.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID %>" OnClick="lb_Click" runat="server" style="font-size:24px">></asp:LinkButton></td></tr>
                     </AlternatingItemTemplate>
                 </asp:Repeater>
             </table>
