@@ -30,7 +30,7 @@ namespace WEBUI
                 LSLibrary.WebAPP.CookieHelper.SetCookie(BLL.GlobalVariate.COOKIE_HTTPS, bhttps.ToString(), 3600);
                 BLL.MultiLanguageHelper.SaveChoose((LSLibrary.WebAPP.LanguageType)intLanguage);
 
-                DAL.WebReference_User.PersonBaseinfo personBaseinfo = BLL.User_wsref.GetPersonBaseinfos_validateDefaultEmploymentNow(uid);
+                DAL.WebReference_User.PersonBaseinfo personBaseinfo = BLL.User_wsref.GetPersonBaseinfos_validateDefaultEmploymentNow(int.Parse(id));
                 MODEL.UserInfo userInfo;
                 if (personBaseinfo != null)
                 {

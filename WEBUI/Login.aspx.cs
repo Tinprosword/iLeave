@@ -53,7 +53,7 @@ namespace WEBUI
                 bool isLogin = loginResult.Result > 0 ? true : false;
                 if (isLogin)
                 {
-                    DAL.WebReference_User.PersonBaseinfo personBaseinfo = BLL.User_wsref.GetPersonBaseinfos_validateDefaultEmploymentNow(userid);
+                    DAL.WebReference_User.PersonBaseinfo personBaseinfo = BLL.User_wsref.GetPersonBaseinfos_validateDefaultEmploymentNow(loginResult.Result);
                     MODEL.UserInfo userInfo;
                     if (personBaseinfo!=null)
                     {

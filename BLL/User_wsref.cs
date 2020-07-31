@@ -63,35 +63,33 @@ namespace BLL
         }
 
 
-        public static DAL.WebReference_User.PersonBaseinfo[] GetPersonBaseinfos(string loginname)
+        public static DAL.WebReference_User.PersonBaseinfo[] GetPersonBaseInfoByUid(int uid)
         {
-
-            return DAL.User_ref.GetPersonBaseinfos(loginname);
+            return DAL.User_ref.GetPersonBaseInfoByUid(uid);
         }
 
-        public static DAL.WebReference_User.PersonBaseinfo[] GetPersonBaseinfos_validateEmployment(string loginname, DateTime date)
+        public static DAL.WebReference_User.PersonBaseinfo[] GetPersonBaseinfos_validateEmploymentNow(int uid)
         {
-
-            DAL.WebReference_User.PersonBaseinfo[] res = DAL.User_ref.GetPersonBaseinfos_validateEmployment(loginname, date);
+            DAL.WebReference_User.PersonBaseinfo[] res = DAL.User_ref.GetPersonBaseinfos_validToday(uid);
             return res;
         }
 
-        public static DAL.WebReference_User.PersonBaseinfo GetPersonBaseinfos_validateDefaultEmploymentNow(string loginname)
+        public static DAL.WebReference_User.PersonBaseinfo GetPersonBaseinfos_validateDefaultEmploymentNow(int uid)
         {
             DAL.WebReference_User.PersonBaseinfo result = null;
-            DAL.WebReference_User.PersonBaseinfo[] res = DAL.User_ref.GetPersonBaseinfos_validateEmployment(loginname, System.DateTime.Now);
+            DAL.WebReference_User.PersonBaseinfo[] res = GetPersonBaseinfos_validateEmploymentNow(uid);
             if (res != null && res.Count() > 0)
             {
-                result = res[0];
+                result = res[0];//todo 得到薪水更高的一个.
             }
             return result ;
         }
 
 
-        public static DAL.WebReference_User.PersonBaseinfo GetPersonBaseinfoByEmploymentID(string loginname, int employmentid)
+        public static DAL.WebReference_User.PersonBaseinfo GetPersonBaseinfoByEmploymentID(int uid, int employmentid)
         {
             DAL.WebReference_User.PersonBaseinfo result = null;
-            DAL.WebReference_User.PersonBaseinfo[] res = DAL.User_ref.GetPersonBaseinfos(loginname);
+            DAL.WebReference_User.PersonBaseinfo[] res = DAL.User_ref.GetPersonBaseInfoByUid(uid);
             if (res != null && res.Count() > 0)
             {
                 var tempres = res.Where(x => x.e_id == employmentid);

@@ -43,7 +43,7 @@ namespace BLL
             {
                 DAL.WebReference_leave.StaffLeaveRequest[] details;
                 DAL.WebReference_leave.ErrorMessageInfo messageInfo;
-                int insertResult = DAL.Leave.InsertLeave(originDetail, userid, staffid, remarks, out details, out messageInfo);
+                int insertResult = DAL.Leave.InsertLeave(originDetail, userid, employmentid, staffid, remarks, out details, out messageInfo);
                 if (insertResult >= 0)
                 {
                     int processID = messageInfo.ProcessID;
@@ -76,13 +76,16 @@ namespace BLL
             return new List<DAL.WebReference_leave.LeaveRequestMaster>();
         }
 
-        public static List<DAL.WebReference_leave.LeaveRequestMaster> GetLeaveMaster(int uid, DateTime from)
+        public static List<DAL.WebReference_leave.LeaveRequestMaster> GetLeaveMaster(int uid,int status, DateTime? from)
         {
             return new List<DAL.WebReference_leave.LeaveRequestMaster>();
         }
 
+        public static List<DAL.WebReference_leave.LeaveRequestMaster> GetLeaveMaster_IncludeMyWorkFlow(int uid,DateTime? datefrom)
+        {
+            return new List<LeaveRequestMaster>();//todo
+        }
 
-        
 
 
         public static List<MODEL.Apply.apply_LeaveData> getLeaveDetails(int requestid, int uid)

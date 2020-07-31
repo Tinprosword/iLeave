@@ -32,17 +32,17 @@ namespace DAL
             return webServicesHelper.ws_user.IsLogin();
         }
 
-
-        public static DAL.WebReference_User.PersonBaseinfo[] GetPersonBaseinfos(string loginname)
+        public static DAL.WebReference_User.PersonBaseinfo[] GetPersonBaseInfoByUid(int uid)
         {
             DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
-            return webServicesHelper.ws_user.GetPersonBaseInfo(loginname);
+            return webServicesHelper.ws_user.GetPersonBaseInfoByUid(uid);
         }
 
-        public static DAL.WebReference_User.PersonBaseinfo[] GetPersonBaseinfos_validateEmployment(string loginname,DateTime date)
+        public static DAL.WebReference_User.PersonBaseinfo[] GetPersonBaseinfos_validToday(int uid)
         {
             DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
-            return webServicesHelper.ws_user.GetPersonBaseInfo_ValidateEmployment(loginname,date);
+            return webServicesHelper.ws_user.GetPersonBaseInfo_ValidateEmploymentForToday(uid);
         }
+
     }
 }

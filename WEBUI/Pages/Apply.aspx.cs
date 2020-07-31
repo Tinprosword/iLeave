@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -11,9 +8,9 @@ namespace WEBUI.Pages
     public partial class Apply : BLL.CustomLoginTemplate
     {
         //todo page页面的多层继承写的不错，可以总结下了。
-        //2. myself my team 4.canleder datetime=> show detail (^)[not version 1]
-        //todo 1.server address secretery, 3.unit dropdown list  5.app's icon 
         //todo type 多选。导致section多县。导致vlist可以修改？？？
+        //todo 1.balance 2.sections 3.list's section. 4.upload pics. 5. 应该添加一个页面，让用户切换 employmentid.
+
         public static string ViewState_PageName = "PageView";
         public StateBag myviewState;
 
@@ -97,7 +94,7 @@ namespace WEBUI.Pages
                 ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
                 this.literal_applier.Text = loginer.loginName + "  " + loginer.userInfo.employNnumber;
 
-                DAL.WebReference_User.PersonBaseinfo baseinfos = BLL.User_wsref.GetPersonBaseinfoByEmploymentID(loginer.loginName, (int)loginer.userInfo.employID);
+                DAL.WebReference_User.PersonBaseinfo baseinfos = BLL.User_wsref.GetPersonBaseinfoByEmploymentID(loginer.userInfo.id, (int)loginer.userInfo.employID);
                 DAL.WebReference_leave.LeaveInfo[] res = BLL.Leave.GetLeaveInfoByStaffID((int)baseinfos.s_id);
                 List<LSLibrary.WebAPP.ValueText<int>> typedata = BLL.Leave.ConvertLeaveInfo2DropDownList(res);
                 LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.ddl_leavetype, typedata);
@@ -261,6 +258,5 @@ namespace WEBUI.Pages
             LSLibrary.WebAPP.ViewStateHelper.SetValue(applyPage, ViewState_PageName, ViewState);
         }
         #endregion
-
     }
 }

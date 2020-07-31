@@ -33,9 +33,9 @@ namespace DAL.WebReference_User {
         
         private System.Threading.SendOrPostCallback AuthenticateUserOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetPersonBaseInfoOperationCompleted;
+        private System.Threading.SendOrPostCallback GetPersonBaseInfoByUidOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetPersonBaseInfo_ValidateEmploymentOperationCompleted;
+        private System.Threading.SendOrPostCallback GetPersonBaseInfo_ValidateEmploymentForTodayOperationCompleted;
         
         private System.Threading.SendOrPostCallback Test_ADDOperationCompleted;
         
@@ -84,10 +84,10 @@ namespace DAL.WebReference_User {
         public event AuthenticateUserCompletedEventHandler AuthenticateUserCompleted;
         
         /// <remarks/>
-        public event GetPersonBaseInfoCompletedEventHandler GetPersonBaseInfoCompleted;
+        public event GetPersonBaseInfoByUidCompletedEventHandler GetPersonBaseInfoByUidCompleted;
         
         /// <remarks/>
-        public event GetPersonBaseInfo_ValidateEmploymentCompletedEventHandler GetPersonBaseInfo_ValidateEmploymentCompleted;
+        public event GetPersonBaseInfo_ValidateEmploymentForTodayCompletedEventHandler GetPersonBaseInfo_ValidateEmploymentForTodayCompleted;
         
         /// <remarks/>
         public event Test_ADDCompletedEventHandler Test_ADDCompleted;
@@ -151,62 +151,60 @@ namespace DAL.WebReference_User {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetPersonBaseInfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public PersonBaseinfo[] GetPersonBaseInfo(string uLoginName) {
-            object[] results = this.Invoke("GetPersonBaseInfo", new object[] {
-                        uLoginName});
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetPersonBaseInfoByUid", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public PersonBaseinfo[] GetPersonBaseInfoByUid(int uid) {
+            object[] results = this.Invoke("GetPersonBaseInfoByUid", new object[] {
+                        uid});
             return ((PersonBaseinfo[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetPersonBaseInfoAsync(string uLoginName) {
-            this.GetPersonBaseInfoAsync(uLoginName, null);
+        public void GetPersonBaseInfoByUidAsync(int uid) {
+            this.GetPersonBaseInfoByUidAsync(uid, null);
         }
         
         /// <remarks/>
-        public void GetPersonBaseInfoAsync(string uLoginName, object userState) {
-            if ((this.GetPersonBaseInfoOperationCompleted == null)) {
-                this.GetPersonBaseInfoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPersonBaseInfoOperationCompleted);
+        public void GetPersonBaseInfoByUidAsync(int uid, object userState) {
+            if ((this.GetPersonBaseInfoByUidOperationCompleted == null)) {
+                this.GetPersonBaseInfoByUidOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPersonBaseInfoByUidOperationCompleted);
             }
-            this.InvokeAsync("GetPersonBaseInfo", new object[] {
-                        uLoginName}, this.GetPersonBaseInfoOperationCompleted, userState);
+            this.InvokeAsync("GetPersonBaseInfoByUid", new object[] {
+                        uid}, this.GetPersonBaseInfoByUidOperationCompleted, userState);
         }
         
-        private void OnGetPersonBaseInfoOperationCompleted(object arg) {
-            if ((this.GetPersonBaseInfoCompleted != null)) {
+        private void OnGetPersonBaseInfoByUidOperationCompleted(object arg) {
+            if ((this.GetPersonBaseInfoByUidCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetPersonBaseInfoCompleted(this, new GetPersonBaseInfoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetPersonBaseInfoByUidCompleted(this, new GetPersonBaseInfoByUidCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetPersonBaseInfo_ValidateEmployment", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public PersonBaseinfo[] GetPersonBaseInfo_ValidateEmployment(string uLoginName, System.DateTime date) {
-            object[] results = this.Invoke("GetPersonBaseInfo_ValidateEmployment", new object[] {
-                        uLoginName,
-                        date});
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetPersonBaseInfo_ValidateEmploymentForToday", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public PersonBaseinfo[] GetPersonBaseInfo_ValidateEmploymentForToday(int uid) {
+            object[] results = this.Invoke("GetPersonBaseInfo_ValidateEmploymentForToday", new object[] {
+                        uid});
             return ((PersonBaseinfo[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetPersonBaseInfo_ValidateEmploymentAsync(string uLoginName, System.DateTime date) {
-            this.GetPersonBaseInfo_ValidateEmploymentAsync(uLoginName, date, null);
+        public void GetPersonBaseInfo_ValidateEmploymentForTodayAsync(int uid) {
+            this.GetPersonBaseInfo_ValidateEmploymentForTodayAsync(uid, null);
         }
         
         /// <remarks/>
-        public void GetPersonBaseInfo_ValidateEmploymentAsync(string uLoginName, System.DateTime date, object userState) {
-            if ((this.GetPersonBaseInfo_ValidateEmploymentOperationCompleted == null)) {
-                this.GetPersonBaseInfo_ValidateEmploymentOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPersonBaseInfo_ValidateEmploymentOperationCompleted);
+        public void GetPersonBaseInfo_ValidateEmploymentForTodayAsync(int uid, object userState) {
+            if ((this.GetPersonBaseInfo_ValidateEmploymentForTodayOperationCompleted == null)) {
+                this.GetPersonBaseInfo_ValidateEmploymentForTodayOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPersonBaseInfo_ValidateEmploymentForTodayOperationCompleted);
             }
-            this.InvokeAsync("GetPersonBaseInfo_ValidateEmployment", new object[] {
-                        uLoginName,
-                        date}, this.GetPersonBaseInfo_ValidateEmploymentOperationCompleted, userState);
+            this.InvokeAsync("GetPersonBaseInfo_ValidateEmploymentForToday", new object[] {
+                        uid}, this.GetPersonBaseInfo_ValidateEmploymentForTodayOperationCompleted, userState);
         }
         
-        private void OnGetPersonBaseInfo_ValidateEmploymentOperationCompleted(object arg) {
-            if ((this.GetPersonBaseInfo_ValidateEmploymentCompleted != null)) {
+        private void OnGetPersonBaseInfo_ValidateEmploymentForTodayOperationCompleted(object arg) {
+            if ((this.GetPersonBaseInfo_ValidateEmploymentForTodayCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetPersonBaseInfo_ValidateEmploymentCompleted(this, new GetPersonBaseInfo_ValidateEmploymentCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetPersonBaseInfo_ValidateEmploymentForTodayCompleted(this, new GetPersonBaseInfo_ValidateEmploymentForTodayCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -735,17 +733,17 @@ namespace DAL.WebReference_User {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetPersonBaseInfoCompletedEventHandler(object sender, GetPersonBaseInfoCompletedEventArgs e);
+    public delegate void GetPersonBaseInfoByUidCompletedEventHandler(object sender, GetPersonBaseInfoByUidCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetPersonBaseInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetPersonBaseInfoByUidCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetPersonBaseInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetPersonBaseInfoByUidCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -761,17 +759,17 @@ namespace DAL.WebReference_User {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetPersonBaseInfo_ValidateEmploymentCompletedEventHandler(object sender, GetPersonBaseInfo_ValidateEmploymentCompletedEventArgs e);
+    public delegate void GetPersonBaseInfo_ValidateEmploymentForTodayCompletedEventHandler(object sender, GetPersonBaseInfo_ValidateEmploymentForTodayCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetPersonBaseInfo_ValidateEmploymentCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetPersonBaseInfo_ValidateEmploymentForTodayCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetPersonBaseInfo_ValidateEmploymentCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetPersonBaseInfo_ValidateEmploymentForTodayCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

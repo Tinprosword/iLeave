@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s1="http://tempuri.org/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:element name="InsertOnlineLeaveApplicationRequest">
@@ -207,6 +207,64 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllLeaveTypeByStaffID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LeaveInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayRatio" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAverageDailyRate" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PortalStatus" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAccumulableLeave" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEnforceAttachment" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsInclude713" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountCodeLeave" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaySlipReportGroup" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAdjustInNextMonth" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeaveNotes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntitleEffectiveDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsIncludeGratuity" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AccumulableLeaveType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntitledBy" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplyRequirement" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveExpiryAfterValue" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveAllowApplyBeforeValue" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveExpiryAfterUnit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveAllowApplyBeforeUnit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEnableAdvanceLeaveOnPortal" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LaunchCondition" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="ALRoundUpOption" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="CommonLeaveYear" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCompareEOLeave" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CarryForwardBy" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GrantEntitlementMethod" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntitleExpiryWays" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntitleExpiryByAfterCarryForwardDateInMonth" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntitleExpiryByAfterCarryForwardDateInDay" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntitleExpiryBySpecificDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxEntitlementFrequency" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLeaveInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LeaveInfo" nillable="true" type="tns:LeaveInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllLeaveTypeByStaffIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllLeaveTypeByStaffIDResult" type="tns:ArrayOfLeaveInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ApproveRequest">
         <s:complexType>
           <s:sequence>
@@ -297,94 +355,23 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetOnlineStaffLeaveRecordByStaffID_discard">
+      <s:element name="GetLeaveMasterByUID">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="p_intArrStaffID" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="uid" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetOnlineStaffLeaveRecordByStaffID_discardResponse">
+      <s:element name="GetLeaveMasterByUIDResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetOnlineStaffLeaveRecordByStaffID_discardResult" type="tns:ArrayOfStaffLeaveRequest" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetAllLeaveTypeByStaffID">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="LeaveInfo">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="PayRatio" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsAverageDailyRate" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="PortalStatus" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsAccumulableLeave" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsEnforceAttachment" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsInclude713" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="AccountCodeLeave" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="PaySlipReportGroup" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsAdjustInNextMonth" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="LeaveNotes" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="EntitleEffectiveDate" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsIncludeGratuity" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="AccumulableLeaveType" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EntitledBy" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ApplyRequirement" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="LeaveExpiryAfterValue" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="LeaveAllowApplyBeforeValue" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="LeaveExpiryAfterUnit" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="LeaveAllowApplyBeforeUnit" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsEnableAdvanceLeaveOnPortal" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="LaunchCondition" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="ALRoundUpOption" type="s:double" />
-          <s:element minOccurs="0" maxOccurs="1" name="CommonLeaveYear" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsCompareEOLeave" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CarryForwardBy" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="GrantEntitlementMethod" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EntitleExpiryWays" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EntitleExpiryByAfterCarryForwardDateInMonth" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EntitleExpiryByAfterCarryForwardDateInDay" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="EntitleExpiryBySpecificDate" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="MaxEntitlementFrequency" type="s:int" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfLeaveInfo">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="LeaveInfo" nillable="true" type="tns:LeaveInfo" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetAllLeaveTypeByStaffIDResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAllLeaveTypeByStaffIDResult" type="tns:ArrayOfLeaveInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveMasterByUIDResult" type="tns:ArrayOfLeaveRequestMaster" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="ArrayOfLeaveCalculationType" nillable="true" type="tns:ArrayOfLeaveCalculationType" />
-      <s:element name="ArrayOfLeaveRequestMaster" nillable="true" type="tns:ArrayOfLeaveRequestMaster" />
-      <s:element name="ArrayOfStaffLeaveRequest" nillable="true" type="tns:ArrayOfStaffLeaveRequest" />
       <s:element name="ArrayOfLeaveInfo" nillable="true" type="tns:ArrayOfLeaveInfo" />
-    </s:schema>
-    <s:schema targetNamespace="http://tempuri.org/AbstractTypes">
-      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
-      <s:complexType name="StringArray">
-        <s:complexContent mixed="false">
-          <s:restriction base="soapenc:Array">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
-            </s:sequence>
-          </s:restriction>
-        </s:complexContent>
-      </s:complexType>
+      <s:element name="ArrayOfLeaveRequestMaster" nillable="true" type="tns:ArrayOfLeaveRequestMaster" />
     </s:schema>
   </wsdl:types>
   <wsdl:message name="InsertOnlineLeaveApplicationRequestSoapIn">
@@ -404,6 +391,12 @@
   </wsdl:message>
   <wsdl:message name="CreateNewRequestSoapOut">
     <wsdl:part name="parameters" element="tns:CreateNewRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLeaveTypeByStaffIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllLeaveTypeByStaffID" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLeaveTypeByStaffIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllLeaveTypeByStaffIDResponse" />
   </wsdl:message>
   <wsdl:message name="ApproveRequestSoapIn">
     <wsdl:part name="parameters" element="tns:ApproveRequest" />
@@ -435,17 +428,11 @@
   <wsdl:message name="GetLeaveMasterByEmploymentIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetLeaveMasterByEmploymentIDResponse" />
   </wsdl:message>
-  <wsdl:message name="GetOnlineStaffLeaveRecordByStaffID_discardSoapIn">
-    <wsdl:part name="parameters" element="tns:GetOnlineStaffLeaveRecordByStaffID_discard" />
+  <wsdl:message name="GetLeaveMasterByUIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLeaveMasterByUID" />
   </wsdl:message>
-  <wsdl:message name="GetOnlineStaffLeaveRecordByStaffID_discardSoapOut">
-    <wsdl:part name="parameters" element="tns:GetOnlineStaffLeaveRecordByStaffID_discardResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetAllLeaveTypeByStaffIDSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAllLeaveTypeByStaffID" />
-  </wsdl:message>
-  <wsdl:message name="GetAllLeaveTypeByStaffIDSoapOut">
-    <wsdl:part name="parameters" element="tns:GetAllLeaveTypeByStaffIDResponse" />
+  <wsdl:message name="GetLeaveMasterByUIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLeaveMasterByUIDResponse" />
   </wsdl:message>
   <wsdl:message name="GetLeaveCalculationTypesForLeaveTypeHttpPostIn">
     <wsdl:part name="LeaveID" type="s:string" />
@@ -454,6 +441,12 @@
   </wsdl:message>
   <wsdl:message name="GetLeaveCalculationTypesForLeaveTypeHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfLeaveCalculationType" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLeaveTypeByStaffIDHttpPostIn">
+    <wsdl:part name="staffid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLeaveTypeByStaffIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfLeaveInfo" />
   </wsdl:message>
   <wsdl:message name="GetAllLeaveMasterHttpPostIn" />
   <wsdl:message name="GetAllLeaveMasterHttpPostOut">
@@ -465,17 +458,11 @@
   <wsdl:message name="GetLeaveMasterByEmploymentIDHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfLeaveRequestMaster" />
   </wsdl:message>
-  <wsdl:message name="GetOnlineStaffLeaveRecordByStaffID_discardHttpPostIn">
-    <wsdl:part name="p_intArrStaffID" type="s1:StringArray" />
+  <wsdl:message name="GetLeaveMasterByUIDHttpPostIn">
+    <wsdl:part name="uid" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetOnlineStaffLeaveRecordByStaffID_discardHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfStaffLeaveRequest" />
-  </wsdl:message>
-  <wsdl:message name="GetAllLeaveTypeByStaffIDHttpPostIn">
-    <wsdl:part name="staffid" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetAllLeaveTypeByStaffIDHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfLeaveInfo" />
+  <wsdl:message name="GetLeaveMasterByUIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfLeaveRequestMaster" />
   </wsdl:message>
   <wsdl:portType name="LeaveManagementV2Soap">
     <wsdl:operation name="InsertOnlineLeaveApplicationRequest">
@@ -489,6 +476,10 @@
     <wsdl:operation name="CreateNewRequest">
       <wsdl:input message="tns:CreateNewRequestSoapIn" />
       <wsdl:output message="tns:CreateNewRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLeaveTypeByStaffID">
+      <wsdl:input message="tns:GetAllLeaveTypeByStaffIDSoapIn" />
+      <wsdl:output message="tns:GetAllLeaveTypeByStaffIDSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ApproveRequest">
       <wsdl:input message="tns:ApproveRequestSoapIn" />
@@ -510,19 +501,19 @@
       <wsdl:input message="tns:GetLeaveMasterByEmploymentIDSoapIn" />
       <wsdl:output message="tns:GetLeaveMasterByEmploymentIDSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffID_discard">
-      <wsdl:input message="tns:GetOnlineStaffLeaveRecordByStaffID_discardSoapIn" />
-      <wsdl:output message="tns:GetOnlineStaffLeaveRecordByStaffID_discardSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllLeaveTypeByStaffID">
-      <wsdl:input message="tns:GetAllLeaveTypeByStaffIDSoapIn" />
-      <wsdl:output message="tns:GetAllLeaveTypeByStaffIDSoapOut" />
+    <wsdl:operation name="GetLeaveMasterByUID">
+      <wsdl:input message="tns:GetLeaveMasterByUIDSoapIn" />
+      <wsdl:output message="tns:GetLeaveMasterByUIDSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LeaveManagementV2HttpPost">
     <wsdl:operation name="GetLeaveCalculationTypesForLeaveType">
       <wsdl:input message="tns:GetLeaveCalculationTypesForLeaveTypeHttpPostIn" />
       <wsdl:output message="tns:GetLeaveCalculationTypesForLeaveTypeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLeaveTypeByStaffID">
+      <wsdl:input message="tns:GetAllLeaveTypeByStaffIDHttpPostIn" />
+      <wsdl:output message="tns:GetAllLeaveTypeByStaffIDHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetAllLeaveMaster">
       <wsdl:input message="tns:GetAllLeaveMasterHttpPostIn" />
@@ -532,13 +523,9 @@
       <wsdl:input message="tns:GetLeaveMasterByEmploymentIDHttpPostIn" />
       <wsdl:output message="tns:GetLeaveMasterByEmploymentIDHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffID_discard">
-      <wsdl:input message="tns:GetOnlineStaffLeaveRecordByStaffID_discardHttpPostIn" />
-      <wsdl:output message="tns:GetOnlineStaffLeaveRecordByStaffID_discardHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllLeaveTypeByStaffID">
-      <wsdl:input message="tns:GetAllLeaveTypeByStaffIDHttpPostIn" />
-      <wsdl:output message="tns:GetAllLeaveTypeByStaffIDHttpPostOut" />
+    <wsdl:operation name="GetLeaveMasterByUID">
+      <wsdl:input message="tns:GetLeaveMasterByUIDHttpPostIn" />
+      <wsdl:output message="tns:GetLeaveMasterByUIDHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LeaveManagementV2Soap" type="tns:LeaveManagementV2Soap">
@@ -563,6 +550,15 @@
     </wsdl:operation>
     <wsdl:operation name="CreateNewRequest">
       <soap:operation soapAction="http://tempuri.org/CreateNewRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLeaveTypeByStaffID">
+      <soap:operation soapAction="http://tempuri.org/GetAllLeaveTypeByStaffID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -615,17 +611,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffID_discard">
-      <soap:operation soapAction="http://tempuri.org/GetOnlineStaffLeaveRecordByStaffID_discard" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllLeaveTypeByStaffID">
-      <soap:operation soapAction="http://tempuri.org/GetAllLeaveTypeByStaffID" style="document" />
+    <wsdl:operation name="GetLeaveMasterByUID">
+      <soap:operation soapAction="http://tempuri.org/GetLeaveMasterByUID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -656,6 +643,15 @@
     </wsdl:operation>
     <wsdl:operation name="CreateNewRequest">
       <soap12:operation soapAction="http://tempuri.org/CreateNewRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLeaveTypeByStaffID">
+      <soap12:operation soapAction="http://tempuri.org/GetAllLeaveTypeByStaffID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -708,17 +704,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffID_discard">
-      <soap12:operation soapAction="http://tempuri.org/GetOnlineStaffLeaveRecordByStaffID_discard" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllLeaveTypeByStaffID">
-      <soap12:operation soapAction="http://tempuri.org/GetAllLeaveTypeByStaffID" style="document" />
+    <wsdl:operation name="GetLeaveMasterByUID">
+      <soap12:operation soapAction="http://tempuri.org/GetLeaveMasterByUID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -731,6 +718,15 @@
     <http:binding verb="POST" />
     <wsdl:operation name="GetLeaveCalculationTypesForLeaveType">
       <http:operation location="/GetLeaveCalculationTypesForLeaveType" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLeaveTypeByStaffID">
+      <http:operation location="/GetAllLeaveTypeByStaffID" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -756,17 +752,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetOnlineStaffLeaveRecordByStaffID_discard">
-      <http:operation location="/GetOnlineStaffLeaveRecordByStaffID_discard" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllLeaveTypeByStaffID">
-      <http:operation location="/GetAllLeaveTypeByStaffID" />
+    <wsdl:operation name="GetLeaveMasterByUID">
+      <http:operation location="/GetLeaveMasterByUID" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

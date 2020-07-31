@@ -33,17 +33,17 @@
           <s:element minOccurs="0" maxOccurs="1" name="SessionID" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetPersonBaseInfo">
+      <s:element name="GetPersonBaseInfoByUid">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="uLoginName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="uid" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetPersonBaseInfoResponse">
+      <s:element name="GetPersonBaseInfoByUidResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetPersonBaseInfoResult" type="tns:ArrayOfPersonBaseinfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetPersonBaseInfoByUidResult" type="tns:ArrayOfPersonBaseinfo" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -86,18 +86,17 @@
           <s:element minOccurs="1" maxOccurs="1" name="e_ApprovalGroupID" nillable="true" type="s:int" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetPersonBaseInfo_ValidateEmployment">
+      <s:element name="GetPersonBaseInfo_ValidateEmploymentForToday">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="uLoginName" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="uid" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetPersonBaseInfo_ValidateEmploymentResponse">
+      <s:element name="GetPersonBaseInfo_ValidateEmploymentForTodayResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetPersonBaseInfo_ValidateEmploymentResult" type="tns:ArrayOfPersonBaseinfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetPersonBaseInfo_ValidateEmploymentForTodayResult" type="tns:ArrayOfPersonBaseinfo" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -134,17 +133,17 @@
   <wsdl:message name="AuthenticateUserSoapOut">
     <wsdl:part name="parameters" element="tns:AuthenticateUserResponse" />
   </wsdl:message>
-  <wsdl:message name="GetPersonBaseInfoSoapIn">
-    <wsdl:part name="parameters" element="tns:GetPersonBaseInfo" />
+  <wsdl:message name="GetPersonBaseInfoByUidSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPersonBaseInfoByUid" />
   </wsdl:message>
-  <wsdl:message name="GetPersonBaseInfoSoapOut">
-    <wsdl:part name="parameters" element="tns:GetPersonBaseInfoResponse" />
+  <wsdl:message name="GetPersonBaseInfoByUidSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPersonBaseInfoByUidResponse" />
   </wsdl:message>
-  <wsdl:message name="GetPersonBaseInfo_ValidateEmploymentSoapIn">
-    <wsdl:part name="parameters" element="tns:GetPersonBaseInfo_ValidateEmployment" />
+  <wsdl:message name="GetPersonBaseInfo_ValidateEmploymentForTodaySoapIn">
+    <wsdl:part name="parameters" element="tns:GetPersonBaseInfo_ValidateEmploymentForToday" />
   </wsdl:message>
-  <wsdl:message name="GetPersonBaseInfo_ValidateEmploymentSoapOut">
-    <wsdl:part name="parameters" element="tns:GetPersonBaseInfo_ValidateEmploymentResponse" />
+  <wsdl:message name="GetPersonBaseInfo_ValidateEmploymentForTodaySoapOut">
+    <wsdl:part name="parameters" element="tns:GetPersonBaseInfo_ValidateEmploymentForTodayResponse" />
   </wsdl:message>
   <wsdl:message name="Test_ADDSoapIn">
     <wsdl:part name="parameters" element="tns:Test_ADD" />
@@ -163,17 +162,16 @@
   <wsdl:message name="AuthenticateUserHttpPostOut">
     <wsdl:part name="Body" element="tns:LoginResult" />
   </wsdl:message>
-  <wsdl:message name="GetPersonBaseInfoHttpPostIn">
-    <wsdl:part name="uLoginName" type="s:string" />
+  <wsdl:message name="GetPersonBaseInfoByUidHttpPostIn">
+    <wsdl:part name="uid" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetPersonBaseInfoHttpPostOut">
+  <wsdl:message name="GetPersonBaseInfoByUidHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfPersonBaseinfo" />
   </wsdl:message>
-  <wsdl:message name="GetPersonBaseInfo_ValidateEmploymentHttpPostIn">
-    <wsdl:part name="uLoginName" type="s:string" />
-    <wsdl:part name="date" type="s:string" />
+  <wsdl:message name="GetPersonBaseInfo_ValidateEmploymentForTodayHttpPostIn">
+    <wsdl:part name="uid" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetPersonBaseInfo_ValidateEmploymentHttpPostOut">
+  <wsdl:message name="GetPersonBaseInfo_ValidateEmploymentForTodayHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfPersonBaseinfo" />
   </wsdl:message>
   <wsdl:message name="Test_ADDHttpPostIn">
@@ -192,13 +190,13 @@
       <wsdl:input message="tns:AuthenticateUserSoapIn" />
       <wsdl:output message="tns:AuthenticateUserSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetPersonBaseInfo">
-      <wsdl:input message="tns:GetPersonBaseInfoSoapIn" />
-      <wsdl:output message="tns:GetPersonBaseInfoSoapOut" />
+    <wsdl:operation name="GetPersonBaseInfoByUid">
+      <wsdl:input message="tns:GetPersonBaseInfoByUidSoapIn" />
+      <wsdl:output message="tns:GetPersonBaseInfoByUidSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetPersonBaseInfo_ValidateEmployment">
-      <wsdl:input message="tns:GetPersonBaseInfo_ValidateEmploymentSoapIn" />
-      <wsdl:output message="tns:GetPersonBaseInfo_ValidateEmploymentSoapOut" />
+    <wsdl:operation name="GetPersonBaseInfo_ValidateEmploymentForToday">
+      <wsdl:input message="tns:GetPersonBaseInfo_ValidateEmploymentForTodaySoapIn" />
+      <wsdl:output message="tns:GetPersonBaseInfo_ValidateEmploymentForTodaySoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Test_ADD">
       <wsdl:input message="tns:Test_ADDSoapIn" />
@@ -214,13 +212,13 @@
       <wsdl:input message="tns:AuthenticateUserHttpPostIn" />
       <wsdl:output message="tns:AuthenticateUserHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetPersonBaseInfo">
-      <wsdl:input message="tns:GetPersonBaseInfoHttpPostIn" />
-      <wsdl:output message="tns:GetPersonBaseInfoHttpPostOut" />
+    <wsdl:operation name="GetPersonBaseInfoByUid">
+      <wsdl:input message="tns:GetPersonBaseInfoByUidHttpPostIn" />
+      <wsdl:output message="tns:GetPersonBaseInfoByUidHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetPersonBaseInfo_ValidateEmployment">
-      <wsdl:input message="tns:GetPersonBaseInfo_ValidateEmploymentHttpPostIn" />
-      <wsdl:output message="tns:GetPersonBaseInfo_ValidateEmploymentHttpPostOut" />
+    <wsdl:operation name="GetPersonBaseInfo_ValidateEmploymentForToday">
+      <wsdl:input message="tns:GetPersonBaseInfo_ValidateEmploymentForTodayHttpPostIn" />
+      <wsdl:output message="tns:GetPersonBaseInfo_ValidateEmploymentForTodayHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="Test_ADD">
       <wsdl:input message="tns:Test_ADDHttpPostIn" />
@@ -247,8 +245,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPersonBaseInfo">
-      <soap:operation soapAction="http://tempuri.org/GetPersonBaseInfo" style="document" />
+    <wsdl:operation name="GetPersonBaseInfoByUid">
+      <soap:operation soapAction="http://tempuri.org/GetPersonBaseInfoByUid" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -256,8 +254,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPersonBaseInfo_ValidateEmployment">
-      <soap:operation soapAction="http://tempuri.org/GetPersonBaseInfo_ValidateEmployment" style="document" />
+    <wsdl:operation name="GetPersonBaseInfo_ValidateEmploymentForToday">
+      <soap:operation soapAction="http://tempuri.org/GetPersonBaseInfo_ValidateEmploymentForToday" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -295,8 +293,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPersonBaseInfo">
-      <soap12:operation soapAction="http://tempuri.org/GetPersonBaseInfo" style="document" />
+    <wsdl:operation name="GetPersonBaseInfoByUid">
+      <soap12:operation soapAction="http://tempuri.org/GetPersonBaseInfoByUid" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -304,8 +302,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPersonBaseInfo_ValidateEmployment">
-      <soap12:operation soapAction="http://tempuri.org/GetPersonBaseInfo_ValidateEmployment" style="document" />
+    <wsdl:operation name="GetPersonBaseInfo_ValidateEmploymentForToday">
+      <soap12:operation soapAction="http://tempuri.org/GetPersonBaseInfo_ValidateEmploymentForToday" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -343,8 +341,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPersonBaseInfo">
-      <http:operation location="/GetPersonBaseInfo" />
+    <wsdl:operation name="GetPersonBaseInfoByUid">
+      <http:operation location="/GetPersonBaseInfoByUid" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -352,8 +350,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPersonBaseInfo_ValidateEmployment">
-      <http:operation location="/GetPersonBaseInfo_ValidateEmployment" />
+    <wsdl:operation name="GetPersonBaseInfo_ValidateEmploymentForToday">
+      <http:operation location="/GetPersonBaseInfo_ValidateEmploymentForToday" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

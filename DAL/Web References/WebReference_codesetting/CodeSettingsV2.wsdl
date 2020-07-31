@@ -56,7 +56,47 @@
           <s:element minOccurs="1" maxOccurs="1" name="MaxEntitlementFrequency" type="s:int" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetMyWorkflowTaskByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="WorkflowTaskID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyWorkflowTaskByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMyWorkflowTaskByIDResult" type="tns:MyWorkflowTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MyWorkflowTask">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InOutTypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkflowInfoID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentStep" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FormulatedURL" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveRequestID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsRead" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FromUserName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PositionDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ToUserName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="ArrayOfLeaveInfo" nillable="true" type="tns:ArrayOfLeaveInfo" />
+      <s:element name="MyWorkflowTask" nillable="true" type="tns:MyWorkflowTask" />
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetLeaveInfoSoapIn">
@@ -65,14 +105,30 @@
   <wsdl:message name="GetLeaveInfoSoapOut">
     <wsdl:part name="parameters" element="tns:GetLeaveInfoResponse" />
   </wsdl:message>
+  <wsdl:message name="GetMyWorkflowTaskByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMyWorkflowTaskByID" />
+  </wsdl:message>
+  <wsdl:message name="GetMyWorkflowTaskByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMyWorkflowTaskByIDResponse" />
+  </wsdl:message>
   <wsdl:message name="GetLeaveInfoHttpPostIn" />
   <wsdl:message name="GetLeaveInfoHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfLeaveInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetMyWorkflowTaskByIDHttpPostIn">
+    <wsdl:part name="WorkflowTaskID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMyWorkflowTaskByIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:MyWorkflowTask" />
   </wsdl:message>
   <wsdl:portType name="CodeSettingsV2Soap">
     <wsdl:operation name="GetLeaveInfo">
       <wsdl:input message="tns:GetLeaveInfoSoapIn" />
       <wsdl:output message="tns:GetLeaveInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyWorkflowTaskByID">
+      <wsdl:input message="tns:GetMyWorkflowTaskByIDSoapIn" />
+      <wsdl:output message="tns:GetMyWorkflowTaskByIDSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="CodeSettingsV2HttpPost">
@@ -80,11 +136,24 @@
       <wsdl:input message="tns:GetLeaveInfoHttpPostIn" />
       <wsdl:output message="tns:GetLeaveInfoHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetMyWorkflowTaskByID">
+      <wsdl:input message="tns:GetMyWorkflowTaskByIDHttpPostIn" />
+      <wsdl:output message="tns:GetMyWorkflowTaskByIDHttpPostOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CodeSettingsV2Soap" type="tns:CodeSettingsV2Soap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetLeaveInfo">
       <soap:operation soapAction="http://tempuri.org/GetLeaveInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyWorkflowTaskByID">
+      <soap:operation soapAction="http://tempuri.org/GetMyWorkflowTaskByID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -104,11 +173,29 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetMyWorkflowTaskByID">
+      <soap12:operation soapAction="http://tempuri.org/GetMyWorkflowTaskByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="CodeSettingsV2HttpPost" type="tns:CodeSettingsV2HttpPost">
     <http:binding verb="POST" />
     <wsdl:operation name="GetLeaveInfo">
       <http:operation location="/GetLeaveInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyWorkflowTaskByID">
+      <http:operation location="/GetMyWorkflowTaskByID" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

@@ -35,6 +35,8 @@ namespace DAL.WebReference_leave {
         
         private System.Threading.SendOrPostCallback CreateNewRequestOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetAllLeaveTypeByStaffIDOperationCompleted;
+        
         private System.Threading.SendOrPostCallback ApproveRequestOperationCompleted;
         
         private System.Threading.SendOrPostCallback CancelRequestOperationCompleted;
@@ -45,9 +47,7 @@ namespace DAL.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetLeaveMasterByEmploymentIDOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetOnlineStaffLeaveRecordByStaffID_discardOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetAllLeaveTypeByStaffIDOperationCompleted;
+        private System.Threading.SendOrPostCallback GetLeaveMasterByUIDOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -97,6 +97,9 @@ namespace DAL.WebReference_leave {
         public event CreateNewRequestCompletedEventHandler CreateNewRequestCompleted;
         
         /// <remarks/>
+        public event GetAllLeaveTypeByStaffIDCompletedEventHandler GetAllLeaveTypeByStaffIDCompleted;
+        
+        /// <remarks/>
         public event ApproveRequestCompletedEventHandler ApproveRequestCompleted;
         
         /// <remarks/>
@@ -112,10 +115,7 @@ namespace DAL.WebReference_leave {
         public event GetLeaveMasterByEmploymentIDCompletedEventHandler GetLeaveMasterByEmploymentIDCompleted;
         
         /// <remarks/>
-        public event GetOnlineStaffLeaveRecordByStaffID_discardCompletedEventHandler GetOnlineStaffLeaveRecordByStaffID_discardCompleted;
-        
-        /// <remarks/>
-        public event GetAllLeaveTypeByStaffIDCompletedEventHandler GetAllLeaveTypeByStaffIDCompleted;
+        public event GetLeaveMasterByUIDCompletedEventHandler GetLeaveMasterByUIDCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertOnlineLeaveApplicationRequest", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -229,6 +229,35 @@ namespace DAL.WebReference_leave {
             if ((this.CreateNewRequestCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.CreateNewRequestCompleted(this, new CreateNewRequestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllLeaveTypeByStaffID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public LeaveInfo[] GetAllLeaveTypeByStaffID(int staffid) {
+            object[] results = this.Invoke("GetAllLeaveTypeByStaffID", new object[] {
+                        staffid});
+            return ((LeaveInfo[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllLeaveTypeByStaffIDAsync(int staffid) {
+            this.GetAllLeaveTypeByStaffIDAsync(staffid, null);
+        }
+        
+        /// <remarks/>
+        public void GetAllLeaveTypeByStaffIDAsync(int staffid, object userState) {
+            if ((this.GetAllLeaveTypeByStaffIDOperationCompleted == null)) {
+                this.GetAllLeaveTypeByStaffIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllLeaveTypeByStaffIDOperationCompleted);
+            }
+            this.InvokeAsync("GetAllLeaveTypeByStaffID", new object[] {
+                        staffid}, this.GetAllLeaveTypeByStaffIDOperationCompleted, userState);
+        }
+        
+        private void OnGetAllLeaveTypeByStaffIDOperationCompleted(object arg) {
+            if ((this.GetAllLeaveTypeByStaffIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllLeaveTypeByStaffIDCompleted(this, new GetAllLeaveTypeByStaffIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -409,60 +438,31 @@ namespace DAL.WebReference_leave {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetOnlineStaffLeaveRecordByStaffID_discard", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public StaffLeaveRequest[] GetOnlineStaffLeaveRecordByStaffID_discard(int[] p_intArrStaffID) {
-            object[] results = this.Invoke("GetOnlineStaffLeaveRecordByStaffID_discard", new object[] {
-                        p_intArrStaffID});
-            return ((StaffLeaveRequest[])(results[0]));
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLeaveMasterByUID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public LeaveRequestMaster[] GetLeaveMasterByUID(int uid) {
+            object[] results = this.Invoke("GetLeaveMasterByUID", new object[] {
+                        uid});
+            return ((LeaveRequestMaster[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetOnlineStaffLeaveRecordByStaffID_discardAsync(int[] p_intArrStaffID) {
-            this.GetOnlineStaffLeaveRecordByStaffID_discardAsync(p_intArrStaffID, null);
+        public void GetLeaveMasterByUIDAsync(int uid) {
+            this.GetLeaveMasterByUIDAsync(uid, null);
         }
         
         /// <remarks/>
-        public void GetOnlineStaffLeaveRecordByStaffID_discardAsync(int[] p_intArrStaffID, object userState) {
-            if ((this.GetOnlineStaffLeaveRecordByStaffID_discardOperationCompleted == null)) {
-                this.GetOnlineStaffLeaveRecordByStaffID_discardOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetOnlineStaffLeaveRecordByStaffID_discardOperationCompleted);
+        public void GetLeaveMasterByUIDAsync(int uid, object userState) {
+            if ((this.GetLeaveMasterByUIDOperationCompleted == null)) {
+                this.GetLeaveMasterByUIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLeaveMasterByUIDOperationCompleted);
             }
-            this.InvokeAsync("GetOnlineStaffLeaveRecordByStaffID_discard", new object[] {
-                        p_intArrStaffID}, this.GetOnlineStaffLeaveRecordByStaffID_discardOperationCompleted, userState);
+            this.InvokeAsync("GetLeaveMasterByUID", new object[] {
+                        uid}, this.GetLeaveMasterByUIDOperationCompleted, userState);
         }
         
-        private void OnGetOnlineStaffLeaveRecordByStaffID_discardOperationCompleted(object arg) {
-            if ((this.GetOnlineStaffLeaveRecordByStaffID_discardCompleted != null)) {
+        private void OnGetLeaveMasterByUIDOperationCompleted(object arg) {
+            if ((this.GetLeaveMasterByUIDCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetOnlineStaffLeaveRecordByStaffID_discardCompleted(this, new GetOnlineStaffLeaveRecordByStaffID_discardCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllLeaveTypeByStaffID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public LeaveInfo[] GetAllLeaveTypeByStaffID(int staffid) {
-            object[] results = this.Invoke("GetAllLeaveTypeByStaffID", new object[] {
-                        staffid});
-            return ((LeaveInfo[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetAllLeaveTypeByStaffIDAsync(int staffid) {
-            this.GetAllLeaveTypeByStaffIDAsync(staffid, null);
-        }
-        
-        /// <remarks/>
-        public void GetAllLeaveTypeByStaffIDAsync(int staffid, object userState) {
-            if ((this.GetAllLeaveTypeByStaffIDOperationCompleted == null)) {
-                this.GetAllLeaveTypeByStaffIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllLeaveTypeByStaffIDOperationCompleted);
-            }
-            this.InvokeAsync("GetAllLeaveTypeByStaffID", new object[] {
-                        staffid}, this.GetAllLeaveTypeByStaffIDOperationCompleted, userState);
-        }
-        
-        private void OnGetAllLeaveTypeByStaffIDOperationCompleted(object arg) {
-            if ((this.GetAllLeaveTypeByStaffIDCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetAllLeaveTypeByStaffIDCompleted(this, new GetAllLeaveTypeByStaffIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetLeaveMasterByUIDCompleted(this, new GetLeaveMasterByUIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -875,6 +875,124 @@ namespace DAL.WebReference_leave {
             }
             set {
                 this.displayUnitField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LeaveRequestMaster {
+        
+        private int requestIDField;
+        
+        private int employmentIDField;
+        
+        private System.DateTime createDateField;
+        
+        private System.DateTime leavefromField;
+        
+        private System.DateTime leavetoField;
+        
+        private double totaldaysField;
+        
+        private System.Nullable<int> delegationToStaffIDField;
+        
+        private string inputSourceField;
+        
+        private byte statusField;
+        
+        /// <remarks/>
+        public int RequestID {
+            get {
+                return this.requestIDField;
+            }
+            set {
+                this.requestIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int employmentID {
+            get {
+                return this.employmentIDField;
+            }
+            set {
+                this.employmentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime createDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime leavefrom {
+            get {
+                return this.leavefromField;
+            }
+            set {
+                this.leavefromField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime leaveto {
+            get {
+                return this.leavetoField;
+            }
+            set {
+                this.leavetoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double totaldays {
+            get {
+                return this.totaldaysField;
+            }
+            set {
+                this.totaldaysField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> DelegationToStaffID {
+            get {
+                return this.delegationToStaffIDField;
+            }
+            set {
+                this.delegationToStaffIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string inputSource {
+            get {
+                return this.inputSourceField;
+            }
+            set {
+                this.inputSourceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public byte Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
             }
         }
     }
@@ -1306,124 +1424,6 @@ namespace DAL.WebReference_leave {
             }
             set {
                 this.maxEntitlementFrequencyField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class LeaveRequestMaster {
-        
-        private int requestIDField;
-        
-        private int employmentIDField;
-        
-        private System.DateTime createDateField;
-        
-        private System.DateTime leavefromField;
-        
-        private System.DateTime leavetoField;
-        
-        private double totaldaysField;
-        
-        private System.Nullable<int> delegationToStaffIDField;
-        
-        private string inputSourceField;
-        
-        private byte statusField;
-        
-        /// <remarks/>
-        public int RequestID {
-            get {
-                return this.requestIDField;
-            }
-            set {
-                this.requestIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int employmentID {
-            get {
-                return this.employmentIDField;
-            }
-            set {
-                this.employmentIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime createDate {
-            get {
-                return this.createDateField;
-            }
-            set {
-                this.createDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime leavefrom {
-            get {
-                return this.leavefromField;
-            }
-            set {
-                this.leavefromField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime leaveto {
-            get {
-                return this.leavetoField;
-            }
-            set {
-                this.leavetoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public double totaldays {
-            get {
-                return this.totaldaysField;
-            }
-            set {
-                this.totaldaysField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> DelegationToStaffID {
-            get {
-                return this.delegationToStaffIDField;
-            }
-            set {
-                this.delegationToStaffIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string inputSource {
-            get {
-                return this.inputSourceField;
-            }
-            set {
-                this.inputSourceField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte Status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
             }
         }
     }
@@ -2129,6 +2129,32 @@ namespace DAL.WebReference_leave {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetAllLeaveTypeByStaffIDCompletedEventHandler(object sender, GetAllLeaveTypeByStaffIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllLeaveTypeByStaffIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllLeaveTypeByStaffIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public LeaveInfo[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((LeaveInfo[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void ApproveRequestCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
@@ -2193,52 +2219,26 @@ namespace DAL.WebReference_leave {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetOnlineStaffLeaveRecordByStaffID_discardCompletedEventHandler(object sender, GetOnlineStaffLeaveRecordByStaffID_discardCompletedEventArgs e);
+    public delegate void GetLeaveMasterByUIDCompletedEventHandler(object sender, GetLeaveMasterByUIDCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetOnlineStaffLeaveRecordByStaffID_discardCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetLeaveMasterByUIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetOnlineStaffLeaveRecordByStaffID_discardCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetLeaveMasterByUIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public StaffLeaveRequest[] Result {
+        public LeaveRequestMaster[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((StaffLeaveRequest[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetAllLeaveTypeByStaffIDCompletedEventHandler(object sender, GetAllLeaveTypeByStaffIDCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetAllLeaveTypeByStaffIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetAllLeaveTypeByStaffIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public LeaveInfo[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((LeaveInfo[])(this.results[0]));
+                return ((LeaveRequestMaster[])(this.results[0]));
             }
         }
     }

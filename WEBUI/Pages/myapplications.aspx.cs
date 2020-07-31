@@ -37,7 +37,7 @@ namespace WEBUI.Pages
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().application_back, BLL.MultiLanguageHelper.GetLanguagePacket().application_current, "~/pages/main.aspx");
             SetupMultiLanguage();
 
-            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, loginer.userInfo.id, this.tb_name.Text, this.tb_date.Text, getStatus());
+            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, getStatus(), loginer.userInfo.id, this.tb_date.Text, this.tb_name.Text);
             this.repeater_myapplications.DataBind();
         }
 
@@ -57,7 +57,7 @@ namespace WEBUI.Pages
             this.btn_approved.CssClass = css_unselect;
             this.btn_wait.CssClass = css_select;
             this.btn_rejectWith.CssClass = css_unselect;
-            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, loginer.userInfo.id, this.tb_name.Text, this.tb_date.Text, getStatus());
+            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, getStatus(), loginer.userInfo.id, this.tb_date.Text, this.tb_name.Text);
             this.repeater_myapplications.DataBind();
         }
 
@@ -69,7 +69,7 @@ namespace WEBUI.Pages
             this.btn_rejectWith.CssClass = css_unselect;
 
 
-            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, loginer.userInfo.id, this.tb_name.Text, this.tb_date.Text, getStatus());
+            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, getStatus(), loginer.userInfo.id, this.tb_date.Text, this.tb_name.Text);
             this.repeater_myapplications.DataBind();
         }
 
@@ -79,7 +79,7 @@ namespace WEBUI.Pages
             this.btn_wait.CssClass = css_unselect;
             this.btn_rejectWith.CssClass = css_select;
 
-            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, loginer.userInfo.id, this.tb_name.Text, this.tb_date.Text, getStatus());
+            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, getStatus(), loginer.userInfo.id, this.tb_date.Text, this.tb_name.Text);
             this.repeater_myapplications.DataBind();
         }
 
@@ -92,17 +92,17 @@ namespace WEBUI.Pages
 
         protected void tb_name_TextChanged(object sender, EventArgs e)
         {
-            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, loginer.userInfo.id, this.tb_name.Text, this.tb_date.Text, getStatus());
+            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, getStatus(), loginer.userInfo.id, this.tb_date.Text, this.tb_name.Text);
             this.repeater_myapplications.DataBind();
         }
 
         protected void tb_date_TextChanged1(object sender, EventArgs e)
         {
-            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, loginer.userInfo.id, this.tb_name.Text, this.tb_date.Text, getStatus());
+            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton1.Checked, getStatus(), loginer.userInfo.id, this.tb_date.Text, this.tb_name.Text);
             this.repeater_myapplications.DataBind();
         }
 
-
+        //0 wait 1.approva 2.reject.
         private int getStatus()
         {
             int result = 0;
@@ -124,36 +124,26 @@ namespace WEBUI.Pages
 
 
         //chooseStatus:1 ,apporve ,0 wait .2 reject
-        private static List<DAL.WebReference_leave.LeaveRequestMaster> GetDatasource(bool ismyself, int uid,string name, string datestr, int chooseStatus)
+        private static List<DAL.WebReference_leave.LeaveRequestMaster> GetDatasource(bool ismyself, int chooseStatus,int uid, string datestrFrom,string username)
         {
-            List<DAL.WebReference_leave.LeaveRequestMaster> result;
-
-            DateTime? from = null;
-            if (!string.IsNullOrEmpty(datestr))
+            List<DAL.WebReference_leave.LeaveRequestMaster> result = null;
+            DateTime? dateFrom = null;
+            if (!string.IsNullOrEmpty(datestrFrom))
             {
-                from = DateTime.Parse(datestr);
+                dateFrom = DateTime.Parse(datestrFrom);
             }
-            if (from == null)
+
+            if (ismyself)
             {
-                result = BLL.Leave.GetLeaveMaster(uid);
+                //根据uid,需要的状态 , date, 得到list.
+            
+                result= BLL.Leave.GetLeaveMaster(uid, chooseStatus, dateFrom);
             }
             else
             {
-                DateTime datefrom = (DateTime)from;
-                result = BLL.Leave.GetLeaveMaster(uid, datefrom);
-            }
+                //根据uid,时间，name ，获得我所负责的 wait approval 's list.
 
-            if (chooseStatus == 0)
-            {
-                result = result.Where(x => x.Status ==(int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE).ToList();
-            }
-            else if (chooseStatus == 1)
-            {
-                result = result.Where(x => x.Status == (int)BLL.GlobalVariate.ApprovalRequestStatus.APPROVE).ToList();
-            }
-            else
-            {
-                result = result.Where(x => x.Status == (int)BLL.GlobalVariate.ApprovalRequestStatus.REJECT).ToList();
+                result = BLL.Leave.GetLeaveMaster_IncludeMyWorkFlow(uid, dateFrom);
             }
             return result;
         }

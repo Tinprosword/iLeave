@@ -11,11 +11,11 @@ namespace DAL
         public static string LEAVE_DESC = "Leave Request";
 
         #region insert
-        public static int InsertLeave(List<MODEL.Apply.apply_LeaveData> originDetail, int userid, int? staffid, string remarks, out WebReference_leave.StaffLeaveRequest[] details, out WebReference_leave.ErrorMessageInfo messageInfo)
+        public static int InsertLeave(List<MODEL.Apply.apply_LeaveData> originDetail, int userid, int employmentid, int? staffid, string remarks, out WebReference_leave.StaffLeaveRequest[] details, out WebReference_leave.ErrorMessageInfo messageInfo)
         {
             int result = -1;//默认为一般错误
             DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
-            List<WebReference_leave.StaffLeaveRequest> detail = GenerateLeaveRequest(originDetail, userid);
+            List<WebReference_leave.StaffLeaveRequest> detail = GenerateLeaveRequest(originDetail, userid, employmentid);
 
             messageInfo = new WebReference_leave.ErrorMessageInfo();
             try
@@ -41,20 +41,15 @@ namespace DAL
             result = webServicesHelper.ws_leave.CreateNewRequest(null, WebReference_leave.WorkflowTypeID.LEAVE_APPLICATION, details, uid, LEAVE_DESC, "", "", "", requestLeaveID, employMentID);
             return result;
         }
-        public static List<WebReference_leave.StaffLeaveRequest> GenerateLeaveRequest(List<MODEL.Apply.apply_LeaveData> originDetail, int uid)
+        public static List<WebReference_leave.StaffLeaveRequest> GenerateLeaveRequest(List<MODEL.Apply.apply_LeaveData> originDetail, int uid,int employmentID)
         {
             List<WebReference_leave.StaffLeaveRequest> result = new List<WebReference_leave.StaffLeaveRequest>();
 
             for (int i = 0; i < originDetail.Count; i++)
             {
-                int employmentID = GetEmployID(uid, originDetail[i].LeaveDate);
-
                 if (employmentID > 0)
                 {
-                    originDetail[i].leavetypeid = originDetail[i].leavetypeid;
-
                     WebReference_leave.StaffLeaveRequest newItem = new WebReference_leave.StaffLeaveRequest();
-
                     newItem.CompareKey = null;
                     newItem.CreateDate = System.DateTime.Now;
                     newItem.DelegationToStaffID = null;
@@ -111,7 +106,13 @@ namespace DAL
         }
         #endregion
 
-        #region search
+        #region search  master :employment id ,request id. uid
+       
+
+        #endregion
+
+
+        #region search  detail :request id.
 
         #endregion
 
@@ -136,17 +137,6 @@ namespace DAL
         #endregion
 
         #region utinity
-        public static int GetEmployID(int uid, DateTime date)
-        {
-            int result = 0;
-            DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
-            WebReference_staff.EmploymentInfo info = webServicesHelper.ws_staff.GetEmploymentInfoByUserIDAndValidDate(uid, date);
-            if (info != null)
-            {
-                result = info.EmploymentID;
-            }
-            return result;
-        }
         private static int GetEmployHours(int employid)
         {//todo it
             return 8;
