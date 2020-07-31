@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 
 namespace WEBUI.Pages
 {
-
     //action=choose  :1.mulchoose to prepage.
     public partial class calendar : BLL.CustomLoginTemplate
     {
@@ -189,7 +188,7 @@ namespace WEBUI.Pages
 
             if (data != null)
             {
-                List<MODEL.Apply.LeaveData> selected = data.LeaveList;
+                List<MODEL.Apply.apply_LeaveData> selected = data.LeaveList;
                 if (selected != null)
                 {
                     var temp = selected.Find(x => x.LeaveDate == dateTime);
@@ -199,7 +198,7 @@ namespace WEBUI.Pages
                         int sectiontype =int.Parse(data.ddlsectionSelectvalue);
                         string leavename = LSLibrary.WebAPP.ValueText<int>.GetText(data.leavetype, int.Parse(data.LeaveTypeSelectValue));
 
-                        var newitem = new MODEL.Apply.LeaveData(loginer.loginName, dateTime.ToString("MM-dd"), sectiontype, leaveId, (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE.ToString(), dateTime, leavename, leavename);
+                        var newitem = new MODEL.Apply.apply_LeaveData(leaveId, leavename, leavename, sectiontype, dateTime);
                         data.LeaveList.Add(newitem);
                     }
                     else
@@ -209,9 +208,5 @@ namespace WEBUI.Pages
                 }
             }
         }
-
-
-
-
     }
 }

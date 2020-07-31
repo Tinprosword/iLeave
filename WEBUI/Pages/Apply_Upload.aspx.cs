@@ -43,7 +43,6 @@ namespace WEBUI.Pages
             }
 
 
-
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "&lt;Apply", "Attachment", "~/pages/Apply.aspx?action=back");
 
             MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, ViewState);
@@ -70,7 +69,7 @@ namespace WEBUI.Pages
                     reducePath = "~/Res/images/file.png";
                 }
 
-                MODEL.Apply.UploadPic temppic = new MODEL.Apply.UploadPic(bigPath, reducePath);
+                MODEL.Apply.app_uploadpic temppic = new MODEL.Apply.app_uploadpic(bigPath, reducePath);
                 applyPage.uploadpic.Add(temppic);
             }
             LSLibrary.WebAPP.ViewStateHelper.SetValue(applyPage, Apply.ViewState_PageName, ViewState);

@@ -13,6 +13,7 @@ namespace WEBUI.Pages
         //todo page页面的多层继承写的不错，可以总结下了。
         //2. myself my team 4.canleder datetime=> show detail (^)[not version 1]
         //todo 1.server address secretery, 3.unit dropdown list  5.app's icon 
+        //todo type 多选。导致section多县。导致vlist可以修改？？？
         public static string ViewState_PageName = "PageView";
         public StateBag myviewState;
 
@@ -38,6 +39,7 @@ namespace WEBUI.Pages
 
         protected override void InitPageDataOnFirstLoad2()
         {
+            initPageViewState();
         }
 
         protected override void ResetUIOnEachLoad3()
@@ -52,7 +54,7 @@ namespace WEBUI.Pages
         {
             RepeaterItem item = e.Item;
             DropDownList ddl = (DropDownList)item.FindControl("rp_dropdl_section");
-            MODEL.Apply.LeaveData itemdata = (MODEL.Apply.LeaveData)item.DataItem;
+            MODEL.Apply.apply_LeaveData itemdata = (MODEL.Apply.apply_LeaveData)item.DataItem;
             for (int i = 0; i < ddl.Items.Count;i++)
             {
                 if (itemdata.sectionid.ToString()== ddl.Items[i].Value)
@@ -100,12 +102,10 @@ namespace WEBUI.Pages
                 List<LSLibrary.WebAPP.ValueText<int>> typedata = BLL.Leave.ConvertLeaveInfo2DropDownList(res);
                 LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.ddl_leavetype, typedata);
 
-                this.repeater_leave.DataSource = new List<MODEL.Apply.LeaveData>();
+                this.repeater_leave.DataSource = new List<MODEL.Apply.apply_LeaveData>();
                 this.repeater_leave.DataBind();
 
                 //set viewstate
-                //todo init and get .can it get value from viewstate?
-                initPageViewState();
                 SavePageDataToViewState(false, true, false, null, typedata, null);
             }
             SetMultiLanguage();
@@ -116,7 +116,7 @@ namespace WEBUI.Pages
             //init ui
             LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.ddl_leavetype, applypage.leavetype);
 
-            this.literal_applier.Text = loginer.loginName + "  " + loginer.userInfo.nickname;
+            this.literal_applier.Text = loginer.loginName + "  " + loginer.userInfo.employNnumber;
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
             this.ddl_leavetype.SelectedValue = applypage.LeaveTypeSelectValue.ToString();
             this.repeater_leave.DataSource = applypage.LeaveList;
@@ -197,7 +197,7 @@ namespace WEBUI.Pages
         protected void button_apply_Click(object sender, EventArgs e)
         {
             //1,获得数据   2,调用ws,进行插入.  
-            List<MODEL.Apply.LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).LeaveList;
+            List<MODEL.Apply.apply_LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).LeaveList;
             string errorMsg = "";
             int reslut= BLL.Leave.InsertLeave(LeaveList, loginer.userInfo.id,(int)loginer.userInfo.employID,  null,this.tb_remarks.Text.Trim(),out errorMsg);
             if (reslut >= 0)
@@ -219,7 +219,6 @@ namespace WEBUI.Pages
             this.lt_leave.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_leave;
             this.lt_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_apply;
             this.lt_balance.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_banlance;
-            //this.lt_date.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_date;
             this.lt_section.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_section;
             this.lt_remarks.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_remarks;
             this.ltlistdate.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_list_data;
@@ -231,14 +230,14 @@ namespace WEBUI.Pages
         private void initPageViewState()
         {
             MODEL.Apply.ViewState_page viewState_Page = new MODEL.Apply.ViewState_page();
-            viewState_Page.LeaveList = new List<MODEL.Apply.LeaveData>();
-            viewState_Page.uploadpic = new List<MODEL.Apply.UploadPic>();
+            viewState_Page.LeaveList = new List<MODEL.Apply.apply_LeaveData>();
+            viewState_Page.uploadpic = new List<MODEL.Apply.app_uploadpic>();
             viewState_Page.leavetype = new List<LSLibrary.WebAPP.ValueText<int>>();
 
             LSLibrary.WebAPP.ViewStateHelper.SetValue(viewState_Page, ViewState_PageName, ViewState);
         }
 
-        private void SavePageDataToViewState(bool owlist,bool owtype,bool owpics, List<MODEL.Apply.LeaveData> leavelist,List<LSLibrary.WebAPP.ValueText<int>> leavetype,List<MODEL.Apply.UploadPic> uploadPics)
+        private void SavePageDataToViewState(bool owlist,bool owtype,bool owpics, List<MODEL.Apply.apply_LeaveData> leavelist,List<LSLibrary.WebAPP.ValueText<int>> leavetype,List<MODEL.Apply.app_uploadpic> uploadPics)
         {
             MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
             applyPage.LeaveTypeSelectValue = this.ddl_leavetype.SelectedValue;

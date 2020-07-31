@@ -60,7 +60,7 @@
             <table class="col-xs-12 lsu-table-sm">
                 <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                     <ItemTemplate>
-                        <tr><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-4"><%#((MODEL.Apply.LeaveData)Container.DataItem).leavetypeCode %></td>
+                        <tr><td class="col-xs-3"><%# ((MODEL.Apply.apply_LeaveData)Container.DataItem).LeaveDate.ToString("MM-dd") %></td><td class="col-xs-4"><%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeCode %></td>
                             <td class="col-xs-4">
                                 <asp:DropDownList ID="rp_dropdl_section" runat="server" Width="90%"  OnSelectedIndexChanged="rp_dropdl_section_SelectedIndexChanged" AutoPostBack="true" fix="<%#Container.ItemIndex%>">
                                     <asp:ListItem Text="Full day" Value="0"  Selected="true"/>
@@ -69,10 +69,10 @@
                                     <asp:ListItem Text="3 Sections" Value="3"/>
                                 </asp:DropDownList>
                             </td>
-                            <td class="col-xs-1"><asp:ImageButton ID="delete" Width="28px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="20px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.LeaveData)Container.DataItem).leavetypeid %>" /></td></tr>
+                            <td class="col-xs-1"><asp:ImageButton ID="delete" Width="28px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="20px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeid %>" /></td></tr>
                     </ItemTemplate>
                     <AlternatingItemTemplate>
-                        <tr style="background-color:aliceblue"><td class="col-xs-3"><%# ((MODEL.Apply.LeaveData)Container.DataItem).date %></td><td class="col-xs-4"><%#((MODEL.Apply.LeaveData)Container.DataItem).leavetypeCode %></td>
+                        <tr style="background-color:aliceblue"><td class="col-xs-3"><%# ((MODEL.Apply.apply_LeaveData)Container.DataItem).LeaveDate.ToString("MM-dd") %></td><td class="col-xs-4"><%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeCode %></td>
                             <td class="col-xs-4">
                                 <asp:DropDownList ID="rp_dropdl_section" runat="server" Width="90%" OnSelectedIndexChanged="rp_dropdl_section_SelectedIndexChanged" AutoPostBack="true" fix="<%#Container.ItemIndex%>">
                                     <asp:ListItem Text="Full day" Value="0"  Selected="true"/>
@@ -81,7 +81,7 @@
                                     <asp:ListItem Text="3 Sections" Value="3"/>
                                 </asp:DropDownList>                                                                                                                                                                                           
                             </td>
-                            <td class="col-xs-1"><asp:ImageButton ID="delete" Width="28px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="20px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.LeaveData)Container.DataItem).leavetypeid %>" /></td></tr>
+                            <td class="col-xs-1"><asp:ImageButton ID="delete" Width="28px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="20px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeid %>" /></td></tr>
                     </AlternatingItemTemplate>
                 </asp:Repeater>
             </table>

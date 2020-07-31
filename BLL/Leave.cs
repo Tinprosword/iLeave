@@ -32,7 +32,7 @@ namespace BLL
         }
 
         //0 ok. -1 check error -2.insert error
-        public static int InsertLeave(List<MODEL.Apply.LeaveData> originDetail, int userid, int employmentid, int? staffid, string remarks, out string errorMsg)
+        public static int InsertLeave(List<MODEL.Apply.apply_LeaveData> originDetail, int userid, int employmentid, int? staffid, string remarks, out string errorMsg)
         {
             BLL.User_wsref.CheckWsLogin();
 
@@ -85,12 +85,12 @@ namespace BLL
         
 
 
-        public static List<MODEL.Apply.LeaveData> getLeaveDetails(int requestid, int uid)
+        public static List<MODEL.Apply.apply_LeaveData> getLeaveDetails(int requestid, int uid)
         {
             string username = "";//todo get name
 
             DateTime leaveFrom = System.DateTime.Now;
-            List<MODEL.Apply.LeaveData> data = new List<MODEL.Apply.LeaveData>();
+            List<MODEL.Apply.apply_LeaveData> data = new List<MODEL.Apply.apply_LeaveData>();
             DAL.WebReference_leave.StaffLeaveRequest[] leaves = null;// todo BLL.Leave.getLeaveAppliationsByRequestID(requestid);
             for (int i = 0; i < leaves.Count(); i++)
             {
@@ -103,26 +103,26 @@ namespace BLL
                 string typecode = leaves[i].LeaveTypeName;
                 string typeDesc = leaves[i].LeaveTypeName;//todo 
 
-                data.Add(new MODEL.Apply.LeaveData(username, strDate, section, typeid, status, statusName, date, typecode, typeDesc));
+                data.Add(new MODEL.Apply.apply_LeaveData(typeid, typecode, typeDesc, section,  date));
             }
             return data;
         }
 
-        public static List<MODEL.Apply.UploadPic> getAttendance(string uid, int applicationID)
+        public static List<MODEL.Apply.app_uploadpic> getAttendance(string uid, int applicationID)
         {
-            List<MODEL.Apply.UploadPic> data = new List<MODEL.Apply.UploadPic>();
+            List<MODEL.Apply.app_uploadpic> data = new List<MODEL.Apply.app_uploadpic>();
             for (int i = 0; i < 1; i++)
             {
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.UploadPic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
             }
             return data;
         }
@@ -152,14 +152,14 @@ namespace BLL
         #endregion
 
 
-        public static List<MODEL.Apply.LeaveData> getListSource(string uid, DateTime dt)
+        public static List<MODEL.Apply.apply_LeaveData> getListSource(string uid, DateTime dt)
         {
-            List<MODEL.Apply.LeaveData> data = new List<MODEL.Apply.LeaveData>();
+            List<MODEL.Apply.apply_LeaveData> data = new List<MODEL.Apply.apply_LeaveData>();
             int modday = dt.Day % 5;
             for (int i = 0; i < modday; i++)
             {
-                data.Add(new MODEL.Apply.LeaveData(uid, "05-01周一", 1, 2, (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE.ToString(), System.DateTime.Now, "Al", "Al"));
-                data.Add(new MODEL.Apply.LeaveData(uid, "05-01周一", 1, 2, (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE.ToString(), System.DateTime.Now, "Al", "Al"));
+                //data.Add(new MODEL.Apply.apply_LeaveData(uid, "05-01周一", 1, 2, (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE.ToString(), System.DateTime.Now, "Al", "Al"));
+                //data.Add(new MODEL.Apply.apply_LeaveData(uid, "05-01周一", 1, 2, (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE.ToString(), System.DateTime.Now, "Al", "Al"));
             }
             return data;
         }

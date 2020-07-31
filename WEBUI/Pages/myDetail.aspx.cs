@@ -11,7 +11,7 @@ namespace WEBUI.Pages
     {
         private  int requestId;
         private  int uid;
-        private  List<MODEL.Apply.LeaveData> LeaveList;
+        private  List<MODEL.Apply.apply_LeaveData> LeaveList;
         private  int requestStatus;
         private bool isHandlerOfLeave;
 
@@ -31,7 +31,7 @@ namespace WEBUI.Pages
                 LeaveList = BLL.Leave.getLeaveDetails(requestId, uid);
                 if(LeaveList!=null && LeaveList.Count()>0)
                 {
-                    requestStatus = LeaveList[0].status;
+                    requestStatus = 0;// LeaveList[0].status;//todo
                 }
                 else
                 {
@@ -61,7 +61,7 @@ namespace WEBUI.Pages
 
         private void setupAttendance()
         {
-            List<MODEL.Apply.UploadPic> attandance = BLL.Leave.getAttendance(loginer.loginName, 3);
+            List<MODEL.Apply.app_uploadpic> attandance = BLL.Leave.getAttendance(loginer.loginName, 3);
             if (attandance != null)
             {
                 this.repeater_pic.DataSource = attandance;

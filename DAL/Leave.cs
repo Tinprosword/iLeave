@@ -11,7 +11,7 @@ namespace DAL
         public static string LEAVE_DESC = "Leave Request";
 
         #region insert
-        public static int InsertLeave(List<MODEL.Apply.LeaveData> originDetail, int userid, int? staffid, string remarks, out WebReference_leave.StaffLeaveRequest[] details, out WebReference_leave.ErrorMessageInfo messageInfo)
+        public static int InsertLeave(List<MODEL.Apply.apply_LeaveData> originDetail, int userid, int? staffid, string remarks, out WebReference_leave.StaffLeaveRequest[] details, out WebReference_leave.ErrorMessageInfo messageInfo)
         {
             int result = -1;//默认为一般错误
             DalHelper.WebServicesHelper webServicesHelper = DalHelper.WebServicesHelper.GetInstance();
@@ -41,7 +41,7 @@ namespace DAL
             result = webServicesHelper.ws_leave.CreateNewRequest(null, WebReference_leave.WorkflowTypeID.LEAVE_APPLICATION, details, uid, LEAVE_DESC, "", "", "", requestLeaveID, employMentID);
             return result;
         }
-        public static List<WebReference_leave.StaffLeaveRequest> GenerateLeaveRequest(List<MODEL.Apply.LeaveData> originDetail, int uid)
+        public static List<WebReference_leave.StaffLeaveRequest> GenerateLeaveRequest(List<MODEL.Apply.apply_LeaveData> originDetail, int uid)
         {
             List<WebReference_leave.StaffLeaveRequest> result = new List<WebReference_leave.StaffLeaveRequest>();
 
