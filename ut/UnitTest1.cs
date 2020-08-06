@@ -5,6 +5,7 @@ using System.Xml;
 using System.Data;
 using System.IO;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace ut
 {
@@ -22,13 +23,12 @@ namespace ut
 
 
 
-
         [TestMethod]
-        public void testbll()
+        public void testbll4()
         {
-            
-        }
 
+            Ws.WebReference_User.UserManagementV2 userManagement = new Ws.WebReference_User.UserManagementV2();
+        }
 
 
         [TestMethod]

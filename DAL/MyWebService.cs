@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace Ws
 {
-    public class DalHelper
+    public class MyWebService
     {
+        public static WebServicesHelper GlobalWebServices = WebServicesHelper.GetInstance();
+
         public static string GetWebServices()
         {
             return LSLibrary.WebAPP.WebConfig.getValue("webServices");
@@ -30,7 +32,8 @@ namespace DAL
             public WebReference_User.UserManagementV2 ws_user = new WebReference_User.UserManagementV2();
             public WebReference_leave.LeaveManagementV2 ws_leave = new WebReference_leave.LeaveManagementV2();
             public WebReference_codesetting.CodeSettingsV2 ws_codesetting = new WebReference_codesetting.CodeSettingsV2();
-            public WebReference_staff.StaffManagementV2 ws_staff = new WebReference_staff.StaffManagementV2();
+            public WebReference_workflow.WorkflowV2 ws_workflow = new WebReference_workflow.WorkflowV2();
+
             public System.Net.CookieContainer cookieContainer = new System.Net.CookieContainer();
 
 
@@ -48,10 +51,8 @@ namespace DAL
                 ws_user.CookieContainer = cookieContainer;
                 ws_leave.CookieContainer = cookieContainer;
                 ws_codesetting.CookieContainer = cookieContainer;
-                ws_staff.CookieContainer = cookieContainer;
+                ws_workflow.CookieContainer = cookieContainer;
             }
         }
-
-
     }
 }

@@ -61,7 +61,7 @@ namespace WEBUI.Pages
 
             for (int i = 0; i < uploadFiles.Count; i++)
             {
-                string reducePath = "~/" + BLL.GlobalVariate.path_uploadPic + "\\" + BLL.Leave.reducePath + "\\" + uploadFiles[i];
+                string reducePath = "~/" + BLL.GlobalVariate.path_uploadPic + "\\" + BLL.common.reducePath + "\\" + uploadFiles[i];
                 string bigPath = "~/" + BLL.GlobalVariate.path_uploadPic + "\\" + uploadFiles[i];
 
                 if (!LSLibrary.FileUtil.FileIsExist(Server.MapPath(reducePath)))
@@ -83,7 +83,7 @@ namespace WEBUI.Pages
         {
             string absoluteDir = Server.MapPath("~/" + BLL.GlobalVariate.path_uploadPic);
             List<string> types = new List<string>(new string[] { "png", "gif" });
-            List<string> files = BLL.Leave.UploadAttendance(Request, absoluteDir, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg);
+            List<string> files = BLL.common.UploadAttendance(Request, absoluteDir, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg);
             return files;
         }
 

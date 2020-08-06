@@ -1,4 +1,4 @@
-﻿using DAL.WebReference_codesetting;
+﻿using Ws.WebReference_codesetting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +9,6 @@ namespace BLL
 {
     public class CodeSetting
     {
-        public static LeaveInfo[] GetLeaveInfo()
-        {
-            BLL.User_wsref.CheckWsLogin();
-            return DAL.CodeSetting.GetLeaveInfo();
-        }
+
     }
 }

@@ -11,20 +11,24 @@ namespace BLL
 {
     public class User_wsref
     {
-        public static MODEL.LoginResult CheckLogin(string uid, string password)
+        public static int test_add(int a, int b)
         {
-            return DAL.User_ref.CheckLogin_webref(uid, password);
+            return Ws.MyWebService.GlobalWebServices.ws_user.Test_ADD(a, b);
+        }
+
+        public static Ws.WebReference_User.LoginResult CheckLogin(string uid, string password)
+        {
+            return Ws.MyWebService.GlobalWebServices.ws_user.AuthenticateUser(uid, LSLibrary.MD5Util.GetMD5_32(password).ToUpper());
         }
 
 
         public static void CheckWsLogin()
         {
-            if (!DAL.User_ref.isLogin())
+            if (!Ws.MyWebService.GlobalWebServices.ws_user.IsLogin())
             {
                 GoBackToLogin();
             }
         }
-
 
         public static LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> GetLoginer()
         {
@@ -56,28 +60,28 @@ namespace BLL
         }
 
 
-        public static int test_add(int a, int b)
+        public static Ws.WebReference_User.t_Person GerPersonByuid(int uid)
         {
-            CheckWsLogin();
-            return DAL.User_ref.test_add(a, b);
+            Ws.WebReference_User.t_Person result = null;
+            var temp= Ws.MyWebService.GlobalWebServices.ws_user.Base_GetListt_Person("userid=" + uid);
+            result = temp.Count() == 1 ? temp[0] : null;
+            return result;
         }
 
 
-        public static DAL.WebReference_User.PersonBaseinfo[] GetPersonBaseInfoByUid(int uid)
+
+        public static Ws.WebReference_User.PersonBaseinfo[] GetPersonBaseInfoByPid(int pid)
         {
-            return DAL.User_ref.GetPersonBaseInfoByUid(uid);
+            Ws.WebReference_User.PersonBaseinfo result = null;
+            return Ws.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfoByPid(pid);
         }
 
-        public static DAL.WebReference_User.PersonBaseinfo[] GetPersonBaseinfos_validateEmploymentNow(int uid)
-        {
-            DAL.WebReference_User.PersonBaseinfo[] res = DAL.User_ref.GetPersonBaseinfos_validToday(uid);
-            return res;
-        }
 
-        public static DAL.WebReference_User.PersonBaseinfo GetPersonBaseinfos_validateDefaultEmploymentNow(int uid)
+
+        public static Ws.WebReference_User.PersonBaseinfo GetPersonBaseinfos_validateDefaultEmploymentNow(int pid)
         {
-            DAL.WebReference_User.PersonBaseinfo result = null;
-            DAL.WebReference_User.PersonBaseinfo[] res = GetPersonBaseinfos_validateEmploymentNow(uid);
+            Ws.WebReference_User.PersonBaseinfo result = null;
+            Ws.WebReference_User.PersonBaseinfo[] res = Ws.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfo_ValidateEmploymentForToday(pid);
             if (res != null && res.Count() > 0)
             {
                 result = res[0];//todo 得到薪水更高的一个.
@@ -86,19 +90,22 @@ namespace BLL
         }
 
 
-        public static DAL.WebReference_User.PersonBaseinfo GetPersonBaseinfoByEmploymentID(int uid, int employmentid)
+        public static void SaveInfoToSession(string userid, Ws.WebReference_User.LoginResult loginResult)
         {
-            DAL.WebReference_User.PersonBaseinfo result = null;
-            DAL.WebReference_User.PersonBaseinfo[] res = DAL.User_ref.GetPersonBaseInfoByUid(uid);
-            if (res != null && res.Count() > 0)
+            Ws.WebReference_User.t_Person person = BLL.User_wsref.GerPersonByuid(loginResult.Result);
+
+            Ws.WebReference_User.PersonBaseinfo personBaseinfo = BLL.User_wsref.GetPersonBaseinfos_validateDefaultEmploymentNow(person.ID);
+            MODEL.UserInfo userInfo = null;
+            if (personBaseinfo != null)
             {
-                var tempres = res.Where(x => x.e_id == employmentid);
-                if (tempres != null && tempres.Count() > 0)
-                {
-                    result = tempres.First();
-                }
+                userInfo = new MODEL.UserInfo(loginResult.Result, userid, "", loginResult.SessionID, personBaseinfo.e_id, personBaseinfo.e_EmploymentNumber, personBaseinfo.s_id, personBaseinfo.s_StaffNumber, personBaseinfo.p_id);
             }
-            return result;
+            else
+            {
+                userInfo = new MODEL.UserInfo(loginResult.Result, userid, "", loginResult.SessionID, null, null, null, null, person.ID);
+            }
+
+            LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(userid, userInfo));
         }
 
     }

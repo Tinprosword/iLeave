@@ -12,13 +12,23 @@ namespace WEBUI
         private string viewname = "tt";
         protected void Page_Load(object sender, EventArgs e)
         {
-            var empty= LSLibrary.WebAPP.ViewStateHelper.GetValue(viewname, this.ViewState);
+            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            LSLibrary.WebAPP.ViewStateHelper.SetValue("aa", viewname, this.ViewState);
-            var empty = LSLibrary.WebAPP.ViewStateHelper.GetValue(viewname, this.ViewState);
+            List<int> source = new List<int>();
+
+            for(int i=0;i<10;i++)
+            {
+                source.Add(i);
+            }
+
+            var des = source.Where(x => x > 20);
+
+            int[] deslist = des.ToArray();
+            int aa = deslist.First();
+            int a = 4;
         }
     }
 }

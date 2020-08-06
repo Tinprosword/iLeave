@@ -16,8 +16,9 @@ namespace MODEL
         public string employNnumber;
         public int? staffid;
         public string staffNumber;
+        public int personid;
 
-        public UserInfo(int id, string loginName, string nickname, string sessionid, int? employID, string employNnumber, int? staffid, string staffNumber)
+        public UserInfo(int id, string loginName, string nickname, string sessionid, int? employID, string employNnumber, int? staffid, string staffNumber, int personid)
         {
             this.id = id;
             this.loginName = loginName;
@@ -27,6 +28,7 @@ namespace MODEL
             this.employNnumber = employNnumber;
             this.staffid = staffid;
             this.staffNumber = staffNumber;
+            this.personid = personid;
         }
 
         public bool hasValidEmploynumber()
@@ -38,11 +40,6 @@ namespace MODEL
             }
             return result;
         }
-    }
 
-    public class LoginResult
-    {
-        public int Result;
-        public string SessionID;
     }
 }

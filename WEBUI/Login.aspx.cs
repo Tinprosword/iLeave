@@ -49,22 +49,11 @@ namespace WEBUI
 
             if (string.IsNullOrWhiteSpace(userid) == false && string.IsNullOrWhiteSpace(password) == false)
             {
-                MODEL.LoginResult loginResult = BLL.User_wsref.CheckLogin(userid, password);
+                Ws.WebReference_User.LoginResult loginResult = BLL.User_wsref.CheckLogin(userid, password);
                 bool isLogin = loginResult.Result > 0 ? true : false;
                 if (isLogin)
                 {
-                    DAL.WebReference_User.PersonBaseinfo personBaseinfo = BLL.User_wsref.GetPersonBaseinfos_validateDefaultEmploymentNow(loginResult.Result);
-                    MODEL.UserInfo userInfo;
-                    if (personBaseinfo!=null)
-                    {
-                        userInfo = new MODEL.UserInfo(loginResult.Result, userid, "",  loginResult.SessionID, personBaseinfo.e_id, personBaseinfo.e_EmploymentNumber, personBaseinfo.s_id, personBaseinfo.s_StaffNumber);
-                    }
-                    else
-                    {
-                        userInfo = new MODEL.UserInfo(loginResult.Result, userid, "", loginResult.SessionID, null, null,null, null);
-                    }
-                    
-                    LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(userid,userInfo));
+                    BLL.User_wsref.SaveInfoToSession(userid, loginResult);
                     Response.Redirect("~/Pages/Main.aspx");
                 }
                 else
@@ -78,6 +67,7 @@ namespace WEBUI
                 
             }
         }
+
 
 
         private void CleanInput()
