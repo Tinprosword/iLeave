@@ -171,21 +171,121 @@
           <s:enumeration value="VALIDATION" />
         </s:restriction>
       </s:simpleType>
-      <s:element name="GetAllLeaveMaster">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetAllLeaveMasterResponse">
+      <s:element name="CreateNewRequest">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAllLeaveMasterResult" type="tns:ArrayOfLeaveRequestMaster" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_ExistingWorkflowTask" type="tns:MyWorkflowTask" />
+            <s:element minOccurs="1" maxOccurs="1" name="TaskType" type="tns:WorkflowTypeID" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_ApprovalRequest" type="tns:ArrayOfStaffLeaveRequest" />
+            <s:element minOccurs="1" maxOccurs="1" name="createrUID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_strDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_strFormulatedURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="baseURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_strWorkflowInfoParameter" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="p_intLeaveRequestID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="p_intEmploymentID" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfLeaveRequestMaster">
+      <s:complexType name="MyWorkflowTask">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="LeaveRequestMaster" nillable="true" type="tns:LeaveRequestMaster" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InOutTypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkflowInfoID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentStep" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FormulatedURL" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveRequestID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsRead" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FromUserName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PositionDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ToUserName" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:simpleType name="WorkflowTypeID">
+        <s:restriction base="s:string">
+          <s:enumeration value="LEAVE_APPLICATION" />
+          <s:enumeration value="UPDATE_PERSON_INFO" />
+          <s:enumeration value="UPDATE_TRAINING_RECORD" />
+          <s:enumeration value="UPDATE_QUALIFICATION_RECORD" />
+          <s:enumeration value="PAYROLL_LOCK" />
+          <s:enumeration value="CLOT_APPLICATION" />
+          <s:enumeration value="OT_APPROVAL" />
+          <s:enumeration value="MEDICAL_CLAIM" />
+          <s:enumeration value="ATTENDANCE" />
+          <s:enumeration value="DOCTOR_VISIT" />
+          <s:enumeration value="CANCEL_LEAVE_APPLICATION" />
+          <s:enumeration value="EXPENSE_CLAIM" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CreateNewRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateNewRequestResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApproveRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WorkflowTaskObject" type="tns:MyWorkflowTask" />
+            <s:element minOccurs="1" maxOccurs="1" name="TaskType" type="tns:WorkflowTypeID" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_ApprovalRequest" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FormulatedURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="baseURL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApproveRequestResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CancelRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WorkflowTaskObject" type="tns:MyWorkflowTask" />
+            <s:element minOccurs="1" maxOccurs="1" name="TaskType" type="tns:WorkflowTypeID" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_ApprovalRequest" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FormulatedURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="baseURL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelRequestResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RejectRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WorkflowTaskObject" type="tns:MyWorkflowTask" />
+            <s:element minOccurs="1" maxOccurs="1" name="TaskType" type="tns:WorkflowTypeID" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_ApprovalRequest" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_strDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FormulatedURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="baseURL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RejectRequestResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllLeaveMaster">
+        <s:complexType />
+      </s:element>
       <s:complexType name="LeaveRequestMaster">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
@@ -203,6 +303,18 @@
           <s:element minOccurs="0" maxOccurs="1" name="extend" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:complexType name="ArrayOfLeaveRequestMaster">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LeaveRequestMaster" nillable="true" type="tns:LeaveRequestMaster" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllLeaveMasterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllLeaveMasterResult" type="tns:ArrayOfLeaveRequestMaster" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetLeaveMasterByEmploymentID">
         <s:complexType>
           <s:sequence>
@@ -252,18 +364,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetLeaveDetailsByReuestIDResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveDetailsByReuestIDResult" type="tns:ArrayOfT_StaffLeaveRequestDetail" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfT_StaffLeaveRequestDetail">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="t_StaffLeaveRequestDetail" nillable="true" type="tns:t_StaffLeaveRequestDetail" />
-        </s:sequence>
-      </s:complexType>
       <s:complexType name="t_StaffLeaveRequestDetail">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
@@ -287,6 +387,18 @@
           <s:element minOccurs="1" maxOccurs="1" name="Sections" nillable="true" type="s:double" />
         </s:sequence>
       </s:complexType>
+      <s:complexType name="ArrayOfT_StaffLeaveRequestDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="t_StaffLeaveRequestDetail" nillable="true" type="tns:t_StaffLeaveRequestDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLeaveDetailsByReuestIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveDetailsByReuestIDResult" type="tns:ArrayOfT_StaffLeaveRequestDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ArrayOfT_Leave" nillable="true" type="tns:ArrayOfT_Leave" />
       <s:element name="ArrayOfLeaveRequestMaster" nillable="true" type="tns:ArrayOfLeaveRequestMaster" />
       <s:element name="LeaveRequestMaster" nillable="true" type="tns:LeaveRequestMaster" />
@@ -304,6 +416,30 @@
   </wsdl:message>
   <wsdl:message name="InsertOnlineLeaveApplicationRequestSoapOut">
     <wsdl:part name="parameters" element="tns:InsertOnlineLeaveApplicationRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateNewRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateNewRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateNewRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateNewRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApproveRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:ApproveRequest" />
+  </wsdl:message>
+  <wsdl:message name="ApproveRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:ApproveRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelRequest" />
+  </wsdl:message>
+  <wsdl:message name="CancelRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="RejectRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:RejectRequest" />
+  </wsdl:message>
+  <wsdl:message name="RejectRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:RejectRequestResponse" />
   </wsdl:message>
   <wsdl:message name="GetAllLeaveMasterSoapIn">
     <wsdl:part name="parameters" element="tns:GetAllLeaveMaster" />
@@ -378,6 +514,22 @@
       <wsdl:input message="tns:InsertOnlineLeaveApplicationRequestSoapIn" />
       <wsdl:output message="tns:InsertOnlineLeaveApplicationRequestSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="CreateNewRequest">
+      <wsdl:input message="tns:CreateNewRequestSoapIn" />
+      <wsdl:output message="tns:CreateNewRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApproveRequest">
+      <wsdl:input message="tns:ApproveRequestSoapIn" />
+      <wsdl:output message="tns:ApproveRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelRequest">
+      <wsdl:input message="tns:CancelRequestSoapIn" />
+      <wsdl:output message="tns:CancelRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RejectRequest">
+      <wsdl:input message="tns:RejectRequestSoapIn" />
+      <wsdl:output message="tns:RejectRequestSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetAllLeaveMaster">
       <wsdl:input message="tns:GetAllLeaveMasterSoapIn" />
       <wsdl:output message="tns:GetAllLeaveMasterSoapOut" />
@@ -445,6 +597,42 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CreateNewRequest">
+      <soap:operation soapAction="http://tempuri.org/CreateNewRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveRequest">
+      <soap:operation soapAction="http://tempuri.org/ApproveRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelRequest">
+      <soap:operation soapAction="http://tempuri.org/CancelRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RejectRequest">
+      <soap:operation soapAction="http://tempuri.org/RejectRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAllLeaveMaster">
       <soap:operation soapAction="http://tempuri.org/GetAllLeaveMaster" style="document" />
       <wsdl:input>
@@ -504,6 +692,42 @@
     </wsdl:operation>
     <wsdl:operation name="InsertOnlineLeaveApplicationRequest">
       <soap12:operation soapAction="http://tempuri.org/InsertOnlineLeaveApplicationRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewRequest">
+      <soap12:operation soapAction="http://tempuri.org/CreateNewRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveRequest">
+      <soap12:operation soapAction="http://tempuri.org/ApproveRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelRequest">
+      <soap12:operation soapAction="http://tempuri.org/CancelRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RejectRequest">
+      <soap12:operation soapAction="http://tempuri.org/RejectRequest" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

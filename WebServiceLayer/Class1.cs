@@ -14,7 +14,6 @@ namespace WebServiceLayer
             return LSLibrary.WebAPP.WebConfig.getValue("webServices");
         }
 
-
         public static string GetCookieStringOfSessionID(string sessionid)
         {
             string idname = LSLibrary.WebAPP.WebConfig.getValue("SessionIDName");
@@ -22,7 +21,6 @@ namespace WebServiceLayer
             string cookieStringOfSession = idname + "=" + sessionid;
             return cookieStringOfSession;
         }
-
 
         public class WebServicesHelper
         {
@@ -32,7 +30,6 @@ namespace WebServiceLayer
             public WebReference_codesettings.CodeSettingsV2 ws_codesetting = new WebReference_codesettings.CodeSettingsV2();
             public WebReference_user.UserManagementV2 ws_user = new WebReference_user.UserManagementV2();
             public WebReference_leave.LeaveManagementV2 ws_leave = new WebReference_leave.LeaveManagementV2();
-            public WebReference_workflow.WorkflowV2 ws_workflow = new WebReference_workflow.WorkflowV2();
 
 
 
@@ -53,7 +50,6 @@ namespace WebServiceLayer
                 ws_user.CookieContainer = cookieContainer;
                 ws_leave.CookieContainer = cookieContainer;
                 ws_codesetting.CookieContainer = cookieContainer;
-                ws_workflow.CookieContainer = cookieContainer;
             }
         }
     }
