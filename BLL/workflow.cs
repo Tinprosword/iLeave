@@ -13,7 +13,7 @@ namespace BLL
         public static int InsertWorkflow(object details, int uid, int requestLeaveID, int employMentID)
         {
             int result = 0;
-            result = DAL.MyWebService.GlobalWebServices.ws_workflow.CreateNewRequest(null, DAL.WebReference_workflow.WorkflowTypeID.LEAVE_APPLICATION, (object)details, uid, LEAVE_DESC, "", "", "", requestLeaveID, employMentID);
+            result = WebServiceLayer.MyWebService.GlobalWebServices.ws_workflow.CreateNewRequest(null, WebServiceLayer.WebReference_workflow.WorkflowTypeID.LEAVE_APPLICATION, (object)details, uid, LEAVE_DESC, "", "", "", requestLeaveID, employMentID);
             return result;
         }
 

@@ -269,10 +269,6 @@
       <Project>{69a9688d-85c1-4c00-b678-645386b68102}</Project>
       <Name>BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{aea945fc-097f-46fa-934c-5dccd1ef6a98}</Project>
-      <Name>DAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Function\LSLibrary_dotNet\LSLibrary.csproj">
       <Project>{53ac195e-dcff-47c4-bc02-7e0241ff520c}</Project>
       <Name>LSLibrary</Name>
@@ -281,12 +277,13 @@
       <Project>{21757f81-d90d-4cc1-bb72-4a832bf5aed5}</Project>
       <Name>MODEL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebServiceLayer\WebServiceLayer.csproj">
+      <Project>{c5562850-d3bc-45cc-a6ba-c0bbc67fcab4}</Project>
+      <Name>WebServiceLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferences Include="Web References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

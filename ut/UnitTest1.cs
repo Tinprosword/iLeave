@@ -27,7 +27,7 @@ namespace ut
         public void testbll4()
         {
 
-            DAL.WebReference_User.UserManagementV2 userManagement = new DAL.WebReference_User.UserManagementV2();
+            WebServiceLayer.WebReference_user.UserManagementV2 userManagement = new WebServiceLayer.WebReference_user.UserManagementV2();
         }
 
 
