@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ws
+namespace DAL
 {
     public class MyWebService
     {
@@ -29,10 +29,13 @@ namespace Ws
         {
             private static WebServicesHelper webServicesHelper;
 
+
+            public WebReference_codesetting.CodeSettingsV2 ws_codesetting = new WebReference_codesetting.CodeSettingsV2();
             public WebReference_User.UserManagementV2 ws_user = new WebReference_User.UserManagementV2();
             public WebReference_leave.LeaveManagementV2 ws_leave = new WebReference_leave.LeaveManagementV2();
-            public WebReference_codesetting.CodeSettingsV2 ws_codesetting = new WebReference_codesetting.CodeSettingsV2();
             public WebReference_workflow.WorkflowV2 ws_workflow = new WebReference_workflow.WorkflowV2();
+
+
 
             public System.Net.CookieContainer cookieContainer = new System.Net.CookieContainer();
 

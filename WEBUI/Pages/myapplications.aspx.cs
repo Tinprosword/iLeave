@@ -124,9 +124,9 @@ namespace WEBUI.Pages
 
 
         //chooseStatus:1 ,apporve ,0 wait .2 reject
-        private static List<Ws.WebReference_leave.LeaveRequestMaster> GetDatasource(bool ismyself, int chooseStatus,int uid, string datestrFrom,string username)
+        private static List<DAL.WebReference_leave.LeaveRequestMaster> GetDatasource(bool ismyself, int chooseStatus,int uid, string datestrFrom,string username)
         {
-            List<Ws.WebReference_leave.LeaveRequestMaster> result = null;
+            List<DAL.WebReference_leave.LeaveRequestMaster> result = null;
             DateTime? dateFrom = null;
             if (!string.IsNullOrEmpty(datestrFrom))
             {

@@ -13,18 +13,18 @@ namespace BLL
     {
         public static int test_add(int a, int b)
         {
-            return Ws.MyWebService.GlobalWebServices.ws_user.Test_ADD(a, b);
+            return DAL.MyWebService.GlobalWebServices.ws_user.Test_ADD(a, b);
         }
 
-        public static Ws.WebReference_User.LoginResult CheckLogin(string uid, string password)
+        public static DAL.WebReference_User.LoginResult CheckLogin(string uid, string password)
         {
-            return Ws.MyWebService.GlobalWebServices.ws_user.AuthenticateUser(uid, LSLibrary.MD5Util.GetMD5_32(password).ToUpper());
+            return DAL.MyWebService.GlobalWebServices.ws_user.AuthenticateUser(uid, LSLibrary.MD5Util.GetMD5_32(password).ToUpper());
         }
 
 
         public static void CheckWsLogin()
         {
-            if (!Ws.MyWebService.GlobalWebServices.ws_user.IsLogin())
+            if (!DAL.MyWebService.GlobalWebServices.ws_user.IsLogin())
             {
                 GoBackToLogin();
             }
@@ -60,28 +60,28 @@ namespace BLL
         }
 
 
-        public static Ws.WebReference_User.t_Person GerPersonByuid(int uid)
+        public static DAL.WebReference_User.t_Person GerPersonByuid(int uid)
         {
-            Ws.WebReference_User.t_Person result = null;
-            var temp= Ws.MyWebService.GlobalWebServices.ws_user.Base_GetListt_Person("userid=" + uid);
+            DAL.WebReference_User.t_Person result = null;
+            var temp= DAL.MyWebService.GlobalWebServices.ws_user.Base_GetListt_Person("userid=" + uid);
             result = temp.Count() == 1 ? temp[0] : null;
             return result;
         }
 
 
 
-        public static Ws.WebReference_User.PersonBaseinfo[] GetPersonBaseInfoByPid(int pid)
+        public static DAL.WebReference_User.PersonBaseinfo[] GetPersonBaseInfoByPid(int pid)
         {
-            Ws.WebReference_User.PersonBaseinfo result = null;
-            return Ws.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfoByPid(pid);
+            DAL.WebReference_User.PersonBaseinfo result = null;
+            return DAL.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfoByPid(pid);
         }
 
 
 
-        public static Ws.WebReference_User.PersonBaseinfo GetPersonBaseinfos_validateDefaultEmploymentNow(int pid)
+        public static DAL.WebReference_User.PersonBaseinfo GetPersonBaseinfos_validateDefaultEmploymentNow(int pid)
         {
-            Ws.WebReference_User.PersonBaseinfo result = null;
-            Ws.WebReference_User.PersonBaseinfo[] res = Ws.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfo_ValidateEmploymentForToday(pid);
+            DAL.WebReference_User.PersonBaseinfo result = null;
+            DAL.WebReference_User.PersonBaseinfo[] res = DAL.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfo_ValidateEmploymentForToday(pid);
             if (res != null && res.Count() > 0)
             {
                 result = res[0];//todo 得到薪水更高的一个.
@@ -90,11 +90,11 @@ namespace BLL
         }
 
 
-        public static void SaveInfoToSession(string userid, Ws.WebReference_User.LoginResult loginResult)
+        public static void SaveInfoToSession(string userid, DAL.WebReference_User.LoginResult loginResult)
         {
-            Ws.WebReference_User.t_Person person = BLL.User_wsref.GerPersonByuid(loginResult.Result);
+            DAL.WebReference_User.t_Person person = BLL.User_wsref.GerPersonByuid(loginResult.Result);
 
-            Ws.WebReference_User.PersonBaseinfo personBaseinfo = BLL.User_wsref.GetPersonBaseinfos_validateDefaultEmploymentNow(person.ID);
+            DAL.WebReference_User.PersonBaseinfo personBaseinfo = BLL.User_wsref.GetPersonBaseinfos_validateDefaultEmploymentNow(person.ID);
             MODEL.UserInfo userInfo = null;
             if (personBaseinfo != null)
             {

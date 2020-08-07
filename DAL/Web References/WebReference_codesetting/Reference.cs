@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace Ws.WebReference_codesetting {
+namespace DAL.WebReference_codesetting {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -34,7 +34,7 @@ namespace Ws.WebReference_codesetting {
         
         /// <remarks/>
         public CodeSettingsV2() {
-            this.Url = global::Ws.Properties.Settings.Default.DAL_WebReference_codesetting_CodeSettingsV2;
+            this.Url = global::DAL.Properties.Settings.Default.DAL_WebReference_codesetting_CodeSettingsV2;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace Ws.WebReference_User {
+namespace DAL.WebReference_User {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -85,7 +85,7 @@ namespace Ws.WebReference_User {
         
         /// <remarks/>
         public UserManagementV2() {
-            this.Url = global::Ws.Properties.Settings.Default.DAL_WebReference_User_UserManagementV2;
+            this.Url = global::DAL.Properties.Settings.Default.DAL_WebReference_User_UserManagementV2;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

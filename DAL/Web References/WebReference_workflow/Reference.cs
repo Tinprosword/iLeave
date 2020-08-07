@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace Ws.WebReference_workflow {
+namespace DAL.WebReference_workflow {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -41,7 +41,7 @@ namespace Ws.WebReference_workflow {
         
         /// <remarks/>
         public WorkflowV2() {
-            this.Url = global::Ws.Properties.Settings.Default.DAL_WebReference_workflow_WorkflowV2;
+            this.Url = global::DAL.Properties.Settings.Default.DAL_WebReference_workflow_WorkflowV2;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

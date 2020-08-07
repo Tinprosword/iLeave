@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ws.WebReference_leave;
+using DAL.WebReference_leave;
 using System.Web;
 
 namespace BLL
@@ -31,8 +31,8 @@ namespace BLL
             int checkResult = CheckBeforeApply();
             if (checkResult >= 0)
             {
-                Ws.WebReference_leave.StaffLeaveRequest[] details;
-                Ws.WebReference_leave.ErrorMessageInfo messageInfo;
+                DAL.WebReference_leave.StaffLeaveRequest[] details;
+                DAL.WebReference_leave.ErrorMessageInfo messageInfo;
                 int insertResult = InsertLeaveData(originDetail, userid, employmentid, staffid, remarks, out details, out messageInfo);
                 if (insertResult >= 0)
                 {
@@ -57,16 +57,16 @@ namespace BLL
         }
 
 
-        private static int InsertLeaveData(List<MODEL.Apply.apply_LeaveData> originDetail, int userid, int employmentid, int? staffid, string remarks, out Ws.WebReference_leave.StaffLeaveRequest[] details, out Ws.WebReference_leave.ErrorMessageInfo messageInfo)
+        private static int InsertLeaveData(List<MODEL.Apply.apply_LeaveData> originDetail, int userid, int employmentid, int? staffid, string remarks, out DAL.WebReference_leave.StaffLeaveRequest[] details, out DAL.WebReference_leave.ErrorMessageInfo messageInfo)
         {
             int result = -1;//默认为一般错误
-            Ws.MyWebService.WebServicesHelper webServicesHelper = Ws.MyWebService.WebServicesHelper.GetInstance();
-            List<Ws.WebReference_leave.StaffLeaveRequest> detail = GenerateLeaveRequest(originDetail, userid, employmentid);
+            DAL.MyWebService.WebServicesHelper webServicesHelper = DAL.MyWebService.WebServicesHelper.GetInstance();
+            List<DAL.WebReference_leave.StaffLeaveRequest> detail = GenerateLeaveRequest(originDetail, userid, employmentid);
 
-            messageInfo = new Ws.WebReference_leave.ErrorMessageInfo();
+            messageInfo = new DAL.WebReference_leave.ErrorMessageInfo();
             try
             {
-                messageInfo = webServicesHelper.ws_leave.InsertOnlineLeaveApplicationRequest(detail.ToArray(), Ws.WebReference_leave.ApprovalRequestStatus.WAIT_FOR_APPROVE, userid, staffid);
+                messageInfo = webServicesHelper.ws_leave.InsertOnlineLeaveApplicationRequest(detail.ToArray(), DAL.WebReference_leave.ApprovalRequestStatus.WAIT_FOR_APPROVE, userid, staffid);
                 result = 0;
             }
             catch
@@ -78,15 +78,15 @@ namespace BLL
         }
 
 
-        private static List<Ws.WebReference_leave.StaffLeaveRequest> GenerateLeaveRequest(List<MODEL.Apply.apply_LeaveData> originDetail, int uid, int employmentID)
+        private static List<DAL.WebReference_leave.StaffLeaveRequest> GenerateLeaveRequest(List<MODEL.Apply.apply_LeaveData> originDetail, int uid, int employmentID)
         {
-            List<Ws.WebReference_leave.StaffLeaveRequest> result = new List<Ws.WebReference_leave.StaffLeaveRequest>();
+            List<DAL.WebReference_leave.StaffLeaveRequest> result = new List<DAL.WebReference_leave.StaffLeaveRequest>();
 
             for (int i = 0; i < originDetail.Count; i++)
             {
                 if (employmentID > 0)
                 {
-                    Ws.WebReference_leave.StaffLeaveRequest newItem = new Ws.WebReference_leave.StaffLeaveRequest();
+                    DAL.WebReference_leave.StaffLeaveRequest newItem = new DAL.WebReference_leave.StaffLeaveRequest();
                     newItem.CompareKey = null;
                     newItem.CreateDate = System.DateTime.Now;
                     newItem.DelegationToStaffID = null;
@@ -152,17 +152,17 @@ namespace BLL
 
         #region search application
 
-        public static List<Ws.WebReference_leave.LeaveRequestMaster> GetLeaveMaster(int uid)
+        public static List<DAL.WebReference_leave.LeaveRequestMaster> GetLeaveMaster(int uid)
         {
-            return new List<Ws.WebReference_leave.LeaveRequestMaster>();
+            return new List<DAL.WebReference_leave.LeaveRequestMaster>();
         }
 
-        public static List<Ws.WebReference_leave.LeaveRequestMaster> GetLeaveMaster(int uid,int status, DateTime? from)
+        public static List<DAL.WebReference_leave.LeaveRequestMaster> GetLeaveMaster(int uid,int status, DateTime? from)
         {
-            return new List<Ws.WebReference_leave.LeaveRequestMaster>();
+            return new List<DAL.WebReference_leave.LeaveRequestMaster>();
         }
 
-        public static List<Ws.WebReference_leave.LeaveRequestMaster> GetLeaveMaster_IncludeMyWorkFlow(int uid,DateTime? datefrom)
+        public static List<DAL.WebReference_leave.LeaveRequestMaster> GetLeaveMaster_IncludeMyWorkFlow(int uid,DateTime? datefrom)
         {
             return new List<LeaveRequestMaster>();//todo
         }
@@ -173,14 +173,14 @@ namespace BLL
 
             DateTime leaveFrom = System.DateTime.Now;
             List<MODEL.Apply.apply_LeaveData> data = new List<MODEL.Apply.apply_LeaveData>();
-            Ws.WebReference_leave.StaffLeaveRequest[] leaves = null;// todo BLL.Leave.getLeaveAppliationsByRequestID(requestid);
+            DAL.WebReference_leave.StaffLeaveRequest[] leaves = null;// todo BLL.Leave.getLeaveAppliationsByRequestID(requestid);
             for (int i = 0; i < leaves.Count(); i++)
             {
                 string strDate = leaves[i].LeaveDate.ToString("MM-dd");
                 int section = leaves[i].Section;
                 int typeid = leaves[i].LeaveID;
                 int status = leaves[i].Status;
-                string statusName = ((Ws.WebReference_leave.ApprovalRequestStatus)leaves[i].Status).ToString();
+                string statusName = ((DAL.WebReference_leave.ApprovalRequestStatus)leaves[i].Status).ToString();
                 DateTime date = leaves[i].LeaveDate;
                 string typecode = leaves[i].LeaveTypeName;
                 string typeDesc = leaves[i].LeaveTypeName;//todo 
@@ -224,7 +224,7 @@ namespace BLL
         }
 
         #region unity
-        public static List<LSLibrary.WebAPP.ValueText<int>> ConvertLeaveInfo2DropDownList(List<Ws.WebReference_leave.t_Leave> source)
+        public static List<LSLibrary.WebAPP.ValueText<int>> ConvertLeaveInfo2DropDownList(List<DAL.WebReference_leave.t_Leave> source)
         {
             List<LSLibrary.WebAPP.ValueText<int>> result = new List<LSLibrary.WebAPP.ValueText<int>>();
             result.Add(new LSLibrary.WebAPP.ValueText<int>(0, "Please select"));
@@ -237,10 +237,10 @@ namespace BLL
         }
 
 
-        public static List<Ws.WebReference_leave.t_Leave> GetLeavesByStaffID(int sid)
+        public static List<DAL.WebReference_leave.t_Leave> GetLeavesByStaffID(int sid)
         {
             BLL.User_wsref.CheckWsLogin();
-            return Ws.MyWebService.GlobalWebServices.ws_leave.GetAllLeaveTypeByStaffID(sid).ToList();
+            return DAL.MyWebService.GlobalWebServices.ws_leave.GetAllLeaveTypeByStaffID(sid).ToList();
         }
 
         #endregion

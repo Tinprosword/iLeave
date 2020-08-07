@@ -33,7 +33,7 @@ namespace WEBUI
 
 
 
-                Ws.WebReference_User.LoginResult loginResult = BLL.User_wsref.CheckLogin(loginID, password);//这个登陆是完全没有必要的.但是为了免去手写sessionid.就再登陆一次.让系统(web services)自动写sessionid.如果后期了解正确写sessionid的方法 ,可以去掉.
+                DAL.WebReference_User.LoginResult loginResult = BLL.User_wsref.CheckLogin(loginID, password);//这个登陆是完全没有必要的.但是为了免去手写sessionid.就再登陆一次.让系统(web services)自动写sessionid.如果后期了解正确写sessionid的方法 ,可以去掉.
                 if (loginResult.Result > 0)
                 {
                     BLL.User_wsref.SaveInfoToSession(loginID, loginResult);

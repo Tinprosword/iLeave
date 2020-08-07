@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace Ws.WebReference_leave {
+namespace DAL.WebReference_leave {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -47,7 +47,7 @@ namespace Ws.WebReference_leave {
         
         /// <remarks/>
         public LeaveManagementV2() {
-            this.Url = global::Ws.Properties.Settings.Default.DAL_WebReference_leave_LeaveManagementV2;
+            this.Url = global::DAL.Properties.Settings.Default.DAL_WebReference_leave_LeaveManagementV2;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
