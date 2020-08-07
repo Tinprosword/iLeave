@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types />
+  <wsdl:portType name="CodeSettingsV2Soap" />
+  <wsdl:portType name="CodeSettingsV2Soap12" />
+  <wsdl:portType name="CodeSettingsV2HttpPost" />
+  <wsdl:binding name="CodeSettingsV2Soap" type="tns:CodeSettingsV2Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+  </wsdl:binding>
+  <wsdl:binding name="CodeSettingsV2Soap12" type="tns:CodeSettingsV2Soap12">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+  </wsdl:binding>
+  <wsdl:binding name="CodeSettingsV2HttpPost" type="tns:CodeSettingsV2HttpPost" />
+  <wsdl:service name="CodeSettingsV2">
+    <wsdl:port name="CodeSettingsV2Soap" binding="tns:CodeSettingsV2Soap">
+      <soap:address location="http://192.168.19.200:8889/ServicesWithSession/CodeSettingsV2.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CodeSettingsV2Soap12" binding="tns:CodeSettingsV2Soap12">
+      <soap12:address location="http://192.168.19.200:8889/ServicesWithSession/CodeSettingsV2.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CodeSettingsV2HttpPost" binding="tns:CodeSettingsV2HttpPost" />
+  </wsdl:service>
+</wsdl:definitions>
