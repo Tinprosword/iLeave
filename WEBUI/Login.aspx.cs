@@ -14,6 +14,10 @@ namespace WEBUI
             
         }
 
+        protected override void ResetUIOnEachLoad5()
+        {
+        }
+
         protected override void InitPageDataOnEachLoad1()
         {
         }

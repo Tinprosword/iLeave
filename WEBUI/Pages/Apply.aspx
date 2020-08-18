@@ -14,7 +14,7 @@
             <tr>
                 <td><asp:Literal ID="lt_leave" runat="server">Leave</asp:Literal></td>
                 <td>
-                    <asp:DropDownList ID="ddl_leavetype" runat="server" Width="90%" AutoPostBack="true" jqname="ddl_leavetype"></asp:DropDownList>
+                    <asp:DropDownList ID="ddl_leavetype" runat="server" Width="90%" AutoPostBack="true" jqname="ddl_leavetype" OnSelectedIndexChanged="ddl_leavetype_SelectedIndexChanged"></asp:DropDownList>
                 </td>
             </tr>
             <tr>
@@ -29,10 +29,10 @@
                 <td><asp:Literal ID="lt_section" runat="server">Section</asp:Literal></td>
                 <td>
                     <asp:DropDownList ID="dropdl_section" runat="server" Width="90%">
-                    <asp:ListItem Text="Full day" Value="0"  Selected="true"/>
+<%--                    <asp:ListItem Text="Full day" Value="0"  Selected="true"/>
                     <asp:ListItem Text="AM" Value="1"/>
                     <asp:ListItem Text="PM" Value="2"/>
-                    <asp:ListItem Text="3 Sections" Value="3"/>
+                    <asp:ListItem Text="3 Sections" Value="3"/>--%>
                     </asp:DropDownList>
                 </td>
             </tr>

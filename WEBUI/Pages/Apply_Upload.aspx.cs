@@ -17,6 +17,10 @@ namespace WEBUI.Pages
             OnF5Doit = onf5;//回调这里的处理方式，刷新提交就重新载入吧。
         }
 
+        protected override void ResetUIOnEachLoad5()
+        {
+        }
+
         protected override void InitPageDataOnEachLoad1()
         {
         }

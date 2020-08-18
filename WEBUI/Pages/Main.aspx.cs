@@ -17,6 +17,11 @@ namespace WEBUI.Pages
         {
         }
 
+        protected override void ResetUIOnEachLoad5()
+        {
+
+        }
+
         protected override void InitPageDataOnFirstLoad2()
         {
         }

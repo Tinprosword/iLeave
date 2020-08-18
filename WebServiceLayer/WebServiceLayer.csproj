@@ -63,11 +63,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="Web References\WebReference_workflow\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -109,17 +104,6 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>WebServiceLayer_WebReference_user_UserManagementV2</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://192.168.19.200:8889/ServicesWithSession/WorkflowV2.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\WebReference_workflow\</RelPath>
-      <UpdateFromURL>http://192.168.19.200:8889/ServicesWithSession/WorkflowV2.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>WebServiceLayer_WebReference_workflow_WorkflowV2</CachedSettingsPropName>
-    </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -136,6 +120,9 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebReference_leave\LeaveManagementV2.wsdl" />
+    <None Include="Web References\WebReference_leave\LeaveRequestDetail.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\WebReference_leave\LeaveRequestMaster.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -147,6 +134,15 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebReference_leave\t_StaffLeaveRequestDetail.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebReference_leave\t_WorkflowInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebReference_leave\t_WorkflowTask.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebReference_leave\WorkInfo_Worktask.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebReference_user\LoginResult.datasource">
@@ -172,11 +168,6 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebReference_user\UserManagementV2.wsdl" />
-    <None Include="Web References\WebReference_workflow\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\WebReference_workflow\WorkflowV2.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\WebReference_codesettings\CodeSettingsV2.disco" />
@@ -186,9 +177,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\WebReference_user\UserManagementV2.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\WebReference_workflow\WorkflowV2.disco" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Function\LSLibrary_dotNet\LSLibrary.csproj">

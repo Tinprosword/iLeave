@@ -38,7 +38,11 @@ namespace WEBUI.Pages
         }
 
 
-        private void LoadLableLanguage(LSLibrary.WebAPP.BaseLanguage language)
+        protected override void ResetUIOnEachLoad5()
+        {
+        }
+
+            private void LoadLableLanguage(LSLibrary.WebAPP.BaseLanguage language)
         {
             this.lt_address.Text = language.setting_service;
             this.lt_language.Text = language.setting_language;

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace WEBUI.Pages
 {
     //action=choose  :1.mulchoose to prepage.
@@ -19,6 +20,10 @@ namespace WEBUI.Pages
         {
             WEBUI.Pages.Apply prepage = PreviousPage as WEBUI.Pages.Apply;
             myviewState = ViewState;
+        }
+
+        protected override void ResetUIOnEachLoad5()
+        {
         }
 
         protected override void InitPageDataOnEachLoad1()

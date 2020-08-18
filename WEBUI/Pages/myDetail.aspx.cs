@@ -4,34 +4,48 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+//todo 为什么取消假期,不是直接修改状态?
 namespace WEBUI.Pages
 {
     public partial class myDetail : BLL.CustomLoginTemplate
     {
-        private  int requestId;
-        private  int uid;
-        private  List<MODEL.Apply.apply_LeaveData> LeaveList;
-        private  int requestStatus;
-        private bool isHandlerOfLeave;
+        private int requestId;
+        private int action;//0 manage myrequest 1:namage other person's request
+        private WebServiceLayer.WebReference_leave.LeaveRequestMaster LeaveRequestMaster;
+        private List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> LeaveRequestDetails;
+        private WebServiceLayer.WebReference_leave.t_WorkflowInfo workflowinfo;
+        private List<WebServiceLayer.WebReference_leave.t_WorkflowTask> Workflows;
+
+        private bool isHandlerOfLeave = false;
 
         protected override void InitPageVaralbal0()
         {
-        }
-
-        //每次都获取,如果是耗时的数据,那么获取之后放入到viewstatus中,整个程序非全局数据不使用session. 
-        //成员变量不要随意使用,不要作为某个函数的临时变量.设定他们就是作为页面的只读填充数据,不要修改!!!!!!!!!!!!!!!!有需要变量,自行在函数中,建立临时变量.
-        protected override void InitPageDataOnEachLoad1()
-        {
-            if (string.IsNullOrEmpty(Request.QueryString["requestid"]) == false)
+            if (!string.IsNullOrEmpty(Request.QueryString["requestid"]) && !string.IsNullOrEmpty(Request.QueryString["action"]))
             {
                 requestId = int.Parse(Request.QueryString["requestid"]);
-                uid = 16;//todo get it by requestid;
-                isHandlerOfLeave = true;//todo get it by requestid.
-                LeaveList = BLL.Leave.getLeaveDetails(requestId, uid);
-                if(LeaveList!=null && LeaveList.Count()>0)
+                action = int.Parse(Request.QueryString["action"]);
+                LeaveRequestMaster = BLL.Leave.GetRequestMasterByRequestID(requestId);
+                LeaveRequestDetails = BLL.Leave.GetExtendLeaveDetailsByReuestID(requestId);
+                workflowinfo = BLL.workflow.Gett_WorkflowInfoByRequestID(requestId);
+                if (workflowinfo != null)
                 {
-                    requestStatus = 0;// LeaveList[0].status;//todo
+                    Workflows = BLL.workflow.Gett_WorkflowTaskByInfoID(workflowinfo.ID);
+
+                    if (action == 1 )
+                    {
+                        isHandlerOfLeave = true;
+                    }
+                    else
+                    {
+                        isHandlerOfLeave = false;
+                    }
+
+                    if (LeaveRequestMaster != null && LeaveRequestDetails != null && LeaveRequestDetails.Count() > 0 && workflowinfo!=null)
+                    { }
+                    else
+                    {
+                        Response.Redirect("~/pages/main.aspx");
+                    }
                 }
                 else
                 {
@@ -43,6 +57,16 @@ namespace WEBUI.Pages
                 Response.Redirect("~/pages/main.aspx");
             }
         }
+
+        protected override void ResetUIOnEachLoad5()
+        {
+        }
+
+        protected override void InitPageDataOnEachLoad1()
+        {
+            
+        }
+
         protected override void InitPageDataOnFirstLoad2()
         {}
 
@@ -71,21 +95,24 @@ namespace WEBUI.Pages
 
         private void setupLeaveList()
         {
-            if (LeaveList != null)
+            if (LeaveRequestDetails != null)
             {
-                this.repeater_leave.DataSource = LeaveList;
+                this.repeater_leave.DataSource = LeaveRequestDetails;
                 this.repeater_leave.DataBind();
             }
         }
 
         private void setupMainInfo()
         {
-            if (LeaveList != null && LeaveList.Count() > 0)
+            if (LeaveRequestMaster != null )
             {
                 //todo get request info and user info ,and set value to lables
-                this.lb_name.Text = "UserName";
-                this.lb_leave.Text = "SL";
-                this.lb_status.Text = ((BLL.GlobalVariate.ApprovalRequestStatus)(requestStatus)).ToString();
+                this.lb_name.Text = LeaveRequestMaster.uname;
+                this.lb_leave.Text = LeaveRequestMaster.minleaveCode;
+                this.lb_status.Text = ((BLL.GlobalVariate.ApprovalRequestStatus)(LeaveRequestMaster.Status)).ToString();
+                this.lb_from.Text = LeaveRequestMaster.leavefrom.ToString("yyyy-MM-dd");
+                this.lb_to.Text = LeaveRequestMaster.leaveto.ToString("yyyy-MM-dd");
+                this.lb_remark.Text = LeaveRequestMaster.remarks;
             }
         }
 
@@ -93,28 +120,24 @@ namespace WEBUI.Pages
         {
             this.wait_user.Visible = false;
             this.wait_admin.Visible = false;
-            this.wait_useradmin.Visible = false;
             this.withdrawing_admin.Visible = false;
             this.approval_user.Visible = false;
 
+
             //根据状态图,按钮组合只有5种情况, 依据2个变量.所以4种情况不算多,可以全列出,用visable来控制.
-            if (requestStatus == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && uid == loginer.userInfo.id && isHandlerOfLeave == true)
-            {
-                this.wait_useradmin.Visible = true;
-            }
-            else if (requestStatus == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && uid != loginer.userInfo.id && isHandlerOfLeave == true)
+            if (LeaveRequestMaster.Status == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && isHandlerOfLeave == true)
             {
                 this.wait_admin.Visible = true;
             }
-            else if (requestStatus == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && uid == loginer.userInfo.id && isHandlerOfLeave == false)
+            else if (LeaveRequestMaster.Status == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && isHandlerOfLeave == false)
             {
                 this.wait_user.Visible = true;
             }
-            else if (requestStatus == (int)BLL.GlobalVariate.ApprovalRequestStatus.APPROVE && uid == loginer.userInfo.id)
+            else if (LeaveRequestMaster.Status == (int)BLL.GlobalVariate.ApprovalRequestStatus.APPROVE && isHandlerOfLeave == false)
             {
                 this.approval_user.Visible = true;
             }
-            else if(requestStatus== (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL && isHandlerOfLeave==true)
+            else if(LeaveRequestMaster.Status == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL && isHandlerOfLeave==true)
             {
                 this.withdrawing_admin.Visible = true;
             }
@@ -139,48 +162,49 @@ namespace WEBUI.Pages
         protected void button_apply_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            switch (button.ID)
+            if (button.ID == this.button_wait_admin_approval.ID)
             {
-                case "button_wait_useradmin_cancel":
+                if (isHandlerOfLeave)
+                {
+                    string errormsg;
+                    var wfs = Workflows.Where(x => x.UserID == loginer.userInfo.id && x.InOutTypeID == 0 && x.WorkflowInfoID == workflowinfo.ID).ToArray();
+                    if (wfs.Count() == 1)//get task need i approva
                     {
-
-                        break;
+                        BLL.workflow.ApproveRequest_leave(requestId, wfs[0].ID, loginer.userInfo.id, out errormsg);
                     }
-                case "button_wait_useradmin_approval":
-                    {
-                        break;
-                    }
-                case "button_wait_useradmin_reject":
-                    {
-                        break;
-                    }
-                case "button_wait_user_cancel":
-                    {
-                        break;
-                    }
-                case "button_wait_admin_approval":
-                    {
-                        break;
-                    }
-                case "button_wait_admin_reject":
-                    {
-                        break;
-                    }
-                case "button_approval_user_withdraw":
-                    {
-                        break;
-                    }
-                case "button_withdrawing_admin_ok":
-                    {
-                        break;
-                    }
-                case "button_withdrawing_admin_no":
-                    {
-                        break;
-                    }
+                }
             }
+            else if (button.ID == this.button_wait_admin_reject.ID)
+            {
+                if (isHandlerOfLeave)
+                {
+                    string errormsg;
+                    var wfs = Workflows.Where(x => x.UserID == loginer.userInfo.id && x.InOutTypeID == 1 && x.WorkflowInfoID == workflowinfo.ID).ToArray();
+                    if (wfs.Count() == 1)//get task i send.
+                    {
+                        BLL.workflow.RejectRequest_leave(requestId, wfs[0].ID, loginer.userInfo.id, out errormsg);
+                    }
+                }
+            }
+            else if (button.ID == this.button_wait_user_Withdraw.ID)
+            {
+                string errormsg;
+                var wfs = Workflows.Where(x => x.UserID == loginer.userInfo.id && x.InOutTypeID == 1 && x.WorkflowInfoID == workflowinfo.ID).ToArray();
+                if (wfs.Count() == 1)//get task i send.
+                {
+                    BLL.workflow.WithDrawRequest_leave(requestId, wfs[0].ID, loginer.userInfo.id, out errormsg);
+                }
+            }
+            else if (button.ID == this.button_approval_user_Cancel.ID)
+            {
+                string errormsg;
+                BLL.workflow.CancelRequest_leave(requestId, loginer.userInfo.id, out errormsg);
+            }
+            else if (button.ID == this.button_Cancel_admin_approval.ID)
+            {}
+            else if (button.ID == this.button_Cancel_admin_Reject.ID)
+            {}
         }
-
 
     }
 }

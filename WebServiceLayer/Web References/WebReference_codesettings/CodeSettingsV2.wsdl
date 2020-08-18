@@ -1,16 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsdl:types />
-  <wsdl:portType name="CodeSettingsV2Soap" />
-  <wsdl:portType name="CodeSettingsV2Soap12" />
-  <wsdl:portType name="CodeSettingsV2HttpPost" />
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetLeaveSections">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="leaveClass" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="position" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeaveSectionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveSectionsResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLeaveSectionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLeaveSections" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveSectionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLeaveSectionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveSectionsHttpPostIn">
+    <wsdl:part name="leaveClass" type="s:string" />
+    <wsdl:part name="position" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveSectionsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:portType name="CodeSettingsV2Soap">
+    <wsdl:operation name="GetLeaveSections">
+      <wsdl:input message="tns:GetLeaveSectionsSoapIn" />
+      <wsdl:output message="tns:GetLeaveSectionsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CodeSettingsV2HttpPost">
+    <wsdl:operation name="GetLeaveSections">
+      <wsdl:input message="tns:GetLeaveSectionsHttpPostIn" />
+      <wsdl:output message="tns:GetLeaveSectionsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
   <wsdl:binding name="CodeSettingsV2Soap" type="tns:CodeSettingsV2Soap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLeaveSections">
+      <soap:operation soapAction="http://tempuri.org/GetLeaveSections" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="CodeSettingsV2Soap12" type="tns:CodeSettingsV2Soap12">
+  <wsdl:binding name="CodeSettingsV2Soap12" type="tns:CodeSettingsV2Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLeaveSections">
+      <soap12:operation soapAction="http://tempuri.org/GetLeaveSections" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="CodeSettingsV2HttpPost" type="tns:CodeSettingsV2HttpPost" />
+  <wsdl:binding name="CodeSettingsV2HttpPost" type="tns:CodeSettingsV2HttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetLeaveSections">
+      <http:operation location="/GetLeaveSections" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="CodeSettingsV2">
     <wsdl:port name="CodeSettingsV2Soap" binding="tns:CodeSettingsV2Soap">
       <soap:address location="http://192.168.19.200:8889/ServicesWithSession/CodeSettingsV2.asmx" />
@@ -18,6 +93,8 @@
     <wsdl:port name="CodeSettingsV2Soap12" binding="tns:CodeSettingsV2Soap12">
       <soap12:address location="http://192.168.19.200:8889/ServicesWithSession/CodeSettingsV2.asmx" />
     </wsdl:port>
-    <wsdl:port name="CodeSettingsV2HttpPost" binding="tns:CodeSettingsV2HttpPost" />
+    <wsdl:port name="CodeSettingsV2HttpPost" binding="tns:CodeSettingsV2HttpPost">
+      <http:address location="http://192.168.19.200:8889/ServicesWithSession/CodeSettingsV2.asmx" />
+    </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

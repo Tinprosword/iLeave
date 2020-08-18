@@ -2,6 +2,7 @@
     language: 'fr',
     weekStart: 1,
     todayBtn: 1,
+    clearBtn: 1,
     autoclose: 1,
     todayHighlight: 1,
     startView: 2,

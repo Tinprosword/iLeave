@@ -23,12 +23,13 @@ namespace WebServiceLayer.WebReference_codesettings {
     
     
     /// <remarks/>
-    // CODEGEN: 在此协议的 WSDL 中找不到任何方法。
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="CodeSettingsV2Soap", Namespace="http://tempuri.org/")]
     public partial class CodeSettingsV2 : System.Web.Services.Protocols.SoapHttpClientProtocol {
+        
+        private System.Threading.SendOrPostCallback GetLeaveSectionsOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -68,6 +69,45 @@ namespace WebServiceLayer.WebReference_codesettings {
             }
         }
         
+        /// <remarks/>
+        public event GetLeaveSectionsCompletedEventHandler GetLeaveSectionsCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLeaveSections", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int[] GetLeaveSections(int leaveClass, int position) {
+            object[] results = this.Invoke("GetLeaveSections", new object[] {
+                        leaveClass,
+                        position});
+            return ((int[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetLeaveSectionsAsync(int leaveClass, int position) {
+            this.GetLeaveSectionsAsync(leaveClass, position, null);
+        }
+        
+        /// <remarks/>
+        public void GetLeaveSectionsAsync(int leaveClass, int position, object userState) {
+            if ((this.GetLeaveSectionsOperationCompleted == null)) {
+                this.GetLeaveSectionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLeaveSectionsOperationCompleted);
+            }
+            this.InvokeAsync("GetLeaveSections", new object[] {
+                        leaveClass,
+                        position}, this.GetLeaveSectionsOperationCompleted, userState);
+        }
+        
+        private void OnGetLeaveSectionsOperationCompleted(object arg) {
+            if ((this.GetLeaveSectionsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetLeaveSectionsCompleted(this, new GetLeaveSectionsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        public new void CancelAsync(object userState) {
+            base.CancelAsync(userState);
+        }
+        
         private bool IsLocalFileSystemWebService(string url) {
             if (((url == null) 
                         || (url == string.Empty))) {
@@ -79,6 +119,32 @@ namespace WebServiceLayer.WebReference_codesettings {
                 return true;
             }
             return false;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetLeaveSectionsCompletedEventHandler(object sender, GetLeaveSectionsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetLeaveSectionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetLeaveSectionsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int[])(this.results[0]));
+            }
         }
     }
 }

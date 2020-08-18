@@ -18,30 +18,32 @@
                 <tr>
                     <td style="padding-left:0px;padding-right:5px;"><asp:RadioButton ID="RadioButton1" runat="server" Text="MyTeam"  GroupName="listgroup" Font-Bold="false"/></td>
                     <td style="padding-left:0px;padding-right:5px;"><asp:Literal ID="lt_name" runat="server">name</asp:Literal></td><td><asp:TextBox ID="tb_name" runat="server" fixname="searchName" Width="86px"  OnTextChanged="tb_name_TextChanged" AutoPostBack="true"></asp:TextBox></td>
-                    <td style="padding-left:15px;padding-right:5px;"><asp:Literal ID="ltdatefrom" runat="server">From</asp:Literal></td><td><asp:TextBox ID="tb_date"  data-date-format="yyyy-mm-dd" fixname="datefrom" runat="server" Width="86px" OnTextChanged="tb_date_TextChanged1" AutoPostBack="true"></asp:TextBox></td>
+                    <td style="padding-left:15px;padding-right:5px;">
+                        <asp:Literal ID="ltdatefrom" runat="server">From</asp:Literal></td><td><asp:TextBox ID="tb_date"  data-date-format="yyyy-mm-dd" fixname="datefrom" runat="server" Width="86px" OnTextChanged="tb_date_TextChanged1" AutoPostBack="true"></asp:TextBox>
+                  
+                    </td>
                 </tr>
                 <tr style="line-height:5px"><td colspan="3"> </td></tr>
             </table>
         </div>
     </div>
     <div class="row">
-            <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
-                <tr><td class="col-xs-4"><asp:Literal ID="lt_listdate" runat="server">Type</asp:Literal></td><td class="col-xs-7"><asp:Literal ID="lt_listtype" runat="server">Date</asp:Literal></td><td class="col-xs-1"></td></tr>
-            </table>
+        <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
+            <tr><td class="col-xs-4"><asp:Literal ID="lt_listdate" runat="server">User</asp:Literal></td><td class="col-xs-7"><asp:Literal ID="lt_listtype" runat="server">Date</asp:Literal></td><td class="col-xs-1"></td></tr>
+        </table>
         <div class="col-xs-12 lsf-clearPadding" style="height:400px; overflow:scroll;padding-left:5px;padding-right:0px">
             <table class="col-xs-12 lsu-table-xs" style="font-size:15px">
                 <asp:Repeater ID="repeater_myapplications" runat="server">
                     <ItemTemplate>
-                        <tr style="height:42px"><td class="col-xs-4" style="padding:0px"><%# ((DAL.WebReference_leave.LeaveRequestMaster)Container.DataItem).employmentID %></td><td class="col-xs-7" style="padding:0px"><%# ((DAL.WebReference_leave.LeaveRequestMaster)Container.DataItem).totaldays %></td><td class="col-xs-1" style="padding:0px"><asp:LinkButton ID="lb" OnClick="lb_Click" runat="server" CommandArgument="<%# ((DAL.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID %>" style="font-size:24px">></asp:LinkButton></td></tr>
+                        <tr style="height:42px"><td class="col-xs-4" style="padding:0px"><%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).uname %></td><td class="col-xs-7" style="padding:0px"><%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).leavefrom.ToString("MM-dd")%>-><%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).leaveto.ToString("MM-dd")%> (<%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).totaldays %>)</td><td class="col-xs-1" style="padding:0px"><asp:LinkButton ID="lb" OnClick="lb_Click" runat="server" CommandArgument="<%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID %>" style="font-size:24px">></asp:LinkButton></td></tr>
                     </ItemTemplate>
                     <AlternatingItemTemplate>
-                        <tr style="background-color:aliceblue;height:42px"><td class="col-xs-4" style="padding:0px"><%# ((DAL.WebReference_leave.LeaveRequestMaster)Container.DataItem).employmentID %></td><td class="col-xs-7" style="padding:0px"><%# ((DAL.WebReference_leave.LeaveRequestMaster)Container.DataItem).totaldays %></td><td class="col-xs-1" style="padding:0px"><asp:LinkButton ID="lb" CommandArgument="<%# ((DAL.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID %>" OnClick="lb_Click" runat="server" style="font-size:24px">></asp:LinkButton></td></tr>
+                        <tr style="height:42px ; background-color:aliceblue"><td class="col-xs-4" style="padding:0px"><%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).uname %></td><td class="col-xs-7" style="padding:0px"><%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).leavefrom.ToString("MM-dd")%>-><%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).leaveto.ToString("MM-dd")%> (<%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).totaldays %>)</td><td class="col-xs-1" style="padding:0px"><asp:LinkButton ID="lb" OnClick="lb_Click" runat="server" CommandArgument="<%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID %>" style="font-size:24px">></asp:LinkButton></td></tr>
                     </AlternatingItemTemplate>
                 </asp:Repeater>
             </table>
         </div>
     </div>
-
 
     <div class="modalWindow" fixname="myModalee">
         <div class="modalContent">

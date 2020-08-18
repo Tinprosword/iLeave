@@ -108,5 +108,15 @@ namespace BLL
             LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(userid, userInfo));
         }
 
+
+        #region auto
+        public static WebServiceLayer.WebReference_user.t_Employment getEmploymentByid(int id)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.Base_Gett_Employment(new WebServiceLayer.WebReference_user.t_Employment() { ID = id });
+        }
+
+
+        #endregion
+
     }
 }

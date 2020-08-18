@@ -62,6 +62,21 @@ namespace BLL
             EXPENSE_CLAIM = 11,
         }
 
+
+        public static Dictionary<int, string> sections
+        {
+            get
+            {
+                Dictionary<int, string> temp = new Dictionary<int, string>(4);
+                temp.Add( 0, "Full day");
+                temp.Add( 1,"AM");
+                temp.Add( 2,"PM");
+                temp.Add( 3,"Hours");
+                return temp;
+            }
+        }
+
+
         public enum WorkflowInOutTypeID
         {
             [System.ComponentModel.Description("IN")]
@@ -71,6 +86,12 @@ namespace BLL
         }
 
 
+        public enum LeaveBigRangeStatus
+        {
+            waitapproval,
+            approvaled,
+            withdraw
+        }
 
 
         //global string

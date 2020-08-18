@@ -143,7 +143,8 @@ namespace BLL
         }
 
         private static int GetEmployHours(int employid)
-        {//todo it
+        {
+            //todo it
             return 8;
         }
 
@@ -151,44 +152,59 @@ namespace BLL
         #endregion
 
         #region search application
-
-        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetLeaveMaster(int uid)
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyLeaveMaster(int pid, GlobalVariate.LeaveBigRangeStatus status, DateTime? from)
         {
-            return new List<WebServiceLayer.WebReference_leave.LeaveRequestMaster>();
-        }
-
-        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetLeaveMaster(int uid,int status, DateTime? from)
-        {
-            return new List<WebServiceLayer.WebReference_leave.LeaveRequestMaster>();
-        }
-
-        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetLeaveMaster_IncludeMyWorkFlow(int uid,DateTime? datefrom)
-        {
-            return new List<LeaveRequestMaster>();//todo
-        }
-
-        public static List<MODEL.Apply.apply_LeaveData> getLeaveDetails(int requestid, int uid)
-        {
-            string username = "";//todo get name
-
-            DateTime leaveFrom = System.DateTime.Now;
-            List<MODEL.Apply.apply_LeaveData> data = new List<MODEL.Apply.apply_LeaveData>();
-            WebServiceLayer.WebReference_leave.StaffLeaveRequest[] leaves = null;// todo BLL.Leave.getLeaveAppliationsByRequestID(requestid);
-            for (int i = 0; i < leaves.Count(); i++)
+            List<LeaveRequestMaster> result= WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMasterByPID(pid).ToList();
+            if (status == GlobalVariate.LeaveBigRangeStatus.waitapproval)
             {
-                string strDate = leaves[i].LeaveDate.ToString("MM-dd");
-                int section = leaves[i].Section;
-                int typeid = leaves[i].LeaveID;
-                int status = leaves[i].Status;
-                string statusName = ((WebServiceLayer.WebReference_leave.ApprovalRequestStatus)leaves[i].Status).ToString();
-                DateTime date = leaves[i].LeaveDate;
-                string typecode = leaves[i].LeaveTypeName;
-                string typeDesc = leaves[i].LeaveTypeName;//todo 
-
-                data.Add(new MODEL.Apply.apply_LeaveData(typeid, typecode, typeDesc, section,  date));
+                result = result.Where(x => x.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE || x.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL).ToList();
             }
-            return data;
+            else if (status == GlobalVariate.LeaveBigRangeStatus.approvaled)
+            {
+                result = result.Where(x => x.Status == (byte)GlobalVariate.ApprovalRequestStatus.APPROVE).ToList();
+            }
+            else if (status == GlobalVariate.LeaveBigRangeStatus.withdraw)
+            {
+                result = result.Where(x => x.Status == (byte)GlobalVariate.ApprovalRequestStatus.CANCEL || x.Status == (byte)GlobalVariate.ApprovalRequestStatus.CONFIRM_CANCEL || x.Status == (byte)GlobalVariate.ApprovalRequestStatus.REJECT).ToList();
+            }
+
+            if (from != null)
+            {
+                result = result.Where(x => x.leavefrom >= from).ToList();
+            }
+
+            return result;
         }
+
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetLeaveMaster_MyHandleWorkFlow(int uid,DateTime? datefrom,string name)
+        {
+            List<LeaveRequestMaster> result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetMyHandleLeaveMasterByUID(uid).ToList();
+            if (datefrom != null)
+            {
+                result = result.Where(x => x.leavefrom >= datefrom).ToList();
+            }
+            if (!string.IsNullOrEmpty(name))
+            {
+                result = result.Where(x => x.uname.ToUpper().IndexOf(name.ToUpper()) >= 0).ToList();
+            }
+            return result;
+        }
+
+        public static WebServiceLayer.WebReference_leave.LeaveRequestMaster GetRequestMasterByRequestID(int requestid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMasterByReuestID(requestid);
+        }
+
+        public static List<WebServiceLayer.WebReference_leave.t_StaffLeaveRequestDetail> GetLeaveDetailsByReuestID(int requestid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveDetailsByReuestID(requestid).ToList();
+        }
+
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> GetExtendLeaveDetailsByReuestID(int requestid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetExtendLeaveDetailsByReuestID(requestid).ToList();
+        }
+
 
         public static List<MODEL.Apply.app_uploadpic> getAttendance(string uid, int applicationID)
         {
@@ -241,6 +257,21 @@ namespace BLL
         {
             BLL.User_wsref.CheckWsLogin();
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetAllLeaveTypeByStaffID(sid).ToList();
+        }
+
+
+        public static List<LSLibrary.WebAPP.ValueText<int>> ConvertInt2DropDownList(List<int> source)
+        {
+            List<LSLibrary.WebAPP.ValueText<int>> result = new List<LSLibrary.WebAPP.ValueText<int>>();
+            for (int i = 0; i < source.Count(); i++)
+            {
+                if (BLL.GlobalVariate.sections.Keys.Contains(source[i]))
+                {
+                    LSLibrary.WebAPP.ValueText<int> item = new LSLibrary.WebAPP.ValueText<int>(source[i], BLL.GlobalVariate.sections[source[i]]);
+                    result.Add(item);
+                }
+            }
+            return result;
         }
 
         #endregion

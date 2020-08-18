@@ -40,10 +40,10 @@
             <table class="col-xs-12 lsu-table-sm">
                 <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                     <ItemTemplate>
-                        <tr><td class="col-xs-3"><%# ((MODEL.Apply.apply_LeaveData)Container.DataItem).LeaveDate.ToString()  %></td><td class="col-xs-5"><%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeDescription %></td><td class="col-xs-3"><%#((MODEL.Apply.apply_LeaveData)Container.DataItem).sectionid %></td><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeid %>" /></td></tr>
+                        <tr><td class="col-xs-3"><%#( (DateTime)((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveFrom).ToString("MM-dd")%></td><td class="col-xs-5"><%#((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Description %></td><td class="col-xs-3"><%#BLL.GlobalVariate.sections[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %></td></td></tr>
                     </ItemTemplate>
                     <AlternatingItemTemplate>
-                        <tr style="background-color:aliceblue"><td class="col-xs-3"><%# ((MODEL.Apply.apply_LeaveData)Container.DataItem).LeaveDate.ToString() %></td><td class="col-xs-5"><%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeid %></td><td class="col-xs-3"><%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeid %></td><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeid %>" /></td></tr>
+                        <tr style="background-color:aliceblue"><td class="col-xs-3"><%#( (DateTime)((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveFrom).ToString("MM-dd")%></td><td class="col-xs-5"><%#((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Description %></td><td class="col-xs-3"><%# BLL.GlobalVariate.sections[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %></td></td></tr>
                     </AlternatingItemTemplate>
                 </asp:Repeater>
             </table>
@@ -64,33 +64,26 @@
                 </table>
             </div>
         </div>
-        <asp:Panel ID="wait_useradmin" runat="server">
+        <asp:Panel ID="wait_admin" runat="server">
             <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
-                <asp:Button ID="button_wait_useradmin_cancel" runat="server" Text="Cancel"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click" />
-                <asp:Button ID="button_wait_useradmin_approval" runat="server" Text="Approval"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
-                <asp:Button ID="button_wait_useradmin_reject" runat="server" Text="Reject"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+                <asp:Button ID="button_wait_admin_approval" runat="server" Text="Approval"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+                <asp:Button ID="button_wait_admin_reject" runat="server" Text="Reject"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
             </div>
         </asp:Panel>
         <asp:Panel ID="wait_user" runat="server" Visible="false">
             <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
-                <asp:Button ID="button_wait_user_cancel" runat="server" Text="Cancel"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click" />
-            </div>
-        </asp:Panel>
-        <asp:Panel ID="wait_admin" runat="server" Visible="false">
-            <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
-                <asp:Button ID="button_wait_admin_approval" runat="server" Text="Approval"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click" />
-                <asp:Button ID="button_wait_admin_reject" runat="server" Text="Reject"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+                <asp:Button ID="button_wait_user_Withdraw" runat="server" Text="Withdraw"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click" />
             </div>
         </asp:Panel>
         <asp:Panel ID="approval_user" runat="server" Visible="false">
             <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
-                <asp:Button ID="button_approval_user_withdraw" runat="server" Text="Withdraw"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click" />
+                <asp:Button ID="button_approval_user_Cancel" runat="server" Text="Cancel"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click" />
             </div>
         </asp:Panel>
         <asp:Panel ID="withdrawing_admin" runat="server">
             <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
-                <asp:Button ID="button_withdrawing_admin_ok" runat="server" Text="Cancel"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
-                <asp:Button ID="button_withdrawing_admin_no" runat="server" Text="Cancel"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+                <asp:Button ID="button_Cancel_admin_approval" runat="server" Text="Approval"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+                <asp:Button ID="button_Cancel_admin_Reject" runat="server" Text="Reject"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
             </div>
         </asp:Panel>
     </div>

@@ -21,5 +21,4 @@ namespace BLL
             base.Page_Init(sender, e);
         }
     }
-
 }

@@ -52,15 +52,5 @@ namespace WebServiceLayer.Properties {
                 return ((string)(this["WebServiceLayer_WebReference_user_UserManagementV2"]));
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.19.200:8889/ServicesWithSession/WorkflowV2.asmx")]
-        public string WebServiceLayer_WebReference_workflow_WorkflowV2 {
-            get {
-                return ((string)(this["WebServiceLayer_WebReference_workflow_WorkflowV2"]));
-            }
-        }
     }
 }
