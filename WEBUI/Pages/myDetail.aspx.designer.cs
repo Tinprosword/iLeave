@@ -202,33 +202,6 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Repeater repeater_pic;
         
         /// <summary>
-        /// wait_admin 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel wait_admin;
-        
-        /// <summary>
-        /// button_wait_admin_approval 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_wait_admin_approval;
-        
-        /// <summary>
-        /// button_wait_admin_reject 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_wait_admin_reject;
-        
-        /// <summary>
         /// wait_user 控件。
         /// </summary>
         /// <remarks>
@@ -263,32 +236,5 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button button_approval_user_Cancel;
-        
-        /// <summary>
-        /// withdrawing_admin 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel withdrawing_admin;
-        
-        /// <summary>
-        /// button_Cancel_admin_approval 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_Cancel_admin_approval;
-        
-        /// <summary>
-        /// button_Cancel_admin_Reject 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_Cancel_admin_Reject;
     }
 }

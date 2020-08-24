@@ -2,35 +2,6 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="Gett_WorkflowInfoByRequestID">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Gett_WorkflowInfoByRequestIDResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Gett_WorkflowInfoByRequestIDResult" type="tns:t_WorkflowInfo" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="t_WorkflowInfo">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="WorkflowTypeID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:unsignedByte" />
-          <s:element minOccurs="1" maxOccurs="1" name="ServeOfNotice" nillable="true" type="s:dateTime" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="Gett_WorkflowTaskByInfoID">
         <s:complexType>
           <s:sequence>
@@ -69,18 +40,17 @@
           <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetMyHandleWorkflowByUID">
+      <s:element name="GetMyMaxStepWorkflowByUID">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="workflowType" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="UID" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetMyHandleWorkflowByUIDResponse">
+      <s:element name="GetMyMaxStepWorkflowByUIDResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetMyHandleWorkflowByUIDResult" type="tns:ArrayOfWorkInfo_Worktask" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetMyMaxStepWorkflowByUIDResult" type="tns:ArrayOfWorkInfo_Worktask" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -110,6 +80,48 @@
           <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetMyMaxStepWorkflowByUID_WaitForApproval">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyMaxStepWorkflowByUID_WaitForApprovalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMyMaxStepWorkflowByUID_WaitForApprovalResult" type="tns:ArrayOfWorkInfo_Worktask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyMaxStepWorkflowByUID_Approaled">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyMaxStepWorkflowByUID_ApproaledResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMyMaxStepWorkflowByUID_ApproaledResult" type="tns:ArrayOfWorkInfo_Worktask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyMaxStepWorkflowByUID_Reject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyMaxStepWorkflowByUID_RejectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMyMaxStepWorkflowByUID_RejectResult" type="tns:ArrayOfWorkInfo_Worktask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="CreateNewRequest">
         <s:complexType>
           <s:sequence>
@@ -266,6 +278,30 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ApproveCancelRequest_leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="workflowtaskid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApproveCancelRequest_leaveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RejectCancelRequest_leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="workflowtaskid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RejectCancelRequest_leaveResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="Base_Insertt_Leave">
         <s:complexType>
           <s:sequence>
@@ -400,24 +436,11 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="poStaffLeaveRequest" type="tns:ArrayOfStaffLeaveRequest" />
-            <s:element minOccurs="1" maxOccurs="1" name="p_enumStatus" type="tns:ApprovalRequestStatus" />
             <s:element minOccurs="1" maxOccurs="1" name="piUserID" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="piWorkflowDelegationToStaffID" nillable="true" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:simpleType name="ApprovalRequestStatus">
-        <s:restriction base="s:string">
-          <s:enumeration value="SENDEMAIL" />
-          <s:enumeration value="NEW" />
-          <s:enumeration value="WAIT_FOR_APPROVE" />
-          <s:enumeration value="APPROVE" />
-          <s:enumeration value="REJECT" />
-          <s:enumeration value="CANCEL" />
-          <s:enumeration value="WAIT_FOR_CANCEL" />
-          <s:enumeration value="CONFIRM_CANCEL" />
-        </s:restriction>
-      </s:simpleType>
       <s:element name="InsertOnlineLeaveApplicationRequestResponse">
         <s:complexType>
           <s:sequence>
@@ -643,20 +666,6 @@
           <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetMyHandleLeaveMasterByUID">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="UID" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetMyHandleLeaveMasterByUIDResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetMyHandleLeaveMasterByUIDResult" type="tns:ArrayOfLeaveRequestMaster" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="Base_Insertt_WorkflowInfo">
         <s:complexType>
           <s:sequence>
@@ -664,6 +673,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="t_WorkflowInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkflowTypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServeOfNotice" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="Base_Insertt_WorkflowInfoResponse">
         <s:complexType>
           <s:sequence>
@@ -802,7 +826,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="t_WorkflowInfo" nillable="true" type="tns:t_WorkflowInfo" />
       <s:element name="ArrayOfT_WorkflowTask" nillable="true" type="tns:ArrayOfT_WorkflowTask" />
       <s:element name="ArrayOfWorkInfo_Worktask" nillable="true" type="tns:ArrayOfWorkInfo_Worktask" />
       <s:element name="int" type="s:int" />
@@ -814,23 +837,35 @@
       <s:element name="ArrayOfT_WorkflowInfo" nillable="true" type="tns:ArrayOfT_WorkflowInfo" />
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="Gett_WorkflowInfoByRequestIDSoapIn">
-    <wsdl:part name="parameters" element="tns:Gett_WorkflowInfoByRequestID" />
-  </wsdl:message>
-  <wsdl:message name="Gett_WorkflowInfoByRequestIDSoapOut">
-    <wsdl:part name="parameters" element="tns:Gett_WorkflowInfoByRequestIDResponse" />
-  </wsdl:message>
   <wsdl:message name="Gett_WorkflowTaskByInfoIDSoapIn">
     <wsdl:part name="parameters" element="tns:Gett_WorkflowTaskByInfoID" />
   </wsdl:message>
   <wsdl:message name="Gett_WorkflowTaskByInfoIDSoapOut">
     <wsdl:part name="parameters" element="tns:Gett_WorkflowTaskByInfoIDResponse" />
   </wsdl:message>
-  <wsdl:message name="GetMyHandleWorkflowByUIDSoapIn">
-    <wsdl:part name="parameters" element="tns:GetMyHandleWorkflowByUID" />
+  <wsdl:message name="GetMyMaxStepWorkflowByUIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMyMaxStepWorkflowByUID" />
   </wsdl:message>
-  <wsdl:message name="GetMyHandleWorkflowByUIDSoapOut">
-    <wsdl:part name="parameters" element="tns:GetMyHandleWorkflowByUIDResponse" />
+  <wsdl:message name="GetMyMaxStepWorkflowByUIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMyMaxStepWorkflowByUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMyMaxStepWorkflowByUID_WaitForApprovalSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMyMaxStepWorkflowByUID_WaitForApproval" />
+  </wsdl:message>
+  <wsdl:message name="GetMyMaxStepWorkflowByUID_WaitForApprovalSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMyMaxStepWorkflowByUID_WaitForApprovalResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMyMaxStepWorkflowByUID_ApproaledSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMyMaxStepWorkflowByUID_Approaled" />
+  </wsdl:message>
+  <wsdl:message name="GetMyMaxStepWorkflowByUID_ApproaledSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMyMaxStepWorkflowByUID_ApproaledResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMyMaxStepWorkflowByUID_RejectSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMyMaxStepWorkflowByUID_Reject" />
+  </wsdl:message>
+  <wsdl:message name="GetMyMaxStepWorkflowByUID_RejectSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMyMaxStepWorkflowByUID_RejectResponse" />
   </wsdl:message>
   <wsdl:message name="CreateNewRequestSoapIn">
     <wsdl:part name="parameters" element="tns:CreateNewRequest" />
@@ -861,6 +896,18 @@
   </wsdl:message>
   <wsdl:message name="CancelRequest_leaveSoapOut">
     <wsdl:part name="parameters" element="tns:CancelRequest_leaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApproveCancelRequest_leaveSoapIn">
+    <wsdl:part name="parameters" element="tns:ApproveCancelRequest_leave" />
+  </wsdl:message>
+  <wsdl:message name="ApproveCancelRequest_leaveSoapOut">
+    <wsdl:part name="parameters" element="tns:ApproveCancelRequest_leaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="RejectCancelRequest_leaveSoapIn">
+    <wsdl:part name="parameters" element="tns:RejectCancelRequest_leave" />
+  </wsdl:message>
+  <wsdl:message name="RejectCancelRequest_leaveSoapOut">
+    <wsdl:part name="parameters" element="tns:RejectCancelRequest_leaveResponse" />
   </wsdl:message>
   <wsdl:message name="Base_Insertt_LeaveSoapIn">
     <wsdl:part name="parameters" element="tns:Base_Insertt_Leave" />
@@ -946,12 +993,6 @@
   <wsdl:message name="GetExtendLeaveDetailsByReuestIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetExtendLeaveDetailsByReuestIDResponse" />
   </wsdl:message>
-  <wsdl:message name="GetMyHandleLeaveMasterByUIDSoapIn">
-    <wsdl:part name="parameters" element="tns:GetMyHandleLeaveMasterByUID" />
-  </wsdl:message>
-  <wsdl:message name="GetMyHandleLeaveMasterByUIDSoapOut">
-    <wsdl:part name="parameters" element="tns:GetMyHandleLeaveMasterByUIDResponse" />
-  </wsdl:message>
   <wsdl:message name="Base_Insertt_WorkflowInfoSoapIn">
     <wsdl:part name="parameters" element="tns:Base_Insertt_WorkflowInfo" />
   </wsdl:message>
@@ -1012,23 +1053,34 @@
   <wsdl:message name="Base_GetListt_WorkflowTaskSoapOut">
     <wsdl:part name="parameters" element="tns:Base_GetListt_WorkflowTaskResponse" />
   </wsdl:message>
-  <wsdl:message name="Gett_WorkflowInfoByRequestIDHttpPostIn">
-    <wsdl:part name="requestid" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="Gett_WorkflowInfoByRequestIDHttpPostOut">
-    <wsdl:part name="Body" element="tns:t_WorkflowInfo" />
-  </wsdl:message>
   <wsdl:message name="Gett_WorkflowTaskByInfoIDHttpPostIn">
     <wsdl:part name="infoID" type="s:string" />
   </wsdl:message>
   <wsdl:message name="Gett_WorkflowTaskByInfoIDHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfT_WorkflowTask" />
   </wsdl:message>
-  <wsdl:message name="GetMyHandleWorkflowByUIDHttpPostIn">
-    <wsdl:part name="workflowType" type="s:string" />
+  <wsdl:message name="GetMyMaxStepWorkflowByUIDHttpPostIn">
     <wsdl:part name="UID" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetMyHandleWorkflowByUIDHttpPostOut">
+  <wsdl:message name="GetMyMaxStepWorkflowByUIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfWorkInfo_Worktask" />
+  </wsdl:message>
+  <wsdl:message name="GetMyMaxStepWorkflowByUID_WaitForApprovalHttpPostIn">
+    <wsdl:part name="UID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMyMaxStepWorkflowByUID_WaitForApprovalHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfWorkInfo_Worktask" />
+  </wsdl:message>
+  <wsdl:message name="GetMyMaxStepWorkflowByUID_ApproaledHttpPostIn">
+    <wsdl:part name="UID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMyMaxStepWorkflowByUID_ApproaledHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfWorkInfo_Worktask" />
+  </wsdl:message>
+  <wsdl:message name="GetMyMaxStepWorkflowByUID_RejectHttpPostIn">
+    <wsdl:part name="UID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMyMaxStepWorkflowByUID_RejectHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfWorkInfo_Worktask" />
   </wsdl:message>
   <wsdl:message name="ApproveRequest_leaveHttpPostIn">
@@ -1056,6 +1108,18 @@
   <wsdl:message name="CancelRequest_leaveHttpPostOut">
     <wsdl:part name="Body" element="tns:int" />
   </wsdl:message>
+  <wsdl:message name="ApproveCancelRequest_leaveHttpPostIn">
+    <wsdl:part name="workflowtaskid" type="s:string" />
+    <wsdl:part name="requestid" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ApproveCancelRequest_leaveHttpPostOut" />
+  <wsdl:message name="RejectCancelRequest_leaveHttpPostIn">
+    <wsdl:part name="workflowtaskid" type="s:string" />
+    <wsdl:part name="requestid" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RejectCancelRequest_leaveHttpPostOut" />
   <wsdl:message name="Base_GetListt_LeaveHttpPostIn">
     <wsdl:part name="whereSql" type="s:string" />
   </wsdl:message>
@@ -1102,12 +1166,6 @@
   <wsdl:message name="GetExtendLeaveDetailsByReuestIDHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfLeaveRequestDetail" />
   </wsdl:message>
-  <wsdl:message name="GetMyHandleLeaveMasterByUIDHttpPostIn">
-    <wsdl:part name="UID" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetMyHandleLeaveMasterByUIDHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfLeaveRequestMaster" />
-  </wsdl:message>
   <wsdl:message name="Base_GetListt_WorkflowInfoHttpPostIn">
     <wsdl:part name="whereSql" type="s:string" />
   </wsdl:message>
@@ -1121,17 +1179,25 @@
     <wsdl:part name="Body" element="tns:ArrayOfT_WorkflowTask" />
   </wsdl:message>
   <wsdl:portType name="LeaveManagementV2Soap">
-    <wsdl:operation name="Gett_WorkflowInfoByRequestID">
-      <wsdl:input message="tns:Gett_WorkflowInfoByRequestIDSoapIn" />
-      <wsdl:output message="tns:Gett_WorkflowInfoByRequestIDSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="Gett_WorkflowTaskByInfoID">
       <wsdl:input message="tns:Gett_WorkflowTaskByInfoIDSoapIn" />
       <wsdl:output message="tns:Gett_WorkflowTaskByInfoIDSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetMyHandleWorkflowByUID">
-      <wsdl:input message="tns:GetMyHandleWorkflowByUIDSoapIn" />
-      <wsdl:output message="tns:GetMyHandleWorkflowByUIDSoapOut" />
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID">
+      <wsdl:input message="tns:GetMyMaxStepWorkflowByUIDSoapIn" />
+      <wsdl:output message="tns:GetMyMaxStepWorkflowByUIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID_WaitForApproval">
+      <wsdl:input message="tns:GetMyMaxStepWorkflowByUID_WaitForApprovalSoapIn" />
+      <wsdl:output message="tns:GetMyMaxStepWorkflowByUID_WaitForApprovalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID_Approaled">
+      <wsdl:input message="tns:GetMyMaxStepWorkflowByUID_ApproaledSoapIn" />
+      <wsdl:output message="tns:GetMyMaxStepWorkflowByUID_ApproaledSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID_Reject">
+      <wsdl:input message="tns:GetMyMaxStepWorkflowByUID_RejectSoapIn" />
+      <wsdl:output message="tns:GetMyMaxStepWorkflowByUID_RejectSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="CreateNewRequest">
       <wsdl:input message="tns:CreateNewRequestSoapIn" />
@@ -1152,6 +1218,14 @@
     <wsdl:operation name="CancelRequest_leave">
       <wsdl:input message="tns:CancelRequest_leaveSoapIn" />
       <wsdl:output message="tns:CancelRequest_leaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApproveCancelRequest_leave">
+      <wsdl:input message="tns:ApproveCancelRequest_leaveSoapIn" />
+      <wsdl:output message="tns:ApproveCancelRequest_leaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RejectCancelRequest_leave">
+      <wsdl:input message="tns:RejectCancelRequest_leaveSoapIn" />
+      <wsdl:output message="tns:RejectCancelRequest_leaveSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Base_Insertt_Leave">
       <wsdl:input message="tns:Base_Insertt_LeaveSoapIn" />
@@ -1209,10 +1283,6 @@
       <wsdl:input message="tns:GetExtendLeaveDetailsByReuestIDSoapIn" />
       <wsdl:output message="tns:GetExtendLeaveDetailsByReuestIDSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetMyHandleLeaveMasterByUID">
-      <wsdl:input message="tns:GetMyHandleLeaveMasterByUIDSoapIn" />
-      <wsdl:output message="tns:GetMyHandleLeaveMasterByUIDSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="Base_Insertt_WorkflowInfo">
       <wsdl:input message="tns:Base_Insertt_WorkflowInfoSoapIn" />
       <wsdl:output message="tns:Base_Insertt_WorkflowInfoSoapOut" />
@@ -1255,17 +1325,25 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LeaveManagementV2HttpPost">
-    <wsdl:operation name="Gett_WorkflowInfoByRequestID">
-      <wsdl:input message="tns:Gett_WorkflowInfoByRequestIDHttpPostIn" />
-      <wsdl:output message="tns:Gett_WorkflowInfoByRequestIDHttpPostOut" />
-    </wsdl:operation>
     <wsdl:operation name="Gett_WorkflowTaskByInfoID">
       <wsdl:input message="tns:Gett_WorkflowTaskByInfoIDHttpPostIn" />
       <wsdl:output message="tns:Gett_WorkflowTaskByInfoIDHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetMyHandleWorkflowByUID">
-      <wsdl:input message="tns:GetMyHandleWorkflowByUIDHttpPostIn" />
-      <wsdl:output message="tns:GetMyHandleWorkflowByUIDHttpPostOut" />
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID">
+      <wsdl:input message="tns:GetMyMaxStepWorkflowByUIDHttpPostIn" />
+      <wsdl:output message="tns:GetMyMaxStepWorkflowByUIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID_WaitForApproval">
+      <wsdl:input message="tns:GetMyMaxStepWorkflowByUID_WaitForApprovalHttpPostIn" />
+      <wsdl:output message="tns:GetMyMaxStepWorkflowByUID_WaitForApprovalHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID_Approaled">
+      <wsdl:input message="tns:GetMyMaxStepWorkflowByUID_ApproaledHttpPostIn" />
+      <wsdl:output message="tns:GetMyMaxStepWorkflowByUID_ApproaledHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID_Reject">
+      <wsdl:input message="tns:GetMyMaxStepWorkflowByUID_RejectHttpPostIn" />
+      <wsdl:output message="tns:GetMyMaxStepWorkflowByUID_RejectHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="ApproveRequest_leave">
       <wsdl:input message="tns:ApproveRequest_leaveHttpPostIn" />
@@ -1282,6 +1360,14 @@
     <wsdl:operation name="CancelRequest_leave">
       <wsdl:input message="tns:CancelRequest_leaveHttpPostIn" />
       <wsdl:output message="tns:CancelRequest_leaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApproveCancelRequest_leave">
+      <wsdl:input message="tns:ApproveCancelRequest_leaveHttpPostIn" />
+      <wsdl:output message="tns:ApproveCancelRequest_leaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RejectCancelRequest_leave">
+      <wsdl:input message="tns:RejectCancelRequest_leaveHttpPostIn" />
+      <wsdl:output message="tns:RejectCancelRequest_leaveHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="Base_GetListt_Leave">
       <wsdl:input message="tns:Base_GetListt_LeaveHttpPostIn" />
@@ -1315,10 +1401,6 @@
       <wsdl:input message="tns:GetExtendLeaveDetailsByReuestIDHttpPostIn" />
       <wsdl:output message="tns:GetExtendLeaveDetailsByReuestIDHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetMyHandleLeaveMasterByUID">
-      <wsdl:input message="tns:GetMyHandleLeaveMasterByUIDHttpPostIn" />
-      <wsdl:output message="tns:GetMyHandleLeaveMasterByUIDHttpPostOut" />
-    </wsdl:operation>
     <wsdl:operation name="Base_GetListt_WorkflowInfo">
       <wsdl:input message="tns:Base_GetListt_WorkflowInfoHttpPostIn" />
       <wsdl:output message="tns:Base_GetListt_WorkflowInfoHttpPostOut" />
@@ -1330,15 +1412,6 @@
   </wsdl:portType>
   <wsdl:binding name="LeaveManagementV2Soap" type="tns:LeaveManagementV2Soap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="Gett_WorkflowInfoByRequestID">
-      <soap:operation soapAction="http://tempuri.org/Gett_WorkflowInfoByRequestID" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="Gett_WorkflowTaskByInfoID">
       <soap:operation soapAction="http://tempuri.org/Gett_WorkflowTaskByInfoID" style="document" />
       <wsdl:input>
@@ -1348,8 +1421,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetMyHandleWorkflowByUID">
-      <soap:operation soapAction="http://tempuri.org/GetMyHandleWorkflowByUID" style="document" />
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID">
+      <soap:operation soapAction="http://tempuri.org/GetMyMaxStepWorkflowByUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID_WaitForApproval">
+      <soap:operation soapAction="http://tempuri.org/GetMyMaxStepWorkflowByUID_WaitForApproval" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID_Approaled">
+      <soap:operation soapAction="http://tempuri.org/GetMyMaxStepWorkflowByUID_Approaled" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID_Reject">
+      <soap:operation soapAction="http://tempuri.org/GetMyMaxStepWorkflowByUID_Reject" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1395,6 +1495,24 @@
     </wsdl:operation>
     <wsdl:operation name="CancelRequest_leave">
       <soap:operation soapAction="http://tempuri.org/CancelRequest_leave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveCancelRequest_leave">
+      <soap:operation soapAction="http://tempuri.org/ApproveCancelRequest_leave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RejectCancelRequest_leave">
+      <soap:operation soapAction="http://tempuri.org/RejectCancelRequest_leave" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1528,15 +1646,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetMyHandleLeaveMasterByUID">
-      <soap:operation soapAction="http://tempuri.org/GetMyHandleLeaveMasterByUID" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="Base_Insertt_WorkflowInfo">
       <soap:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowInfo" style="document" />
       <wsdl:input>
@@ -1630,15 +1739,6 @@
   </wsdl:binding>
   <wsdl:binding name="LeaveManagementV2Soap12" type="tns:LeaveManagementV2Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="Gett_WorkflowInfoByRequestID">
-      <soap12:operation soapAction="http://tempuri.org/Gett_WorkflowInfoByRequestID" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="Gett_WorkflowTaskByInfoID">
       <soap12:operation soapAction="http://tempuri.org/Gett_WorkflowTaskByInfoID" style="document" />
       <wsdl:input>
@@ -1648,8 +1748,35 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetMyHandleWorkflowByUID">
-      <soap12:operation soapAction="http://tempuri.org/GetMyHandleWorkflowByUID" style="document" />
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID">
+      <soap12:operation soapAction="http://tempuri.org/GetMyMaxStepWorkflowByUID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID_WaitForApproval">
+      <soap12:operation soapAction="http://tempuri.org/GetMyMaxStepWorkflowByUID_WaitForApproval" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID_Approaled">
+      <soap12:operation soapAction="http://tempuri.org/GetMyMaxStepWorkflowByUID_Approaled" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID_Reject">
+      <soap12:operation soapAction="http://tempuri.org/GetMyMaxStepWorkflowByUID_Reject" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1695,6 +1822,24 @@
     </wsdl:operation>
     <wsdl:operation name="CancelRequest_leave">
       <soap12:operation soapAction="http://tempuri.org/CancelRequest_leave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveCancelRequest_leave">
+      <soap12:operation soapAction="http://tempuri.org/ApproveCancelRequest_leave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RejectCancelRequest_leave">
+      <soap12:operation soapAction="http://tempuri.org/RejectCancelRequest_leave" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1828,15 +1973,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetMyHandleLeaveMasterByUID">
-      <soap12:operation soapAction="http://tempuri.org/GetMyHandleLeaveMasterByUID" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="Base_Insertt_WorkflowInfo">
       <soap12:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowInfo" style="document" />
       <wsdl:input>
@@ -1930,15 +2066,6 @@
   </wsdl:binding>
   <wsdl:binding name="LeaveManagementV2HttpPost" type="tns:LeaveManagementV2HttpPost">
     <http:binding verb="POST" />
-    <wsdl:operation name="Gett_WorkflowInfoByRequestID">
-      <http:operation location="/Gett_WorkflowInfoByRequestID" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="Gett_WorkflowTaskByInfoID">
       <http:operation location="/Gett_WorkflowTaskByInfoID" />
       <wsdl:input>
@@ -1948,8 +2075,35 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetMyHandleWorkflowByUID">
-      <http:operation location="/GetMyHandleWorkflowByUID" />
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID">
+      <http:operation location="/GetMyMaxStepWorkflowByUID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID_WaitForApproval">
+      <http:operation location="/GetMyMaxStepWorkflowByUID_WaitForApproval" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID_Approaled">
+      <http:operation location="/GetMyMaxStepWorkflowByUID_Approaled" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMaxStepWorkflowByUID_Reject">
+      <http:operation location="/GetMyMaxStepWorkflowByUID_Reject" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -1986,6 +2140,20 @@
       <wsdl:output>
         <mime:mimeXml part="Body" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveCancelRequest_leave">
+      <http:operation location="/ApproveCancelRequest_leave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="RejectCancelRequest_leave">
+      <http:operation location="/RejectCancelRequest_leave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
     </wsdl:operation>
     <wsdl:operation name="Base_GetListt_Leave">
       <http:operation location="/Base_GetListt_Leave" />
@@ -2052,15 +2220,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetExtendLeaveDetailsByReuestID">
       <http:operation location="/GetExtendLeaveDetailsByReuestID" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetMyHandleLeaveMasterByUID">
-      <http:operation location="/GetMyHandleLeaveMasterByUID" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

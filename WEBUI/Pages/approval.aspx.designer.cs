@@ -10,7 +10,7 @@
 namespace WEBUI.Pages {
     
     
-    public partial class myapplications {
+    public partial class approval {
         
         /// <summary>
         /// btn_wait 控件。

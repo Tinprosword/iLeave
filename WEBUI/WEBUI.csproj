@@ -73,6 +73,7 @@
     <Content Include="MobilLogin.aspx" />
     <Content Include="Pages\Apply.aspx" />
     <Content Include="Pages\Apply_Upload.aspx" />
+    <Content Include="Pages\approval.aspx" />
     <Content Include="Pages\calendar.aspx" />
     <Content Include="Pages\Demo.html" />
     <Content Include="Pages\Main.aspx" />
@@ -86,6 +87,7 @@
     <Content Include="Res\App\apply.js" />
     <Content Include="Res\App\CommonJS.js" />
     <Content Include="Res\App\autoScale.js" />
+    <Content Include="Res\App\approval.js" />
     <Content Include="Res\App\myapplication.js" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\css\bootstrap-datetimepicker.min.css" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\css\bootstrap-theme.css" />
@@ -172,6 +174,13 @@
     </Compile>
     <Compile Include="Pages\Apply_Upload.aspx.designer.cs">
       <DependentUpon>Apply_Upload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\approval.aspx.cs">
+      <DependentUpon>approval.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\approval.aspx.designer.cs">
+      <DependentUpon>approval.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\calendar.aspx.cs">
       <DependentUpon>calendar.aspx</DependentUpon>

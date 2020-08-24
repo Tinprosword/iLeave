@@ -163,5 +163,15 @@ namespace BLL
             set { }
         }
 
+        public static string myapprovaljsLastmodify
+        {
+            get
+            {
+                string filePath = pageServer.MapPath("~/Res/App/approval.js");
+                return LSLibrary.FileUtil.GetLastWriteTime(filePath).ToString("yyyyMMddhhmmss");
+            }
+            set { }
+        }
+
     }
 }

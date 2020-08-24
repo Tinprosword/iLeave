@@ -112,15 +112,80 @@ namespace BLL
         #endregion
 
         #region search
-        public static WebServiceLayer.WebReference_leave.t_WorkflowInfo Gett_WorkflowInfoByRequestID(int requestid)
-        {
-            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.Gett_WorkflowInfoByRequestID(requestid);
-        }
-
         public static List<WebServiceLayer.WebReference_leave.t_WorkflowTask> Gett_WorkflowTaskByInfoID(int infoID)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.Gett_WorkflowTaskByInfoID(infoID).ToList();
         }
+
+
+        public static List<Worktask_leave> GetWorktask_leave(GlobalVariate.LeaveBigRangeStatus status, int approvalUid ,DateTime? from=null)
+        {
+            List<Worktask_leave> result = new List<Worktask_leave>();
+            if (status == GlobalVariate.LeaveBigRangeStatus.approvaled)
+            {
+                result = GetApproaled(approvalUid);
+            }
+            else if (status == GlobalVariate.LeaveBigRangeStatus.waitapproval)
+            {
+                result = GetWait(approvalUid);
+            }
+            else if (status == GlobalVariate.LeaveBigRangeStatus.withdraw)
+            {
+                result = GetReject(approvalUid);
+            }
+
+            if (from != null)
+            {
+                result = result.Where(x => x.leaveRequestMaster.leavefrom >= from).ToList();
+            }
+
+            return result;
+        }
+
+
+
+        private static List<Worktask_leave> GetApproaled(int uid, DateTime? from = null)
+        {
+            var worktasks= WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetMyMaxStepWorkflowByUID_Approaled(uid);
+            var result = composeWorktask_leaveByWorkflow(worktasks);
+            return result;
+        }
+
+        private static List<Worktask_leave> GetWait(int uid, DateTime? from = null)
+        {
+            var worktasks = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetMyMaxStepWorkflowByUID_WaitForApproval(uid);
+            var result = composeWorktask_leaveByWorkflow(worktasks);
+            return result;
+        }
+
+        private static List<Worktask_leave> GetReject(int uid, DateTime? from = null)
+        {
+            var worktasks = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetMyMaxStepWorkflowByUID_Reject(uid);
+            var result = composeWorktask_leaveByWorkflow(worktasks);
+            return result;
+        }
+
+        private static List<Worktask_leave> composeWorktask_leaveByWorkflow(WebServiceLayer.WebReference_leave.WorkInfo_Worktask[] worktasks)
+        {
+            List<Worktask_leave> result = new List<Worktask_leave>();
+
+            for (int i = 0; i < worktasks.Count(); i++)
+            {
+                WebServiceLayer.WebReference_leave.LeaveRequestMaster temp = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMasterByReuestID(worktasks[i].RequestID);
+                Worktask_leave item = new Worktask_leave();
+                item.worktask = worktasks[i];
+                item.leaveRequestMaster = temp;
+                result.Add(item);
+            }
+            return result;
+        }
+
         #endregion
+
+        public class Worktask_leave
+        {
+            public WebServiceLayer.WebReference_leave.WorkInfo_Worktask worktask;
+            public WebServiceLayer.WebReference_leave.LeaveRequestMaster leaveRequestMaster;
+        }
     }
 }

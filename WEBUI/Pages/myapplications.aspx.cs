@@ -41,7 +41,7 @@ namespace WEBUI.Pages
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().application_back, BLL.MultiLanguageHelper.GetLanguagePacket().application_current, "~/pages/main.aspx");
             SetupMultiLanguage();
 
-            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton2.Checked, getStatus(), loginer.userInfo.id, this.tb_date.Text, this.tb_name.Text,loginer.userInfo.personid);
+            this.repeater_myapplications.DataSource = GetDatasource( getStatus(), loginer.userInfo.id, this.tb_date.Text, loginer.userInfo.personid);
             this.repeater_myapplications.DataBind();
         }
 
@@ -51,7 +51,6 @@ namespace WEBUI.Pages
             this.btn_approved.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_approved;
             this.btn_rejectWith.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_rejected;
             this.btn_wait.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_wait;
-            this.lt_name.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_name;
             this.ltdatefrom.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_datefrom;
         }
 
@@ -61,7 +60,7 @@ namespace WEBUI.Pages
             this.btn_approved.CssClass = css_unselect;
             this.btn_wait.CssClass = css_select;
             this.btn_rejectWith.CssClass = css_unselect;
-            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton2.Checked, getStatus(), loginer.userInfo.id, this.tb_date.Text, this.tb_name.Text, loginer.userInfo.personid);
+            this.repeater_myapplications.DataSource = GetDatasource(getStatus(), loginer.userInfo.id, this.tb_date.Text, loginer.userInfo.personid);
             this.repeater_myapplications.DataBind();
         }
 
@@ -73,7 +72,7 @@ namespace WEBUI.Pages
             this.btn_rejectWith.CssClass = css_unselect;
 
 
-            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton2.Checked, getStatus(), loginer.userInfo.id, this.tb_date.Text, this.tb_name.Text, loginer.userInfo.personid);
+            this.repeater_myapplications.DataSource = GetDatasource( getStatus(), loginer.userInfo.id, this.tb_date.Text,  loginer.userInfo.personid);
             this.repeater_myapplications.DataBind();
         }
 
@@ -83,7 +82,7 @@ namespace WEBUI.Pages
             this.btn_wait.CssClass = css_unselect;
             this.btn_rejectWith.CssClass = css_select;
 
-            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton2.Checked, getStatus(), loginer.userInfo.id, this.tb_date.Text, this.tb_name.Text, loginer.userInfo.personid);
+            this.repeater_myapplications.DataSource = GetDatasource( getStatus(), loginer.userInfo.id, this.tb_date.Text,  loginer.userInfo.personid);
             this.repeater_myapplications.DataBind();
         }
 
@@ -91,25 +90,14 @@ namespace WEBUI.Pages
         {
             LinkButton link = (LinkButton)sender;
             string requestid = link.CommandArgument;
-            if (this.RadioButton2.Checked)
-            {
-                Response.Redirect("~/Pages/myDetail.aspx?action=0&requestid=" + requestid, true);
-            }
-            else
-            {
-                Response.Redirect("~/Pages/myDetail.aspx?action=1&requestid=" + requestid, true);
-            }
+
+                Response.Redirect("~/Pages/myDetail.aspx?requestid=" + requestid, true);
         }
 
-        protected void tb_name_TextChanged(object sender, EventArgs e)
-        {
-            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton2.Checked, getStatus(), loginer.userInfo.id, this.tb_date.Text, this.tb_name.Text, loginer.userInfo.personid);
-            this.repeater_myapplications.DataBind();
-        }
 
         protected void tb_date_TextChanged1(object sender, EventArgs e)
         {
-            this.repeater_myapplications.DataSource = GetDatasource(this.RadioButton2.Checked, getStatus(), loginer.userInfo.id, this.tb_date.Text, this.tb_name.Text, loginer.userInfo.personid);
+            this.repeater_myapplications.DataSource = GetDatasource( getStatus(), loginer.userInfo.id, this.tb_date.Text,  loginer.userInfo.personid);
             this.repeater_myapplications.DataBind();
         }
 
@@ -135,7 +123,7 @@ namespace WEBUI.Pages
 
 
         //chooseStatus:1 ,apporve ,0 wait .2 reject
-        private static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetDatasource(bool ismyself, BLL.GlobalVariate.LeaveBigRangeStatus chooseStatus,int uid, string datestrFrom,string username,int pid)
+        private static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetDatasource( BLL.GlobalVariate.LeaveBigRangeStatus chooseStatus, int uid, string datestrFrom,  int pid)
         {
             List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> result = null;
             DateTime? dateFrom = null;
@@ -143,19 +131,9 @@ namespace WEBUI.Pages
             {
                 dateFrom = DateTime.Parse(datestrFrom);
             }
-
-            if (ismyself)
-            {
-                //根据uid,需要的状态 , date, 得到list.
-                result= BLL.Leave.GetMyLeaveMaster(pid, chooseStatus, dateFrom);
-            }
-            else
-            {
-                //根据uid,时间，name ，获得我所负责的 wait approval 's list.
-
-                result = BLL.Leave.GetLeaveMaster_MyHandleWorkFlow(uid, dateFrom,username);
-            }
+            result = BLL.Leave.GetMyLeaveMaster(pid, chooseStatus, dateFrom);
             return result;
         }
+
     }
 }

@@ -6,9 +6,29 @@ using System.Data;
 using System.IO;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Linq;
 
 namespace ut
 {
+    public class mytestClass
+    {
+        public int getint()
+        {
+            return 1;
+        }
+    }
+
+    public static class MytestClassExtend
+    {
+        public static int getint2(this mytestClass mytest)
+        {
+            return 3;
+        }
+    }
+
+    
+
+
     [TestClass]
     public class UnitTest1
     {
@@ -22,12 +42,60 @@ namespace ut
         }
 
 
+        [TestMethod]
+        public void TestMethod222()
+        {
+            List<int> allints = new List<int>();
+            allints.Add(1);
+            allints.Add(2);
+            allints.Add(3);
+
+            int[] validate = { 2 };
+
+         //   var a= allints.Where(x => validate.Contains(x));
+            Func<int, bool> func = new Func<int, bool>(myContain);
+
+           var bb=  allints.Where(func).ToArray();
+
+
+            mytestClass a = new mytestClass();
+            a.getint2();
+
+
+            var c = "aa";
+        }
+
+       
+        public bool myContain(int a)
+        {
+            if (a > 2)
+            {
+                return true;
+            }
+            else
+            {
+
+                return false;
+            }
+        }
+
+       
+
+
 
         [TestMethod]
         public void testbll4()
         {
-
             WebServiceLayer.WebReference_user.UserManagementV2 userManagement = new WebServiceLayer.WebReference_user.UserManagementV2();
+        }
+
+
+
+        [TestMethod]
+        public void linqTrainning()
+        {
+            WebServiceLayer.WebReference_user.UserManagementV2 userManagement = new WebServiceLayer.WebReference_user.UserManagementV2();
+
         }
 
 
