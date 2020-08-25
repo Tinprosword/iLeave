@@ -11,8 +11,6 @@ namespace WEBUI.Pages
         private int requestId;
         private WebServiceLayer.WebReference_leave.LeaveRequestMaster LeaveRequestMaster;
         private List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> LeaveRequestDetails;
-        private WebServiceLayer.WebReference_leave.t_WorkflowInfo workflowinfo;
-        private List<WebServiceLayer.WebReference_leave.t_WorkflowTask> WorkflowTasks;
 
         protected override void InitPageVaralbal0()
         {
@@ -126,11 +124,7 @@ namespace WEBUI.Pages
             if (button.ID == this.button_wait_user_Withdraw.ID)
             {
                 string errormsg;
-                var wfs = WorkflowTasks.Where(x => x.UserID == loginer.userInfo.id && x.InOutTypeID == 1 && x.WorkflowInfoID == workflowinfo.ID).ToArray();
-                if (wfs.Count() == 1)//get task i send.
-                {
-                    BLL.workflow.WithDrawRequest_leave(requestId, wfs[0].ID, loginer.userInfo.id, out errormsg);
-                }
+                BLL.workflow.WithDrawRequest_leave(requestId, loginer.userInfo.id, out errormsg);
             }
             else if (button.ID == this.button_approval_user_Cancel.ID)
             {

@@ -74,6 +74,7 @@
     <Content Include="Pages\Apply.aspx" />
     <Content Include="Pages\Apply_Upload.aspx" />
     <Content Include="Pages\approval.aspx" />
+    <Content Include="Pages\approvalDetail.aspx" />
     <Content Include="Pages\calendar.aspx" />
     <Content Include="Pages\Demo.html" />
     <Content Include="Pages\Main.aspx" />
@@ -181,6 +182,13 @@
     </Compile>
     <Compile Include="Pages\approval.aspx.designer.cs">
       <DependentUpon>approval.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\approvalDetail.aspx.cs">
+      <DependentUpon>approvalDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\approvalDetail.aspx.designer.cs">
+      <DependentUpon>approvalDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\calendar.aspx.cs">
       <DependentUpon>calendar.aspx</DependentUpon>

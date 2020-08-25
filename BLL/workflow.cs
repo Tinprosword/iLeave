@@ -9,6 +9,17 @@ namespace BLL
 {
     public class workflow
     {
+        public static Dictionary<int, string> names
+        {
+            get
+            {
+                Dictionary<int, string> names = new Dictionary<int, string>();
+                names.Add(0, "Application");
+                names.Add(10, "Cancel");
+                return names;
+            }
+        }
+
         //todo   waitcancel -> ok.  master need update status.
         public static string LEAVE_DESC = "Leave Request";
 
@@ -58,14 +69,14 @@ namespace BLL
             return result;
         }
 
-        public static bool WithDrawRequest_leave(int requestid, int workflowtaskid, int HandlerUID, out string errorMsg)
+        public static bool WithDrawRequest_leave(int requestid , int HandlerUID, out string errorMsg)
         {
             bool result = false;
             errorMsg = "";
             int check = Check_WithDrawRequest_leave();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.WithDrawRequest_leave(workflowtaskid, requestid, HandlerUID);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.WithDrawRequest_leave(requestid, HandlerUID);
                 result = true;
             }
             else
@@ -116,76 +127,14 @@ namespace BLL
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.Gett_WorkflowTaskByInfoID(infoID).ToList();
         }
-
-
-        public static List<Worktask_leave> GetWorktask_leave(GlobalVariate.LeaveBigRangeStatus status, int approvalUid ,DateTime? from=null)
-        {
-            List<Worktask_leave> result = new List<Worktask_leave>();
-            if (status == GlobalVariate.LeaveBigRangeStatus.approvaled)
-            {
-                result = GetApproaled(approvalUid);
-            }
-            else if (status == GlobalVariate.LeaveBigRangeStatus.waitapproval)
-            {
-                result = GetWait(approvalUid);
-            }
-            else if (status == GlobalVariate.LeaveBigRangeStatus.withdraw)
-            {
-                result = GetReject(approvalUid);
-            }
-
-            if (from != null)
-            {
-                result = result.Where(x => x.leaveRequestMaster.leavefrom >= from).ToList();
-            }
-
-            return result;
-        }
-
-
-
-        private static List<Worktask_leave> GetApproaled(int uid, DateTime? from = null)
-        {
-            var worktasks= WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetMyMaxStepWorkflowByUID_Approaled(uid);
-            var result = composeWorktask_leaveByWorkflow(worktasks);
-            return result;
-        }
-
-        private static List<Worktask_leave> GetWait(int uid, DateTime? from = null)
-        {
-            var worktasks = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetMyMaxStepWorkflowByUID_WaitForApproval(uid);
-            var result = composeWorktask_leaveByWorkflow(worktasks);
-            return result;
-        }
-
-        private static List<Worktask_leave> GetReject(int uid, DateTime? from = null)
-        {
-            var worktasks = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetMyMaxStepWorkflowByUID_Reject(uid);
-            var result = composeWorktask_leaveByWorkflow(worktasks);
-            return result;
-        }
-
-        private static List<Worktask_leave> composeWorktask_leaveByWorkflow(WebServiceLayer.WebReference_leave.WorkInfo_Worktask[] worktasks)
-        {
-            List<Worktask_leave> result = new List<Worktask_leave>();
-
-            for (int i = 0; i < worktasks.Count(); i++)
-            {
-                WebServiceLayer.WebReference_leave.LeaveRequestMaster temp = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMasterByReuestID(worktasks[i].RequestID);
-                Worktask_leave item = new Worktask_leave();
-                item.worktask = worktasks[i];
-                item.leaveRequestMaster = temp;
-                result.Add(item);
-            }
-            return result;
-        }
-
         #endregion
 
-        public class Worktask_leave
+        #region other
+        public static String GetWorkFlowTypeName(int? type)
         {
-            public WebServiceLayer.WebReference_leave.WorkInfo_Worktask worktask;
-            public WebServiceLayer.WebReference_leave.LeaveRequestMaster leaveRequestMaster;
+            return type==null?"": names[(int)type];
         }
+        #endregion
+
     }
 }

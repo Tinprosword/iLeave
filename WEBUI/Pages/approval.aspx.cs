@@ -53,14 +53,14 @@ namespace WEBUI.Pages
         {
         }
 
-        private List<BLL.workflow.Worktask_leave> GetDatasource(GlobalVariate.LeaveBigRangeStatus leaveBigRangeStatus,int approverUid,string datestrFrom)
+        private List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetDatasource(GlobalVariate.LeaveBigRangeStatus leaveBigRangeStatus,int approverUid,string datestrFrom)
         {
             DateTime? dateFrom = null;
             if (!string.IsNullOrEmpty(datestrFrom))
             {
                 dateFrom = DateTime.Parse(datestrFrom);
             }
-            return BLL.workflow.GetWorktask_leave(leaveBigRangeStatus, approverUid, dateFrom);
+            return BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, leaveBigRangeStatus, dateFrom, "");
         }
 
         private BLL.GlobalVariate.LeaveBigRangeStatus getStatus()

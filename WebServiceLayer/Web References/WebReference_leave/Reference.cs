@@ -31,13 +31,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback Gett_WorkflowTaskByInfoIDOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetMyMaxStepWorkflowByUIDOperationCompleted;
+        private System.Threading.SendOrPostCallback Gett_WorkflowTaskByRequestIDOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetMyMaxStepWorkflowByUID_WaitForApprovalOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetMyMaxStepWorkflowByUID_ApproaledOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetMyMaxStepWorkflowByUID_RejectOperationCompleted;
+        private System.Threading.SendOrPostCallback GetMyMaxStepWorkTaskByUID_leaveOperationCompleted;
         
         private System.Threading.SendOrPostCallback CreateNewRequestOperationCompleted;
         
@@ -72,6 +68,8 @@ namespace WebServiceLayer.WebReference_leave {
         private System.Threading.SendOrPostCallback GetLeaveMasterByEmploymentIDOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetLeaveMasterByPIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetLeaveMasterByApprovarUIDOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetLeaveMasterByReuestIDOperationCompleted;
         
@@ -143,16 +141,10 @@ namespace WebServiceLayer.WebReference_leave {
         public event Gett_WorkflowTaskByInfoIDCompletedEventHandler Gett_WorkflowTaskByInfoIDCompleted;
         
         /// <remarks/>
-        public event GetMyMaxStepWorkflowByUIDCompletedEventHandler GetMyMaxStepWorkflowByUIDCompleted;
+        public event Gett_WorkflowTaskByRequestIDCompletedEventHandler Gett_WorkflowTaskByRequestIDCompleted;
         
         /// <remarks/>
-        public event GetMyMaxStepWorkflowByUID_WaitForApprovalCompletedEventHandler GetMyMaxStepWorkflowByUID_WaitForApprovalCompleted;
-        
-        /// <remarks/>
-        public event GetMyMaxStepWorkflowByUID_ApproaledCompletedEventHandler GetMyMaxStepWorkflowByUID_ApproaledCompleted;
-        
-        /// <remarks/>
-        public event GetMyMaxStepWorkflowByUID_RejectCompletedEventHandler GetMyMaxStepWorkflowByUID_RejectCompleted;
+        public event GetMyMaxStepWorkTaskByUID_leaveCompletedEventHandler GetMyMaxStepWorkTaskByUID_leaveCompleted;
         
         /// <remarks/>
         public event CreateNewRequestCompletedEventHandler CreateNewRequestCompleted;
@@ -204,6 +196,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event GetLeaveMasterByPIDCompletedEventHandler GetLeaveMasterByPIDCompleted;
+        
+        /// <remarks/>
+        public event GetLeaveMasterByApprovarUIDCompletedEventHandler GetLeaveMasterByApprovarUIDCompleted;
         
         /// <remarks/>
         public event GetLeaveMasterByReuestIDCompletedEventHandler GetLeaveMasterByReuestIDCompleted;
@@ -277,118 +272,60 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetMyMaxStepWorkflowByUID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public WorkInfo_Worktask[] GetMyMaxStepWorkflowByUID(int UID) {
-            object[] results = this.Invoke("GetMyMaxStepWorkflowByUID", new object[] {
-                        UID});
-            return ((WorkInfo_Worktask[])(results[0]));
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Gett_WorkflowTaskByRequestID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_WorkflowTask[] Gett_WorkflowTaskByRequestID(int request) {
+            object[] results = this.Invoke("Gett_WorkflowTaskByRequestID", new object[] {
+                        request});
+            return ((t_WorkflowTask[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetMyMaxStepWorkflowByUIDAsync(int UID) {
-            this.GetMyMaxStepWorkflowByUIDAsync(UID, null);
+        public void Gett_WorkflowTaskByRequestIDAsync(int request) {
+            this.Gett_WorkflowTaskByRequestIDAsync(request, null);
         }
         
         /// <remarks/>
-        public void GetMyMaxStepWorkflowByUIDAsync(int UID, object userState) {
-            if ((this.GetMyMaxStepWorkflowByUIDOperationCompleted == null)) {
-                this.GetMyMaxStepWorkflowByUIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMyMaxStepWorkflowByUIDOperationCompleted);
+        public void Gett_WorkflowTaskByRequestIDAsync(int request, object userState) {
+            if ((this.Gett_WorkflowTaskByRequestIDOperationCompleted == null)) {
+                this.Gett_WorkflowTaskByRequestIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGett_WorkflowTaskByRequestIDOperationCompleted);
             }
-            this.InvokeAsync("GetMyMaxStepWorkflowByUID", new object[] {
-                        UID}, this.GetMyMaxStepWorkflowByUIDOperationCompleted, userState);
+            this.InvokeAsync("Gett_WorkflowTaskByRequestID", new object[] {
+                        request}, this.Gett_WorkflowTaskByRequestIDOperationCompleted, userState);
         }
         
-        private void OnGetMyMaxStepWorkflowByUIDOperationCompleted(object arg) {
-            if ((this.GetMyMaxStepWorkflowByUIDCompleted != null)) {
+        private void OnGett_WorkflowTaskByRequestIDOperationCompleted(object arg) {
+            if ((this.Gett_WorkflowTaskByRequestIDCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetMyMaxStepWorkflowByUIDCompleted(this, new GetMyMaxStepWorkflowByUIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Gett_WorkflowTaskByRequestIDCompleted(this, new Gett_WorkflowTaskByRequestIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetMyMaxStepWorkflowByUID_WaitForApproval", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public WorkInfo_Worktask[] GetMyMaxStepWorkflowByUID_WaitForApproval(int UID) {
-            object[] results = this.Invoke("GetMyMaxStepWorkflowByUID_WaitForApproval", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetMyMaxStepWorkTaskByUID_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_WorkflowTask[] GetMyMaxStepWorkTaskByUID_leave(int UID) {
+            object[] results = this.Invoke("GetMyMaxStepWorkTaskByUID_leave", new object[] {
                         UID});
-            return ((WorkInfo_Worktask[])(results[0]));
+            return ((t_WorkflowTask[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetMyMaxStepWorkflowByUID_WaitForApprovalAsync(int UID) {
-            this.GetMyMaxStepWorkflowByUID_WaitForApprovalAsync(UID, null);
+        public void GetMyMaxStepWorkTaskByUID_leaveAsync(int UID) {
+            this.GetMyMaxStepWorkTaskByUID_leaveAsync(UID, null);
         }
         
         /// <remarks/>
-        public void GetMyMaxStepWorkflowByUID_WaitForApprovalAsync(int UID, object userState) {
-            if ((this.GetMyMaxStepWorkflowByUID_WaitForApprovalOperationCompleted == null)) {
-                this.GetMyMaxStepWorkflowByUID_WaitForApprovalOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMyMaxStepWorkflowByUID_WaitForApprovalOperationCompleted);
+        public void GetMyMaxStepWorkTaskByUID_leaveAsync(int UID, object userState) {
+            if ((this.GetMyMaxStepWorkTaskByUID_leaveOperationCompleted == null)) {
+                this.GetMyMaxStepWorkTaskByUID_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMyMaxStepWorkTaskByUID_leaveOperationCompleted);
             }
-            this.InvokeAsync("GetMyMaxStepWorkflowByUID_WaitForApproval", new object[] {
-                        UID}, this.GetMyMaxStepWorkflowByUID_WaitForApprovalOperationCompleted, userState);
+            this.InvokeAsync("GetMyMaxStepWorkTaskByUID_leave", new object[] {
+                        UID}, this.GetMyMaxStepWorkTaskByUID_leaveOperationCompleted, userState);
         }
         
-        private void OnGetMyMaxStepWorkflowByUID_WaitForApprovalOperationCompleted(object arg) {
-            if ((this.GetMyMaxStepWorkflowByUID_WaitForApprovalCompleted != null)) {
+        private void OnGetMyMaxStepWorkTaskByUID_leaveOperationCompleted(object arg) {
+            if ((this.GetMyMaxStepWorkTaskByUID_leaveCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetMyMaxStepWorkflowByUID_WaitForApprovalCompleted(this, new GetMyMaxStepWorkflowByUID_WaitForApprovalCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetMyMaxStepWorkflowByUID_Approaled", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public WorkInfo_Worktask[] GetMyMaxStepWorkflowByUID_Approaled(int UID) {
-            object[] results = this.Invoke("GetMyMaxStepWorkflowByUID_Approaled", new object[] {
-                        UID});
-            return ((WorkInfo_Worktask[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetMyMaxStepWorkflowByUID_ApproaledAsync(int UID) {
-            this.GetMyMaxStepWorkflowByUID_ApproaledAsync(UID, null);
-        }
-        
-        /// <remarks/>
-        public void GetMyMaxStepWorkflowByUID_ApproaledAsync(int UID, object userState) {
-            if ((this.GetMyMaxStepWorkflowByUID_ApproaledOperationCompleted == null)) {
-                this.GetMyMaxStepWorkflowByUID_ApproaledOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMyMaxStepWorkflowByUID_ApproaledOperationCompleted);
-            }
-            this.InvokeAsync("GetMyMaxStepWorkflowByUID_Approaled", new object[] {
-                        UID}, this.GetMyMaxStepWorkflowByUID_ApproaledOperationCompleted, userState);
-        }
-        
-        private void OnGetMyMaxStepWorkflowByUID_ApproaledOperationCompleted(object arg) {
-            if ((this.GetMyMaxStepWorkflowByUID_ApproaledCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetMyMaxStepWorkflowByUID_ApproaledCompleted(this, new GetMyMaxStepWorkflowByUID_ApproaledCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetMyMaxStepWorkflowByUID_Reject", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public WorkInfo_Worktask[] GetMyMaxStepWorkflowByUID_Reject(int UID) {
-            object[] results = this.Invoke("GetMyMaxStepWorkflowByUID_Reject", new object[] {
-                        UID});
-            return ((WorkInfo_Worktask[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetMyMaxStepWorkflowByUID_RejectAsync(int UID) {
-            this.GetMyMaxStepWorkflowByUID_RejectAsync(UID, null);
-        }
-        
-        /// <remarks/>
-        public void GetMyMaxStepWorkflowByUID_RejectAsync(int UID, object userState) {
-            if ((this.GetMyMaxStepWorkflowByUID_RejectOperationCompleted == null)) {
-                this.GetMyMaxStepWorkflowByUID_RejectOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMyMaxStepWorkflowByUID_RejectOperationCompleted);
-            }
-            this.InvokeAsync("GetMyMaxStepWorkflowByUID_Reject", new object[] {
-                        UID}, this.GetMyMaxStepWorkflowByUID_RejectOperationCompleted, userState);
-        }
-        
-        private void OnGetMyMaxStepWorkflowByUID_RejectOperationCompleted(object arg) {
-            if ((this.GetMyMaxStepWorkflowByUID_RejectCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetMyMaxStepWorkflowByUID_RejectCompleted(this, new GetMyMaxStepWorkflowByUID_RejectCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetMyMaxStepWorkTaskByUID_leaveCompleted(this, new GetMyMaxStepWorkTaskByUID_leaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -473,25 +410,23 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/WithDrawRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void WithDrawRequest_leave(int workflowtaskid, int requestid, int UserID) {
+        public void WithDrawRequest_leave(int requestid, int UserID) {
             this.Invoke("WithDrawRequest_leave", new object[] {
-                        workflowtaskid,
                         requestid,
                         UserID});
         }
         
         /// <remarks/>
-        public void WithDrawRequest_leaveAsync(int workflowtaskid, int requestid, int UserID) {
-            this.WithDrawRequest_leaveAsync(workflowtaskid, requestid, UserID, null);
+        public void WithDrawRequest_leaveAsync(int requestid, int UserID) {
+            this.WithDrawRequest_leaveAsync(requestid, UserID, null);
         }
         
         /// <remarks/>
-        public void WithDrawRequest_leaveAsync(int workflowtaskid, int requestid, int UserID, object userState) {
+        public void WithDrawRequest_leaveAsync(int requestid, int UserID, object userState) {
             if ((this.WithDrawRequest_leaveOperationCompleted == null)) {
                 this.WithDrawRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnWithDrawRequest_leaveOperationCompleted);
             }
             this.InvokeAsync("WithDrawRequest_leave", new object[] {
-                        workflowtaskid,
                         requestid,
                         UserID}, this.WithDrawRequest_leaveOperationCompleted, userState);
         }
@@ -919,6 +854,35 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.GetLeaveMasterByPIDCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetLeaveMasterByPIDCompleted(this, new GetLeaveMasterByPIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLeaveMasterByApprovarUID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public LeaveRequestMaster[] GetLeaveMasterByApprovarUID(int uid) {
+            object[] results = this.Invoke("GetLeaveMasterByApprovarUID", new object[] {
+                        uid});
+            return ((LeaveRequestMaster[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetLeaveMasterByApprovarUIDAsync(int uid) {
+            this.GetLeaveMasterByApprovarUIDAsync(uid, null);
+        }
+        
+        /// <remarks/>
+        public void GetLeaveMasterByApprovarUIDAsync(int uid, object userState) {
+            if ((this.GetLeaveMasterByApprovarUIDOperationCompleted == null)) {
+                this.GetLeaveMasterByApprovarUIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLeaveMasterByApprovarUIDOperationCompleted);
+            }
+            this.InvokeAsync("GetLeaveMasterByApprovarUID", new object[] {
+                        uid}, this.GetLeaveMasterByApprovarUIDOperationCompleted, userState);
+        }
+        
+        private void OnGetLeaveMasterByApprovarUIDOperationCompleted(object arg) {
+            if ((this.GetLeaveMasterByApprovarUIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetLeaveMasterByApprovarUIDCompleted(this, new GetLeaveMasterByApprovarUIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2217,6 +2181,10 @@ namespace WebServiceLayer.WebReference_leave {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class LeaveRequestMaster {
         
+        private System.Nullable<int> workflowTypeIDField;
+        
+        private System.Nullable<int> workinfoIDField;
+        
         private int requestIDField;
         
         private int employmentIDField;
@@ -2248,6 +2216,28 @@ namespace WebServiceLayer.WebReference_leave {
         private string minleaveCodeField;
         
         private string maxLeaveCodeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> WorkflowTypeID {
+            get {
+                return this.workflowTypeIDField;
+            }
+            set {
+                this.workflowTypeIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> workinfoID {
+            get {
+                return this.workinfoIDField;
+            }
+            set {
+                this.workinfoIDField = value;
+            }
+        }
         
         /// <remarks/>
         public int RequestID {
@@ -3719,225 +3709,6 @@ namespace WebServiceLayer.WebReference_leave {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class WorkInfo_Worktask {
-        
-        private int infoIDField;
-        
-        private string infodescField;
-        
-        private int createUserField;
-        
-        private System.DateTime createDateField;
-        
-        private int employmentIDField;
-        
-        private int requestIDField;
-        
-        private int workflowTypeIDField;
-        
-        private byte statusField;
-        
-        private System.Nullable<System.DateTime> serveOfNoticeField;
-        
-        private System.Nullable<int> taskDetailIDField;
-        
-        private System.Nullable<byte> inOutTypeIDField;
-        
-        private System.Nullable<int> userIDField;
-        
-        private System.Nullable<int> currentStepField;
-        
-        private string detaildescField;
-        
-        private string formulatedURLField;
-        
-        private System.Nullable<bool> isReadField;
-        
-        private string remarkField;
-        
-        /// <remarks/>
-        public int infoID {
-            get {
-                return this.infoIDField;
-            }
-            set {
-                this.infoIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string infodesc {
-            get {
-                return this.infodescField;
-            }
-            set {
-                this.infodescField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int CreateUser {
-            get {
-                return this.createUserField;
-            }
-            set {
-                this.createUserField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime CreateDate {
-            get {
-                return this.createDateField;
-            }
-            set {
-                this.createDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int EmploymentID {
-            get {
-                return this.employmentIDField;
-            }
-            set {
-                this.employmentIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int RequestID {
-            get {
-                return this.requestIDField;
-            }
-            set {
-                this.requestIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int WorkflowTypeID {
-            get {
-                return this.workflowTypeIDField;
-            }
-            set {
-                this.workflowTypeIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte Status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<System.DateTime> ServeOfNotice {
-            get {
-                return this.serveOfNoticeField;
-            }
-            set {
-                this.serveOfNoticeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> taskDetailID {
-            get {
-                return this.taskDetailIDField;
-            }
-            set {
-                this.taskDetailIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<byte> InOutTypeID {
-            get {
-                return this.inOutTypeIDField;
-            }
-            set {
-                this.inOutTypeIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> UserID {
-            get {
-                return this.userIDField;
-            }
-            set {
-                this.userIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> CurrentStep {
-            get {
-                return this.currentStepField;
-            }
-            set {
-                this.currentStepField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string detaildesc {
-            get {
-                return this.detaildescField;
-            }
-            set {
-                this.detaildescField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string FormulatedURL {
-            get {
-                return this.formulatedURLField;
-            }
-            set {
-                this.formulatedURLField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<bool> IsRead {
-            get {
-                return this.isReadField;
-            }
-            set {
-                this.isReadField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Remark {
-            get {
-                return this.remarkField;
-            }
-            set {
-                this.remarkField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
-    [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public enum WorkflowTypeID {
         
@@ -4006,104 +3777,52 @@ namespace WebServiceLayer.WebReference_leave {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetMyMaxStepWorkflowByUIDCompletedEventHandler(object sender, GetMyMaxStepWorkflowByUIDCompletedEventArgs e);
+    public delegate void Gett_WorkflowTaskByRequestIDCompletedEventHandler(object sender, Gett_WorkflowTaskByRequestIDCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetMyMaxStepWorkflowByUIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Gett_WorkflowTaskByRequestIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetMyMaxStepWorkflowByUIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Gett_WorkflowTaskByRequestIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public WorkInfo_Worktask[] Result {
+        public t_WorkflowTask[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((WorkInfo_Worktask[])(this.results[0]));
+                return ((t_WorkflowTask[])(this.results[0]));
             }
         }
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetMyMaxStepWorkflowByUID_WaitForApprovalCompletedEventHandler(object sender, GetMyMaxStepWorkflowByUID_WaitForApprovalCompletedEventArgs e);
+    public delegate void GetMyMaxStepWorkTaskByUID_leaveCompletedEventHandler(object sender, GetMyMaxStepWorkTaskByUID_leaveCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetMyMaxStepWorkflowByUID_WaitForApprovalCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetMyMaxStepWorkTaskByUID_leaveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetMyMaxStepWorkflowByUID_WaitForApprovalCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetMyMaxStepWorkTaskByUID_leaveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public WorkInfo_Worktask[] Result {
+        public t_WorkflowTask[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((WorkInfo_Worktask[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetMyMaxStepWorkflowByUID_ApproaledCompletedEventHandler(object sender, GetMyMaxStepWorkflowByUID_ApproaledCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetMyMaxStepWorkflowByUID_ApproaledCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetMyMaxStepWorkflowByUID_ApproaledCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public WorkInfo_Worktask[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((WorkInfo_Worktask[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetMyMaxStepWorkflowByUID_RejectCompletedEventHandler(object sender, GetMyMaxStepWorkflowByUID_RejectCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetMyMaxStepWorkflowByUID_RejectCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetMyMaxStepWorkflowByUID_RejectCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public WorkInfo_Worktask[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((WorkInfo_Worktask[])(this.results[0]));
+                return ((t_WorkflowTask[])(this.results[0]));
             }
         }
     }
@@ -4427,6 +4146,32 @@ namespace WebServiceLayer.WebReference_leave {
         private object[] results;
         
         internal GetLeaveMasterByPIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public LeaveRequestMaster[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((LeaveRequestMaster[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetLeaveMasterByApprovarUIDCompletedEventHandler(object sender, GetLeaveMasterByApprovarUIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetLeaveMasterByApprovarUIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetLeaveMasterByApprovarUIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
