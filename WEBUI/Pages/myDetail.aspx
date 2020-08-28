@@ -64,13 +64,24 @@
                 </table>
             </div>
         </div>
-        
-        <asp:Panel ID="wait_user" runat="server" Visible="false">
+        <asp:Panel ID="waitingApproval_admin" runat="server">
+            <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
+                <asp:Button ID="button_wait_admin_approval" runat="server" Text="Approval"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+                <asp:Button ID="button_wait_admin_reject" runat="server" Text="Reject"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+            </div>
+        </asp:Panel>
+        <asp:Panel ID="waitingCanceling_admin" runat="server">
+            <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
+                <asp:Button ID="button_Cancel_admin_approval" runat="server" Text="Approval"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+                <asp:Button ID="button_Cancel_admin_Reject" runat="server" Text="Reject"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+            </div>
+        </asp:Panel>
+        <asp:Panel ID="waitingApproval_user" runat="server" Visible="false">
             <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
                 <asp:Button ID="button_wait_user_Withdraw" runat="server" Text="Withdraw"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click" />
             </div>
         </asp:Panel>
-        <asp:Panel ID="approval_user" runat="server" Visible="false">
+        <asp:Panel ID="approved_user" runat="server" Visible="false">
             <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
                 <asp:Button ID="button_approval_user_Cancel" runat="server" Text="Cancel"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click" />
             </div>

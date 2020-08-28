@@ -40,9 +40,29 @@ namespace WEBUI.Pages
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().application_back, BLL.MultiLanguageHelper.GetLanguagePacket().application_current, "~/pages/main.aspx");
             SetupMultiLanguage();
-
+            ResetSelectTab();
             this.repeater_myapplications.DataSource = GetDatasource( getStatus(), loginer.userInfo.id, this.tb_date.Text, loginer.userInfo.personid);
             this.repeater_myapplications.DataBind();
+        }
+
+        private void ResetSelectTab()
+        {
+            if (!string.IsNullOrEmpty(Request.QueryString["selectedtab"]))
+            {
+                int selecttab = int.Parse(Request.QueryString["selectedtab"]);
+                if (selecttab == (int)BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval)
+                {
+                    btn_wait_Click(null, null);
+                }
+                else if (selecttab == (int)BLL.GlobalVariate.LeaveBigRangeStatus.approvaled)
+                {
+                    btn_approved_Click(null, null);
+                }
+                else
+                {
+                    btn_rejectWith_Click(null, null);
+                }
+            }
         }
 
 
@@ -90,10 +110,8 @@ namespace WEBUI.Pages
         {
             LinkButton link = (LinkButton)sender;
             string requestid = link.CommandArgument;
-
-                Response.Redirect("~/Pages/myDetail.aspx?requestid=" + requestid, true);
+            Response.Redirect("~/Pages/myDetail.aspx?action=0&selectedtab="+(int)getStatus()+"&requestid=" + requestid, true);
         }
-
 
         protected void tb_date_TextChanged1(object sender, EventArgs e)
         {

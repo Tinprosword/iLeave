@@ -39,6 +39,8 @@ namespace WebServiceLayer.WebReference_user {
         
         private System.Threading.SendOrPostCallback GetPersonBaseInfo_ValidateEmploymentForTodayOperationCompleted;
         
+        private System.Threading.SendOrPostCallback FilterValidUserOperationCompleted;
+        
         private System.Threading.SendOrPostCallback Test_ADDOperationCompleted;
         
         private System.Threading.SendOrPostCallback Base_Insertt_EmploymentOperationCompleted;
@@ -133,6 +135,9 @@ namespace WebServiceLayer.WebReference_user {
         
         /// <remarks/>
         public event GetPersonBaseInfo_ValidateEmploymentForTodayCompletedEventHandler GetPersonBaseInfo_ValidateEmploymentForTodayCompleted;
+        
+        /// <remarks/>
+        public event FilterValidUserCompletedEventHandler FilterValidUserCompleted;
         
         /// <remarks/>
         public event Test_ADDCompletedEventHandler Test_ADDCompleted;
@@ -339,6 +344,35 @@ namespace WebServiceLayer.WebReference_user {
             if ((this.GetPersonBaseInfo_ValidateEmploymentForTodayCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetPersonBaseInfo_ValidateEmploymentForTodayCompleted(this, new GetPersonBaseInfo_ValidateEmploymentForTodayCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/FilterValidUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public PersonBaseinfo[] FilterValidUser(PersonBaseinfo[] data) {
+            object[] results = this.Invoke("FilterValidUser", new object[] {
+                        data});
+            return ((PersonBaseinfo[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void FilterValidUserAsync(PersonBaseinfo[] data) {
+            this.FilterValidUserAsync(data, null);
+        }
+        
+        /// <remarks/>
+        public void FilterValidUserAsync(PersonBaseinfo[] data, object userState) {
+            if ((this.FilterValidUserOperationCompleted == null)) {
+                this.FilterValidUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnFilterValidUserOperationCompleted);
+            }
+            this.InvokeAsync("FilterValidUser", new object[] {
+                        data}, this.FilterValidUserOperationCompleted, userState);
+        }
+        
+        private void OnFilterValidUserOperationCompleted(object arg) {
+            if ((this.FilterValidUserCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.FilterValidUserCompleted(this, new FilterValidUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4273,6 +4307,32 @@ namespace WebServiceLayer.WebReference_user {
         private object[] results;
         
         internal GetPersonBaseInfo_ValidateEmploymentForTodayCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public PersonBaseinfo[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((PersonBaseinfo[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void FilterValidUserCompletedEventHandler(object sender, FilterValidUserCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class FilterValidUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal FilterValidUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

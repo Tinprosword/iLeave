@@ -218,6 +218,16 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetExtendLeaveDetailsByReuestID(requestid).ToList();
         }
 
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> GetExtendLeaveDetailsByDate(DateTime dt,int[] employmentids)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetExtendLeaveDetailsByDate(dt, employmentids).ToList();
+        }
+
+        public static List<int> GetMonthStatistic(int year, int month, int[] employmentids)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetMonthStatistic(year, month, employmentids).ToList();
+        }
+
 
         public static List<MODEL.Apply.app_uploadpic> getAttendance(string uid, int applicationID)
         {
@@ -239,17 +249,9 @@ namespace BLL
         }
         #endregion
 
-
-        public static List<MODEL.Apply.apply_LeaveData> getListSource(string uid, DateTime dt)
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> getListSource(DateTime dt,List<int> employids)
         {
-            List<MODEL.Apply.apply_LeaveData> data = new List<MODEL.Apply.apply_LeaveData>();
-            int modday = dt.Day % 5;
-            for (int i = 0; i < modday; i++)
-            {
-                //data.Add(new MODEL.Apply.apply_LeaveData(uid, "05-01周一", 1, 2, (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE.ToString(), System.DateTime.Now, "Al", "Al"));
-                //data.Add(new MODEL.Apply.apply_LeaveData(uid, "05-01周一", 1, 2, (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE.ToString(), System.DateTime.Now, "Al", "Al"));
-            }
-            return data;
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetExtendLeaveDetailsByDate(dt, employids.ToArray()).ToList();
         }
 
         #region unity

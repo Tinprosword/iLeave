@@ -72,11 +72,13 @@ namespace BLL
 
         public static WebServiceLayer.WebReference_user.PersonBaseinfo[] GetPersonBaseInfoByPid(int pid)
         {
-            WebServiceLayer.WebReference_user.PersonBaseinfo result = null;
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfoByPid(pid);
         }
 
-
+        public static WebServiceLayer.WebReference_user.PersonBaseinfo[] FilterValidUser(WebServiceLayer.WebReference_user.PersonBaseinfo[] data)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.FilterValidUser(data);
+        }
 
         public static WebServiceLayer.WebReference_user.PersonBaseinfo GetPersonBaseinfos_validateDefaultEmploymentNow(int pid)
         {
@@ -115,6 +117,10 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.Base_Gett_Employment(new WebServiceLayer.WebReference_user.t_Employment() { ID = id });
         }
 
+        public static WebServiceLayer.WebReference_user.t_Employment[] getEmploymentByZone(int contractid, string zone)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.Base_GetListt_Employment("contractid=" + contractid + " and zonecode='" + zone+"'");
+        }
 
         #endregion
 

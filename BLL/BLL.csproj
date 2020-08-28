@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="calendar.cs" />
     <Compile Include="Leave.cs" />
     <Compile Include="CodeSetting.cs" />
     <Compile Include="Page\CustomLoginTemplate.cs">

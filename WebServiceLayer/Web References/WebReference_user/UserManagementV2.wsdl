@@ -116,6 +116,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="FilterValidUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data" type="tns:ArrayOfPersonBaseinfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FilterValidUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilterValidUserResult" type="tns:ArrayOfPersonBaseinfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="Test_ADD">
         <s:complexType>
           <s:sequence>
@@ -713,6 +727,12 @@
   <wsdl:message name="GetPersonBaseInfo_ValidateEmploymentForTodaySoapOut">
     <wsdl:part name="parameters" element="tns:GetPersonBaseInfo_ValidateEmploymentForTodayResponse" />
   </wsdl:message>
+  <wsdl:message name="FilterValidUserSoapIn">
+    <wsdl:part name="parameters" element="tns:FilterValidUser" />
+  </wsdl:message>
+  <wsdl:message name="FilterValidUserSoapOut">
+    <wsdl:part name="parameters" element="tns:FilterValidUserResponse" />
+  </wsdl:message>
   <wsdl:message name="Test_ADDSoapIn">
     <wsdl:part name="parameters" element="tns:Test_ADD" />
   </wsdl:message>
@@ -920,6 +940,10 @@
       <wsdl:input message="tns:GetPersonBaseInfo_ValidateEmploymentForTodaySoapIn" />
       <wsdl:output message="tns:GetPersonBaseInfo_ValidateEmploymentForTodaySoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="FilterValidUser">
+      <wsdl:input message="tns:FilterValidUserSoapIn" />
+      <wsdl:output message="tns:FilterValidUserSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="Test_ADD">
       <wsdl:input message="tns:Test_ADDSoapIn" />
       <wsdl:output message="tns:Test_ADDSoapOut" />
@@ -1087,6 +1111,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetPersonBaseInfo_ValidateEmploymentForToday">
       <soap:operation soapAction="http://tempuri.org/GetPersonBaseInfo_ValidateEmploymentForToday" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FilterValidUser">
+      <soap:operation soapAction="http://tempuri.org/FilterValidUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1324,6 +1357,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetPersonBaseInfo_ValidateEmploymentForToday">
       <soap12:operation soapAction="http://tempuri.org/GetPersonBaseInfo_ValidateEmploymentForToday" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FilterValidUser">
+      <soap12:operation soapAction="http://tempuri.org/FilterValidUser" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

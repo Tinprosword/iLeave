@@ -33,14 +33,14 @@ namespace BLL
         #endregion
 
         #region update
-        public static bool ApproveRequest_leave(int requestid,int workflowtaskid,int HandlerUID,out string errorMsg)
+        public static bool ApproveRequest_leave(int requestid,int HandlerUID,out string errorMsg)
         {
             bool result = false;
             errorMsg = "";
             int check = Check_ApproveRequest_leave();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_leave(workflowtaskid, requestid, HandlerUID);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_leave(requestid, HandlerUID);
                 result = true;
             }
             else
@@ -51,14 +51,14 @@ namespace BLL
             return result;
         }
 
-        public static bool RejectRequest_leave(int requestid, int workflowtaskid, int HandlerUID, out string errorMsg)
+        public static bool RejectRequest_leave(int requestid, int HandlerUID, out string errorMsg)
         {
             bool result = false;
             errorMsg = "";
             int check = Check_RejectRequest_leave();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_leave(workflowtaskid, requestid, HandlerUID);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_leave(requestid, HandlerUID);
                 result = true;
             }
             else
@@ -105,6 +105,53 @@ namespace BLL
             return result;
         }
 
+        public static bool ApprovalCancelRequest_leave(int requestid, int HandlerUID, out string errorMsg)
+        {
+            bool result = false;
+            errorMsg = "";
+            int check = Check_ApprovalCancelRequeste();
+            if (check > 0)
+            {
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveCancelRequest_leave(requestid, HandlerUID);
+                result = true;
+            }
+            else
+            {
+                result = false;
+                errorMsg = "";
+            }
+            return result;
+        }
+
+
+        public static bool RejectCancelRequest_leave(int requestid, int HandlerUID, out string errorMsg)
+        {
+            bool result = false;
+            errorMsg = "";
+            int check = Check_RejectCancelRequest();
+            if (check > 0)
+            {
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectCancelRequest_leave(requestid, HandlerUID);
+                result = true;
+            }
+            else
+            {
+                result = false;
+                errorMsg = "";
+            }
+            return result;
+        }
+
+        private static int Check_RejectCancelRequest()
+        {
+            return 1;
+        }
+
+        private static int Check_ApprovalCancelRequeste()
+        {
+            return 1;
+        }
+
         private static int Check_ApproveRequest_leave()
         {
             return 1;
@@ -117,9 +164,6 @@ namespace BLL
         {
             return 1;
         }
-
-
-
         #endregion
 
         #region search
@@ -127,6 +171,14 @@ namespace BLL
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.Gett_WorkflowTaskByInfoID(infoID).ToList();
         }
+
+        public static WebServiceLayer.WebReference_leave.t_WorkflowInfo GetWorkInfoByID(int infoid)
+        {
+            WebServiceLayer.WebReference_leave.t_WorkflowInfo getItem = new WebServiceLayer.WebReference_leave.t_WorkflowInfo();
+            getItem.ID = infoid;
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.Base_Gett_WorkflowInfo(getItem);
+        }
+
         #endregion
 
         #region other

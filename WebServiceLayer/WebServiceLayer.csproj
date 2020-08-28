@@ -116,6 +116,9 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Web References\WebReference_leave\Employment_Contract.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\WebReference_leave\ErrorMessageInfo.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
