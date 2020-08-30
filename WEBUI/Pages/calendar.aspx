@@ -6,7 +6,7 @@
         <div class="col-xs-3" style="padding-left:0px;padding-right:0px;"><asp:Button ID="btn_team" runat="server" Text="Team"  Width="100%" Height="32px" CssClass="btnBox btnBlueBoxUnSelect" OnClick="btn_team_Click"  /></div>
         <div class="col-xs-6" style="padding-left:15px;height:32px;line-height:32px;padding-right:0px"><asp:CheckBox ID="cb_leave" runat="server" Text="假期" OnCheckedChanged="cb_leave_CheckedChanged"  AutoPostBack="true"/>&nbsp&nbsp&nbsp<asp:CheckBox ID="cb_holiday" runat="server" Text="更期" OnCheckedChanged="cb_holiday_CheckedChanged" AutoPostBack="true"/></div>
         <div class="col-xs-12" style="margin-top:8px; margin-bottom:8px; font-weight:bold">
-            <asp:DropDownList ID="ddlzone" runat="server" Width="310px" OnSelectedIndexChanged="unit_SelectedIndexChanged">
+            <asp:DropDownList ID="ddlzone" runat="server" Width="310px" OnSelectedIndexChanged="unit_SelectedIndexChanged" AutoPostBack="true">
             </asp:DropDownList>
         </div>
         <div class="col-xs-12 lsf-center">

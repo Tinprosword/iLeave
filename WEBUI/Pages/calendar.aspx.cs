@@ -18,7 +18,7 @@ namespace WEBUI.Pages
         private readonly string css_unselect = "btnBox btnBlueBoxUnSelect";
         public StateBag myviewState;
         private bool isFromApply = false;
-        private Dictionary<DateTime, int> allStatistic = new Dictionary<DateTime, int>();
+        private Dictionary<DateTime, int> allStatistic = null;
 
         #region pageevent
         protected override void InitPageVaralbal0()
@@ -27,24 +27,21 @@ namespace WEBUI.Pages
             myviewState = ViewState;
         }
 
-        
 
         protected override void InitPageDataOnEachLoad1()
-        {}
+        {
+            if (Request.QueryString["action"] != null && Request.QueryString["action"] == "apply")
+            {
+                isFromApply = true;
+            }
+        }
 
         protected override void InitPageDataOnFirstLoad2()
         {}
 
         protected override void ResetUIOnEachLoad3()
         {
-            //1.check page source 2.register control render 3.intercept calendar 事件，以代替默认的changed事件（因为要捕捉cancel cell事件） 4.生成统计信息
-            if (Request.QueryString["action"] != null && Request.QueryString["action"] == "apply")
-            {
-                isFromApply = true;
-            }
-
-            this.Calendar1.DayRender += Calendar1_DayRender;
-
+            //1.intercept calendar 事件，以代替默认的changed事件（因为要捕捉cancel cell事件）
             string target = Request.Params["__EVENTTARGET"];
             string argument = Request.Params["__EVENTARGUMENT"];
             if (target != null && target.Contains("Calendar1"))
@@ -68,22 +65,17 @@ namespace WEBUI.Pages
         protected override void InitUIOnFirstLoad4()
         {
             Debug.Print("InitUIOnFirstLoad4");
-            //1.init viewstate 1.5 setupZone  2.navigation 3.repeater.
-            this.Calendar1.SelectedDate = System.DateTime.Now;//todo month
-            this.Calendar1.VisibleDate = System.DateTime.Now;
+            //1.navigation. 2.init viewstate 3 setupZone .5repeater.
+            this.Calendar1.SelectedDate = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day);
+            this.Calendar1.VisibleDate = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day);
 
-            
-            OnPrePageIsApplyInitViewState();
             setNavigation();
-            SetupZone();
-
-            List<int> eid = GetEmployIDs();
-            if (this.Calendar1.VisibleDate.Year > 1)//todo 上面的方法，使连续的，为什么活不到直，需要这里再一次？
-            {
-                FillStatistic(eid, this.Calendar1.VisibleDate.Year, this.Calendar1.VisibleDate.Month);
-            }
-
-            this.repeater_leave.DataSource = BLL.Leave.getListSource(this.Calendar1.SelectedDate, eid);
+            OnPrePageIsApplyInitViewState();
+            SetupZone(loginer.userInfo.personid);
+            
+            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue);
+            var repeaterSource = BLL.Leave.getListSource(this.Calendar1.SelectedDate, eid);
+            this.repeater_leave.DataSource = repeaterSource;
             this.repeater_leave.DataBind();
 
             SetupMultiLanguage();
@@ -91,7 +83,9 @@ namespace WEBUI.Pages
 
         protected override void ResetUIOnEachLoad5()
         {
-            List<int> eid = GetEmployIDs();
+            //1.生成统计信息
+            this.Calendar1.DayRender += Calendar1_DayRender;
+            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue);
             if (this.Calendar1.VisibleDate.Year > 1)
             {
                 FillStatistic(eid, this.Calendar1.VisibleDate.Year, this.Calendar1.VisibleDate.Month);
@@ -99,6 +93,26 @@ namespace WEBUI.Pages
         }
 
         #region inner function
+        private List<int> GetEmployIDs(bool isme,string contractinfo)
+        {
+            //1.me or team 2.zone 3 get employment ids.
+            var zoneArray = contractinfo.Split(new char[] { '|' });
+            string contarctID = zoneArray[0];
+            string zoneCode = zoneArray[1];
+            int intContractId = int.Parse(contarctID);
+            List<int> eid = new List<int>();
+            var Employment = BLL.User_wsref.getEmploymentByZone(intContractId, zoneCode);
+            if (isme)
+            {
+                eid = Employment.Where(x => x.StaffID == loginer.userInfo.staffid).Select(x => x.ID).ToList();
+            }
+            else
+            {
+                eid= Employment.Select(x => x.ID).ToList();
+            }
+            return eid;
+        }
+
         private void setNavigation()
         {
             if (isFromApply)
@@ -111,9 +125,9 @@ namespace WEBUI.Pages
             }
         }
 
-        private void SetupZone()
+        private void SetupZone(int pid)
         {
-            var result = BLL.User_wsref.GetPersonBaseInfoByPid(loginer.userInfo.personid);
+            var result = BLL.User_wsref.GetPersonBaseInfoByPid(pid);
             List<int?> eids = BLL.User_wsref.FilterValidUser(result).Select(x => x.e_id).ToList();
             List<int> eids2 = new List<int>();
             foreach (int? ii in eids)
@@ -121,7 +135,7 @@ namespace WEBUI.Pages
                 if (ii != null) eids2.Add((int)ii);
             }
             var contracts = BLL.calendar.GetContractByEmployids(eids2.ToArray());
-            this.ddlzone.Items.Add(new ListItem("All Zone", "0|0"));
+            this.ddlzone.Items.Add(new ListItem("All Zone", "0|"));
             for (int i = 0; i < contracts.Count; i++)
             {
                 this.ddlzone.Items.Add(new ListItem(contracts[i].Description + " - " + contracts[i].zonecode, contracts[i].contractid + "|" + contracts[i].zonecode));
@@ -192,7 +206,6 @@ namespace WEBUI.Pages
         private void Calendar1_DayRender(object sender, DayRenderEventArgs e)
         {
             //1.show approved 2.show wait 3.show selected dates. 4.show selected
-
             if (allStatistic.Keys.Contains(e.Day.Date))
             {
                 if (allStatistic[e.Day.Date] == 1)//approvaed
@@ -219,29 +232,15 @@ namespace WEBUI.Pages
         #endregion
 
         #region showleave data
-        private List<int> GetEmployIDs()
-        {
-            //1.me or team 2.zone 3 get employment ids.
-            bool isme = GetIsMeOrTeam();
-            var zoneArray = this.ddlzone.SelectedValue.Split(new char[] { '|' });
-            string contarctID = zoneArray[0];
-            string zoneCode = zoneArray[1];
-            int intContractId = int.Parse(contarctID);
-            List<int> eid = new List<int>();
-            if (isme)
-            {
-                var myEmployment= BLL.User_wsref.getEmploymentByZone(intContractId, zoneCode);
-                eid = myEmployment.Select(x => x.ID).ToList();
-            }
-            return eid;
-        }
+        
 
         protected void Calendar1_SelectionChanged(Calendar calendar, DateTime date)
         {
             //1.set changedDate  2.show related request  3.save date to viewstate.
             calendar.SelectedDate = date;
-            List<int> eid = GetEmployIDs();
-            this.repeater_leave.DataSource = BLL.Leave.getListSource(calendar.SelectedDate, eid);
+            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue);
+            var repeaterSource = BLL.Leave.getListSource(calendar.SelectedDate, eid);
+            this.repeater_leave.DataSource = repeaterSource;
             this.repeater_leave.DataBind();
 
             if (Request.QueryString["action"] != null && Request.QueryString["action"] == "apply")
@@ -252,34 +251,45 @@ namespace WEBUI.Pages
 
         protected void unit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<int> eid = GetEmployIDs();
+            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue);
             this.repeater_leave.DataSource = BLL.Leave.getListSource(this.Calendar1.SelectedDate, eid);
             this.repeater_leave.DataBind();
         }
 
         protected void btn_myself_Click(object sender, EventArgs e)
         {
-            List<int> eid = GetEmployIDs();
-            this.repeater_leave.DataSource = BLL.Leave.getListSource(this.Calendar1.SelectedDate,eid);
-            this.repeater_leave.DataBind();
             this.btn_myself.CssClass = css_select;
             this.btn_team.CssClass = css_unselect;
+            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue);
+            this.repeater_leave.DataSource = BLL.Leave.getListSource(this.Calendar1.SelectedDate,eid);
+            this.repeater_leave.DataBind();
+
+            if (this.Calendar1.VisibleDate.Year > 1)
+            {
+                FillStatistic(eid, this.Calendar1.VisibleDate.Year, this.Calendar1.VisibleDate.Month);
+            }
         }
 
         protected void btn_team_Click(object sender, EventArgs e)
         {
-            List<int> eid = GetEmployIDs();
-            this.repeater_leave.DataSource = BLL.Leave.getListSource(this.Calendar1.SelectedDate, eid);
-            this.repeater_leave.DataBind();
             this.btn_myself.CssClass = css_unselect;
             this.btn_team.CssClass = css_select;
+            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue);
+            this.repeater_leave.DataSource = BLL.Leave.getListSource(this.Calendar1.SelectedDate, eid);
+            this.repeater_leave.DataBind();
+
+            if (this.Calendar1.VisibleDate.Year > 1)
+            {
+                FillStatistic(eid, this.Calendar1.VisibleDate.Year, this.Calendar1.VisibleDate.Month);
+            }
         }
 
         protected void cb_leave_CheckedChanged(object sender, EventArgs e)
         {
-            List<int> eid = GetEmployIDs();
+            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue);
             this.repeater_leave.DataSource = BLL.Leave.getListSource(this.Calendar1.SelectedDate, eid);
             this.repeater_leave.DataBind();
+
         }
 
 

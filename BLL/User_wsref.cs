@@ -119,9 +119,21 @@ namespace BLL
 
         public static WebServiceLayer.WebReference_user.t_Employment[] getEmploymentByZone(int contractid, string zone)
         {
-            return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.Base_GetListt_Employment("contractid=" + contractid + " and zonecode='" + zone+"'");
+            WebServiceLayer.WebReference_user.t_Employment[] result = new WebServiceLayer.WebReference_user.t_Employment[0];
+            if (contractid == 0)
+            {
+                result= WebServiceLayer.MyWebService.GlobalWebServices.ws_user.Base_GetListt_Employment("");
+            }
+            else if (contractid != 0 && zone == "")
+            {
+                result= WebServiceLayer.MyWebService.GlobalWebServices.ws_user.Base_GetListt_Employment("contractid=" + contractid);
+            }
+            else if (contractid != 0 && zone != "")
+            {
+                result= WebServiceLayer.MyWebService.GlobalWebServices.ws_user.Base_GetListt_Employment("contractid=" + contractid + " and zonecode='" + zone + "'");
+            }
+            return result; 
         }
-
         #endregion
 
     }
