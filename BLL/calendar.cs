@@ -13,6 +13,9 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetContractByEmployids(eids).ToList();
         }
 
-
+        public static WebServiceLayer.WebReference_leave.v_System_Calendar[] GetRoster(DateTime date, List<int> employmentID)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetRoster(date, employmentID.ToArray());
+        }
     }
 }

@@ -105,6 +105,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetContractByEmployidsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetRosterOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -256,6 +258,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event GetContractByEmployidsCompletedEventHandler GetContractByEmployidsCompleted;
+        
+        /// <remarks/>
+        public event GetRosterCompletedEventHandler GetRosterCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Gett_WorkflowTaskByInfoID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1393,6 +1398,37 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetRoster", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public v_System_Calendar[] GetRoster(System.DateTime date, int[] employmentID) {
+            object[] results = this.Invoke("GetRoster", new object[] {
+                        date,
+                        employmentID});
+            return ((v_System_Calendar[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetRosterAsync(System.DateTime date, int[] employmentID) {
+            this.GetRosterAsync(date, employmentID, null);
+        }
+        
+        /// <remarks/>
+        public void GetRosterAsync(System.DateTime date, int[] employmentID, object userState) {
+            if ((this.GetRosterOperationCompleted == null)) {
+                this.GetRosterOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRosterOperationCompleted);
+            }
+            this.InvokeAsync("GetRoster", new object[] {
+                        date,
+                        employmentID}, this.GetRosterOperationCompleted, userState);
+        }
+        
+        private void OnGetRosterOperationCompleted(object arg) {
+            if ((this.GetRosterCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetRosterCompleted(this, new GetRosterCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -1596,6 +1632,219 @@ namespace WebServiceLayer.WebReference_leave {
             }
             set {
                 this.remarkField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class v_System_Calendar {
+        
+        private int staffIDField;
+        
+        private int employmentIDField;
+        
+        private int firstEmploymentIDField;
+        
+        private int contractIDField;
+        
+        private string zoneCodeField;
+        
+        private string englishNameField;
+        
+        private string chineseField;
+        
+        private string dispayNameField;
+        
+        private System.DateTime dateField;
+        
+        private string shiftCodeField;
+        
+        private string timeField;
+        
+        private string remarkField;
+        
+        private string remarkCodeField;
+        
+        private string subteamField;
+        
+        private string zoneField;
+        
+        private string remarkListField;
+        
+        private string programField;
+        
+        /// <remarks/>
+        public int StaffID {
+            get {
+                return this.staffIDField;
+            }
+            set {
+                this.staffIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int EmploymentID {
+            get {
+                return this.employmentIDField;
+            }
+            set {
+                this.employmentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int FirstEmploymentID {
+            get {
+                return this.firstEmploymentIDField;
+            }
+            set {
+                this.firstEmploymentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ContractID {
+            get {
+                return this.contractIDField;
+            }
+            set {
+                this.contractIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ZoneCode {
+            get {
+                return this.zoneCodeField;
+            }
+            set {
+                this.zoneCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string EnglishName {
+            get {
+                return this.englishNameField;
+            }
+            set {
+                this.englishNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Chinese {
+            get {
+                return this.chineseField;
+            }
+            set {
+                this.chineseField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DispayName {
+            get {
+                return this.dispayNameField;
+            }
+            set {
+                this.dispayNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime Date {
+            get {
+                return this.dateField;
+            }
+            set {
+                this.dateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ShiftCode {
+            get {
+                return this.shiftCodeField;
+            }
+            set {
+                this.shiftCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Time {
+            get {
+                return this.timeField;
+            }
+            set {
+                this.timeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Remark {
+            get {
+                return this.remarkField;
+            }
+            set {
+                this.remarkField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string RemarkCode {
+            get {
+                return this.remarkCodeField;
+            }
+            set {
+                this.remarkCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Subteam {
+            get {
+                return this.subteamField;
+            }
+            set {
+                this.subteamField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Zone {
+            get {
+                return this.zoneField;
+            }
+            set {
+                this.zoneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string RemarkList {
+            get {
+                return this.remarkListField;
+            }
+            set {
+                this.remarkListField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Program {
+            get {
+                return this.programField;
+            }
+            set {
+                this.programField = value;
             }
         }
     }
@@ -4805,6 +5054,32 @@ namespace WebServiceLayer.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Employment_Contract[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetRosterCompletedEventHandler(object sender, GetRosterCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetRosterCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetRosterCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public v_System_Calendar[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((v_System_Calendar[])(this.results[0]));
             }
         }
     }

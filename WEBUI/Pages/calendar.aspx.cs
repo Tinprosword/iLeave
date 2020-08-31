@@ -41,14 +41,78 @@ namespace WEBUI.Pages
 
         protected override void ResetUIOnEachLoad3()
         {
-            //1.intercept calendar 事件，以代替默认的changed事件（因为要捕捉cancel cell事件）
+            //1.intercept calendar 事件，以代替默认的changed事件（因为要捕捉cancel cell事件,而默认的不捕捉cancel事件）
+            if (this.cb_leave.Checked)
+            {
+                RegisterCellColorEvent();
+                RegisterClickCellEventAndSetCanlendarValue();
+            }
+            else if (this.cb_holiday.Checked)
+            {
+                RegisterClickCellEventAndSetCanlendarValue();
+            }
+        }
+
+        protected override void InitUIOnFirstLoad4()
+        {
+            //1.navigation. 2.init viewstate 3 setupZone .5repeater.
+            this.Calendar1.SelectedDate = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day);
+            this.Calendar1.VisibleDate = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day);
+
+            setNavigation();
+            OnPrePageIsApplyInitViewState();
+            SetupZone(loginer.userInfo.personid);
+            SetupRepeater();
+            SetupMultiLanguage();
+        }
+
+        protected override void ResetUIOnEachLoad5()
+        {}
+
+        #region inner function
+        private void SetupRepeater()
+        {
+            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue);
+
+            if (this.cb_leave.Checked)
+            {
+                this.leaveDiv.Visible = true;
+                this.rosterDiv.Visible = false;
+                var repeaterSource = BLL.Leave.getListSource(this.Calendar1.SelectedDate, eid);
+                this.repeater_leave.DataSource = repeaterSource;
+                this.repeater_leave.DataBind();
+            }
+            else if (this.cb_holiday.Checked)
+            {
+                this.leaveDiv.Visible = false;
+                this.rosterDiv.Visible = true;
+                var repeaterSource = BLL.calendar.GetRoster(this.Calendar1.SelectedDate, eid);
+                this.rp_roster.DataSource = repeaterSource;
+                this.rp_roster.DataBind();
+            }
+        }
+
+        private void RegisterCellColorEvent()
+        {
+            this.Calendar1.DayRender += Calendar1_DayRender;
+            this.Calendar1.PreRender += Calendar1_PreRender;
+        }
+
+        private void UnRegisterCellColorEvent()
+        {
+            this.Calendar1.DayRender -= Calendar1_DayRender;
+            this.Calendar1.PreRender -= Calendar1_PreRender;
+        }
+
+        private void RegisterClickCellEventAndSetCanlendarValue()
+        {
             string target = Request.Params["__EVENTTARGET"];
             string argument = Request.Params["__EVENTARGUMENT"];
             if (target != null && target.Contains("Calendar1"))
             {
                 if (argument.Contains("V"))
                 {
-                    int intdate = int.Parse(argument.Substring(1,argument.Length-1));
+                    int intdate = int.Parse(argument.Substring(1, argument.Length - 1));
                     DateTime date = TransferDate(intdate);
                     this.Calendar1.VisibleDate = date;
                 }
@@ -61,30 +125,8 @@ namespace WEBUI.Pages
             }
         }
 
-
-        protected override void InitUIOnFirstLoad4()
+        private void Calendar1_PreRender(object sender, EventArgs e)
         {
-            Debug.Print("InitUIOnFirstLoad4");
-            //1.navigation. 2.init viewstate 3 setupZone .5repeater.
-            this.Calendar1.SelectedDate = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day);
-            this.Calendar1.VisibleDate = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day);
-
-            setNavigation();
-            OnPrePageIsApplyInitViewState();
-            SetupZone(loginer.userInfo.personid);
-            
-            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue);
-            var repeaterSource = BLL.Leave.getListSource(this.Calendar1.SelectedDate, eid);
-            this.repeater_leave.DataSource = repeaterSource;
-            this.repeater_leave.DataBind();
-
-            SetupMultiLanguage();
-        }
-
-        protected override void ResetUIOnEachLoad5()
-        {
-            //1.生成统计信息
-            this.Calendar1.DayRender += Calendar1_DayRender;
             List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue);
             if (this.Calendar1.VisibleDate.Year > 1)
             {
@@ -92,7 +134,6 @@ namespace WEBUI.Pages
             }
         }
 
-        #region inner function
         private List<int> GetEmployIDs(bool isme,string contractinfo)
         {
             //1.me or team 2.zone 3 get employment ids.
@@ -238,11 +279,7 @@ namespace WEBUI.Pages
         {
             //1.set changedDate  2.show related request  3.save date to viewstate.
             calendar.SelectedDate = date;
-            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue);
-            var repeaterSource = BLL.Leave.getListSource(calendar.SelectedDate, eid);
-            this.repeater_leave.DataSource = repeaterSource;
-            this.repeater_leave.DataBind();
-
+            SetupRepeater();
             if (Request.QueryString["action"] != null && Request.QueryString["action"] == "apply")
             {
                 SaveChooseToViewState(calendar.SelectedDate);
@@ -251,54 +288,35 @@ namespace WEBUI.Pages
 
         protected void unit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue);
-            this.repeater_leave.DataSource = BLL.Leave.getListSource(this.Calendar1.SelectedDate, eid);
-            this.repeater_leave.DataBind();
+            SetupRepeater();
         }
 
         protected void btn_myself_Click(object sender, EventArgs e)
         {
             this.btn_myself.CssClass = css_select;
             this.btn_team.CssClass = css_unselect;
-            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue);
-            this.repeater_leave.DataSource = BLL.Leave.getListSource(this.Calendar1.SelectedDate,eid);
-            this.repeater_leave.DataBind();
-
-            if (this.Calendar1.VisibleDate.Year > 1)
-            {
-                FillStatistic(eid, this.Calendar1.VisibleDate.Year, this.Calendar1.VisibleDate.Month);
-            }
+            SetupRepeater();
         }
 
         protected void btn_team_Click(object sender, EventArgs e)
         {
             this.btn_myself.CssClass = css_unselect;
             this.btn_team.CssClass = css_select;
-            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue);
-            this.repeater_leave.DataSource = BLL.Leave.getListSource(this.Calendar1.SelectedDate, eid);
-            this.repeater_leave.DataBind();
-
-            if (this.Calendar1.VisibleDate.Year > 1)
-            {
-                FillStatistic(eid, this.Calendar1.VisibleDate.Year, this.Calendar1.VisibleDate.Month);
-            }
+            SetupRepeater();
         }
-
-        protected void cb_leave_CheckedChanged(object sender, EventArgs e)
-        {
-            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue);
-            this.repeater_leave.DataSource = BLL.Leave.getListSource(this.Calendar1.SelectedDate, eid);
-            this.repeater_leave.DataBind();
-
-        }
-
-
         #endregion
 
         #region show holiday
+        protected void cb_leave_CheckedChanged(object sender, EventArgs e)
+        {
+            RegisterCellColorEvent();
+            SetupRepeater();
+        }
+
         protected void cb_holiday_CheckedChanged(object sender, EventArgs e)
         {
-
+            UnRegisterCellColorEvent();
+            SetupRepeater();
         }
         #endregion
 
