@@ -175,40 +175,40 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl rosterDiv;
         
         /// <summary>
-        /// Literal1 控件。
+        /// lt_displayname 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal1;
+        protected global::System.Web.UI.WebControls.Literal lt_displayname;
         
         /// <summary>
-        /// Literal2 控件。
+        /// lt_shiftCode 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal2;
+        protected global::System.Web.UI.WebControls.Literal lt_shiftCode;
         
         /// <summary>
-        /// Literal3 控件。
+        /// lt_time 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal3;
+        protected global::System.Web.UI.WebControls.Literal lt_time;
         
         /// <summary>
-        /// Literal4 控件。
+        /// lt_remark 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal4;
+        protected global::System.Web.UI.WebControls.Literal lt_remark;
         
         /// <summary>
         /// rp_roster 控件。

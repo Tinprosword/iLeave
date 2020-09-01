@@ -9,6 +9,7 @@ namespace WEBUI.Pages
 {
     public partial class Apply_Upload : BLL.CustomLoginTemplate
     {
+
         public StateBag myviewState;
         protected override void InitPageVaralbal0()
         {
@@ -58,22 +59,16 @@ namespace WEBUI.Pages
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
             //upload pic and save to view state
+            string bigAbsolutionPath = Server.MapPath("../" + BLL.Leave.picPath) + "\\";
+
             string errmsg;
-            List<string> uploadFiles = uploadPic(out errmsg);
+            List<string> uploadBigFiles = uploadPic(bigAbsolutionPath, out errmsg);
 
             MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, ViewState);
 
-            for (int i = 0; i < uploadFiles.Count; i++)
+            for (int i = 0; i < uploadBigFiles.Count; i++)
             {
-                string reducePath = "~/" + BLL.GlobalVariate.path_uploadPic + "\\" + BLL.common.reducePath + "\\" + uploadFiles[i];
-                string bigPath = "~/" + BLL.GlobalVariate.path_uploadPic + "\\" + uploadFiles[i];
-
-                if (!LSLibrary.FileUtil.FileIsExist(Server.MapPath(reducePath)))
-                {
-                    reducePath = "~/Res/images/file.png";
-                }
-
-                MODEL.Apply.app_uploadpic temppic = new MODEL.Apply.app_uploadpic(bigPath, reducePath);
+                MODEL.Apply.app_uploadpic temppic = BLL.Leave.GeneratePicModel(uploadBigFiles[i], Server);
                 applyPage.uploadpic.Add(temppic);
             }
             LSLibrary.WebAPP.ViewStateHelper.SetValue(applyPage, Apply.ViewState_PageName, ViewState);
@@ -83,11 +78,10 @@ namespace WEBUI.Pages
         }
 
 
-        private List<string> uploadPic(out string errorMsg)
+        private List<string> uploadPic(string absolutePath, out string errorMsg)
         {
-            string absoluteDir = Server.MapPath("~/" + BLL.GlobalVariate.path_uploadPic);
-            List<string> types = new List<string>(new string[] { "png", "gif" });
-            List<string> files = BLL.common.UploadAttendance(Request, absoluteDir, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg);
+            List<string> types = null;//all format is ok.
+            List<string> files = BLL.common.UploadAttendance(Request, absolutePath, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg);
             return files;
         }
 
@@ -96,7 +90,6 @@ namespace WEBUI.Pages
         {
 
         }
-
 
         protected void imagebutton_close_Click(object sender, ImageClickEventArgs e)
         {

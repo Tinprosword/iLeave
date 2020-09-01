@@ -224,12 +224,18 @@ namespace WEBUI.Pages
         #region [module] apply
         protected void button_apply_Click(object sender, EventArgs e)
         {
-            //1,获得数据   2,调用ws,进行插入.  
+            //1,获得数据   2,调用ws,进行插入.  3.并把图片放置到制定目录，并插入到数据库
             List<MODEL.Apply.apply_LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).LeaveList;
+            List<MODEL.Apply.app_uploadpic> pics = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).uploadpic;
             string errorMsg = "";
             int reslut = BLL.Leave.InsertLeave(LeaveList, loginer.userInfo.id, (int)loginer.userInfo.employID, null, this.tb_remarks.Text.Trim(), out errorMsg);
             if (reslut >= 0)
             {
+                for (int i = 0; i < pics.Count; i++)
+                {
+                    copyFileTo(pics[i].bigImagepath, pics[i].bigImageAbsolutePath);
+                }
+                BLL.Leave.InsertAttachment(pics, loginer.userInfo.id, loginer.userInfo.personid, reslut);
                 Response.Redirect("~/pages/main.aspx");
             }
             else
@@ -237,6 +243,13 @@ namespace WEBUI.Pages
                 this.literal_errormsga.Visible = true;
                 this.literal_errormsga.Text = "Error:" + errorMsg;
             }
+        }
+
+        private void copyFileTo(string filePath,string descPath)
+        {
+            string absfilepath = Server.MapPath(filePath);
+            System.IO.Directory.CreateDirectory(System.IO.Directory.GetParent(descPath).ToString());
+            LSLibrary.FileUtil.Copy(absfilepath, descPath);
         }
         #endregion
 

@@ -32,13 +32,18 @@
         </div>
         <div class="col-xs-12" id="rosterDiv" runat="server" visible="false">
             <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
-                <tr><td class="col-xs-2"><asp:Literal ID="Literal1" runat="server">Requestid</asp:Literal></td><td class="col-xs-3"><asp:Literal ID="Literal2" runat="server">Employment</asp:Literal></td><td class="col-xs-3"><asp:Literal ID="Literal3" runat="server">Type</asp:Literal></td><td class="col-xs-4"><asp:Literal ID="Literal4" runat="server">Status</asp:Literal></td></tr>
+                <tr><td class="col-xs-2"><asp:Literal ID="lt_displayname" runat="server">DisplayName</asp:Literal></td><td class="col-xs-3"><asp:Literal ID="lt_shiftCode" runat="server">ShiftCode</asp:Literal></td><td class="col-xs-3"><asp:Literal ID="lt_time" runat="server">Time</asp:Literal></td><td class="col-xs-4"><asp:Literal ID="lt_remark" runat="server">Remark</asp:Literal></td></tr>
             </table>
             <div class="col-xs-12 lsf-clearPadding" style="height:150px; overflow:scroll;">
                 <table class="col-xs-12 lsu-table-sm">
                     <asp:Repeater ID="rp_roster" runat="server" EnableViewState="true">
                         <ItemTemplate>
-                            <tr><td class="col-xs-2"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).DispayName %></td></tr>
+                            <tr>
+                                <td class="col-xs-2"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).DispayName %></td>
+                                <td class="col-xs-3"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).ShiftCode %></td>
+                                <td class="col-xs-3"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).Time %></td>
+                                <td class="col-xs-4"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).Remark %></td>
+                            </tr>
                         </ItemTemplate>
                     </asp:Repeater>
                 </table>

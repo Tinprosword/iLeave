@@ -428,6 +428,57 @@
           <s:enumeration value="VALIDATION" />
         </s:restriction>
       </s:simpleType>
+      <s:element name="InsertAttachmentInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AttachmentInfo" type="tns:AttachmentInfo" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AttachmentInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RelatedPartyID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FunctionID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Path" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="AttachmentName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpiryDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="NoticePeriod" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayrollPeriodID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Score" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RelatedRequestID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkFlowTypeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NoticePeriodDescription" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertAttachmentInfoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAttachmentInfoByRequestID_Leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAttachmentInfoByRequestID_LeaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAttachmentInfoByRequestID_LeaveResult" type="tns:ArrayOfAttachmentInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAttachmentInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AttachmentInfo" nillable="true" type="tns:AttachmentInfo" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetAllLeaveMaster">
         <s:complexType />
       </s:element>
@@ -887,6 +938,7 @@
       <s:element name="ArrayOfT_WorkflowTask" nillable="true" type="tns:ArrayOfT_WorkflowTask" />
       <s:element name="int" type="s:int" />
       <s:element name="ArrayOfT_Leave" nillable="true" type="tns:ArrayOfT_Leave" />
+      <s:element name="ArrayOfAttachmentInfo" nillable="true" type="tns:ArrayOfAttachmentInfo" />
       <s:element name="ArrayOfLeaveRequestMaster" nillable="true" type="tns:ArrayOfLeaveRequestMaster" />
       <s:element name="LeaveRequestMaster" nillable="true" type="tns:LeaveRequestMaster" />
       <s:element name="ArrayOfT_StaffLeaveRequestDetail" nillable="true" type="tns:ArrayOfT_StaffLeaveRequestDetail" />
@@ -995,6 +1047,18 @@
   </wsdl:message>
   <wsdl:message name="InsertOnlineLeaveApplicationRequestSoapOut">
     <wsdl:part name="parameters" element="tns:InsertOnlineLeaveApplicationRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertAttachmentInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertAttachmentInfo" />
+  </wsdl:message>
+  <wsdl:message name="InsertAttachmentInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertAttachmentInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAttachmentInfoByRequestID_LeaveSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAttachmentInfoByRequestID_Leave" />
+  </wsdl:message>
+  <wsdl:message name="GetAttachmentInfoByRequestID_LeaveSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAttachmentInfoByRequestID_LeaveResponse" />
   </wsdl:message>
   <wsdl:message name="GetAllLeaveMasterSoapIn">
     <wsdl:part name="parameters" element="tns:GetAllLeaveMaster" />
@@ -1190,6 +1254,12 @@
   <wsdl:message name="GetAllLeaveTypeByStaffIDHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfT_Leave" />
   </wsdl:message>
+  <wsdl:message name="GetAttachmentInfoByRequestID_LeaveHttpPostIn">
+    <wsdl:part name="requestID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAttachmentInfoByRequestID_LeaveHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAttachmentInfo" />
+  </wsdl:message>
   <wsdl:message name="GetAllLeaveMasterHttpPostIn" />
   <wsdl:message name="GetAllLeaveMasterHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfLeaveRequestMaster" />
@@ -1310,6 +1380,14 @@
     <wsdl:operation name="InsertOnlineLeaveApplicationRequest">
       <wsdl:input message="tns:InsertOnlineLeaveApplicationRequestSoapIn" />
       <wsdl:output message="tns:InsertOnlineLeaveApplicationRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAttachmentInfo">
+      <wsdl:input message="tns:InsertAttachmentInfoSoapIn" />
+      <wsdl:output message="tns:InsertAttachmentInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachmentInfoByRequestID_Leave">
+      <wsdl:input message="tns:GetAttachmentInfoByRequestID_LeaveSoapIn" />
+      <wsdl:output message="tns:GetAttachmentInfoByRequestID_LeaveSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetAllLeaveMaster">
       <wsdl:input message="tns:GetAllLeaveMasterSoapIn" />
@@ -1444,6 +1522,10 @@
     <wsdl:operation name="GetAllLeaveTypeByStaffID">
       <wsdl:input message="tns:GetAllLeaveTypeByStaffIDHttpPostIn" />
       <wsdl:output message="tns:GetAllLeaveTypeByStaffIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachmentInfoByRequestID_Leave">
+      <wsdl:input message="tns:GetAttachmentInfoByRequestID_LeaveHttpPostIn" />
+      <wsdl:output message="tns:GetAttachmentInfoByRequestID_LeaveHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetAllLeaveMaster">
       <wsdl:input message="tns:GetAllLeaveMasterHttpPostIn" />
@@ -1630,6 +1712,24 @@
     </wsdl:operation>
     <wsdl:operation name="InsertOnlineLeaveApplicationRequest">
       <soap:operation soapAction="http://tempuri.org/InsertOnlineLeaveApplicationRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAttachmentInfo">
+      <soap:operation soapAction="http://tempuri.org/InsertAttachmentInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachmentInfoByRequestID_Leave">
+      <soap:operation soapAction="http://tempuri.org/GetAttachmentInfoByRequestID_Leave" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1991,6 +2091,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="InsertAttachmentInfo">
+      <soap12:operation soapAction="http://tempuri.org/InsertAttachmentInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachmentInfoByRequestID_Leave">
+      <soap12:operation soapAction="http://tempuri.org/GetAttachmentInfoByRequestID_Leave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAllLeaveMaster">
       <soap12:operation soapAction="http://tempuri.org/GetAllLeaveMaster" style="document" />
       <wsdl:input>
@@ -2274,6 +2392,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllLeaveTypeByStaffID">
       <http:operation location="/GetAllLeaveTypeByStaffID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachmentInfoByRequestID_Leave">
+      <http:operation location="/GetAttachmentInfoByRequestID_Leave" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

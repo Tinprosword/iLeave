@@ -127,7 +127,8 @@ namespace WEBUI.Pages
 
         private void Calendar1_PreRender(object sender, EventArgs e)
         {
-            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue);
+            bool isme = GetIsMeOrTeam();
+            List<int> eid = GetEmployIDs(isme, this.ddlzone.SelectedValue);
             if (this.Calendar1.VisibleDate.Year > 1)
             {
                 FillStatistic(eid, this.Calendar1.VisibleDate.Year, this.Calendar1.VisibleDate.Month);

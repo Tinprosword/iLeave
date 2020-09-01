@@ -45,19 +45,19 @@ namespace MODEL
         [Serializable]
         public class app_uploadpic
         {
-            public string path;
+            public string bigImagepath;
+            public string reduceImagePath;
             public string tempID;
-            public string reduceImage;
+            public string bigImageAbsolutePath;
 
-            public app_uploadpic(string path, string _reduceImage)
+            public app_uploadpic(string path, string _reduceImage,string _bigImageAbsolutePath)
             {
-                this.path = path;
+                this.bigImagepath = path;
                 this.tempID = System.DateTime.Now.ToString("yyyyMMddhhmmss");
-                this.reduceImage = _reduceImage;
+                this.reduceImagePath = _reduceImage;
+                this.bigImageAbsolutePath = _bigImageAbsolutePath;
             }
         }
-
-
 
     }
 }

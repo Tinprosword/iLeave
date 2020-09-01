@@ -10,18 +10,20 @@ namespace BLL
 {
     public class Leave
     {
+        public static string reducePath = "reduce";
+        public static string picPath = "uploadPic";
+        public static string picAbsolutePath = "C:\\temp\\AttachmentUpload\\mobil\\";
+        public static string defaultPic= "~/Res/images/file.png";
+
         #region insert application
         private static int CheckBeforeApply()
         {
             return 0;
         }
 
-        private static int InsertAttanchMent()
-        {
-            return 0;
-        }
 
-        //0 ok. -1 check error -2.insert error
+
+        //>0 ok:request id. -1 check error -2.insert error
         public static int InsertLeave(List<MODEL.Apply.apply_LeaveData> originDetail, int userid, int employmentid, int? staffid, string remarks, out string errorMsg)
         {
             BLL.User_wsref.CheckWsLogin();
@@ -39,8 +41,7 @@ namespace BLL
                     int processID = messageInfo.ProcessID;
                     int employID = employmentid;
                     int workFlowResult = BLL.workflow.InsertWorkflow(details, userid, messageInfo.ProcessID, employID);
-                    int attenchMentResult = InsertAttanchMent();
-                    result = 0;
+                    result = insertResult;
                 }
                 else
                 {
@@ -149,6 +150,29 @@ namespace BLL
         }
 
 
+        public static void InsertAttachment(List<MODEL.Apply.app_uploadpic> pics,int UploaderUid,int personid,int requestID)
+        {
+            for (int i = 0; i < pics.Count(); i++)
+            {
+                AttachmentInfo info = new AttachmentInfo();
+                info.TypeID = 53;
+                info.RelatedPartyID = personid;
+                info.FunctionID = 0;
+                info.Path = pics[i].bigImageAbsolutePath;
+                info.ModifiedDate = System.DateTime.Now;
+                info.ExpiryDate = new DateTime(1900, 1, 1);
+                info.NoticePeriod = -1;
+                info.PayrollPeriodID = -1;
+                info.Status = 2;
+                info.RelatedRequestID = requestID;
+                info.WorkFlowTypeID = 0;
+                info.Remarks = "";
+           
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.InsertAttachmentInfo(info, UploaderUid);
+            }
+        }
+
+
         #endregion
 
         #region search application
@@ -229,24 +253,35 @@ namespace BLL
         }
 
 
-        public static List<MODEL.Apply.app_uploadpic> getAttendance(string uid, int applicationID)
+        public static List<MODEL.Apply.app_uploadpic> getAttendance(string uid, int requestID,HttpServerUtility server)
         {
+            List<WebServiceLayer.WebReference_leave.AttachmentInfo> attachments = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetAttachmentInfoByRequestID_Leave(requestID).ToList();
+
             List<MODEL.Apply.app_uploadpic> data = new List<MODEL.Apply.app_uploadpic>();
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < attachments.Count; i++)
             {
-                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
-                data.Add(new MODEL.Apply.app_uploadpic("~/res/images/setting.gif", "~/res/images/setting.gif"));
+                string filenam = LSLibrary.FileUtil.GetFileName(attachments[i].Path);
+                MODEL.Apply.app_uploadpic tempItem = GeneratePicModel(filenam, server);
+                data.Add(tempItem);
             }
             return data;
         }
+
+        public static MODEL.Apply.app_uploadpic GeneratePicModel(string filename,System.Web.HttpServerUtility server)
+        {
+            string reduceAbsolutionPath = server.MapPath("../" + BLL.Leave.picPath) + "\\" + BLL.Leave.reducePath + "\\";
+            string bigFile = "~/" + BLL.Leave.picPath + "/" + filename;
+            string reduceFile = "~/" + BLL.Leave.picPath + "/" + BLL.Leave.reducePath + "/" + filename;
+
+            if (!LSLibrary.FileUtil.FileIsExist(reduceAbsolutionPath + filename))
+            {
+                reduceFile = BLL.Leave.defaultPic;
+            }
+
+            MODEL.Apply.app_uploadpic temppic = new MODEL.Apply.app_uploadpic(bigFile, reduceFile, BLL.Leave.picAbsolutePath + filename);
+            return temppic;
+        }
+
         #endregion
 
         public static List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> getListSource(DateTime dt,List<int> employids)

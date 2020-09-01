@@ -63,6 +63,10 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback InsertOnlineLeaveApplicationRequestOperationCompleted;
         
+        private System.Threading.SendOrPostCallback InsertAttachmentInfoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAttachmentInfoByRequestID_LeaveOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetAllLeaveMasterOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetLeaveMasterByEmploymentIDOperationCompleted;
@@ -195,6 +199,12 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event InsertOnlineLeaveApplicationRequestCompletedEventHandler InsertOnlineLeaveApplicationRequestCompleted;
+        
+        /// <remarks/>
+        public event InsertAttachmentInfoCompletedEventHandler InsertAttachmentInfoCompleted;
+        
+        /// <remarks/>
+        public event GetAttachmentInfoByRequestID_LeaveCompletedEventHandler GetAttachmentInfoByRequestID_LeaveCompleted;
         
         /// <remarks/>
         public event GetAllLeaveMasterCompletedEventHandler GetAllLeaveMasterCompleted;
@@ -781,6 +791,65 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.InsertOnlineLeaveApplicationRequestCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.InsertOnlineLeaveApplicationRequestCompleted(this, new InsertOnlineLeaveApplicationRequestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertAttachmentInfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void InsertAttachmentInfo(AttachmentInfo AttachmentInfo, int UserID) {
+            this.Invoke("InsertAttachmentInfo", new object[] {
+                        AttachmentInfo,
+                        UserID});
+        }
+        
+        /// <remarks/>
+        public void InsertAttachmentInfoAsync(AttachmentInfo AttachmentInfo, int UserID) {
+            this.InsertAttachmentInfoAsync(AttachmentInfo, UserID, null);
+        }
+        
+        /// <remarks/>
+        public void InsertAttachmentInfoAsync(AttachmentInfo AttachmentInfo, int UserID, object userState) {
+            if ((this.InsertAttachmentInfoOperationCompleted == null)) {
+                this.InsertAttachmentInfoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertAttachmentInfoOperationCompleted);
+            }
+            this.InvokeAsync("InsertAttachmentInfo", new object[] {
+                        AttachmentInfo,
+                        UserID}, this.InsertAttachmentInfoOperationCompleted, userState);
+        }
+        
+        private void OnInsertAttachmentInfoOperationCompleted(object arg) {
+            if ((this.InsertAttachmentInfoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsertAttachmentInfoCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAttachmentInfoByRequestID_Leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public AttachmentInfo[] GetAttachmentInfoByRequestID_Leave(int requestID) {
+            object[] results = this.Invoke("GetAttachmentInfoByRequestID_Leave", new object[] {
+                        requestID});
+            return ((AttachmentInfo[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAttachmentInfoByRequestID_LeaveAsync(int requestID) {
+            this.GetAttachmentInfoByRequestID_LeaveAsync(requestID, null);
+        }
+        
+        /// <remarks/>
+        public void GetAttachmentInfoByRequestID_LeaveAsync(int requestID, object userState) {
+            if ((this.GetAttachmentInfoByRequestID_LeaveOperationCompleted == null)) {
+                this.GetAttachmentInfoByRequestID_LeaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAttachmentInfoByRequestID_LeaveOperationCompleted);
+            }
+            this.InvokeAsync("GetAttachmentInfoByRequestID_Leave", new object[] {
+                        requestID}, this.GetAttachmentInfoByRequestID_LeaveOperationCompleted, userState);
+        }
+        
+        private void OnGetAttachmentInfoByRequestID_LeaveOperationCompleted(object arg) {
+            if ((this.GetAttachmentInfoByRequestID_LeaveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAttachmentInfoByRequestID_LeaveCompleted(this, new GetAttachmentInfoByRequestID_LeaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2838,6 +2907,219 @@ namespace WebServiceLayer.WebReference_leave {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class AttachmentInfo {
+        
+        private int idField;
+        
+        private int typeIDField;
+        
+        private int relatedPartyIDField;
+        
+        private int functionIDField;
+        
+        private string pathField;
+        
+        private string remarksField;
+        
+        private System.DateTime modifiedDateField;
+        
+        private string attachmentNameField;
+        
+        private string typeNameField;
+        
+        private System.DateTime expiryDateField;
+        
+        private int noticePeriodField;
+        
+        private int payrollPeriodIDField;
+        
+        private string scoreField;
+        
+        private int statusField;
+        
+        private int relatedRequestIDField;
+        
+        private int workFlowTypeIDField;
+        
+        private string noticePeriodDescriptionField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int TypeID {
+            get {
+                return this.typeIDField;
+            }
+            set {
+                this.typeIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RelatedPartyID {
+            get {
+                return this.relatedPartyIDField;
+            }
+            set {
+                this.relatedPartyIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int FunctionID {
+            get {
+                return this.functionIDField;
+            }
+            set {
+                this.functionIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Path {
+            get {
+                return this.pathField;
+            }
+            set {
+                this.pathField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Remarks {
+            get {
+                return this.remarksField;
+            }
+            set {
+                this.remarksField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ModifiedDate {
+            get {
+                return this.modifiedDateField;
+            }
+            set {
+                this.modifiedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string AttachmentName {
+            get {
+                return this.attachmentNameField;
+            }
+            set {
+                this.attachmentNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string TypeName {
+            get {
+                return this.typeNameField;
+            }
+            set {
+                this.typeNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ExpiryDate {
+            get {
+                return this.expiryDateField;
+            }
+            set {
+                this.expiryDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int NoticePeriod {
+            get {
+                return this.noticePeriodField;
+            }
+            set {
+                this.noticePeriodField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int PayrollPeriodID {
+            get {
+                return this.payrollPeriodIDField;
+            }
+            set {
+                this.payrollPeriodIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Score {
+            get {
+                return this.scoreField;
+            }
+            set {
+                this.scoreField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RelatedRequestID {
+            get {
+                return this.relatedRequestIDField;
+            }
+            set {
+                this.relatedRequestIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int WorkFlowTypeID {
+            get {
+                return this.workFlowTypeIDField;
+            }
+            set {
+                this.workFlowTypeIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string NoticePeriodDescription {
+            get {
+                return this.noticePeriodDescriptionField;
+            }
+            set {
+                this.noticePeriodDescriptionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class ErrorMessageItem {
         
         private bool isMessageListField;
@@ -4508,6 +4790,36 @@ namespace WebServiceLayer.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((ErrorMessageInfo)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void InsertAttachmentInfoCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetAttachmentInfoByRequestID_LeaveCompletedEventHandler(object sender, GetAttachmentInfoByRequestID_LeaveCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAttachmentInfoByRequestID_LeaveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAttachmentInfoByRequestID_LeaveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public AttachmentInfo[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((AttachmentInfo[])(this.results[0]));
             }
         }
     }

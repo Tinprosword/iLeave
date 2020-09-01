@@ -65,14 +65,14 @@ namespace WEBUI.Pages
             }
             setupMainInfo();
             setupLeaveList();
-            setupAttendance();
+            setupAttendance(requestId);
             SetupButtons();
             SetupMultiLanguage();
         }
 
-        private void setupAttendance()
+        private void setupAttendance(int rqid)
         {
-            List<MODEL.Apply.app_uploadpic> attandance = BLL.Leave.getAttendance(loginer.loginName, 3);
+            List<MODEL.Apply.app_uploadpic> attandance = BLL.Leave.getAttendance(loginer.loginName, rqid,Server);
             if (attandance != null)
             {
                 this.repeater_pic.DataSource = attandance;

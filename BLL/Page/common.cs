@@ -9,7 +9,7 @@ namespace BLL
 {
     public class common
     {
-        public static string reducePath = "reduce";
+        
 
         public static bool IsImagge(string filename)
         {
@@ -31,7 +31,7 @@ namespace BLL
             {
                 if (common.IsImagge(res[i]))
                 {
-                    LSLibrary.ImageThumbnail.ReducedImage(130, 130, fpath + "\\" + res[i], fpath + "\\" + reducePath + "\\" + res[i]);
+                    LSLibrary.ImageThumbnail.ReducedImage(130, 130, fpath + "\\" + res[i], fpath + "\\" + Leave.reducePath + "\\" + res[i]);
                 }
             }
             return res;
