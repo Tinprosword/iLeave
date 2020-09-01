@@ -15,7 +15,6 @@
                         <div style="width:30px;height:30px;float:left;position:relative;top:15px; left:-20px;">
                             <asp:ImageButton ID="imagebutton_close" runat="server" ImageUrl="~/Res/images/close.png" Width="40px" Height="40px" OnClick="imagebutton_close_Click" CommandArgument="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).tempID %>"/>
                         </div>
-
                     </div>
                 </ItemTemplate>
             </asp:Repeater>

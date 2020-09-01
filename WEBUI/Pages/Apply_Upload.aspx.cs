@@ -59,7 +59,7 @@ namespace WEBUI.Pages
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
             //upload pic and save to view state
-            string bigAbsolutionPath = Server.MapPath("../" + BLL.Leave.picPath) + "\\";
+            string bigAbsolutionPath = Server.MapPath("../" + BLL.Leave.picPath);
 
             string errmsg;
             List<string> uploadBigFiles = uploadPic(bigAbsolutionPath, out errmsg);

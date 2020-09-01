@@ -68,7 +68,7 @@ namespace BLL
             try
             {
                 messageInfo = webServicesHelper.ws_leave.InsertOnlineLeaveApplicationRequest(detail.ToArray(),  userid, staffid);
-                result = 0;
+                result = messageInfo.ProcessID;
             }
             catch
             {
@@ -269,11 +269,11 @@ namespace BLL
 
         public static MODEL.Apply.app_uploadpic GeneratePicModel(string filename,System.Web.HttpServerUtility server)
         {
-            string reduceAbsolutionPath = server.MapPath("../" + BLL.Leave.picPath) + "\\" + BLL.Leave.reducePath + "\\";
             string bigFile = "~/" + BLL.Leave.picPath + "/" + filename;
             string reduceFile = "~/" + BLL.Leave.picPath + "/" + BLL.Leave.reducePath + "/" + filename;
+            string reduceAbsolutionFile = server.MapPath(reduceFile);
 
-            if (!LSLibrary.FileUtil.FileIsExist(reduceAbsolutionPath + filename))
+            if (!LSLibrary.FileUtil.FileIsExist(reduceAbsolutionFile))
             {
                 reduceFile = BLL.Leave.defaultPic;
             }

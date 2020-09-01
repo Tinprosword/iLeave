@@ -53,11 +53,11 @@
         </table>
         <div class="col-xs-12" style="height:80px;">
             <div class="col-xs-12 lsu-table-xs" style="height:78px;overflow-y:hidden; overflow-x:scroll; padding-left:5px">
-                <table >
+                <table>
                     <tr>
                         <asp:Repeater ID="repeater_pic" runat="server">
                             <ItemTemplate>
-                                <td style="padding-right:10px; width:90px;padding-top:1px"><asp:Image ID="Image" runat="server" ImageUrl="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).reduceImagePath %>"  Width="70px" Height="70px"/></td>
+                                <td style="padding-right:10px; width:90px;padding-top:1px"><asp:Image ID="Image" runat="server" ImageUrl="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).reduceImagePath %>" Width="70px" Height="70px"/></td>
                             </ItemTemplate>
                         </asp:Repeater>
                     </tr>
