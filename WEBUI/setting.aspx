@@ -25,10 +25,6 @@
                         <td><asp:TextBox ID="tb_address" runat="server" Width="90%"/></td>
                     </tr>
                     <tr>
-                        <td>Https</td>
-                        <td><asp:CheckBox ID="cb" runat="server" /></td>
-                    </tr>
-                    <tr>
                         <td><asp:Literal ID="lt_language" runat="server">Language</asp:Literal></td>
                         <td>
                             <asp:RadioButtonList ID="cb_languagea" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">

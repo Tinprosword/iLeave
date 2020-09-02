@@ -93,7 +93,6 @@ namespace WEBUI.Pages
         {
             if (LeaveRequestMaster != null)
             {
-                //todo get request info and user info ,and set value to lables
                 this.lb_name.Text = LeaveRequestMaster.uname;
                 this.lb_leave.Text = LeaveRequestMaster.minleaveCode;
                 this.lb_status.Text = ((BLL.GlobalVariate.ApprovalRequestStatus)(LeaveRequestMaster.Status)).ToString();

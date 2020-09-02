@@ -57,7 +57,7 @@
             <tr><td class="col-xs-3"><asp:Literal ID="ltlistdate" runat="server"></asp:Literal></td><td class="col-xs-4"><asp:Literal ID="ltlisttype" runat="server"></asp:Literal></td><td class="col-xs-4"><asp:Literal ID="lt_listsection" runat="server"></asp:Literal></td><td class="col-xs-1">  </td></tr>
         </table>
         <div class="col-xs-12 lsf-clearPadding" style="height:237px; overflow:scroll;">
-            <table class="col-xs-12 lsu-table-sm">
+            <table class="col-xs-12 lsu-table-xs">
                 <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                     <ItemTemplate>
                         <tr><td class="col-xs-3"><%# ((MODEL.Apply.apply_LeaveData)Container.DataItem).LeaveDate.ToString("MM-dd") %></td><td class="col-xs-4"><%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeCode %></td>

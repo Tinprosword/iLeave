@@ -9,8 +9,6 @@ namespace BLL
 {
     public class common
     {
-
-
         public static bool IsImagge(string filename)
         {
             string type = filename.Remove(0, filename.IndexOf('.') + 1);

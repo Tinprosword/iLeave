@@ -7,8 +7,24 @@ namespace WEBUI.Pages
 {
     public partial class Apply : BLL.CustomLoginTemplate
     {
+        //todo bug: delete item will clean session.
+        //todo calendar 没有包含所有情况.
+
+        //todo 查选为什么必须放到第一行,否则会线程中止.
+        //todo page:change staff and member.
+        //todo 1.balance 
+
+
         //todo page页面的多层继承写的不错，可以总结下了。
-        //todo 1.balance 2.sections 3.list's section. 4.upload pics.
+        //todo > replace by click line.
+        //todo bug:click 无反应.
+        //todo 需要xiazai附件.
+        //todo more approval??
+        //todo filter by username in approval page.
+        //todo request status' desctiption 
+        //todo check mobil.
+        //todo employment hours
+
 
         public static string ViewState_PageName = "PageView";
         public StateBag myviewState;
@@ -138,22 +154,25 @@ namespace WEBUI.Pages
         private void LoadUIFromViewState(MODEL.Apply.ViewState_page applypage)
         {
             //init ui
-            LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.ddl_leavetype, applypage.leavetype);
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
 
             this.literal_applier.Text = loginer.loginName + "  " + loginer.userInfo.employNnumber;
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
+
+            LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.ddl_leavetype, applypage.leavetype);
             this.ddl_leavetype.SelectedValue = applypage.LeaveTypeSelectValue.ToString();
-            this.repeater_leave.DataSource = applypage.LeaveList;
+            ddl_leavetype_SelectedIndexChanged(this.ddl_leavetype, new EventArgs());
 
             this.lt_applydays.Text = applypage.applylabel;
             this.lt_balancedays.Text = applypage.balancelabel;
+
             this.dropdl_section.SelectedValue = applypage.ddlsectionSelectvalue;
+
             this.tb_remarks.Text = applypage.remarks;
 
+            this.repeater_leave.DataSource = applypage.LeaveList;
             this.repeater_leave.DataBind();
 
             IsLeaveTypeEnable();
-            ddl_leavetype_SelectedIndexChanged(this.ddl_leavetype, new EventArgs());
         }
 
         #endregion

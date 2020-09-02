@@ -19,8 +19,6 @@ namespace BLL
                 return names;
             }
         }
-
-        //todo   waitcancel -> ok.  master need update status.
         public static string LEAVE_DESC = "Leave Request";
 
         #region insert

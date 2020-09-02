@@ -5,7 +5,7 @@
 
 
 /*uint 通常是一个不可再分的较为小巧的个体，通常被重复用于各种模块中！比如按钮、输入框、loading、图标等*/
-.lsu-table-xs {font-size: 16px;}
+.lsu-table-xs {font-size: 13px;}
 .lsu-table-xs tr {height: 30px}
 .lsu-table-xs td {padding-left: 2px !important;padding-right: 2px !important;}
 
@@ -147,10 +147,8 @@
     width: 42px;
     height: 42px;
     background-color: #f3e926;
-    -webkit-border-radius: 21: 24px;
+    -webkit-border-radius: 21px;
 }
-
-
 
 .modalWindow
 {
