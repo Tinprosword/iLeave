@@ -20,6 +20,13 @@ namespace MODEL
             public List<app_uploadpic> uploadpic;
             public List<apply_LeaveData> LeaveList;
             public List<LSLibrary.WebAPP.ValueText<int>> leavetype;
+
+            public ViewState_page()
+            {
+                LeaveList = new List<MODEL.Apply.apply_LeaveData>();
+                uploadpic = new List<MODEL.Apply.app_uploadpic>();
+                leavetype = new List<LSLibrary.WebAPP.ValueText<int>>();
+            }
         }
 
 

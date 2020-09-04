@@ -9,24 +9,21 @@ namespace WEBUI.Pages
 {
     public partial class Main : BLL.CustomLoginTemplate
     {
-        protected override void InitPageVaralbal0()
+        protected override void InitPage_OnEachLoadBeforeF5_1()
         {
         }
 
-        protected override void InitPageDataOnEachLoad1()
-        {
-        }
 
-        protected override void ResetUIOnEachLoad5()
+        protected override void PageLoad_ResetUIOnEachLoad5()
         {
 
         }
 
-        protected override void InitPageDataOnFirstLoad2()
+        protected override void InitPage_OnFirstLoad2()
         {
         }
 
-        protected override void InitUIOnFirstLoad4()
+        protected override void PageLoad_InitUIOnFirstLoad4()
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(false, "", "", "");
             SetMultiLanguage();
@@ -43,7 +40,7 @@ namespace WEBUI.Pages
             this.lt_setting.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_setting;
         }
 
-        protected override void ResetUIOnEachLoad3()
+        protected override void PageLoad_ResetUIOnEachLoad3()
         {}
 
         protected void Apply_Click(object sender, EventArgs e)

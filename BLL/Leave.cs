@@ -302,6 +302,21 @@ namespace BLL
             return result;
         }
 
+        public static List<LSLibrary.WebAPP.ValueText<int>> GetDDLSectionsData(int leaveid, int employid)
+        {
+            List<LSLibrary.WebAPP.ValueText<int>> ddlSource = new List<LSLibrary.WebAPP.ValueText<int>>();
+            ddlSource.Add(new LSLibrary.WebAPP.ValueText<int>(-1, "Please select"));
+            if (leaveid != 0)
+            {
+                WebServiceLayer.WebReference_user.t_Employment t_Employment = BLL.User_wsref.getEmploymentByid(employid);
+                int position = t_Employment.PositionID;
+                List<int> sections = BLL.CodeSetting.GetSections(position, leaveid);
+                var ddlSourceAppend = BLL.Leave.ConvertInt2DropDownList(sections);
+                ddlSource.AddRange(ddlSourceAppend);
+            }
+            return ddlSource;
+        }
+
 
         public static List<WebServiceLayer.WebReference_leave.t_Leave> GetLeavesByStaffID(int sid)
         {

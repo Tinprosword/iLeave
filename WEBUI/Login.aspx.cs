@@ -9,30 +9,23 @@ namespace WEBUI
 {
     public partial class Login : LSLibrary.WebAPP.PageTemplate_Common
     {
-        protected override void InitPageVaralbal0()
-        {
-            
-        }
-
-        protected override void ResetUIOnEachLoad5()
+        protected override void InitPage_OnEachLoadBeforeF5_1()
         {
         }
 
-        protected override void InitPageDataOnEachLoad1()
+        protected override void PageLoad_ResetUIOnEachLoad5()
         {
         }
 
-        protected override void InitPageDataOnFirstLoad2()
+        protected override void InitPage_OnFirstLoad2()
         {
-
         }
 
-        protected override void ResetUIOnEachLoad3()
+        protected override void PageLoad_ResetUIOnEachLoad3()
         {
-
         }
 
-        protected override void InitUIOnFirstLoad4()
+        protected override void PageLoad_InitUIOnFirstLoad4()
         {
             LoadLableLanguage();
             this.appcss.Href += "?lastmodify="+BLL.GlobalVariate.appcssLastmodify;

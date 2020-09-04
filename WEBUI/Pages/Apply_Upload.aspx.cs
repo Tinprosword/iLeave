@@ -11,36 +11,34 @@ namespace WEBUI.Pages
     {
 
         public StateBag myviewState;
-        protected override void InitPageVaralbal0()
+        protected override void InitPage_OnEachLoadBeforeF5_1()
         {
             WEBUI.Pages.Apply prepage = PreviousPage as WEBUI.Pages.Apply;//todo 查选为什么必须放到第一行,否则会线程中止.
             myviewState = ViewState;
             OnF5Doit = onf5;//回调这里的处理方式，刷新提交就重新载入吧。
         }
 
-        protected override void ResetUIOnEachLoad5()
+        protected override void PageLoad_ResetUIOnEachLoad5()
         {
         }
 
-        protected override void InitPageDataOnEachLoad1()
+
+
+        protected override void InitPage_OnFirstLoad2()
         {
         }
 
-        protected override void InitPageDataOnFirstLoad2()
+        protected override void PageLoad_ResetUIOnEachLoad3()
         {
         }
 
-        protected override void ResetUIOnEachLoad3()
-        {
-        }
-
-        protected override void InitUIOnFirstLoad4()
+        protected override void PageLoad_InitUIOnFirstLoad4()
         {
             WEBUI.Pages.Apply prepage = PreviousPage as WEBUI.Pages.Apply;
             if (prepage != null)
             {
                 MODEL.Apply.ViewState_page applyPage2 = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, prepage.myviewState);
-                LSLibrary.WebAPP.ViewStateHelper.SetValue(applyPage2, Apply.ViewState_PageName, ViewState);
+                LSLibrary.WebAPP.ViewStateHelper.SetValue( Apply.ViewState_PageName, applyPage2, ViewState);
             }
             else
             {
@@ -71,7 +69,7 @@ namespace WEBUI.Pages
                 MODEL.Apply.app_uploadpic temppic = BLL.Leave.GeneratePicModel(uploadBigFiles[i], Server);
                 applyPage.uploadpic.Add(temppic);
             }
-            LSLibrary.WebAPP.ViewStateHelper.SetValue(applyPage, Apply.ViewState_PageName, ViewState);
+            LSLibrary.WebAPP.ViewStateHelper.SetValue(Apply.ViewState_PageName, applyPage, ViewState);
 
             this.repeater_attandance.DataSource = applyPage.uploadpic;
             this.repeater_attandance.DataBind();
@@ -109,7 +107,7 @@ namespace WEBUI.Pages
             this.repeater_attandance.DataSource = applyPage.uploadpic;
             this.repeater_attandance.DataBind();
 
-            LSLibrary.WebAPP.ViewStateHelper.SetValue(applyPage, Apply.ViewState_PageName, ViewState);
+            LSLibrary.WebAPP.ViewStateHelper.SetValue(Apply.ViewState_PageName, applyPage, ViewState);
         }
 
 

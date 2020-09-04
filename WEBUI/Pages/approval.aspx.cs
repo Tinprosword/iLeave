@@ -14,27 +14,24 @@ namespace WEBUI.Pages
         private readonly string css_unselect = "btnBox btnBlueBoxUnSelect";
 
 
-        protected override void InitPageVaralbal0()
+        protected override void InitPage_OnEachLoadBeforeF5_1()
         {
         }
 
-        protected override void InitPageDataOnEachLoad1()
-        {
-        }
 
-        protected override void InitPageDataOnFirstLoad2()
+        protected override void InitPage_OnFirstLoad2()
         {
             this.btn_approved.CssClass = css_unselect;
             this.btn_wait.CssClass = css_select;
             this.btn_rejectWith.CssClass = css_unselect;
         }
 
-        protected override void ResetUIOnEachLoad3()
+        protected override void PageLoad_ResetUIOnEachLoad3()
         {
             
         }
 
-        protected override void InitUIOnFirstLoad4()
+        protected override void PageLoad_InitUIOnFirstLoad4()
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().approval_back, BLL.MultiLanguageHelper.GetLanguagePacket().approval_current, "~/pages/main.aspx");
             SetupMultiLanguage();
@@ -68,7 +65,7 @@ namespace WEBUI.Pages
         {
         }
 
-        protected override void ResetUIOnEachLoad5()
+        protected override void PageLoad_ResetUIOnEachLoad5()
         {
         }
 

@@ -21,25 +21,22 @@ namespace WEBUI.Pages
         private Dictionary<DateTime, int> allStatistic = null;
 
         #region pageevent
-        protected override void InitPageVaralbal0()
+        protected override void InitPage_OnEachLoadBeforeF5_1()
         {
             WEBUI.Pages.Apply prepage = PreviousPage as WEBUI.Pages.Apply;
             myviewState = ViewState;
-        }
 
-
-        protected override void InitPageDataOnEachLoad1()
-        {
             if (Request.QueryString["action"] != null && Request.QueryString["action"] == "apply")
             {
                 isFromApply = true;
             }
         }
 
-        protected override void InitPageDataOnFirstLoad2()
+
+        protected override void InitPage_OnFirstLoad2()
         {}
 
-        protected override void ResetUIOnEachLoad3()
+        protected override void PageLoad_ResetUIOnEachLoad3()
         {
             //1.intercept calendar 事件，以代替默认的changed事件（因为要捕捉cancel cell事件,而默认的不捕捉cancel事件）
             if (this.cb_leave.Checked)
@@ -53,7 +50,7 @@ namespace WEBUI.Pages
             }
         }
 
-        protected override void InitUIOnFirstLoad4()
+        protected override void PageLoad_InitUIOnFirstLoad4()
         {
             //1.navigation. 2.init viewstate 3 setupZone .5repeater.
             this.Calendar1.SelectedDate = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day);
@@ -66,7 +63,7 @@ namespace WEBUI.Pages
             SetupMultiLanguage();
         }
 
-        protected override void ResetUIOnEachLoad5()
+        protected override void PageLoad_ResetUIOnEachLoad5()
         {}
 
         #region inner function
@@ -193,7 +190,7 @@ namespace WEBUI.Pages
                 if (prepage != null)
                 {
                     MODEL.Apply.ViewState_page applyPage2 = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, prepage.myviewState);
-                    LSLibrary.WebAPP.ViewStateHelper.SetValue(applyPage2, Apply.ViewState_PageName, ViewState);
+                    LSLibrary.WebAPP.ViewStateHelper.SetValue( Apply.ViewState_PageName, applyPage2, ViewState);
                 }
                 else
                 {

@@ -7,43 +7,37 @@ namespace WEBUI.Pages
 {
     public partial class Apply : BLL.CustomLoginTemplate
     {
-        //todo bug: delete item will clean session.
-        //todo calendar 没有包含所有情况.
+        //todo bug: delete item will clean session.?
 
-        //todo 查选为什么必须放到第一行,否则会线程中止.
+        //todo 查下为什么必须放到第一行,否则会线程中止.
         //todo page:change staff and member.
-        //todo 1.balance 
+        //todo how to get balance ?
 
-
+        //todo calendar 没有包含所有情况
         //todo page页面的多层继承写的不错，可以总结下了。
         //todo > replace by click line.
-        //todo bug:click 无反应.
-        //todo 需要xiazai附件.
-        //todo more approval??
+        //todo bug:some time click 无反应? js refresh?
+        //todo 需要download 附件.
+        //todo more than one sequance when approval??
         //todo filter by username in approval page.
         //todo request status' desctiption 
         //todo check mobil.
         //todo employment hours
+        //todo login setting first. save password and uid.
 
 
+        //todo 1.login.   2.icon
         public static string ViewState_PageName = "PageView";
         public StateBag myviewState;
-
-        //不确定何时初始,但是初始化后就不会变化的页面级变量,而且一次页面生成期间需要多次访问.
-        //toro 如何设置为只读?
-        public  List<LSLibrary.WebAPP.ValueText<int>> pageCache_LeaveListSections;
+        public List<LSLibrary.WebAPP.ValueText<int>> RPITEM_LeaveListSections;
 
 
         #region [page event]
-
-        protected override void InitPageVaralbal0()
+        protected override void InitPage_OnEachLoadBeforeF5_1()
         {
             Apply_Upload prepage = PreviousPage as Apply_Upload;
             this.OnF5Doit = () => { Response.Redirect("~/pages/apply.aspx"); };
-        }
 
-        protected override void InitPageDataOnEachLoad1()
-        {
             myviewState = ViewState;
 
             if (!loginer.userInfo.hasValidEmploynumber())
@@ -52,14 +46,15 @@ namespace WEBUI.Pages
                 Response.Write(LSLibrary.WebAPP.MyJSHelper.AlertMessageAndGoto("Invalid employmentID!,", "main.aspx"));
                 Response.End();
             }
-
         }
-        protected override void InitPageDataOnFirstLoad2()
+
+        
+        protected override void InitPage_OnFirstLoad2()
         {
-            initPageViewState();
+            LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, new MODEL.Apply.ViewState_page(), ViewState);
         }
 
-        protected override void ResetUIOnEachLoad3()
+        protected override void PageLoad_ResetUIOnEachLoad3()
         {
             this.lt_AlertJS.Text = "";
             this.literal_errormsga.Text = "";
@@ -67,19 +62,80 @@ namespace WEBUI.Pages
             this.repeater_leave.ItemDataBound += Repeater_leave_ItemDataBound;
         }
 
+       
+
+        protected override void PageLoad_InitUIOnFirstLoad4()
+        {
+            if (Request.QueryString["action"] != null && (Request.QueryString["action"] == "back" || Request.QueryString["action"] == "backCalendar"))
+            {
+                //1.get prepage's viewstate 2.set viewstate
+                MODEL.Apply.ViewState_page viewState_Page = null;
+                if (Request.QueryString["action"] == "back")
+                {
+                    Apply_Upload prepage = PreviousPage as Apply_Upload;
+                    if (prepage != null)
+                    {
+                        viewState_Page = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, prepage.myviewState);
+                    }
+                }
+                else if (Request.QueryString["action"] == "backCalendar")
+                {
+                    Pages.calendar prepage = PreviousPage as Pages.calendar;
+                    if (prepage != null)
+                    {
+                        viewState_Page = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, prepage.myviewState);
+                    }
+                }
+                LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, viewState_Page, ViewState);
+                MODEL.Apply.ViewState_page applypage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, this.ViewState);
+                LoadUI(applypage.leavetype, applypage.LeaveTypeSelectValue, applypage.applylabel, applypage.balancelabel, applypage.ddlsectionSelectvalue, applypage.remarks, applypage.LeaveList);
+            }
+            else
+            {
+                List<WebServiceLayer.WebReference_leave.t_Leave> res = BLL.Leave.GetLeavesByStaffID((int)loginer.userInfo.staffid);
+                List<LSLibrary.WebAPP.ValueText<int>> typedata = BLL.Leave.ConvertLeaveInfo2DropDownList(res);
+                LoadUI(typedata, "0 Days", "0 Days", "0", "-1", "", new List<MODEL.Apply.apply_LeaveData>());
+                //set viewstate
+                SavePageDataToViewState(false, true, false, null, typedata, null);
+            }
+            SetMultiLanguage();
+        }
+
+        private void LoadUI(List<LSLibrary.WebAPP.ValueText<int>> leveTypeData,string leaveTypeSelectedValue,string applyday,string balanceday,string ddlSectionSelected,string remarks,List<MODEL.Apply.apply_LeaveData> leaveDays)
+        {
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
+
+            this.literal_applier.Text = loginer.loginName + "  " + loginer.userInfo.employNnumber;
+
+            LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.ddl_leavetype, leveTypeData);
+            this.ddl_leavetype.SelectedValue = leaveTypeSelectedValue;
+            ddl_leavetype_SelectedIndexChanged(this.ddl_leavetype, new EventArgs());
+
+            this.lt_applydays.Text = applyday;
+            this.lt_balancedays.Text = balanceday;
+
+            this.dropdl_section.SelectedValue = ddlSectionSelected;
+
+            this.tb_remarks.Text = remarks;
+
+            this.repeater_leave.DataSource = leaveDays;
+            this.repeater_leave.DataBind();
+        }
+
         private void Repeater_leave_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
+            //1.clean and bind data DDL. 2. rp ddl 因为数据源不是固定的.所以
             RepeaterItem item = e.Item;
             DropDownList ddl = (DropDownList)item.FindControl("rp_dropdl_section");
-
+            string preSelected = ddl.SelectedValue;
             ddl.Items.Clear();
-            int leaveid = int.Parse(this.ddl_leavetype.SelectedValue);
-            if (pageCache_LeaveListSections == null)
-            {
-                pageCache_LeaveListSections= GetDDLSectionsData(leaveid);
-            }
-            LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(ddl, pageCache_LeaveListSections);
 
+            int leaveid = int.Parse(this.ddl_leavetype.SelectedValue);
+            if (RPITEM_LeaveListSections == null)
+            {
+                RPITEM_LeaveListSections = BLL.Leave.GetDDLSectionsData(leaveid, (int)loginer.userInfo.employID);
+            }
+            LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(ddl, RPITEM_LeaveListSections);
 
             MODEL.Apply.apply_LeaveData itemdata = (MODEL.Apply.apply_LeaveData)item.DataItem;
             for (int i = 0; i < ddl.Items.Count; i++)
@@ -93,86 +149,18 @@ namespace WEBUI.Pages
                     ddl.Items[i].Selected = false;
                 }
             }
-        }
 
-        private List<LSLibrary.WebAPP.ValueText<int>> GetDDLSectionsData(int leaveid)
-        {
-            WebServiceLayer.WebReference_user.t_Employment t_Employment = BLL.User_wsref.getEmploymentByid((int)loginer.userInfo.employID);
-            int position = t_Employment.PositionID;
-            List<int> sections = BLL.CodeSetting.GetSections(position, leaveid);
-            var ddlSource = BLL.Leave.ConvertInt2DropDownList(sections);
-            return ddlSource;
-        }
-
-        protected override void InitUIOnFirstLoad4()
-        {
-            if (Request.QueryString["action"] != null && Request.QueryString["action"] == "back")
+            for (int i = 0; i < ddl.Items.Count; i++)
             {
-                //get viewstate value
-                Apply_Upload prepage = PreviousPage as Apply_Upload;
-                if (prepage != null)
+                if (preSelected == ddl.Items[i].Value)
                 {
-                    MODEL.Apply.ViewState_page applypage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, prepage.myviewState);
-                    LSLibrary.WebAPP.ViewStateHelper.SetValue(applypage, ViewState_PageName, ViewState);
+                    ddl.Items[i].Selected = true;
+                }
+                else
+                {
+                    ddl.Items[i].Selected = false;
                 }
             }
-            else if (Request.QueryString["action"] != null && Request.QueryString["action"] == "backCalendar")
-            {
-                Pages.calendar prepage = PreviousPage as Pages.calendar;
-                if (prepage != null)
-                {
-                    MODEL.Apply.ViewState_page applypage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, prepage.myviewState);
-                    LSLibrary.WebAPP.ViewStateHelper.SetValue(applypage, ViewState_PageName, ViewState);
-                }
-            }
-
-
-            if (Request.QueryString["action"] != null && (Request.QueryString["action"] == "back" || Request.QueryString["action"] == "backCalendar"))
-            {
-                MODEL.Apply.ViewState_page applypage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, this.ViewState);
-                LoadUIFromViewState(applypage);
-            }
-            else
-            {
-                //init ui
-                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
-                this.literal_applier.Text = loginer.loginName + "  " + loginer.userInfo.employNnumber;
-
-                List<WebServiceLayer.WebReference_leave.t_Leave> res = BLL.Leave.GetLeavesByStaffID((int)loginer.userInfo.staffid);
-                List<LSLibrary.WebAPP.ValueText<int>> typedata = BLL.Leave.ConvertLeaveInfo2DropDownList(res);
-                LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.ddl_leavetype, typedata);
-
-                this.repeater_leave.DataSource = new List<MODEL.Apply.apply_LeaveData>();
-                this.repeater_leave.DataBind();
-
-                //set viewstate
-                SavePageDataToViewState(false, true, false, null, typedata, null);
-            }
-            SetMultiLanguage();
-        }
-
-        private void LoadUIFromViewState(MODEL.Apply.ViewState_page applypage)
-        {
-            //init ui
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
-
-            this.literal_applier.Text = loginer.loginName + "  " + loginer.userInfo.employNnumber;
-
-            LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.ddl_leavetype, applypage.leavetype);
-            this.ddl_leavetype.SelectedValue = applypage.LeaveTypeSelectValue.ToString();
-            ddl_leavetype_SelectedIndexChanged(this.ddl_leavetype, new EventArgs());
-
-            this.lt_applydays.Text = applypage.applylabel;
-            this.lt_balancedays.Text = applypage.balancelabel;
-
-            this.dropdl_section.SelectedValue = applypage.ddlsectionSelectvalue;
-
-            this.tb_remarks.Text = applypage.remarks;
-
-            this.repeater_leave.DataSource = applypage.LeaveList;
-            this.repeater_leave.DataBind();
-
-            IsLeaveTypeEnable();
         }
 
         #endregion
@@ -183,8 +171,6 @@ namespace WEBUI.Pages
             //save viewstate' other data
             SavePageDataToViewState(false, false, false, null, null, null);
         }
-
-
         #endregion
 
         #region [module] leave
@@ -212,13 +198,19 @@ namespace WEBUI.Pages
             {
                 pagedate.LeaveList.RemoveAt(intIndex);
 
-                LSLibrary.WebAPP.ViewStateHelper.SetValue(pagedate, ViewState_PageName, ViewState);
+                LSLibrary.WebAPP.ViewStateHelper.SetValue( ViewState_PageName, pagedate, ViewState);
                 this.repeater_leave.DataSource = pagedate.LeaveList;
                 this.repeater_leave.DataBind();
             }
             IsLeaveTypeEnable();
         }
 
+        protected void ddl_leavetype_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int leaveid = int.Parse(this.ddl_leavetype.SelectedValue);
+            List<LSLibrary.WebAPP.ValueText<int>> ddlSource = BLL.Leave.GetDDLSectionsData(leaveid, (int)loginer.userInfo.employID);
+            LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.dropdl_section, ddlSource);
+        }
 
         protected void rp_dropdl_section_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -233,11 +225,13 @@ namespace WEBUI.Pages
             {
                 pagedate.LeaveList[intIndex].sectionid = int.Parse(abc);
 
-                LSLibrary.WebAPP.ViewStateHelper.SetValue(pagedate, ViewState_PageName, ViewState);
-                this.repeater_leave.DataSource = pagedate.LeaveList;
-                this.repeater_leave.DataBind();
+                LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, pagedate, ViewState);
+                //this.repeater_leave.DataSource = pagedate.LeaveList;
+                //this.repeater_leave.DataBind();
             }
         }
+
+        
         #endregion
 
         #region [module] apply
@@ -287,16 +281,6 @@ namespace WEBUI.Pages
             this.button_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_button;
         }
 
-        private void initPageViewState()
-        {
-            MODEL.Apply.ViewState_page viewState_Page = new MODEL.Apply.ViewState_page();
-            viewState_Page.LeaveList = new List<MODEL.Apply.apply_LeaveData>();
-            viewState_Page.uploadpic = new List<MODEL.Apply.app_uploadpic>();
-            viewState_Page.leavetype = new List<LSLibrary.WebAPP.ValueText<int>>();
-
-            LSLibrary.WebAPP.ViewStateHelper.SetValue(viewState_Page, ViewState_PageName, ViewState);
-        }
-
         private void SavePageDataToViewState(bool owlist, bool owtype, bool owpics, List<MODEL.Apply.apply_LeaveData> leavelist, List<LSLibrary.WebAPP.ValueText<int>> leavetype, List<MODEL.Apply.app_uploadpic> uploadPics)
         {
             MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
@@ -318,9 +302,8 @@ namespace WEBUI.Pages
                 applyPage.uploadpic = uploadPics;
             }
 
-            LSLibrary.WebAPP.ViewStateHelper.SetValue(applyPage, ViewState_PageName, ViewState);
+            LSLibrary.WebAPP.ViewStateHelper.SetValue( ViewState_PageName, applyPage, ViewState);
         }
-
 
         private void IsLeaveTypeEnable()
         {
@@ -334,19 +317,11 @@ namespace WEBUI.Pages
             }
         }
 
-
-        protected override void ResetUIOnEachLoad5()
+        protected override void PageLoad_ResetUIOnEachLoad5()
         {
             
         }
-
         #endregion
 
-        protected void ddl_leavetype_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int leaveid = int.Parse(this.ddl_leavetype.SelectedValue);
-            List<LSLibrary.WebAPP.ValueText<int>> ddlSource = GetDDLSectionsData(leaveid);
-            LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.dropdl_section, ddlSource);
-        }
     }
 }

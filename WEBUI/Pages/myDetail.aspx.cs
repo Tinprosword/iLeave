@@ -17,7 +17,7 @@ namespace WEBUI.Pages
         private WebServiceLayer.WebReference_leave.t_WorkflowInfo RelatedWorkInfo;
         private List<WebServiceLayer.WebReference_leave.t_WorkflowTask> RelatedWorkDetails;
         
-        protected override void InitPageVaralbal0()
+        protected override void InitPage_OnEachLoadBeforeF5_1()
         {
             if (!string.IsNullOrEmpty(Request.QueryString["requestid"]) && !string.IsNullOrEmpty(Request.QueryString["action"]) && !string.IsNullOrEmpty(Request.QueryString["selectedtab"]))
             {
@@ -38,22 +38,19 @@ namespace WEBUI.Pages
             }
         }
 
-        protected override void ResetUIOnEachLoad5()
+        protected override void PageLoad_ResetUIOnEachLoad5()
         {
         }
 
-        protected override void InitPageDataOnEachLoad1()
-        {
 
-        }
 
-        protected override void InitPageDataOnFirstLoad2()
+        protected override void InitPage_OnFirstLoad2()
         { }
 
-        protected override void ResetUIOnEachLoad3()
+        protected override void PageLoad_ResetUIOnEachLoad3()
         { }
 
-        protected override void InitUIOnFirstLoad4()
+        protected override void PageLoad_InitUIOnFirstLoad4()
         {
             if (action == 0)
             {
