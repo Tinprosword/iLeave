@@ -3,7 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="Res/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet"/>
-    
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="Res/App/appcss.css" rel="stylesheet" id="appcss" runat="server"/>
     <script src="Res/App/autoScale.js?lasttime=<%=BLL.GlobalVariate.autoscalejsLastmodify %>"></script>
@@ -18,9 +17,6 @@
                 </div>
             </div>
             <div class="row">
-                <div id="setting" class=" col-xs-6 col-xs-push-6" style="text-align:right;padding-right:10px; padding-top:5px">
-                    <asp:ImageButton ID="btn_setting" runat="server" ImageUrl="Res/images/setting.gif" OnClick="Btn_setting_Click"  Width="30px" Height="30px" TabIndex="1"/>
-                </div>
                 <table class="col-xs-12 lsf-maringTop3px lsu-bigtable">
                     <tr>
                         <td style="width:90px;"><asp:Literal ID="lt_user" runat="server" Text="User" /></td>
@@ -42,7 +38,6 @@
                         <td class="lsf-fontsizes1"><asp:CheckBox ID="cb_remember" runat="server" />Remember me</td>
                     </tr>
                 </table>
-
             </div>
         </div>
         </form>

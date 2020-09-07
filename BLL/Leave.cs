@@ -296,7 +296,7 @@ namespace BLL
             result.Add(new LSLibrary.WebAPP.ValueText<int>(0, "Please select"));
             for (int i = 0; i < source.Count(); i++)
             {
-                LSLibrary.WebAPP.ValueText<int> item = new LSLibrary.WebAPP.ValueText<int>(source[i].ID, source[i].Code + " -" + source[i].Description);
+                LSLibrary.WebAPP.ValueText<int> item = new LSLibrary.WebAPP.ValueText<int>(source[i].ID,source[i].Description);
                 result.Add(item);
             }
             return result;

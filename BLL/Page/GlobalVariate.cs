@@ -62,16 +62,17 @@ namespace BLL
             EXPENSE_CLAIM = 11,
         }
 
-
+        //1 full day 2 ampm 3 3secton 4 houre
         public static Dictionary<int, string> sections
         {
             get
             {
-                Dictionary<int, string> temp = new Dictionary<int, string>(4);
+                Dictionary<int, string> temp = new Dictionary<int, string>();
                 temp.Add( 0, "Full day");
                 temp.Add( 1,"AM");
-                temp.Add( 2,"PM");
-                temp.Add( 3,"Hours");
+                temp.Add( 2, "PM");
+                temp.Add( 3,"3Sections");
+                //temp.Add( 4,"Hours");
                 return temp;
             }
         }
@@ -99,9 +100,6 @@ namespace BLL
         public static string path_uploadPic = "uploadPic";
 
 
-        //cooki name
-        public static readonly string COOKIE_SERVERADDRESS="cookie_serveraddress";
-        public static readonly string COOKIE_HTTPS = "cookie_https";
 
 
      

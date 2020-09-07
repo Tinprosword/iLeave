@@ -26,12 +26,11 @@ namespace WEBUI
                 string sessionID = Request.Form["sessionid"];
                 string password = Request.Form["password"];
 
-
-                LSLibrary.WebAPP.CookieHelper.SetCookie(BLL.GlobalVariate.COOKIE_SERVERADDRESS, address, 3600);
-                LSLibrary.WebAPP.CookieHelper.SetCookie(BLL.GlobalVariate.COOKIE_HTTPS, bhttps.ToString(), 3600);
-                BLL.MultiLanguageHelper.SaveChoose((LSLibrary.WebAPP.LanguageType)intLanguage);
-
-
+                BLL.Page.MyCookie myCookie = new BLL.Page.MyCookie();
+                myCookie.language = (LSLibrary.WebAPP.LanguageType)intLanguage;
+                myCookie.serverAddress = address;
+                BLL.Page.MyCookieManage.SetCookie(myCookie);
+                
 
                 WebServiceLayer.WebReference_user.LoginResult loginResult = BLL.User_wsref.CheckLogin(loginID, password);//这个登陆是完全没有必要的.但是为了免去手写sessionid.就再登陆一次.让系统(web services)自动写sessionid.如果后期了解正确写sessionid的方法 ,可以去掉.
                 if (loginResult.Result > 0)

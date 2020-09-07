@@ -125,11 +125,12 @@
     <Content Include="Res\images\upload.png" />
     <Content Include="Res\images\upload2.png" />
     <Content Include="Res\jquery\jquery.min.js" />
-    <Content Include="setting.aspx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="template.aspx" />
+    <Content Include="Sign.aspx" />
     <Content Include="test.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -230,12 +231,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="setting.aspx.cs">
-      <DependentUpon>setting.aspx</DependentUpon>
+    <Compile Include="template.aspx.cs">
+      <DependentUpon>template.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="setting.aspx.designer.cs">
-      <DependentUpon>setting.aspx</DependentUpon>
+    <Compile Include="Sign.aspx.cs">
+      <DependentUpon>Sign.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sign.aspx.designer.cs">
+      <DependentUpon>Sign.aspx</DependentUpon>
     </Compile>
     <Compile Include="test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>

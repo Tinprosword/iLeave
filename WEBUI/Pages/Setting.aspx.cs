@@ -28,10 +28,10 @@ namespace WEBUI.Pages
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().setting_back, BLL.MultiLanguageHelper.GetLanguagePacket().setting_current, "~/pages/main.aspx");
 
             LoadLableLanguage(BLL.MultiLanguageHelper.GetLanguagePacket(BLL.MultiLanguageHelper.GetChoose()));
-            this.lb_serveraddress.Text = LSLibrary.WebAPP.CookieHelper.GetCookie(BLL.GlobalVariate.COOKIE_SERVERADDRESS) ?? "";
-            string check = LSLibrary.WebAPP.CookieHelper.GetCookie(BLL.GlobalVariate.COOKIE_HTTPS) ?? "";
-            this.cb.Checked = check.ToUpper() == "TRUE" ? true : false;
-            int intLanguagae = (int)BLL.MultiLanguageHelper.GetChoose();
+            BLL.Page.MyCookie myCookie = BLL.Page.MyCookieManage.GetCookie();
+
+            this.lb_serveraddress.Text = myCookie.serverAddress;
+            int intLanguagae = (int)myCookie.language;
             this.cb_languagea.SelectedValue = intLanguagae.ToString();
         }
 
@@ -56,8 +56,8 @@ namespace WEBUI.Pages
         {
             OnChangeSettingSendNotice(int.Parse(this.cb_languagea.SelectedValue), this.js_webview);
             LSLibrary.WebAPP.LanguageType chooseLanguage = (LSLibrary.WebAPP.LanguageType)int.Parse(this.cb_languagea.SelectedValue);
-            BLL.MultiLanguageHelper.SaveChoose(chooseLanguage);
-            LSLibrary.WebAPP.BaseLanguage NewLanguage= BLL.MultiLanguageHelper.GetLanguagePacket(chooseLanguage);//只有这个页面特殊，无法立即读cooike,因为是立即修改，还未写到cooike.
+            BLL.Page.MyCookieManage.SetCookie_language(chooseLanguage);
+            LSLibrary.WebAPP.BaseLanguage NewLanguage= BLL.MultiLanguageHelper.GetLanguagePacket(chooseLanguage);//todo 只有这个页面特殊，无法立即读cooike,因为是立即修改，还未写到cooike.
             LoadLableLanguage(NewLanguage);
         }
 

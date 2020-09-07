@@ -7,10 +7,6 @@
                         <td><asp:Label ID="lb_serveraddress" runat="server" Text="Label"></asp:Label></td>
                     </tr>
                     <tr>
-                        <td>Https</td>
-                        <td><asp:CheckBox ID="cb" runat="server" Enabled="false" /></td>
-                    </tr>
-                    <tr>
                         <td><asp:Literal ID="lt_language" runat="server">Language</asp:Literal></td>
                         <td>
                             <asp:RadioButtonList ID="cb_languagea" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" OnSelectedIndexChanged="cb_languagea_SelectedIndexChanged" AutoPostBack="true">

@@ -11,6 +11,11 @@ namespace WEBUI
     {
         protected override void InitPage_OnEachLoadBeforeF5_1()
         {
+            BLL.Page.MyCookie myCookie = BLL.Page.MyCookieManage.GetCookie();
+            if (myCookie == null || myCookie.serverAddress == "")
+            {
+                Response.Redirect("sign.aspx");
+            }
         }
 
         protected override void PageLoad_ResetUIOnEachLoad5()
@@ -60,12 +65,8 @@ namespace WEBUI
                 }
             }
             else
-            {
-                
-            }
+            {}
         }
-
-
 
         private void CleanInput()
         {
