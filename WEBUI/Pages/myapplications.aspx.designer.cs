@@ -13,33 +13,6 @@ namespace WEBUI.Pages {
     public partial class myapplications {
         
         /// <summary>
-        /// btn_wait 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_wait;
-        
-        /// <summary>
-        /// btn_approved 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_approved;
-        
-        /// <summary>
-        /// btn_rejectWith 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_rejectWith;
-        
-        /// <summary>
         /// ltdatefrom 控件。
         /// </summary>
         /// <remarks>

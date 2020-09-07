@@ -11,7 +11,7 @@ namespace WEBUI.Pages
     {
         private int action;
         private int requestId;
-        private int selectedtab;
+        private string applicationType;
         private WebServiceLayer.WebReference_leave.LeaveRequestMaster LeaveRequestMaster;
         private List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> LeaveRequestDetails;
         private WebServiceLayer.WebReference_leave.t_WorkflowInfo RelatedWorkInfo;
@@ -19,11 +19,11 @@ namespace WEBUI.Pages
         
         protected override void InitPage_OnEachLoadBeforeF5_1()
         {
-            if (!string.IsNullOrEmpty(Request.QueryString["requestid"]) && !string.IsNullOrEmpty(Request.QueryString["action"]) && !string.IsNullOrEmpty(Request.QueryString["selectedtab"]))
+            if (!string.IsNullOrEmpty(Request.QueryString["requestid"]) && !string.IsNullOrEmpty(Request.QueryString["action"]) && !string.IsNullOrEmpty(Request.QueryString["applicationType"]))
             {
                 requestId = int.Parse(Request.QueryString["requestid"]);
                 action = int.Parse(Request.QueryString["action"]);
-                selectedtab = int.Parse(Request.QueryString["selectedtab"]);
+                applicationType = Request.QueryString["applicationType"];
                 LeaveRequestMaster = BLL.Leave.GetRequestMasterByRequestID(requestId);
                 LeaveRequestDetails = BLL.Leave.GetExtendLeaveDetailsByReuestID(requestId);
                 if (LeaveRequestMaster.workinfoID != null)
@@ -52,19 +52,42 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
-            if (action == 0)
-            {
-                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().application_detailback, BLL.MultiLanguageHelper.GetLanguagePacket().application_detailcurrent, "~/pages/myapplications.aspx?selectedtab="+selectedtab);
-            }
-            else
-            {
-                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().application_detailback, BLL.MultiLanguageHelper.GetLanguagePacket().application_detailcurrent, "~/pages/approval.aspx?selectedtab=" + selectedtab);
-            }
+            SetupNavigation();
             setupMainInfo();
             setupLeaveList();
             setupAttendance(requestId);
             SetupButtons();
             SetupMultiLanguage();
+        }
+
+        private void SetupNavigation()
+        {
+            string backTtile = "";
+            string currentTitle = "";
+            string backUrl = "";
+
+            currentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().application_detailcurrent;
+            if (applicationType == "0")
+            {
+                backTtile = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_wait_back;
+            }
+            else if (applicationType == "1")
+            {
+                backTtile = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_approved_back;
+            }
+            else
+            {
+                backTtile = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_reject_back;
+            }
+            if (action == 0)
+            {
+                backUrl = "~/pages/myapplications.aspx?applicationType=" + applicationType;
+            }
+            else
+            {
+                backUrl = "~/pages/approval.aspx?applicationType=" + applicationType;
+            }
+                    ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, backTtile, currentTitle, backUrl);
         }
 
         private void setupAttendance(int rqid)

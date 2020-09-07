@@ -9,15 +9,18 @@ namespace WEBUI.Pages
 {
     public partial class myapplications : BLL.CustomLoginTemplate
     {
-        private readonly string css_select = "btnBox btnBlueBoxSelect";
-        private readonly string css_unselect = "btnBox btnBlueBoxUnSelect";
-
-
+        private string applicationType = "0";
         protected override void InitPage_OnEachLoadBeforeF5_1()
         {
+            if (!string.IsNullOrEmpty(Request.QueryString["applicationType"]))
+            {
+                applicationType = Request.QueryString["applicationType"];
+            }
+            else
+            {
+                Response.Redirect("Main.aspx");
+            }
         }
-
-
 
         protected override void PageLoad_ResetUIOnEachLoad5()
         {
@@ -25,9 +28,6 @@ namespace WEBUI.Pages
 
         protected override void InitPage_OnFirstLoad2()
         {
-            this.btn_approved.CssClass = css_unselect;
-            this.btn_wait.CssClass = css_select;
-            this.btn_rejectWith.CssClass = css_unselect;
         }
 
         protected override void PageLoad_ResetUIOnEachLoad3()
@@ -36,48 +36,42 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().application_back, BLL.MultiLanguageHelper.GetLanguagePacket().application_current, "~/pages/main.aspx");
+            SetupNavinigation();
             SetupMultiLanguage();
-            ResetSelectTab();
-            this.repeater_myapplications.DataSource = GetDatasource( getStatus(), loginer.userInfo.id, this.tb_date.Text, loginer.userInfo.personid);
+
+            this.repeater_myapplications.DataSource = GetDatasource(getStatus(), loginer.userInfo.id, this.tb_date.Text, loginer.userInfo.personid);
             this.repeater_myapplications.DataBind();
         }
 
-        private void ResetSelectTab()
+        private void SetupNavinigation()
         {
-            if (!string.IsNullOrEmpty(Request.QueryString["selectedtab"]))
+            string CurrentTitle = "";
+            if (applicationType == "0")
             {
-                int selecttab = int.Parse(Request.QueryString["selectedtab"]);
-                if (selecttab == (int)BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval)
-                {
-                    btn_wait_Click(null, null);
-                }
-                else if (selecttab == (int)BLL.GlobalVariate.LeaveBigRangeStatus.approvaled)
-                {
-                    btn_approved_Click(null, null);
-                }
-                else
-                {
-                    btn_rejectWith_Click(null, null);
-                }
+                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().application_List_waitCurrent;
             }
-        }
+            else if (applicationType == "1")
+            {
+                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().application_List_approvedCurrent;
+            }
+            else
+            {
+                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().application_List_rejectCurrent;
+            }
 
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().application_List_wait_apporved_reject_Back, CurrentTitle, "~/pages/myapplicationMain.aspx");
+        }
 
         private void SetupMultiLanguage()
         {
-            this.btn_approved.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_approved;
-            this.btn_rejectWith.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_rejected;
-            this.btn_wait.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_wait;
+
             this.ltdatefrom.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_datefrom;
         }
 
 
         protected void btn_wait_Click(object sender, EventArgs e)
         {
-            this.btn_approved.CssClass = css_unselect;
-            this.btn_wait.CssClass = css_select;
-            this.btn_rejectWith.CssClass = css_unselect;
+
             this.repeater_myapplications.DataSource = GetDatasource(getStatus(), loginer.userInfo.id, this.tb_date.Text, loginer.userInfo.personid);
             this.repeater_myapplications.DataBind();
         }
@@ -85,9 +79,7 @@ namespace WEBUI.Pages
 
         protected void btn_approved_Click(object sender, EventArgs e)
         {
-            this.btn_approved.CssClass = css_select;
-            this.btn_wait.CssClass = css_unselect;
-            this.btn_rejectWith.CssClass = css_unselect;
+
 
 
             this.repeater_myapplications.DataSource = GetDatasource( getStatus(), loginer.userInfo.id, this.tb_date.Text,  loginer.userInfo.personid);
@@ -96,9 +88,7 @@ namespace WEBUI.Pages
 
         protected void btn_rejectWith_Click(object sender, EventArgs e)
         {
-            this.btn_approved.CssClass = css_unselect;
-            this.btn_wait.CssClass = css_unselect;
-            this.btn_rejectWith.CssClass = css_select;
+
 
             this.repeater_myapplications.DataSource = GetDatasource( getStatus(), loginer.userInfo.id, this.tb_date.Text,  loginer.userInfo.personid);
             this.repeater_myapplications.DataBind();
@@ -108,7 +98,7 @@ namespace WEBUI.Pages
         {
             LinkButton link = (LinkButton)sender;
             string requestid = link.CommandArgument;
-            Response.Redirect("~/Pages/myDetail.aspx?action=0&selectedtab="+(int)getStatus()+"&requestid=" + requestid, true);
+            Response.Redirect("~/Pages/myDetail.aspx?applicationType="+applicationType+"&action=0&requestid=" + requestid, true);
         }
 
         protected void tb_date_TextChanged1(object sender, EventArgs e)
@@ -121,11 +111,11 @@ namespace WEBUI.Pages
         private BLL.GlobalVariate.LeaveBigRangeStatus getStatus()
         {
             BLL.GlobalVariate.LeaveBigRangeStatus result = BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval;
-            if (this.btn_approved.CssClass == css_select)
+            if (applicationType=="0")
             {
                 result = BLL.GlobalVariate.LeaveBigRangeStatus.approvaled;
             }
-            else if (this.btn_wait.CssClass == css_select)
+            else if (applicationType == "1")
             {
                 result = BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval;
             }

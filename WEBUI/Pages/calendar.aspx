@@ -15,7 +15,7 @@
         <div class="col-xs-4"><asp:Image ID="Image1" runat="server" ImageUrl="~/Res/images/square.png" BackColor="Black" />&nbsp;<asp:Literal ID="lt_approval" runat="server">approval</asp:Literal></div>
         <div class="col-xs-8"><asp:Image ID="Image2" runat="server" ImageUrl="~/Res/images/square.png" BackColor="#f3e926" />&nbsp;<asp:Literal ID="lt_wait" runat="server">wait for approval</asp:Literal></div>
 
-        <div class="col-xs-12 lss-color-blue" style=" font-weight:bold; font-size:18px;margin-top:15px"><asp:Label ID="Label1" runat="server" Text="lb_date">2020-01-01</asp:Label></div>
+        <div class="col-xs-12 lss-color-blue" style=" font-weight:bold; font-size:18px;margin-top:15px"><asp:Label ID="Label1" runat="server" Text="lb_date">2020-04-07</asp:Label></div>
         <div class="col-xs-12" id="leaveDiv" runat="server" visible="true">
             <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
                 <tr><td class="col-xs-2"><asp:Literal ID="lt_name" runat="server">Name</asp:Literal></td><td class="col-xs-2"><asp:Literal ID="lt_type" runat="server">Section</asp:Literal></td><td class="col-xs-2"><asp:Literal ID="lt_section" runat="server">Type</asp:Literal></td><td class="col-xs-5"><asp:Literal ID="lt_status" runat="server">Status</asp:Literal></td></tr>
@@ -25,7 +25,7 @@
                     <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                         <ItemTemplate>
                             <tr>
-                                <td class="col-xs-2"><%# ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).EmploymentID %></td>
+                                <td class="col-xs-2">Wong chi man</td>
                                 <td class="col-xs-2"><%# BLL.workflow.GetWorkFlowTypeName( ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).WorkflowTypeID) %></td>
                                 <td class="col-xs-2"><%# BLL.GlobalVariate.sections[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %></td>
                                 <td class="col-xs-5"><%# ((BLL.GlobalVariate.ApprovalRequestStatus)(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).masterStatus)).ToString() %></td>

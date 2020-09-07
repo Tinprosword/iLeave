@@ -39,6 +39,7 @@ namespace WEBUI.Pages
         protected override void PageLoad_ResetUIOnEachLoad3()
         {
             //1.intercept calendar 事件，以代替默认的changed事件（因为要捕捉cancel cell事件,而默认的不捕捉cancel事件）
+            
             if (this.cb_leave.Checked)
             {
                 RegisterCellColorEvent();
@@ -156,7 +157,7 @@ namespace WEBUI.Pages
         {
             if (isFromApply)
             {
-                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_button, BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_current, "~/pages/apply.aspx?action=backCalendar");
+                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_calendar_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_calendar_current, "~/pages/apply.aspx?action=backCalendar");
             }
             else
             {
@@ -276,6 +277,7 @@ namespace WEBUI.Pages
         protected void Calendar1_SelectionChanged(Calendar calendar, DateTime date)
         {
             //1.set changedDate  2.show related request  3.save date to viewstate.
+            this.Label1.Text = date.ToString("yyyy-MM-dd");
             calendar.SelectedDate = date;
             SetupRepeater();
             if (Request.QueryString["action"] != null && Request.QueryString["action"] == "apply")

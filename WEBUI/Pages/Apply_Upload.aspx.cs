@@ -45,8 +45,7 @@ namespace WEBUI.Pages
                 Response.Redirect("~/pages/apply.aspx", true);
             }
 
-
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "&lt;Apply", "Attachment", "~/pages/Apply.aspx?action=back");
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_upload_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_upload_current, "~/pages/Apply.aspx?action=back");
 
             MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, ViewState);
             this.repeater_attandance.DataSource = applyPage.uploadpic;

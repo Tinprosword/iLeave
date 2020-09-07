@@ -10,7 +10,7 @@
     <script src="Res/App/autoScale.js?lasttime=<%=BLL.GlobalVariate.autoscalejsLastmodify %>"></script>
     <title></title>
 </head>
-<body style="background-color:#002050">
+<body style="background-color:#588da7">
     <form id="form1" runat="server">
         <div style="height:300px"> </div>
         <div class="col-xs-12" style="text-align:center;color:white; font-size:30px;font-weight:300">Sign in</div>
@@ -18,7 +18,7 @@
             <asp:TextBox ID="tb_Address" runat="server" Width="80%" Height="30px" Font-Size="15px" style="padding-top:4px">192.168.19.210:8091</asp:TextBox>
         </div>
         <div class="col-xs-12" style="text-align:center; padding-top:10px;">
-            <asp:Button ID="Button1" runat="server" Text="Connect" Height="45px" Width="60%" Font-Size="Larger" BackColor="#002050" ForeColor="white" BorderColor="White" OnClick="Button1_Click" />
+            <asp:Button ID="Button1" runat="server" Text="Connect" Height="45px" Width="60%" Font-Size="Larger" BackColor="#588da7" ForeColor="white" BorderColor="White" OnClick="Button1_Click" />
         </div>
     </form>
     <script src="Res/jquery/jquery.min.js"></script>

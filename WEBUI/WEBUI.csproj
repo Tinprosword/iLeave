@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pages\approvalMain.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
     <Content Include="MobilLogin.aspx" />
@@ -77,6 +78,7 @@
     <Content Include="Pages\calendar.aspx" />
     <Content Include="Pages\Demo.html" />
     <Content Include="Pages\Main.aspx" />
+    <Content Include="Pages\MyApplicationMain.aspx" />
     <Content Include="Pages\myapplications.aspx" />
     <Content Include="Pages\myDetail.aspx" />
     <Content Include="Pages\Setting.aspx" />
@@ -138,6 +140,13 @@
     <Content Include="webservices\webservices.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\approvalMain.aspx.cs">
+      <DependentUpon>approvalMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\approvalMain.aspx.designer.cs">
+      <DependentUpon>approvalMain.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\leave.Master.cs">
       <DependentUpon>leave.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -196,6 +205,13 @@
     </Compile>
     <Compile Include="Pages\Main.aspx.designer.cs">
       <DependentUpon>Main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MyApplicationMain.aspx.cs">
+      <DependentUpon>MyApplicationMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\MyApplicationMain.aspx.designer.cs">
+      <DependentUpon>MyApplicationMain.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\myapplications.aspx.cs">
       <DependentUpon>myapplications.aspx</DependentUpon>

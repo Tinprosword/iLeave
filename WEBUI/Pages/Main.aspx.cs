@@ -50,12 +50,12 @@ namespace WEBUI.Pages
 
         protected void Application_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/pages/myapplications.aspx");
+            Response.Redirect("~/pages/myapplicationmain.aspx");
         }
 
         protected void Approval_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/pages/approval.aspx");
+            Response.Redirect("~/pages/approvalmain.aspx");
         }
 
         protected void Canlendar_Click(object sender, EventArgs e)

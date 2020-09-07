@@ -7,72 +7,63 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace WEBUI.Pages {
+namespace WEBUI {
     
     
-    public partial class approval {
+    public partial class approvalMain {
         
         /// <summary>
-        /// Literal1 控件。
+        /// apply 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Literal1;
+        protected global::System.Web.UI.WebControls.ImageButton apply;
         
         /// <summary>
-        /// tb_name 控件。
+        /// lt_applyleaveabc 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_name;
+        protected global::System.Web.UI.WebControls.LinkButton lt_applyleaveabc;
         
         /// <summary>
-        /// ltdatefrom 控件。
+        /// application 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltdatefrom;
+        protected global::System.Web.UI.WebControls.ImageButton application;
         
         /// <summary>
-        /// tb_date 控件。
+        /// lt_applicationsabc 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_date;
+        protected global::System.Web.UI.WebControls.LinkButton lt_applicationsabc;
         
         /// <summary>
-        /// lt_listdate 控件。
+        /// approval 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_listdate;
+        protected global::System.Web.UI.WebControls.ImageButton approval;
         
         /// <summary>
-        /// lt_listtype 控件。
+        /// lt_approal 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_listtype;
-        
-        /// <summary>
-        /// repeater_myapplications 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeater_myapplications;
+        protected global::System.Web.UI.WebControls.LinkButton lt_approal;
     }
 }
