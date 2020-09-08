@@ -25,5 +25,15 @@ namespace WEBUI.Controls
             this.linkNavigation.PostBackUrl = url;
         }
 
+        public string GetMyPostBackArgumentByTargetname(string targetName)
+        {
+            string result = null;
+            if (!string.IsNullOrEmpty(Request.Form["mypostback_target"]) && Request.Form["mypostback_target"] == targetName)
+            {
+                result = Request.Form["mypostback_argument"];
+            }
+            return result;
+        }
+
     }
 }

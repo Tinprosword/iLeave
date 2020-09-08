@@ -9,6 +9,8 @@ namespace BLL
 {
     public class common
     {
+        private static LSLibrary.LogUtil logUtil = new LSLibrary.LogUtil( GlobalVariate.pageServer.MapPath("mylog.txt"));
+
         public static bool IsImagge(string filename)
         {
             string type = filename.Remove(0, filename.IndexOf('.') + 1);
@@ -33,6 +35,11 @@ namespace BLL
                 }
             }
             return res;
+        }
+
+        public static void WriteLog(System.Diagnostics.StackFrame sf , string log)
+        {
+            logUtil.WriteLog(log, sf);
         }
     }
 }

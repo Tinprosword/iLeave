@@ -359,6 +359,80 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="t_Leave" nillable="true" type="tns:t_Leave" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetContractByEmployids">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="eids" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetContractByEmployidsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetContractByEmployidsResult" type="tns:ArrayOfEmployment_Contract" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEmployment_Contract">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Employment_Contract" nillable="true" type="tns:Employment_Contract" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Employment_Contract">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="employmentid" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="contractid" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="zonecode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isAssociate" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRoster">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="employmentID" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRosterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRosterResult" type="tns:ArrayOfV_System_Calendar" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfV_System_Calendar">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_Calendar" nillable="true" type="tns:v_System_Calendar" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="v_System_Calendar">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FirstEmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContractID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZoneCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EnglishName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Chinese" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DispayName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShiftCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Time" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RemarkCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subteam" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RemarkList" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Program" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetAllLeaveTypeByStaffID">
         <s:complexType>
           <s:sequence>
@@ -398,11 +472,6 @@
           <s:element minOccurs="0" maxOccurs="1" name="CompletedRatio" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="IsMessageList" type="s:boolean" />
           <s:element minOccurs="0" maxOccurs="1" name="ErrorMessageList" type="tns:ArrayOfErrorMessageItem" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfInt">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ArrayOfErrorMessageItem">
@@ -649,6 +718,7 @@
       </s:complexType>
       <s:complexType name="LeaveRequestDetail">
         <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="displayname" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="LeaveID" type="s:int" />
@@ -866,75 +936,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetContractByEmployids">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="eids" type="tns:ArrayOfInt" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetContractByEmployidsResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetContractByEmployidsResult" type="tns:ArrayOfEmployment_Contract" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfEmployment_Contract">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Employment_Contract" nillable="true" type="tns:Employment_Contract" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Employment_Contract">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="employmentid" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="contractid" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="zonecode" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="isAssociate" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetRoster">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
-            <s:element minOccurs="0" maxOccurs="1" name="employmentID" type="tns:ArrayOfInt" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetRosterResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetRosterResult" type="tns:ArrayOfV_System_Calendar" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfV_System_Calendar">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_Calendar" nillable="true" type="tns:v_System_Calendar" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="v_System_Calendar">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="FirstEmploymentID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ContractID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="ZoneCode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="EnglishName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Chinese" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="DispayName" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="ShiftCode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Time" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="RemarkCode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Subteam" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Zone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="RemarkList" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Program" type="s:string" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="ArrayOfT_WorkflowTask" nillable="true" type="tns:ArrayOfT_WorkflowTask" />
       <s:element name="int" type="s:int" />
       <s:element name="ArrayOfT_Leave" nillable="true" type="tns:ArrayOfT_Leave" />
@@ -1035,6 +1036,18 @@
   </wsdl:message>
   <wsdl:message name="Base_GetListt_LeaveSoapOut">
     <wsdl:part name="parameters" element="tns:Base_GetListt_LeaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetContractByEmployidsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetContractByEmployids" />
+  </wsdl:message>
+  <wsdl:message name="GetContractByEmployidsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetContractByEmployidsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRoster" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRosterResponse" />
   </wsdl:message>
   <wsdl:message name="GetAllLeaveTypeByStaffIDSoapIn">
     <wsdl:part name="parameters" element="tns:GetAllLeaveTypeByStaffID" />
@@ -1179,18 +1192,6 @@
   </wsdl:message>
   <wsdl:message name="Base_GetListt_WorkflowTaskSoapOut">
     <wsdl:part name="parameters" element="tns:Base_GetListt_WorkflowTaskResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetContractByEmployidsSoapIn">
-    <wsdl:part name="parameters" element="tns:GetContractByEmployids" />
-  </wsdl:message>
-  <wsdl:message name="GetContractByEmployidsSoapOut">
-    <wsdl:part name="parameters" element="tns:GetContractByEmployidsResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetRosterSoapIn">
-    <wsdl:part name="parameters" element="tns:GetRoster" />
-  </wsdl:message>
-  <wsdl:message name="GetRosterSoapOut">
-    <wsdl:part name="parameters" element="tns:GetRosterResponse" />
   </wsdl:message>
   <wsdl:message name="Gett_WorkflowTaskByInfoIDHttpPostIn">
     <wsdl:part name="infoID" type="s:string" />
@@ -1373,6 +1374,14 @@
       <wsdl:input message="tns:Base_GetListt_LeaveSoapIn" />
       <wsdl:output message="tns:Base_GetListt_LeaveSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetContractByEmployids">
+      <wsdl:input message="tns:GetContractByEmployidsSoapIn" />
+      <wsdl:output message="tns:GetContractByEmployidsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoster">
+      <wsdl:input message="tns:GetRosterSoapIn" />
+      <wsdl:output message="tns:GetRosterSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetAllLeaveTypeByStaffID">
       <wsdl:input message="tns:GetAllLeaveTypeByStaffIDSoapIn" />
       <wsdl:output message="tns:GetAllLeaveTypeByStaffIDSoapOut" />
@@ -1468,14 +1477,6 @@
     <wsdl:operation name="Base_GetListt_WorkflowTask">
       <wsdl:input message="tns:Base_GetListt_WorkflowTaskSoapIn" />
       <wsdl:output message="tns:Base_GetListt_WorkflowTaskSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetContractByEmployids">
-      <wsdl:input message="tns:GetContractByEmployidsSoapIn" />
-      <wsdl:output message="tns:GetContractByEmployidsSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetRoster">
-      <wsdl:input message="tns:GetRosterSoapIn" />
-      <wsdl:output message="tns:GetRosterSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LeaveManagementV2HttpPost">
@@ -1701,6 +1702,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetContractByEmployids">
+      <soap:operation soapAction="http://tempuri.org/GetContractByEmployids" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoster">
+      <soap:operation soapAction="http://tempuri.org/GetRoster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAllLeaveTypeByStaffID">
       <soap:operation soapAction="http://tempuri.org/GetAllLeaveTypeByStaffID" style="document" />
       <wsdl:input>
@@ -1917,24 +1936,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetContractByEmployids">
-      <soap:operation soapAction="http://tempuri.org/GetContractByEmployids" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetRoster">
-      <soap:operation soapAction="http://tempuri.org/GetRoster" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LeaveManagementV2Soap12" type="tns:LeaveManagementV2Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -2066,6 +2067,24 @@
     </wsdl:operation>
     <wsdl:operation name="Base_GetListt_Leave">
       <soap12:operation soapAction="http://tempuri.org/Base_GetListt_Leave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContractByEmployids">
+      <soap12:operation soapAction="http://tempuri.org/GetContractByEmployids" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoster">
+      <soap12:operation soapAction="http://tempuri.org/GetRoster" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2282,24 +2301,6 @@
     </wsdl:operation>
     <wsdl:operation name="Base_GetListt_WorkflowTask">
       <soap12:operation soapAction="http://tempuri.org/Base_GetListt_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetContractByEmployids">
-      <soap12:operation soapAction="http://tempuri.org/GetContractByEmployids" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetRoster">
-      <soap12:operation soapAction="http://tempuri.org/GetRoster" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

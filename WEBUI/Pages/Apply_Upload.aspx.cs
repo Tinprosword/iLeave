@@ -11,9 +11,9 @@ namespace WEBUI.Pages
     {
 
         public StateBag myviewState;
-        protected override void InitPage_OnEachLoadBeforeF5_1()
+        protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
-            WEBUI.Pages.Apply prepage = PreviousPage as WEBUI.Pages.Apply;//todo 查选为什么必须放到第一行,否则会线程中止.
+            //WEBUI.Pages.Apply prepage = PreviousPage as WEBUI.Pages.Apply;//todo 查选为什么必须放到第一行,否则会线程中止.
             myviewState = ViewState;
             OnF5Doit = onf5;//回调这里的处理方式，刷新提交就重新载入吧。
         }

@@ -10,7 +10,7 @@ namespace WEBUI.Pages
     public partial class myapplications : BLL.CustomLoginTemplate
     {
         private string applicationType = "0";
-        protected override void InitPage_OnEachLoadBeforeF5_1()
+        protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
             if (!string.IsNullOrEmpty(Request.QueryString["applicationType"]))
             {
@@ -19,6 +19,12 @@ namespace WEBUI.Pages
             else
             {
                 Response.Redirect("Main.aspx");
+            }
+
+            string requestid = ((WEBUI.Controls.leave)this.Master).GetMyPostBackArgumentByTargetname("detail");
+            if (!string.IsNullOrEmpty(requestid))
+            {
+                Response.Redirect("~/Pages/myDetail.aspx?applicationType=" + applicationType + "&action=0&requestid=" + requestid, true);
             }
         }
 
@@ -94,12 +100,6 @@ namespace WEBUI.Pages
             this.repeater_myapplications.DataBind();
         }
 
-        protected void lb_Click(object sender, EventArgs e)
-        {
-            LinkButton link = (LinkButton)sender;
-            string requestid = link.CommandArgument;
-            Response.Redirect("~/Pages/myDetail.aspx?applicationType="+applicationType+"&action=0&requestid=" + requestid, true);
-        }
 
         protected void tb_date_TextChanged1(object sender, EventArgs e)
         {

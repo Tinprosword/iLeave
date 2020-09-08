@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Web;
-using System.IO;
 
 namespace BLL
 {
     public class GlobalVariate
     {
-        //ui 不要直接去 访问dal,所以在bll中,采用这种方式来映射webservice的枚举类型,也不能直接复制类型过来,违背 唯一依赖原则.这样,如果WS修改后,这里最起码会编译错误.
-        //上面是好的做法,但是微软居然有bug... 使用端的生成的enum居然默然从0开始.全然不管webservices的设定....只能采用会有隐患的复制的方法
+        #region common enum 使用端的生成的enum居然默然从0开始.全然不管webservices的设定....只能采用会有隐患的复制的方法
         public enum ApprovalRequestStatus
         {
             [System.ComponentModel.Description("SendEmail")]
@@ -62,22 +56,6 @@ namespace BLL
             EXPENSE_CLAIM = 11,
         }
 
-        //1 full day 2 ampm 3 3secton 4 houre
-        public static Dictionary<int, string> sections
-        {
-            get
-            {
-                Dictionary<int, string> temp = new Dictionary<int, string>();
-                temp.Add( 0, "Full day");
-                temp.Add( 1,"AM");
-                temp.Add( 2, "PM");
-                temp.Add( 3,"3Sections");
-                //temp.Add( 4,"Hours");
-                return temp;
-            }
-        }
-
-
         public enum WorkflowInOutTypeID
         {
             [System.ComponentModel.Description("IN")]
@@ -94,18 +72,55 @@ namespace BLL
             withdraw
         }
 
+        public string GetStateDesc(ApprovalRequestStatus status)
+        {
+            return RequestDesc[status];
+        }
 
-        //global string
+        #endregion
+
+        #region common dictionary full day 2 ampm 3 3secton 4 houre
+        public static Dictionary<int, string> sections
+        {
+            get
+            {
+                Dictionary<int, string> temp = new Dictionary<int, string>();
+                temp.Add(0, "Full day");
+                temp.Add(1, "AM");
+                temp.Add(2, "PM");
+                temp.Add(3, "3Sections");
+                //temp.Add( 4,"Hours");
+                return temp;
+            }
+        }
+
+        public static Dictionary<ApprovalRequestStatus, string> RequestDesc
+        {
+            get
+            {
+                Dictionary<ApprovalRequestStatus, string> temp = new Dictionary<ApprovalRequestStatus, string>();
+                temp.Add(ApprovalRequestStatus.WAIT_FOR_APPROVE, "Wait for approve");
+                temp.Add(ApprovalRequestStatus.APPROVE, "Approved");
+                temp.Add(ApprovalRequestStatus.REJECT, "Reject");
+                temp.Add(ApprovalRequestStatus.WAIT_FOR_CANCEL, "Wait for cancel");
+                temp.Add(ApprovalRequestStatus.CONFIRM_CANCEL, "Cancel");
+                temp.Add(ApprovalRequestStatus.CANCEL, "Withdraw");
+                temp.Add(ApprovalRequestStatus.NEW, "New");
+                temp.Add(ApprovalRequestStatus.SENDEMAIL, "SendEmail");
+
+                return temp;
+            }
+        }
+
+        #endregion
+
+        #region global string
         public static string login_error = "invalid user and password.";
         public static string path_uploadPic = "uploadPic";
-
-
-
-
-     
-
-        //用于js css文件的修改后自动重新下载.
         public static HttpServerUtility pageServer;
+        #endregion
+
+        #region global string 用于js css文件的修改后自动重新下载.
         public static string appcssLastmodify
         {
             get
@@ -170,6 +185,7 @@ namespace BLL
             }
             set { }
         }
+        #endregion
 
     }
 }

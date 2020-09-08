@@ -18,17 +18,22 @@
         <div class="col-xs-12 lss-color-blue" style=" font-weight:bold; font-size:18px;margin-top:15px"><asp:Label ID="Label1" runat="server" Text="lb_date">2020-04-07</asp:Label></div>
         <div class="col-xs-12" id="leaveDiv" runat="server" visible="true">
             <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
-                <tr><td class="col-xs-2"><asp:Literal ID="lt_name" runat="server">Name</asp:Literal></td><td class="col-xs-2"><asp:Literal ID="lt_type" runat="server">Section</asp:Literal></td><td class="col-xs-2"><asp:Literal ID="lt_section" runat="server">Type</asp:Literal></td><td class="col-xs-5"><asp:Literal ID="lt_status" runat="server">Status</asp:Literal></td></tr>
+                <tr>
+                    <td class="col-xs-3"><asp:Literal ID="lt_name" runat="server">Name</asp:Literal></td>
+                    <td class="col-xs-3"><asp:Literal ID="lt_type" runat="server">Section</asp:Literal></td>
+                    <td class="col-xs-2"><asp:Literal ID="lt_section" runat="server">Type</asp:Literal></td>
+                    <td class="col-xs-4"><asp:Literal ID="lt_status" runat="server">Status</asp:Literal></td>
+                </tr>
             </table>
             <div class="col-xs-12 lsf-clearPadding" style="height:150px; overflow:scroll;">
                 <table class="col-xs-12 lsu-table-xs">
                     <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                         <ItemTemplate>
                             <tr>
-                                <td class="col-xs-2">Wong chi man</td>
-                                <td class="col-xs-2"><%# BLL.workflow.GetWorkFlowTypeName( ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).WorkflowTypeID) %></td>
+                                <td class="col-xs-3"><%# ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).RequestID %></td>
+                                <td class="col-xs-3"><%# BLL.workflow.GetWorkFlowTypeName( ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).WorkflowTypeID) %></td>
                                 <td class="col-xs-2"><%# BLL.GlobalVariate.sections[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %></td>
-                                <td class="col-xs-5"><%# ((BLL.GlobalVariate.ApprovalRequestStatus)(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).masterStatus)).ToString() %></td>
+                                <td class="col-xs-4"><%# BLL.GlobalVariate.RequestDesc[(BLL.GlobalVariate.ApprovalRequestStatus)(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).masterStatus)] %></td>
                             </tr>
                         </ItemTemplate>
                     </asp:Repeater>
@@ -37,17 +42,21 @@
         </div>
         <div class="col-xs-12" id="rosterDiv" runat="server" visible="false">
             <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
-                <tr><td class="col-xs-2"><asp:Literal ID="lt_displayname" runat="server">DisplayName</asp:Literal></td><td class="col-xs-3"><asp:Literal ID="lt_shiftCode" runat="server">ShiftCode</asp:Literal></td><td class="col-xs-3"><asp:Literal ID="lt_time" runat="server">Time</asp:Literal></td><td class="col-xs-4"><asp:Literal ID="lt_remark" runat="server">Remark</asp:Literal></td></tr>
+                <tr><td class="col-xs-3"><asp:Literal ID="lt_displayname" runat="server">DisplayName</asp:Literal></td>
+                    <td class="col-xs-3"><asp:Literal ID="lt_shiftCode" runat="server">ShiftCode</asp:Literal></td>
+                    <td class="col-xs-3"><asp:Literal ID="lt_time" runat="server">Time</asp:Literal></td>
+                    <td class="col-xs-3"><asp:Literal ID="lt_remark" runat="server">Remark</asp:Literal></td>
+                </tr>
             </table>
             <div class="col-xs-12 lsf-clearPadding" style="height:150px; overflow:scroll;">
                 <table class="col-xs-12 lsu-table-xs">
                     <asp:Repeater ID="rp_roster" runat="server" EnableViewState="true">
                         <ItemTemplate>
                             <tr>
-                                <td class="col-xs-2"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).DispayName %></td>
+                                <td class="col-xs-3"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).DispayName %></td>
                                 <td class="col-xs-3"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).ShiftCode %></td>
                                 <td class="col-xs-3"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).Time %></td>
-                                <td class="col-xs-4"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).Remark %></td>
+                                <td class="col-xs-3"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).Remark %></td>
                             </tr>
                         </ItemTemplate>
                     </asp:Repeater>

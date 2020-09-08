@@ -11,7 +11,7 @@ namespace WEBUI.Pages
     public partial class approval : BLL.CustomLoginTemplate
     {
         private string applicationType = "0";
-        protected override void InitPage_OnEachLoadBeforeF5_1()
+        protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
             if (!string.IsNullOrEmpty(Request.QueryString["applicationType"]))
             {
@@ -21,6 +21,12 @@ namespace WEBUI.Pages
             {
                 Response.Redirect("Main.aspx");
             }
+
+            string requestid= ((WEBUI.Controls.leave)this.Master).GetMyPostBackArgumentByTargetname("detail");
+            if (!string.IsNullOrEmpty(requestid) )
+            {
+                Response.Redirect("~/Pages/myDetail.aspx?applicationType=" + applicationType + "&action=1&requestid=" + requestid, true);
+            }
         }
 
         protected override void InitPage_OnFirstLoad2()
@@ -29,7 +35,6 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_ResetUIOnEachLoad3()
         {
-            
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
@@ -37,7 +42,7 @@ namespace WEBUI.Pages
             SetupNavinigation();
             SetupMultiLanguage();
             this.tb_date.Text = System.DateTime.Now.ToString("yyyy-MM-01");
-            this.repeater_myapplications.DataSource = GetDatasource(getStatus(), loginer.userInfo.id, this.tb_date.Text);
+            this.repeater_myapplications.DataSource = GetDatasource(getStatus(), loginer.userInfo.id, this.tb_date.Text, this.tb_name.Text.Trim());
             this.repeater_myapplications.DataBind();
         }
 
@@ -62,21 +67,19 @@ namespace WEBUI.Pages
 
 
         private void SetupMultiLanguage()
-        {
-        }
+        {}
 
         protected override void PageLoad_ResetUIOnEachLoad5()
-        {
-        }
+        {}
 
-        private List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetDatasource(GlobalVariate.LeaveBigRangeStatus leaveBigRangeStatus,int approverUid,string datestrFrom)
+        private List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetDatasource(GlobalVariate.LeaveBigRangeStatus leaveBigRangeStatus,int approverUid,string datestrFrom,string userName)
         {
             DateTime? dateFrom = null;
             if (!string.IsNullOrEmpty(datestrFrom))
             {
                 dateFrom = DateTime.Parse(datestrFrom);
             }
-            return BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, leaveBigRangeStatus, dateFrom, "");
+            return BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, leaveBigRangeStatus, dateFrom, userName);
         }
 
         private BLL.GlobalVariate.LeaveBigRangeStatus getStatus()
@@ -98,37 +101,16 @@ namespace WEBUI.Pages
             return result;
         }
 
-        protected void btn_wait_Click(object sender, EventArgs e)
-        {
-            this.repeater_myapplications.DataSource = GetDatasource(getStatus(), loginer.userInfo.id,this.tb_date.Text);
-            this.repeater_myapplications.DataBind();
-        }
-
-        protected void btn_approved_Click(object sender, EventArgs e)
-        {
-            this.repeater_myapplications.DataSource = GetDatasource(getStatus(), loginer.userInfo.id, this.tb_date.Text);
-            this.repeater_myapplications.DataBind();
-        }
-
-        protected void btn_rejectWith_Click(object sender, EventArgs e)
-        {
-            this.repeater_myapplications.DataSource = GetDatasource(getStatus(), loginer.userInfo.id, this.tb_date.Text);
-            this.repeater_myapplications.DataBind();
-        }
-
         protected void tb_date_TextChanged(object sender, EventArgs e)
         {
-            this.repeater_myapplications.DataSource = GetDatasource(getStatus(), loginer.userInfo.id, this.tb_date.Text);
+            this.repeater_myapplications.DataSource = GetDatasource(getStatus(), loginer.userInfo.id, this.tb_date.Text,this.tb_name.Text.Trim());
             this.repeater_myapplications.DataBind();
         }
 
-        protected void lb_Click(object sender, EventArgs e)
+        protected void tb_name_TextChanged(object sender, EventArgs e)
         {
-            LinkButton link = (LinkButton)sender;
-            string requestid = link.CommandArgument;
-
-            Response.Redirect("~/Pages/myDetail.aspx?applicationType="+applicationType+"&action=1&requestid=" + requestid, true);
+            this.repeater_myapplications.DataSource = GetDatasource(getStatus(), loginer.userInfo.id, this.tb_date.Text, this.tb_name.Text.Trim());
+            this.repeater_myapplications.DataBind();
         }
-
     }
 }

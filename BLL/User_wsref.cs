@@ -60,6 +60,12 @@ namespace BLL
         }
 
 
+        public static void Onf5()
+        {
+            HttpContext.Current.Response.Redirect("~/login.aspx");
+        }
+
+
         public static WebServiceLayer.WebReference_user.t_Person GerPersonByuid(int uid)
         {
             WebServiceLayer.WebReference_user.t_Person result = null;

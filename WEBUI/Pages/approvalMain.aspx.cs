@@ -9,7 +9,7 @@ namespace WEBUI
 {
     public partial class approvalMain :BLL.CustomLoginTemplate
     {
-        protected override void InitPage_OnEachLoadBeforeF5_1()
+        protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         { }
 
         protected override void InitPage_OnFirstLoad2()

@@ -14,8 +14,8 @@ namespace BLL
             get
             {
                 Dictionary<int, string> names = new Dictionary<int, string>();
-                names.Add(0, "Application");
-                names.Add(10, "Cancel");
+                names.Add(0, "Apply leave");
+                names.Add(10, "Cancel leave");
                 return names;
             }
         }

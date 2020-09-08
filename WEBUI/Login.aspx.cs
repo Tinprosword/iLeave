@@ -9,7 +9,13 @@ namespace WEBUI
 {
     public partial class Login : LSLibrary.WebAPP.PageTemplate_Common
     {
-        protected override void InitPage_OnEachLoadBeforeF5_1()
+
+        protected override void InitPage_OnBeforeF5RegisterEvent()
+        {
+            BLL.common.WriteLog(new System.Diagnostics.StackFrame(true), "hi");
+        }
+
+        protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
             BLL.Page.MyCookie myCookie = BLL.Page.MyCookieManage.GetCookie();
             if (myCookie == null || myCookie.serverAddress == "")

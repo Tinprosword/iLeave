@@ -9,8 +9,13 @@ namespace BLL
     public abstract class CustomLoginTemplate : LSLibrary.WebAPP.PageTemplate_logined
     {
         public LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> loginer;
-        
-        protected override void InitPageVaralbal0_sessionout()
+
+        protected override void InitPage_OnBeforeF5RegisterEvent()
+        {
+            OnF5Doit = BLL.User_wsref.Onf5;
+        }
+
+        protected override void InitPageVaralbal0_OnsessionoutRegisterEvent()
         {
             LSLibrary.WebAPP.LoginManager.OnSessionTimeOutHandler = BLL.User_wsref.GoBackToLogin;
         }

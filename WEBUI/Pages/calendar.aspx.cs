@@ -21,9 +21,9 @@ namespace WEBUI.Pages
         private Dictionary<DateTime, int> allStatistic = null;
 
         #region pageevent
-        protected override void InitPage_OnEachLoadBeforeF5_1()
+        protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
-            WEBUI.Pages.Apply prepage = PreviousPage as WEBUI.Pages.Apply;
+            //WEBUI.Pages.Apply prepage = PreviousPage as WEBUI.Pages.Apply;
             myviewState = ViewState;
 
             if (Request.QueryString["action"] != null && Request.QueryString["action"] == "apply")
@@ -38,8 +38,10 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_ResetUIOnEachLoad3()
         {
+            WEBUI.Pages.Apply prepage = PreviousPage as WEBUI.Pages.Apply;
+
             //1.intercept calendar 事件，以代替默认的changed事件（因为要捕捉cancel cell事件,而默认的不捕捉cancel事件）
-            
+
             if (this.cb_leave.Checked)
             {
                 RegisterCellColorEvent();

@@ -196,6 +196,7 @@ namespace BLL
             {
                 result = result.Where(x => x.leavefrom >= from).ToList();
             }
+            result=result.OrderByDescending(x => x.leavefrom).ToList();
             return result;
         }
 
@@ -216,15 +217,18 @@ namespace BLL
                 {
                     result = result.Where(x =>  (x.WorkflowTypeID == 0 && x.Status == (byte)GlobalVariate.ApprovalRequestStatus.REJECT) || (x.WorkflowTypeID == 10 && x.Status == (byte)GlobalVariate.ApprovalRequestStatus.REJECT)).ToList();
                 }
-
                 if (from != null)
                 {
                     result = result.Where(x => x.leavefrom >= from).ToList();
                 }
+                if (!string.IsNullOrEmpty(name))
+                {
+                    result = result.Where(x => x.uname.ToUpper().Contains(name.ToUpper())).ToList();
+                }
+                result = result.OrderByDescending(x => x.leavefrom).ToList();
             }
             return result;
         }
-
 
 
         public static WebServiceLayer.WebReference_leave.LeaveRequestMaster GetRequestMasterByRequestID(int requestid)

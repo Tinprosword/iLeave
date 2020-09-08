@@ -17,7 +17,7 @@ namespace WEBUI.Pages
         private WebServiceLayer.WebReference_leave.t_WorkflowInfo RelatedWorkInfo;
         private List<WebServiceLayer.WebReference_leave.t_WorkflowTask> RelatedWorkDetails;
         
-        protected override void InitPage_OnEachLoadBeforeF5_1()
+        protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
             if (!string.IsNullOrEmpty(Request.QueryString["requestid"]) && !string.IsNullOrEmpty(Request.QueryString["action"]) && !string.IsNullOrEmpty(Request.QueryString["applicationType"]))
             {
@@ -87,7 +87,7 @@ namespace WEBUI.Pages
             {
                 backUrl = "~/pages/approval.aspx?applicationType=" + applicationType;
             }
-                    ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, backTtile, currentTitle, backUrl);
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, backTtile, currentTitle, backUrl);
         }
 
         private void setupAttendance(int rqid)
@@ -115,7 +115,7 @@ namespace WEBUI.Pages
             {
                 this.lb_name.Text = LeaveRequestMaster.uname;
                 this.lb_leave.Text = LeaveRequestMaster.minleaveCode;
-                this.lb_status.Text = ((BLL.GlobalVariate.ApprovalRequestStatus)(LeaveRequestMaster.Status)).ToString();
+                this.lb_status.Text = BLL.GlobalVariate.RequestDesc[(BLL.GlobalVariate.ApprovalRequestStatus)(int)LeaveRequestMaster.Status];
                 this.lb_from.Text = LeaveRequestMaster.leavefrom.ToString("yyyy-MM-dd");
                 this.lb_to.Text = LeaveRequestMaster.leaveto.ToString("yyyy-MM-dd");
                 this.lb_remark.Text = LeaveRequestMaster.remarks;

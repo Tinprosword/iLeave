@@ -7,19 +7,16 @@ namespace WEBUI.Pages
 {
     public partial class Apply : BLL.CustomLoginTemplate
     {
-        //todo bug: delete item will clean session.?
-
-        //todo 查下为什么必须放到第一行,否则会线程中止.
         //todo page:change staff and member.
         //todo how to get balance ?
-
         //todo calendar 没有包含所有情况
         //todo page页面的多层继承写的不错，可以总结下了。
-        //todo > replace by click line.
+
+
         //todo bug:some time click 无反应? js refresh?
         //todo 需要download 附件.
         //todo more than one sequance when approval??
-        //todo filter by username in approval page.
+
         //todo request status' desctiption 
         //todo check mobil.
         //todo employment hours
@@ -33,10 +30,9 @@ namespace WEBUI.Pages
 
 
         #region [page event]
-        protected override void InitPage_OnEachLoadBeforeF5_1()
+        protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
-            Apply_Upload prepage = PreviousPage as Apply_Upload;
-            this.OnF5Doit = () => { Response.Redirect("~/pages/apply.aspx"); };
+            //Apply_Upload prepage = PreviousPage as Apply_Upload;
 
             myviewState = ViewState;
 
@@ -183,7 +179,8 @@ namespace WEBUI.Pages
             else
             {
                 SavePageDataToViewState(false, false, false, null, null, null);
-                Server.Transfer("~/Pages/calendar.aspx?action=apply", false);
+
+                //Server.Transfer("~/Pages/calendar.aspx?action=apply", false);
             }
         }
 

@@ -9,7 +9,7 @@ namespace WEBUI.Pages
 {
     public partial class Setting : BLL.CustomLoginTemplate
     {
-        protected override void InitPage_OnEachLoadBeforeF5_1()
+        protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
         }
 
