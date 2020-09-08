@@ -6,7 +6,7 @@
     <link href="../Res/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../Res/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
     <link href="../Res/App/appcss.css" rel="stylesheet" id="appcss" runat="server"/>
-    <script src="../Res/App/autoScale.js?lasttime"></script>
+    <script src="../Res/App/autoScale.js?lasttime=<%=BLL.GlobalVariate.autoscalejsLastmodify %>"></script>
     <title></title>
 </head>
 <body>

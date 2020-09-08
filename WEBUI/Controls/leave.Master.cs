@@ -17,12 +17,19 @@ namespace WEBUI.Controls
                 this.appcss.Href += "?lastmodify=" + BLL.GlobalVariate.appcssLastmodify;
             }
         }
-        public void SetupNaviagtion(bool isVisitable,string backLink,string title,string url)
+        public void SetupNaviagtion(bool isVisitable,string backLink,string title,string url, EventHandler ClickEvent=null)
         {
             this.Navigation.Visible = isVisitable;
             this.lable_navigation.Text = backLink;
             this.label_title.Text = title;
-            this.linkNavigation.PostBackUrl = url;
+            if (string.IsNullOrEmpty(url))
+            {
+                this.linkNavigation.Click += ClickEvent;
+            }
+            else
+            {
+                this.linkNavigation.PostBackUrl = url;
+            }
         }
 
         public string GetMyPostBackArgumentByTargetname(string targetName)

@@ -16,16 +16,12 @@ namespace WEBUI.Pages
     {
         private readonly string css_select = "btnBox btnBlueBoxSelect";
         private readonly string css_unselect = "btnBox btnBlueBoxUnSelect";
-        public StateBag myviewState;
         private bool isFromApply = false;
         private Dictionary<DateTime, int> allStatistic = null;
 
         #region pageevent
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
-            //WEBUI.Pages.Apply prepage = PreviousPage as WEBUI.Pages.Apply;
-            myviewState = ViewState;
-
             if (Request.QueryString["action"] != null && Request.QueryString["action"] == "apply")
             {
                 isFromApply = true;
@@ -59,7 +55,7 @@ namespace WEBUI.Pages
             this.Calendar1.SelectedDate = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day);
             this.Calendar1.VisibleDate = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day);
 
-            setNavigation();
+            
             OnPrePageIsApplyInitViewState();
             SetupZone(loginer.userInfo.personid);
             SetupRepeater();
@@ -67,7 +63,9 @@ namespace WEBUI.Pages
         }
 
         protected override void PageLoad_ResetUIOnEachLoad5()
-        {}
+        {
+            setNavigation();//todo 因为viewstate无法保存event .所以只好放到这里来。所以不喜欢asp.net 模拟cs，但是又不能完全模拟，太恶心了.
+        }
 
         #region inner function
         private void SetupRepeater()
@@ -159,12 +157,19 @@ namespace WEBUI.Pages
         {
             if (isFromApply)
             {
-                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_calendar_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_calendar_current, "~/pages/apply.aspx?action=backCalendar");
+                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_calendar_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_calendar_current,null, BackEvent);
             }
             else
             {
                 ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_back, BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_current, "~/pages/main.aspx");
             }
+        }
+
+        private void BackEvent(object sender, EventArgs e)
+        {
+            object myViewState = LSLibrary.WebAPP.ViewStateHelper.GetValue(WEBUI.Pages.Apply.ViewState_PageName, this.ViewState);
+            LSLibrary.WebAPP.PageSessionHelper.SetValue(myViewState, BLL.GlobalVariate.Session_CanlendarToApply);
+            Response.Redirect("~/pages/Apply.aspx?action=backCalendar", true);
         }
 
         private void SetupZone(int pid)
@@ -189,11 +194,10 @@ namespace WEBUI.Pages
         {
             if (isFromApply)
             {
-                WEBUI.Pages.Apply prepage = PreviousPage as WEBUI.Pages.Apply;
-                if (prepage != null)
+                object PreViewstate = LSLibrary.WebAPP.PageSessionHelper.GetValueAndCleanSoon(BLL.GlobalVariate.Session_ApplyToCanlendar);
+                if (PreViewstate != null)
                 {
-                    MODEL.Apply.ViewState_page applyPage2 = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, prepage.myviewState);
-                    LSLibrary.WebAPP.ViewStateHelper.SetValue( Apply.ViewState_PageName, applyPage2, ViewState);
+                    LSLibrary.WebAPP.ViewStateHelper.SetValue( Apply.ViewState_PageName, PreViewstate, ViewState);
                 }
                 else
                 {

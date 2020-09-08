@@ -21,21 +21,18 @@ namespace WEBUI.Pages
         //todo check mobil.
         //todo employment hours
         //todo login setting first. save password and uid.
+        //todo use viewstate and use sesssion for transfer viewstate. and don't use linkbutton. 让模型更简单,因为transfer 如果需要prePage,会重新创建对象，增加模型复杂度。所以放弃server.transfer. and postbackurl.
 
 
         //todo 1.login.   2.icon
         public static string ViewState_PageName = "PageView";
-        public StateBag myviewState;
+
         public List<LSLibrary.WebAPP.ValueText<int>> RPITEM_LeaveListSections;
 
 
         #region [page event]
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
-            //Apply_Upload prepage = PreviousPage as Apply_Upload;
-
-            myviewState = ViewState;
-
             if (!loginer.userInfo.hasValidEmploynumber())
             {
                 Response.Clear();
@@ -64,25 +61,17 @@ namespace WEBUI.Pages
         {
             if (Request.QueryString["action"] != null && (Request.QueryString["action"] == "back" || Request.QueryString["action"] == "backCalendar"))
             {
-                //1.get prepage's viewstate 2.set viewstate
-                MODEL.Apply.ViewState_page viewState_Page = null;
+                //1.get prepage's viewstate 2.set viewstate 3.loadUi.
+                object preViewState = null;
                 if (Request.QueryString["action"] == "back")
                 {
-                    Apply_Upload prepage = PreviousPage as Apply_Upload;
-                    if (prepage != null)
-                    {
-                        viewState_Page = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, prepage.myviewState);
-                    }
+                    preViewState = LSLibrary.WebAPP.PageSessionHelper.GetValueAndCleanSoon(BLL.GlobalVariate.Session_UploadToApply);
                 }
                 else if (Request.QueryString["action"] == "backCalendar")
                 {
-                    Pages.calendar prepage = PreviousPage as Pages.calendar;
-                    if (prepage != null)
-                    {
-                        viewState_Page = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, prepage.myviewState);
-                    }
+                    preViewState = LSLibrary.WebAPP.PageSessionHelper.GetValueAndCleanSoon(BLL.GlobalVariate.Session_CanlendarToApply);
                 }
-                LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, viewState_Page, ViewState);
+                LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, preViewState, ViewState);
                 MODEL.Apply.ViewState_page applypage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, this.ViewState);
                 LoadUI(applypage.leavetype, applypage.LeaveTypeSelectValue, applypage.applylabel, applypage.balancelabel, applypage.ddlsectionSelectvalue, applypage.remarks, applypage.LeaveList);
             }
@@ -162,15 +151,17 @@ namespace WEBUI.Pages
         #endregion
 
         #region [module] on click upload pic
-        protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
+        protected void Upload_Click(object sender, ImageClickEventArgs e)
         {
             //save viewstate' other data
             SavePageDataToViewState(false, false, false, null, null, null);
+            LSLibrary.WebAPP.PageSessionHelper.SetValue(this.ViewState[ViewState_PageName], BLL.GlobalVariate.Session_ApplyToUpload);
+            Response.Redirect("~/Pages/Apply_Upload.aspx",true);
         }
         #endregion
 
         #region [module] leave
-        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        protected void Canlendar_Click(object sender, ImageClickEventArgs e)
         {
             if (int.Parse(ddl_leavetype.SelectedValue)<=0)
             {
@@ -179,8 +170,8 @@ namespace WEBUI.Pages
             else
             {
                 SavePageDataToViewState(false, false, false, null, null, null);
-
-                //Server.Transfer("~/Pages/calendar.aspx?action=apply", false);
+                LSLibrary.WebAPP.PageSessionHelper.SetValue(this.ViewState[ViewState_PageName], BLL.GlobalVariate.Session_ApplyToCanlendar);
+                Response.Redirect("~/Pages/calendar.aspx?action=apply", true);
             }
         }
 

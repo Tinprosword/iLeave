@@ -5,6 +5,17 @@ namespace BLL
 {
     public class GlobalVariate
     {
+        #region global string
+        public static string login_error = "invalid user and password.";
+        public static string path_uploadPic = "uploadPic";
+        public static HttpServerUtility pageServer;
+        public static string Session_ApplyToCanlendar = "Session_ApplyToCanlendar";
+        public static string Session_CanlendarToApply = "Session_CanlendarToApply";
+        public static string Session_ApplyToUpload = "Session_ApplyToUpload";
+        public static string Session_UploadToApply = "Session_UploadToApply";
+
+        #endregion
+
         #region common enum 使用端的生成的enum居然默然从0开始.全然不管webservices的设定....只能采用会有隐患的复制的方法
         public enum ApprovalRequestStatus
         {
@@ -112,12 +123,6 @@ namespace BLL
             }
         }
 
-        #endregion
-
-        #region global string
-        public static string login_error = "invalid user and password.";
-        public static string path_uploadPic = "uploadPic";
-        public static HttpServerUtility pageServer;
         #endregion
 
         #region global string 用于js css文件的修改后自动重新下载.

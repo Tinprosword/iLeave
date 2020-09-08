@@ -34,8 +34,8 @@
             </tr>
             <tr>
                 <td></td>
-                <td><asp:ImageButton ID="ImageButton1" style="margin-left:10px"  runat="server" ImageUrl="~/Res/images/comIcon_canlendar.png" Width="40px" Height="40px"  OnClick="ImageButton1_Click"/>
-                    <asp:ImageButton ID="ImageButton2" style="margin-left:100px; margin-right:10px" runat="server" ImageUrl="~/Res/images/comIcon_addattence.png" Width="40px" Height="40px" PostBackUrl="~/Pages/Apply_Upload.aspx" OnClick="ImageButton2_Click"/>
+                <td><asp:ImageButton ID="ImageButton1" style="margin-left:10px"  runat="server" ImageUrl="~/Res/images/comIcon_canlendar.png" Width="40px" Height="40px"  OnClick="Canlendar_Click"/>
+                    <asp:ImageButton ID="ImageButton2" style="margin-left:100px; margin-right:10px" runat="server" ImageUrl="~/Res/images/comIcon_addattence.png" Width="40px" Height="40px" OnClick="Upload_Click"/>
                     
                 </td>
             </tr>
