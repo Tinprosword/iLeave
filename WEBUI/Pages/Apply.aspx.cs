@@ -9,19 +9,14 @@ namespace WEBUI.Pages
     {
         //todo page:change staff and member.
         //todo how to get balance ?
-        //todo calendar 没有包含所有情况
         //todo page页面的多层继承写的不错，可以总结下了。
 
-
-        //todo bug:some time click 无反应? js refresh?
         //todo 需要download 附件.
         //todo more than one sequance when approval??
 
-        //todo request status' desctiption 
         //todo check mobil.
         //todo employment hours
         //todo login setting first. save password and uid.
-        //todo use viewstate and use sesssion for transfer viewstate. and don't use linkbutton. 让模型更简单,因为transfer 如果需要prePage,会重新创建对象，增加模型复杂度。所以放弃server.transfer. and postbackurl.
 
 
         //todo 1.login.   2.icon
@@ -47,7 +42,7 @@ namespace WEBUI.Pages
             LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, new MODEL.Apply.ViewState_page(), ViewState);
         }
 
-        protected override void PageLoad_ResetUIOnEachLoad3()
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
             this.lt_AlertJS.Text = "";
             this.literal_errormsga.Text = "";
@@ -305,7 +300,7 @@ namespace WEBUI.Pages
             }
         }
 
-        protected override void PageLoad_ResetUIOnEachLoad5()
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {
             
         }

@@ -28,7 +28,7 @@ namespace WEBUI.Pages
             }
         }
 
-        protected override void PageLoad_ResetUIOnEachLoad5()
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {
         }
 
@@ -36,7 +36,7 @@ namespace WEBUI.Pages
         {
         }
 
-        protected override void PageLoad_ResetUIOnEachLoad3()
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         { 
         }
 

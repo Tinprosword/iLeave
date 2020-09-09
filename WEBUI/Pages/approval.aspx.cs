@@ -33,7 +33,7 @@ namespace WEBUI.Pages
         {
         }
 
-        protected override void PageLoad_ResetUIOnEachLoad3()
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
         }
 
@@ -69,7 +69,7 @@ namespace WEBUI.Pages
         private void SetupMultiLanguage()
         {}
 
-        protected override void PageLoad_ResetUIOnEachLoad5()
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {}
 
         private List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetDatasource(GlobalVariate.LeaveBigRangeStatus leaveBigRangeStatus,int approverUid,string datestrFrom,string userName)

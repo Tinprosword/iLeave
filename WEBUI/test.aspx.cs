@@ -9,7 +9,6 @@ namespace WEBUI
 {
     public partial class test : System.Web.UI.Page
     {
-        private string viewname = "tt";
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -27,8 +26,6 @@ namespace WEBUI
             var des = source.Where(x => x > 20);
 
             int[] deslist = des.ToArray();
-            int aa = deslist.First();
-            int a = 4;
         }
     }
 }

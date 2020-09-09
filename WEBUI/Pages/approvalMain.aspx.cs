@@ -15,7 +15,7 @@ namespace WEBUI
         protected override void InitPage_OnFirstLoad2()
         { }
 
-        protected override void PageLoad_ResetUIOnEachLoad3()
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         { }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
@@ -24,7 +24,7 @@ namespace WEBUI
         }
 
 
-        protected override void PageLoad_ResetUIOnEachLoad5()
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         { }
 
 

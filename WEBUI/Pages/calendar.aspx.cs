@@ -32,7 +32,7 @@ namespace WEBUI.Pages
         protected override void InitPage_OnFirstLoad2()
         {}
 
-        protected override void PageLoad_ResetUIOnEachLoad3()
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
             WEBUI.Pages.Apply prepage = PreviousPage as WEBUI.Pages.Apply;
 
@@ -62,7 +62,7 @@ namespace WEBUI.Pages
             SetupMultiLanguage();
         }
 
-        protected override void PageLoad_ResetUIOnEachLoad5()
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {
             setNavigation();//todo 因为viewstate无法保存event .所以只好放到这里来。所以不喜欢asp.net 模拟cs，但是又不能完全模拟，太恶心了.
         }

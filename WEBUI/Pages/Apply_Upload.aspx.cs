@@ -12,7 +12,7 @@ namespace WEBUI.Pages
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {}
 
-        protected override void PageLoad_ResetUIOnEachLoad5()
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_upload_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_upload_current, null, BackEvent);
         }
@@ -20,7 +20,7 @@ namespace WEBUI.Pages
         protected override void InitPage_OnFirstLoad2()
         {}
 
-        protected override void PageLoad_ResetUIOnEachLoad3()
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {}
 
         protected override void PageLoad_InitUIOnFirstLoad4()
