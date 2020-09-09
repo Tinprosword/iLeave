@@ -110,7 +110,7 @@ namespace BLL
             get
             {
                 Dictionary<ApprovalRequestStatus, string> temp = new Dictionary<ApprovalRequestStatus, string>();
-                temp.Add(ApprovalRequestStatus.WAIT_FOR_APPROVE, "Wait for approve");
+                temp.Add(ApprovalRequestStatus.WAIT_FOR_APPROVE, "Wait for approval");
                 temp.Add(ApprovalRequestStatus.APPROVE, "Approved");
                 temp.Add(ApprovalRequestStatus.REJECT, "Reject");
                 temp.Add(ApprovalRequestStatus.WAIT_FOR_CANCEL, "Wait for cancel");

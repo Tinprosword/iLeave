@@ -34,16 +34,24 @@
         </table>
 
         <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
-            <tr><td class="col-xs-3"><asp:Literal ID="lt_listdate" runat="server">Date</asp:Literal></td><td class="col-xs-5"><asp:Literal ID="lt_listtype" runat="server">Type</asp:Literal></td><td class="col-xs-3"><asp:Literal ID="lt_listsection" runat="server">Section</asp:Literal></td></tr>
+            <tr><td class="col-xs-2"><asp:Literal ID="lt_listdate" runat="server">Date</asp:Literal></td><td class="col-xs-6"><asp:Literal ID="lt_listtype" runat="server">Type</asp:Literal></td><td class="col-xs-3"><asp:Literal ID="lt_listsection" runat="server">Section</asp:Literal></td></tr>
         </table>
         <div class="col-xs-12 lsf-clearPadding" style="height:145px; overflow:scroll;">
-            <table class="col-xs-12 lsu-table-sm">
+            <table class="col-xs-12 lsu-table-xs">
                 <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                     <ItemTemplate>
-                        <tr><td class="col-xs-3"><%#( (DateTime)((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveFrom).ToString("MM-dd")%></td><td class="col-xs-5"><%#((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Description %></td><td class="col-xs-3"><%#BLL.GlobalVariate.sections[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %></td></td></tr>
+                        <tr>
+                            <td class="col-xs-2"><%#( (DateTime)((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveFrom).ToString("MM-dd")%></td>
+                            <td class="col-xs-6"><%#((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Description %></td>
+                            <td class="col-xs-3"><%#BLL.GlobalVariate.sections[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %></td></td>
+                        </tr>
                     </ItemTemplate>
                     <AlternatingItemTemplate>
-                        <tr style="background-color:aliceblue"><td class="col-xs-3"><%#( (DateTime)((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveFrom).ToString("MM-dd")%></td><td class="col-xs-5"><%#((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Description %></td><td class="col-xs-3"><%# BLL.GlobalVariate.sections[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %></td></td></tr>
+                        <tr style="background-color:aliceblue">
+                            <td class="col-xs-2"><%#( (DateTime)((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveFrom).ToString("MM-dd")%></td>
+                            <td class="col-xs-6"><%#((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Description %></td>
+                            <td class="col-xs-3"><%# BLL.GlobalVariate.sections[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %></td></td>
+                        </tr>
                     </AlternatingItemTemplate>
                 </asp:Repeater>
             </table>
@@ -66,13 +74,13 @@
         </div>
         <asp:Panel ID="waitingApproval_admin" runat="server">
             <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
-                <asp:Button ID="button_wait_admin_approval" runat="server" Text="Approval"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+                <asp:Button ID="button_wait_admin_approval" runat="server" Text="Approve"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
                 <asp:Button ID="button_wait_admin_reject" runat="server" Text="Reject"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
             </div>
         </asp:Panel>
         <asp:Panel ID="waitingCanceling_admin" runat="server">
             <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
-                <asp:Button ID="button_Cancel_admin_approval" runat="server" Text="Approval"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+                <asp:Button ID="button_Cancel_admin_approval" runat="server" Text="Approve"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
                 <asp:Button ID="button_Cancel_admin_Reject" runat="server" Text="Reject"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
             </div>
         </asp:Panel>

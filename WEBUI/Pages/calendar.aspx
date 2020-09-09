@@ -30,7 +30,7 @@
                     <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                         <ItemTemplate>
                             <tr>
-                                <td class="col-xs-3"><%# ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).RequestID %></td>
+                                <td class="col-xs-3"><%# ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).displayname %></td>
                                 <td class="col-xs-3"><%# BLL.workflow.GetWorkFlowTypeName( ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).WorkflowTypeID) %></td>
                                 <td class="col-xs-2"><%# BLL.GlobalVariate.sections[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %></td>
                                 <td class="col-xs-4"><%# BLL.GlobalVariate.RequestDesc[(BLL.GlobalVariate.ApprovalRequestStatus)(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).masterStatus)] %></td>
