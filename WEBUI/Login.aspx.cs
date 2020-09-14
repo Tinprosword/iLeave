@@ -7,13 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace WEBUI
 {
-    public partial class Login : LSLibrary.WebAPP.PageTemplate_Common
+    public partial class Login :BLL.CustomCommonTemplate
     {
 
         protected override void InitPage_OnBeforeF5RegisterEvent()
-        {
-            BLL.common.WriteLog(new System.Diagnostics.StackFrame(true), "hi");
-        }
+        {}
 
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
@@ -25,16 +23,13 @@ namespace WEBUI
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
-        {
-        }
+        {}
 
         protected override void InitPage_OnFirstLoad2()
-        {
-        }
+        {}
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
-        {
-        }
+        {}
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
@@ -86,6 +81,5 @@ namespace WEBUI
             Response.Redirect("~/setting.aspx");
         }
 
-        
     }
 }

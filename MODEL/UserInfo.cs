@@ -17,8 +17,10 @@ namespace MODEL
         public int? staffid;
         public string staffNumber;
         public int personid;
+        public string surname;
+        public string firstname;
 
-        public UserInfo(int id, string loginName, string nickname, string sessionid, int? employID, string employNnumber, int? staffid, string staffNumber, int personid)
+        public UserInfo(int id, string loginName, string nickname, string sessionid, int? employID, string employNnumber, int? staffid, string staffNumber, int personid,string surname,string firstname)
         {
             this.id = id;
             this.loginName = loginName;
@@ -29,6 +31,8 @@ namespace MODEL
             this.staffid = staffid;
             this.staffNumber = staffNumber;
             this.personid = personid;
+            this.surname = surname;
+            this.firstname = firstname;
         }
 
         public bool hasValidEmploynumber()
@@ -39,6 +43,11 @@ namespace MODEL
                 result = false;
             }
             return result;
+        }
+
+        public string GetDisplayName()
+        {
+            return surname + " " + firstname;
         }
 
     }

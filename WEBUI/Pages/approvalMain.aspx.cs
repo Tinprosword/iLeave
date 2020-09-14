@@ -20,7 +20,7 @@ namespace WEBUI
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().approval_SubMenu_back, BLL.MultiLanguageHelper.GetLanguagePacket().approval_SubMenu_current, "~/pages/main.aspx");
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().approval_SubMenu_back, BLL.MultiLanguageHelper.GetLanguagePacket().approval_SubMenu_current, "~/pages/main.aspx", true);
         }
 
 

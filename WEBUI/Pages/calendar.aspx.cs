@@ -47,6 +47,8 @@ namespace WEBUI.Pages
             {
                 RegisterClickCellEventAndSetCanlendarValue();
             }
+
+            app_ok.Visible = isFromApply;
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
@@ -157,15 +159,16 @@ namespace WEBUI.Pages
         {
             if (isFromApply)
             {
-                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_calendar_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_calendar_current,null, BackEvent);
+                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_calendar_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_calendar_current,null, true, BackEvent);
+                this.ib_ok.Click += BackEvent;
             }
             else
             {
-                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_back, BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_current, "~/pages/main.aspx");
+                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_back, BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_current, "~/pages/main.aspx", true);
             }
         }
 
-        private void BackEvent(object sender, EventArgs e)
+        private void BackEvent(object sender, ImageClickEventArgs e)
         {
             object myViewState = LSLibrary.WebAPP.ViewStateHelper.GetValue(WEBUI.Pages.Apply.ViewState_PageName, this.ViewState);
             LSLibrary.WebAPP.PageSessionHelper.SetValue(myViewState, BLL.GlobalVariate.Session_CanlendarToApply);

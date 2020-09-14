@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace BLL
 {
@@ -24,6 +25,33 @@ namespace BLL
         {
             loginer = BLL.User_wsref.GetLoginer();
             base.Page_Init(sender, e);
+        }
+
+        protected override void Page_Load(object sender, EventArgs e)
+        {
+            CustomLoginTemplate.ResetFormWhenPC(this);
+            base.Page_Load(sender, e);
+        }
+
+        public static void ResetFormWhenPC(System.Web.UI.Page page)
+        {
+            string agent = HttpContext.Current.Request.UserAgent;
+            LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
+
+            if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.pc)
+            {
+                page.Form.Style.Add("width", "375px");
+                page.Form.Style.Add("margin-left", "40%");
+            }
+        }
+    }
+
+    public abstract class CustomCommonTemplate : LSLibrary.WebAPP.PageTemplate_Common
+    {
+        protected override void Page_Load(object sender, EventArgs e)
+        {
+            CustomLoginTemplate.ResetFormWhenPC(this);
+            base.Page_Load(sender, e);
         }
     }
 }

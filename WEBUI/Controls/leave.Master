@@ -15,9 +15,9 @@
         <input type="hidden" name="mypostback_argument" id="mypostback_argument" value="" />
         <div class="container-fluid">
             <div class="row">
-                <div id="Navigation" class="lss-bgcolor-blue" style="line-height:46px;height:46px;" runat="server" visible="false">
+                <div id="Navigation" class="lss-bannercolor-black" style="line-height:40px;height:40px;" runat="server" visible="false">
                     <div class="col-xs-3" >
-                        <asp:LinkButton ID="linkNavigation" runat="server" style="color:white; font-weight:bold" CssClass="lsf-fontsizes1"><asp:Literal ID="lable_navigation" runat="server"></asp:Literal></asp:LinkButton>
+                        <asp:ImageButton ID="ib_back" runat="server" ImageUrl="~/Res/images/back.png" Width="20px" Height="20px" style="padding-top:5px;"/>
                     </div>
                     <div class="col-xs-6 lsf-center lsf-fontsizem1" style="color:white;font-weight:bold" ><asp:Literal ID="label_title" runat="server"></asp:Literal></div>
                 </div>

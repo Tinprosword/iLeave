@@ -34,12 +34,11 @@
             </tr>
             <tr>
                 <td></td>
-                <td><asp:ImageButton ID="ImageButton1" style="margin-left:10px"  runat="server" ImageUrl="~/Res/images/comIcon_canlendar.png" Width="40px" Height="40px"  OnClick="Canlendar_Click"/>
+                <td><asp:ImageButton ID="ImageButton1" style="margin-left:10px"  runat="server" ImageUrl="~/Res/images/adddate2.png" Width="40px" Height="40px"  OnClick="Canlendar_Click"/>
                     <asp:ImageButton ID="ImageButton2" style="margin-left:100px; margin-right:10px" runat="server" ImageUrl="~/Res/images/comIcon_addattence.png" Width="40px" Height="40px" OnClick="Upload_Click"/>
                     
                 </td>
             </tr>
-
             <tr>
                 <td><asp:Literal ID="lt_remarks" runat="server">Remarks</asp:Literal></td>
                 <td><asp:TextBox ID="tb_remarks" runat="server" Width="90%"></asp:TextBox> </td>
@@ -52,7 +51,7 @@
         <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white">
             <tr><td class="col-xs-3"><asp:Literal ID="ltlistdate" runat="server"></asp:Literal></td><td class="col-xs-4"><asp:Literal ID="ltlisttype" runat="server"></asp:Literal></td><td class="col-xs-4"><asp:Literal ID="lt_listsection" runat="server"></asp:Literal></td><td class="col-xs-1">  </td></tr>
         </table>
-        <div class="col-xs-12 lsf-clearPadding" style="height:237px; overflow:scroll;">
+        <div class="col-xs-12 lsf-clearPadding" style="height:200px; overflow:scroll;">
             <table class="col-xs-12 lsu-table-xs">
                 <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                     <ItemTemplate>

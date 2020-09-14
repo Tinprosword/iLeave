@@ -87,7 +87,7 @@ namespace WEBUI.Pages
             {
                 backUrl = "~/pages/approval.aspx?applicationType=" + applicationType;
             }
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, backTtile, currentTitle, backUrl);
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, backTtile, currentTitle, backUrl, true);
         }
 
         private void setupAttendance(int rqid)

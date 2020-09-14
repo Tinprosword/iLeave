@@ -65,7 +65,7 @@ namespace WEBUI.Pages
                 CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().application_List_rejectCurrent;
             }
 
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().application_List_wait_apporved_reject_Back, CurrentTitle, "~/pages/myapplicationMain.aspx");
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().application_List_wait_apporved_reject_Back, CurrentTitle, "~/pages/myapplicationMain.aspx", true);
         }
 
         private void SetupMultiLanguage()

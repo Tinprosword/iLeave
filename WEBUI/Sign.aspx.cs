@@ -7,10 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace WEBUI
 {
-    public partial class Sign : System.Web.UI.Page
+    public partial class Sign  :BLL.CustomCommonTemplate
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected override void Page_Load(object sender, EventArgs e)
         {
+            base.Page_Load(sender, e);
             if (!IsPostBack)
             {
                 GoLogin();
@@ -38,6 +39,36 @@ namespace WEBUI
                 string url = "http://" + myCookie.serverAddress + "/login.aspx";
                 Response.Redirect(url);
             }
+        }
+
+        protected override void InitPage_OnBeforeF5RegisterEvent()
+        {
+            
+        }
+
+        protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
+        {
+            
+        }
+
+        protected override void InitPage_OnFirstLoad2()
+        {
+           
+        }
+
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
+        {
+           
+        }
+
+        protected override void PageLoad_InitUIOnFirstLoad4()
+        {
+          
+        }
+
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
+        {
+          
         }
     }
 }

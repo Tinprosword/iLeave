@@ -107,6 +107,8 @@
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\modal.js" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\npm.js" />
     <Content Include="Res\images\add.png" />
+    <Content Include="Res\images\adddate2.png" />
+    <Content Include="Res\images\back.png" />
     <Content Include="Res\images\calendar.png" />
     <Content Include="Res\images\close.png" />
     <Content Include="Res\images\close1.png" />

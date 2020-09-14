@@ -11,18 +11,12 @@ namespace WEBUI.Pages
     {
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {}
-
-        protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
-        {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_upload_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_upload_current, null, BackEvent);
-        }
-
         protected override void InitPage_OnFirstLoad2()
         {}
 
+
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {}
-
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
             object PreViewstate = LSLibrary.WebAPP.PageSessionHelper.GetValueAndCleanSoon(BLL.GlobalVariate.Session_ApplyToUpload);
@@ -35,14 +29,18 @@ namespace WEBUI.Pages
                 Response.Redirect("~/pages/apply.aspx", true);
             }
 
-            
-
             MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, ViewState);
             this.repeater_attandance.DataSource = applyPage.uploadpic;
             this.repeater_attandance.DataBind();
         }
 
-        private void BackEvent(object sender, EventArgs e)
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
+        {
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_upload_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_upload_current, null,true, BackEvent);
+        }
+
+
+        private void BackEvent(object sender, ImageClickEventArgs e)
         {
             object myViewState = LSLibrary.WebAPP.ViewStateHelper.GetValue(WEBUI.Pages.Apply.ViewState_PageName,this.ViewState);
             LSLibrary.WebAPP.PageSessionHelper.SetValue(myViewState, BLL.GlobalVariate.Session_UploadToApply);

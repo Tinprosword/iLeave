@@ -25,7 +25,7 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(false, "", "", "");
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "", "ILeave", "", false);
             SetMultiLanguage();
         }
 

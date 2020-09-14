@@ -62,7 +62,7 @@ namespace WEBUI.Pages
                 CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().application_List_rejectCurrent;
             }
 
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().approval_List_wait_apporved_reject_Back, CurrentTitle, "~/pages/approvalmain.aspx");
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().approval_List_wait_apporved_reject_Back, CurrentTitle, "~/pages/approvalmain.aspx", true);
         }
 
 
@@ -112,5 +112,7 @@ namespace WEBUI.Pages
             this.repeater_myapplications.DataSource = GetDatasource(getStatus(), loginer.userInfo.id, this.tb_date.Text, this.tb_name.Text.Trim());
             this.repeater_myapplications.DataBind();
         }
+
+        
     }
 }

@@ -87,7 +87,7 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetExtendLeaveDetailsByReuestIDOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetExtendLeaveDetailsByDateOperationCompleted;
+        private System.Threading.SendOrPostCallback GetExtendLeaveDetails_waitAndApprovedOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMonthStatisticOperationCompleted;
         
@@ -237,7 +237,7 @@ namespace WebServiceLayer.WebReference_leave {
         public event GetExtendLeaveDetailsByReuestIDCompletedEventHandler GetExtendLeaveDetailsByReuestIDCompleted;
         
         /// <remarks/>
-        public event GetExtendLeaveDetailsByDateCompletedEventHandler GetExtendLeaveDetailsByDateCompleted;
+        public event GetExtendLeaveDetails_waitAndApprovedCompletedEventHandler GetExtendLeaveDetails_waitAndApprovedCompleted;
         
         /// <remarks/>
         public event GetMonthStatisticCompletedEventHandler GetMonthStatisticCompleted;
@@ -1144,33 +1144,33 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetExtendLeaveDetailsByDate", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public LeaveRequestDetail[] GetExtendLeaveDetailsByDate(System.DateTime datetime, int[] employmentids) {
-            object[] results = this.Invoke("GetExtendLeaveDetailsByDate", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetExtendLeaveDetails_waitAndApproved", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public LeaveRequestDetail[] GetExtendLeaveDetails_waitAndApproved(System.DateTime datetime, int[] employmentids) {
+            object[] results = this.Invoke("GetExtendLeaveDetails_waitAndApproved", new object[] {
                         datetime,
                         employmentids});
             return ((LeaveRequestDetail[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetExtendLeaveDetailsByDateAsync(System.DateTime datetime, int[] employmentids) {
-            this.GetExtendLeaveDetailsByDateAsync(datetime, employmentids, null);
+        public void GetExtendLeaveDetails_waitAndApprovedAsync(System.DateTime datetime, int[] employmentids) {
+            this.GetExtendLeaveDetails_waitAndApprovedAsync(datetime, employmentids, null);
         }
         
         /// <remarks/>
-        public void GetExtendLeaveDetailsByDateAsync(System.DateTime datetime, int[] employmentids, object userState) {
-            if ((this.GetExtendLeaveDetailsByDateOperationCompleted == null)) {
-                this.GetExtendLeaveDetailsByDateOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetExtendLeaveDetailsByDateOperationCompleted);
+        public void GetExtendLeaveDetails_waitAndApprovedAsync(System.DateTime datetime, int[] employmentids, object userState) {
+            if ((this.GetExtendLeaveDetails_waitAndApprovedOperationCompleted == null)) {
+                this.GetExtendLeaveDetails_waitAndApprovedOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetExtendLeaveDetails_waitAndApprovedOperationCompleted);
             }
-            this.InvokeAsync("GetExtendLeaveDetailsByDate", new object[] {
+            this.InvokeAsync("GetExtendLeaveDetails_waitAndApproved", new object[] {
                         datetime,
-                        employmentids}, this.GetExtendLeaveDetailsByDateOperationCompleted, userState);
+                        employmentids}, this.GetExtendLeaveDetails_waitAndApprovedOperationCompleted, userState);
         }
         
-        private void OnGetExtendLeaveDetailsByDateOperationCompleted(object arg) {
-            if ((this.GetExtendLeaveDetailsByDateCompleted != null)) {
+        private void OnGetExtendLeaveDetails_waitAndApprovedOperationCompleted(object arg) {
+            if ((this.GetExtendLeaveDetails_waitAndApprovedCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetExtendLeaveDetailsByDateCompleted(this, new GetExtendLeaveDetailsByDateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetExtendLeaveDetails_waitAndApprovedCompleted(this, new GetExtendLeaveDetails_waitAndApprovedCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -5098,17 +5098,17 @@ namespace WebServiceLayer.WebReference_leave {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetExtendLeaveDetailsByDateCompletedEventHandler(object sender, GetExtendLeaveDetailsByDateCompletedEventArgs e);
+    public delegate void GetExtendLeaveDetails_waitAndApprovedCompletedEventHandler(object sender, GetExtendLeaveDetails_waitAndApprovedCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetExtendLeaveDetailsByDateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetExtendLeaveDetails_waitAndApprovedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetExtendLeaveDetailsByDateCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetExtendLeaveDetails_waitAndApprovedCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

@@ -745,7 +745,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="WorkflowTypeID" nillable="true" type="s:int" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetExtendLeaveDetailsByDate">
+      <s:element name="GetExtendLeaveDetails_waitAndApproved">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="datetime" type="s:dateTime" />
@@ -753,10 +753,10 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetExtendLeaveDetailsByDateResponse">
+      <s:element name="GetExtendLeaveDetails_waitAndApprovedResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetExtendLeaveDetailsByDateResult" type="tns:ArrayOfLeaveRequestDetail" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetExtendLeaveDetails_waitAndApprovedResult" type="tns:ArrayOfLeaveRequestDetail" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1121,11 +1121,11 @@
   <wsdl:message name="GetExtendLeaveDetailsByReuestIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetExtendLeaveDetailsByReuestIDResponse" />
   </wsdl:message>
-  <wsdl:message name="GetExtendLeaveDetailsByDateSoapIn">
-    <wsdl:part name="parameters" element="tns:GetExtendLeaveDetailsByDate" />
+  <wsdl:message name="GetExtendLeaveDetails_waitAndApprovedSoapIn">
+    <wsdl:part name="parameters" element="tns:GetExtendLeaveDetails_waitAndApproved" />
   </wsdl:message>
-  <wsdl:message name="GetExtendLeaveDetailsByDateSoapOut">
-    <wsdl:part name="parameters" element="tns:GetExtendLeaveDetailsByDateResponse" />
+  <wsdl:message name="GetExtendLeaveDetails_waitAndApprovedSoapOut">
+    <wsdl:part name="parameters" element="tns:GetExtendLeaveDetails_waitAndApprovedResponse" />
   </wsdl:message>
   <wsdl:message name="GetMonthStatisticSoapIn">
     <wsdl:part name="parameters" element="tns:GetMonthStatistic" />
@@ -1430,9 +1430,9 @@
       <wsdl:input message="tns:GetExtendLeaveDetailsByReuestIDSoapIn" />
       <wsdl:output message="tns:GetExtendLeaveDetailsByReuestIDSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetExtendLeaveDetailsByDate">
-      <wsdl:input message="tns:GetExtendLeaveDetailsByDateSoapIn" />
-      <wsdl:output message="tns:GetExtendLeaveDetailsByDateSoapOut" />
+    <wsdl:operation name="GetExtendLeaveDetails_waitAndApproved">
+      <wsdl:input message="tns:GetExtendLeaveDetails_waitAndApprovedSoapIn" />
+      <wsdl:output message="tns:GetExtendLeaveDetails_waitAndApprovedSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetMonthStatistic">
       <wsdl:input message="tns:GetMonthStatisticSoapIn" />
@@ -1828,8 +1828,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetExtendLeaveDetailsByDate">
-      <soap:operation soapAction="http://tempuri.org/GetExtendLeaveDetailsByDate" style="document" />
+    <wsdl:operation name="GetExtendLeaveDetails_waitAndApproved">
+      <soap:operation soapAction="http://tempuri.org/GetExtendLeaveDetails_waitAndApproved" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2200,8 +2200,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetExtendLeaveDetailsByDate">
-      <soap12:operation soapAction="http://tempuri.org/GetExtendLeaveDetailsByDate" style="document" />
+    <wsdl:operation name="GetExtendLeaveDetails_waitAndApproved">
+      <soap12:operation soapAction="http://tempuri.org/GetExtendLeaveDetails_waitAndApproved" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

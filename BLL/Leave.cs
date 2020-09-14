@@ -246,9 +246,9 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetExtendLeaveDetailsByReuestID(requestid).ToList();
         }
 
-        public static List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> GetExtendLeaveDetailsByDate(DateTime dt,int[] employmentids)
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> getListSource(DateTime dt, List<int> employids)
         {
-            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetExtendLeaveDetailsByDate(dt, employmentids).ToList();
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetExtendLeaveDetails_waitAndApproved(dt, employids.ToArray()).ToList();
         }
 
         public static List<int> GetMonthStatistic(int year, int month, int[] employmentids)
@@ -288,10 +288,7 @@ namespace BLL
 
         #endregion
 
-        public static List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> getListSource(DateTime dt,List<int> employids)
-        {
-            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetExtendLeaveDetailsByDate(dt, employids.ToArray()).ToList();
-        }
+       
 
         #region unity
         public static List<LSLibrary.WebAPP.ValueText<int>> ConvertLeaveInfo2DropDownList(List<WebServiceLayer.WebReference_leave.t_Leave> source)
@@ -341,6 +338,75 @@ namespace BLL
                 }
             }
             return result;
+        }
+
+
+        public static Dictionary<string, string> GetAllLeaveSimpleDesc()
+        {
+            Dictionary<string, string> simpleDesc = new Dictionary<string, string>();
+            simpleDesc.Add("PR", "Paid Rest");
+            simpleDesc.Add("ML", "Maternity");
+            simpleDesc.Add("AL10", "Annual");
+            simpleDesc.Add("AL07", "Annual");
+            simpleDesc.Add("SL", "Sick");
+            simpleDesc.Add("AL14", "Annual");
+            simpleDesc.Add("IL", "Injury");
+            simpleDesc.Add("NSL", "No-pay");
+            simpleDesc.Add("AL12", "Annual");
+            simpleDesc.Add("AL16", "Annual");
+            simpleDesc.Add("AL18", "Annual");
+            simpleDesc.Add("AL0", "Without");
+            simpleDesc.Add("AL25", "Annual");
+            simpleDesc.Add("NPL", "No Paid");
+            simpleDesc.Add("SPL", "Special");
+            simpleDesc.Add("PSL", "4/5 Sick");
+            simpleDesc.Add("NR", "No Paid");
+            simpleDesc.Add("ISL", "Injury");
+            simpleDesc.Add("BL", "Business");
+            simpleDesc.Add("JURL", "Jury");
+            simpleDesc.Add("MARL", "Marriage");
+            simpleDesc.Add("PATL", "Paternity");
+            simpleDesc.Add("COML", "Compassionate");
+            simpleDesc.Add("ILF", "Injury");
+            simpleDesc.Add("PL", "No Paid");
+            simpleDesc.Add("FSL", "全薪病假");
+            simpleDesc.Add("CL", "Compensation");
+            simpleDesc.Add("OD", "Outdoor");
+            simpleDesc.Add("AL05", "Annual");
+            simpleDesc.Add("AL15", "Annual");
+            simpleDesc.Add("BODYCHECK", "Body");
+            simpleDesc.Add("BIRTHDAY", "Birthday");
+            simpleDesc.Add("FC", "Forgot Card");
+            simpleDesc.Add("OW", "Out Work");
+            simpleDesc.Add("BT", "Business");
+            simpleDesc.Add("AL17", "Annual");
+            simpleDesc.Add("AL21", "Annual");
+            simpleDesc.Add("AL18A", "Annual");
+            simpleDesc.Add("AL18P", "Annual");
+            simpleDesc.Add("AL_DH", "Annual");
+            simpleDesc.Add("AL_DM", "Annual");
+            simpleDesc.Add("AL_EXEC", "Annual");
+            simpleDesc.Add("AL_NONEG", "Annual");
+            simpleDesc.Add("AL_G1", "Annual");
+            simpleDesc.Add("AL_G2", "Annual");
+            simpleDesc.Add("AL_S1", "Annual");
+            simpleDesc.Add("AL_S2", "Annual");
+            simpleDesc.Add("AL_S3", "Annual");
+            simpleDesc.Add("TRAINING", "Training");
+
+            return simpleDesc;
+        }
+
+        public static string SetBackgroundColor(int index)
+        {
+            if (index % 2 != 0)
+            {
+                return "background-color:aliceblue";
+            }
+            else
+            {
+                return "";
+            }
         }
 
         #endregion

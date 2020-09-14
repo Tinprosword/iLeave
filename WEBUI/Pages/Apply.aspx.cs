@@ -7,21 +7,20 @@ namespace WEBUI.Pages
 {
     public partial class Apply : BLL.CustomLoginTemplate
     {
-        //todo page:change staff and member.
         //todo how to get balance ?
-        //todo page页面的多层继承写的不错，可以总结下了。
 
+        //todo how to deal with discard session when  freflsh.
         //todo 需要download 附件.
         //todo more than one sequance when approval??
+        //todo cookice 没有保存到?
+        //todo page:change staff and member.
 
-        //todo check mobil.
+        //todo page页面的多层继承写的不错，可以总结下了。
         //todo employment hours
-        //todo login setting first. save password and uid.
+        //todo upload file
 
 
-        //todo 1.login.   2.icon
         public static string ViewState_PageName = "PageView";
-
         public List<LSLibrary.WebAPP.ValueText<int>> RPITEM_LeaveListSections;
 
 
@@ -69,6 +68,7 @@ namespace WEBUI.Pages
                 LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, preViewState, ViewState);
                 MODEL.Apply.ViewState_page applypage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, this.ViewState);
                 LoadUI(applypage.leavetype, applypage.LeaveTypeSelectValue, applypage.applylabel, applypage.balancelabel, applypage.ddlsectionSelectvalue, applypage.remarks, applypage.LeaveList);
+                IsLeaveTypeEnable();
             }
             else
             {
@@ -83,9 +83,9 @@ namespace WEBUI.Pages
 
         private void LoadUI(List<LSLibrary.WebAPP.ValueText<int>> leveTypeData,string leaveTypeSelectedValue,string applyday,string balanceday,string ddlSectionSelected,string remarks,List<MODEL.Apply.apply_LeaveData> leaveDays)
         {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx");
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current,"~/pages/main.aspx", true);
 
-            this.literal_applier.Text = loginer.loginName + "  " + loginer.userInfo.employNnumber;
+            this.literal_applier.Text = loginer.userInfo.GetDisplayName()+" (" + loginer.userInfo.employNnumber+")";
 
             LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.ddl_leavetype, leveTypeData);
             this.ddl_leavetype.SelectedValue = leaveTypeSelectedValue;
