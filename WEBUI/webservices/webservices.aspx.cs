@@ -29,6 +29,7 @@ namespace WEBUI.webservices
             }
         }
 
+
         public string getXml(string a)
         {
             return "<result>"+a+"</result>";

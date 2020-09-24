@@ -87,9 +87,43 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetExtendLeaveDetailsByReuestIDOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetExtendLeaveDetails_waitByLeaveIDOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetExtendLeaveDetails_waitAndApprovedOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMonthStatisticOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetSinceJoin_ALOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetSinceJoin_excludeALSLOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetOverrideOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetLeaveBalanceTypeOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetPresetValue_SinceJoin_excludeALSLOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAppliedValue_SinceJoin_excludeALSLOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetGrossValue_SinceJoin_excludeALSLOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetWaitValue_SinceJoin_excludeALSLOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetGrossValue_SinceJoin_ALSLOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetWaitValue_SinceJoin_ALSLOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetPresetValue_OverrideOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAppliedValue_OverrideOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetGrossValue_OverrideOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetWaitValue_OverrideOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetWaitingValueBystaffOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetWaitingValueByEmploymentOperationCompleted;
         
         private System.Threading.SendOrPostCallback Base_Insertt_WorkflowInfoOperationCompleted;
         
@@ -237,10 +271,61 @@ namespace WebServiceLayer.WebReference_leave {
         public event GetExtendLeaveDetailsByReuestIDCompletedEventHandler GetExtendLeaveDetailsByReuestIDCompleted;
         
         /// <remarks/>
+        public event GetExtendLeaveDetails_waitByLeaveIDCompletedEventHandler GetExtendLeaveDetails_waitByLeaveIDCompleted;
+        
+        /// <remarks/>
         public event GetExtendLeaveDetails_waitAndApprovedCompletedEventHandler GetExtendLeaveDetails_waitAndApprovedCompleted;
         
         /// <remarks/>
         public event GetMonthStatisticCompletedEventHandler GetMonthStatisticCompleted;
+        
+        /// <remarks/>
+        public event GetSinceJoin_ALCompletedEventHandler GetSinceJoin_ALCompleted;
+        
+        /// <remarks/>
+        public event GetSinceJoin_excludeALSLCompletedEventHandler GetSinceJoin_excludeALSLCompleted;
+        
+        /// <remarks/>
+        public event GetOverrideCompletedEventHandler GetOverrideCompleted;
+        
+        /// <remarks/>
+        public event GetLeaveBalanceTypeCompletedEventHandler GetLeaveBalanceTypeCompleted;
+        
+        /// <remarks/>
+        public event GetPresetValue_SinceJoin_excludeALSLCompletedEventHandler GetPresetValue_SinceJoin_excludeALSLCompleted;
+        
+        /// <remarks/>
+        public event GetAppliedValue_SinceJoin_excludeALSLCompletedEventHandler GetAppliedValue_SinceJoin_excludeALSLCompleted;
+        
+        /// <remarks/>
+        public event GetGrossValue_SinceJoin_excludeALSLCompletedEventHandler GetGrossValue_SinceJoin_excludeALSLCompleted;
+        
+        /// <remarks/>
+        public event GetWaitValue_SinceJoin_excludeALSLCompletedEventHandler GetWaitValue_SinceJoin_excludeALSLCompleted;
+        
+        /// <remarks/>
+        public event GetGrossValue_SinceJoin_ALSLCompletedEventHandler GetGrossValue_SinceJoin_ALSLCompleted;
+        
+        /// <remarks/>
+        public event GetWaitValue_SinceJoin_ALSLCompletedEventHandler GetWaitValue_SinceJoin_ALSLCompleted;
+        
+        /// <remarks/>
+        public event GetPresetValue_OverrideCompletedEventHandler GetPresetValue_OverrideCompleted;
+        
+        /// <remarks/>
+        public event GetAppliedValue_OverrideCompletedEventHandler GetAppliedValue_OverrideCompleted;
+        
+        /// <remarks/>
+        public event GetGrossValue_OverrideCompletedEventHandler GetGrossValue_OverrideCompleted;
+        
+        /// <remarks/>
+        public event GetWaitValue_OverrideCompletedEventHandler GetWaitValue_OverrideCompleted;
+        
+        /// <remarks/>
+        public event GetWaitingValueBystaffCompletedEventHandler GetWaitingValueBystaffCompleted;
+        
+        /// <remarks/>
+        public event GetWaitingValueByEmploymentCompletedEventHandler GetWaitingValueByEmploymentCompleted;
         
         /// <remarks/>
         public event Base_Insertt_WorkflowInfoCompletedEventHandler Base_Insertt_WorkflowInfoCompleted;
@@ -1144,6 +1229,37 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetExtendLeaveDetails_waitByLeaveID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public LeaveRequestDetail[] GetExtendLeaveDetails_waitByLeaveID(int[] employmentids, int leaveid) {
+            object[] results = this.Invoke("GetExtendLeaveDetails_waitByLeaveID", new object[] {
+                        employmentids,
+                        leaveid});
+            return ((LeaveRequestDetail[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetExtendLeaveDetails_waitByLeaveIDAsync(int[] employmentids, int leaveid) {
+            this.GetExtendLeaveDetails_waitByLeaveIDAsync(employmentids, leaveid, null);
+        }
+        
+        /// <remarks/>
+        public void GetExtendLeaveDetails_waitByLeaveIDAsync(int[] employmentids, int leaveid, object userState) {
+            if ((this.GetExtendLeaveDetails_waitByLeaveIDOperationCompleted == null)) {
+                this.GetExtendLeaveDetails_waitByLeaveIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetExtendLeaveDetails_waitByLeaveIDOperationCompleted);
+            }
+            this.InvokeAsync("GetExtendLeaveDetails_waitByLeaveID", new object[] {
+                        employmentids,
+                        leaveid}, this.GetExtendLeaveDetails_waitByLeaveIDOperationCompleted, userState);
+        }
+        
+        private void OnGetExtendLeaveDetails_waitByLeaveIDOperationCompleted(object arg) {
+            if ((this.GetExtendLeaveDetails_waitByLeaveIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetExtendLeaveDetails_waitByLeaveIDCompleted(this, new GetExtendLeaveDetails_waitByLeaveIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetExtendLeaveDetails_waitAndApproved", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public LeaveRequestDetail[] GetExtendLeaveDetails_waitAndApproved(System.DateTime datetime, int[] employmentids) {
             object[] results = this.Invoke("GetExtendLeaveDetails_waitAndApproved", new object[] {
@@ -1204,6 +1320,486 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.GetMonthStatisticCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetMonthStatisticCompleted(this, new GetMonthStatisticCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetSinceJoin_AL", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_Leave[] GetSinceJoin_AL() {
+            object[] results = this.Invoke("GetSinceJoin_AL", new object[0]);
+            return ((t_Leave[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetSinceJoin_ALAsync() {
+            this.GetSinceJoin_ALAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetSinceJoin_ALAsync(object userState) {
+            if ((this.GetSinceJoin_ALOperationCompleted == null)) {
+                this.GetSinceJoin_ALOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetSinceJoin_ALOperationCompleted);
+            }
+            this.InvokeAsync("GetSinceJoin_AL", new object[0], this.GetSinceJoin_ALOperationCompleted, userState);
+        }
+        
+        private void OnGetSinceJoin_ALOperationCompleted(object arg) {
+            if ((this.GetSinceJoin_ALCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetSinceJoin_ALCompleted(this, new GetSinceJoin_ALCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetSinceJoin_excludeALSL", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_Leave[] GetSinceJoin_excludeALSL() {
+            object[] results = this.Invoke("GetSinceJoin_excludeALSL", new object[0]);
+            return ((t_Leave[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetSinceJoin_excludeALSLAsync() {
+            this.GetSinceJoin_excludeALSLAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetSinceJoin_excludeALSLAsync(object userState) {
+            if ((this.GetSinceJoin_excludeALSLOperationCompleted == null)) {
+                this.GetSinceJoin_excludeALSLOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetSinceJoin_excludeALSLOperationCompleted);
+            }
+            this.InvokeAsync("GetSinceJoin_excludeALSL", new object[0], this.GetSinceJoin_excludeALSLOperationCompleted, userState);
+        }
+        
+        private void OnGetSinceJoin_excludeALSLOperationCompleted(object arg) {
+            if ((this.GetSinceJoin_excludeALSLCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetSinceJoin_excludeALSLCompleted(this, new GetSinceJoin_excludeALSLCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetOverride", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_Leave[] GetOverride() {
+            object[] results = this.Invoke("GetOverride", new object[0]);
+            return ((t_Leave[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetOverrideAsync() {
+            this.GetOverrideAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetOverrideAsync(object userState) {
+            if ((this.GetOverrideOperationCompleted == null)) {
+                this.GetOverrideOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetOverrideOperationCompleted);
+            }
+            this.InvokeAsync("GetOverride", new object[0], this.GetOverrideOperationCompleted, userState);
+        }
+        
+        private void OnGetOverrideOperationCompleted(object arg) {
+            if ((this.GetOverrideCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetOverrideCompleted(this, new GetOverrideCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLeaveBalanceType", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public LeaveBalanceType GetLeaveBalanceType(int leaveID) {
+            object[] results = this.Invoke("GetLeaveBalanceType", new object[] {
+                        leaveID});
+            return ((LeaveBalanceType)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetLeaveBalanceTypeAsync(int leaveID) {
+            this.GetLeaveBalanceTypeAsync(leaveID, null);
+        }
+        
+        /// <remarks/>
+        public void GetLeaveBalanceTypeAsync(int leaveID, object userState) {
+            if ((this.GetLeaveBalanceTypeOperationCompleted == null)) {
+                this.GetLeaveBalanceTypeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLeaveBalanceTypeOperationCompleted);
+            }
+            this.InvokeAsync("GetLeaveBalanceType", new object[] {
+                        leaveID}, this.GetLeaveBalanceTypeOperationCompleted, userState);
+        }
+        
+        private void OnGetLeaveBalanceTypeOperationCompleted(object arg) {
+            if ((this.GetLeaveBalanceTypeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetLeaveBalanceTypeCompleted(this, new GetLeaveBalanceTypeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetPresetValue_SinceJoin_excludeALSL", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double GetPresetValue_SinceJoin_excludeALSL(int leaveID, int staffid) {
+            object[] results = this.Invoke("GetPresetValue_SinceJoin_excludeALSL", new object[] {
+                        leaveID,
+                        staffid});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetPresetValue_SinceJoin_excludeALSLAsync(int leaveID, int staffid) {
+            this.GetPresetValue_SinceJoin_excludeALSLAsync(leaveID, staffid, null);
+        }
+        
+        /// <remarks/>
+        public void GetPresetValue_SinceJoin_excludeALSLAsync(int leaveID, int staffid, object userState) {
+            if ((this.GetPresetValue_SinceJoin_excludeALSLOperationCompleted == null)) {
+                this.GetPresetValue_SinceJoin_excludeALSLOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPresetValue_SinceJoin_excludeALSLOperationCompleted);
+            }
+            this.InvokeAsync("GetPresetValue_SinceJoin_excludeALSL", new object[] {
+                        leaveID,
+                        staffid}, this.GetPresetValue_SinceJoin_excludeALSLOperationCompleted, userState);
+        }
+        
+        private void OnGetPresetValue_SinceJoin_excludeALSLOperationCompleted(object arg) {
+            if ((this.GetPresetValue_SinceJoin_excludeALSLCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetPresetValue_SinceJoin_excludeALSLCompleted(this, new GetPresetValue_SinceJoin_excludeALSLCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAppliedValue_SinceJoin_excludeALSL", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double GetAppliedValue_SinceJoin_excludeALSL(int leaveID, int staffid) {
+            object[] results = this.Invoke("GetAppliedValue_SinceJoin_excludeALSL", new object[] {
+                        leaveID,
+                        staffid});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAppliedValue_SinceJoin_excludeALSLAsync(int leaveID, int staffid) {
+            this.GetAppliedValue_SinceJoin_excludeALSLAsync(leaveID, staffid, null);
+        }
+        
+        /// <remarks/>
+        public void GetAppliedValue_SinceJoin_excludeALSLAsync(int leaveID, int staffid, object userState) {
+            if ((this.GetAppliedValue_SinceJoin_excludeALSLOperationCompleted == null)) {
+                this.GetAppliedValue_SinceJoin_excludeALSLOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAppliedValue_SinceJoin_excludeALSLOperationCompleted);
+            }
+            this.InvokeAsync("GetAppliedValue_SinceJoin_excludeALSL", new object[] {
+                        leaveID,
+                        staffid}, this.GetAppliedValue_SinceJoin_excludeALSLOperationCompleted, userState);
+        }
+        
+        private void OnGetAppliedValue_SinceJoin_excludeALSLOperationCompleted(object arg) {
+            if ((this.GetAppliedValue_SinceJoin_excludeALSLCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAppliedValue_SinceJoin_excludeALSLCompleted(this, new GetAppliedValue_SinceJoin_excludeALSLCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetGrossValue_SinceJoin_excludeALSL", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double GetGrossValue_SinceJoin_excludeALSL(int leaveID, int staffid) {
+            object[] results = this.Invoke("GetGrossValue_SinceJoin_excludeALSL", new object[] {
+                        leaveID,
+                        staffid});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetGrossValue_SinceJoin_excludeALSLAsync(int leaveID, int staffid) {
+            this.GetGrossValue_SinceJoin_excludeALSLAsync(leaveID, staffid, null);
+        }
+        
+        /// <remarks/>
+        public void GetGrossValue_SinceJoin_excludeALSLAsync(int leaveID, int staffid, object userState) {
+            if ((this.GetGrossValue_SinceJoin_excludeALSLOperationCompleted == null)) {
+                this.GetGrossValue_SinceJoin_excludeALSLOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetGrossValue_SinceJoin_excludeALSLOperationCompleted);
+            }
+            this.InvokeAsync("GetGrossValue_SinceJoin_excludeALSL", new object[] {
+                        leaveID,
+                        staffid}, this.GetGrossValue_SinceJoin_excludeALSLOperationCompleted, userState);
+        }
+        
+        private void OnGetGrossValue_SinceJoin_excludeALSLOperationCompleted(object arg) {
+            if ((this.GetGrossValue_SinceJoin_excludeALSLCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetGrossValue_SinceJoin_excludeALSLCompleted(this, new GetGrossValue_SinceJoin_excludeALSLCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetWaitValue_SinceJoin_excludeALSL", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double GetWaitValue_SinceJoin_excludeALSL(int leaveID, int staffid) {
+            object[] results = this.Invoke("GetWaitValue_SinceJoin_excludeALSL", new object[] {
+                        leaveID,
+                        staffid});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetWaitValue_SinceJoin_excludeALSLAsync(int leaveID, int staffid) {
+            this.GetWaitValue_SinceJoin_excludeALSLAsync(leaveID, staffid, null);
+        }
+        
+        /// <remarks/>
+        public void GetWaitValue_SinceJoin_excludeALSLAsync(int leaveID, int staffid, object userState) {
+            if ((this.GetWaitValue_SinceJoin_excludeALSLOperationCompleted == null)) {
+                this.GetWaitValue_SinceJoin_excludeALSLOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetWaitValue_SinceJoin_excludeALSLOperationCompleted);
+            }
+            this.InvokeAsync("GetWaitValue_SinceJoin_excludeALSL", new object[] {
+                        leaveID,
+                        staffid}, this.GetWaitValue_SinceJoin_excludeALSLOperationCompleted, userState);
+        }
+        
+        private void OnGetWaitValue_SinceJoin_excludeALSLOperationCompleted(object arg) {
+            if ((this.GetWaitValue_SinceJoin_excludeALSLCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetWaitValue_SinceJoin_excludeALSLCompleted(this, new GetWaitValue_SinceJoin_excludeALSLCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetGrossValue_SinceJoin_ALSL", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double[] GetGrossValue_SinceJoin_ALSL(int employId) {
+            object[] results = this.Invoke("GetGrossValue_SinceJoin_ALSL", new object[] {
+                        employId});
+            return ((double[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetGrossValue_SinceJoin_ALSLAsync(int employId) {
+            this.GetGrossValue_SinceJoin_ALSLAsync(employId, null);
+        }
+        
+        /// <remarks/>
+        public void GetGrossValue_SinceJoin_ALSLAsync(int employId, object userState) {
+            if ((this.GetGrossValue_SinceJoin_ALSLOperationCompleted == null)) {
+                this.GetGrossValue_SinceJoin_ALSLOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetGrossValue_SinceJoin_ALSLOperationCompleted);
+            }
+            this.InvokeAsync("GetGrossValue_SinceJoin_ALSL", new object[] {
+                        employId}, this.GetGrossValue_SinceJoin_ALSLOperationCompleted, userState);
+        }
+        
+        private void OnGetGrossValue_SinceJoin_ALSLOperationCompleted(object arg) {
+            if ((this.GetGrossValue_SinceJoin_ALSLCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetGrossValue_SinceJoin_ALSLCompleted(this, new GetGrossValue_SinceJoin_ALSLCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetWaitValue_SinceJoin_ALSL", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double GetWaitValue_SinceJoin_ALSL(int leaveID, int employid) {
+            object[] results = this.Invoke("GetWaitValue_SinceJoin_ALSL", new object[] {
+                        leaveID,
+                        employid});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetWaitValue_SinceJoin_ALSLAsync(int leaveID, int employid) {
+            this.GetWaitValue_SinceJoin_ALSLAsync(leaveID, employid, null);
+        }
+        
+        /// <remarks/>
+        public void GetWaitValue_SinceJoin_ALSLAsync(int leaveID, int employid, object userState) {
+            if ((this.GetWaitValue_SinceJoin_ALSLOperationCompleted == null)) {
+                this.GetWaitValue_SinceJoin_ALSLOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetWaitValue_SinceJoin_ALSLOperationCompleted);
+            }
+            this.InvokeAsync("GetWaitValue_SinceJoin_ALSL", new object[] {
+                        leaveID,
+                        employid}, this.GetWaitValue_SinceJoin_ALSLOperationCompleted, userState);
+        }
+        
+        private void OnGetWaitValue_SinceJoin_ALSLOperationCompleted(object arg) {
+            if ((this.GetWaitValue_SinceJoin_ALSLCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetWaitValue_SinceJoin_ALSLCompleted(this, new GetWaitValue_SinceJoin_ALSLCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetPresetValue_Override", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double GetPresetValue_Override(int leaveID, int staffid) {
+            object[] results = this.Invoke("GetPresetValue_Override", new object[] {
+                        leaveID,
+                        staffid});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetPresetValue_OverrideAsync(int leaveID, int staffid) {
+            this.GetPresetValue_OverrideAsync(leaveID, staffid, null);
+        }
+        
+        /// <remarks/>
+        public void GetPresetValue_OverrideAsync(int leaveID, int staffid, object userState) {
+            if ((this.GetPresetValue_OverrideOperationCompleted == null)) {
+                this.GetPresetValue_OverrideOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPresetValue_OverrideOperationCompleted);
+            }
+            this.InvokeAsync("GetPresetValue_Override", new object[] {
+                        leaveID,
+                        staffid}, this.GetPresetValue_OverrideOperationCompleted, userState);
+        }
+        
+        private void OnGetPresetValue_OverrideOperationCompleted(object arg) {
+            if ((this.GetPresetValue_OverrideCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetPresetValue_OverrideCompleted(this, new GetPresetValue_OverrideCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAppliedValue_Override", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double GetAppliedValue_Override(int leaveID, int staffid) {
+            object[] results = this.Invoke("GetAppliedValue_Override", new object[] {
+                        leaveID,
+                        staffid});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAppliedValue_OverrideAsync(int leaveID, int staffid) {
+            this.GetAppliedValue_OverrideAsync(leaveID, staffid, null);
+        }
+        
+        /// <remarks/>
+        public void GetAppliedValue_OverrideAsync(int leaveID, int staffid, object userState) {
+            if ((this.GetAppliedValue_OverrideOperationCompleted == null)) {
+                this.GetAppliedValue_OverrideOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAppliedValue_OverrideOperationCompleted);
+            }
+            this.InvokeAsync("GetAppliedValue_Override", new object[] {
+                        leaveID,
+                        staffid}, this.GetAppliedValue_OverrideOperationCompleted, userState);
+        }
+        
+        private void OnGetAppliedValue_OverrideOperationCompleted(object arg) {
+            if ((this.GetAppliedValue_OverrideCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAppliedValue_OverrideCompleted(this, new GetAppliedValue_OverrideCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetGrossValue_Override", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double GetGrossValue_Override(int leaveID, int staffid) {
+            object[] results = this.Invoke("GetGrossValue_Override", new object[] {
+                        leaveID,
+                        staffid});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetGrossValue_OverrideAsync(int leaveID, int staffid) {
+            this.GetGrossValue_OverrideAsync(leaveID, staffid, null);
+        }
+        
+        /// <remarks/>
+        public void GetGrossValue_OverrideAsync(int leaveID, int staffid, object userState) {
+            if ((this.GetGrossValue_OverrideOperationCompleted == null)) {
+                this.GetGrossValue_OverrideOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetGrossValue_OverrideOperationCompleted);
+            }
+            this.InvokeAsync("GetGrossValue_Override", new object[] {
+                        leaveID,
+                        staffid}, this.GetGrossValue_OverrideOperationCompleted, userState);
+        }
+        
+        private void OnGetGrossValue_OverrideOperationCompleted(object arg) {
+            if ((this.GetGrossValue_OverrideCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetGrossValue_OverrideCompleted(this, new GetGrossValue_OverrideCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetWaitValue_Override", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double GetWaitValue_Override(int leaveID, int staffid) {
+            object[] results = this.Invoke("GetWaitValue_Override", new object[] {
+                        leaveID,
+                        staffid});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetWaitValue_OverrideAsync(int leaveID, int staffid) {
+            this.GetWaitValue_OverrideAsync(leaveID, staffid, null);
+        }
+        
+        /// <remarks/>
+        public void GetWaitValue_OverrideAsync(int leaveID, int staffid, object userState) {
+            if ((this.GetWaitValue_OverrideOperationCompleted == null)) {
+                this.GetWaitValue_OverrideOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetWaitValue_OverrideOperationCompleted);
+            }
+            this.InvokeAsync("GetWaitValue_Override", new object[] {
+                        leaveID,
+                        staffid}, this.GetWaitValue_OverrideOperationCompleted, userState);
+        }
+        
+        private void OnGetWaitValue_OverrideOperationCompleted(object arg) {
+            if ((this.GetWaitValue_OverrideCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetWaitValue_OverrideCompleted(this, new GetWaitValue_OverrideCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetWaitingValueBystaff", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double GetWaitingValueBystaff(int leaveID, int staffid) {
+            object[] results = this.Invoke("GetWaitingValueBystaff", new object[] {
+                        leaveID,
+                        staffid});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetWaitingValueBystaffAsync(int leaveID, int staffid) {
+            this.GetWaitingValueBystaffAsync(leaveID, staffid, null);
+        }
+        
+        /// <remarks/>
+        public void GetWaitingValueBystaffAsync(int leaveID, int staffid, object userState) {
+            if ((this.GetWaitingValueBystaffOperationCompleted == null)) {
+                this.GetWaitingValueBystaffOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetWaitingValueBystaffOperationCompleted);
+            }
+            this.InvokeAsync("GetWaitingValueBystaff", new object[] {
+                        leaveID,
+                        staffid}, this.GetWaitingValueBystaffOperationCompleted, userState);
+        }
+        
+        private void OnGetWaitingValueBystaffOperationCompleted(object arg) {
+            if ((this.GetWaitingValueBystaffCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetWaitingValueBystaffCompleted(this, new GetWaitingValueBystaffCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetWaitingValueByEmployment", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double GetWaitingValueByEmployment(int leaveID, int employ) {
+            object[] results = this.Invoke("GetWaitingValueByEmployment", new object[] {
+                        leaveID,
+                        employ});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetWaitingValueByEmploymentAsync(int leaveID, int employ) {
+            this.GetWaitingValueByEmploymentAsync(leaveID, employ, null);
+        }
+        
+        /// <remarks/>
+        public void GetWaitingValueByEmploymentAsync(int leaveID, int employ, object userState) {
+            if ((this.GetWaitingValueByEmploymentOperationCompleted == null)) {
+                this.GetWaitingValueByEmploymentOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetWaitingValueByEmploymentOperationCompleted);
+            }
+            this.InvokeAsync("GetWaitingValueByEmployment", new object[] {
+                        leaveID,
+                        employ}, this.GetWaitingValueByEmploymentOperationCompleted, userState);
+        }
+        
+        private void OnGetWaitingValueByEmploymentOperationCompleted(object arg) {
+            if ((this.GetWaitingValueByEmploymentCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetWaitingValueByEmploymentCompleted(this, new GetWaitingValueByEmploymentCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1857,6 +2453,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private string displaynameField;
         
+        private int staffIDField;
+        
         private int requestIDField;
         
         private int employmentIDField;
@@ -1912,6 +2510,16 @@ namespace WebServiceLayer.WebReference_leave {
             }
             set {
                 this.displaynameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int StaffID {
+            get {
+                return this.staffIDField;
+            }
+            set {
+                this.staffIDField = value;
             }
         }
         
@@ -4475,6 +5083,31 @@ namespace WebServiceLayer.WebReference_leave {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public enum LeaveBalanceType {
+        
+        /// <remarks/>
+        accumulabel_sinceJoin_al,
+        
+        /// <remarks/>
+        accumulabel_sinceJoin_sl,
+        
+        /// <remarks/>
+        accumulabel_sinceJoin_noalsl,
+        
+        /// <remarks/>
+        accumulabel_overridea,
+        
+        /// <remarks/>
+        noaccumulabel_fsl,
+        
+        /// <remarks/>
+        noaccumulabel_other,
+    }
+    
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void Gett_WorkflowTaskByInfoIDCompletedEventHandler(object sender, Gett_WorkflowTaskByInfoIDCompletedEventArgs e);
     
@@ -5098,6 +5731,32 @@ namespace WebServiceLayer.WebReference_leave {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetExtendLeaveDetails_waitByLeaveIDCompletedEventHandler(object sender, GetExtendLeaveDetails_waitByLeaveIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetExtendLeaveDetails_waitByLeaveIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetExtendLeaveDetails_waitByLeaveIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public LeaveRequestDetail[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((LeaveRequestDetail[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void GetExtendLeaveDetails_waitAndApprovedCompletedEventHandler(object sender, GetExtendLeaveDetails_waitAndApprovedCompletedEventArgs e);
     
     /// <remarks/>
@@ -5144,6 +5803,422 @@ namespace WebServiceLayer.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetSinceJoin_ALCompletedEventHandler(object sender, GetSinceJoin_ALCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetSinceJoin_ALCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetSinceJoin_ALCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_Leave[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_Leave[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetSinceJoin_excludeALSLCompletedEventHandler(object sender, GetSinceJoin_excludeALSLCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetSinceJoin_excludeALSLCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetSinceJoin_excludeALSLCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_Leave[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_Leave[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetOverrideCompletedEventHandler(object sender, GetOverrideCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetOverrideCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetOverrideCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_Leave[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_Leave[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetLeaveBalanceTypeCompletedEventHandler(object sender, GetLeaveBalanceTypeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetLeaveBalanceTypeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetLeaveBalanceTypeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public LeaveBalanceType Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((LeaveBalanceType)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetPresetValue_SinceJoin_excludeALSLCompletedEventHandler(object sender, GetPresetValue_SinceJoin_excludeALSLCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetPresetValue_SinceJoin_excludeALSLCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetPresetValue_SinceJoin_excludeALSLCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetAppliedValue_SinceJoin_excludeALSLCompletedEventHandler(object sender, GetAppliedValue_SinceJoin_excludeALSLCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAppliedValue_SinceJoin_excludeALSLCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAppliedValue_SinceJoin_excludeALSLCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetGrossValue_SinceJoin_excludeALSLCompletedEventHandler(object sender, GetGrossValue_SinceJoin_excludeALSLCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetGrossValue_SinceJoin_excludeALSLCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetGrossValue_SinceJoin_excludeALSLCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetWaitValue_SinceJoin_excludeALSLCompletedEventHandler(object sender, GetWaitValue_SinceJoin_excludeALSLCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetWaitValue_SinceJoin_excludeALSLCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetWaitValue_SinceJoin_excludeALSLCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetGrossValue_SinceJoin_ALSLCompletedEventHandler(object sender, GetGrossValue_SinceJoin_ALSLCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetGrossValue_SinceJoin_ALSLCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetGrossValue_SinceJoin_ALSLCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetWaitValue_SinceJoin_ALSLCompletedEventHandler(object sender, GetWaitValue_SinceJoin_ALSLCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetWaitValue_SinceJoin_ALSLCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetWaitValue_SinceJoin_ALSLCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetPresetValue_OverrideCompletedEventHandler(object sender, GetPresetValue_OverrideCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetPresetValue_OverrideCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetPresetValue_OverrideCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetAppliedValue_OverrideCompletedEventHandler(object sender, GetAppliedValue_OverrideCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAppliedValue_OverrideCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAppliedValue_OverrideCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetGrossValue_OverrideCompletedEventHandler(object sender, GetGrossValue_OverrideCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetGrossValue_OverrideCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetGrossValue_OverrideCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetWaitValue_OverrideCompletedEventHandler(object sender, GetWaitValue_OverrideCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetWaitValue_OverrideCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetWaitValue_OverrideCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetWaitingValueBystaffCompletedEventHandler(object sender, GetWaitingValueBystaffCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetWaitingValueBystaffCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetWaitingValueBystaffCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetWaitingValueByEmploymentCompletedEventHandler(object sender, GetWaitingValueByEmploymentCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetWaitingValueByEmploymentCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetWaitingValueByEmploymentCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
             }
         }
     }

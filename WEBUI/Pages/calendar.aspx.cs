@@ -66,7 +66,7 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {
-            setNavigation();//todo 因为viewstate无法保存event .所以只好放到这里来。所以不喜欢asp.net 模拟cs，但是又不能完全模拟，太恶心了.
+            setNavigation();//todo 因为viewstate无法保存event .所以只好放到这里来。所以不喜欢asp.net.  模拟cs，但是又不能完全模拟，太恶心了.
         }
 
         #region inner function
@@ -76,6 +76,7 @@ namespace WEBUI.Pages
 
             if (this.cb_leave.Checked)
             {
+                this.divTip.Visible = true;
                 this.leaveDiv.Visible = true;
                 this.rosterDiv.Visible = false;
                 var repeaterSource = BLL.Leave.getListSource(this.Calendar1.SelectedDate, eid);
@@ -84,6 +85,7 @@ namespace WEBUI.Pages
             }
             else if (this.cb_holiday.Checked)
             {
+                this.divTip.Visible = false;
                 this.leaveDiv.Visible = false;
                 this.rosterDiv.Visible = true;
                 var repeaterSource = BLL.calendar.GetRoster(this.Calendar1.SelectedDate, eid);
@@ -150,7 +152,12 @@ namespace WEBUI.Pages
             }
             else
             {
-                eid= Employment.Select(x => x.ID).ToList();
+                eid = Employment.Select(x => x.ID).ToList();
+                if (!string.IsNullOrEmpty(this.tb_name.Text))
+                {
+                    var likenamesids = BLL.User_wsref.GetPersonBaseInfoByLikeName(this.tb_name.Text.Trim()).Select(x => x.e_id).ToList();
+                    eid = eid.Where(x => likenamesids.Contains(x)).ToList();
+                }
             }
             return eid;
         }
@@ -188,7 +195,7 @@ namespace WEBUI.Pages
             this.ddlzone.Items.Add(new ListItem("All Zone", "0|"));
             for (int i = 0; i < contracts.Count; i++)
             {
-                this.ddlzone.Items.Add(new ListItem(contracts[i].Description + " - " + contracts[i].zonecode, contracts[i].contractid + "|" + contracts[i].zonecode));
+                this.ddlzone.Items.Add(new ListItem(contracts[i].zonecode + " - " + contracts[i].Description , contracts[i].contractid + "|" + contracts[i].zonecode));
             }
             this.ddlzone.SelectedIndex = 0;
         }
@@ -307,6 +314,11 @@ namespace WEBUI.Pages
             SetupRepeater();
         }
 
+        protected void tb_name_TextChanged(object sender, EventArgs e)
+        {
+            SetupRepeater();
+        }
+
         protected void btn_team_Click(object sender, EventArgs e)
         {
             this.btn_myself.CssClass = css_unselect;
@@ -398,5 +410,7 @@ namespace WEBUI.Pages
             return this.btn_myself.CssClass == css_select ? true : false;
         }
         #endregion
+
+        
     }
 }

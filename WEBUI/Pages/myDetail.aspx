@@ -25,7 +25,7 @@
             </tr>
             <tr>
                 <td><asp:Literal ID="lt_date" runat="server">Date</asp:Literal></td>
-                <td><asp:Label ID="lb_from" runat="server" Text="2015-01-05"/> -&gt;<asp:Label ID="lb_to" runat="server" Text="2015-01-05"/></td>
+                <td><asp:Label ID="lb_from" runat="server" Text="2015-01-05"/>&nbsp;&gt;&nbsp;<asp:Label ID="lb_to" runat="server" Text="2015-01-05"/></td>
             </tr>
             <tr>
                 <td><asp:Literal ID="lt_remarks" runat="server">Remarks</asp:Literal></td>

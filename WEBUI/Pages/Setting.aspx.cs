@@ -76,12 +76,12 @@ namespace WEBUI.Pages
             LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
             if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android)//android
             {
-                string js = LSLibrary.WebAPP.MyJSHelper.GetAndroidJs("savesetting", languagetype.ToString(), HttpContext.Current.Server);
+                string js = LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid("savesetting", languagetype.ToString(), HttpContext.Current.Server);
                 literal.Text = js;
             }
             else if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone)//ios
             {
-                string js = LSLibrary.WebAPP.MyJSHelper.GetIphoneJs("savesetting", languagetype.ToString(), HttpContext.Current.Server);
+                string js = LSLibrary.WebAPP.MyJSHelper.SendMessageToIphone("savesetting", languagetype.ToString(), HttpContext.Current.Server);
                 literal.Text = js;
             }
             else//pc

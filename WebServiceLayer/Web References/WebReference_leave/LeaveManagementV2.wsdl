@@ -719,6 +719,7 @@
       <s:complexType name="LeaveRequestDetail">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="displayname" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="LeaveID" type="s:int" />
@@ -745,6 +746,21 @@
           <s:element minOccurs="1" maxOccurs="1" name="WorkflowTypeID" nillable="true" type="s:int" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetExtendLeaveDetails_waitByLeaveID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="employmentids" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="leaveid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetExtendLeaveDetails_waitByLeaveIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetExtendLeaveDetails_waitByLeaveIDResult" type="tns:ArrayOfLeaveRequestDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetExtendLeaveDetails_waitAndApproved">
         <s:complexType>
           <s:sequence>
@@ -773,6 +789,244 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="GetMonthStatisticResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSinceJoin_AL">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSinceJoin_ALResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSinceJoin_ALResult" type="tns:ArrayOfT_Leave" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSinceJoin_excludeALSL">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSinceJoin_excludeALSLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSinceJoin_excludeALSLResult" type="tns:ArrayOfT_Leave" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOverride">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetOverrideResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOverrideResult" type="tns:ArrayOfT_Leave" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeaveBalanceType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="leaveID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeaveBalanceTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetLeaveBalanceTypeResult" type="tns:LeaveBalanceType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="LeaveBalanceType">
+        <s:restriction base="s:string">
+          <s:enumeration value="accumulabel_sinceJoin_al" />
+          <s:enumeration value="accumulabel_sinceJoin_sl" />
+          <s:enumeration value="accumulabel_sinceJoin_noalsl" />
+          <s:enumeration value="accumulabel_overridea" />
+          <s:enumeration value="noaccumulabel_fsl" />
+          <s:enumeration value="noaccumulabel_other" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetPresetValue_SinceJoin_excludeALSL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="leaveID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPresetValue_SinceJoin_excludeALSLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetPresetValue_SinceJoin_excludeALSLResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAppliedValue_SinceJoin_excludeALSL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="leaveID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAppliedValue_SinceJoin_excludeALSLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetAppliedValue_SinceJoin_excludeALSLResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGrossValue_SinceJoin_excludeALSL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="leaveID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGrossValue_SinceJoin_excludeALSLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetGrossValue_SinceJoin_excludeALSLResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWaitValue_SinceJoin_excludeALSL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="leaveID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWaitValue_SinceJoin_excludeALSLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetWaitValue_SinceJoin_excludeALSLResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGrossValue_SinceJoin_ALSL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="employId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGrossValue_SinceJoin_ALSLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGrossValue_SinceJoin_ALSLResult" type="tns:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDouble">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="double" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetWaitValue_SinceJoin_ALSL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="leaveID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="employid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWaitValue_SinceJoin_ALSLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetWaitValue_SinceJoin_ALSLResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPresetValue_Override">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="leaveID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPresetValue_OverrideResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetPresetValue_OverrideResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAppliedValue_Override">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="leaveID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAppliedValue_OverrideResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetAppliedValue_OverrideResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGrossValue_Override">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="leaveID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGrossValue_OverrideResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetGrossValue_OverrideResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWaitValue_Override">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="leaveID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWaitValue_OverrideResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetWaitValue_OverrideResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWaitingValueBystaff">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="leaveID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWaitingValueBystaffResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetWaitingValueBystaffResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWaitingValueByEmployment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="leaveID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="employ" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWaitingValueByEmploymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetWaitingValueByEmploymentResult" type="s:double" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -944,6 +1198,9 @@
       <s:element name="LeaveRequestMaster" nillable="true" type="tns:LeaveRequestMaster" />
       <s:element name="ArrayOfT_StaffLeaveRequestDetail" nillable="true" type="tns:ArrayOfT_StaffLeaveRequestDetail" />
       <s:element name="ArrayOfLeaveRequestDetail" nillable="true" type="tns:ArrayOfLeaveRequestDetail" />
+      <s:element name="LeaveBalanceType" type="tns:LeaveBalanceType" />
+      <s:element name="double" type="s:double" />
+      <s:element name="ArrayOfDouble" nillable="true" type="tns:ArrayOfDouble" />
       <s:element name="ArrayOfT_WorkflowInfo" nillable="true" type="tns:ArrayOfT_WorkflowInfo" />
     </s:schema>
   </wsdl:types>
@@ -1121,6 +1378,12 @@
   <wsdl:message name="GetExtendLeaveDetailsByReuestIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetExtendLeaveDetailsByReuestIDResponse" />
   </wsdl:message>
+  <wsdl:message name="GetExtendLeaveDetails_waitByLeaveIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetExtendLeaveDetails_waitByLeaveID" />
+  </wsdl:message>
+  <wsdl:message name="GetExtendLeaveDetails_waitByLeaveIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetExtendLeaveDetails_waitByLeaveIDResponse" />
+  </wsdl:message>
   <wsdl:message name="GetExtendLeaveDetails_waitAndApprovedSoapIn">
     <wsdl:part name="parameters" element="tns:GetExtendLeaveDetails_waitAndApproved" />
   </wsdl:message>
@@ -1132,6 +1395,102 @@
   </wsdl:message>
   <wsdl:message name="GetMonthStatisticSoapOut">
     <wsdl:part name="parameters" element="tns:GetMonthStatisticResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSinceJoin_ALSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSinceJoin_AL" />
+  </wsdl:message>
+  <wsdl:message name="GetSinceJoin_ALSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSinceJoin_ALResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSinceJoin_excludeALSLSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSinceJoin_excludeALSL" />
+  </wsdl:message>
+  <wsdl:message name="GetSinceJoin_excludeALSLSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSinceJoin_excludeALSLResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOverrideSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOverride" />
+  </wsdl:message>
+  <wsdl:message name="GetOverrideSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOverrideResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveBalanceTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLeaveBalanceType" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveBalanceTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLeaveBalanceTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPresetValue_SinceJoin_excludeALSLSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPresetValue_SinceJoin_excludeALSL" />
+  </wsdl:message>
+  <wsdl:message name="GetPresetValue_SinceJoin_excludeALSLSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPresetValue_SinceJoin_excludeALSLResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAppliedValue_SinceJoin_excludeALSLSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAppliedValue_SinceJoin_excludeALSL" />
+  </wsdl:message>
+  <wsdl:message name="GetAppliedValue_SinceJoin_excludeALSLSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAppliedValue_SinceJoin_excludeALSLResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGrossValue_SinceJoin_excludeALSLSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGrossValue_SinceJoin_excludeALSL" />
+  </wsdl:message>
+  <wsdl:message name="GetGrossValue_SinceJoin_excludeALSLSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGrossValue_SinceJoin_excludeALSLResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitValue_SinceJoin_excludeALSLSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWaitValue_SinceJoin_excludeALSL" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitValue_SinceJoin_excludeALSLSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWaitValue_SinceJoin_excludeALSLResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGrossValue_SinceJoin_ALSLSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGrossValue_SinceJoin_ALSL" />
+  </wsdl:message>
+  <wsdl:message name="GetGrossValue_SinceJoin_ALSLSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGrossValue_SinceJoin_ALSLResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitValue_SinceJoin_ALSLSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWaitValue_SinceJoin_ALSL" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitValue_SinceJoin_ALSLSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWaitValue_SinceJoin_ALSLResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPresetValue_OverrideSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPresetValue_Override" />
+  </wsdl:message>
+  <wsdl:message name="GetPresetValue_OverrideSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPresetValue_OverrideResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAppliedValue_OverrideSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAppliedValue_Override" />
+  </wsdl:message>
+  <wsdl:message name="GetAppliedValue_OverrideSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAppliedValue_OverrideResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGrossValue_OverrideSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGrossValue_Override" />
+  </wsdl:message>
+  <wsdl:message name="GetGrossValue_OverrideSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGrossValue_OverrideResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitValue_OverrideSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWaitValue_Override" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitValue_OverrideSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWaitValue_OverrideResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitingValueBystaffSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWaitingValueBystaff" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitingValueBystaffSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWaitingValueBystaffResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitingValueByEmploymentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWaitingValueByEmployment" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitingValueByEmploymentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWaitingValueByEmploymentResponse" />
   </wsdl:message>
   <wsdl:message name="Base_Insertt_WorkflowInfoSoapIn">
     <wsdl:part name="parameters" element="tns:Base_Insertt_WorkflowInfo" />
@@ -1301,6 +1660,107 @@
   <wsdl:message name="GetExtendLeaveDetailsByReuestIDHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfLeaveRequestDetail" />
   </wsdl:message>
+  <wsdl:message name="GetSinceJoin_ALHttpPostIn" />
+  <wsdl:message name="GetSinceJoin_ALHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfT_Leave" />
+  </wsdl:message>
+  <wsdl:message name="GetSinceJoin_excludeALSLHttpPostIn" />
+  <wsdl:message name="GetSinceJoin_excludeALSLHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfT_Leave" />
+  </wsdl:message>
+  <wsdl:message name="GetOverrideHttpPostIn" />
+  <wsdl:message name="GetOverrideHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfT_Leave" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveBalanceTypeHttpPostIn">
+    <wsdl:part name="leaveID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveBalanceTypeHttpPostOut">
+    <wsdl:part name="Body" element="tns:LeaveBalanceType" />
+  </wsdl:message>
+  <wsdl:message name="GetPresetValue_SinceJoin_excludeALSLHttpPostIn">
+    <wsdl:part name="leaveID" type="s:string" />
+    <wsdl:part name="staffid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPresetValue_SinceJoin_excludeALSLHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
+  <wsdl:message name="GetAppliedValue_SinceJoin_excludeALSLHttpPostIn">
+    <wsdl:part name="leaveID" type="s:string" />
+    <wsdl:part name="staffid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAppliedValue_SinceJoin_excludeALSLHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
+  <wsdl:message name="GetGrossValue_SinceJoin_excludeALSLHttpPostIn">
+    <wsdl:part name="leaveID" type="s:string" />
+    <wsdl:part name="staffid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGrossValue_SinceJoin_excludeALSLHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitValue_SinceJoin_excludeALSLHttpPostIn">
+    <wsdl:part name="leaveID" type="s:string" />
+    <wsdl:part name="staffid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitValue_SinceJoin_excludeALSLHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
+  <wsdl:message name="GetGrossValue_SinceJoin_ALSLHttpPostIn">
+    <wsdl:part name="employId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGrossValue_SinceJoin_ALSLHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDouble" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitValue_SinceJoin_ALSLHttpPostIn">
+    <wsdl:part name="leaveID" type="s:string" />
+    <wsdl:part name="employid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitValue_SinceJoin_ALSLHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
+  <wsdl:message name="GetPresetValue_OverrideHttpPostIn">
+    <wsdl:part name="leaveID" type="s:string" />
+    <wsdl:part name="staffid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPresetValue_OverrideHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
+  <wsdl:message name="GetAppliedValue_OverrideHttpPostIn">
+    <wsdl:part name="leaveID" type="s:string" />
+    <wsdl:part name="staffid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAppliedValue_OverrideHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
+  <wsdl:message name="GetGrossValue_OverrideHttpPostIn">
+    <wsdl:part name="leaveID" type="s:string" />
+    <wsdl:part name="staffid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGrossValue_OverrideHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitValue_OverrideHttpPostIn">
+    <wsdl:part name="leaveID" type="s:string" />
+    <wsdl:part name="staffid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitValue_OverrideHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitingValueBystaffHttpPostIn">
+    <wsdl:part name="leaveID" type="s:string" />
+    <wsdl:part name="staffid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitingValueBystaffHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitingValueByEmploymentHttpPostIn">
+    <wsdl:part name="leaveID" type="s:string" />
+    <wsdl:part name="employ" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitingValueByEmploymentHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
   <wsdl:message name="Base_GetListt_WorkflowInfoHttpPostIn">
     <wsdl:part name="whereSql" type="s:string" />
   </wsdl:message>
@@ -1430,6 +1890,10 @@
       <wsdl:input message="tns:GetExtendLeaveDetailsByReuestIDSoapIn" />
       <wsdl:output message="tns:GetExtendLeaveDetailsByReuestIDSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetExtendLeaveDetails_waitByLeaveID">
+      <wsdl:input message="tns:GetExtendLeaveDetails_waitByLeaveIDSoapIn" />
+      <wsdl:output message="tns:GetExtendLeaveDetails_waitByLeaveIDSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetExtendLeaveDetails_waitAndApproved">
       <wsdl:input message="tns:GetExtendLeaveDetails_waitAndApprovedSoapIn" />
       <wsdl:output message="tns:GetExtendLeaveDetails_waitAndApprovedSoapOut" />
@@ -1437,6 +1901,70 @@
     <wsdl:operation name="GetMonthStatistic">
       <wsdl:input message="tns:GetMonthStatisticSoapIn" />
       <wsdl:output message="tns:GetMonthStatisticSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSinceJoin_AL">
+      <wsdl:input message="tns:GetSinceJoin_ALSoapIn" />
+      <wsdl:output message="tns:GetSinceJoin_ALSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSinceJoin_excludeALSL">
+      <wsdl:input message="tns:GetSinceJoin_excludeALSLSoapIn" />
+      <wsdl:output message="tns:GetSinceJoin_excludeALSLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOverride">
+      <wsdl:input message="tns:GetOverrideSoapIn" />
+      <wsdl:output message="tns:GetOverrideSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveBalanceType">
+      <wsdl:input message="tns:GetLeaveBalanceTypeSoapIn" />
+      <wsdl:output message="tns:GetLeaveBalanceTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPresetValue_SinceJoin_excludeALSL">
+      <wsdl:input message="tns:GetPresetValue_SinceJoin_excludeALSLSoapIn" />
+      <wsdl:output message="tns:GetPresetValue_SinceJoin_excludeALSLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppliedValue_SinceJoin_excludeALSL">
+      <wsdl:input message="tns:GetAppliedValue_SinceJoin_excludeALSLSoapIn" />
+      <wsdl:output message="tns:GetAppliedValue_SinceJoin_excludeALSLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGrossValue_SinceJoin_excludeALSL">
+      <wsdl:input message="tns:GetGrossValue_SinceJoin_excludeALSLSoapIn" />
+      <wsdl:output message="tns:GetGrossValue_SinceJoin_excludeALSLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitValue_SinceJoin_excludeALSL">
+      <wsdl:input message="tns:GetWaitValue_SinceJoin_excludeALSLSoapIn" />
+      <wsdl:output message="tns:GetWaitValue_SinceJoin_excludeALSLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGrossValue_SinceJoin_ALSL">
+      <wsdl:input message="tns:GetGrossValue_SinceJoin_ALSLSoapIn" />
+      <wsdl:output message="tns:GetGrossValue_SinceJoin_ALSLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitValue_SinceJoin_ALSL">
+      <wsdl:input message="tns:GetWaitValue_SinceJoin_ALSLSoapIn" />
+      <wsdl:output message="tns:GetWaitValue_SinceJoin_ALSLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPresetValue_Override">
+      <wsdl:input message="tns:GetPresetValue_OverrideSoapIn" />
+      <wsdl:output message="tns:GetPresetValue_OverrideSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppliedValue_Override">
+      <wsdl:input message="tns:GetAppliedValue_OverrideSoapIn" />
+      <wsdl:output message="tns:GetAppliedValue_OverrideSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGrossValue_Override">
+      <wsdl:input message="tns:GetGrossValue_OverrideSoapIn" />
+      <wsdl:output message="tns:GetGrossValue_OverrideSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitValue_Override">
+      <wsdl:input message="tns:GetWaitValue_OverrideSoapIn" />
+      <wsdl:output message="tns:GetWaitValue_OverrideSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitingValueBystaff">
+      <wsdl:input message="tns:GetWaitingValueBystaffSoapIn" />
+      <wsdl:output message="tns:GetWaitingValueBystaffSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitingValueByEmployment">
+      <wsdl:input message="tns:GetWaitingValueByEmploymentSoapIn" />
+      <wsdl:output message="tns:GetWaitingValueByEmploymentSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Base_Insertt_WorkflowInfo">
       <wsdl:input message="tns:Base_Insertt_WorkflowInfoSoapIn" />
@@ -1555,6 +2083,70 @@
     <wsdl:operation name="GetExtendLeaveDetailsByReuestID">
       <wsdl:input message="tns:GetExtendLeaveDetailsByReuestIDHttpPostIn" />
       <wsdl:output message="tns:GetExtendLeaveDetailsByReuestIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSinceJoin_AL">
+      <wsdl:input message="tns:GetSinceJoin_ALHttpPostIn" />
+      <wsdl:output message="tns:GetSinceJoin_ALHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSinceJoin_excludeALSL">
+      <wsdl:input message="tns:GetSinceJoin_excludeALSLHttpPostIn" />
+      <wsdl:output message="tns:GetSinceJoin_excludeALSLHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOverride">
+      <wsdl:input message="tns:GetOverrideHttpPostIn" />
+      <wsdl:output message="tns:GetOverrideHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveBalanceType">
+      <wsdl:input message="tns:GetLeaveBalanceTypeHttpPostIn" />
+      <wsdl:output message="tns:GetLeaveBalanceTypeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPresetValue_SinceJoin_excludeALSL">
+      <wsdl:input message="tns:GetPresetValue_SinceJoin_excludeALSLHttpPostIn" />
+      <wsdl:output message="tns:GetPresetValue_SinceJoin_excludeALSLHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppliedValue_SinceJoin_excludeALSL">
+      <wsdl:input message="tns:GetAppliedValue_SinceJoin_excludeALSLHttpPostIn" />
+      <wsdl:output message="tns:GetAppliedValue_SinceJoin_excludeALSLHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGrossValue_SinceJoin_excludeALSL">
+      <wsdl:input message="tns:GetGrossValue_SinceJoin_excludeALSLHttpPostIn" />
+      <wsdl:output message="tns:GetGrossValue_SinceJoin_excludeALSLHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitValue_SinceJoin_excludeALSL">
+      <wsdl:input message="tns:GetWaitValue_SinceJoin_excludeALSLHttpPostIn" />
+      <wsdl:output message="tns:GetWaitValue_SinceJoin_excludeALSLHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGrossValue_SinceJoin_ALSL">
+      <wsdl:input message="tns:GetGrossValue_SinceJoin_ALSLHttpPostIn" />
+      <wsdl:output message="tns:GetGrossValue_SinceJoin_ALSLHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitValue_SinceJoin_ALSL">
+      <wsdl:input message="tns:GetWaitValue_SinceJoin_ALSLHttpPostIn" />
+      <wsdl:output message="tns:GetWaitValue_SinceJoin_ALSLHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPresetValue_Override">
+      <wsdl:input message="tns:GetPresetValue_OverrideHttpPostIn" />
+      <wsdl:output message="tns:GetPresetValue_OverrideHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppliedValue_Override">
+      <wsdl:input message="tns:GetAppliedValue_OverrideHttpPostIn" />
+      <wsdl:output message="tns:GetAppliedValue_OverrideHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGrossValue_Override">
+      <wsdl:input message="tns:GetGrossValue_OverrideHttpPostIn" />
+      <wsdl:output message="tns:GetGrossValue_OverrideHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitValue_Override">
+      <wsdl:input message="tns:GetWaitValue_OverrideHttpPostIn" />
+      <wsdl:output message="tns:GetWaitValue_OverrideHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitingValueBystaff">
+      <wsdl:input message="tns:GetWaitingValueBystaffHttpPostIn" />
+      <wsdl:output message="tns:GetWaitingValueBystaffHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitingValueByEmployment">
+      <wsdl:input message="tns:GetWaitingValueByEmploymentHttpPostIn" />
+      <wsdl:output message="tns:GetWaitingValueByEmploymentHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="Base_GetListt_WorkflowInfo">
       <wsdl:input message="tns:Base_GetListt_WorkflowInfoHttpPostIn" />
@@ -1828,6 +2420,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetExtendLeaveDetails_waitByLeaveID">
+      <soap:operation soapAction="http://tempuri.org/GetExtendLeaveDetails_waitByLeaveID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetExtendLeaveDetails_waitAndApproved">
       <soap:operation soapAction="http://tempuri.org/GetExtendLeaveDetails_waitAndApproved" style="document" />
       <wsdl:input>
@@ -1839,6 +2440,150 @@
     </wsdl:operation>
     <wsdl:operation name="GetMonthStatistic">
       <soap:operation soapAction="http://tempuri.org/GetMonthStatistic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSinceJoin_AL">
+      <soap:operation soapAction="http://tempuri.org/GetSinceJoin_AL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSinceJoin_excludeALSL">
+      <soap:operation soapAction="http://tempuri.org/GetSinceJoin_excludeALSL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOverride">
+      <soap:operation soapAction="http://tempuri.org/GetOverride" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveBalanceType">
+      <soap:operation soapAction="http://tempuri.org/GetLeaveBalanceType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPresetValue_SinceJoin_excludeALSL">
+      <soap:operation soapAction="http://tempuri.org/GetPresetValue_SinceJoin_excludeALSL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppliedValue_SinceJoin_excludeALSL">
+      <soap:operation soapAction="http://tempuri.org/GetAppliedValue_SinceJoin_excludeALSL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGrossValue_SinceJoin_excludeALSL">
+      <soap:operation soapAction="http://tempuri.org/GetGrossValue_SinceJoin_excludeALSL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitValue_SinceJoin_excludeALSL">
+      <soap:operation soapAction="http://tempuri.org/GetWaitValue_SinceJoin_excludeALSL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGrossValue_SinceJoin_ALSL">
+      <soap:operation soapAction="http://tempuri.org/GetGrossValue_SinceJoin_ALSL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitValue_SinceJoin_ALSL">
+      <soap:operation soapAction="http://tempuri.org/GetWaitValue_SinceJoin_ALSL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPresetValue_Override">
+      <soap:operation soapAction="http://tempuri.org/GetPresetValue_Override" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppliedValue_Override">
+      <soap:operation soapAction="http://tempuri.org/GetAppliedValue_Override" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGrossValue_Override">
+      <soap:operation soapAction="http://tempuri.org/GetGrossValue_Override" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitValue_Override">
+      <soap:operation soapAction="http://tempuri.org/GetWaitValue_Override" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitingValueBystaff">
+      <soap:operation soapAction="http://tempuri.org/GetWaitingValueBystaff" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitingValueByEmployment">
+      <soap:operation soapAction="http://tempuri.org/GetWaitingValueByEmployment" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2200,6 +2945,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetExtendLeaveDetails_waitByLeaveID">
+      <soap12:operation soapAction="http://tempuri.org/GetExtendLeaveDetails_waitByLeaveID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetExtendLeaveDetails_waitAndApproved">
       <soap12:operation soapAction="http://tempuri.org/GetExtendLeaveDetails_waitAndApproved" style="document" />
       <wsdl:input>
@@ -2211,6 +2965,150 @@
     </wsdl:operation>
     <wsdl:operation name="GetMonthStatistic">
       <soap12:operation soapAction="http://tempuri.org/GetMonthStatistic" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSinceJoin_AL">
+      <soap12:operation soapAction="http://tempuri.org/GetSinceJoin_AL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSinceJoin_excludeALSL">
+      <soap12:operation soapAction="http://tempuri.org/GetSinceJoin_excludeALSL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOverride">
+      <soap12:operation soapAction="http://tempuri.org/GetOverride" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveBalanceType">
+      <soap12:operation soapAction="http://tempuri.org/GetLeaveBalanceType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPresetValue_SinceJoin_excludeALSL">
+      <soap12:operation soapAction="http://tempuri.org/GetPresetValue_SinceJoin_excludeALSL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppliedValue_SinceJoin_excludeALSL">
+      <soap12:operation soapAction="http://tempuri.org/GetAppliedValue_SinceJoin_excludeALSL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGrossValue_SinceJoin_excludeALSL">
+      <soap12:operation soapAction="http://tempuri.org/GetGrossValue_SinceJoin_excludeALSL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitValue_SinceJoin_excludeALSL">
+      <soap12:operation soapAction="http://tempuri.org/GetWaitValue_SinceJoin_excludeALSL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGrossValue_SinceJoin_ALSL">
+      <soap12:operation soapAction="http://tempuri.org/GetGrossValue_SinceJoin_ALSL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitValue_SinceJoin_ALSL">
+      <soap12:operation soapAction="http://tempuri.org/GetWaitValue_SinceJoin_ALSL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPresetValue_Override">
+      <soap12:operation soapAction="http://tempuri.org/GetPresetValue_Override" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppliedValue_Override">
+      <soap12:operation soapAction="http://tempuri.org/GetAppliedValue_Override" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGrossValue_Override">
+      <soap12:operation soapAction="http://tempuri.org/GetGrossValue_Override" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitValue_Override">
+      <soap12:operation soapAction="http://tempuri.org/GetWaitValue_Override" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitingValueBystaff">
+      <soap12:operation soapAction="http://tempuri.org/GetWaitingValueBystaff" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitingValueByEmployment">
+      <soap12:operation soapAction="http://tempuri.org/GetWaitingValueByEmployment" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2465,6 +3363,150 @@
     </wsdl:operation>
     <wsdl:operation name="GetExtendLeaveDetailsByReuestID">
       <http:operation location="/GetExtendLeaveDetailsByReuestID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSinceJoin_AL">
+      <http:operation location="/GetSinceJoin_AL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSinceJoin_excludeALSL">
+      <http:operation location="/GetSinceJoin_excludeALSL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOverride">
+      <http:operation location="/GetOverride" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveBalanceType">
+      <http:operation location="/GetLeaveBalanceType" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPresetValue_SinceJoin_excludeALSL">
+      <http:operation location="/GetPresetValue_SinceJoin_excludeALSL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppliedValue_SinceJoin_excludeALSL">
+      <http:operation location="/GetAppliedValue_SinceJoin_excludeALSL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGrossValue_SinceJoin_excludeALSL">
+      <http:operation location="/GetGrossValue_SinceJoin_excludeALSL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitValue_SinceJoin_excludeALSL">
+      <http:operation location="/GetWaitValue_SinceJoin_excludeALSL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGrossValue_SinceJoin_ALSL">
+      <http:operation location="/GetGrossValue_SinceJoin_ALSL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitValue_SinceJoin_ALSL">
+      <http:operation location="/GetWaitValue_SinceJoin_ALSL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPresetValue_Override">
+      <http:operation location="/GetPresetValue_Override" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppliedValue_Override">
+      <http:operation location="/GetAppliedValue_Override" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGrossValue_Override">
+      <http:operation location="/GetGrossValue_Override" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitValue_Override">
+      <http:operation location="/GetWaitValue_Override" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitingValueBystaff">
+      <http:operation location="/GetWaitingValueBystaff" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaitingValueByEmployment">
+      <http:operation location="/GetWaitingValueByEmployment" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

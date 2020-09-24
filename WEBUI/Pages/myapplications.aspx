@@ -27,7 +27,7 @@
                 <asp:Repeater ID="repeater_myapplications" runat="server">
                     <ItemTemplate>
                         <tr style="height:42px; <%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>"  onclick="MyPostBack('detail',<%#Eval("RequestID") %>)">
-                            <td class="col-xs-5" style="padding:0px;  font-weight:bold"><%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).leavefrom.ToString("yyyy-MM-dd")%>-><%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).leaveto.ToString("MM-dd")%></td>
+                            <td class="col-xs-5" style="padding:0px;  font-weight:bold"><%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).leavefrom.ToString("yyyy-MM-dd")%> <label class="lss-color-blue" style="font-weight:bolder; font-size:16px"> > </label> <%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).leaveto.ToString("MM-dd")%></td>
                             <td class="col-xs-2" style="padding:0px"><%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).totaldays %> D</td>
                             <td class="col-xs-5" style="padding:0px"><%#  BLL.workflow.GetTypeDesc( ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).WorkflowTypeID,((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).minleaveCode,false) %></td>
                         </tr>

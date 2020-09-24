@@ -7,6 +7,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
+using LSLibrary;
 
 namespace ut
 {
@@ -35,10 +36,12 @@ namespace ut
         [TestMethod]
         public void TestMethod1()
         {
-            string agent = "abc";
-            LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType res = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
-            Debug.WriteLine("abc");
-            Debug.WriteLine(res);
+            ICSHelper iCSHelper = new ICSHelper("mycalendar", "my first metting");
+            ICSHelper.DataItem item = new ICSHelper.DataItem(DateTime.Now, DateTime.Now, "my first calendar","test location", "test my desc",true);
+            ICSHelper.DataItem item2 = new ICSHelper.DataItem(DateTime.Now.AddHours(4), DateTime.Now.AddHours(5), "my secode calendar", "test location", "test my desc", false);
+            iCSHelper.InsertItem(item);
+            iCSHelper.InsertItem(item2);
+            iCSHelper.Save("c:\\abc\\");
         }
 
 
@@ -79,7 +82,17 @@ namespace ut
             }
         }
 
-       
+
+        [TestMethod]
+        public void TestMethod222333()
+        {
+            double a = 3.334324;
+            string b = a.ToString("0.##");
+            int c = 4;
+        }
+
+
+
 
 
 

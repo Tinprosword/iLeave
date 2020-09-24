@@ -44,13 +44,13 @@ namespace BLL
             if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android)//android
             {
                 HttpContext.Current.Response.Clear();
-                HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.GetAndroidJs("sys", "loginout", HttpContext.Current.Server));
+                HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid("sys", "loginout", HttpContext.Current.Server));
                 HttpContext.Current.Response.End();
             }
             else if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone)//ios
             {
                 HttpContext.Current.Response.Clear();
-                HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.GetIphoneJs("sys", "loginout", HttpContext.Current.Server));
+                HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.SendMessageToIphone("sys", "loginout", HttpContext.Current.Server));
                 HttpContext.Current.Response.End();
             }
             else//pc
@@ -75,6 +75,11 @@ namespace BLL
         }
 
 
+        public static WebServiceLayer.WebReference_user.PersonBaseinfo[] GetPersonBaseInfoByLikeName(string Containname)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfo("p_Nickname like '%" + Containname + "%' or p_Surname like '%" + Containname + "%' or p_othername like '%" + Containname + "%' or p_namech like '%" + Containname + "%' or (p_Surname+' '+p_Othername) like '%"+Containname+"%'");
+        }
+
 
         public static WebServiceLayer.WebReference_user.PersonBaseinfo[] GetPersonBaseInfoByPid(int pid)
         {
@@ -92,7 +97,8 @@ namespace BLL
             WebServiceLayer.WebReference_user.PersonBaseinfo[] res = WebServiceLayer.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfo_ValidateEmploymentForToday(pid);
             if (res != null && res.Count() > 0)
             {
-                result = res[0];//todo 得到薪水更高的一个.
+                var item = res.Where(x => x.e_IsMain!=null && x.e_IsMain==true).OrderBy(x=>x.e_FirstEmploymentID).ToList();//最早申请的staff 中的main employment 作为主employment.
+                result = item.Count() >0 ? item[0] : null;
             }
             return result ;
         }

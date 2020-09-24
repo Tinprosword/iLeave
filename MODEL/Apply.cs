@@ -12,8 +12,6 @@ namespace MODEL
         public class ViewState_page
         {
             public string LeaveTypeSelectValue;
-            public string applylabel;
-            public string balancelabel;
             public string ddlsectionSelectvalue;
             public string remarks;
 
@@ -26,6 +24,37 @@ namespace MODEL
                 LeaveList = new List<MODEL.Apply.apply_LeaveData>();
                 uploadpic = new List<MODEL.Apply.app_uploadpic>();
                 leavetype = new List<LSLibrary.WebAPP.ValueText<int>>();
+            }
+
+            public static double getDayfromSections(int sectionsValue)
+            {
+                if (sectionsValue == 0 || sectionsValue == 3)
+                {
+                    return 1;
+                }
+                else if (sectionsValue == 1 || sectionsValue == 2)
+                {
+                    return 0.5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+
+
+            public double getApplying()
+            {
+                double result = 0;
+
+                if (LeaveList != null)
+                {
+                    for (int i = 0; i < LeaveList.Count(); i++)
+                    {
+                        result += getDayfromSections(LeaveList[i].sectionid);
+                    }
+                }
+                return result;
             }
         }
 

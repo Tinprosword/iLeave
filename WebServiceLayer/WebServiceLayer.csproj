@@ -125,6 +125,9 @@
     <None Include="Web References\WebReference_leave\ErrorMessageInfo.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\WebReference_leave\LeaveBalanceType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\WebReference_leave\LeaveManagementV2.wsdl" />
     <None Include="Web References\WebReference_leave\LeaveRequestDetail.datasource">
       <DependentUpon>Reference.map</DependentUpon>

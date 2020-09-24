@@ -20,9 +20,9 @@
             <tr>
                 <td><asp:Literal ID="lt_apply" runat="server">Apply</asp:Literal></td>
                 <td>
-                    <asp:label ID="lt_applydays" runat="server" Width="80px">0 Days</asp:label>
-                    <asp:label ID="lt_balance" runat="server" Width="80px">Banlance</asp:label>
-                    <asp:label ID="lt_balancedays" runat="server" Width="80px">9.2 Days</asp:label>
+                    <asp:label ID="lt_applydays" runat="server" Width="50px">0 D</asp:label>
+                    <asp:label ID="lt_balance" runat="server" Width="71px">Banlance</asp:label>
+                    <asp:label ID="lt_balancedays" runat="server">9.2 D</asp:label>
                 </td>
             </tr>
             <tr>
