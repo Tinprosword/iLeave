@@ -44,7 +44,7 @@
                 <td><asp:TextBox ID="tb_remarks" runat="server" Width="90%"></asp:TextBox> </td>
             </tr>
             <tr>
-                <td colspan="2"><asp:Literal ID="literal_errormsga" runat="server" Visible="false"></asp:Literal></td>
+                <td colspan="2" style="color:red"><asp:Literal ID="literal_errormsga" runat="server" Visible="false"></asp:Literal></td>
             </tr>
         </table>
         <div class=" col-xs-12" style="height:2px"></div>

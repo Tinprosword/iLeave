@@ -14,6 +14,9 @@ namespace BLL
         public static string Session_ApplyToUpload = "Session_ApplyToUpload";
         public static string Session_UploadToApply = "Session_UploadToApply";
 
+
+        public static string msg_chooseLeaveAndSection = "Please select leave and section!";
+        public static string msg_emptyLeave = "Empty Leave";
         #endregion
 
         #region common enum 使用端的生成的enum居然默然从0开始.全然不管webservices的设定....只能采用会有隐患的复制的方法

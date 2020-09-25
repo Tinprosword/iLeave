@@ -750,7 +750,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="employmentids" type="tns:ArrayOfInt" />
-            <s:element minOccurs="1" maxOccurs="1" name="leaveid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="leaveids" type="tns:ArrayOfInt" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -928,8 +928,8 @@
       <s:element name="GetWaitValue_SinceJoin_ALSL">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="leaveID" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="employid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isAL" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -997,36 +997,6 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="GetWaitValue_OverrideResult" type="s:double" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetWaitingValueBystaff">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="leaveID" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetWaitingValueBystaffResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="GetWaitingValueBystaffResult" type="s:double" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetWaitingValueByEmployment">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="leaveID" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="employ" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetWaitingValueByEmploymentResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="GetWaitingValueByEmploymentResult" type="s:double" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1480,18 +1450,6 @@
   <wsdl:message name="GetWaitValue_OverrideSoapOut">
     <wsdl:part name="parameters" element="tns:GetWaitValue_OverrideResponse" />
   </wsdl:message>
-  <wsdl:message name="GetWaitingValueBystaffSoapIn">
-    <wsdl:part name="parameters" element="tns:GetWaitingValueBystaff" />
-  </wsdl:message>
-  <wsdl:message name="GetWaitingValueBystaffSoapOut">
-    <wsdl:part name="parameters" element="tns:GetWaitingValueBystaffResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetWaitingValueByEmploymentSoapIn">
-    <wsdl:part name="parameters" element="tns:GetWaitingValueByEmployment" />
-  </wsdl:message>
-  <wsdl:message name="GetWaitingValueByEmploymentSoapOut">
-    <wsdl:part name="parameters" element="tns:GetWaitingValueByEmploymentResponse" />
-  </wsdl:message>
   <wsdl:message name="Base_Insertt_WorkflowInfoSoapIn">
     <wsdl:part name="parameters" element="tns:Base_Insertt_WorkflowInfo" />
   </wsdl:message>
@@ -1713,8 +1671,8 @@
     <wsdl:part name="Body" element="tns:ArrayOfDouble" />
   </wsdl:message>
   <wsdl:message name="GetWaitValue_SinceJoin_ALSLHttpPostIn">
-    <wsdl:part name="leaveID" type="s:string" />
-    <wsdl:part name="employid" type="s:string" />
+    <wsdl:part name="staffid" type="s:string" />
+    <wsdl:part name="isAL" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetWaitValue_SinceJoin_ALSLHttpPostOut">
     <wsdl:part name="Body" element="tns:double" />
@@ -1745,20 +1703,6 @@
     <wsdl:part name="staffid" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetWaitValue_OverrideHttpPostOut">
-    <wsdl:part name="Body" element="tns:double" />
-  </wsdl:message>
-  <wsdl:message name="GetWaitingValueBystaffHttpPostIn">
-    <wsdl:part name="leaveID" type="s:string" />
-    <wsdl:part name="staffid" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetWaitingValueBystaffHttpPostOut">
-    <wsdl:part name="Body" element="tns:double" />
-  </wsdl:message>
-  <wsdl:message name="GetWaitingValueByEmploymentHttpPostIn">
-    <wsdl:part name="leaveID" type="s:string" />
-    <wsdl:part name="employ" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetWaitingValueByEmploymentHttpPostOut">
     <wsdl:part name="Body" element="tns:double" />
   </wsdl:message>
   <wsdl:message name="Base_GetListt_WorkflowInfoHttpPostIn">
@@ -1958,14 +1902,6 @@
       <wsdl:input message="tns:GetWaitValue_OverrideSoapIn" />
       <wsdl:output message="tns:GetWaitValue_OverrideSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetWaitingValueBystaff">
-      <wsdl:input message="tns:GetWaitingValueBystaffSoapIn" />
-      <wsdl:output message="tns:GetWaitingValueBystaffSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetWaitingValueByEmployment">
-      <wsdl:input message="tns:GetWaitingValueByEmploymentSoapIn" />
-      <wsdl:output message="tns:GetWaitingValueByEmploymentSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="Base_Insertt_WorkflowInfo">
       <wsdl:input message="tns:Base_Insertt_WorkflowInfoSoapIn" />
       <wsdl:output message="tns:Base_Insertt_WorkflowInfoSoapOut" />
@@ -2139,14 +2075,6 @@
     <wsdl:operation name="GetWaitValue_Override">
       <wsdl:input message="tns:GetWaitValue_OverrideHttpPostIn" />
       <wsdl:output message="tns:GetWaitValue_OverrideHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetWaitingValueBystaff">
-      <wsdl:input message="tns:GetWaitingValueBystaffHttpPostIn" />
-      <wsdl:output message="tns:GetWaitingValueBystaffHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetWaitingValueByEmployment">
-      <wsdl:input message="tns:GetWaitingValueByEmploymentHttpPostIn" />
-      <wsdl:output message="tns:GetWaitingValueByEmploymentHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="Base_GetListt_WorkflowInfo">
       <wsdl:input message="tns:Base_GetListt_WorkflowInfoHttpPostIn" />
@@ -2566,24 +2494,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetWaitValue_Override">
       <soap:operation soapAction="http://tempuri.org/GetWaitValue_Override" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetWaitingValueBystaff">
-      <soap:operation soapAction="http://tempuri.org/GetWaitingValueBystaff" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetWaitingValueByEmployment">
-      <soap:operation soapAction="http://tempuri.org/GetWaitingValueByEmployment" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3098,24 +3008,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetWaitingValueBystaff">
-      <soap12:operation soapAction="http://tempuri.org/GetWaitingValueBystaff" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetWaitingValueByEmployment">
-      <soap12:operation soapAction="http://tempuri.org/GetWaitingValueByEmployment" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="Base_Insertt_WorkflowInfo">
       <soap12:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowInfo" style="document" />
       <wsdl:input>
@@ -3489,24 +3381,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetWaitValue_Override">
       <http:operation location="/GetWaitValue_Override" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetWaitingValueBystaff">
-      <http:operation location="/GetWaitingValueBystaff" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetWaitingValueByEmployment">
-      <http:operation location="/GetWaitingValueByEmployment" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-xs-12" style="padding-top:10px;padding-bottom:5px;">
             <div class="col-xs-9" style="padding-top:5px"><asp:FileUpload ID="FileUpload1" runat="server"  AllowMultiple="true" Width="150px" Style="padding-bottom:5px;height:50px; font-size:16px"/></div>
-            <div class="col-xs-2"><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/upload2.png" Width="50px" Height="50px" OnClick="ImageButton1_Click" /></div>
+            <div class="col-xs-2"><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/upload2.png" Width="50px" Height="50px" OnClick="Upload_Click" /></div>
         </div>
         <div class="col-xs-12" style="padding:0px; overflow-y:scroll; height:448px;">
             <asp:Repeater ID="repeater_attandance" runat="server" EnableViewState="true">
@@ -20,7 +20,7 @@
             </asp:Repeater>
         </div>
         <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
-            <asp:Button ID="button_apply" runat="server" Text="Back"  CssClass="btn lss-btncolor-blue" Width="160px" PostBackUrl="~/Pages/Apply.aspx?action=back"/>
+            <asp:Button ID="button_apply" runat="server" Text="Back"  CssClass="btn lss-btncolor-blue" Width="160px" OnClick="button_apply_Click1"/>
         </div>
     </div>
 </asp:Content>

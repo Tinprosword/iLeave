@@ -121,10 +121,6 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetWaitValue_OverrideOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetWaitingValueBystaffOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetWaitingValueByEmploymentOperationCompleted;
-        
         private System.Threading.SendOrPostCallback Base_Insertt_WorkflowInfoOperationCompleted;
         
         private System.Threading.SendOrPostCallback Base_Updatet_WorkflowInfoOperationCompleted;
@@ -320,12 +316,6 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event GetWaitValue_OverrideCompletedEventHandler GetWaitValue_OverrideCompleted;
-        
-        /// <remarks/>
-        public event GetWaitingValueBystaffCompletedEventHandler GetWaitingValueBystaffCompleted;
-        
-        /// <remarks/>
-        public event GetWaitingValueByEmploymentCompletedEventHandler GetWaitingValueByEmploymentCompleted;
         
         /// <remarks/>
         public event Base_Insertt_WorkflowInfoCompletedEventHandler Base_Insertt_WorkflowInfoCompleted;
@@ -1230,26 +1220,26 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetExtendLeaveDetails_waitByLeaveID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public LeaveRequestDetail[] GetExtendLeaveDetails_waitByLeaveID(int[] employmentids, int leaveid) {
+        public LeaveRequestDetail[] GetExtendLeaveDetails_waitByLeaveID(int[] employmentids, int[] leaveids) {
             object[] results = this.Invoke("GetExtendLeaveDetails_waitByLeaveID", new object[] {
                         employmentids,
-                        leaveid});
+                        leaveids});
             return ((LeaveRequestDetail[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetExtendLeaveDetails_waitByLeaveIDAsync(int[] employmentids, int leaveid) {
-            this.GetExtendLeaveDetails_waitByLeaveIDAsync(employmentids, leaveid, null);
+        public void GetExtendLeaveDetails_waitByLeaveIDAsync(int[] employmentids, int[] leaveids) {
+            this.GetExtendLeaveDetails_waitByLeaveIDAsync(employmentids, leaveids, null);
         }
         
         /// <remarks/>
-        public void GetExtendLeaveDetails_waitByLeaveIDAsync(int[] employmentids, int leaveid, object userState) {
+        public void GetExtendLeaveDetails_waitByLeaveIDAsync(int[] employmentids, int[] leaveids, object userState) {
             if ((this.GetExtendLeaveDetails_waitByLeaveIDOperationCompleted == null)) {
                 this.GetExtendLeaveDetails_waitByLeaveIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetExtendLeaveDetails_waitByLeaveIDOperationCompleted);
             }
             this.InvokeAsync("GetExtendLeaveDetails_waitByLeaveID", new object[] {
                         employmentids,
-                        leaveid}, this.GetExtendLeaveDetails_waitByLeaveIDOperationCompleted, userState);
+                        leaveids}, this.GetExtendLeaveDetails_waitByLeaveIDOperationCompleted, userState);
         }
         
         private void OnGetExtendLeaveDetails_waitByLeaveIDOperationCompleted(object arg) {
@@ -1588,26 +1578,26 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetWaitValue_SinceJoin_ALSL", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public double GetWaitValue_SinceJoin_ALSL(int leaveID, int employid) {
+        public double GetWaitValue_SinceJoin_ALSL(int staffid, bool isAL) {
             object[] results = this.Invoke("GetWaitValue_SinceJoin_ALSL", new object[] {
-                        leaveID,
-                        employid});
+                        staffid,
+                        isAL});
             return ((double)(results[0]));
         }
         
         /// <remarks/>
-        public void GetWaitValue_SinceJoin_ALSLAsync(int leaveID, int employid) {
-            this.GetWaitValue_SinceJoin_ALSLAsync(leaveID, employid, null);
+        public void GetWaitValue_SinceJoin_ALSLAsync(int staffid, bool isAL) {
+            this.GetWaitValue_SinceJoin_ALSLAsync(staffid, isAL, null);
         }
         
         /// <remarks/>
-        public void GetWaitValue_SinceJoin_ALSLAsync(int leaveID, int employid, object userState) {
+        public void GetWaitValue_SinceJoin_ALSLAsync(int staffid, bool isAL, object userState) {
             if ((this.GetWaitValue_SinceJoin_ALSLOperationCompleted == null)) {
                 this.GetWaitValue_SinceJoin_ALSLOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetWaitValue_SinceJoin_ALSLOperationCompleted);
             }
             this.InvokeAsync("GetWaitValue_SinceJoin_ALSL", new object[] {
-                        leaveID,
-                        employid}, this.GetWaitValue_SinceJoin_ALSLOperationCompleted, userState);
+                        staffid,
+                        isAL}, this.GetWaitValue_SinceJoin_ALSLOperationCompleted, userState);
         }
         
         private void OnGetWaitValue_SinceJoin_ALSLOperationCompleted(object arg) {
@@ -1738,68 +1728,6 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.GetWaitValue_OverrideCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetWaitValue_OverrideCompleted(this, new GetWaitValue_OverrideCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetWaitingValueBystaff", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public double GetWaitingValueBystaff(int leaveID, int staffid) {
-            object[] results = this.Invoke("GetWaitingValueBystaff", new object[] {
-                        leaveID,
-                        staffid});
-            return ((double)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetWaitingValueBystaffAsync(int leaveID, int staffid) {
-            this.GetWaitingValueBystaffAsync(leaveID, staffid, null);
-        }
-        
-        /// <remarks/>
-        public void GetWaitingValueBystaffAsync(int leaveID, int staffid, object userState) {
-            if ((this.GetWaitingValueBystaffOperationCompleted == null)) {
-                this.GetWaitingValueBystaffOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetWaitingValueBystaffOperationCompleted);
-            }
-            this.InvokeAsync("GetWaitingValueBystaff", new object[] {
-                        leaveID,
-                        staffid}, this.GetWaitingValueBystaffOperationCompleted, userState);
-        }
-        
-        private void OnGetWaitingValueBystaffOperationCompleted(object arg) {
-            if ((this.GetWaitingValueBystaffCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetWaitingValueBystaffCompleted(this, new GetWaitingValueBystaffCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetWaitingValueByEmployment", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public double GetWaitingValueByEmployment(int leaveID, int employ) {
-            object[] results = this.Invoke("GetWaitingValueByEmployment", new object[] {
-                        leaveID,
-                        employ});
-            return ((double)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetWaitingValueByEmploymentAsync(int leaveID, int employ) {
-            this.GetWaitingValueByEmploymentAsync(leaveID, employ, null);
-        }
-        
-        /// <remarks/>
-        public void GetWaitingValueByEmploymentAsync(int leaveID, int employ, object userState) {
-            if ((this.GetWaitingValueByEmploymentOperationCompleted == null)) {
-                this.GetWaitingValueByEmploymentOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetWaitingValueByEmploymentOperationCompleted);
-            }
-            this.InvokeAsync("GetWaitingValueByEmployment", new object[] {
-                        leaveID,
-                        employ}, this.GetWaitingValueByEmploymentOperationCompleted, userState);
-        }
-        
-        private void OnGetWaitingValueByEmploymentOperationCompleted(object arg) {
-            if ((this.GetWaitingValueByEmploymentCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetWaitingValueByEmploymentCompleted(this, new GetWaitingValueByEmploymentCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -6158,58 +6086,6 @@ namespace WebServiceLayer.WebReference_leave {
         private object[] results;
         
         internal GetWaitValue_OverrideCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public double Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((double)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetWaitingValueBystaffCompletedEventHandler(object sender, GetWaitingValueBystaffCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetWaitingValueBystaffCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetWaitingValueBystaffCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public double Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((double)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetWaitingValueByEmploymentCompletedEventHandler(object sender, GetWaitingValueByEmploymentCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetWaitingValueByEmploymentCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetWaitingValueByEmploymentCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

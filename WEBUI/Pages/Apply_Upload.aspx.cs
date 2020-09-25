@@ -47,13 +47,13 @@ namespace WEBUI.Pages
             Response.Redirect("~/pages/Apply.aspx?action=back", true);
         }
 
-        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        protected void Upload_Click(object sender, ImageClickEventArgs e)
         {
             //upload pic and save to view state
             string bigAbsolutionPath = Server.MapPath("../" + BLL.Leave.picPath);
 
             string errmsg;
-            List<string> uploadBigFiles = uploadPic(bigAbsolutionPath, out errmsg);
+            List<string> uploadBigFiles = uploadPicAndReduce(bigAbsolutionPath, out errmsg);
 
             MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, ViewState);
 
@@ -69,10 +69,10 @@ namespace WEBUI.Pages
         }
 
 
-        private List<string> uploadPic(string absolutePath, out string errorMsg)
+        private List<string> uploadPicAndReduce(string absolutePath, out string errorMsg)
         {
             List<string> types = null;//all format is ok.
-            List<string> files = BLL.common.UploadAttendance(Request, absolutePath, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg);
+            List<string> files = BLL.common.UploadAttendanceAndReduce(Request, absolutePath, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg);
             return files;
         }
 
@@ -106,5 +106,9 @@ namespace WEBUI.Pages
             Response.Redirect("~/pages/apply_upload.aspx");
         }
 
+        protected void button_apply_Click1(object sender, EventArgs e)
+        {
+            BackEvent(sender, null);
+        }
     }
 }

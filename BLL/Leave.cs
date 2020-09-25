@@ -16,21 +16,28 @@ namespace BLL
         public static string defaultPic= "~/Res/images/file.png";
 
         #region insert application
-        private static int CheckBeforeApply()
+        //-1:empty
+        private static int CheckBeforeApply(List<MODEL.Apply.apply_LeaveData> originDetail,ref string message)
         {
-            return 0;
+            int result = 0;
+            if (originDetail.Count == 0)
+            {
+                result = -1;
+                message = GlobalVariate.msg_emptyLeave;
+            }
+            return result;
         }
 
 
 
         //>0 ok:request id. -1 check error -2.insert error
-        public static int InsertLeave(List<MODEL.Apply.apply_LeaveData> originDetail, int userid, int employmentid, int? staffid, string remarks, out string errorMsg)
+        public static int InsertLeave(List<MODEL.Apply.apply_LeaveData> originDetail, int userid, int employmentid, int? staffid, string remarks, ref string errorMsg)
         {
             BLL.User_wsref.CheckWsLogin();
 
             errorMsg = "";
             int result = -1;
-            int checkResult = CheckBeforeApply();
+            int checkResult = CheckBeforeApply(originDetail,ref errorMsg);
             if (checkResult >= 0)
             {
                 WebServiceLayer.WebReference_leave.StaffLeaveRequest[] details;
@@ -45,13 +52,13 @@ namespace BLL
                 }
                 else
                 {
-                    errorMsg = "";
+                    errorMsg = errorMsg + " code:-2";
                     result = -2;
                 }
             }
             else
             {
-                errorMsg = "";
+                errorMsg = errorMsg + " code:-1";
                 result = -1;
             }
             return result;
@@ -264,8 +271,13 @@ namespace BLL
             List<MODEL.Apply.app_uploadpic> data = new List<MODEL.Apply.app_uploadpic>();
             for (int i = 0; i < attachments.Count; i++)
             {
-                string filenam = LSLibrary.FileUtil.GetFileName(attachments[i].Path);
-                MODEL.Apply.app_uploadpic tempItem = GeneratePicModel(filenam, server);
+                string filename = LSLibrary.FileUtil.GetFileName(attachments[i].Path);
+
+                string bigFile = "~/" + BLL.Leave.picPath + "/" + filename;
+                string reduceFile = "~/" + BLL.Leave.picPath + "/" + BLL.Leave.reducePath + "/" + filename;
+
+                common.CopyAttendanceAndReduce(attachments[i].Path, server.MapPath(bigFile), server.MapPath(reduceFile));
+                MODEL.Apply.app_uploadpic tempItem = GeneratePicModel(filename, server);
                 data.Add(tempItem);
             }
             return data;
@@ -449,20 +461,24 @@ namespace BLL
             }
         }
 
-        public static double GetWaitValue(int leaveid, int staffid, int employid)
+        public static double GetWaitValue(int leaveid, int staffid)
         {
             WebServiceLayer.WebReference_leave.LeaveBalanceType balanceType = GetLeaveBalanceType(leaveid);
             if (balanceType == LeaveBalanceType.accumulabel_sinceJoin_noalsl)
             {
-                return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetWaitingValueBystaff(leaveid, staffid);
+                return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetWaitValue_SinceJoin_excludeALSL(leaveid, staffid);
             }
-            else if (balanceType == LeaveBalanceType.accumulabel_sinceJoin_sl || balanceType == LeaveBalanceType.accumulabel_sinceJoin_al)
+            else if (balanceType == LeaveBalanceType.accumulabel_sinceJoin_al)
             {
-                return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetWaitingValueByEmployment(leaveid, employid);
+                return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetWaitValue_SinceJoin_ALSL(staffid,true);
+            }
+            else if (balanceType == LeaveBalanceType.accumulabel_sinceJoin_sl)
+            {
+                return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetWaitValue_SinceJoin_ALSL(staffid, false);//todo not right
             }
             else if (balanceType == LeaveBalanceType.accumulabel_overridea)
             {
-                return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetWaitingValueBystaff(leaveid, staffid);
+                return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetWaitValue_Override(leaveid, staffid);//todo not right
             }
             else
             {

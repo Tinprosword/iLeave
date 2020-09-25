@@ -16,17 +16,16 @@ namespace WEBUI.Pages
     public partial class Apply : BLL.CustomLoginTemplate
     {
         //todo how to get balance ?
-        //todo how to deal with discard session when  freflsh.
+        //todo how to deal with discard session when  freflsh ?
         
-        //todo 需要download 附件.
-        //todo cookice 没有保存到?
-        //todo upload file
+        //todo 需要download 附件.    
+        //todo cookie 没有保存到?   
+        //todo upload file in mobil.
 
         //todo more than one sequance when approval??
         //todo page:change staff and member.
         //todo page页面的多层继承写的不错，可以总结下了。
         //todo employment hours
-
 
         public static string ViewState_PageName = "PageView";
         public List<LSLibrary.WebAPP.ValueText<int>> RPITEM_LeaveListSections;
@@ -148,9 +147,10 @@ namespace WEBUI.Pages
         #region [module] leave
         protected void Canlendar_Click(object sender, ImageClickEventArgs e)
         {
-            if (int.Parse(ddl_leavetype.SelectedValue)<=0)
+            if (ddl_leavetype.SelectedValue=="0" || dropdl_section.SelectedValue=="-1")
             {
-                this.literal_errormsga.Text = "*";
+                this.literal_errormsga.Text = BLL.GlobalVariate.msg_chooseLeaveAndSection;
+                this.literal_errormsga.Visible = true;
             }
             else
             {
@@ -196,9 +196,9 @@ namespace WEBUI.Pages
 
             double applying = pagedate.getApplying();
             double grossvalue = BLL.Leave.GetGrossValue(leaveid, (int)loginer.userInfo.staffid,(int)loginer.userInfo.employID);
-            double waiting = BLL.Leave.GetWaitValue(leaveid, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
+            double waiting = BLL.Leave.GetWaitValue(leaveid, (int)loginer.userInfo.staffid);
             double cleanvalue = grossvalue - waiting - applying;
-            //this.lt_balancedays.Text = cleanvalue.ToString("0.##") + " D (" + grossvalue.ToString("0.##") + "-" + waiting.ToString("0.##") + "-" + applying.ToString("0.##") + ")";
+            this.lt_balancedays.Text = cleanvalue.ToString("0.##") + " D (" + grossvalue.ToString("0.##") + "-" + waiting.ToString("0.##") + "-" + applying.ToString("0.##") + ")";
             this.lt_applydays.Text = applying.ToString("0.##") + " D";
         }
 
@@ -233,7 +233,7 @@ namespace WEBUI.Pages
             List<MODEL.Apply.apply_LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).LeaveList;
             List<MODEL.Apply.app_uploadpic> pics = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).uploadpic;
             string errorMsg = "";
-            int reslut = BLL.Leave.InsertLeave(LeaveList, loginer.userInfo.id, (int)loginer.userInfo.employID, null, this.tb_remarks.Text.Trim(), out errorMsg);
+            int reslut = BLL.Leave.InsertLeave(LeaveList, loginer.userInfo.id, (int)loginer.userInfo.employID, null, this.tb_remarks.Text.Trim(), ref errorMsg);
             if (reslut >= 0)
             {
                 for (int i = 0; i < pics.Count; i++)
