@@ -15,12 +15,13 @@ namespace WEBUI.Pages
 
     public partial class Apply : BLL.CustomLoginTemplate
     {
+        //todo upload file in mobil.
+        //todo 一个页面只能触发一次js？
+
         //todo how to get balance ?
         //todo how to deal with discard session when  freflsh ?
-        
+
         //todo 需要download 附件.    
-        //todo cookie 没有保存到?   
-        //todo upload file in mobil.
 
         //todo more than one sequance when approval??
         //todo page:change staff and member.
@@ -103,6 +104,8 @@ namespace WEBUI.Pages
             this.repeater_leave.DataSource = leaveDays;
             this.repeater_leave.DataBind();
         }
+
+
 
         private void Repeater_leave_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {

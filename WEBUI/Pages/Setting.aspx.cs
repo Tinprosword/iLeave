@@ -48,10 +48,6 @@ namespace WEBUI.Pages
         }
 
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-        }
-
         protected void cb_languagea_SelectedIndexChanged(object sender, EventArgs e)
         {
             OnChangeSettingSendNotice(int.Parse(this.cb_languagea.SelectedValue), this.js_webview);
@@ -62,10 +58,12 @@ namespace WEBUI.Pages
         }
 
 
-        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        protected void loginout_Click(object sender, ImageClickEventArgs e)
         {
             LSLibrary.WebAPP.LoginManager.Logoff();
-            BLL.User_wsref.GoBackToLogin();
+            BLL.Page.MyCookieManage.SetCookie_isRmember("0");
+            Response.Redirect("setting.aspx");//todo 为什么下面的无效？ 重新装载，因为已经清除了session  .会自动退出。
+            //BLL.User_wsref.GoBackToLoginAndClearRemember();
         }
 
 
@@ -85,8 +83,7 @@ namespace WEBUI.Pages
                 literal.Text = js;
             }
             else//pc
-            {
-            }
+            {}
         }
     }
 }

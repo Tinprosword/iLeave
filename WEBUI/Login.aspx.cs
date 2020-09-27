@@ -35,27 +35,30 @@ namespace WEBUI
         {
             LoadLableLanguage();
             this.appcss.Href += "?lastmodify="+BLL.GlobalVariate.appcssLastmodify;
+
+            string strUid = BLL.Page.MyCookieManage.GetCookie().isRemember;
+            if (!string.IsNullOrEmpty(strUid))
+            {
+                string userid = strUid.Split(new char[] { ',' })[0];
+                string password = strUid.Split(new char[] { ',' })[1];
+
+                ProgressLogin(userid, password);
+            }
         }
 
-
-        private void LoadLableLanguage()
+        private void ProgressLogin(string userid,string password)
         {
-            this.lt_user.Text = BLL.MultiLanguageHelper.GetLanguagePacket().login_user;
-            this.lt_password.Text = BLL.MultiLanguageHelper.GetLanguagePacket().login_password;
-            this.Button1.Text= BLL.MultiLanguageHelper.GetLanguagePacket().login_loginbtn;
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            string userid = this.tb_user.Text.Trim();
-            string password = this.tb_password.Text.Trim();
-
             if (string.IsNullOrWhiteSpace(userid) == false && string.IsNullOrWhiteSpace(password) == false)
             {
                 WebServiceLayer.WebReference_user.LoginResult loginResult = BLL.User_wsref.CheckLogin(userid, password);
                 bool isLogin = loginResult.Result > 0 ? true : false;
                 if (isLogin)
                 {
+                    if (this.cb_remember.Checked)
+                    {
+                        BLL.Page.MyCookieManage.SetCookie_isRmember(userid + "," + password);
+                    }
+
                     BLL.User_wsref.SaveInfoToSession(userid, loginResult);
                     Response.Redirect("~/Pages/Main.aspx");
                 }
@@ -66,7 +69,24 @@ namespace WEBUI
                 }
             }
             else
-            {}
+            { }
+        }
+
+
+        private void LoadLableLanguage()
+        {
+            this.lt_user.Text = BLL.MultiLanguageHelper.GetLanguagePacket().login_user;
+            this.lt_password.Text = BLL.MultiLanguageHelper.GetLanguagePacket().login_password;
+            this.Button1.Text= BLL.MultiLanguageHelper.GetLanguagePacket().login_loginbtn;
+        }
+
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string userid = this.tb_user.Text.Trim();
+            string password = this.tb_password.Text.Trim();
+
+            ProgressLogin(userid, password);
         }
 
         private void CleanInput()
@@ -81,5 +101,12 @@ namespace WEBUI
             Response.Redirect("~/setting.aspx");
         }
 
+        protected void cb_remember_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!this.cb_remember.Checked)
+            {
+                BLL.Page.MyCookieManage.SetCookie_isRmember("");
+            }
+        }
     }
 }

@@ -56,10 +56,13 @@ namespace BLL
             }
         }
 
-
+        private static bool isdbug=false;
         public static void WriteLog(System.Diagnostics.StackFrame sf , string log)
         {
-            logUtil.WriteLog(log, sf);
+            if (isdbug)
+            {
+                logUtil.WriteLog(log, sf);
+            }
         }
 
 

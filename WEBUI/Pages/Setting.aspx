@@ -21,7 +21,7 @@
                             <asp:Literal ID="lt_language0" runat="server">退出帐户</asp:Literal>
                         </td>
                         <td>
-                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/exit.png"  Width="30px" OnClick="ImageButton1_Click"/>
+                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/exit.png"  Width="30px" OnClick="loginout_Click"/>
                         </td>
                     </tr>
                 </table>

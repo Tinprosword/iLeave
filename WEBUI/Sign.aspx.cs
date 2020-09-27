@@ -24,11 +24,10 @@ namespace WEBUI
             string address = this.tb_Address.Text.Trim();
             if (address != "")
             {
-                //decode
+                //todo decode ,cooike: password
                 BLL.Page.MyCookieManage.SetCookie_address(address);
-                GoLogin();
+                Response.Redirect("Sign.aspx",true);
             }
-
         }
 
         private void GoLogin()
@@ -42,33 +41,22 @@ namespace WEBUI
         }
 
         protected override void InitPage_OnBeforeF5RegisterEvent()
-        {
-            
-        }
+        {}
 
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
-        {
-            
-        }
+        {}
 
         protected override void InitPage_OnFirstLoad2()
-        {
-           
-        }
+        {}
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
-        {
-           
-        }
+        {}
 
         protected override void PageLoad_InitUIOnFirstLoad4()
-        {
-          
-        }
+        {}
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
-        {
-          
-        }
+        {}
+
     }
 }
