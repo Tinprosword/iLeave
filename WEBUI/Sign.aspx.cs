@@ -20,13 +20,11 @@ namespace WEBUI
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //1.check address 2.decode address 3.keep address to cookie and  response redirect url.
             string address = this.tb_Address.Text.Trim();
             if (address != "")
             {
-                //todo decode ,cooike: password
                 BLL.Page.MyCookieManage.SetCookie_address(address);
-                Response.Redirect("Sign.aspx",true);
+                GoLogin();
             }
         }
 
@@ -35,8 +33,7 @@ namespace WEBUI
             BLL.Page.MyCookie myCookie = BLL.Page.MyCookieManage.GetCookie();
             if (myCookie.serverAddress != null && myCookie.serverAddress != "")
             {
-                string url = "http://" + myCookie.serverAddress + "/login.aspx";
-                Response.Redirect(url);
+                Response.Redirect("login.aspx");
             }
         }
 
