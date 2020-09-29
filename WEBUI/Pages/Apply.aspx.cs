@@ -15,16 +15,12 @@ namespace WEBUI.Pages
 
     public partial class Apply : BLL.CustomLoginTemplate
     {
-        //todo 语言选择。
-
         //todo upload file in mobil.
         //todo 一个页面只能触发一次js？
 
         //todo how to get balance ?
 
         //todo 需要download 附件.    
-
-        //todo search 
         //todo more than one sequance when approval??
         //todo page:change staff and member.
         //todo page页面的多层继承写的不错，可以总结下了。 

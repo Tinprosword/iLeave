@@ -45,7 +45,7 @@
                     <tr style="height:20px;">
                         <td></td>
                         <td class="lsf-fontsizes1">
-                            <asp:CheckBox ID="cb_remember" runat="server" OnCheckedChanged="cb_remember_CheckedChanged"  AutoPostBack="true"/>&nbsp;Remember me
+                            <asp:CheckBox ID="cb_remember" runat="server" OnCheckedChanged="cb_remember_CheckedChanged"  AutoPostBack="true"/>&nbsp;Remember Me
                         </td>
                     </tr>
                 </table>
