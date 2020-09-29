@@ -136,6 +136,7 @@
     <Content Include="template.aspx" />
     <Content Include="Sign.aspx" />
     <Content Include="test.aspx" />
+    <Content Include="testPost.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -266,6 +267,13 @@
     </Compile>
     <Compile Include="test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="testPost.aspx.cs">
+      <DependentUpon>testPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="testPost.aspx.designer.cs">
+      <DependentUpon>testPost.aspx</DependentUpon>
     </Compile>
     <Compile Include="webservices\webservices.aspx.cs">
       <DependentUpon>webservices.aspx</DependentUpon>

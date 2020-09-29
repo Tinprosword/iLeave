@@ -11,7 +11,9 @@ namespace WEBUI
     {
 
         protected override void InitPage_OnBeforeF5RegisterEvent()
-        {}
+        {
+
+        }
 
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
@@ -36,11 +38,14 @@ namespace WEBUI
             LoadLableLanguage();
             this.appcss.Href += "?lastmodify="+BLL.GlobalVariate.appcssLastmodify;
 
-            string strUid = BLL.Page.MyCookieManage.GetCookie().isRemember;
-            if (!string.IsNullOrEmpty(strUid))
+            BLL.Page.MyCookie cookie = BLL.Page.MyCookieManage.GetCookie();
+            this.cb_remember.Checked = (cookie.isRemember == "1" ? true : false);
+
+            string isremember = cookie.isRemember;
+            if (!string.IsNullOrEmpty(isremember) && isremember == "1")
             {
-                string userid = strUid.Split(new char[] { ',' })[0];
-                string password = strUid.Split(new char[] { ',' })[1];
+                string userid = cookie.loginname;
+                string password = cookie.loginpsw;
 
                 ProgressLogin(userid, password);
             }
@@ -56,7 +61,9 @@ namespace WEBUI
                 {
                     if (this.cb_remember.Checked)
                     {
-                        BLL.Page.MyCookieManage.SetCookie_isRmember(userid + "," + password);
+                        BLL.Page.MyCookieManage.SetCookie_isRmember("1");
+                        BLL.Page.MyCookieManage.SetCookie_name(userid);
+                        BLL.Page.MyCookieManage.SetCookie_psw(password);
                     }
 
                     BLL.User_wsref.SaveInfoToSession(userid, loginResult);
@@ -105,7 +112,11 @@ namespace WEBUI
         {
             if (!this.cb_remember.Checked)
             {
-                BLL.Page.MyCookieManage.SetCookie_isRmember("");
+                BLL.Page.MyCookieManage.SetCookie_isRmember("0");
+            }
+            else
+            {
+                BLL.Page.MyCookieManage.SetCookie_isRmember("1");
             }
         }
     }

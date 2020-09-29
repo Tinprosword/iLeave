@@ -92,4 +92,5 @@
     <asp:Literal ID="lt_AlertJS" runat="server" EnableViewState="false"/>
     <asp:Literal ID="lt_model_datafrom" runat="server"/>
     <asp:Literal ID="lt_model_datato" runat="server"/>
+    <asp:Literal ID="lt_js_prg" runat="server"/>
 </asp:Content>

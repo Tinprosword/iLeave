@@ -17,6 +17,7 @@ namespace WEBUI.Controls
                 this.appcss.Href += "?lastmodify=" + BLL.GlobalVariate.appcssLastmodify;
             }
         }
+
         public void SetupNaviagtion(bool isVisitable,string backLink,string title,string url,bool showback, ImageClickEventHandler ClickEvent=null)
         {
             this.Navigation.Visible = isVisitable;

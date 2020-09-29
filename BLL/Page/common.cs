@@ -65,9 +65,5 @@ namespace BLL
             }
         }
 
-
-        
     }
-
-    
 }

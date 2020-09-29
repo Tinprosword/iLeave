@@ -14,6 +14,7 @@ namespace WEBUI.Pages
     //3 附加一个请假页面过来，加载viewstate. 点击单元格保存数据。 在calendar rendar事件时,显示所有选择日期。
     public partial class calendar : BLL.CustomLoginTemplate
     {
+        private readonly string searchTip = "Search staff";
         private readonly string css_select = "btnBox btnBlueBoxSelect";
         private readonly string css_unselect = "btnBox btnBlueBoxUnSelect";
         private bool isFromApply = false;
@@ -57,11 +58,19 @@ namespace WEBUI.Pages
             this.Calendar1.SelectedDate = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day);
             this.Calendar1.VisibleDate = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day);
 
-            
+
             OnPrePageIsApplyInitViewState();
+            SetupNameInput();
             SetupZone(loginer.userInfo.personid);
             SetupRepeater();
             SetupMultiLanguage();
+        }
+
+        private void SetupNameInput()
+        {
+            tb_name.Attributes.Add("Value", searchTip);
+            tb_name.Attributes.Add("OnFocus", "if(this.value=='" + searchTip + "') {this.value=''}");
+            tb_name.Attributes.Add("OnBlur", "if(this.value==''){this.value='" + searchTip + "'}");
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
@@ -69,10 +78,11 @@ namespace WEBUI.Pages
             setNavigation();//todo 因为viewstate无法保存event .所以只好放到这里来。所以不喜欢asp.net.  模拟cs，但是又不能完全模拟，太恶心了.
         }
 
+
         #region inner function
         private void SetupRepeater()
         {
-            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue);
+            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue,this.tb_name.Text.Trim());
 
             if (this.cb_leave.Checked)
             {
@@ -130,16 +140,17 @@ namespace WEBUI.Pages
         private void Calendar1_PreRender(object sender, EventArgs e)
         {
             bool isme = GetIsMeOrTeam();
-            List<int> eid = GetEmployIDs(isme, this.ddlzone.SelectedValue);
+            List<int> eid = GetEmployIDs(isme, this.ddlzone.SelectedValue, this.tb_name.Text.Trim());
             if (this.Calendar1.VisibleDate.Year > 1)
             {
                 FillStatistic(eid, this.Calendar1.VisibleDate.Year, this.Calendar1.VisibleDate.Month);
             }
         }
 
-        private List<int> GetEmployIDs(bool isme,string contractinfo)
+        private List<int> GetEmployIDs(bool isme,string contractinfo,string name)
         {
             //1.me or team 2.zone 3 get employment ids.
+            name = name == searchTip ? "" : name;
             var zoneArray = contractinfo.Split(new char[] { '|' });
             string contarctID = zoneArray[0];
             string zoneCode = zoneArray[1];
@@ -155,7 +166,7 @@ namespace WEBUI.Pages
                 eid = Employment.Select(x => x.ID).ToList();
                 if (!string.IsNullOrEmpty(this.tb_name.Text))
                 {
-                    var likenamesids = BLL.User_wsref.GetPersonBaseInfoByLikeName(this.tb_name.Text.Trim()).Select(x => x.e_id).ToList();
+                    var likenamesids = BLL.User_wsref.GetPersonBaseInfoByLikeName(name).Select(x => x.e_id).ToList();
                     eid = eid.Where(x => likenamesids.Contains(x)).ToList();
                 }
             }

@@ -15,22 +15,23 @@ namespace WEBUI.Pages
 
     public partial class Apply : BLL.CustomLoginTemplate
     {
+        //todo 语言选择。
+
         //todo upload file in mobil.
         //todo 一个页面只能触发一次js？
 
         //todo how to get balance ?
-        //todo how to deal with discard session when  freflsh ?
 
         //todo 需要download 附件.    
 
+        //todo search 
         //todo more than one sequance when approval??
         //todo page:change staff and member.
-        //todo page页面的多层继承写的不错，可以总结下了。
+        //todo page页面的多层继承写的不错，可以总结下了。 
         //todo employment hours
 
         public static string ViewState_PageName = "PageView";
         public List<LSLibrary.WebAPP.ValueText<int>> RPITEM_LeaveListSections;
-
 
         #region [page event]
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
@@ -54,6 +55,7 @@ namespace WEBUI.Pages
             this.literal_errormsga.Text = "";
             this.literal_errormsga.Visible = false;
             this.repeater_leave.ItemDataBound += Repeater_leave_ItemDataBound;
+            this.lt_js_prg.Text = "";
         }
 
 
@@ -75,6 +77,7 @@ namespace WEBUI.Pages
                 MODEL.Apply.ViewState_page applypage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, this.ViewState);
                 LoadUI(applypage.leavetype, applypage.LeaveTypeSelectValue,  applypage.ddlsectionSelectvalue, applypage.remarks, applypage.LeaveList);
                 IsLeaveTypeEnable();
+                this.lt_js_prg.Text = LSLibrary.WebAPP.MyJSHelper.CustomPost("", "");
             }
             else
             {

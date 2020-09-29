@@ -11,6 +11,8 @@ namespace BLL.Page
         public string serverAddress;
         public LSLibrary.WebAPP.LanguageType language;
         public string isRemember;
+        public string loginname;
+        public string loginpsw;
     }
 
     public class MyCookieManage
@@ -18,6 +20,8 @@ namespace BLL.Page
         public static readonly string  COOKIE_SERVERADDRESS = "cookie_serveraddress";
         private static readonly string COOKIE_LANGUAGE = "LANGUAGE";
         private static readonly string COOKIE_IsRemember = "IsRemember";
+        private static readonly string COOKIE_loginname = "COOKIE_loginname";
+        private static readonly string COOKIE_pass = "COOKIE_pass";
 
         public static MyCookie GetCookie()
         {
@@ -41,10 +45,18 @@ namespace BLL.Page
             string isremember= LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_IsRemember);
             isremember= string.IsNullOrWhiteSpace(isremember) ? "" : isremember;
 
+            string name = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_loginname);
+            name = string.IsNullOrWhiteSpace(name) ? "" : name;
+
+            string pass = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_pass);
+            pass = string.IsNullOrWhiteSpace(pass) ? "" : pass;
+
             MyCookie result = new MyCookie();
             result.language = languageType;
             result.serverAddress = address;
             result.isRemember = isremember;
+            result.loginname = name;
+            result.loginpsw = pass;
 
             return result;
         }
@@ -54,6 +66,8 @@ namespace BLL.Page
             SetCookie_address(myCookie.serverAddress);
             SetCookie_language(myCookie.language);
             SetCookie_isRmember(myCookie.isRemember);
+            SetCookie_name(myCookie.loginname);
+            SetCookie_psw(myCookie.loginpsw);
         }
 
         public static void SetCookie_language(LSLibrary.WebAPP.LanguageType language)
@@ -69,6 +83,15 @@ namespace BLL.Page
         public static void SetCookie_isRmember(string isrem)
         {
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_IsRemember, isrem, 360);
+        }
+
+        public static void SetCookie_name(string name)
+        {
+            LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_loginname, name, 360);
+        }
+        public static void SetCookie_psw(string paw)
+        {
+            LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_pass, paw, 360);
         }
     }
 }

@@ -66,6 +66,7 @@ namespace WEBUI.Pages
 
             this.repeater_attandance.DataSource = applyPage.uploadpic;
             this.repeater_attandance.DataBind();
+
         }
 
 
