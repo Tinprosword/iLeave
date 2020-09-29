@@ -30,10 +30,10 @@ namespace WEBUI
                 BLL.Page.MyCookie myCookie = new BLL.Page.MyCookie();
                 myCookie.language = (LSLibrary.WebAPP.LanguageType)intLanguage;
                 myCookie.serverAddress = address;
-                if (isremember=="1")
-                {
-                    myCookie.isRemember = loginID + "," + password;
-                }
+                myCookie.isRemember = isremember;
+                myCookie.loginname = loginID;
+                myCookie.loginpsw = password;
+
                 BLL.Page.MyCookieManage.SetCookie(myCookie);
                 
 
@@ -49,7 +49,5 @@ namespace WEBUI
                 }
             }
         }
-
-
     }
 }

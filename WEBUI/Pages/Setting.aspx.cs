@@ -37,14 +37,13 @@ namespace WEBUI.Pages
 
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
-        {
-        }
+        {}
 
-            private void LoadLableLanguage(LSLibrary.WebAPP.BaseLanguage language)
+        private void LoadLableLanguage(LSLibrary.WebAPP.BaseLanguage language)
         {
             this.lt_address.Text = language.setting_service;
             this.lt_language.Text = language.setting_language;
-            this.lt_language0.Text= language.setting_logout;
+            this.lt_language0.Text = language.setting_logout;
         }
 
 
@@ -85,5 +84,6 @@ namespace WEBUI.Pages
             else//pc
             {}
         }
+
     }
 }

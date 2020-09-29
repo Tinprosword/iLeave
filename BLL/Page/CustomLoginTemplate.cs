@@ -40,7 +40,7 @@ namespace BLL
 
             if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.pc)
             {
-                page.Form.Style.Add("width", "379px");
+                page.Form.Style.Add("width", "364px");
                 page.Form.Style.Add("margin-left", "40%");
                 page.Form.Style.Add("border", "2px solid #808080");
                 page.Form.Style.Add("min-height", "640px");

@@ -77,7 +77,7 @@ namespace WEBUI.Pages
                 MODEL.Apply.ViewState_page applypage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, this.ViewState);
                 LoadUI(applypage.leavetype, applypage.LeaveTypeSelectValue,  applypage.ddlsectionSelectvalue, applypage.remarks, applypage.LeaveList);
                 IsLeaveTypeEnable();
-                this.lt_js_prg.Text = LSLibrary.WebAPP.MyJSHelper.CustomPost("", "");
+                this.lt_js_prg.Text = LSLibrary.WebAPP.MyJSHelper.CustomPost("", "");//避免有害刷新，所以手动post,引导无害刷新。
             }
             else
             {

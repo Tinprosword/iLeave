@@ -35,7 +35,7 @@ namespace WEBUI
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
-            LoadLableLanguage();
+            LoadLableLanguage(BLL.MultiLanguageHelper.GetLanguagePacket());
             this.appcss.Href += "?lastmodify="+BLL.GlobalVariate.appcssLastmodify;
 
             BLL.Page.MyCookie cookie = BLL.Page.MyCookieManage.GetCookie();
@@ -80,11 +80,11 @@ namespace WEBUI
         }
 
 
-        private void LoadLableLanguage()
+        private void LoadLableLanguage(LSLibrary.WebAPP.BaseLanguage baseLanguage)
         {
-            this.lt_user.Text = BLL.MultiLanguageHelper.GetLanguagePacket().login_user;
-            this.lt_password.Text = BLL.MultiLanguageHelper.GetLanguagePacket().login_password;
-            this.Button1.Text= BLL.MultiLanguageHelper.GetLanguagePacket().login_loginbtn;
+            this.lt_user.Text = baseLanguage.login_user;
+            this.lt_password.Text = baseLanguage.login_password;
+            this.Button1.Text= baseLanguage.login_loginbtn;
         }
 
 
@@ -102,12 +102,6 @@ namespace WEBUI
             this.tb_password.Text = "";
         }
 
-
-        protected void Btn_setting_Click(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("~/setting.aspx");
-        }
-
         protected void cb_remember_CheckedChanged(object sender, EventArgs e)
         {
             if (!this.cb_remember.Checked)
@@ -119,5 +113,14 @@ namespace WEBUI
                 BLL.Page.MyCookieManage.SetCookie_isRmember("1");
             }
         }
+
+        protected void rbl_language_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectlang = (LSLibrary.WebAPP.LanguageType)int.Parse(this.rbl_language.SelectedValue);
+            BLL.Page.MyCookieManage.SetCookie_language(selectlang);
+            LSLibrary.WebAPP.BaseLanguage baseLanguage = BLL.MultiLanguageHelper.GetLanguagePacket(selectlang);
+            LoadLableLanguage(baseLanguage);
+        }
+
     }
 }
