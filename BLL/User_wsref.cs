@@ -62,7 +62,7 @@ namespace BLL
             }
             else//pc
             {
-                HttpContext.Current.Response.Redirect("~/login.aspx");
+                HttpContext.Current.Response.Redirect("~/login.aspx",true);
             }
         }
 

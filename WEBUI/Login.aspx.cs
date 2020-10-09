@@ -11,9 +11,7 @@ namespace WEBUI
     {
 
         protected override void InitPage_OnBeforeF5RegisterEvent()
-        {
-
-        }
+        {}
 
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
@@ -36,18 +34,18 @@ namespace WEBUI
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
             LoadLableLanguage(BLL.MultiLanguageHelper.GetLanguagePacket());
-            this.appcss.Href += "?lastmodify="+BLL.GlobalVariate.appcssLastmodify;
 
             BLL.Page.MyCookie cookie = BLL.Page.MyCookieManage.GetCookie();
-            this.cb_remember.Checked = (cookie.isRemember == "1" ? true : false);
-
             string isremember = cookie.isRemember;
+            LSLibrary.WebAPP.LanguageType language = cookie.language;
+
+            this.rbl_language.SelectedValue = ((int)language).ToString();
+            this.cb_remember.Checked = (isremember == "1" ? true : false);
+
+            
             if (!string.IsNullOrEmpty(isremember) && isremember == "1")
             {
-                string userid = cookie.loginname;
-                string password = cookie.loginpsw;
-
-                ProgressLogin(userid, password);
+                ProgressLogin(cookie.loginname, cookie.loginpsw);
             }
         }
 

@@ -6,7 +6,7 @@
         <div class ="col-xs-12" style="height:2px; padding:0px">&nbsp</div>
         <table class="col-xs-12 lsu-tablem1">
             <tr>
-                <td style="width:90px"><asp:Literal ID="lt_name" runat="server">Name</asp:Literal></td>
+                <td style="width:80px"><asp:Literal ID="lt_name" runat="server">Name</asp:Literal></td>
                 <td>
                     <div style="float:left;"><asp:Literal ID="literal_applier" runat="server"></asp:Literal></div>
                 </td>
@@ -20,9 +20,9 @@
             <tr>
                 <td><asp:Literal ID="lt_apply" runat="server">Apply</asp:Literal></td>
                 <td>
-                    <asp:label ID="lt_applydays" runat="server" Width="50px">0 D</asp:label>
-                    <asp:label ID="lt_balance" runat="server" Width="71px">Banlance</asp:label>
-                    <asp:label ID="lt_balancedays" runat="server">9.2 D</asp:label>
+                    <asp:label ID="lt_applydays" runat="server" Width="50px"> </asp:label>
+                    <asp:label ID="lt_balance" runat="server" Width="68px">Banlance</asp:label>
+                    <asp:label ID="lt_balancedays" runat="server"> </asp:label>&nbsp;<asp:label Font-Size="14px" ID="lt_balancedetail" runat="server"></asp:label>
                 </td>
             </tr>
             <tr>
@@ -48,15 +48,28 @@
             </tr>
         </table>
         <div class=" col-xs-12" style="height:2px"></div>
-        <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white">
-            <tr><td class="col-xs-3"><asp:Literal ID="ltlistdate" runat="server"></asp:Literal></td><td class="col-xs-4"><asp:Literal ID="ltlisttype" runat="server"></asp:Literal></td><td class="col-xs-4"><asp:Literal ID="lt_listsection" runat="server"></asp:Literal></td><td class="col-xs-1">  </td></tr>
-        </table>
+        <%--<table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white">
+            <tr>
+                <td class="col-xs-3"><asp:Literal ID="ltlistdate" runat="server"></asp:Literal></td>
+                <td class="col-xs-4"><asp:Literal ID="ltlisttype" runat="server"></asp:Literal></td>
+                <td class="col-xs-4"><asp:Literal ID="lt_listsection" runat="server"></asp:Literal></td>
+                <td class="col-xs-1">  </td>
+            </tr>
+        </table>--%>
         <div class="col-xs-12 lsf-clearPadding" style="height:200px; overflow:scroll;">
             <table class="col-xs-12 lsu-table-xs">
+                <tr class="lss-bgcolor-blue" style="color:white">
+                    <td class="col-xs-3" style="width:18%"><asp:Literal ID="ltlistdate" runat="server"></asp:Literal></td>
+                    <td class="col-xs-4" style="width:35%"><asp:Literal ID="ltlisttype" runat="server"></asp:Literal></td>
+                    <td class="col-xs-4" style="width:33%"><asp:Literal ID="lt_listsection" runat="server"></asp:Literal></td>
+                    <td class="col-xs-1" style="width:14%">  </td>
+                </tr>
                 <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                     <ItemTemplate>
-                        <tr><td class="col-xs-3"><%# ((MODEL.Apply.apply_LeaveData)Container.DataItem).LeaveDate.ToString("MM-dd") %></td><td class="col-xs-4"><%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeCode %></td>
-                            <td class="col-xs-4">
+                        <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>">
+                            <td><%# ((MODEL.Apply.apply_LeaveData)Container.DataItem).LeaveDate.ToString("MM-dd") %></td>
+                            <td><%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeCode %></td>
+                            <td>
                                 <asp:DropDownList ID="rp_dropdl_section" runat="server" Width="90%"  OnSelectedIndexChanged="rp_dropdl_section_SelectedIndexChanged" AutoPostBack="true" fix="<%#Container.ItemIndex%>">
                                     <asp:ListItem Text="Full day" Value="0"  Selected="true"/>
                                     <asp:ListItem Text="AM" Value="1"/>
@@ -64,20 +77,10 @@
                                     <asp:ListItem Text="3 Sections" Value="3"/>
                                 </asp:DropDownList>
                             </td>
-                            <td class="col-xs-1"><asp:ImageButton ID="delete" Width="28px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="20px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeid %>" /></td></tr>
+                            <td><asp:ImageButton ID="delete" Width="28px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="20px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeid %>" /></td>
+                        </tr>
                     </ItemTemplate>
-                    <AlternatingItemTemplate>
-                        <tr style="background-color:aliceblue"><td class="col-xs-3"><%# ((MODEL.Apply.apply_LeaveData)Container.DataItem).LeaveDate.ToString("MM-dd") %></td><td class="col-xs-4"><%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeCode %></td>
-                            <td class="col-xs-4">
-                                <asp:DropDownList ID="rp_dropdl_section" runat="server" Width="90%" OnSelectedIndexChanged="rp_dropdl_section_SelectedIndexChanged" AutoPostBack="true" fix="<%#Container.ItemIndex%>">
-                                    <asp:ListItem Text="Full day" Value="0"  Selected="true"/>
-                                    <asp:ListItem Text="AM" Value="1"/>
-                                    <asp:ListItem Text="PM" Value="2"/>
-                                    <asp:ListItem Text="3 Sections" Value="3"/>
-                                </asp:DropDownList>                                                                                                                                                                                           
-                            </td>
-                            <td class="col-xs-1"><asp:ImageButton ID="delete" Width="28px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="20px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeid %>" /></td></tr>
-                    </AlternatingItemTemplate>
+
                 </asp:Repeater>
             </table>
         </div>

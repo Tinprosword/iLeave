@@ -4,7 +4,7 @@
 <head runat="server">
     <link href="Res/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="Res/App/appcss.css" rel="stylesheet" id="appcss" runat="server"/>
+    <link href="Res/App/appcss.css?lastmodify=<%=BLL.GlobalVariate.appcssLastmodify%>" rel="stylesheet" id="appcss" runat="server"/>
     <script src="Res/App/autoScale.js?lasttime=<%=BLL.GlobalVariate.autoscalejsLastmodify %>"></script>
     <title></title>
 </head>
@@ -15,10 +15,10 @@
             <div class="row">
                 <table class="row" style="width:100%;padding:0px;margin:0px;">
                     <tr class=" lsf-center lsf-fontsizem2" style="background-color:black;height:40px;">
-                        <td  style="width:35%">&nbsp;</td>
-                        <td  style="width:30%;color:white;">ILeave</td>
-                        <td  style="width:35%; font-size:16px;color:white;">
-                            <asp:RadioButtonList ID="rbl_language" Height="36px" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="rbl_language_SelectedIndexChanged" AutoPostBack="true">
+                        <td  style="width:30%">&nbsp;</td>
+                        <td  style="width:40%;color:white;">ILeave</td>
+                        <td  style="width:30%; font-size:13px;color:white; vertical-align:bottom;">
+                            <asp:RadioButtonList ID="rbl_language"  runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="rbl_language_SelectedIndexChanged" AutoPostBack="true">
                                 <asp:ListItem Value="0">Eng.</asp:ListItem>
                                 <asp:ListItem Value="1">简</asp:ListItem>
                                 <asp:ListItem Value="2">繁</asp:ListItem>
@@ -27,6 +27,9 @@
                      </tr>   
                 </table>
                 <table class="col-xs-12 lsf-maringTop3px lsu-bigtable">
+                    <tr>
+                        <td style="height:20px;">&nbsp;</td>
+                    </tr>
                     <tr>
                         <td style="width:90px;"><asp:Literal ID="lt_user" runat="server" Text="User" /></td>
                         <td><asp:TextBox ID="tb_user" runat="server" Width="90%"/></td>

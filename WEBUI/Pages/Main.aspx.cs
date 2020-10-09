@@ -35,8 +35,8 @@ namespace WEBUI.Pages
             this.lt_applicationsabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_applications;
             this.lt_approal.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_approval;
             this.lt_calendarabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_calendar;
-            this.lt_downloadsplitabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_downplaylisp;
-            this.lt_downloadtaxabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_downtax;
+            //this.lt_downloadsplitabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_downplaylisp;
+            //this.lt_downloadtaxabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_downtax;
             this.lt_setting.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_setting;
         }
 

@@ -70,14 +70,12 @@ namespace WEBUI.Pages
 
         private void SetupMultiLanguage()
         {
-
             this.ltdatefrom.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_datefrom;
         }
 
 
         protected void btn_wait_Click(object sender, EventArgs e)
         {
-
             this.repeater_myapplications.DataSource = GetDatasource(getStatus(), loginer.userInfo.id, this.tb_date.Text, loginer.userInfo.personid);
             this.repeater_myapplications.DataBind();
         }
@@ -85,17 +83,12 @@ namespace WEBUI.Pages
 
         protected void btn_approved_Click(object sender, EventArgs e)
         {
-
-
-
             this.repeater_myapplications.DataSource = GetDatasource( getStatus(), loginer.userInfo.id, this.tb_date.Text,  loginer.userInfo.personid);
             this.repeater_myapplications.DataBind();
         }
 
         protected void btn_rejectWith_Click(object sender, EventArgs e)
         {
-
-
             this.repeater_myapplications.DataSource = GetDatasource( getStatus(), loginer.userInfo.id, this.tb_date.Text,  loginer.userInfo.personid);
             this.repeater_myapplications.DataBind();
         }
@@ -113,11 +106,11 @@ namespace WEBUI.Pages
             BLL.GlobalVariate.LeaveBigRangeStatus result = BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval;
             if (applicationType=="0")
             {
-                result = BLL.GlobalVariate.LeaveBigRangeStatus.approvaled;
+                result = BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval;
             }
             else if (applicationType == "1")
             {
-                result = BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval;
+                result = BLL.GlobalVariate.LeaveBigRangeStatus.approvaled;
             }
             else
             {

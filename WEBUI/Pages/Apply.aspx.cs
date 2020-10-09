@@ -17,14 +17,15 @@ namespace WEBUI.Pages
     {
         //todo upload file in mobil.
         //todo 一个页面只能触发一次js？
-
+        //todo 需要download 附件.    
         //todo how to get balance ?
 
-        //todo 需要download 附件.    
+
         //todo more than one sequance when approval??
         //todo page:change staff and member.
         //todo page页面的多层继承写的不错，可以总结下了。 
         //todo employment hours
+
 
         public static string ViewState_PageName = "PageView";
         public List<LSLibrary.WebAPP.ValueText<int>> RPITEM_LeaveListSections;
@@ -136,6 +137,7 @@ namespace WEBUI.Pages
 
         #endregion
 
+
         #region [module] on click upload pic
         protected void Upload_Click(object sender, ImageClickEventArgs e)
         {
@@ -145,6 +147,7 @@ namespace WEBUI.Pages
             Response.Redirect("~/Pages/Apply_Upload.aspx",true);
         }
         #endregion
+
 
         #region [module] leave
         protected void Canlendar_Click(object sender, ImageClickEventArgs e)
@@ -194,14 +197,25 @@ namespace WEBUI.Pages
 
         private void RefleshApplyBalance(int leaveid)
         {
-            MODEL.Apply.ViewState_page pagedate = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
+            if (leaveid == BLL.Leave.leave_leaveid_nullSelect)
+            {
+                this.lt_balancedays.Text = "";
+                this.lt_applydays.Text = "";
+                this.lt_balancedetail.Text = "";
+            }
+            else
+            {
+                MODEL.Apply.ViewState_page pagedate = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
 
-            double applying = pagedate.getApplying();
-            double grossvalue = BLL.Leave.GetGrossValue(leaveid, (int)loginer.userInfo.staffid,(int)loginer.userInfo.employID);
-            double waiting = BLL.Leave.GetWaitValue(leaveid, (int)loginer.userInfo.staffid);
-            double cleanvalue = grossvalue - waiting - applying;
-            this.lt_balancedays.Text = cleanvalue.ToString("0.##") + " D (" + grossvalue.ToString("0.##") + "-" + waiting.ToString("0.##") + "-" + applying.ToString("0.##") + ")";
-            this.lt_applydays.Text = applying.ToString("0.##") + " D";
+                double applying = pagedate.getApplying();
+                double grossvalue = BLL.Leave.GetGrossValue(leaveid, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
+                double waiting = BLL.Leave.GetWaitValue(leaveid, (int)loginer.userInfo.staffid);
+                double cleanvalue = grossvalue - waiting - applying;
+
+                this.lt_balancedays.Text = cleanvalue.ToString("0.##") + " D";
+                this.lt_applydays.Text = applying.ToString("0.##") + " D";
+                this.lt_balancedetail.Text= "(" + grossvalue.ToString("0.##") + "-" + waiting.ToString("0.##") + "-" + applying.ToString("0.##") + ")";
+            }
         }
 
         protected void rp_dropdl_section_SelectedIndexChanged(object sender, EventArgs e)
@@ -248,7 +262,7 @@ namespace WEBUI.Pages
             else
             {
                 this.literal_errormsga.Visible = true;
-                this.literal_errormsga.Text = "Error:" + errorMsg;
+                this.literal_errormsga.Text = errorMsg;
             }
         }
 
@@ -310,6 +324,7 @@ namespace WEBUI.Pages
                 this.ddl_leavetype.Enabled = true;
             }
         }
+
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {

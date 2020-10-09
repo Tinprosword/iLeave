@@ -14,20 +14,42 @@ namespace BLL
         public static string picPath = "uploadPic";
         public static string picAbsolutePath = "C:\\temp\\AttachmentUpload\\mobil\\";
         public static string defaultPic= "~/Res/images/file.png";
+        public static int leave_sections_nullSelect = -1;
+        public static int leave_leaveid_nullSelect = 0;
+
 
         #region insert application
-        //-1:empty
-        private static int CheckBeforeApply(List<MODEL.Apply.apply_LeaveData> originDetail,ref string message)
+        //-1:empty .-2 same apply day or section
+        private static int CheckBeforeApply(List<MODEL.Apply.apply_LeaveData> originDetail,ref string message,int eid)
         {
             int result = 0;
             if (originDetail.Count == 0)
             {
                 result = -1;
-                message = GlobalVariate.msg_emptyLeave;
+                message = GlobalVariate.msg_emptyLeave + "\r\n";
+            }
+            else
+            {
+                List<LeaveRequestDetail> requestDetails = getWaitingApproveAndApprovedByEIDS(new List<int> { eid });
+                for (int i = 0; i < originDetail.Count; i++)
+                {
+                    var theSamedays = requestDetails.Where(x => (DateTime)x.LeaveFrom == originDetail[i].LeaveDate).ToList();
+                    
+                    if (theSamedays.Count > 0)
+                    {
+                        var sameDayAndSameSection = theSamedays.Where(x => x.Section == originDetail[i].sectionid).ToList();
+
+                        if (originDetail[i].sectionid == (int)GlobalVariate.sectionType.full || sameDayAndSameSection.Count()>0)
+                        {
+                            result = -2;
+                            message += originDetail[i].LeaveDate.ToString("MMdd") + " already applied!\r\n";
+                            break;
+                        }
+                    }
+                }
             }
             return result;
         }
-
 
 
         //>0 ok:request id. -1 check error -2.insert error
@@ -37,7 +59,7 @@ namespace BLL
 
             errorMsg = "";
             int result = -1;
-            int checkResult = CheckBeforeApply(originDetail,ref errorMsg);
+            int checkResult = CheckBeforeApply(originDetail, ref errorMsg, employmentid);
             if (checkResult >= 0)
             {
                 WebServiceLayer.WebReference_leave.StaffLeaveRequest[] details;
@@ -52,13 +74,13 @@ namespace BLL
                 }
                 else
                 {
-                    errorMsg = errorMsg + " code:-2";
+                    errorMsg = errorMsg + " .";
                     result = -2;
                 }
             }
             else
             {
-                errorMsg = errorMsg + " code:-1";
+                errorMsg = errorMsg + " .";
                 result = -1;
             }
             return result;
@@ -248,14 +270,20 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveDetailsByReuestID(requestid).ToList();
         }
 
+
         public static List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> GetExtendLeaveDetailsByReuestID(int requestid)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetExtendLeaveDetailsByReuestID(requestid).ToList();
         }
 
-        public static List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> getListSource(DateTime dt, List<int> employids)
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> getWaitingApproveAndApprovedByEIDS(List<int> employids)
         {
-            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetExtendLeaveDetails_waitAndApproved(dt, employids.ToArray()).ToList();
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetExtendLeaveDetails_waitApproveAndApprovedByEIDS(employids.ToArray()).ToList();
+        }
+
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> getWaitingApproveAndApprovedByEIDS_Date(DateTime dt, List<int> employids)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetExtendLeaveDetails_waitApproveAndApprovedBYEidAndDate(dt, employids.ToArray()).ToList();
         }
 
         public static List<int> GetMonthStatistic(int year, int month, int[] employmentids)
@@ -275,10 +303,18 @@ namespace BLL
 
                 string bigFile = "~/" + BLL.Leave.picPath + "/" + filename;
                 string reduceFile = "~/" + BLL.Leave.picPath + "/" + BLL.Leave.reducePath + "/" + filename;
-
-                common.CopyAttendanceAndReduce(attachments[i].Path, server.MapPath(bigFile), server.MapPath(reduceFile));
-                MODEL.Apply.app_uploadpic tempItem = GeneratePicModel(filename, server);
-                data.Add(tempItem);
+                try
+                {
+                    common.CopyAttendanceAndReduce(attachments[i].Path, server.MapPath(bigFile), server.MapPath(reduceFile));
+                    MODEL.Apply.app_uploadpic tempItem = GeneratePicModel(filename, server);
+                    data.Add(tempItem);
+                }
+                catch
+                {
+                    string badfile = "~/Res/images/bad.png";
+                    MODEL.Apply.app_uploadpic tempItem = GeneratePicModel(badfile, server);
+                    data.Add(tempItem);
+                }
             }
             return data;
         }
@@ -300,13 +336,14 @@ namespace BLL
 
         #endregion
 
-       
+
 
         #region unity
+        
         public static List<LSLibrary.WebAPP.ValueText<int>> ConvertLeaveInfo2DropDownList(List<WebServiceLayer.WebReference_leave.t_Leave> source)
         {
             List<LSLibrary.WebAPP.ValueText<int>> result = new List<LSLibrary.WebAPP.ValueText<int>>();
-            result.Add(new LSLibrary.WebAPP.ValueText<int>(0, "Please select"));
+            result.Add(new LSLibrary.WebAPP.ValueText<int>(leave_leaveid_nullSelect, "Please select"));
             for (int i = 0; i < source.Count(); i++)
             {
                 LSLibrary.WebAPP.ValueText<int> item = new LSLibrary.WebAPP.ValueText<int>(source[i].ID,source[i].Description);
@@ -331,10 +368,11 @@ namespace BLL
         }
 
 
+        
         public static List<LSLibrary.WebAPP.ValueText<int>> GetDDLSectionsData(int leaveid, int employid)
         {
             List<LSLibrary.WebAPP.ValueText<int>> ddlSource = GetDDLSectionsDataNoSelect(leaveid, employid);
-            ddlSource.Insert(0,new LSLibrary.WebAPP.ValueText<int>(-1, "Please select"));
+            ddlSource.Insert(0,new LSLibrary.WebAPP.ValueText<int>(leave_sections_nullSelect, "Please select"));
             return ddlSource;
         }
 

@@ -15,15 +15,16 @@
         </div>
     </div>
     <div class="row">
-        <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;padding-left:2px;">
-            <tr>
-                <td class="col-xs-5"><asp:Literal ID="lt_listtype" runat="server">Date</asp:Literal></td>
-                <td class="col-xs-2"><asp:Literal ID="Literal1" runat="server">Uint</asp:Literal></td>
-                <td class="col-xs-5"><asp:Literal ID="lt_listdate" runat="server">Type</asp:Literal></td>
-            </tr>
-        </table>
+<%--        <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;padding-left:2px;">
+            
+        </table>--%>
         <div class="col-xs-12 lsf-clearPadding" style="height:400px; overflow:scroll;padding-left:2px;padding-right:0px">
             <table class="col-xs-12 lsu-table-xs" style="font-size:13px">
+                <tr class="lss-bgcolor-blue" style="color:white">
+                    <td class="col-xs-5"><asp:Literal ID="lt_listtype" runat="server">Date</asp:Literal></td>
+                    <td class="col-xs-2"><asp:Literal ID="Literal1" runat="server">Uint</asp:Literal></td>
+                    <td class="col-xs-5"><asp:Literal ID="lt_listdate" runat="server">Type</asp:Literal></td>
+                </tr>
                 <asp:Repeater ID="repeater_myapplications" runat="server">
                     <ItemTemplate>
                         <tr style="height:42px; <%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>"  onclick="MyPostBack('detail',<%#Eval("RequestID") %>)">

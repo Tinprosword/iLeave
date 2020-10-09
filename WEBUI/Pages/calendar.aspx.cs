@@ -89,7 +89,7 @@ namespace WEBUI.Pages
                 this.divTip.Visible = true;
                 this.leaveDiv.Visible = true;
                 this.rosterDiv.Visible = false;
-                var repeaterSource = BLL.Leave.getListSource(this.Calendar1.SelectedDate, eid);
+                var repeaterSource = BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(this.Calendar1.SelectedDate, eid);
                 this.repeater_leave.DataSource = repeaterSource;
                 this.repeater_leave.DataBind();
             }
@@ -299,8 +299,6 @@ namespace WEBUI.Pages
         #endregion
 
         #region showleave data
-        
-
         protected void Calendar1_SelectionChanged(Calendar calendar, DateTime date)
         {
             //1.set changedDate  2.show related request  3.save date to viewstate.
@@ -411,7 +409,7 @@ namespace WEBUI.Pages
             this.lt_approval.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_approved;
             this.lt_wait.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_containwait;
             this.lt_name.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_listname;
-            this.lt_type.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_listtype;
+            //this.lt_type.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_listtype;
             this.lt_section.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_listsection;
             this.lt_status.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_liststatus;
         }
@@ -422,6 +420,5 @@ namespace WEBUI.Pages
         }
         #endregion
 
-        
     }
 }

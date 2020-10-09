@@ -20,6 +20,16 @@ namespace BLL
         #endregion
 
         #region common enum 使用端的生成的enum居然默然从0开始.全然不管webservices的设定....只能采用会有隐患的复制的方法
+        public enum sectionType
+        {
+            pleaseselect=-1,
+            full=0,
+            am=1,
+            pm=2,
+            three=3,
+            hours=4
+        }
+
         public enum ApprovalRequestStatus
         {
             [System.ComponentModel.Description("SendEmail")]
