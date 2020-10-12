@@ -8,13 +8,23 @@
         <div class="col-xs-12" style="padding:0px; overflow-y:scroll; height:448px;">
             <asp:Repeater ID="repeater_attandance" runat="server" EnableViewState="true">
                 <ItemTemplate>
-                    <div class="col-xs-6" style="width:48%; height:140px;float:left;border:1px solid #f4f4f4">
-                        <div style="height:100px; width:100px; float:left; padding-top:10px; padding-left:2px;">
-                            <asp:Image ID="Image1" runat="server" ImageUrl="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).reduceImagePath %>"  Height="100%" Width="100%" />
-                        </div>
-                        <div style="height:30px; width:30px; float:left; position:relative; left:-15px; top:0px;">
-                            <asp:ImageButton ID="imagebutton_close" runat="server" ImageUrl="~/Res/images/close.png" Width="100%" Height="100%" OnClick="imagebutton_close_Click" CommandArgument="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).tempID %>"/>
-                        </div>
+                    <div class="col-xs-6" style="width:48%; height:130px;float:left;border:1px solid #f4f4f4">
+                        <table>
+                            <tr><td>
+                                <div style="height:100px; width:100px; float:left; padding-top:10px; padding-left:2px;">
+                                    <asp:Image ID="Image1" runat="server" ImageUrl="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).reduceImagePath %>"  Height="100%" Width="100%" />
+                                </div>
+                                <div style="height:30px; width:30px; float:left; position:relative; left:-15px; top:0px;">
+                                    <asp:ImageButton ID="imagebutton_close" runat="server" ImageUrl="~/Res/images/close.png" Width="100%" Height="100%" OnClick="imagebutton_close_Click" CommandArgument="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).tempID %>"/>
+                                </div>
+                            </td></tr>
+                            <tr><td>
+                                <a runat="server" id="aa" href="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).bigImagepath %>" target="_blank"><%# ((MODEL.Apply.app_uploadpic)Container.DataItem).GetFileName(15) %></a>
+                            </td></tr>
+                        </table>
+                            
+                    
+            
                     </div>
                 </ItemTemplate>
             </asp:Repeater>

@@ -64,6 +64,7 @@ namespace WEBUI
                         BLL.Page.MyCookieManage.SetCookie_psw(password);
                     }
 
+                    //check weather more employment?
                     BLL.User_wsref.SaveInfoToSession(userid, loginResult);
                     Response.Redirect("~/Pages/Main.aspx");
                 }

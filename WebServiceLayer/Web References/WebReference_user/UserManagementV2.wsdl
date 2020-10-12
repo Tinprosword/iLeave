@@ -130,6 +130,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetTotalWorkHours">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="epid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalWorkHoursResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetTotalWorkHoursResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="Test_ADD">
         <s:complexType>
           <s:sequence>
@@ -685,6 +699,7 @@
       <s:element name="LoginResult" nillable="true" type="tns:LoginResult" />
       <s:element name="boolean" type="s:boolean" />
       <s:element name="ArrayOfPersonBaseinfo" nillable="true" type="tns:ArrayOfPersonBaseinfo" />
+      <s:element name="double" type="s:double" />
       <s:element name="int" type="s:int" />
       <s:element name="ArrayOfT_Employment" nillable="true" type="tns:ArrayOfT_Employment" />
       <s:element name="ArrayOfT_User" nillable="true" type="tns:ArrayOfT_User" />
@@ -732,6 +747,12 @@
   </wsdl:message>
   <wsdl:message name="FilterValidUserSoapOut">
     <wsdl:part name="parameters" element="tns:FilterValidUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalWorkHoursSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalWorkHours" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalWorkHoursSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalWorkHoursResponse" />
   </wsdl:message>
   <wsdl:message name="Test_ADDSoapIn">
     <wsdl:part name="parameters" element="tns:Test_ADD" />
@@ -888,6 +909,12 @@
   <wsdl:message name="GetPersonBaseInfo_ValidateEmploymentForTodayHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfPersonBaseinfo" />
   </wsdl:message>
+  <wsdl:message name="GetTotalWorkHoursHttpPostIn">
+    <wsdl:part name="epid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalWorkHoursHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
   <wsdl:message name="Test_ADDHttpPostIn">
     <wsdl:part name="a" type="s:string" />
     <wsdl:part name="b" type="s:string" />
@@ -943,6 +970,10 @@
     <wsdl:operation name="FilterValidUser">
       <wsdl:input message="tns:FilterValidUserSoapIn" />
       <wsdl:output message="tns:FilterValidUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalWorkHours">
+      <wsdl:input message="tns:GetTotalWorkHoursSoapIn" />
+      <wsdl:output message="tns:GetTotalWorkHoursSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Test_ADD">
       <wsdl:input message="tns:Test_ADDSoapIn" />
@@ -1050,6 +1081,10 @@
       <wsdl:input message="tns:GetPersonBaseInfo_ValidateEmploymentForTodayHttpPostIn" />
       <wsdl:output message="tns:GetPersonBaseInfo_ValidateEmploymentForTodayHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetTotalWorkHours">
+      <wsdl:input message="tns:GetTotalWorkHoursHttpPostIn" />
+      <wsdl:output message="tns:GetTotalWorkHoursHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="Test_ADD">
       <wsdl:input message="tns:Test_ADDHttpPostIn" />
       <wsdl:output message="tns:Test_ADDHttpPostOut" />
@@ -1120,6 +1155,15 @@
     </wsdl:operation>
     <wsdl:operation name="FilterValidUser">
       <soap:operation soapAction="http://tempuri.org/FilterValidUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalWorkHours">
+      <soap:operation soapAction="http://tempuri.org/GetTotalWorkHours" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1373,6 +1417,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetTotalWorkHours">
+      <soap12:operation soapAction="http://tempuri.org/GetTotalWorkHours" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Test_ADD">
       <soap12:operation soapAction="http://tempuri.org/Test_ADD" style="document" />
       <wsdl:input>
@@ -1603,6 +1656,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetPersonBaseInfo_ValidateEmploymentForToday">
       <http:operation location="/GetPersonBaseInfo_ValidateEmploymentForToday" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalWorkHours">
+      <http:operation location="/GetTotalWorkHours" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

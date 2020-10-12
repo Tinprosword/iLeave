@@ -16,7 +16,7 @@ namespace WEBUI.Pages
         private List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> LeaveRequestDetails;
         private WebServiceLayer.WebReference_leave.t_WorkflowInfo RelatedWorkInfo;
         private List<WebServiceLayer.WebReference_leave.t_WorkflowTask> RelatedWorkDetails;
-        
+
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
             if (!string.IsNullOrEmpty(Request.QueryString["requestid"]) && !string.IsNullOrEmpty(Request.QueryString["action"]) && !string.IsNullOrEmpty(Request.QueryString["applicationType"]))
@@ -39,16 +39,13 @@ namespace WEBUI.Pages
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
-        {
-        }
-
-
+        {}
 
         protected override void InitPage_OnFirstLoad2()
-        { }
+        {}
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
-        { }
+        {}
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
@@ -205,7 +202,9 @@ namespace WEBUI.Pages
                 string errormsg;
                 BLL.workflow.RejectCancelRequest_leave(requestId, loginer.userInfo.id, out errormsg);
             }
+            string url = "mydetail.aspx?requestid={0}&action={1}&applicationType={2}";
+            url = string.Format(url, requestId, action, applicationType);
+            Response.Redirect(url);
         }
-
     }
 }

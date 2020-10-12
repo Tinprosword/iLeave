@@ -52,7 +52,7 @@ namespace WEBUI.Pages
             OnChangeSettingSendNotice(int.Parse(this.cb_languagea.SelectedValue), this.js_webview);
             LSLibrary.WebAPP.LanguageType chooseLanguage = (LSLibrary.WebAPP.LanguageType)int.Parse(this.cb_languagea.SelectedValue);
             BLL.Page.MyCookieManage.SetCookie_language(chooseLanguage);
-            LSLibrary.WebAPP.BaseLanguage NewLanguage= BLL.MultiLanguageHelper.GetLanguagePacket(chooseLanguage);//todo 只有这个页面特殊，无法立即读cooike,因为是立即修改，还未写到cooike.
+            LSLibrary.WebAPP.BaseLanguage NewLanguage= BLL.MultiLanguageHelper.GetLanguagePacket(chooseLanguage);
             LoadLableLanguage(NewLanguage);
         }
 
@@ -61,8 +61,7 @@ namespace WEBUI.Pages
         {
             LSLibrary.WebAPP.LoginManager.Logoff();
             BLL.Page.MyCookieManage.SetCookie_isRmember("0");
-            Response.Redirect("setting.aspx");//todo 为什么下面的无效？ 重新装载，因为已经清除了session  .会自动退出。
-            //BLL.User_wsref.GoBackToLoginAndClearRemember();
+            Response.Redirect("setting.aspx");
         }
 
 

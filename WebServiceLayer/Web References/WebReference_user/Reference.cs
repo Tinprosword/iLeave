@@ -41,6 +41,8 @@ namespace WebServiceLayer.WebReference_user {
         
         private System.Threading.SendOrPostCallback FilterValidUserOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetTotalWorkHoursOperationCompleted;
+        
         private System.Threading.SendOrPostCallback Test_ADDOperationCompleted;
         
         private System.Threading.SendOrPostCallback Base_Insertt_EmploymentOperationCompleted;
@@ -138,6 +140,9 @@ namespace WebServiceLayer.WebReference_user {
         
         /// <remarks/>
         public event FilterValidUserCompletedEventHandler FilterValidUserCompleted;
+        
+        /// <remarks/>
+        public event GetTotalWorkHoursCompletedEventHandler GetTotalWorkHoursCompleted;
         
         /// <remarks/>
         public event Test_ADDCompletedEventHandler Test_ADDCompleted;
@@ -373,6 +378,35 @@ namespace WebServiceLayer.WebReference_user {
             if ((this.FilterValidUserCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.FilterValidUserCompleted(this, new FilterValidUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTotalWorkHours", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double GetTotalWorkHours(int epid) {
+            object[] results = this.Invoke("GetTotalWorkHours", new object[] {
+                        epid});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetTotalWorkHoursAsync(int epid) {
+            this.GetTotalWorkHoursAsync(epid, null);
+        }
+        
+        /// <remarks/>
+        public void GetTotalWorkHoursAsync(int epid, object userState) {
+            if ((this.GetTotalWorkHoursOperationCompleted == null)) {
+                this.GetTotalWorkHoursOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTotalWorkHoursOperationCompleted);
+            }
+            this.InvokeAsync("GetTotalWorkHours", new object[] {
+                        epid}, this.GetTotalWorkHoursOperationCompleted, userState);
+        }
+        
+        private void OnGetTotalWorkHoursOperationCompleted(object arg) {
+            if ((this.GetTotalWorkHoursCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetTotalWorkHoursCompleted(this, new GetTotalWorkHoursCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4342,6 +4376,32 @@ namespace WebServiceLayer.WebReference_user {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((PersonBaseinfo[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetTotalWorkHoursCompletedEventHandler(object sender, GetTotalWorkHoursCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetTotalWorkHoursCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetTotalWorkHoursCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
             }
         }
     }

@@ -10,15 +10,23 @@ namespace BLL
 {
     public class Leave
     {
+
         public static string reducePath = "reduce";
         public static string picPath = "uploadPic";
-        public static string picAbsolutePath = "C:\\temp\\AttachmentUpload\\mobil\\";
+
         public static string defaultPic= "~/Res/images/file.png";
         public static int leave_sections_nullSelect = -1;
         public static int leave_leaveid_nullSelect = 0;
 
 
         #region insert application
+
+        public static string GetAttachmentAbsolutePath()
+        {
+            string path= LSLibrary.WebAPP.WebConfig.getValue("attachmentUploadPath");
+            return  path+ "\\mobil\\";
+        }
+
         //-1:empty .-2 same apply day or section
         private static int CheckBeforeApply(List<MODEL.Apply.apply_LeaveData> originDetail,ref string message,int eid)
         {
@@ -172,10 +180,10 @@ namespace BLL
             return result;
         }
 
-        private static int GetEmployHours(int employid)
+        private static double GetEmployHours(int employid)
         {
-            //todo it
-            return 8;
+            double result = WebServiceLayer.MyWebService.GlobalWebServices.ws_user.GetTotalWorkHours(employid);
+            return result;
         }
 
 
@@ -330,7 +338,7 @@ namespace BLL
                 reduceFile = BLL.Leave.defaultPic;
             }
 
-            MODEL.Apply.app_uploadpic temppic = new MODEL.Apply.app_uploadpic(bigFile, reduceFile, BLL.Leave.picAbsolutePath + filename);
+            MODEL.Apply.app_uploadpic temppic = new MODEL.Apply.app_uploadpic(bigFile, reduceFile, BLL.Leave.GetAttachmentAbsolutePath() + filename);
             return temppic;
         }
 

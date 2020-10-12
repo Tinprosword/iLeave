@@ -11,12 +11,13 @@ namespace WEBUI.Pages
     {
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {}
+
         protected override void InitPage_OnFirstLoad2()
         {}
 
-
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {}
+
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
             object PreViewstate = LSLibrary.WebAPP.PageSessionHelper.GetValueAndCleanSoon(BLL.GlobalVariate.Session_ApplyToUpload);
@@ -66,7 +67,6 @@ namespace WEBUI.Pages
 
             this.repeater_attandance.DataSource = applyPage.uploadpic;
             this.repeater_attandance.DataBind();
-
         }
 
 

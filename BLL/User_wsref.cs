@@ -31,13 +31,7 @@ namespace BLL
         }
 
 
-        public static bool cleanRemember = false;
-        public static void GoBackToLoginAndClearRemember()
-        {
-            cleanRemember = true;
-            GoBackToLogin();//太差劲的方式。但是目前没有更简单的方式了.
-            cleanRemember = false;
-        }
+
 
 
         public static void GoBackToLogin()
@@ -47,14 +41,9 @@ namespace BLL
             LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
             if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android)//android
             {
-                if (cleanRemember)
-                {
-                    HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid("sys", "loginoutcleanRemember", HttpContext.Current.Server));
-                }
-                else
-                {
+
                     HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid("sys", "loginout", HttpContext.Current.Server));
-                }
+                
             }
             else if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone)//ios
             {

@@ -93,6 +93,23 @@ namespace MODEL
                 this.reduceImagePath = _reduceImage;
                 this.bigImageAbsolutePath = _bigImageAbsolutePath;
             }
+
+            public string GetFileName(int maxLength=0)
+            {
+                string result = "";
+                if (!string.IsNullOrEmpty(bigImageAbsolutePath))
+                {
+                    result = LSLibrary.FileUtil.GetFileNameNoExtension(bigImageAbsolutePath);
+                    if (maxLength != 0 && result.Length>maxLength)
+                    {
+                        result = result.Substring(0, maxLength);
+                    }
+                    result += LSLibrary.FileUtil.GetExtension(bigImageAbsolutePath);
+                }
+                return result;
+            }
+
+
         }
 
     }

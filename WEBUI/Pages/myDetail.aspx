@@ -61,13 +61,16 @@
         <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
             <tr><td class="col-xs-12"><asp:Literal ID="lt_attendance" runat="server">Attachment</asp:Literal></td></tr>
         </table>
-        <div class="col-xs-12" style="height:80px;">
-            <div class="col-xs-12 lsu-table-xs" style="height:86px;overflow-y:hidden; overflow-x:scroll; padding-left:5px">
+        <div class="col-xs-12" style="height:120px;">
+            <div class="col-xs-12 lsu-table-xs" style="height:100%;overflow-y:hidden; overflow-x:scroll; padding-left:5px">
                 <table>
                     <tr>
                         <asp:Repeater ID="repeater_pic" runat="server">
                             <ItemTemplate>
-                                <td style="padding-right:10px; width:90px;padding-top:1px"><asp:Image ID="Image" runat="server" ImageUrl="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).reduceImagePath %>" Width="70px" Height="68px"/></td>
+                                <td style="padding-right:10px;padding-top:3px">
+                                    <asp:Image ID="Image" runat="server" ImageUrl="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).reduceImagePath %>" Width="120px" Height="68px"/>
+                                    <br /><a runat="server" id="aa" href="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).bigImagepath %>" target="_blank"><%# ((MODEL.Apply.app_uploadpic)Container.DataItem).GetFileName(15) %></a>
+                                </td>
                             </ItemTemplate>
                         </asp:Repeater>
                     </tr>

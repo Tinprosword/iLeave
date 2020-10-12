@@ -17,15 +17,15 @@ namespace WEBUI.Pages
     {
         //todo upload file in mobil.
         //todo 一个页面只能触发一次js？
-        //todo 需要download 附件.    
+
+        //todo page:change staff and member.
+
+        //picAbsolutePath get by ws
         //todo how to get balance ?
 
 
-        //todo more than one sequance when approval??
-        //todo page:change staff and member.
         //todo page页面的多层继承写的不错，可以总结下了。 
-        //todo employment hours
-
+        //todo f5 刷新问题
 
         public static string ViewState_PageName = "PageView";
         public List<LSLibrary.WebAPP.ValueText<int>> RPITEM_LeaveListSections;
@@ -183,6 +183,7 @@ namespace WEBUI.Pages
             }
             IsLeaveTypeEnable();
             RefleshApplyBalance(leaveid);
+            this.lt_js_prg.Text = LSLibrary.WebAPP.MyJSHelper.CustomPost("", "");
         }
 
         protected void ddl_leavetype_SelectedIndexChanged(object sender, EventArgs e)
@@ -233,7 +234,6 @@ namespace WEBUI.Pages
                 pagedate.LeaveList[intIndex].sectionid = int.Parse(abc);
                 LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, pagedate, ViewState);
                 //todo just refresh balance.
-
             }
 
             RefleshApplyBalance(leaveid);
