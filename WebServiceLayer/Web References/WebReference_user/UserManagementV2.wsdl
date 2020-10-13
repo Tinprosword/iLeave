@@ -102,20 +102,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetPersonBaseInfo_ValidateEmploymentForToday">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="PID" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetPersonBaseInfo_ValidateEmploymentForTodayResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetPersonBaseInfo_ValidateEmploymentForTodayResult" type="tns:ArrayOfPersonBaseinfo" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="FilterValidUser">
         <s:complexType>
           <s:sequence>
@@ -127,6 +113,20 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="FilterValidUserResult" type="tns:ArrayOfPersonBaseinfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FilterCanLoginUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data" type="tns:ArrayOfPersonBaseinfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FilterCanLoginUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilterCanLoginUserResult" type="tns:ArrayOfPersonBaseinfo" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -736,17 +736,17 @@
   <wsdl:message name="GetPersonBaseInfoByPidSoapOut">
     <wsdl:part name="parameters" element="tns:GetPersonBaseInfoByPidResponse" />
   </wsdl:message>
-  <wsdl:message name="GetPersonBaseInfo_ValidateEmploymentForTodaySoapIn">
-    <wsdl:part name="parameters" element="tns:GetPersonBaseInfo_ValidateEmploymentForToday" />
-  </wsdl:message>
-  <wsdl:message name="GetPersonBaseInfo_ValidateEmploymentForTodaySoapOut">
-    <wsdl:part name="parameters" element="tns:GetPersonBaseInfo_ValidateEmploymentForTodayResponse" />
-  </wsdl:message>
   <wsdl:message name="FilterValidUserSoapIn">
     <wsdl:part name="parameters" element="tns:FilterValidUser" />
   </wsdl:message>
   <wsdl:message name="FilterValidUserSoapOut">
     <wsdl:part name="parameters" element="tns:FilterValidUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="FilterCanLoginUserSoapIn">
+    <wsdl:part name="parameters" element="tns:FilterCanLoginUser" />
+  </wsdl:message>
+  <wsdl:message name="FilterCanLoginUserSoapOut">
+    <wsdl:part name="parameters" element="tns:FilterCanLoginUserResponse" />
   </wsdl:message>
   <wsdl:message name="GetTotalWorkHoursSoapIn">
     <wsdl:part name="parameters" element="tns:GetTotalWorkHours" />
@@ -903,12 +903,6 @@
   <wsdl:message name="GetPersonBaseInfoByPidHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfPersonBaseinfo" />
   </wsdl:message>
-  <wsdl:message name="GetPersonBaseInfo_ValidateEmploymentForTodayHttpPostIn">
-    <wsdl:part name="PID" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetPersonBaseInfo_ValidateEmploymentForTodayHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfPersonBaseinfo" />
-  </wsdl:message>
   <wsdl:message name="GetTotalWorkHoursHttpPostIn">
     <wsdl:part name="epid" type="s:string" />
   </wsdl:message>
@@ -963,13 +957,13 @@
       <wsdl:input message="tns:GetPersonBaseInfoByPidSoapIn" />
       <wsdl:output message="tns:GetPersonBaseInfoByPidSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetPersonBaseInfo_ValidateEmploymentForToday">
-      <wsdl:input message="tns:GetPersonBaseInfo_ValidateEmploymentForTodaySoapIn" />
-      <wsdl:output message="tns:GetPersonBaseInfo_ValidateEmploymentForTodaySoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="FilterValidUser">
       <wsdl:input message="tns:FilterValidUserSoapIn" />
       <wsdl:output message="tns:FilterValidUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FilterCanLoginUser">
+      <wsdl:input message="tns:FilterCanLoginUserSoapIn" />
+      <wsdl:output message="tns:FilterCanLoginUserSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetTotalWorkHours">
       <wsdl:input message="tns:GetTotalWorkHoursSoapIn" />
@@ -1077,10 +1071,6 @@
       <wsdl:input message="tns:GetPersonBaseInfoByPidHttpPostIn" />
       <wsdl:output message="tns:GetPersonBaseInfoByPidHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetPersonBaseInfo_ValidateEmploymentForToday">
-      <wsdl:input message="tns:GetPersonBaseInfo_ValidateEmploymentForTodayHttpPostIn" />
-      <wsdl:output message="tns:GetPersonBaseInfo_ValidateEmploymentForTodayHttpPostOut" />
-    </wsdl:operation>
     <wsdl:operation name="GetTotalWorkHours">
       <wsdl:input message="tns:GetTotalWorkHoursHttpPostIn" />
       <wsdl:output message="tns:GetTotalWorkHoursHttpPostOut" />
@@ -1144,8 +1134,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPersonBaseInfo_ValidateEmploymentForToday">
-      <soap:operation soapAction="http://tempuri.org/GetPersonBaseInfo_ValidateEmploymentForToday" style="document" />
+    <wsdl:operation name="FilterValidUser">
+      <soap:operation soapAction="http://tempuri.org/FilterValidUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1153,8 +1143,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="FilterValidUser">
-      <soap:operation soapAction="http://tempuri.org/FilterValidUser" style="document" />
+    <wsdl:operation name="FilterCanLoginUser">
+      <soap:operation soapAction="http://tempuri.org/FilterCanLoginUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1399,8 +1389,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPersonBaseInfo_ValidateEmploymentForToday">
-      <soap12:operation soapAction="http://tempuri.org/GetPersonBaseInfo_ValidateEmploymentForToday" style="document" />
+    <wsdl:operation name="FilterValidUser">
+      <soap12:operation soapAction="http://tempuri.org/FilterValidUser" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1408,8 +1398,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="FilterValidUser">
-      <soap12:operation soapAction="http://tempuri.org/FilterValidUser" style="document" />
+    <wsdl:operation name="FilterCanLoginUser">
+      <soap12:operation soapAction="http://tempuri.org/FilterCanLoginUser" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1647,15 +1637,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetPersonBaseInfoByPid">
       <http:operation location="/GetPersonBaseInfoByPid" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetPersonBaseInfo_ValidateEmploymentForToday">
-      <http:operation location="/GetPersonBaseInfo_ValidateEmploymentForToday" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

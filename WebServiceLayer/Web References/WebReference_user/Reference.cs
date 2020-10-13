@@ -37,9 +37,9 @@ namespace WebServiceLayer.WebReference_user {
         
         private System.Threading.SendOrPostCallback GetPersonBaseInfoByPidOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetPersonBaseInfo_ValidateEmploymentForTodayOperationCompleted;
-        
         private System.Threading.SendOrPostCallback FilterValidUserOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback FilterCanLoginUserOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetTotalWorkHoursOperationCompleted;
         
@@ -136,10 +136,10 @@ namespace WebServiceLayer.WebReference_user {
         public event GetPersonBaseInfoByPidCompletedEventHandler GetPersonBaseInfoByPidCompleted;
         
         /// <remarks/>
-        public event GetPersonBaseInfo_ValidateEmploymentForTodayCompletedEventHandler GetPersonBaseInfo_ValidateEmploymentForTodayCompleted;
+        public event FilterValidUserCompletedEventHandler FilterValidUserCompleted;
         
         /// <remarks/>
-        public event FilterValidUserCompletedEventHandler FilterValidUserCompleted;
+        public event FilterCanLoginUserCompletedEventHandler FilterCanLoginUserCompleted;
         
         /// <remarks/>
         public event GetTotalWorkHoursCompletedEventHandler GetTotalWorkHoursCompleted;
@@ -324,35 +324,6 @@ namespace WebServiceLayer.WebReference_user {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetPersonBaseInfo_ValidateEmploymentForToday", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public PersonBaseinfo[] GetPersonBaseInfo_ValidateEmploymentForToday(int PID) {
-            object[] results = this.Invoke("GetPersonBaseInfo_ValidateEmploymentForToday", new object[] {
-                        PID});
-            return ((PersonBaseinfo[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetPersonBaseInfo_ValidateEmploymentForTodayAsync(int PID) {
-            this.GetPersonBaseInfo_ValidateEmploymentForTodayAsync(PID, null);
-        }
-        
-        /// <remarks/>
-        public void GetPersonBaseInfo_ValidateEmploymentForTodayAsync(int PID, object userState) {
-            if ((this.GetPersonBaseInfo_ValidateEmploymentForTodayOperationCompleted == null)) {
-                this.GetPersonBaseInfo_ValidateEmploymentForTodayOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPersonBaseInfo_ValidateEmploymentForTodayOperationCompleted);
-            }
-            this.InvokeAsync("GetPersonBaseInfo_ValidateEmploymentForToday", new object[] {
-                        PID}, this.GetPersonBaseInfo_ValidateEmploymentForTodayOperationCompleted, userState);
-        }
-        
-        private void OnGetPersonBaseInfo_ValidateEmploymentForTodayOperationCompleted(object arg) {
-            if ((this.GetPersonBaseInfo_ValidateEmploymentForTodayCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetPersonBaseInfo_ValidateEmploymentForTodayCompleted(this, new GetPersonBaseInfo_ValidateEmploymentForTodayCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/FilterValidUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public PersonBaseinfo[] FilterValidUser(PersonBaseinfo[] data) {
             object[] results = this.Invoke("FilterValidUser", new object[] {
@@ -378,6 +349,35 @@ namespace WebServiceLayer.WebReference_user {
             if ((this.FilterValidUserCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.FilterValidUserCompleted(this, new FilterValidUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/FilterCanLoginUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public PersonBaseinfo[] FilterCanLoginUser(PersonBaseinfo[] data) {
+            object[] results = this.Invoke("FilterCanLoginUser", new object[] {
+                        data});
+            return ((PersonBaseinfo[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void FilterCanLoginUserAsync(PersonBaseinfo[] data) {
+            this.FilterCanLoginUserAsync(data, null);
+        }
+        
+        /// <remarks/>
+        public void FilterCanLoginUserAsync(PersonBaseinfo[] data, object userState) {
+            if ((this.FilterCanLoginUserOperationCompleted == null)) {
+                this.FilterCanLoginUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnFilterCanLoginUserOperationCompleted);
+            }
+            this.InvokeAsync("FilterCanLoginUser", new object[] {
+                        data}, this.FilterCanLoginUserOperationCompleted, userState);
+        }
+        
+        private void OnFilterCanLoginUserOperationCompleted(object arg) {
+            if ((this.FilterCanLoginUserCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.FilterCanLoginUserCompleted(this, new FilterCanLoginUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4330,17 +4330,17 @@ namespace WebServiceLayer.WebReference_user {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetPersonBaseInfo_ValidateEmploymentForTodayCompletedEventHandler(object sender, GetPersonBaseInfo_ValidateEmploymentForTodayCompletedEventArgs e);
+    public delegate void FilterValidUserCompletedEventHandler(object sender, FilterValidUserCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetPersonBaseInfo_ValidateEmploymentForTodayCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class FilterValidUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetPersonBaseInfo_ValidateEmploymentForTodayCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal FilterValidUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -4356,17 +4356,17 @@ namespace WebServiceLayer.WebReference_user {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void FilterValidUserCompletedEventHandler(object sender, FilterValidUserCompletedEventArgs e);
+    public delegate void FilterCanLoginUserCompletedEventHandler(object sender, FilterCanLoginUserCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class FilterValidUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class FilterCanLoginUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal FilterValidUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal FilterCanLoginUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
