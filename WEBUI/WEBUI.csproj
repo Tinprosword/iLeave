@@ -76,6 +76,7 @@
     <Content Include="Pages\Apply_Upload.aspx" />
     <Content Include="Pages\approval.aspx" />
     <Content Include="Pages\calendar.aspx" />
+    <Content Include="Pages\chooseEmployment.aspx" />
     <Content Include="Pages\Demo.html" />
     <Content Include="Pages\Main.aspx" />
     <Content Include="Pages\MyApplicationMain.aspx" />
@@ -180,7 +181,6 @@
     </Compile>
     <Compile Include="Pages\Apply.aspx.cs">
       <DependentUpon>Apply.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Apply.aspx.designer.cs">
       <DependentUpon>Apply.aspx</DependentUpon>
@@ -205,6 +205,13 @@
     </Compile>
     <Compile Include="Pages\calendar.aspx.designer.cs">
       <DependentUpon>calendar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\chooseEmployment.aspx.cs">
+      <DependentUpon>chooseEmployment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\chooseEmployment.aspx.designer.cs">
+      <DependentUpon>chooseEmployment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Main.aspx.cs">
       <DependentUpon>Main.aspx</DependentUpon>

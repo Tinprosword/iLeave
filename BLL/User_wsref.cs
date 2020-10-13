@@ -87,37 +87,62 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.FilterValidUser(data);
         }
 
-        public static WebServiceLayer.WebReference_user.PersonBaseinfo GetPersonBaseinfos_validateDefaultEmploymentNow(int pid)
+        public static WebServiceLayer.WebReference_user.PersonBaseinfo GetDefaultLoginEmployment(int pid)
         {
             WebServiceLayer.WebReference_user.PersonBaseinfo result = null;
-            WebServiceLayer.WebReference_user.PersonBaseinfo[] res = WebServiceLayer.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfo_ValidateEmploymentForToday(pid);
-            if (res != null && res.Count() > 0)
+            WebServiceLayer.WebReference_user.PersonBaseinfo[] allinfos = WebServiceLayer.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfoByPid(pid);
+            WebServiceLayer.WebReference_user.PersonBaseinfo[] canlogins = WebServiceLayer.MyWebService.GlobalWebServices.ws_user.FilterCanLoginUser(allinfos);
+            canlogins = canlogins.OrderByDescending(x => x.e_id).ToArray();
+            if (canlogins != null && canlogins.Count() > 0)
             {
-                var item = res.Where(x => x.e_IsMain!=null && x.e_IsMain==true).OrderBy(x=>x.e_FirstEmploymentID).ToList();//最早申请的staff 中的main employment 作为主employment.
-                result = item.Count() >0 ? item[0] : null;
+                result = canlogins[0];
             }
-            return result ;
+            return result;
         }
 
-
-        public static void SaveInfoToSession(string userid, WebServiceLayer.WebReference_user.LoginResult loginResult)
+        //no person .no employmnet 无法登陆.
+        public static MODEL.UserInfo GetAndSaveInfoToSession(string userid, WebServiceLayer.WebReference_user.LoginResult loginResult)
         {
             WebServiceLayer.WebReference_user.t_Person person = BLL.User_wsref.GerPersonByuid(loginResult.Result);
-
-            WebServiceLayer.WebReference_user.PersonBaseinfo personBaseinfo = BLL.User_wsref.GetPersonBaseinfos_validateDefaultEmploymentNow(person.ID);
+            WebServiceLayer.WebReference_user.PersonBaseinfo personEmplyment = null;
             MODEL.UserInfo userInfo = null;
-            if (personBaseinfo != null)
+            if (person != null)
             {
-                userInfo = new MODEL.UserInfo(loginResult.Result, userid, "", loginResult.SessionID, personBaseinfo.e_id, personBaseinfo.e_EmploymentNumber, personBaseinfo.s_id, personBaseinfo.s_StaffNumber, personBaseinfo.p_id,personBaseinfo.p_Surname,personBaseinfo.p_Othername);
+                personEmplyment = BLL.User_wsref.GetDefaultLoginEmployment(person.ID);
+                userInfo = SaveInfoToSession(personEmplyment, loginResult.SessionID);
             }
-            else
-            {
-                userInfo = new MODEL.UserInfo(loginResult.Result, userid, "", loginResult.SessionID, null, null, null, null, person.ID,"","");
-            }
-
-            LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(userid, userInfo));
+            return userInfo;
         }
 
+        public static MODEL.UserInfo SaveInfoToSession(WebServiceLayer.WebReference_user.PersonBaseinfo personBaseinfo,string sessinonID)
+        {
+            MODEL.UserInfo userInfo = null;
+            if (personBaseinfo != null && personBaseinfo.e_id!=null)
+            {
+                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, personBaseinfo.e_id, personBaseinfo.e_EmploymentNumber, personBaseinfo.s_id, personBaseinfo.s_StaffNumber, personBaseinfo.p_id, personBaseinfo.p_Surname, personBaseinfo.p_Othername);
+                LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(personBaseinfo.u_Username, userInfo));
+            }
+            else if(personBaseinfo != null && personBaseinfo.e_id == null)
+            {
+                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, null, null, null, null, personBaseinfo.p_id, "", "");
+                LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(personBaseinfo.u_Username, userInfo));
+            }
+            return userInfo;
+        }
+
+        public static WebServiceLayer.WebReference_user.EmployDetail GetEmployDetailByeid(int eid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.GetEmployDetailByEid(eid);
+        }
+
+
+        public static void ChangeInfoToSession(int employid,string employnumber)
+        {
+            LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> loginer = LSLibrary.WebAPP.LoginManager.GetLoinger<MODEL.UserInfo>();
+            loginer.userInfo.employID = employid;
+            loginer.userInfo.employNnumber = employnumber;
+            LSLibrary.WebAPP.LoginManager.SetLoginer(loginer);
+        }
 
         #region auto
         public static WebServiceLayer.WebReference_user.t_Employment getEmploymentByid(int id)

@@ -43,6 +43,8 @@ namespace WebServiceLayer.WebReference_user {
         
         private System.Threading.SendOrPostCallback GetTotalWorkHoursOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetEmployDetailByEidOperationCompleted;
+        
         private System.Threading.SendOrPostCallback Test_ADDOperationCompleted;
         
         private System.Threading.SendOrPostCallback Base_Insertt_EmploymentOperationCompleted;
@@ -143,6 +145,9 @@ namespace WebServiceLayer.WebReference_user {
         
         /// <remarks/>
         public event GetTotalWorkHoursCompletedEventHandler GetTotalWorkHoursCompleted;
+        
+        /// <remarks/>
+        public event GetEmployDetailByEidCompletedEventHandler GetEmployDetailByEidCompleted;
         
         /// <remarks/>
         public event Test_ADDCompletedEventHandler Test_ADDCompleted;
@@ -407,6 +412,35 @@ namespace WebServiceLayer.WebReference_user {
             if ((this.GetTotalWorkHoursCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetTotalWorkHoursCompleted(this, new GetTotalWorkHoursCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetEmployDetailByEid", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public EmployDetail GetEmployDetailByEid(int eid) {
+            object[] results = this.Invoke("GetEmployDetailByEid", new object[] {
+                        eid});
+            return ((EmployDetail)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetEmployDetailByEidAsync(int eid) {
+            this.GetEmployDetailByEidAsync(eid, null);
+        }
+        
+        /// <remarks/>
+        public void GetEmployDetailByEidAsync(int eid, object userState) {
+            if ((this.GetEmployDetailByEidOperationCompleted == null)) {
+                this.GetEmployDetailByEidOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetEmployDetailByEidOperationCompleted);
+            }
+            this.InvokeAsync("GetEmployDetailByEid", new object[] {
+                        eid}, this.GetEmployDetailByEidOperationCompleted, userState);
+        }
+        
+        private void OnGetEmployDetailByEidOperationCompleted(object arg) {
+            if ((this.GetEmployDetailByEidCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetEmployDetailByEidCompleted(this, new GetEmployDetailByEidCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3831,6 +3865,111 @@ namespace WebServiceLayer.WebReference_user {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class EmployDetail {
+        
+        private int e_idField;
+        
+        private int s_idField;
+        
+        private string s_staffnumberField;
+        
+        private string e_EmploymentNumberField;
+        
+        private string contractField;
+        
+        private string zoneField;
+        
+        private string positionField;
+        
+        private string shiftField;
+        
+        /// <remarks/>
+        public int e_id {
+            get {
+                return this.e_idField;
+            }
+            set {
+                this.e_idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int s_id {
+            get {
+                return this.s_idField;
+            }
+            set {
+                this.s_idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string s_staffnumber {
+            get {
+                return this.s_staffnumberField;
+            }
+            set {
+                this.s_staffnumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string e_EmploymentNumber {
+            get {
+                return this.e_EmploymentNumberField;
+            }
+            set {
+                this.e_EmploymentNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Contract {
+            get {
+                return this.contractField;
+            }
+            set {
+                this.contractField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Zone {
+            get {
+                return this.zoneField;
+            }
+            set {
+                this.zoneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Position {
+            get {
+                return this.positionField;
+            }
+            set {
+                this.positionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Shift {
+            get {
+                return this.shiftField;
+            }
+            set {
+                this.shiftField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class PersonBaseinfo {
         
         private int p_idField;
@@ -3894,6 +4033,8 @@ namespace WebServiceLayer.WebReference_user {
         private System.Nullable<int> e_ApprovalGroupIDField;
         
         private System.Nullable<int> e_PositionIDField;
+        
+        private System.Nullable<int> e_contractidField;
         
         /// <remarks/>
         public int p_id {
@@ -4222,6 +4363,17 @@ namespace WebServiceLayer.WebReference_user {
                 this.e_PositionIDField = value;
             }
         }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> e_contractid {
+            get {
+                return this.e_contractidField;
+            }
+            set {
+                this.e_contractidField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -4402,6 +4554,32 @@ namespace WebServiceLayer.WebReference_user {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetEmployDetailByEidCompletedEventHandler(object sender, GetEmployDetailByEidCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetEmployDetailByEidCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetEmployDetailByEidCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public EmployDetail Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((EmployDetail)(this.results[0]));
             }
         }
     }

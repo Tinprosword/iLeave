@@ -472,12 +472,13 @@ namespace BLL
             }
         }
 
+
         public static LeaveBalanceType GetLeaveBalanceType(int leaveid)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveBalanceType(leaveid);
         }
 
-       
+
         public static double GetGrossValue(int leaveid,int staffid,int employid)
         {
             WebServiceLayer.WebReference_leave.LeaveBalanceType balanceType = GetLeaveBalanceType(leaveid);
@@ -506,6 +507,7 @@ namespace BLL
                 return 0;
             }
         }
+
 
         public static double GetWaitValue(int leaveid, int staffid)
         {

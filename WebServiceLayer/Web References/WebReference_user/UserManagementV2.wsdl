@@ -86,6 +86,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="e_FirstEmploymentID" nillable="true" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="e_ApprovalGroupID" nillable="true" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="e_PositionID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="e_contractid" nillable="true" type="s:int" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetPersonBaseInfoByPid">
@@ -144,6 +145,32 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetEmployDetailByEid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmployDetailByEidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmployDetailByEidResult" type="tns:EmployDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EmployDetail">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="e_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_staffnumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="e_EmploymentNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contract" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Position" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shift" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="Test_ADD">
         <s:complexType>
           <s:sequence>
@@ -700,6 +727,7 @@
       <s:element name="boolean" type="s:boolean" />
       <s:element name="ArrayOfPersonBaseinfo" nillable="true" type="tns:ArrayOfPersonBaseinfo" />
       <s:element name="double" type="s:double" />
+      <s:element name="EmployDetail" nillable="true" type="tns:EmployDetail" />
       <s:element name="int" type="s:int" />
       <s:element name="ArrayOfT_Employment" nillable="true" type="tns:ArrayOfT_Employment" />
       <s:element name="ArrayOfT_User" nillable="true" type="tns:ArrayOfT_User" />
@@ -753,6 +781,12 @@
   </wsdl:message>
   <wsdl:message name="GetTotalWorkHoursSoapOut">
     <wsdl:part name="parameters" element="tns:GetTotalWorkHoursResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployDetailByEidSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmployDetailByEid" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployDetailByEidSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmployDetailByEidResponse" />
   </wsdl:message>
   <wsdl:message name="Test_ADDSoapIn">
     <wsdl:part name="parameters" element="tns:Test_ADD" />
@@ -909,6 +943,12 @@
   <wsdl:message name="GetTotalWorkHoursHttpPostOut">
     <wsdl:part name="Body" element="tns:double" />
   </wsdl:message>
+  <wsdl:message name="GetEmployDetailByEidHttpPostIn">
+    <wsdl:part name="eid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployDetailByEidHttpPostOut">
+    <wsdl:part name="Body" element="tns:EmployDetail" />
+  </wsdl:message>
   <wsdl:message name="Test_ADDHttpPostIn">
     <wsdl:part name="a" type="s:string" />
     <wsdl:part name="b" type="s:string" />
@@ -968,6 +1008,10 @@
     <wsdl:operation name="GetTotalWorkHours">
       <wsdl:input message="tns:GetTotalWorkHoursSoapIn" />
       <wsdl:output message="tns:GetTotalWorkHoursSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployDetailByEid">
+      <wsdl:input message="tns:GetEmployDetailByEidSoapIn" />
+      <wsdl:output message="tns:GetEmployDetailByEidSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Test_ADD">
       <wsdl:input message="tns:Test_ADDSoapIn" />
@@ -1075,6 +1119,10 @@
       <wsdl:input message="tns:GetTotalWorkHoursHttpPostIn" />
       <wsdl:output message="tns:GetTotalWorkHoursHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetEmployDetailByEid">
+      <wsdl:input message="tns:GetEmployDetailByEidHttpPostIn" />
+      <wsdl:output message="tns:GetEmployDetailByEidHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="Test_ADD">
       <wsdl:input message="tns:Test_ADDHttpPostIn" />
       <wsdl:output message="tns:Test_ADDHttpPostOut" />
@@ -1154,6 +1202,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetTotalWorkHours">
       <soap:operation soapAction="http://tempuri.org/GetTotalWorkHours" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployDetailByEid">
+      <soap:operation soapAction="http://tempuri.org/GetEmployDetailByEid" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1416,6 +1473,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetEmployDetailByEid">
+      <soap12:operation soapAction="http://tempuri.org/GetEmployDetailByEid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Test_ADD">
       <soap12:operation soapAction="http://tempuri.org/Test_ADD" style="document" />
       <wsdl:input>
@@ -1646,6 +1712,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetTotalWorkHours">
       <http:operation location="/GetTotalWorkHours" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployDetailByEid">
+      <http:operation location="/GetEmployDetailByEid" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
