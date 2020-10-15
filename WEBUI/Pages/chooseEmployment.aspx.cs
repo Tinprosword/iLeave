@@ -50,7 +50,11 @@ namespace WEBUI.Pages
         {
             if (sourceType == 2)
             {
-                //todo show navigation
+                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().approval_List_wait_apporved_reject_Back, "ChooseEmployment", "~/pages/Setting.aspx", true);
+            }
+            else
+            {
+                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().approval_List_wait_apporved_reject_Back, "ChooseEmployment", "", false);
             }
             this.rp_items.DataSource = canlogins;
             this.rp_items.DataBind();

@@ -69,6 +69,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback InsertAttachmentInfoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetUploadPathOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetAttachmentInfoByRequestID_LeaveOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetAllLeaveMasterOperationCompleted;
@@ -122,6 +124,12 @@ namespace WebServiceLayer.WebReference_leave {
         private System.Threading.SendOrPostCallback GetGrossValue_OverrideOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetWaitValue_OverrideOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetBalanceByViewOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetGrossOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetWaitingOperationCompleted;
         
         private System.Threading.SendOrPostCallback Base_Insertt_WorkflowInfoOperationCompleted;
         
@@ -242,6 +250,9 @@ namespace WebServiceLayer.WebReference_leave {
         public event InsertAttachmentInfoCompletedEventHandler InsertAttachmentInfoCompleted;
         
         /// <remarks/>
+        public event GetUploadPathCompletedEventHandler GetUploadPathCompleted;
+        
+        /// <remarks/>
         public event GetAttachmentInfoByRequestID_LeaveCompletedEventHandler GetAttachmentInfoByRequestID_LeaveCompleted;
         
         /// <remarks/>
@@ -321,6 +332,15 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event GetWaitValue_OverrideCompletedEventHandler GetWaitValue_OverrideCompleted;
+        
+        /// <remarks/>
+        public event GetBalanceByViewCompletedEventHandler GetBalanceByViewCompleted;
+        
+        /// <remarks/>
+        public event GetGrossCompletedEventHandler GetGrossCompleted;
+        
+        /// <remarks/>
+        public event GetWaitingCompletedEventHandler GetWaitingCompleted;
         
         /// <remarks/>
         public event Base_Insertt_WorkflowInfoCompletedEventHandler Base_Insertt_WorkflowInfoCompleted;
@@ -961,6 +981,33 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.InsertAttachmentInfoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.InsertAttachmentInfoCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetUploadPath", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetUploadPath() {
+            object[] results = this.Invoke("GetUploadPath", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetUploadPathAsync() {
+            this.GetUploadPathAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetUploadPathAsync(object userState) {
+            if ((this.GetUploadPathOperationCompleted == null)) {
+                this.GetUploadPathOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUploadPathOperationCompleted);
+            }
+            this.InvokeAsync("GetUploadPath", new object[0], this.GetUploadPathOperationCompleted, userState);
+        }
+        
+        private void OnGetUploadPathOperationCompleted(object arg) {
+            if ((this.GetUploadPathCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetUploadPathCompleted(this, new GetUploadPathCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1762,6 +1809,103 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.GetWaitValue_OverrideCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetWaitValue_OverrideCompleted(this, new GetWaitValue_OverrideCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetBalanceByView", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double[] GetBalanceByView(string LeaveCode, int staffid) {
+            object[] results = this.Invoke("GetBalanceByView", new object[] {
+                        LeaveCode,
+                        staffid});
+            return ((double[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetBalanceByViewAsync(string LeaveCode, int staffid) {
+            this.GetBalanceByViewAsync(LeaveCode, staffid, null);
+        }
+        
+        /// <remarks/>
+        public void GetBalanceByViewAsync(string LeaveCode, int staffid, object userState) {
+            if ((this.GetBalanceByViewOperationCompleted == null)) {
+                this.GetBalanceByViewOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetBalanceByViewOperationCompleted);
+            }
+            this.InvokeAsync("GetBalanceByView", new object[] {
+                        LeaveCode,
+                        staffid}, this.GetBalanceByViewOperationCompleted, userState);
+        }
+        
+        private void OnGetBalanceByViewOperationCompleted(object arg) {
+            if ((this.GetBalanceByViewCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetBalanceByViewCompleted(this, new GetBalanceByViewCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetGross", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double GetGross(int sid, int eid, int leaveid) {
+            object[] results = this.Invoke("GetGross", new object[] {
+                        sid,
+                        eid,
+                        leaveid});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetGrossAsync(int sid, int eid, int leaveid) {
+            this.GetGrossAsync(sid, eid, leaveid, null);
+        }
+        
+        /// <remarks/>
+        public void GetGrossAsync(int sid, int eid, int leaveid, object userState) {
+            if ((this.GetGrossOperationCompleted == null)) {
+                this.GetGrossOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetGrossOperationCompleted);
+            }
+            this.InvokeAsync("GetGross", new object[] {
+                        sid,
+                        eid,
+                        leaveid}, this.GetGrossOperationCompleted, userState);
+        }
+        
+        private void OnGetGrossOperationCompleted(object arg) {
+            if ((this.GetGrossCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetGrossCompleted(this, new GetGrossCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetWaiting", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double GetWaiting(int sid, int eid, int leaveid) {
+            object[] results = this.Invoke("GetWaiting", new object[] {
+                        sid,
+                        eid,
+                        leaveid});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetWaitingAsync(int sid, int eid, int leaveid) {
+            this.GetWaitingAsync(sid, eid, leaveid, null);
+        }
+        
+        /// <remarks/>
+        public void GetWaitingAsync(int sid, int eid, int leaveid, object userState) {
+            if ((this.GetWaitingOperationCompleted == null)) {
+                this.GetWaitingOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetWaitingOperationCompleted);
+            }
+            this.InvokeAsync("GetWaiting", new object[] {
+                        sid,
+                        eid,
+                        leaveid}, this.GetWaitingOperationCompleted, userState);
+        }
+        
+        private void OnGetWaitingOperationCompleted(object arg) {
+            if ((this.GetWaitingCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetWaitingCompleted(this, new GetWaitingCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -5459,6 +5603,32 @@ namespace WebServiceLayer.WebReference_leave {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetUploadPathCompletedEventHandler(object sender, GetUploadPathCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetUploadPathCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetUploadPathCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void GetAttachmentInfoByRequestID_LeaveCompletedEventHandler(object sender, GetAttachmentInfoByRequestID_LeaveCompletedEventArgs e);
     
     /// <remarks/>
@@ -6146,6 +6316,84 @@ namespace WebServiceLayer.WebReference_leave {
         private object[] results;
         
         internal GetWaitValue_OverrideCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetBalanceByViewCompletedEventHandler(object sender, GetBalanceByViewCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetBalanceByViewCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetBalanceByViewCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetGrossCompletedEventHandler(object sender, GetGrossCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetGrossCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetGrossCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetWaitingCompletedEventHandler(object sender, GetWaitingCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetWaitingCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetWaitingCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

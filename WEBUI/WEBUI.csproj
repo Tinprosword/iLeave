@@ -133,6 +133,7 @@
     <Content Include="Res\images\square.png" />
     <Content Include="Res\images\upload.png" />
     <Content Include="Res\images\upload2.png" />
+    <Content Include="Res\images\changeuser.png" />
     <Content Include="Res\jquery\jquery.min.js" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

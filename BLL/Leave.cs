@@ -375,8 +375,6 @@ namespace BLL
             return ddlSource;
         }
 
-
-        
         public static List<LSLibrary.WebAPP.ValueText<int>> GetDDLSectionsData(int leaveid, int employid)
         {
             List<LSLibrary.WebAPP.ValueText<int>> ddlSource = GetDDLSectionsDataNoSelect(leaveid, employid);
@@ -472,66 +470,19 @@ namespace BLL
             }
         }
 
-
         public static LeaveBalanceType GetLeaveBalanceType(int leaveid)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveBalanceType(leaveid);
         }
 
-
         public static double GetGrossValue(int leaveid,int staffid,int employid)
         {
-            WebServiceLayer.WebReference_leave.LeaveBalanceType balanceType = GetLeaveBalanceType(leaveid);
-            if (balanceType == LeaveBalanceType.accumulabel_sinceJoin_noalsl)
-            {
-                return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetGrossValue_SinceJoin_excludeALSL(leaveid, staffid);
-            }
-            else if (balanceType == LeaveBalanceType.accumulabel_sinceJoin_sl || balanceType == LeaveBalanceType.accumulabel_sinceJoin_al)
-            {
-                double[] temp = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetGrossValue_SinceJoin_ALSL(employid);
-                if (balanceType == LeaveBalanceType.accumulabel_sinceJoin_sl)
-                {
-                    return temp[1];
-                }
-                else
-                {
-                    return temp[0];
-                }
-            }
-            else if (balanceType == LeaveBalanceType.accumulabel_overridea)
-            {
-                return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetGrossValue_Override(leaveid, staffid);
-            }
-            else
-            {
-                return 0;
-            }
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetGross(staffid, employid, leaveid);
         }
 
-
-        public static double GetWaitValue(int leaveid, int staffid)
+        public static double GetWaitValue(int leaveid, int staffid,int employid)
         {
-            WebServiceLayer.WebReference_leave.LeaveBalanceType balanceType = GetLeaveBalanceType(leaveid);
-            if (balanceType == LeaveBalanceType.accumulabel_sinceJoin_noalsl)
-            {
-                return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetWaitValue_SinceJoin_excludeALSL(leaveid, staffid);
-            }
-            else if (balanceType == LeaveBalanceType.accumulabel_sinceJoin_al)
-            {
-                return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetWaitValue_SinceJoin_ALSL(staffid,true);
-            }
-            else if (balanceType == LeaveBalanceType.accumulabel_sinceJoin_sl)
-            {
-                return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetWaitValue_SinceJoin_ALSL(staffid, false);//todo not right
-            }
-            else if (balanceType == LeaveBalanceType.accumulabel_overridea)
-            {
-                return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetWaitValue_Override(leaveid, staffid);//todo not right
-            }
-            else
-            {
-                return 0;
-            }
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetWaiting(staffid, employid, leaveid);
         }
         #endregion
     }

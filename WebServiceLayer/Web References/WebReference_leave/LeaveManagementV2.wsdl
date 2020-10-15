@@ -529,6 +529,16 @@
       <s:element name="InsertAttachmentInfoResponse">
         <s:complexType />
       </s:element>
+      <s:element name="GetUploadPath">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUploadPathResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUploadPathResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetAttachmentInfoByRequestID_Leave">
         <s:complexType>
           <s:sequence>
@@ -1014,6 +1024,53 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetBalanceByView">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LeaveCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBalanceByViewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBalanceByViewResult" type="tns:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGross">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="eid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="leaveid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGrossResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetGrossResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWaiting">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="eid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="leaveid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWaitingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetWaitingResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="Base_Insertt_WorkflowInfo">
         <s:complexType>
           <s:sequence>
@@ -1177,6 +1234,7 @@
       <s:element name="ArrayOfT_WorkflowTask" nillable="true" type="tns:ArrayOfT_WorkflowTask" />
       <s:element name="int" type="s:int" />
       <s:element name="ArrayOfT_Leave" nillable="true" type="tns:ArrayOfT_Leave" />
+      <s:element name="string" nillable="true" type="s:string" />
       <s:element name="ArrayOfAttachmentInfo" nillable="true" type="tns:ArrayOfAttachmentInfo" />
       <s:element name="ArrayOfLeaveRequestMaster" nillable="true" type="tns:ArrayOfLeaveRequestMaster" />
       <s:element name="LeaveRequestMaster" nillable="true" type="tns:LeaveRequestMaster" />
@@ -1307,6 +1365,12 @@
   </wsdl:message>
   <wsdl:message name="InsertAttachmentInfoSoapOut">
     <wsdl:part name="parameters" element="tns:InsertAttachmentInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUploadPathSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUploadPath" />
+  </wsdl:message>
+  <wsdl:message name="GetUploadPathSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUploadPathResponse" />
   </wsdl:message>
   <wsdl:message name="GetAttachmentInfoByRequestID_LeaveSoapIn">
     <wsdl:part name="parameters" element="tns:GetAttachmentInfoByRequestID_Leave" />
@@ -1470,6 +1534,24 @@
   <wsdl:message name="GetWaitValue_OverrideSoapOut">
     <wsdl:part name="parameters" element="tns:GetWaitValue_OverrideResponse" />
   </wsdl:message>
+  <wsdl:message name="GetBalanceByViewSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBalanceByView" />
+  </wsdl:message>
+  <wsdl:message name="GetBalanceByViewSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBalanceByViewResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGrossSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGross" />
+  </wsdl:message>
+  <wsdl:message name="GetGrossSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGrossResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWaiting" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWaitingResponse" />
+  </wsdl:message>
   <wsdl:message name="Base_Insertt_WorkflowInfoSoapIn">
     <wsdl:part name="parameters" element="tns:Base_Insertt_WorkflowInfo" />
   </wsdl:message>
@@ -1591,6 +1673,10 @@
   </wsdl:message>
   <wsdl:message name="GetAllLeaveTypeByStaffIDHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfT_Leave" />
+  </wsdl:message>
+  <wsdl:message name="GetUploadPathHttpPostIn" />
+  <wsdl:message name="GetUploadPathHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetAttachmentInfoByRequestID_LeaveHttpPostIn">
     <wsdl:part name="requestID" type="s:string" />
@@ -1725,6 +1811,29 @@
   <wsdl:message name="GetWaitValue_OverrideHttpPostOut">
     <wsdl:part name="Body" element="tns:double" />
   </wsdl:message>
+  <wsdl:message name="GetBalanceByViewHttpPostIn">
+    <wsdl:part name="LeaveCode" type="s:string" />
+    <wsdl:part name="staffid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetBalanceByViewHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfDouble" />
+  </wsdl:message>
+  <wsdl:message name="GetGrossHttpPostIn">
+    <wsdl:part name="sid" type="s:string" />
+    <wsdl:part name="eid" type="s:string" />
+    <wsdl:part name="leaveid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGrossHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitingHttpPostIn">
+    <wsdl:part name="sid" type="s:string" />
+    <wsdl:part name="eid" type="s:string" />
+    <wsdl:part name="leaveid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWaitingHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
   <wsdl:message name="Base_GetListt_WorkflowInfoHttpPostIn">
     <wsdl:part name="whereSql" type="s:string" />
   </wsdl:message>
@@ -1817,6 +1926,10 @@
     <wsdl:operation name="InsertAttachmentInfo">
       <wsdl:input message="tns:InsertAttachmentInfoSoapIn" />
       <wsdl:output message="tns:InsertAttachmentInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUploadPath">
+      <wsdl:input message="tns:GetUploadPathSoapIn" />
+      <wsdl:output message="tns:GetUploadPathSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetAttachmentInfoByRequestID_Leave">
       <wsdl:input message="tns:GetAttachmentInfoByRequestID_LeaveSoapIn" />
@@ -1926,6 +2039,18 @@
       <wsdl:input message="tns:GetWaitValue_OverrideSoapIn" />
       <wsdl:output message="tns:GetWaitValue_OverrideSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetBalanceByView">
+      <wsdl:input message="tns:GetBalanceByViewSoapIn" />
+      <wsdl:output message="tns:GetBalanceByViewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGross">
+      <wsdl:input message="tns:GetGrossSoapIn" />
+      <wsdl:output message="tns:GetGrossSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWaiting">
+      <wsdl:input message="tns:GetWaitingSoapIn" />
+      <wsdl:output message="tns:GetWaitingSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="Base_Insertt_WorkflowInfo">
       <wsdl:input message="tns:Base_Insertt_WorkflowInfoSoapIn" />
       <wsdl:output message="tns:Base_Insertt_WorkflowInfoSoapOut" />
@@ -2011,6 +2136,10 @@
     <wsdl:operation name="GetAllLeaveTypeByStaffID">
       <wsdl:input message="tns:GetAllLeaveTypeByStaffIDHttpPostIn" />
       <wsdl:output message="tns:GetAllLeaveTypeByStaffIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUploadPath">
+      <wsdl:input message="tns:GetUploadPathHttpPostIn" />
+      <wsdl:output message="tns:GetUploadPathHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetAttachmentInfoByRequestID_Leave">
       <wsdl:input message="tns:GetAttachmentInfoByRequestID_LeaveHttpPostIn" />
@@ -2099,6 +2228,18 @@
     <wsdl:operation name="GetWaitValue_Override">
       <wsdl:input message="tns:GetWaitValue_OverrideHttpPostIn" />
       <wsdl:output message="tns:GetWaitValue_OverrideHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBalanceByView">
+      <wsdl:input message="tns:GetBalanceByViewHttpPostIn" />
+      <wsdl:output message="tns:GetBalanceByViewHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGross">
+      <wsdl:input message="tns:GetGrossHttpPostIn" />
+      <wsdl:output message="tns:GetGrossHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWaiting">
+      <wsdl:input message="tns:GetWaitingHttpPostIn" />
+      <wsdl:output message="tns:GetWaitingHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="Base_GetListt_WorkflowInfo">
       <wsdl:input message="tns:Base_GetListt_WorkflowInfoHttpPostIn" />
@@ -2284,6 +2425,15 @@
     </wsdl:operation>
     <wsdl:operation name="InsertAttachmentInfo">
       <soap:operation soapAction="http://tempuri.org/InsertAttachmentInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUploadPath">
+      <soap:operation soapAction="http://tempuri.org/GetUploadPath" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2527,6 +2677,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetWaitValue_Override">
       <soap:operation soapAction="http://tempuri.org/GetWaitValue_Override" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalanceByView">
+      <soap:operation soapAction="http://tempuri.org/GetBalanceByView" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGross">
+      <soap:operation soapAction="http://tempuri.org/GetGross" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaiting">
+      <soap:operation soapAction="http://tempuri.org/GetWaiting" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2807,6 +2984,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetUploadPath">
+      <soap12:operation soapAction="http://tempuri.org/GetUploadPath" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAttachmentInfoByRequestID_Leave">
       <soap12:operation soapAction="http://tempuri.org/GetAttachmentInfoByRequestID_Leave" style="document" />
       <wsdl:input>
@@ -3050,6 +3236,33 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetBalanceByView">
+      <soap12:operation soapAction="http://tempuri.org/GetBalanceByView" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGross">
+      <soap12:operation soapAction="http://tempuri.org/GetGross" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaiting">
+      <soap12:operation soapAction="http://tempuri.org/GetWaiting" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Base_Insertt_WorkflowInfo">
       <soap12:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowInfo" style="document" />
       <wsdl:input>
@@ -3225,6 +3438,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllLeaveTypeByStaffID">
       <http:operation location="/GetAllLeaveTypeByStaffID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUploadPath">
+      <http:operation location="/GetUploadPath" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -3423,6 +3645,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetWaitValue_Override">
       <http:operation location="/GetWaitValue_Override" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalanceByView">
+      <http:operation location="/GetBalanceByView" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGross">
+      <http:operation location="/GetGross" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaiting">
+      <http:operation location="/GetWaiting" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

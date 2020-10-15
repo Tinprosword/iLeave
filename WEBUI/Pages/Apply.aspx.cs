@@ -18,6 +18,9 @@ namespace WEBUI.Pages
         //todo upload file in mobil.
         //todo 一个页面只能触发一次js？
 
+       //multipl language 
+       //url 加密.
+
         //todo page:change staff and member.
 
         //picAbsolutePath get by ws
@@ -210,7 +213,7 @@ namespace WEBUI.Pages
 
                 double applying = pagedate.getApplying();
                 double grossvalue = BLL.Leave.GetGrossValue(leaveid, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
-                double waiting = BLL.Leave.GetWaitValue(leaveid, (int)loginer.userInfo.staffid);
+                double waiting = BLL.Leave.GetWaitValue(leaveid, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
                 double cleanvalue = grossvalue - waiting - applying;
 
                 this.lt_balancedays.Text = cleanvalue.ToString("0.##") + " D";

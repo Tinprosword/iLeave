@@ -49,6 +49,24 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.RadioButtonList cb_languagea;
         
         /// <summary>
+        /// lt_changeEmploymnet 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_changeEmploymnet;
+        
+        /// <summary>
+        /// ImageButton2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
+        
+        /// <summary>
         /// lt_language0 控件。
         /// </summary>
         /// <remarks>

@@ -7,7 +7,7 @@
                         <td><asp:Label ID="lb_serveraddress" runat="server" Text="Label"></asp:Label></td>
                     </tr>
                     <tr>
-                        <td><asp:Literal ID="lt_language" runat="server">Language</asp:Literal></td>
+                        <td style="width: 130px"><asp:Literal ID="lt_language" runat="server">Language</asp:Literal></td>
                         <td>
                             <asp:RadioButtonList ID="cb_languagea" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" OnSelectedIndexChanged="cb_languagea_SelectedIndexChanged" AutoPostBack="true">
                                 <asp:ListItem Text="Engligh　" Value="0" Selected="True"></asp:ListItem>
@@ -17,7 +17,15 @@
                         </td>
                     </tr>
                     <tr>
+                        <td style="width: 130px">
+                            <asp:Literal ID="lt_changeEmploymnet" runat="server">Switch Employment</asp:Literal>
+                        </td>
                         <td>
+                            <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Res/images/changeUser.png"  Width="30px" OnClick="changeUser_Click"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 130px">
                             <asp:Literal ID="lt_language0" runat="server">退出帐户</asp:Literal>
                         </td>
                         <td>
