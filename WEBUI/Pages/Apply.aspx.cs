@@ -18,14 +18,10 @@ namespace WEBUI.Pages
         //todo upload file in mobil.
         //todo 一个页面只能触发一次js？
 
-       //multipl language 
-       //url 加密.
-
-        //todo page:change staff and member.
+        //multipl language 
+        //url 加密.
 
         //picAbsolutePath get by ws
-        //todo how to get balance ?
-
 
         //todo page页面的多层继承写的不错，可以总结下了。 
         //todo f5 刷新问题
