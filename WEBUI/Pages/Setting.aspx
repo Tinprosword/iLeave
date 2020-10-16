@@ -16,14 +16,14 @@
                             </asp:RadioButtonList>
                         </td>
                     </tr>
-                    <tr>
+<%--                    <tr>
                         <td style="width: 130px">
                             <asp:Literal ID="lt_changeEmploymnet" runat="server">Switch Employment</asp:Literal>
                         </td>
                         <td>
                             <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Res/images/changeUser.png"  Width="30px" OnClick="changeUser_Click"/>
                         </td>
-                    </tr>
+                    </tr>--%>
                     <tr>
                         <td style="width: 130px">
                             <asp:Literal ID="lt_language0" runat="server">退出帐户</asp:Literal>

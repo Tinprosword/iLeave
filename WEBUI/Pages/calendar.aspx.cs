@@ -159,7 +159,8 @@ namespace WEBUI.Pages
             var Employment = BLL.User_wsref.getEmploymentByZone(intContractId, zoneCode);
             if (isme)
             {
-                eid = Employment.Where(x => x.StaffID == loginer.userInfo.staffid).Select(x => x.ID).ToList();
+                var sids = BLL.User_wsref.GetStaffsByUid(loginer.userInfo.personid);
+                eid = Employment.Where(x => sids.Contains(x.StaffID)).Select(x => x.ID).ToList();
             }
             else
             {

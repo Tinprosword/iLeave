@@ -50,7 +50,7 @@ namespace WEBUI.Pages
         {
             if (sourceType == 2)
             {
-                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().approval_List_wait_apporved_reject_Back, "ChooseEmployment", "~/pages/Setting.aspx", true);
+                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().approval_List_wait_apporved_reject_Back, "ChangeEmployment", "~/pages/main.aspx", true);
             }
             else
             {
@@ -61,8 +61,7 @@ namespace WEBUI.Pages
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
-        {
-        }
+        {}
 
 
         protected void chooseMe(object target, EventArgs aa)
@@ -70,15 +69,17 @@ namespace WEBUI.Pages
             System.Web.UI.HtmlControls.HtmlButton btn = (System.Web.UI.HtmlControls.HtmlButton)target;
             int eid = int.Parse(btn.Attributes["eid"]);
             string eno = btn.Attributes["eno"];
+            int sid = int.Parse(btn.Attributes["sid"]);
+            string sno = btn.Attributes["sno"];
 
             if (sourceType == 1)
             {
-                BLL.User_wsref.ChangeInfoToSession(eid, eno);
+                BLL.User_wsref.ChangeInfoToSession(eid, eno,sid,sno);
                 Response.Redirect("main.aspx");
             }
             else
             {
-                BLL.User_wsref.ChangeInfoToSession(eid, eno);
+                BLL.User_wsref.ChangeInfoToSession(eid, eno,sid,sno);
                 //todo back
             }
         }

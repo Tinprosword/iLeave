@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web;
-
+using System.Collections;
+using System.Collections.Generic;
 
 namespace BLL
 {
@@ -70,6 +71,8 @@ namespace BLL
             return result;
         }
 
+        
+
 
         public static WebServiceLayer.WebReference_user.PersonBaseinfo[] GetPersonBaseInfoByLikeName(string Containname)
         {
@@ -80,6 +83,17 @@ namespace BLL
         public static WebServiceLayer.WebReference_user.PersonBaseinfo[] GetPersonBaseInfoByPid(int pid)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfoByPid(pid);
+        }
+
+        public static List<int> GetStaffsByUid(int pid)
+        {
+            WebServiceLayer.WebReference_user.PersonBaseinfo[] res = GetPersonBaseInfoByPid(pid);
+            HashSet<int> result = new HashSet<int>();
+            foreach (WebServiceLayer.WebReference_user.PersonBaseinfo p in res)
+            {
+                result.Add((int)p.s_id);
+            }
+            return result.ToList();
         }
 
         public static WebServiceLayer.WebReference_user.PersonBaseinfo[] FilterValidUser(WebServiceLayer.WebReference_user.PersonBaseinfo[] data)
@@ -136,11 +150,13 @@ namespace BLL
         }
 
 
-        public static void ChangeInfoToSession(int employid,string employnumber)
+        public static void ChangeInfoToSession(int employid,string employnumber, int sid, string snumber)
         {
             LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> loginer = LSLibrary.WebAPP.LoginManager.GetLoinger<MODEL.UserInfo>();
             loginer.userInfo.employID = employid;
             loginer.userInfo.employNnumber = employnumber;
+            loginer.userInfo.staffid = sid;
+            loginer.userInfo.staffNumber = snumber;
             LSLibrary.WebAPP.LoginManager.SetLoginer(loginer);
         }
 

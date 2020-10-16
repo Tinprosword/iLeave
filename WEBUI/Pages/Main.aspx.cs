@@ -80,5 +80,9 @@ namespace WEBUI.Pages
             Response.Redirect("~/pages/setting.aspx");
         }
 
+        protected void Change_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Pages/chooseEmployment.aspx?pid=" + loginer.userInfo.personid + "&sourcetype=2");
+        }
     }
 }

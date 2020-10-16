@@ -113,6 +113,16 @@
     <Content Include="Res\images\addfile3.png" />
     <Content Include="Res\images\back.png" />
     <Content Include="Res\images\bad.png" />
+    <Content Include="Res\images\c1.png" />
+    <Content Include="Res\images\c2.png" />
+    <Content Include="Res\images\c3.png" />
+    <Content Include="Res\images\c4.png" />
+    <Content Include="Res\images\c5.png" />
+    <Content Include="Res\images\c6.png" />
+    <Content Include="Res\images\c7.png" />
+    <Content Include="Res\images\c8.png" />
+    <Content Include="Res\images\c9.png" />
+    <Content Include="Res\images\c9m.png" />
     <Content Include="Res\images\calendar.png" />
     <Content Include="Res\images\close.png" />
     <Content Include="Res\images\close1.png" />
@@ -129,6 +139,8 @@
     <Content Include="Res\images\file.png" />
     <Content Include="Res\images\Logon Closed.png" />
     <Content Include="Res\images\ok.png" />
+    <Content Include="Res\images\quare.png" />
+    <Content Include="Res\images\redcicle.png" />
     <Content Include="Res\images\setting.gif" />
     <Content Include="Res\images\square.png" />
     <Content Include="Res\images\upload.png" />

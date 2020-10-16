@@ -130,6 +130,15 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
         
         /// <summary>
+        /// ib_counta 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ib_counta;
+        
+        /// <summary>
         /// lt_remarks 控件。
         /// </summary>
         /// <remarks>

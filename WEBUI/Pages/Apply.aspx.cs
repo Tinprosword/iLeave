@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Linq;
 
 namespace WEBUI.Pages
 {
@@ -13,8 +14,16 @@ namespace WEBUI.Pages
         }
     }
 
+
     public partial class Apply : BLL.CustomLoginTemplate
     {
+        //todo add menu for change employment
+        //no balance put --
+        //close icon.
+        //todo display the cout of attachment 
+        //calader leave:show detail by firstEmployment?
+
+
         //todo upload file in mobil.
         //todo 一个页面只能触发一次js？
 
@@ -71,7 +80,8 @@ namespace WEBUI.Pages
                 }
                 LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, preViewState, ViewState);
                 MODEL.Apply.ViewState_page applypage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, this.ViewState);
-                LoadUI(applypage.leavetype, applypage.LeaveTypeSelectValue,  applypage.ddlsectionSelectvalue, applypage.remarks, applypage.LeaveList);
+                applypage.LeaveList=applypage.LeaveList.OrderByDescending(x => x.LeaveDate).ToList();
+                LoadUI(applypage.leavetype, applypage.LeaveTypeSelectValue,  applypage.ddlsectionSelectvalue, applypage.remarks, applypage.LeaveList,applypage.uploadpic.Count());
                 IsLeaveTypeEnable();
                 this.lt_js_prg.Text = LSLibrary.WebAPP.MyJSHelper.CustomPost("", "");//避免有害刷新，所以手动post,引导无害刷新。
             }
@@ -79,14 +89,14 @@ namespace WEBUI.Pages
             {
                 List<WebServiceLayer.WebReference_leave.t_Leave> res = BLL.Leave.GetLeavesByStaffID((int)loginer.userInfo.staffid);
                 List<LSLibrary.WebAPP.ValueText<int>> typedata = BLL.Leave.ConvertLeaveInfo2DropDownList(res);
-                LoadUI(typedata, "0", "-1", "", new List<MODEL.Apply.apply_LeaveData>());
+                LoadUI(typedata, "0", "-1", "", new List<MODEL.Apply.apply_LeaveData>(),0);
                 //set viewstate
                 SavePageDataToViewState(false, true, false, null, typedata, null);
             }
             SetMultiLanguage();
         }
 
-        private void LoadUI(List<LSLibrary.WebAPP.ValueText<int>> leveTypeData,string leaveTypeSelectedValue,string ddlSectionSelected,string remarks,List<MODEL.Apply.apply_LeaveData> leaveDays)
+        private void LoadUI(List<LSLibrary.WebAPP.ValueText<int>> leveTypeData,string leaveTypeSelectedValue,string ddlSectionSelected,string remarks,List<MODEL.Apply.apply_LeaveData> leaveDays,int numberofAttachment)
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current,"~/pages/main.aspx", true);
 
@@ -98,10 +108,30 @@ namespace WEBUI.Pages
 
             this.dropdl_section.SelectedValue = ddlSectionSelected;
 
+            string numberPath= GetAttachmentNumberPath(numberofAttachment);
+            this.ib_counta.ImageUrl = numberPath;
+            this.ib_counta.Visible = !string.IsNullOrEmpty(numberPath);
+
             this.tb_remarks.Text = remarks;
 
             this.repeater_leave.DataSource = leaveDays;
             this.repeater_leave.DataBind();
+        }
+
+        private string GetAttachmentNumberPath(int number)
+        {
+            string result = "";
+
+            if (number > 0 && number < 10)
+            {
+                result = "~/res/images/c" + number.ToString() + ".png";
+            }
+            else if (number >= 10)
+            {
+                result = "~/res/images/c9m.png";
+            }
+
+            return result;
         }
 
 
@@ -208,13 +238,11 @@ namespace WEBUI.Pages
                 MODEL.Apply.ViewState_page pagedate = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
 
                 double applying = pagedate.getApplying();
-                double grossvalue = BLL.Leave.GetGrossValue(leaveid, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
-                double waiting = BLL.Leave.GetWaitValue(leaveid, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
-                double cleanvalue = grossvalue - waiting - applying;
+                double cleanValue = BLL.Leave.GetCleanValue(leaveid, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
 
-                this.lt_balancedays.Text = cleanvalue.ToString("0.##") + " D";
+                this.lt_balancedays.Text = cleanValue==-99999?"--":cleanValue.ToString("0.##") + " D";
                 this.lt_applydays.Text = applying.ToString("0.##") + " D";
-                this.lt_balancedetail.Text= "(" + grossvalue.ToString("0.##") + "-" + waiting.ToString("0.##") + "-" + applying.ToString("0.##") + ")";
+                this.lt_balancedetail.Text = ""; 
             }
         }
 

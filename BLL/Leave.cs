@@ -50,7 +50,7 @@ namespace BLL
                         if (originDetail[i].sectionid == (int)GlobalVariate.sectionType.full || sameDayAndSameSection.Count()>0)
                         {
                             result = -2;
-                            message += originDetail[i].LeaveDate.ToString("MMdd") + " already applied!\r\n";
+                            message += originDetail[i].LeaveDate.ToString("MM-dd") + " already applied!\r\n";
                             break;
                         }
                     }
@@ -475,7 +475,7 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveBalanceType(leaveid);
         }
 
-        public static double GetGrossValue(int leaveid,int staffid,int employid)
+        public static double GetCleanValue(int leaveid,int staffid,int employid)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetGross(staffid, employid, leaveid);
         }

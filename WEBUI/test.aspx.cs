@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,16 +19,37 @@ namespace WEBUI
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            List<int> source = new List<int>();
-
-            for(int i=0;i<10;i++)
-            {
-                source.Add(i);
-            }
-
-            var des = source.Where(x => x > 20);
-
-            int[] deslist = des.ToArray();
+            this.Label1.Text= TestMultiply.names[TestMultiply.GetLanguageType()];
         }
+
+        private class TestMultiply
+        {
+            public static string[] names = new string[] { "v1", "v2" };
+
+            public static int GetLanguageType()
+            {
+                return 1; // assume get value from cooike.
+            }
+        }
+
+
+        public void addNumber(int number)
+        {
+            var watermarkedStream = new MemoryStream();
+            using (var img = System.Drawing.Image.FromStream(File.OpenRead(@"D:\_\WatermarkDemo.png")))
+            {
+                using (var graphic = System.Drawing.Graphics.FromImage(img))
+                {
+                    var font = new Font("微软雅黑", 30, FontStyle.Bold, GraphicsUnit.Pixel);
+                    var color = Color.FromArgb(128, 255, 255, 255);
+                    var brush = new SolidBrush(color);
+                    var point = new Point(img.Width - 130, img.Height - 50);
+
+                    graphic.DrawString("1", font, brush, point);
+                    img.Save(watermarkedStream, ImageFormat.Png);
+                }
+            }
+        }
+
     }
 }

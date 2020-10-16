@@ -34,9 +34,16 @@
             </tr>
             <tr>
                 <td></td>
-                <td><asp:ImageButton ID="ImageButton1" style="margin-left:10px"  runat="server" ImageUrl="~/Res/images/adddate2.png" Width="40px" Height="40px"  OnClick="Canlendar_Click"/>
-                    <asp:ImageButton ID="ImageButton2" style="margin-left:100px; margin-right:10px" runat="server" ImageUrl="~/Res/images/comIcon_addattence.png" Width="40px" Height="40px" OnClick="Upload_Click"/>
-                    
+                <td>
+                    <div style="float:left;padding-left:10px" id="aa">
+                        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/adddate2.png" Width="40px" Height="40px"  OnClick="Canlendar_Click"/>
+                    </div>
+                    <div style="float:left;margin-left:100px;margin-right:0px; padding-right:0px;width:41px">
+                        <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Res/images/comIcon_addattence.png" Width="40px" Height="40px" OnClick="Upload_Click"/>
+                    </div>
+                    <div style="float:left;color:red;position:relative;top:1px;left:-12px">
+                        <asp:image ID="ib_counta" runat="server"  ImageUrl="~/Res/images/redcicle.png" Width="20px" Height="20px" Visible="false"/>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -77,7 +84,7 @@
                                     <asp:ListItem Text="3 Sections" Value="3"/>
                                 </asp:DropDownList>
                             </td>
-                            <td><asp:ImageButton ID="delete" Width="28px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="20px" ImageUrl="~/Res/images/close1.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeid %>" /></td>
+                            <td><asp:ImageButton ID="delete" Width="28px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="28px" ImageUrl="~/Res/images/close.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeid %>" /></td>
                         </tr>
                     </ItemTemplate>
 
