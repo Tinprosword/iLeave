@@ -37,5 +37,4 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
-    <asp:Literal ID="jsopen" runat="server"></asp:Literal>
 </asp:Content>

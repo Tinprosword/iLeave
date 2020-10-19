@@ -209,5 +209,13 @@ namespace WEBUI.Pages
             url = string.Format(url, requestId, action, applicationType);
             Response.Redirect(url);
         }
+
+        protected void linkbtn_file_Click(object sender, EventArgs e)
+        {
+            LinkButton linkButton = (LinkButton)sender;
+            string filePath = Server.MapPath(linkButton.CommandArgument);
+            bool isimage = BLL.common.IsImagge(System.IO.Path.GetFileName(filePath));
+            LSLibrary.HttpHelper.DownloadFile(filePath, System.IO.Path.GetFileName(filePath), Server, Response);
+        }
     }
 }
