@@ -16,7 +16,7 @@
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_approal" runat="server" OnClick="Approval_Click" CssClass="fixLink"></asp:LinkButton></div>
         </div>
         <div class="col-xs-12 lsf-center" style="margin-top:6px;">
-            <asp:ImageButton ID="Canlendar" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_C.png" Width="318px" Height="80px" OnClick="Canlendar_Click"/>
+            <asp:ImageButton ID="Canlendar" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_D.png" Width="318px" Height="80px" OnClick="Canlendar_Click"/>
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_calendarabc" runat="server" OnClick="Canlendar_Click" CssClass="fixLink"></asp:LinkButton></div>
         </div>
 <%--        <div class="col-xs-12 lsf-center" style="margin-top:6px;">
@@ -27,10 +27,10 @@
             <asp:ImageButton ID="money" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_E.png" Width="318px" Height="80px" OnClick="Money_Click"/>
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_downloadtaxabc" runat="server" OnClick="Money_Click" CssClass="fixLink"></asp:LinkButton></div>
         </div>--%>
-        <div class="col-xs-12 lsf-center" style="margin-top:6px;">
+<%--        <div class="col-xs-12 lsf-center" style="margin-top:6px;">
             <asp:ImageButton ID="Change" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_E.png" Width="318px" Height="80px" OnClick="Change_Click"/>
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_change" Text="Change Employment" runat="server" OnClick="Change_Click" CssClass="fixLink"></asp:LinkButton></div>
-        </div>
+        </div>--%>
         <div class="col-xs-12 lsf-center" style="margin-top:6px;">
             <asp:ImageButton ID="Setting" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_F.png" Width="318px" Height="80px" OnClick="Setting_Click"/>
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_setting" runat="server" OnClick="Setting_Click" CssClass="fixLink"></asp:LinkButton></div>

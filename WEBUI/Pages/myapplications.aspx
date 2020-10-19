@@ -18,7 +18,7 @@
 <%--        <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;padding-left:2px;">
             
         </table>--%>
-        <div class="col-xs-12 lsf-clearPadding" style="height:400px; overflow:scroll;padding-left:2px;padding-right:0px">
+        <div class="col-xs-12 lsf-clearPadding" style="height:400px; overflow-y:scroll;padding-left:2px;padding-right:0px">
             <table class="col-xs-12 lsu-table-xs" style="font-size:13px">
                 <tr class="lss-bgcolor-blue" style="color:white">
                     <td class="col-xs-5"><asp:Literal ID="lt_listtype" runat="server">Date</asp:Literal></td>

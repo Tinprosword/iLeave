@@ -16,11 +16,9 @@
                 <td><asp:Label ID="lb_leave" runat="server" Text=""/></td>
             </tr>
             <tr>
-                <td><asp:Literal ID="lt_apply" runat="server">Apply</asp:Literal></td>
+                <td><asp:label ID="lt_balance" runat="server" Width="80px">Banlance</asp:label></td>
                 <td>
-                    <asp:label ID="lb_applydays" runat="server" Width="80px">0 Days</asp:label>
-                    <asp:label ID="lt_balance" runat="server" Width="80px">Banlance</asp:label>
-                    <asp:label ID="lb_balancedays" runat="server" Width="80px">9.2 Days</asp:label>
+                    <asp:label ID="lb_balancedays" runat="server" Widths="80px">9.2 D</asp:label>
                 </td>
             </tr>
             <tr>
@@ -33,7 +31,7 @@
             </tr>
         </table>
 
-        <div class="col-xs-12 lsf-clearPadding" style="height:145px; overflow:scroll;">
+        <div class="col-xs-12 lsf-clearPadding" style="height:127px; overflow-y:scroll;">
             <table class="col-xs-12 lsu-table-xs">
                     <tr class="lss-bgcolor-blue" style="color:white;">
                         <td class="col-xs-2"><asp:Literal ID="lt_listdate" runat="server">Date</asp:Literal></td>
@@ -42,19 +40,12 @@
                     </tr>
                 <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                     <ItemTemplate>
-                        <tr>
+                        <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>">
                             <td class="col-xs-2"><%#( (DateTime)((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveFrom).ToString("MM-dd")%></td>
                             <td class="col-xs-6"><%#((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Description %></td>
                             <td class="col-xs-3"><%#BLL.GlobalVariate.sections[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %></td></td>
                         </tr>
                     </ItemTemplate>
-                    <AlternatingItemTemplate>
-                        <tr style="background-color:aliceblue">
-                            <td class="col-xs-2"><%#( (DateTime)((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveFrom).ToString("MM-dd")%></td>
-                            <td class="col-xs-6"><%#((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Description %></td>
-                            <td class="col-xs-3"><%# BLL.GlobalVariate.sections[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %></td></td>
-                        </tr>
-                    </AlternatingItemTemplate>
                 </asp:Repeater>
             </table>
         </div>
@@ -68,8 +59,9 @@
                         <asp:Repeater ID="repeater_pic" runat="server">
                             <ItemTemplate>
                                 <td style="padding-right:10px;padding-top:3px">
-                                    <asp:Image ID="Image" runat="server" ImageUrl="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).reduceImagePath %>" Width="120px" Height="68px"/>
-                                    <br /><a runat="server" id="aa" href="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).bigImagepath %>" target="_blank"><%# ((MODEL.Apply.app_uploadpic)Container.DataItem).GetFileName(15) %></a>
+                                    <asp:Image ID="Image" runat="server" ImageUrl="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).reduceImagePath %>" Width="120px" Height="70px"/>
+                                    <br />
+                                    <a runat="server" id="aa" href="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).bigImagepath %>" target="_blank"><%# ((MODEL.Apply.app_uploadpic)Container.DataItem).GetFileName(15) %></a>
                                 </td>
                             </ItemTemplate>
                         </asp:Repeater>
@@ -78,25 +70,25 @@
             </div>
         </div>
         <asp:Panel ID="waitingApproval_admin" runat="server">
-            <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
-                <asp:Button ID="button_wait_admin_approval" runat="server" Text="Approve"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
-                <asp:Button ID="button_wait_admin_reject" runat="server" Text="Reject"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+            <div class="col-xs-12" style="padding-top:12px; color:white; font-weight:bold">
+                <asp:Button ID="button_wait_admin_approval" runat="server" Text="Approve"  CssClass="lsu-imagebtn"  OnClick="button_apply_Click" style=" float:left ;margin-left:16px; background-image:url(../res/images/btnok.png); background-size:124px 44px" Width="124px" Height="44px"/>
+                <asp:Button ID="button_wait_admin_reject" runat="server" Text="Reject"  CssClass="lsu-imagebtn" OnClick="button_apply_Click" style="float:right;margin-right:16px; background-image:url(../res/images/btncancel.png); background-size:124px 44px" Width="124px" Height="44px" />
             </div>
         </asp:Panel>
         <asp:Panel ID="waitingCanceling_admin" runat="server">
-            <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
-                <asp:Button ID="button_Cancel_admin_approval" runat="server" Text="Approve"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
-                <asp:Button ID="button_Cancel_admin_Reject" runat="server" Text="Reject"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click"/>
+            <div class="col-xs-12 " style="padding-top:12px; color:white; font-weight:bold">
+                <asp:Button ID="button_Cancel_admin_approval" runat ="server" Text="Approve"  OnClick="button_apply_Click" CssClass="lsu-imagebtn"  style=" float:left ;margin-left:16px; background-image:url(../res/images/btnok.png); background-size:124px 44px" Width="124px" Height="44px"/>
+                <asp:Button ID="button_Cancel_admin_Reject"   runat ="server" Text="Reject"  OnClick="button_apply_Click" CssClass="lsu-imagebtn"  style="float:right;margin-right:16px; background-image:url(../res/images/btncancel.png); background-size:124px 44px" Width="124px" Height="44px" />
             </div>
         </asp:Panel>
         <asp:Panel ID="waitingApproval_user" runat="server" Visible="false">
             <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
-                <asp:Button ID="button_wait_user_Withdraw" runat="server" Text="Withdraw"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click" />
+                <asp:Button ID="button_wait_user_Withdraw" runat="server" Text="Withdraw"  OnClick="button_apply_Click" CssClass="lsu-imagebtn"  style="float:unset;margin-right:16px; background-image:url(../res/images/btnok.png); background-size:124px 44px" Width="124px" Height="44px" />
             </div>
         </asp:Panel>
         <asp:Panel ID="approved_user" runat="server" Visible="false">
             <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
-                <asp:Button ID="button_approval_user_Cancel" runat="server" Text="Cancel"  CssClass="btn lss-btncolor-blue" Width="90px" OnClick="button_apply_Click" />
+                <asp:Button ID="button_approval_user_Cancel" runat="server" Text="Cancel"  OnClick="button_apply_Click" CssClass="lsu-imagebtn"  style="float:unset;margin-right:16px; background-image:url(../res/images/btnok.png); background-size:124px 44px" Width="124px" Height="44px" />
             </div>
         </asp:Panel>
 

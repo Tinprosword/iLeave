@@ -280,11 +280,13 @@ namespace WEBUI.Pages
                 {
                     e.Cell.BackColor = System.Drawing.Color.Black;
                     e.Cell.ForeColor = LSLibrary.MyColors.ParseColor("#ffffff");
+
                 }
                 else if (allStatistic[e.Day.Date] == 2)//waiting
                 {
                     e.Cell.BackColor = LSLibrary.MyColors.ParseColor("#f3e926");
                     e.Cell.ForeColor = LSLibrary.MyColors.ParseColor("#ffffff");
+
                 }
             }
 
@@ -293,6 +295,7 @@ namespace WEBUI.Pages
             {
                 e.Cell.BackColor = LSLibrary.MyColors.ParseColor("#b12977");
                 e.Cell.ForeColor = LSLibrary.MyColors.ParseColor("#ffffff");
+
             }
         }
         #endregion

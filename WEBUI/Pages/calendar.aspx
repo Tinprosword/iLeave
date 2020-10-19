@@ -2,19 +2,21 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class ="col-xs-12" style="height:10px; padding:0px">&nbsp</div>
     <div class="row">
-        <div class="col-xs-3" style="width:29% ;padding-right:0px;"><asp:Button ID="btn_myself" runat="server" Text="Me"  Width="100%" Height="32px" CssClass="btnBox btnBlueBoxSelect" OnClick="btn_myself_Click"/></div>
-        <div class="col-xs-3" style="width:29% ;padding-left:0px;padding-right:0px;"><asp:Button ID="btn_team" runat="server" Text="Team"  Width="100%" Height="32px" CssClass="btnBox btnBlueBoxUnSelect" OnClick="btn_team_Click"  /></div>
-        <div class="col-xs-3" style="width:42% ;padding-left:15px;height:26px;line-height:26px;padding-right:0px">
-            <asp:TextBox Width="100%" ID="tb_name" runat="server" OnTextChanged="tb_name_TextChanged" AutoPostBack="true"></asp:TextBox>
+        <div class="col-xs-3" style="width:29% ;padding-right:0px;"><asp:Button ID="btn_myself" runat="server" Text="Me"  Width="100%" Height="30px" CssClass="btnBox btnBlueBoxSelect" OnClick="btn_myself_Click"/></div>
+        <div class="col-xs-3" style="width:29% ;padding-left:0px;padding-right:0px;"><asp:Button ID="btn_team" runat="server" Text="Team"  Width="100%" Height="30px" CssClass="btnBox btnBlueBoxUnSelect" OnClick="btn_team_Click"  /></div>
+        <div class="col-xs-3" style="width:42% ;padding-left:15px;height:24px;line-height:24px;padding-right:5px">
+            <asp:TextBox Width="100%" ID="tb_name" runat="server" OnTextChanged="tb_name_TextChanged" AutoPostBack="true" style="border:1px solid #808080"></asp:TextBox>
         </div>
         <div class="col-xs-12" style="margin-top:8px; margin-bottom:8px;">
-            <asp:DropDownList ID="ddlzone" runat="server"  CssClass="col-xs-7" OnSelectedIndexChanged="unit_SelectedIndexChanged" AutoPostBack="true">
+            <asp:DropDownList ID="ddlzone" Height="24px" runat="server"  CssClass="col-xs-7" OnSelectedIndexChanged="unit_SelectedIndexChanged" AutoPostBack="true">
             </asp:DropDownList>
-            &nbsp&nbsp<asp:RadioButton ID="cb_leave" runat="server" Text="假期" OnCheckedChanged="cb_leave_CheckedChanged" GroupName="leaveroster"  Checked="true"  AutoPostBack="true"/>
-            &nbsp<asp:RadioButton ID="cb_holiday" GroupName="leaveroster" runat="server" Text="更期" OnCheckedChanged="cb_holiday_CheckedChanged" AutoPostBack="true"/>
+            <div style="float:left;padding-top:1px;">
+                &nbsp;&nbsp;&nbsp;<asp:RadioButton ID="cb_leave" runat="server" Text="假期" OnCheckedChanged="cb_leave_CheckedChanged" GroupName="leaveroster"  Checked="true"  AutoPostBack="true"/>
+                &nbsp<asp:RadioButton ID="cb_holiday" GroupName="leaveroster" runat="server" Text="更期" OnCheckedChanged="cb_holiday_CheckedChanged" AutoPostBack="true"/>
+            </div>
         </div>
         <div class="col-xs-12 lsf-center">
-            <asp:Calendar ID="Calendar1" runat="server" Width="340px" Height="250px" Font-Size="Larger" SelectedDayStyle-BorderWidth="2"  SelectedDayStyle-BorderColor="#bd4f8b" SelectedDayStyle-BackColor="White" SelectedDayStyle-ForeColor="Black"></asp:Calendar>
+            <asp:Calendar NextPrevStyle-HorizontalAlign="Justify"  ID="Calendar1"  runat="server" Width="340px" Height="250px" Font-Size="Larger" SelectedDayStyle-BorderWidth="2"  SelectedDayStyle-BorderColor="#bd4f8b" SelectedDayStyle-BackColor="White" SelectedDayStyle-ForeColor="Black"></asp:Calendar>
         </div>
         <div class="row col-xs-12" style="padding-right:0px;" id="divTip" runat="server" visible="true">
             <div class="col-xs-5" style="width:36%;"><asp:Image ID="Image1" runat="server" ImageUrl="~/Res/images/square.png" BackColor="Black" />&nbsp;<asp:Literal ID="lt_approval" runat="server">approval</asp:Literal></div>

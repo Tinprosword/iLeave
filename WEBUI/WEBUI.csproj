@@ -113,6 +113,8 @@
     <Content Include="Res\images\addfile3.png" />
     <Content Include="Res\images\back.png" />
     <Content Include="Res\images\bad.png" />
+    <Content Include="Res\images\btncancel.png" />
+    <Content Include="Res\images\btnok.png" />
     <Content Include="Res\images\c1.png" />
     <Content Include="Res\images\c2.png" />
     <Content Include="Res\images\c3.png" />
@@ -137,6 +139,12 @@
     <Content Include="Res\images\Content_Page_Color_Botton_G.png" />
     <Content Include="Res\images\exit.png" />
     <Content Include="Res\images\file.png" />
+    <Content Include="Res\images\item1.png" />
+    <Content Include="Res\images\itmea5.png" />
+    <Content Include="Res\images\itmea1.png" />
+    <Content Include="Res\images\itmea2.png" />
+    <Content Include="Res\images\itmea3.png" />
+    <Content Include="Res\images\itmea4.png" />
     <Content Include="Res\images\Logon Closed.png" />
     <Content Include="Res\images\ok.png" />
     <Content Include="Res\images\quare.png" />

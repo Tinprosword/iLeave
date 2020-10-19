@@ -116,6 +116,9 @@ namespace WEBUI.Pages
                 this.lb_from.Text = LeaveRequestMaster.leavefrom.ToString("yyyy-MM-dd");
                 this.lb_to.Text = LeaveRequestMaster.leaveto.ToString("yyyy-MM-dd");
                 this.lb_remark.Text = LeaveRequestMaster.remarks;
+
+                double cleanValue = BLL.Leave.GetCleanValue(LeaveRequestMaster.MinLeaveID, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
+                this.lb_balancedays.Text = cleanValue == -99999 ? "--" : cleanValue.ToString("0.##") + " D";
             }
         }
 
@@ -157,7 +160,7 @@ namespace WEBUI.Pages
             this.lt_name.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_name;
             this.lt_status.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_status;
             this.lt_leave.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_leave;
-            this.lt_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_apply;
+            //this.lt_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_apply;
             this.lt_date.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_date;
             this.lt_remarks.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_remarks;
             this.lt_balance.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_balance;

@@ -63,7 +63,7 @@
                 <td class="col-xs-1">  </td>
             </tr>
         </table>--%>
-        <div class="col-xs-12 lsf-clearPadding" style="height:200px; overflow:scroll;">
+        <div class="col-xs-12 lsf-clearPadding" style="height:200px; overflow-y:scroll;">
             <table class="col-xs-12 lsu-table-xs">
                 <tr class="lss-bgcolor-blue" style="color:white">
                     <td class="col-xs-3" style="width:18%"><asp:Literal ID="ltlistdate" runat="server"></asp:Literal></td>
@@ -92,8 +92,8 @@
             </table>
         </div>
       
-        <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
-            <asp:Button ID="button_apply" runat="server" Text="Apply"  CssClass="btn lss-btncolor-blue" Width="160px" OnClick="button_apply_Click"/>
+        <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white;font-weight:bold">
+            <asp:Button ID="button_apply" runat="server" Text="Apply"  CssClass="lsu-imagebtn"  style="background-image:url(../res/images/btnok.png);background-size:240px 60px;font-size:24px" Height="60px" Width="240px" OnClick="button_apply_Click" />
         </div>
     </div>
 </asp:Content>
