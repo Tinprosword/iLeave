@@ -81,36 +81,33 @@ namespace MODEL
         [Serializable]
         public class app_uploadpic
         {
-            public string bigImagepath;
-            public string reduceImagePath;
+            public string bigImageRelatepath;
+            public string reduceImageRelatePath;
             public string tempID;
-            public string bigImageAbsolutePath;
+            public string bigImageHrTempAbsolutePath;
 
             public app_uploadpic(string path, string _reduceImage,string _bigImageAbsolutePath)
             {
-                this.bigImagepath = path;
+                this.bigImageRelatepath = path;
                 this.tempID = System.DateTime.Now.ToString("yyyyMMddhhmmss");
-                this.reduceImagePath = _reduceImage;
-                this.bigImageAbsolutePath = _bigImageAbsolutePath;
+                this.reduceImageRelatePath = _reduceImage;
+                this.bigImageHrTempAbsolutePath = _bigImageAbsolutePath;
             }
 
             public string GetFileName(int maxLength=0)
             {
                 string result = "";
-                if (!string.IsNullOrEmpty(bigImageAbsolutePath))
+                if (!string.IsNullOrEmpty(bigImageRelatepath))
                 {
-                    result = LSLibrary.FileUtil.GetFileNameNoExtension(bigImageAbsolutePath);
+                    result = LSLibrary.FileUtil.GetFileNameNoExtension(bigImageRelatepath);
                     if (maxLength != 0 && result.Length>maxLength)
                     {
                         result = result.Substring(0, maxLength);
                     }
-                    result += LSLibrary.FileUtil.GetExtension(bigImageAbsolutePath);
+                    result += LSLibrary.FileUtil.GetExtension(bigImageRelatepath);
                 }
                 return result;
             }
-
-
         }
-
     }
 }

@@ -195,7 +195,7 @@ namespace BLL
                 info.TypeID = 53;
                 info.RelatedPartyID = personid;
                 info.FunctionID = 0;
-                info.Path = pics[i].bigImageAbsolutePath;
+                info.Path = pics[i].bigImageHrTempAbsolutePath;
                 info.ModifiedDate = System.DateTime.Now;
                 info.ExpiryDate = new DateTime(1900, 1, 1);
                 info.NoticePeriod = -1;

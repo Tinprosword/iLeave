@@ -59,9 +59,9 @@
                         <asp:Repeater ID="repeater_pic" runat="server">
                             <ItemTemplate>
                                 <td style="padding-right:10px;padding-top:3px">
-                                    <asp:Image ID="Image" runat="server" ImageUrl="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).reduceImagePath %>" Width="120px" Height="70px"/>
+                                    <asp:Image ID="Image" runat="server" ImageUrl="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).reduceImageRelatePath %>" Width="120px" Height="70px"/>
                                     <br />
-                                    <a runat="server" id="aa" href="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).bigImagepath %>" target="_blank"><%# ((MODEL.Apply.app_uploadpic)Container.DataItem).GetFileName(15) %></a>
+                                    <a runat="server" id="aa" href="<%# ((MODEL.Apply.app_uploadpic)Container.DataItem).bigImageRelatepath %>" target="_blank"><%# ((MODEL.Apply.app_uploadpic)Container.DataItem).GetFileName(15) %></a>
                                 </td>
                             </ItemTemplate>
                         </asp:Repeater>

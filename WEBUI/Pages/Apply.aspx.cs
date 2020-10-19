@@ -281,7 +281,7 @@ namespace WEBUI.Pages
             {
                 for (int i = 0; i < pics.Count; i++)
                 {
-                    copyFileTo(pics[i].bigImagepath, pics[i].bigImageAbsolutePath);
+                    copyFileTo(pics[i].bigImageRelatepath, pics[i].bigImageHrTempAbsolutePath);
                 }
                 BLL.Leave.InsertAttachment(pics, loginer.userInfo.id, loginer.userInfo.personid, reslut);
                 Response.Redirect("~/pages/main.aspx");
