@@ -230,7 +230,7 @@ namespace WEBUI.Pages
 
         private void FillStatistic(List<int> eid, int year, int month)
         {
-            allStatistic = new Dictionary<DateTime, int>();
+            allStatistic = new Dictionary<DateTime, int>();//初始并填充数据.
             if (month == 1)
             {
                 List<int> monthStastic1 = BLL.Leave.GetMonthStatistic(year - 1, 12, eid.ToArray());
