@@ -41,7 +41,11 @@ namespace WEBUI.Pages
 
             if (this.cb_leave.Checked)
             {
-                RegisterCellColorEvent();
+                this.Calendar1.PreRender += Calendar1_GetStatistic;
+                this.Calendar1.DayRender += Calendar_displayStatistic;
+                this.Calendar1.DayRender += Calendar_displayViewStateCells;
+                this.Calendar1.DayRender += Calendar_displaySelectCell;
+
                 RegisterClickCellEventAndSetCanlendarValue();
             }
             else if (this.cb_holiday.Checked)
@@ -104,17 +108,9 @@ namespace WEBUI.Pages
             }
         }
 
-        private void RegisterCellColorEvent()
-        {
-            this.Calendar1.DayRender += Calendar1_DayRender;
-            this.Calendar1.PreRender += Calendar1_PreRender;
-        }
 
-        private void UnRegisterCellColorEvent()
-        {
-            this.Calendar1.DayRender -= Calendar1_DayRender;
-            this.Calendar1.PreRender -= Calendar1_PreRender;
-        }
+
+
 
         private void RegisterClickCellEventAndSetCanlendarValue()
         {
@@ -122,7 +118,7 @@ namespace WEBUI.Pages
             string argument = Request.Params["__EVENTARGUMENT"];
             if (target != null && target.Contains("Calendar1"))
             {
-                if (argument.Contains("V"))
+                if (argument.Contains("V"))//
                 {
                     int intdate = int.Parse(argument.Substring(1, argument.Length - 1));
                     DateTime date = TransferDate(intdate);
@@ -132,12 +128,12 @@ namespace WEBUI.Pages
                 {
                     int intdate = int.Parse(argument);
                     DateTime date = TransferDate(intdate);
-                    Calendar1_SelectionChanged(this.Calendar1, date);
+                    Calendar1_CellChanged(this.Calendar1, date);
                 }
             }
         }
 
-        private void Calendar1_PreRender(object sender, EventArgs e)
+        private void Calendar1_GetStatistic(object sender, EventArgs e)
         {
             bool isme = GetIsMeOrTeam();
             List<int> eid = GetEmployIDs(isme, this.ddlzone.SelectedValue, this.tb_name.Text.Trim());
@@ -271,7 +267,7 @@ namespace WEBUI.Pages
         }
 
 
-        private void Calendar1_DayRender(object sender, DayRenderEventArgs e)
+        private void Calendar_displayStatistic(object sender, DayRenderEventArgs e)
         {
             //1.show approved 2.show wait 3.show selected dates. 4.show selected
             if (allStatistic.Keys.Contains(e.Day.Date))
@@ -280,22 +276,56 @@ namespace WEBUI.Pages
                 {
                     e.Cell.BackColor = System.Drawing.Color.Black;
                     e.Cell.ForeColor = LSLibrary.MyColors.ParseColor("#ffffff");
-
+                    e.Cell.BorderWidth = 1;
+                    e.Cell.BorderStyle = BorderStyle.Solid;
+                    e.Cell.BorderColor = System.Drawing.Color.White;
                 }
                 else if (allStatistic[e.Day.Date] == 2)//waiting
                 {
                     e.Cell.BackColor = LSLibrary.MyColors.ParseColor("#f3e926");
                     e.Cell.ForeColor = LSLibrary.MyColors.ParseColor("#ffffff");
-
+                    e.Cell.BorderWidth = 1;
+                    e.Cell.BorderStyle = BorderStyle.Solid;
+                    e.Cell.BorderColor = System.Drawing.Color.White;
                 }
             }
 
+            
+        }
+
+        private void Calendar_displaySelectCell(object sender, DayRenderEventArgs e)
+        {
+            //SelectedDayStyle - BorderWidth = "2"  SelectedDayStyle - BorderColor = "#bd4f8b" SelectedDayStyle - BackColor = "White" SelectedDayStyle - ForeColor = "Black"
+            if (Calendar1.SelectedDate == e.Day.Date)
+            {
+                if (e.Cell.ForeColor == System.Drawing.Color.White)//非特殊日子
+                {
+                    e.Cell.BackColor = System.Drawing.Color.White;
+                    e.Cell.ForeColor = System.Drawing.Color.Black;
+                }
+                else
+                {
+                    e.Cell.BackColor = e.Cell.BackColor;
+                    e.Cell.ForeColor = e.Cell.ForeColor;
+                }
+                //e.Cell.BackColor = System.Drawing.Color.White;
+                //e.Cell.ForeColor = System.Drawing.Color.Black;
+                e.Cell.BorderWidth = 3;
+                e.Cell.BorderStyle = BorderStyle.Solid;
+                e.Cell.BorderColor = LSLibrary.MyColors.ParseColor("#bd4f8b");
+            }
+        }
+
+        private void Calendar_displayViewStateCells(object sender, DayRenderEventArgs e)
+        {
             List<DateTime> chooseDate = GetChooseFromViewState();//choose days
             if (chooseDate.Contains(e.Day.Date))
             {
                 e.Cell.BackColor = LSLibrary.MyColors.ParseColor("#b12977");
                 e.Cell.ForeColor = LSLibrary.MyColors.ParseColor("#ffffff");
-
+                e.Cell.BorderWidth = 1;
+                e.Cell.BorderStyle = BorderStyle.Solid;
+                e.Cell.BorderColor = System.Drawing.Color.White;
             }
         }
         #endregion
@@ -303,7 +333,7 @@ namespace WEBUI.Pages
         #endregion
 
         #region showleave data
-        protected void Calendar1_SelectionChanged(Calendar calendar, DateTime date)
+        protected void Calendar1_CellChanged(Calendar calendar, DateTime date)
         {
             //1.set changedDate  2.show related request  3.save date to viewstate.
             this.Label1.Text = date.ToString("yyyy-MM-dd");
@@ -313,6 +343,7 @@ namespace WEBUI.Pages
             {
                 SaveChooseToViewState(calendar.SelectedDate);
             }
+            this.Calendar1.DayRender += Calendar_displaySelectCell;
         }
 
         protected void unit_SelectedIndexChanged(object sender, EventArgs e)
@@ -343,13 +374,21 @@ namespace WEBUI.Pages
         #region show holiday
         protected void cb_leave_CheckedChanged(object sender, EventArgs e)
         {
-            RegisterCellColorEvent();
+            this.Calendar1.PreRender += Calendar1_GetStatistic;
+            this.Calendar1.DayRender += Calendar_displayStatistic;
+            this.Calendar1.DayRender += Calendar_displayViewStateCells;
+            this.Calendar1.DayRender += Calendar_displaySelectCell;
+
             SetupRepeater();
         }
 
         protected void cb_holiday_CheckedChanged(object sender, EventArgs e)
         {
-            UnRegisterCellColorEvent();
+            this.Calendar1.PreRender -= Calendar1_GetStatistic;
+            this.Calendar1.DayRender -= Calendar_displayStatistic;
+            this.Calendar1.DayRender -= Calendar_displayViewStateCells;
+            this.Calendar1.DayRender -= Calendar_displaySelectCell;
+
             SetupRepeater();
         }
         #endregion
@@ -424,5 +463,9 @@ namespace WEBUI.Pages
         }
         #endregion
 
+        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

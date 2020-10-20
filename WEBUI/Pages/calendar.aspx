@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="col-xs-12 lsf-center">
-            <asp:Calendar NextPrevStyle-HorizontalAlign="Justify"  ID="Calendar1"  runat="server" Width="340px" Height="250px" Font-Size="Larger" SelectedDayStyle-BorderWidth="2"  SelectedDayStyle-BorderColor="#bd4f8b" SelectedDayStyle-BackColor="White" SelectedDayStyle-ForeColor="Black"></asp:Calendar>
+            <asp:Calendar NextPrevStyle-HorizontalAlign="Justify"  ID="Calendar1"  runat="server" Width="340px" Height="250px" Font-Size="Larger" OnSelectionChanged="Calendar1_SelectionChanged" ></asp:Calendar>
         </div>
         <div class="row col-xs-12" style="padding-right:0px;" id="divTip" runat="server" visible="true">
             <div class="col-xs-5" style="width:36%;"><asp:Image ID="Image1" runat="server" ImageUrl="~/Res/images/square.png" BackColor="Black" />&nbsp;<asp:Literal ID="lt_approval" runat="server">approval</asp:Literal></div>
