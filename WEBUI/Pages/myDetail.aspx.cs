@@ -219,7 +219,7 @@ namespace WEBUI.Pages
             bool isimage = BLL.common.IsImagge(System.IO.Path.GetFileName(filePath));
             if (isimage)
             {
-                Response.Redirect("showpic.aspx?path="+HttpUtility.HtmlEncode(linkButton.CommandArgument));
+                Response.Redirect("showpic2.aspx?path=" + HttpUtility.HtmlEncode(linkButton.CommandArgument));
             }
             else
             {
