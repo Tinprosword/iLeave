@@ -1,0 +1,82 @@
+ip:192.168.19.81
+DataTime：2020/10/20 15:05:03
+Url：http://192.168.19.210:8091/pages/apply.aspx
+Message：尝试除以零。
+Source：WEBUI
+Type：System.DivideByZeroException
+Function：Void PageLoad_Reset_ReInitUIOnEachLoad3()
+Trace：   在 WEBUI.Pages.Apply.PageLoad_Reset_ReInitUIOnEachLoad3()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/10/20 15:05:11
+Url：http://192.168.19.210:8091/Report/rplist.aspx
+Message：文件“/Report/rplist.aspx”不存在。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void CheckVirtualFileExists(System.Web.VirtualPath)
+Trace：   在 System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/10/20 15:06:21
+Url：http://192.168.19.210:8091/pages/apply.aspx
+Message：尝试除以零。
+Source：WEBUI
+Type：System.DivideByZeroException
+Function：Void PageLoad_Reset_ReInitUIOnEachLoad3()
+Trace：   在 WEBUI.Pages.Apply.PageLoad_Reset_ReInitUIOnEachLoad3()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/10/20 15:06:27
+Url：http://192.168.19.210:8091/pages/apply.aspx
+Message：尝试除以零。
+Source：WEBUI
+Type：System.DivideByZeroException
+Function：Void PageLoad_Reset_ReInitUIOnEachLoad3()
+Trace：   在 WEBUI.Pages.Apply.PageLoad_Reset_ReInitUIOnEachLoad3()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/10/20 15:07:00
+Url：http://192.168.19.210:8091/pages/apply.aspx
+Message：尝试除以零。
+Source：WEBUI
+Type：System.DivideByZeroException
+Function：Void PageLoad_Reset_ReInitUIOnEachLoad3()
+Trace：   在 WEBUI.Pages.Apply.PageLoad_Reset_ReInitUIOnEachLoad3()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/10/20 15:07:14
+Url：http://192.168.19.210:8091/pages/apply.aspx
+Message：尝试除以零。
+Source：WEBUI
+Type：System.DivideByZeroException
+Function：Void PageLoad_Reset_ReInitUIOnEachLoad3()
+Trace：   在 WEBUI.Pages.Apply.PageLoad_Reset_ReInitUIOnEachLoad3()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

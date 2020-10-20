@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -24,7 +25,9 @@ namespace WEBUI
         {}
 
         protected void Application_Error(object sender, EventArgs e)
-        {}
+        {
+            LSLibrary.WebAPP.WebConfig.Global_Application_Error(Server, Request, Response, "~/pages/errorpage.aspx");
+        }
 
         protected void Session_End(object sender, EventArgs e)
         {}
