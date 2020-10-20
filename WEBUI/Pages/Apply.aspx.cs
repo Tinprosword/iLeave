@@ -17,12 +17,8 @@ namespace WEBUI.Pages
 
     public partial class Apply : BLL.CustomLoginTemplate
     {
-        //todo add menu for change employment
-        //no balance put --
-        //close icon.
-        //todo display the cout of attachment 
-        //calader leave:show detail by firstEmployment?
-
+        //calander 慢.
+        //不支持download.
 
         //todo upload file in mobil.
         //todo 一个页面只能触发一次js？
