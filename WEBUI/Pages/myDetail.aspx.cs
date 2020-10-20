@@ -45,7 +45,9 @@ namespace WEBUI.Pages
         {}
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
-        {}
+        {
+            this.lt_js.Text = "";
+        }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
@@ -215,7 +217,14 @@ namespace WEBUI.Pages
             LinkButton linkButton = (LinkButton)sender;
             string filePath = Server.MapPath(linkButton.CommandArgument);
             bool isimage = BLL.common.IsImagge(System.IO.Path.GetFileName(filePath));
-            LSLibrary.HttpHelper.DownloadFile(filePath, System.IO.Path.GetFileName(filePath), Server, Response);
+            if (isimage)
+            {
+                Response.Redirect("showpic.aspx?path="+HttpUtility.HtmlEncode(linkButton.CommandArgument));
+            }
+            else
+            {
+                Response.Redirect(linkButton.CommandArgument);
+            }
         }
     }
 }

@@ -84,7 +84,7 @@
     <Content Include="Pages\myapplications.aspx" />
     <Content Include="Pages\myDetail.aspx" />
     <Content Include="Pages\Setting.aspx" />
-    <Content Include="Pages\showpic.aspx" />
+    <Content Include="Pages\showpic2.aspx" />
     <Content Include="Pages\Test.aspx" />
     <Content Include="Pages\Test.html" />
     <Content Include="readme.txt" />
@@ -278,12 +278,12 @@
     <Compile Include="Pages\Setting.aspx.designer.cs">
       <DependentUpon>Setting.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\showpic.aspx.cs">
-      <DependentUpon>showpic.aspx</DependentUpon>
+    <Compile Include="Pages\showpic2.aspx.cs">
+      <DependentUpon>showpic2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\showpic.aspx.designer.cs">
-      <DependentUpon>showpic.aspx</DependentUpon>
+    <Compile Include="Pages\showpic2.aspx.designer.cs">
+      <DependentUpon>showpic2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>

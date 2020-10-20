@@ -26,3 +26,9 @@ function HiddenDivByfixname(windowname) {
     winabc.hide();
     return;
 }
+
+
+function GOHistory()
+{
+    history.back();
+}
