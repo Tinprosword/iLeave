@@ -13,13 +13,13 @@ namespace WEBUI.Pages {
     public partial class approval {
         
         /// <summary>
-        /// lt_name 控件。
+        /// lt_name2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_name;
+        protected global::System.Web.UI.WebControls.Literal lt_name2;
         
         /// <summary>
         /// tb_name 控件。
@@ -76,13 +76,13 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Literal lt_unit;
         
         /// <summary>
-        /// lt_type 控件。
+        /// lt_type2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_type;
+        protected global::System.Web.UI.WebControls.Literal lt_type2;
         
         /// <summary>
         /// repeater_myapplications 控件。

@@ -6,7 +6,7 @@
             <table>
                 <tr style="line-height:5px"><td colspan="3"> </td></tr>
                 <tr>
-                    <td style="padding-left:1px;padding-right:5px;"><asp:Literal ID="lt_name" runat="server">Name</asp:Literal></td>
+                    <td style="padding-left:1px;padding-right:5px;"><asp:Literal ID="lt_name2" runat="server">Name</asp:Literal></td>
                     <td><asp:TextBox ID="tb_name"   runat="server" Width="86px"  AutoPostBack="true" OnTextChanged="tb_name_TextChanged"></asp:TextBox></td>
                     <td style="padding-left:1px;padding-right:5px; padding-left:5px"><asp:Literal ID="ltdatefrom" runat="server">From</asp:Literal></td>
                     <td><asp:TextBox ID="tb_date"  data-date-format="yyyy-mm-dd" fixname="datefrom" runat="server" Width="86px"  AutoPostBack="true" OnTextChanged="tb_date_TextChanged"></asp:TextBox></td>
@@ -23,7 +23,7 @@
                     <td style="width:43%" ><asp:Literal ID="lt_listdate" runat="server">Date</asp:Literal></td>
                     <td style="width:30%" ><asp:Literal ID="lt_listuser" runat="server">Staff</asp:Literal></td>
                     <td style="width:14%"><asp:Literal ID="lt_unit" runat="server">Unit</asp:Literal></td>
-                    <td style="width:13%"><asp:Literal ID="lt_type" runat="server">Type</asp:Literal></td>
+                    <td style="width:13%"><asp:Literal ID="lt_type2" runat="server">Type</asp:Literal></td>
                 </tr>
                 <asp:Repeater ID="repeater_myapplications" runat="server">
                     <ItemTemplate>

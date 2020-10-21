@@ -49,7 +49,7 @@
                         <td></td>
                         <td class="lsf-fontsizes1">
                             <asp:CheckBox ID="cb_remember" runat="server" OnCheckedChanged="cb_remember_CheckedChanged"  AutoPostBack="true"/>&nbsp;
-                            <asp:Literal ID="lt_remember" runat="server">Remember Me</asp:Literal>
+                            <asp:Literal ID="lt_remember2" runat="server">Remember Me</asp:Literal>
                         </td>
                     </tr>
                 </table>

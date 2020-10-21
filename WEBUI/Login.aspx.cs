@@ -86,7 +86,7 @@ namespace WEBUI
             this.lt_user.Text = baseLanguage.login_user;
             this.lt_password.Text = baseLanguage.login_password;
             this.Button1.Text= baseLanguage.login_loginbtn;
-            this.lt_remember.Text = baseLanguage.login_remember;
+            this.lt_remember2.Text = baseLanguage.login_remember;
         }
 
 
