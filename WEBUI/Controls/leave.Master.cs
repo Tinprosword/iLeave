@@ -18,17 +18,20 @@ namespace WEBUI.Controls
             }
         }
 
-        public void SetupNaviagtion(bool isVisitable,string backLink,string title,string url,bool showback, ImageClickEventHandler ClickEvent=null)
+        public void SetupNaviagtion(bool isVisitable,string backLink,string title,string url,bool showback, ImageClickEventHandler ClickEvent=null,bool showgoback=false)
         {
             this.Navigation.Visible = isVisitable;
-            
+            this.Navigation2.Visible = showgoback;
+
+
             this.label_title.Text = title;
             if (string.IsNullOrEmpty(url))
             {this.ib_back.Click += ClickEvent;}
             else
             {this.ib_back.PostBackUrl = url;}
-
             this.ib_back.Visible = showback;
+
+            
         }
 
         public string GetMyPostBackArgumentByTargetname(string targetName)

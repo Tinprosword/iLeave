@@ -95,4 +95,10 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
+    <asp:Literal ID="lt_js" runat="server"></asp:Literal>
+    <script>
+        function openabc(url) {
+            window.open(url);
+        }
+    </script>
 </asp:Content>

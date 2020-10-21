@@ -118,9 +118,16 @@ namespace WEBUI.Pages
             LinkButton linkButton = (LinkButton)sender;
             string filePath = Server.MapPath(linkButton.CommandArgument);
             bool isimage= BLL.common.IsImagge(System.IO.Path.GetFileName(filePath));
-            LSLibrary.HttpHelper.DownloadFile(filePath, System.IO.Path.GetFileName(filePath), Server, Response);
+
+            if (isimage)
+            {
+                Response.Redirect("showpic2.aspx?path=" + HttpUtility.HtmlEncode(linkButton.CommandArgument));
+            }
+            else
+            {
+                Response.Redirect(linkButton.CommandArgument);
+            }
         }
 
-        
     }
 }
