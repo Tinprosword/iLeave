@@ -276,17 +276,17 @@ namespace WEBUI.Pages
                 {
                     e.Cell.BackColor = System.Drawing.Color.Black;
                     e.Cell.ForeColor = LSLibrary.MyColors.ParseColor("#ffffff");
-                    e.Cell.BorderWidth = 1;
-                    e.Cell.BorderStyle = BorderStyle.Solid;
-                    e.Cell.BorderColor = System.Drawing.Color.White;
+                    //e.Cell.BorderWidth = 1;
+                    //e.Cell.BorderStyle = BorderStyle.Solid;
+                    //e.Cell.BorderColor = System.Drawing.Color.White;
                 }
                 else if (allStatistic[e.Day.Date] == 2)//waiting
                 {
                     e.Cell.BackColor = LSLibrary.MyColors.ParseColor("#f3e926");
                     e.Cell.ForeColor = LSLibrary.MyColors.ParseColor("#ffffff");
-                    e.Cell.BorderWidth = 1;
-                    e.Cell.BorderStyle = BorderStyle.Solid;
-                    e.Cell.BorderColor = System.Drawing.Color.White;
+                    //e.Cell.BorderWidth = 1;
+                    //e.Cell.BorderStyle = BorderStyle.Solid;
+                    //e.Cell.BorderColor = System.Drawing.Color.White;
                 }
             }
 
@@ -310,7 +310,7 @@ namespace WEBUI.Pages
                 }
                 //e.Cell.BackColor = System.Drawing.Color.White;
                 //e.Cell.ForeColor = System.Drawing.Color.Black;
-                e.Cell.BorderWidth = 3;
+                e.Cell.BorderWidth = 2;
                 e.Cell.BorderStyle = BorderStyle.Solid;
                 e.Cell.BorderColor = LSLibrary.MyColors.ParseColor("#bd4f8b");
             }
@@ -323,9 +323,9 @@ namespace WEBUI.Pages
             {
                 e.Cell.BackColor = LSLibrary.MyColors.ParseColor("#b12977");
                 e.Cell.ForeColor = LSLibrary.MyColors.ParseColor("#ffffff");
-                e.Cell.BorderWidth = 1;
-                e.Cell.BorderStyle = BorderStyle.Solid;
-                e.Cell.BorderColor = System.Drawing.Color.White;
+                //e.Cell.BorderWidth = 1;
+                //e.Cell.BorderStyle = BorderStyle.Solid;
+                //e.Cell.BorderColor = System.Drawing.Color.White;
             }
         }
         #endregion
