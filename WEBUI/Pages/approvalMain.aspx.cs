@@ -20,9 +20,16 @@ namespace WEBUI
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().approval_SubMenu_back, BLL.MultiLanguageHelper.GetLanguagePacket().approval_SubMenu_current, "~/pages/main.aspx", true);
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, BLL.MultiLanguageHelper.GetLanguagePacket().main_approval, "~/pages/main.aspx", true);
+            MultipleLanguage();
         }
 
+        private void MultipleLanguage()
+        {
+            this.lt_applicationsabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approvalmain_menu2;
+            this.lt_applyleaveabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approvalmain_menu1;
+            this.lt_approal.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approvalmain_menu3;
+        }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         { }

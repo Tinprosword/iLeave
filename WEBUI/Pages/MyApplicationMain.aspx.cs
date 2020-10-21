@@ -20,7 +20,10 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().application_SubMenu_back, BLL.MultiLanguageHelper.GetLanguagePacket().application_SubMenu_current, "~/pages/main.aspx", true);
+            this.lt_applyleaveabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().mymyapplicationmain_wait;
+            this.lt_applicationsabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().mymyapplicationmain_approved;
+            this.lt_approal.Text = BLL.MultiLanguageHelper.GetLanguagePacket().mymyapplicationmain_rejected;
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, BLL.MultiLanguageHelper.GetLanguagePacket().main_approval, "~/pages/main.aspx", true);
         }
 
         

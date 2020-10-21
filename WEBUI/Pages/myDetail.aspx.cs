@@ -68,15 +68,15 @@ namespace WEBUI.Pages
             currentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().application_detailcurrent;
             if (applicationType == "0")
             {
-                backTtile = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_wait_back;
+                backTtile = BLL.MultiLanguageHelper.GetLanguagePacket().Back;
             }
             else if (applicationType == "1")
             {
-                backTtile = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_approved_back;
+                backTtile = BLL.MultiLanguageHelper.GetLanguagePacket().Back;
             }
             else
             {
-                backTtile = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_reject_back;
+                backTtile = BLL.MultiLanguageHelper.GetLanguagePacket().Back;
             }
             if (action == 0)
             {
@@ -159,7 +159,7 @@ namespace WEBUI.Pages
 
         private void SetupMultiLanguage()
         {
-            this.lt_name.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_name;
+            this.lt_name.Text = BLL.MultiLanguageHelper.GetLanguagePacket().myapplications_name;
             this.lt_status.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_status;
             this.lt_leave.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_leave;
             //this.lt_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_apply;
@@ -171,6 +171,15 @@ namespace WEBUI.Pages
             this.lt_listsection.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_listsection;
             this.lt_attendance.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_attendance;
             this.lt_balance.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_balance;
+
+            this.button_wait_admin_approval.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_approve;
+            this.button_wait_admin_reject.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_reject;
+
+            this.button_Cancel_admin_approval.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_approve;
+            this.button_Cancel_admin_Reject.Text= BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_reject;
+            this.button_wait_user_Withdraw.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_withdraw;
+            this.button_approval_user_Cancel.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_cancel;
+
         }
 
         protected void button_apply_Click(object sender, EventArgs e)

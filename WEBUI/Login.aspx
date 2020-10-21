@@ -16,7 +16,7 @@
                 <table class="row" style="width:100%;padding:0px;margin:0px;">
                     <tr class=" lsf-center lsf-fontsizem2" style="background-color:black;height:40px;">
                         <td  style="width:30%">&nbsp;</td>
-                        <td  style="width:40%;color:white;">ILeave</td>
+                        <td  style="width:40%;color:white;">DW-iLeave</td>
                         <td  style="width:30%; font-size:13px;color:white; vertical-align:bottom;">
                             <asp:RadioButtonList ID="rbl_language"  runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="rbl_language_SelectedIndexChanged" AutoPostBack="true">
                                 <asp:ListItem Value="0">Eng.</asp:ListItem>
@@ -48,7 +48,8 @@
                     <tr style="height:20px;">
                         <td></td>
                         <td class="lsf-fontsizes1">
-                            <asp:CheckBox ID="cb_remember" runat="server" OnCheckedChanged="cb_remember_CheckedChanged"  AutoPostBack="true"/>&nbsp;Remember Me
+                            <asp:CheckBox ID="cb_remember" runat="server" OnCheckedChanged="cb_remember_CheckedChanged"  AutoPostBack="true"/>&nbsp;
+                            <asp:Literal ID="lt_remember" runat="server">Remember Me</asp:Literal>
                         </td>
                     </tr>
                 </table>

@@ -51,23 +51,30 @@ namespace WEBUI.Pages
             string CurrentTitle = "";
             if (applicationType == "0")
             {
-                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().application_List_waitCurrent;
+                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().approvalmain_menu1;
             }
             else if (applicationType == "1")
             {
-                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().application_List_approvedCurrent;
+                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().approvalmain_menu2;
             }
             else
             {
-                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().application_List_rejectCurrent;
+                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().approvalmain_menu3;
             }
 
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().approval_List_wait_apporved_reject_Back, CurrentTitle, "~/pages/approvalmain.aspx", true);
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, CurrentTitle, "~/pages/approvalmain.aspx", true);
         }
 
 
         private void SetupMultiLanguage()
-        {}
+        {
+            this.ltdatefrom.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_from;
+            this.lt_name.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_name;
+            this.lt_listdate.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_list_column1;
+            this.lt_listuser.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_list_column2;
+            this.lt_unit.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_list_column3;
+            this.lt_type.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_list_column4;
+        }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {}

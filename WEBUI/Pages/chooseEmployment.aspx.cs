@@ -46,7 +46,7 @@ namespace WEBUI.Pages
        
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().approval_List_wait_apporved_reject_Back, "EmploymentList", "", false);
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, "EmploymentList", "", false);
 
             
 

@@ -54,23 +54,26 @@ namespace WEBUI.Pages
             string CurrentTitle = "";
             if (applicationType == "0")
             {
-                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().application_List_waitCurrent;
+                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().mymyapplicationmain_wait; ;
             }
             else if (applicationType == "1")
             {
-                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().application_List_approvedCurrent;
+                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().mymyapplicationmain_approved;
             }
             else
             {
-                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().application_List_rejectCurrent;
+                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().mymyapplicationmain_rejected;
             }
 
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().application_List_wait_apporved_reject_Back, CurrentTitle, "~/pages/myapplicationMain.aspx", true);
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, CurrentTitle, "~/pages/myapplicationMain.aspx", true);
         }
 
         private void SetupMultiLanguage()
         {
-            this.ltdatefrom.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_datefrom;
+            this.ltdatefrom.Text = BLL.MultiLanguageHelper.GetLanguagePacket().myapplications_datefrom;
+            this.lt_listdate.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_listdate;
+            this.lt_listUint.Text= BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_listuint;
+            this.lt_listtype.Text= BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_listtype;
         }
 
 
