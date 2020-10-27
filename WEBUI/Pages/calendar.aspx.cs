@@ -20,6 +20,10 @@ namespace WEBUI.Pages
         private bool isFromApply = false;
         private Dictionary<DateTime, int> allStatistic = null;
 
+        private readonly System.Drawing.Color apporvedcolor = System.Drawing.Color.FromArgb(0, 255, 0);
+        private readonly System.Drawing.Color waitcolor = System.Drawing.Color.FromArgb(255, 255, 00); // System.Drawing.Color.FromArgb(234, 224, 56);//f3e926;  eae013
+        private readonly System.Drawing.Color selectedColor = System.Drawing.Color.FromArgb(173, 216, 230);   //#2573a4  add8e6
+
         #region pageevent
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
@@ -62,6 +66,9 @@ namespace WEBUI.Pages
             this.Calendar1.SelectedDate = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day);
             this.Calendar1.VisibleDate = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day);
 
+            this.Image1.BackColor = apporvedcolor;
+            this.Image2.BackColor = waitcolor;
+            this.ib_ok.BackColor = selectedColor;
 
             OnPrePageIsApplyInitViewState();
             SetupNameInput();
@@ -274,19 +281,13 @@ namespace WEBUI.Pages
             {
                 if (allStatistic[e.Day.Date] == 1)//approvaed
                 {
-                    e.Cell.BackColor = System.Drawing.Color.Black;
-                    e.Cell.ForeColor = LSLibrary.MyColors.ParseColor("#ffffff");
-                    //e.Cell.BorderWidth = 1;
-                    //e.Cell.BorderStyle = BorderStyle.Solid;
-                    //e.Cell.BorderColor = System.Drawing.Color.White;
+                    e.Cell.BackColor = apporvedcolor;
+                    e.Cell.ForeColor = LSLibrary.MyColors.ParseColor("#000000");
                 }
                 else if (allStatistic[e.Day.Date] == 2)//waiting
                 {
-                    e.Cell.BackColor = LSLibrary.MyColors.ParseColor("#f3e926");
-                    e.Cell.ForeColor = LSLibrary.MyColors.ParseColor("#ffffff");
-                    //e.Cell.BorderWidth = 1;
-                    //e.Cell.BorderStyle = BorderStyle.Solid;
-                    //e.Cell.BorderColor = System.Drawing.Color.White;
+                    e.Cell.BackColor = waitcolor;
+                    e.Cell.ForeColor = LSLibrary.MyColors.ParseColor("#000000");
                 }
             }
 
@@ -308,11 +309,9 @@ namespace WEBUI.Pages
                     e.Cell.BackColor = e.Cell.BackColor;
                     e.Cell.ForeColor = e.Cell.ForeColor;
                 }
-                //e.Cell.BackColor = System.Drawing.Color.White;
-                //e.Cell.ForeColor = System.Drawing.Color.Black;
                 e.Cell.BorderWidth = 2;
                 e.Cell.BorderStyle = BorderStyle.Solid;
-                e.Cell.BorderColor = LSLibrary.MyColors.ParseColor("#bd4f8b");
+                e.Cell.BorderColor = System.Drawing.Color.Black;
             }
         }
 
@@ -321,11 +320,8 @@ namespace WEBUI.Pages
             List<DateTime> chooseDate = GetChooseFromViewState();//choose days
             if (chooseDate.Contains(e.Day.Date))
             {
-                e.Cell.BackColor = LSLibrary.MyColors.ParseColor("#b12977");
-                e.Cell.ForeColor = LSLibrary.MyColors.ParseColor("#ffffff");
-                //e.Cell.BorderWidth = 1;
-                //e.Cell.BorderStyle = BorderStyle.Solid;
-                //e.Cell.BorderColor = System.Drawing.Color.White;
+                e.Cell.BackColor = selectedColor;
+                e.Cell.ForeColor = LSLibrary.MyColors.ParseColor("#000000");
             }
         }
         #endregion
@@ -452,9 +448,9 @@ namespace WEBUI.Pages
             this.lt_approval.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_approved;
             this.lt_wait.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_containwait;
             this.lt_name.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_listname;
-            //this.lt_type.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_listtype;
             this.lt_section.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_listsection;
             this.lt_status.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_liststatus;
+     
         }
 
         private bool GetIsMeOrTeam()

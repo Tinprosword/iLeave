@@ -7,23 +7,23 @@
         <div class="col-xs-3" style="width:42% ;padding-left:15px;height:24px;line-height:24px;padding-right:5px">
             <asp:TextBox Width="100%" ID="tb_name" runat="server" OnTextChanged="tb_name_TextChanged" AutoPostBack="true" style="border:1px solid #808080"></asp:TextBox>
         </div>
-        <div class="col-xs-12" style="margin-top:8px; margin-bottom:8px;">
+        <div class="col-xs-12 " style="margin-top:8px; margin-bottom:8px;">
             <asp:DropDownList ID="ddlzone" Height="24px" runat="server"  CssClass="col-xs-7" OnSelectedIndexChanged="unit_SelectedIndexChanged" AutoPostBack="true">
             </asp:DropDownList>
-            <div style="float:left;padding-top:1px;">
-                &nbsp;&nbsp;&nbsp;<asp:RadioButton ID="cb_leave" runat="server" Text="假期" OnCheckedChanged="cb_leave_CheckedChanged" GroupName="leaveroster"  Checked="true"  AutoPostBack="true"/>
-                &nbsp<asp:RadioButton ID="cb_holiday" GroupName="leaveroster" runat="server" Text="更期" OnCheckedChanged="cb_holiday_CheckedChanged" AutoPostBack="true"/>
+            <div style="float:left;padding-top:1px;" class="overlable">
+                &nbsp;&nbsp;&nbsp;<asp:RadioButton  ID="cb_leave" runat="server"  OnCheckedChanged="cb_leave_CheckedChanged" GroupName="leaveroster" Text="假期"  Checked="true"  AutoPostBack="true"  Font-Bold="false"></asp:RadioButton>
+                &nbsp<asp:RadioButton ID="cb_holiday" GroupName="leaveroster" runat="server" Text="更期" OnCheckedChanged="cb_holiday_CheckedChanged" AutoPostBack="true"  Font-Bold="false"/>
             </div>
         </div>
         <div class="col-xs-12 lsf-center">
-            <asp:Calendar NextPrevStyle-HorizontalAlign="Justify"  ID="Calendar1"  runat="server" Width="340px" Height="250px" Font-Size="Larger" OnSelectionChanged="Calendar1_SelectionChanged" ></asp:Calendar>
+            <asp:Calendar NextPrevStyle-HorizontalAlign="Justify"  ID="Calendar1"  runat="server" Width="340px" Height="250px" Font-Size="Larger" OnSelectionChanged="Calendar1_SelectionChanged" DayHeaderStyle-Font-Size="14px" DayHeaderStyle-CssClass="lsf-center"></asp:Calendar>
         </div>
         <div class="row col-xs-12" style="padding-right:0px;" id="divTip" runat="server" visible="true">
             <div class="col-xs-5" style="width:36%;"><asp:Image ID="Image1" runat="server" ImageUrl="~/Res/images/square.png" BackColor="Black" />&nbsp;<asp:Literal ID="lt_approval" runat="server">approval</asp:Literal></div>
             <div class="col-xs-7" style="width:64%;"><asp:Image ID="Image2" runat="server" ImageUrl="~/Res/images/square.png" BackColor="#f3e926" />&nbsp;<asp:Literal ID="lt_wait" runat="server">wait for approval</asp:Literal></div>
         </div>
         <div class="col-xs-9 lss-color-blue" style=" font-weight:bold; font-size:18px;margin-top:15px"><asp:Label ID="Label1" runat="server" Text="lb_date">2020-04-07</asp:Label></div>
-        <div class="col-xs-2 lss-color-blue" style="margin-top:10px" id="app_ok" runat="server" visible="false"><asp:ImageButton ID="ib_ok" runat="server" ImageUrl="~/Res/images/ok.png" Width="30px" Height="30px" /></div>
+        <div class="col-xs-2 lss-color-blue" style="margin-top:10px" id="app_ok" runat="server" visible="false"><asp:ImageButton ID="ib_ok" runat="server" ImageUrl="~/Res/images/ok2.png" BackColor="Black" Width="30px" Height="30px" /></div>
         <div class="col-xs-12" id="leaveDiv" runat="server" visible="true">
             <div class="col-xs-12 lsf-clearPadding" style="height:150px; overflow-y:scroll">
                 <table class="col-xs-12 lsu-table-xs lsf-clearPadding">
