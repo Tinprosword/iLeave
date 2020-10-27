@@ -23,7 +23,7 @@
             <div class="col-xs-7" style="width:64%;"><asp:Image ID="Image2" runat="server" ImageUrl="~/Res/images/square.png" BackColor="#f3e926" />&nbsp;<asp:Literal ID="lt_wait" runat="server">wait for approval</asp:Literal></div>
         </div>
         <div class="col-xs-9 lss-color-blue" style=" font-weight:bold; font-size:18px;margin-top:15px"><asp:Label ID="Label1" runat="server" Text="lb_date">2020-04-07</asp:Label></div>
-        <div class="col-xs-2 lss-color-blue" style="margin-top:10px" id="app_ok" runat="server" visible="false"><asp:ImageButton ID="ib_ok" runat="server" ImageUrl="~/Res/images/ok2.png" BackColor="Black" Width="30px" Height="30px" /></div>
+        <div class="col-xs-2 lss-color-blue" style="margin-top:10px" id="app_ok" runat="server" visible="false"></div>
         <div class="col-xs-12" id="leaveDiv" runat="server" visible="true">
             <div class="col-xs-12 lsf-clearPadding" style="height:150px; overflow-y:scroll">
                 <table class="col-xs-12 lsu-table-xs lsf-clearPadding">
