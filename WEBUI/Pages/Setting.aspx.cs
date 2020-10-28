@@ -30,7 +30,7 @@ namespace WEBUI.Pages
             LoadLableLanguage(BLL.MultiLanguageHelper.GetLanguagePacket(BLL.MultiLanguageHelper.GetChoose()));
             BLL.Page.MyCookie myCookie = BLL.Page.MyCookieManage.GetCookie();
 
-            this.lb_serveraddress.Text = "lb_serveraddresslb_serveraddresslb_serveraddresslb_serveraddress"; //myCookie.serverAddress;
+            this.lb_serveraddress.Text = myCookie.serverAddress;
             int intLanguagae = (int)myCookie.language;
             this.cb_languagea.SelectedValue = intLanguagae.ToString();
         }

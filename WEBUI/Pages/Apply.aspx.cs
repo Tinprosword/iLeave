@@ -17,6 +17,9 @@ namespace WEBUI.Pages
 
     public partial class Apply : BLL.CustomLoginTemplate
     {
+        //todo 1.繁体检查下 no 2.employlist  ok  3.name :chinese. no.   4.撤回 ok
+        //1.add chinese ok. 2.upload tr chinses.  no  3.please select chinese no  4. ampn chinese  ok 
+        //todo later 5. wait for approve chinese 6.list  new style?
         //1.leave desc                              ok.
         //2.list fullday :multiply language.        ok.
         //3.roster 只放一个shift.                   ok.

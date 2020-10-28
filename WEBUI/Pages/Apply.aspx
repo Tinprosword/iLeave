@@ -67,8 +67,8 @@
             <table class="col-xs-12 lsu-table-xs">
                 <tr class="lss-bgcolor-blue" style="color:white">
                     <td class="col-xs-3" style="width:18%"><asp:Literal ID="ltlistdate" runat="server"></asp:Literal></td>
-                    <td class="col-xs-4" style="width:35%"><asp:Literal ID="ltlisttype" runat="server"></asp:Literal></td>
-                    <td class="col-xs-4" style="width:33%"><asp:Literal ID="lt_listsection" runat="server"></asp:Literal></td>
+                    <td class="col-xs-4" style="width:44%"><asp:Literal ID="ltlisttype" runat="server"></asp:Literal></td>
+                    <td class="col-xs-4" style="width:24%"><asp:Literal ID="lt_listsection" runat="server"></asp:Literal></td>
                     <td class="col-xs-1" style="width:14%">  </td>
                 </tr>
                 <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">

@@ -10,7 +10,7 @@
                         <td style="width: 130px"><asp:Literal ID="lt_language" runat="server">Language</asp:Literal></td>
                         <td>
                             <asp:RadioButtonList ID="cb_languagea" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" OnSelectedIndexChanged="cb_languagea_SelectedIndexChanged" AutoPostBack="true">
-                                <asp:ListItem Text="Engligh　" Value="0" Selected="True"></asp:ListItem>
+                                <asp:ListItem Text="English　" Value="0" Selected="True"></asp:ListItem>
                                 <asp:ListItem Text="简体　" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="繁體　" Value="2"></asp:ListItem>
                             </asp:RadioButtonList>
