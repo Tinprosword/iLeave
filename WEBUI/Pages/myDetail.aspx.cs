@@ -112,8 +112,13 @@ namespace WEBUI.Pages
         {
             if (LeaveRequestMaster != null)
             {
+                WebServiceLayer.WebReference_leave.t_Leave theLeave = new WebServiceLayer.WebReference_leave.t_Leave();
+                theLeave.ID = LeaveRequestMaster.MinLeaveID;
+                theLeave = BLL.Leave.GetLeaveByid(theLeave);
+                string leaveDesc = theLeave == null ? LeaveRequestMaster.minleaveCode : theLeave.Description;
+
                 this.lb_name.Text = LeaveRequestMaster.uname;
-                this.lb_leave.Text = LeaveRequestMaster.minleaveCode;
+                this.lb_leave.Text = leaveDesc;
                 this.lb_status.Text = BLL.GlobalVariate.RequestDesc[(BLL.GlobalVariate.ApprovalRequestStatus)(int)LeaveRequestMaster.Status];
                 this.lb_from.Text = LeaveRequestMaster.leavefrom.ToString("yyyy-MM-dd");
                 this.lb_to.Text = LeaveRequestMaster.leaveto.ToString("yyyy-MM-dd");

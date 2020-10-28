@@ -484,6 +484,12 @@ namespace BLL
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetWaiting(staffid, employid, leaveid);
         }
+
+
+        public static WebServiceLayer.WebReference_leave.t_Leave GetLeaveByid(WebServiceLayer.WebReference_leave.t_Leave leave)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.Base_Gett_Leave(leave);
+        }
         #endregion
     }
 }

@@ -17,6 +17,10 @@ namespace WEBUI.Pages
 
     public partial class Apply : BLL.CustomLoginTemplate
     {
+        //1.leave desc                              ok.
+        //2.list fullday :multiply language.        ok.
+        //3.roster 只放一个shift.                   ok.
+
         //calander 慢.
         //不支持download.
         //
@@ -173,7 +177,6 @@ namespace WEBUI.Pages
             Response.Redirect("~/Pages/Apply_Upload.aspx",true);
         }
         #endregion
-
 
         #region [module] leave
         protected void Canlendar_Click(object sender, ImageClickEventArgs e)

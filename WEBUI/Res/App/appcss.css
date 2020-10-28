@@ -5,7 +5,11 @@
 
 
 /*uint 通常是一个不可再分的较为小巧的个体，通常被重复用于各种模块中！比如按钮、输入框、loading、图标等*/
-.lsu-table-xs {font-size: 13px;}
+/*.lsu-table-xs {font-size: 13px;}
+.lsu-table-xs tr {height: 30px}
+.lsu-table-xs td {padding-left: 2px !important;padding-right: 2px !important;}*/
+
+.lsu-table-xs {font-size: 15px;}
 .lsu-table-xs tr {height: 30px}
 .lsu-table-xs td {padding-left: 2px !important;padding-right: 2px !important;}
 

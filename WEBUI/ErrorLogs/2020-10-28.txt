@@ -8,3 +8,98 @@ Function：Void DoConnect(System.Net.EndPoint, System.Net.SocketAddress)
 Trace：   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
    在 System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
 ********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/10/28 5:02:47
+Url：http://192.168.19.210:8091/Pages/calendar.aspx?action=apply
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void setNavigation()
+Trace：   在 WEBUI.Pages.calendar.setNavigation()
+   在 WEBUI.Pages.calendar.PageLoad_Reset_ReInitUIOnEachLoad5()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/10/28 5:05:42
+Url：http://192.168.19.210:8091/Pages/calendar.aspx?action=apply
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void setNavigation()
+Trace：   在 WEBUI.Pages.calendar.setNavigation()
+   在 WEBUI.Pages.calendar.PageLoad_Reset_ReInitUIOnEachLoad5()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/10/28 9:45:15
+Url：http://192.168.19.210:8091/login.aspx
+Message：请求因 HTTP 状态 405 失败: Method Not Allowed。
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.AuthenticateUser(String UserName, String PasswordHash)
+   在 BLL.User_wsref.CheckLogin(String uid, String password)
+   在 WEBUI.Login.ProgressLogin(String userid, String password)
+   在 WEBUI.Login.Button1_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/10/28 9:49:50
+Url：http://192.168.19.210:8091/login.aspx
+Message：请求因 HTTP 状态 405 失败: Method Not Allowed。
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.AuthenticateUser(String UserName, String PasswordHash) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_user\Reference.cs:行号 218
+   在 BLL.User_wsref.CheckLogin(String uid, String password) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\User_wsref.cs:行号 17
+   在 WEBUI.Login.ProgressLogin(String userid, String password) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Login.aspx.cs:行号 56
+   在 WEBUI.Login.Button1_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Login.aspx.cs:行号 98
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/10/28 10:45:27
+Url：http://192.168.19.210:8091/pages/Apply.aspx?action=backCalendar
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void PageLoad_InitUIOnFirstLoad4()
+Trace：   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/10/28 11:11:01
+Url：http://192.168.19.210:8091/pages/calendar.aspx
+Message：服务器无法处理请求。 ---> 列名 'Time' 无效。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetRoster(DateTime date, Int32[] employmentID)
+   在 BLL.calendar.GetRoster(DateTime date, List`1 employmentID)
+   在 WEBUI.Pages.calendar.SetupRepeater()
+   在 WEBUI.Pages.calendar.tb_name_TextChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.TextBox.OnTextChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

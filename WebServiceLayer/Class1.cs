@@ -50,6 +50,10 @@ namespace WebServiceLayer
                 ws_user.CookieContainer = cookieContainer;
                 ws_leave.CookieContainer = cookieContainer;
                 ws_codesetting.CookieContainer = cookieContainer;
+
+                ws_user.Url = GetWebServices()+ "/ServicesWithSession/UserManagementV2.asmx";
+                ws_leave.Url = GetWebServices()+ "/ServicesWithSession/LeaveManagementV2.asmx";
+                ws_codesetting.Url = GetWebServices()+ "/ServicesWithSession/CodeSettingsV2.asmx";
             }
 
         }

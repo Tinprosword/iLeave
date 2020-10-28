@@ -23,6 +23,7 @@ namespace WEBUI.Pages
         private readonly System.Drawing.Color apporvedcolor = System.Drawing.Color.FromArgb(0, 255, 0);
         private readonly System.Drawing.Color waitcolor = System.Drawing.Color.FromArgb(255, 255, 00); // System.Drawing.Color.FromArgb(234, 224, 56);//f3e926;  eae013
         private readonly System.Drawing.Color selectedColor = System.Drawing.Color.FromArgb(173, 216, 230);   //#2573a4  add8e6
+        private readonly System.Drawing.Color btnokBGColor = System.Drawing.Color.FromArgb(88, 141, 167);//588da7
 
         #region pageevent
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
@@ -68,7 +69,8 @@ namespace WEBUI.Pages
 
             this.Image1.BackColor = apporvedcolor;
             this.Image2.BackColor = waitcolor;
-            this.ib_ok.BackColor = selectedColor;
+            this.btn_ok.BackColor = btnokBGColor;
+            
 
             OnPrePageIsApplyInitViewState();
             SetupNameInput();
@@ -182,7 +184,7 @@ namespace WEBUI.Pages
             if (isFromApply)
             {
                 ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_calendar_current,null, true, BackEvent);
-                this.ib_ok.Click += BackEvent;
+                this.btn_ok.Click += BackEvent;
             }
             else
             {
@@ -190,7 +192,7 @@ namespace WEBUI.Pages
             }
         }
 
-        private void BackEvent(object sender, ImageClickEventArgs e)
+        private void BackEvent(object sender, EventArgs e)
         {
             object myViewState = LSLibrary.WebAPP.ViewStateHelper.GetValue(WEBUI.Pages.Apply.ViewState_PageName, this.ViewState);
             LSLibrary.WebAPP.PageSessionHelper.SetValue(myViewState, BLL.GlobalVariate.Session_CanlendarToApply);

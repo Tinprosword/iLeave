@@ -22,8 +22,9 @@
             <div class="col-xs-5" style="width:36%;"><asp:Image ID="Image1" runat="server" ImageUrl="~/Res/images/square.png" BackColor="Black" />&nbsp;<asp:Literal ID="lt_approval" runat="server">approval</asp:Literal></div>
             <div class="col-xs-7" style="width:64%;"><asp:Image ID="Image2" runat="server" ImageUrl="~/Res/images/square.png" BackColor="#f3e926" />&nbsp;<asp:Literal ID="lt_wait" runat="server">wait for approval</asp:Literal></div>
         </div>
-        <div class="col-xs-9 lss-color-blue" style=" font-weight:bold; font-size:18px;margin-top:15px"><asp:Label ID="Label1" runat="server" Text="lb_date">2020-04-07</asp:Label></div>
-        <div class="col-xs-2 lss-color-blue" style="margin-top:10px" id="app_ok" runat="server" visible="false"></div>
+        <div class="col-xs-9 lss-color-blue" style=" font-weight:bold; font-size:18px;margin-top:15px"><asp:Label ID="Label1" Height="21px" runat="server" Text="lb_date">2020-04-07</asp:Label></div>
+        <div class="col-xs-2 lss-color-blue" style="margin-top:10px; text-align:right" id="app_ok" runat="server" visible="false">
+            <asp:Button ID="btn_ok" runat="server" Text="Add" BackColor="#588da7" ForeColor="White" BorderWidth="0" Width="45px" Height="27px" Font-Size="16px" /></div>
         <div class="col-xs-12" id="leaveDiv" runat="server" visible="true">
             <div class="col-xs-12 lsf-clearPadding" style="height:150px; overflow-y:scroll">
                 <table class="col-xs-12 lsu-table-xs lsf-clearPadding">
@@ -49,16 +50,14 @@
                 <table class="col-xs-12 lsu-table-xs">
                     <tr class="lss-bgcolor-blue" style="color:white;">
                         <td class="col-xs-3"><asp:Literal ID="lt_displayname" runat="server">Name</asp:Literal></td>
-                        <td class="col-xs-3"><asp:Literal ID="lt_shiftCode" runat="server">Shift</asp:Literal></td>
-                        <td class="col-xs-3"><asp:Literal ID="lt_time" runat="server">Time</asp:Literal></td>
+                        <td class="col-xs-6"><asp:Literal ID="lt_shiftCode" runat="server">Shift</asp:Literal></td>
                         <td class="col-xs-3"><asp:Literal ID="lt_remark" runat="server">Remark</asp:Literal></td>
                     </tr>
                     <asp:Repeater ID="rp_roster" runat="server" EnableViewState="true">
                         <ItemTemplate>
                             <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>">
                                 <td class="col-xs-3"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).DispayName %></td>
-                                <td class="col-xs-3"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).ShiftCode %></td>
-                                <td class="col-xs-3"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).Time %></td>
+                                <td class="col-xs-6"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).ShiftCode %></td>
                                 <td class="col-xs-3"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).Remark %></td>
                             </tr>
                         </ItemTemplate>

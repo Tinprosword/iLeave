@@ -104,12 +104,13 @@ namespace BLL
         #endregion
 
         #region common dictionary full day 2 ampm 3 3secton 4 houre
+
         public static Dictionary<int, string> sections
         {
             get
             {
                 Dictionary<int, string> temp = new Dictionary<int, string>();
-                temp.Add(0, "Full day");
+                temp.Add(0, BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_fullday);
                 temp.Add(1, "AM");
                 temp.Add(2, "PM");
                 temp.Add(3, "3Sections");
@@ -117,6 +118,8 @@ namespace BLL
                 return temp;
             }
         }
+
+
 
         public static Dictionary<ApprovalRequestStatus, string> RequestDesc
         {
