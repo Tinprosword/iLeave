@@ -4,7 +4,7 @@
                 <table class="col-xs-12 lsf-maringTop3px lsu-bigtable">
                     <tr>
                         <td style="width:130px;"><asp:Literal ID="lt_address" runat="server">Server address</asp:Literal></td>
-                        <td><asp:Label ID="lb_serveraddress" runat="server" Text="Label"></asp:Label></td>
+                        <td style="word-break:break-all;"><asp:Label ID="lb_serveraddress" runat="server"  Text="Label">http://192.168.19.210:8091/pages/setting.aspxhttp://192.168.19.210:8091/pages/setting.aspx</asp:Label></td>
                     </tr>
                     <tr>
                         <td style="width: 130px"><asp:Literal ID="lt_language" runat="server">Language</asp:Literal></td>
