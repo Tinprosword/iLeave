@@ -17,8 +17,9 @@ namespace WEBUI.Pages
 
     public partial class Apply : BLL.CustomLoginTemplate
     {
-        //todo 1.繁体检查下 no 2.employlist  ok  3.name :chinese. no.   4.撤回 ok
-        //1.add chinese ok. 2.upload tr chinses.  no  3.please select chinese no  4. ampn chinese  ok 
+        //todo 1.繁体检查下 no   .2.upload tr chinses.  no
+        //3.name :chinese. ok
+        //2.employlist  ok     4.撤回 ok 1.add chinese ok.   3.please select chinese ok   4. ampn chinese  ok.
         //todo later 5. wait for approve chinese 6.list  new style?
         //1.leave desc                              ok.
         //2.list fullday :multiply language.        ok.
@@ -26,7 +27,6 @@ namespace WEBUI.Pages
 
         //calander 慢.
         //不支持download.
-        //
 
         //todo upload file in mobil.
         //todo 一个页面只能触发一次js？

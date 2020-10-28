@@ -59,6 +59,8 @@
 <script src="../Res/jquery/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 
+
+
 function ShowDivByfixname(windowname)
 {
     var winabc = $("div[fixname='"+windowname+"']");

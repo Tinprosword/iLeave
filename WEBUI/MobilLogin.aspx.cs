@@ -14,6 +14,7 @@ namespace WEBUI
             string action = Request.Form["Type"];
             if(action=="login")
             {
+                
                 string loginID = Request.Form["Uid"];//login id
                 string id = Request.Form["id"];
                 int intID = int.Parse(id);

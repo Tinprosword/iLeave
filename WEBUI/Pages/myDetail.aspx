@@ -35,15 +35,15 @@
             <table class="col-xs-12 lsu-table-xs">
                     <tr class="lss-bgcolor-blue" style="color:white;">
                         <td class="col-xs-2"><asp:Literal ID="lt_listdate" runat="server">Date</asp:Literal></td>
-                        <td class="col-xs-6"><asp:Literal ID="lt_listtype" runat="server">Type</asp:Literal></td>
-                        <td class="col-xs-3"><asp:Literal ID="lt_listsection" runat="server">Section</asp:Literal></td>
+                        <td class="col-xs-7"><asp:Literal ID="lt_listtype" runat="server">Type</asp:Literal></td>
+                        <td class="col-xs-2"><asp:Literal ID="lt_listsection" runat="server">Section</asp:Literal></td>
                     </tr>
                 <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                     <ItemTemplate>
                         <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>">
                             <td class="col-xs-2"><%#( (DateTime)((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveFrom).ToString("MM-dd")%></td>
-                            <td class="col-xs-6"><%#((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Description %></td>
-                            <td class="col-xs-3"><%#BLL.GlobalVariate.sections[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %></td></td>
+                            <td class="col-xs-7"><%#((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Description %></td>
+                            <td class="col-xs-2"><%#BLL.GlobalVariate.sections[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %></td></td>
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>

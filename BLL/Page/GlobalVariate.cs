@@ -111,14 +111,13 @@ namespace BLL
             {
                 Dictionary<int, string> temp = new Dictionary<int, string>();
                 temp.Add(0, BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_fullday);
-                temp.Add(1, "AM");
-                temp.Add(2, "PM");
+                temp.Add(1, BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_am);
+                temp.Add(2, BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_pm);
                 temp.Add(3, "3Sections");
                 //temp.Add( 4,"Hours");
                 return temp;
             }
         }
-
 
 
         public static Dictionary<ApprovalRequestStatus, string> RequestDesc
