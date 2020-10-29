@@ -87,7 +87,7 @@
     <Content Include="Pages\showpic2.aspx" />
     <Content Include="Pages\Test.aspx" />
     <Content Include="Pages\Test.html" />
-    <Content Include="readme.txt" />
+    <Compile Include="readme.cs" />
     <Content Include="Res\App\appcss.css" />
     <Content Include="Res\App\apply.js" />
     <Content Include="Res\App\CommonJS.js" />
@@ -141,14 +141,18 @@
     <Content Include="Res\images\Content_Page_Color_Botton_G.png" />
     <Content Include="Res\images\exit.png" />
     <Content Include="Res\images\file.png" />
+    <Content Include="Res\images\iconfont_iconfontsetting.png" />
     <Content Include="Res\images\item1.png" />
     <Content Include="Res\images\itmea5.png" />
     <Content Include="Res\images\itmea1.png" />
     <Content Include="Res\images\itmea2.png" />
     <Content Include="Res\images\itmea3.png" />
     <Content Include="Res\images\itmea4.png" />
+    <Content Include="Res\images\login_page_bg.png" />
+    <Content Include="Res\images\login_page_icon.png" />
     <Content Include="Res\images\Logon Closed.png" />
     <Content Include="Res\images\ok.png" />
+    <Content Include="Res\images\power_off.png" />
     <Content Include="Res\images\quare.png" />
     <Content Include="Res\images\redcicle.png" />
     <Content Include="Res\images\setting.gif" />

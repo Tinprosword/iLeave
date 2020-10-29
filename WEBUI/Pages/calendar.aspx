@@ -57,7 +57,7 @@
                         <ItemTemplate>
                             <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>">
                                 <td class="col-xs-3"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).DispayName %></td>
-                                <td class="col-xs-6"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).ShiftCode %></td>
+                                <td class="col-xs-6"><label style="width:65px; font-weight:normal; font-size:15px" id="code"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).ShiftCode %></label><label id="time" style="font-weight:normal; font-size:15px"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).Time %></label></td>
                                 <td class="col-xs-3"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).Remark %></td>
                             </tr>
                         </ItemTemplate>

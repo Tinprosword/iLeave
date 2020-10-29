@@ -1,0 +1,15 @@
+ip:192.168.19.210
+DataTime：2020/10/29 15:56:13
+Url：http://192.168.19.210:8091/login.aspx
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void LoadLableLanguage(LSLibrary.WebAPP.BaseLanguage)
+Trace：   在 WEBUI.Login.LoadLableLanguage(BaseLanguage baseLanguage)
+   在 WEBUI.Login.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomCommonTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

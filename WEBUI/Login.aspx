@@ -10,7 +10,6 @@
 </head>
 <body>
     <form id="form1" runat="server" defaultbutton="Button1" defaultfocus="tb_user">
-        
         <div class="container-fluid">
             <div class="row">
                 <table class="row" style="width:100%;padding:0px;margin:0px;">
@@ -26,24 +25,22 @@
                         </td>
                      </tr>   
                 </table>
-                <table class="col-xs-12 lsf-maringTop3px lsu-bigtable">
+                <table class="col-xs-12 lsu-bigtable" style="background-image:url(/res/images/login_page_bg.png); background-repeat:no-repeat;background-size:360px 620px; height:620px;">
+                    <tr><td style="width:40px"></td><td style="height:160px"></td><td></td></tr>
                     <tr>
-                        <td style="height:20px;">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td style="width:90px;"><asp:Literal ID="lt_user" runat="server" Text="User" /></td>
-                        <td><asp:TextBox ID="tb_user" runat="server" Width="90%"/></td>
-                    </tr>
-                    <tr>
-                        <td><asp:Literal ID="lt_password" runat="server" Text="Password" /></td>
-                        <td><asp:TextBox ID="tb_password" runat="server" Width="90%" TextMode="Password"/></td>
-                    </tr>
-                    <tr style="height:15px;">
-                        <td></td>
+                        <td colspan="3" style="height:60px; text-align:center"><asp:Image ID="Image1" runat="server" ImageUrl="~/Res/images/login_page_icon.png" Width="60" Height="60"/></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><asp:Button ID="Button1" runat="server" Text="Login"  Width="120px" OnClick="Button1_Click"/></td>
+                        <td colspan="2"><asp:TextBox ID="tb_user" runat="server" Width="90%"/></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td colspan="2"><asp:TextBox ID="tb_password" runat="server" Width="90%" TextMode="Password"/></td>
+                    </tr>
+
+                    <tr><td colspan="1"></td>
+                        <td colspan="2" style=""><asp:Button ID="Button1" runat="server" Text="Login"  Width="90%" BackColor="#588da7" BorderWidth="0" OnClick="Button1_Click"/></td>
                     </tr>
                     <tr style="height:20px;">
                         <td></td>
@@ -52,6 +49,7 @@
                             <asp:Literal ID="lt_remember2" runat="server">Remember Me</asp:Literal>
                         </td>
                     </tr>
+                    <tr><td style="height:200px"></td></tr>
                 </table>
             </div>
         </div>

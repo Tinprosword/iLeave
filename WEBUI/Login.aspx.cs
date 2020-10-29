@@ -9,7 +9,6 @@ namespace WEBUI
 {
     public partial class Login :BLL.CustomCommonTemplate
     {
-
         protected override void InitPage_OnBeforeF5RegisterEvent()
         {}
 
@@ -28,8 +27,12 @@ namespace WEBUI
         protected override void InitPage_OnFirstLoad2()
         {}
 
+
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
-        {}
+        {
+            //LSLibrary.WebAPP.MyJSHelper.SetTextBoxTip(this.tb_user, BLL.MultiLanguageHelper.GetLanguagePacket().login_user);
+            //LSLibrary.WebAPP.MyJSHelper.SetTextBoxTip(this.tb_password, BLL.MultiLanguageHelper.GetLanguagePacket().login_password);
+        }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
@@ -83,8 +86,8 @@ namespace WEBUI
 
         private void LoadLableLanguage(LSLibrary.WebAPP.BaseLanguage baseLanguage)
         {
-            this.lt_user.Text = baseLanguage.login_user;
-            this.lt_password.Text = baseLanguage.login_password;
+            //this.lt_user.Text = baseLanguage.login_user;
+            //this.lt_password.Text = baseLanguage.login_password;
             this.Button1.Text= baseLanguage.login_loginbtn;
             this.lt_remember2.Text = baseLanguage.login_remember;
         }

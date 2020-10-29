@@ -73,18 +73,12 @@ namespace WEBUI.Pages
             
 
             OnPrePageIsApplyInitViewState();
-            SetupNameInput();
+            LSLibrary.WebAPP.MyJSHelper.SetTextBoxTip(tb_name,searchTip);
             SetupZone(loginer.userInfo.personid);
             SetupRepeater();
             SetupMultiLanguage();
         }
 
-        private void SetupNameInput()
-        {
-            tb_name.Attributes.Add("Value", searchTip);
-            tb_name.Attributes.Add("OnFocus", "if(this.value=='" + searchTip + "') {this.value=''}");
-            tb_name.Attributes.Add("OnBlur", "if(this.value==''){this.value='" + searchTip + "'}");
-        }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {
