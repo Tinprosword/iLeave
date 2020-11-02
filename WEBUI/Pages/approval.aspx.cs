@@ -70,10 +70,10 @@ namespace WEBUI.Pages
         {
             this.ltdatefrom.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_from;
             this.lt_name2.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_name;
-            this.lt_listdate.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_list_column1;
-            this.lt_listuser.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_list_column2;
-            this.lt_unit.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_list_column3;
-            this.lt_type2.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_list_column4;
+            //this.lt_listdate.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_list_column1;
+            //this.lt_listuser.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_list_column2;
+            //this.lt_unit.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_list_column3;
+            //this.lt_type2.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_list_column4;
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()

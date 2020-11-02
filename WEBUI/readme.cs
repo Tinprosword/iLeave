@@ -1,4 +1,10 @@
-﻿
+﻿//android 打包不能混淆 
+//-keepclassmembers class * extends android.webkit.WebChromeClient{
+//public void openFileChooser(...);
+//}
+
+
+//附件大小的样子。
 //todo 日历的样式.											no
 //todo alert success msg.									no
 //2.upload ->camera.										no

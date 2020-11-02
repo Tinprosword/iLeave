@@ -58,33 +58,6 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Literal lt_listdate;
         
         /// <summary>
-        /// lt_listuser 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_listuser;
-        
-        /// <summary>
-        /// lt_unit 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_unit;
-        
-        /// <summary>
-        /// lt_type2 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_type2;
-        
-        /// <summary>
         /// repeater_myapplications 控件。
         /// </summary>
         /// <remarks>
