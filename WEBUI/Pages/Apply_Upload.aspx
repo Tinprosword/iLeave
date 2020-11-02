@@ -24,9 +24,6 @@
                                 </td>
                             </tr>
                         </table>
-                            
-                    
-            
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
