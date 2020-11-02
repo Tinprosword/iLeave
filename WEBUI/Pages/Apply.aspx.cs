@@ -164,7 +164,7 @@ namespace WEBUI.Pages
         {
             if (ddl_leavetype.SelectedValue=="0" || dropdl_section.SelectedValue=="-1")
             {
-                this.literal_errormsga.Text = BLL.GlobalVariate.msg_chooseLeaveAndSection;
+                this.literal_errormsga.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_msgselect;
                 this.literal_errormsga.Visible = true;
             }
             else
@@ -265,7 +265,11 @@ namespace WEBUI.Pages
                     copyFileTo(pics[i].bigImageRelatepath, pics[i].bigImageHrTempAbsolutePath);
                 }
                 BLL.Leave.InsertAttachment(pics, loginer.userInfo.id, loginer.userInfo.personid, reslut);
-                Response.Redirect("~/pages/main.aspx");
+                ((WEBUI.Controls.leave)this.Master).SetupMsg("Success", 2000, WEBUI.Controls.leave.msgtype.success);
+
+                LSLibrary.WebAPP.httpHelper.ResponseRedirectDalay(2.3f, "main.aspx", Response);
+
+                //Response.Redirect("~/pages/main.aspx",false);
             }
             else
             {

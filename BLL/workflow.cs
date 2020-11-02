@@ -31,14 +31,14 @@ namespace BLL
         #endregion
 
         #region update
-        public static bool ApproveRequest_leave(int requestid,int HandlerUID,out string errorMsg)
+        public static bool ApproveRequest_leave(int requestid,int HandlerUID,string remark, out string errorMsg)
         {
             bool result = false;
             errorMsg = "";
             int check = Check_ApproveRequest_leave();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_leave(requestid, HandlerUID);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_leave(requestid, HandlerUID,remark);
                 result = true;
             }
             else
@@ -49,14 +49,14 @@ namespace BLL
             return result;
         }
 
-        public static bool RejectRequest_leave(int requestid, int HandlerUID, out string errorMsg)
+        public static bool RejectRequest_leave(int requestid, int HandlerUID,string remarks, out string errorMsg)
         {
             bool result = false;
             errorMsg = "";
             int check = Check_RejectRequest_leave();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_leave(requestid, HandlerUID);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_leave(requestid, HandlerUID,remarks);
                 result = true;
             }
             else
@@ -67,14 +67,14 @@ namespace BLL
             return result;
         }
 
-        public static bool WithDrawRequest_leave(int requestid , int HandlerUID, out string errorMsg)
+        public static bool WithDrawRequest_leave(int requestid , int HandlerUID,string remark, out string errorMsg)
         {
             bool result = false;
             errorMsg = "";
             int check = Check_WithDrawRequest_leave();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.WithDrawRequest_leave(requestid, HandlerUID);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.WithDrawRequest_leave(requestid, HandlerUID,remark);
                 result = true;
             }
             else
@@ -85,14 +85,14 @@ namespace BLL
             return result;
         }
 
-        public static bool CancelRequest_leave(int requestid, int HandlerUID, out string errorMsg)
+        public static bool CancelRequest_leave(int requestid, int HandlerUID,string remark, out string errorMsg)
         {
             bool result = false;
             errorMsg = "";
             int check = Check_WithDrawRequest_leave();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CancelRequest_leave(requestid, HandlerUID);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CancelRequest_leave(requestid, HandlerUID,remark);
                 result = true;
             }
             else
@@ -103,14 +103,14 @@ namespace BLL
             return result;
         }
 
-        public static bool ApprovalCancelRequest_leave(int requestid, int HandlerUID, out string errorMsg)
+        public static bool ApprovalCancelRequest_leave(int requestid, int HandlerUID, string remark, out string errorMsg)
         {
             bool result = false;
             errorMsg = "";
             int check = Check_ApprovalCancelRequeste();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveCancelRequest_leave(requestid, HandlerUID);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveCancelRequest_leave(requestid, HandlerUID,remark);
                 result = true;
             }
             else
@@ -122,14 +122,14 @@ namespace BLL
         }
 
 
-        public static bool RejectCancelRequest_leave(int requestid, int HandlerUID, out string errorMsg)
+        public static bool RejectCancelRequest_leave(int requestid, int HandlerUID, string remark, out string errorMsg)
         {
             bool result = false;
             errorMsg = "";
             int check = Check_RejectCancelRequest();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectCancelRequest_leave(requestid, HandlerUID);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectCancelRequest_leave(requestid, HandlerUID,remark);
                 result = true;
             }
             else

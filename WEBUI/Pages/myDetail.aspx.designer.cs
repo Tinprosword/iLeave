@@ -193,6 +193,24 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Panel waitingApproval_admin;
         
         /// <summary>
+        /// Literal1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal1;
+        
+        /// <summary>
+        /// tb_wait_admin_remarks 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_wait_admin_remarks;
+        
+        /// <summary>
         /// button_wait_admin_approval 控件。
         /// </summary>
         /// <remarks>
@@ -218,6 +236,24 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel waitingCanceling_admin;
+        
+        /// <summary>
+        /// Literal2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal Literal2;
+        
+        /// <summary>
+        /// tb_canceladmin_remarks 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_canceladmin_remarks;
         
         /// <summary>
         /// button_Cancel_admin_approval 控件。

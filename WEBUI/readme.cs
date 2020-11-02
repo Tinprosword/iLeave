@@ -1,10 +1,11 @@
 ﻿
-
+//todo 日历的样式.											no
 //todo alert success msg.									no
 //2.upload ->camera.										no
 //todo1.iven mov 说了一个错误。								no
 //todo 3 calendar transfer to office 365 team's calendar.   no
 //todo1.bg													ok.
+
 
 
 

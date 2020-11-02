@@ -13,18 +13,19 @@
     <form id="form1" runat="server">
         <input type="hidden" name="mypostback_target" id="mypostback_target" value="" />
         <input type="hidden" name="mypostback_argument" id="mypostback_argument" value="" />
+        <div id="fixmsg"></div>
         <div class="container-fluid">
             <div class="row">
                 <div id="Navigation" class="lss-bannercolor-black" style="line-height:40px;height:40px;" runat="server" visible="false">
                     <div class="col-xs-1" >
-                        <asp:ImageButton ID="ib_back" runat="server" ImageUrl="~/Res/images/back.png" Width="20px" Height="20px" style="padding-top:5px;"/>
+                        <asp:ImageButton ID="ib_back" runat="server" ImageUrl="~/Res/images/back2.png" Width="50px" Height="30px" style="padding-top:5px;padding-bottom:5px"/>
                     </div>
                     <div class="col-xs-9 lsf-center lsf-fontsizem1" style="color:white;font-weight:bold" ><asp:Literal ID="label_title" runat="server"></asp:Literal></div>
                     <div class="col-xs-1" >&nbsp;</div>
                 </div>
                 <div id="Navigation2" class="lss-bannercolor-black" style="line-height:40px;height:40px;" runat="server" visible="false">
                     <div class="col-xs-2" >
-                        <input type="image" src="../Res/images/back.png" onclick="GOHistory(); return false;" style="width:20px;height:20px;padding-top:5px;" />
+                        <input type="image" src="../Res/images/back2.png" onclick="GOHistory(); return false;" style="width:50px;height:30px;padding-top:5px; padding-bottom:5px" />
                     </div>
                     <div class="col-xs-6 lsf-center lsf-fontsizem1" style="color:white;font-weight:bold" ><asp:Literal ID="Literal1" runat="server"></asp:Literal></div>
                 </div>
@@ -35,6 +36,7 @@
         <script src="../Res/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../Res/Bootstrap/bootstrap-3.3.7-dist/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
         <script src="../Res/App/CommonJS.js?lastmodify=<%=BLL.GlobalVariate.commonjsLastmodify %>"></script>
+        <asp:Literal ID="lt_jsfixmsg" runat="server"></asp:Literal>
         <asp:ContentPlaceHolder ID="contentjs" runat="server">
         </asp:ContentPlaceHolder>
     </form>

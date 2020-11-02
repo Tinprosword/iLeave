@@ -190,42 +190,68 @@ namespace WEBUI.Pages
         protected void button_apply_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            Boolean result = true;
+            string errormsg = "";
+            string tipmsg = "";
+            string backurl = "";
 
             if (button.ID == this.button_wait_user_Withdraw.ID)
             {
-                string errormsg;
-                BLL.workflow.WithDrawRequest_leave(requestId, loginer.userInfo.id, out errormsg);
-            }
-            else if (button.ID == this.button_wait_admin_approval.ID)
-            {
-                string errormsg;
-                BLL.workflow.ApproveRequest_leave(requestId, loginer.userInfo.id, out errormsg);
-            }
-            else if (button.ID == this.button_wait_admin_reject.ID)
-            {
-                string errormsg;
-                BLL.workflow.RejectRequest_leave(requestId, loginer.userInfo.id, out errormsg);
+                result=BLL.workflow.WithDrawRequest_leave(requestId, loginer.userInfo.id,"", out errormsg);
+                tipmsg = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgwithdraw;
+                backurl = "myapplications.aspx?applicationType=0";
             }
             else if (button.ID == this.button_approval_user_Cancel.ID)
             {
-                string errormsg;
-                BLL.workflow.CancelRequest_leave(requestId, loginer.userInfo.id, out errormsg);
+                result = BLL.workflow.CancelRequest_leave(requestId, loginer.userInfo.id,"", out errormsg);
+                tipmsg = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgcancel;
+                backurl = "myapplications.aspx?applicationType=1";
+            }
+            else if (button.ID == this.button_wait_admin_approval.ID)
+            {
+                string remarks = this.tb_wait_admin_remarks.Text.Trim();
+                result = BLL.workflow.ApproveRequest_leave(requestId, loginer.userInfo.id, remarks, out errormsg);
+                tipmsg = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproveok;
+                backurl = "approval.aspx?applicationType=0";
+                
+            }
+            else if (button.ID == this.button_wait_admin_reject.ID)
+            {
+                string remarks = this.tb_wait_admin_remarks.Text.Trim();
+                result = BLL.workflow.RejectRequest_leave(requestId, loginer.userInfo.id, remarks, out errormsg);
+                tipmsg = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproverej;
+                backurl = "approval.aspx?applicationType=0";
+                
             }
             else if (button.ID == this.button_Cancel_admin_approval.ID)
             {
-                string errormsg;
-                BLL.workflow.ApprovalCancelRequest_leave(requestId, loginer.userInfo.id, out errormsg);
+                string remarks = this.tb_canceladmin_remarks.Text.Trim();
+                result = BLL.workflow.ApprovalCancelRequest_leave(requestId, loginer.userInfo.id,remarks, out errormsg);
+                tipmsg = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproveok;
+                backurl = "approval.aspx?applicationType=0";
+                
             }
             else if (button.ID == this.button_Cancel_admin_Reject.ID)
             {
-                string errormsg;
-                BLL.workflow.RejectCancelRequest_leave(requestId, loginer.userInfo.id, out errormsg);
+                string remarks = this.tb_canceladmin_remarks.Text.Trim();
+                result = BLL.workflow.RejectCancelRequest_leave(requestId, loginer.userInfo.id, remarks, out errormsg);
+                tipmsg = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproverej;
+                backurl = "approval.aspx?applicationType=0";
+                
             }
-            string url = "mydetail.aspx?requestid={0}&action={1}&applicationType={2}";
-            url = string.Format(url, requestId, action, applicationType);
-            Response.Redirect(url);
+            if (result)
+            {
+                //string url = "mydetail.aspx?requestid={0}&action={1}&applicationType={2}";
+                //url = string.Format(url, requestId, action, applicationType);
+                ((WEBUI.Controls.leave)this.Master).SetupMsg(tipmsg,2000,WEBUI.Controls.leave.msgtype.success);
+                LSLibrary.WebAPP.httpHelper.ResponseRedirectDalay(2.3f, backurl, Response);
+            }
+            else
+            {
+                ((WEBUI.Controls.leave)this.Master).SetupMsg(BLL.MultiLanguageHelper.GetLanguagePacket().failure, 2000, WEBUI.Controls.leave.msgtype.info);
+            }
         }
-
+        
         protected void linkbtn_file_Click(object sender, EventArgs e)
         {
             LinkButton linkButton = (LinkButton)sender;

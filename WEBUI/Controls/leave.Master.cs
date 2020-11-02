@@ -44,5 +44,28 @@ namespace WEBUI.Controls
             return result;
         }
 
+        public enum msgtype
+        {
+            success,
+            error,
+            info,
+        }
+
+        public void SetupMsg(string msg, int mintime, msgtype type)
+        {
+            msg = LSLibrary.StringUtil.GetSaftControlValue(msg);
+            string cssname = "Flostalert-success";
+            if (type == msgtype.error)
+            {
+                cssname = "Flostalert-danger";
+            }
+            else if (type == msgtype.info)
+            {
+                cssname = "Flostalert-info";
+            }
+
+            this.lt_jsfixmsg.Text = "<script>$('#fixmsg').html('" + msg + "').addClass('"+ cssname + "').show().delay(" + mintime + ").fadeOut();</script>";
+        }
+
     }
 }

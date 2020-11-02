@@ -21,6 +21,10 @@
 .lsu-table tr{height:38px}
 .lsu-table td {padding-left:5px !important;padding-right: 2px !important;}
 
+.lsu-table-nm {font-size:16px;}
+.lsu-table-nm tr{height:30px}
+.lsu-table-nm td {padding-left:5px !important;padding-right: 2px !important;}
+
 .lsu-tablem1 {font-size:16px;}
 .lsu-tablem1 tr{height:40px}
 .lsu-tablem1 td {padding-left:5px !important;padding-right: 2px !important;}
@@ -61,11 +65,13 @@
 .lsf-clearPadding {padding:0px}
 
 
+
 /*skin 非换肤型网站通常只提取文字色！非换肤型网站不可滥用此类*/
 .lss-bgcolor-blue{background-color :#588da7}
 .lss-bannercolor-black{background-color :#000000}
 .lss-btncolor-blue{background-color :#2573a4; font-weight:bold}
 .lss-color-blue{ color:#588da7}
+
 
 /*custom define*/
 .btnBox 
@@ -194,10 +200,78 @@ a:active  { text-decoration:none}
 
 input,button,a {outline:0 none;}
 
-.overlable
-{}
 
 .overlable label{
     font-size:14px;
     font-weight:normal;
+}
+
+
+    
+.Flostalert-success {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    min-width: 100px;
+    max-width: 200px;
+    transform: translate(-50%,-50%);
+    z-index: 99999;
+    text-align: center;
+    padding: 15px;
+    border-radius: 3px;
+
+    color: white;
+    background-color: #51a351;
+    border-color: #d6e9c6;
+}
+    
+.Flostalert-info {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    min-width: 100px;
+    max-width: 200px;
+    transform: translate(-50%,-50%);
+    z-index: 99999;
+    text-align: center;
+    padding: 15px;
+    border-radius: 3px;
+
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+    
+.Flostalert-warning {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    min-width: 100px;
+    max-width: 200px;
+    transform: translate(-50%,-50%);
+    z-index: 99999;
+    text-align: center;
+    padding: 15px;
+    border-radius: 3px;
+
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+    
+.Flostalert-danger {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    min-width: 100px;
+    max-width: 200px;
+    transform: translate(-50%,-50%);
+    z-index: 99999;
+    text-align: center;
+    padding: 15px;
+    border-radius: 3px;
+
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
 }

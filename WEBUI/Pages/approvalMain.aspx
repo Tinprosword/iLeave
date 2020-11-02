@@ -15,5 +15,4 @@
         </div>
     </div>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
-</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server"></asp:Content>

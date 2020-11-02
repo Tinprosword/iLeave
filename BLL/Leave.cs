@@ -34,7 +34,6 @@ namespace BLL
             if (originDetail.Count == 0)
             {
                 result = -1;
-                message = GlobalVariate.msg_emptyLeave + "\r\n";
             }
             else
             {

@@ -125,8 +125,6 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetWaitValue_OverrideOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetBalanceByViewOperationCompleted;
-        
         private System.Threading.SendOrPostCallback GetGrossOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetWaitingOperationCompleted;
@@ -334,9 +332,6 @@ namespace WebServiceLayer.WebReference_leave {
         public event GetWaitValue_OverrideCompletedEventHandler GetWaitValue_OverrideCompleted;
         
         /// <remarks/>
-        public event GetBalanceByViewCompletedEventHandler GetBalanceByViewCompleted;
-        
-        /// <remarks/>
         public event GetGrossCompletedEventHandler GetGrossCompleted;
         
         /// <remarks/>
@@ -508,25 +503,27 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ApproveRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void ApproveRequest_leave(int requestid, int UserID) {
+        public void ApproveRequest_leave(int requestid, int UserID, string remark) {
             this.Invoke("ApproveRequest_leave", new object[] {
                         requestid,
-                        UserID});
+                        UserID,
+                        remark});
         }
         
         /// <remarks/>
-        public void ApproveRequest_leaveAsync(int requestid, int UserID) {
-            this.ApproveRequest_leaveAsync(requestid, UserID, null);
+        public void ApproveRequest_leaveAsync(int requestid, int UserID, string remark) {
+            this.ApproveRequest_leaveAsync(requestid, UserID, remark, null);
         }
         
         /// <remarks/>
-        public void ApproveRequest_leaveAsync(int requestid, int UserID, object userState) {
+        public void ApproveRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
             if ((this.ApproveRequest_leaveOperationCompleted == null)) {
                 this.ApproveRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnApproveRequest_leaveOperationCompleted);
             }
             this.InvokeAsync("ApproveRequest_leave", new object[] {
                         requestid,
-                        UserID}, this.ApproveRequest_leaveOperationCompleted, userState);
+                        UserID,
+                        remark}, this.ApproveRequest_leaveOperationCompleted, userState);
         }
         
         private void OnApproveRequest_leaveOperationCompleted(object arg) {
@@ -538,25 +535,27 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/WithDrawRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void WithDrawRequest_leave(int requestid, int UserID) {
+        public void WithDrawRequest_leave(int requestid, int UserID, string remark) {
             this.Invoke("WithDrawRequest_leave", new object[] {
                         requestid,
-                        UserID});
+                        UserID,
+                        remark});
         }
         
         /// <remarks/>
-        public void WithDrawRequest_leaveAsync(int requestid, int UserID) {
-            this.WithDrawRequest_leaveAsync(requestid, UserID, null);
+        public void WithDrawRequest_leaveAsync(int requestid, int UserID, string remark) {
+            this.WithDrawRequest_leaveAsync(requestid, UserID, remark, null);
         }
         
         /// <remarks/>
-        public void WithDrawRequest_leaveAsync(int requestid, int UserID, object userState) {
+        public void WithDrawRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
             if ((this.WithDrawRequest_leaveOperationCompleted == null)) {
                 this.WithDrawRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnWithDrawRequest_leaveOperationCompleted);
             }
             this.InvokeAsync("WithDrawRequest_leave", new object[] {
                         requestid,
-                        UserID}, this.WithDrawRequest_leaveOperationCompleted, userState);
+                        UserID,
+                        remark}, this.WithDrawRequest_leaveOperationCompleted, userState);
         }
         
         private void OnWithDrawRequest_leaveOperationCompleted(object arg) {
@@ -568,25 +567,27 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RejectRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void RejectRequest_leave(int requestid, int UserID) {
+        public void RejectRequest_leave(int requestid, int UserID, string remark) {
             this.Invoke("RejectRequest_leave", new object[] {
                         requestid,
-                        UserID});
+                        UserID,
+                        remark});
         }
         
         /// <remarks/>
-        public void RejectRequest_leaveAsync(int requestid, int UserID) {
-            this.RejectRequest_leaveAsync(requestid, UserID, null);
+        public void RejectRequest_leaveAsync(int requestid, int UserID, string remark) {
+            this.RejectRequest_leaveAsync(requestid, UserID, remark, null);
         }
         
         /// <remarks/>
-        public void RejectRequest_leaveAsync(int requestid, int UserID, object userState) {
+        public void RejectRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
             if ((this.RejectRequest_leaveOperationCompleted == null)) {
                 this.RejectRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRejectRequest_leaveOperationCompleted);
             }
             this.InvokeAsync("RejectRequest_leave", new object[] {
                         requestid,
-                        UserID}, this.RejectRequest_leaveOperationCompleted, userState);
+                        UserID,
+                        remark}, this.RejectRequest_leaveOperationCompleted, userState);
         }
         
         private void OnRejectRequest_leaveOperationCompleted(object arg) {
@@ -598,26 +599,28 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CancelRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int CancelRequest_leave(int requestid, int UserID) {
+        public int CancelRequest_leave(int requestid, int UserID, string remark) {
             object[] results = this.Invoke("CancelRequest_leave", new object[] {
                         requestid,
-                        UserID});
+                        UserID,
+                        remark});
             return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void CancelRequest_leaveAsync(int requestid, int UserID) {
-            this.CancelRequest_leaveAsync(requestid, UserID, null);
+        public void CancelRequest_leaveAsync(int requestid, int UserID, string remark) {
+            this.CancelRequest_leaveAsync(requestid, UserID, remark, null);
         }
         
         /// <remarks/>
-        public void CancelRequest_leaveAsync(int requestid, int UserID, object userState) {
+        public void CancelRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
             if ((this.CancelRequest_leaveOperationCompleted == null)) {
                 this.CancelRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCancelRequest_leaveOperationCompleted);
             }
             this.InvokeAsync("CancelRequest_leave", new object[] {
                         requestid,
-                        UserID}, this.CancelRequest_leaveOperationCompleted, userState);
+                        UserID,
+                        remark}, this.CancelRequest_leaveOperationCompleted, userState);
         }
         
         private void OnCancelRequest_leaveOperationCompleted(object arg) {
@@ -629,25 +632,27 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ApproveCancelRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void ApproveCancelRequest_leave(int requestid, int UserID) {
+        public void ApproveCancelRequest_leave(int requestid, int UserID, string remark) {
             this.Invoke("ApproveCancelRequest_leave", new object[] {
                         requestid,
-                        UserID});
+                        UserID,
+                        remark});
         }
         
         /// <remarks/>
-        public void ApproveCancelRequest_leaveAsync(int requestid, int UserID) {
-            this.ApproveCancelRequest_leaveAsync(requestid, UserID, null);
+        public void ApproveCancelRequest_leaveAsync(int requestid, int UserID, string remark) {
+            this.ApproveCancelRequest_leaveAsync(requestid, UserID, remark, null);
         }
         
         /// <remarks/>
-        public void ApproveCancelRequest_leaveAsync(int requestid, int UserID, object userState) {
+        public void ApproveCancelRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
             if ((this.ApproveCancelRequest_leaveOperationCompleted == null)) {
                 this.ApproveCancelRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnApproveCancelRequest_leaveOperationCompleted);
             }
             this.InvokeAsync("ApproveCancelRequest_leave", new object[] {
                         requestid,
-                        UserID}, this.ApproveCancelRequest_leaveOperationCompleted, userState);
+                        UserID,
+                        remark}, this.ApproveCancelRequest_leaveOperationCompleted, userState);
         }
         
         private void OnApproveCancelRequest_leaveOperationCompleted(object arg) {
@@ -659,25 +664,27 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RejectCancelRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void RejectCancelRequest_leave(int requestid, int UserID) {
+        public void RejectCancelRequest_leave(int requestid, int UserID, string remark) {
             this.Invoke("RejectCancelRequest_leave", new object[] {
                         requestid,
-                        UserID});
+                        UserID,
+                        remark});
         }
         
         /// <remarks/>
-        public void RejectCancelRequest_leaveAsync(int requestid, int UserID) {
-            this.RejectCancelRequest_leaveAsync(requestid, UserID, null);
+        public void RejectCancelRequest_leaveAsync(int requestid, int UserID, string remark) {
+            this.RejectCancelRequest_leaveAsync(requestid, UserID, remark, null);
         }
         
         /// <remarks/>
-        public void RejectCancelRequest_leaveAsync(int requestid, int UserID, object userState) {
+        public void RejectCancelRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
             if ((this.RejectCancelRequest_leaveOperationCompleted == null)) {
                 this.RejectCancelRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRejectCancelRequest_leaveOperationCompleted);
             }
             this.InvokeAsync("RejectCancelRequest_leave", new object[] {
                         requestid,
-                        UserID}, this.RejectCancelRequest_leaveOperationCompleted, userState);
+                        UserID,
+                        remark}, this.RejectCancelRequest_leaveOperationCompleted, userState);
         }
         
         private void OnRejectCancelRequest_leaveOperationCompleted(object arg) {
@@ -1809,37 +1816,6 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.GetWaitValue_OverrideCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetWaitValue_OverrideCompleted(this, new GetWaitValue_OverrideCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetBalanceByView", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public double[] GetBalanceByView(string LeaveCode, int staffid) {
-            object[] results = this.Invoke("GetBalanceByView", new object[] {
-                        LeaveCode,
-                        staffid});
-            return ((double[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetBalanceByViewAsync(string LeaveCode, int staffid) {
-            this.GetBalanceByViewAsync(LeaveCode, staffid, null);
-        }
-        
-        /// <remarks/>
-        public void GetBalanceByViewAsync(string LeaveCode, int staffid, object userState) {
-            if ((this.GetBalanceByViewOperationCompleted == null)) {
-                this.GetBalanceByViewOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetBalanceByViewOperationCompleted);
-            }
-            this.InvokeAsync("GetBalanceByView", new object[] {
-                        LeaveCode,
-                        staffid}, this.GetBalanceByViewOperationCompleted, userState);
-        }
-        
-        private void OnGetBalanceByViewOperationCompleted(object arg) {
-            if ((this.GetBalanceByViewCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetBalanceByViewCompleted(this, new GetBalanceByViewCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -6325,32 +6301,6 @@ namespace WebServiceLayer.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((double)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetBalanceByViewCompletedEventHandler(object sender, GetBalanceByViewCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetBalanceByViewCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetBalanceByViewCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public double[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((double[])(this.results[0]));
             }
         }
     }

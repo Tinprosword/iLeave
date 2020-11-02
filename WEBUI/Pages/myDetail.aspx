@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class ="col-xs-12" style="height:2px; padding:0px">&nbsp</div>
     <div class="row">
-        <table class="col-xs-12 lsu-table">
+        <table class="col-xs-12 lsu-table-nm">
             <tr>
                 <td style="width:100px"><asp:Literal ID="lt_name" runat="server">Name</asp:Literal></td>
                 <td><asp:Label ID="lb_name" runat="server" Text="name"/></td>
@@ -69,13 +69,26 @@
                 </table>
             </div>
         </div>
+        
         <asp:Panel ID="waitingApproval_admin" runat="server">
+            <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
+                <tr><td class="col-xs-12"><asp:Literal ID="Literal1" runat="server">Remarks</asp:Literal></td></tr>
+            </table>
+            <div class="row">
+                <div class="col-xs-12" ><asp:TextBox ID="tb_wait_admin_remarks" runat="server" style="margin-top:5px; margin-left:5px; width:96%"></asp:TextBox></div>
+            </div>
             <div class="col-xs-12" style="padding-top:12px; color:white; font-weight:bold">
                 <asp:Button ID="button_wait_admin_approval" runat="server" Text="Approve"  CssClass="lsu-imagebtn"  OnClick="button_apply_Click" style=" float:left ;margin-left:16px; background-image:url(../res/images/btnok.png); background-size:124px 44px" Width="124px" Height="44px"/>
                 <asp:Button ID="button_wait_admin_reject" runat="server" Text="Reject"  CssClass="lsu-imagebtn" OnClick="button_apply_Click" style="float:right;margin-right:16px; background-image:url(../res/images/btncancel.png); background-size:124px 44px" Width="124px" Height="44px" />
             </div>
         </asp:Panel>
         <asp:Panel ID="waitingCanceling_admin" runat="server">
+            <table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;">
+                <tr><td class="col-xs-12"><asp:Literal ID="Literal2" runat="server">Remarks</asp:Literal></td></tr>
+            </table>
+            <div class="row">
+                <div class="col-xs-12" ><asp:TextBox ID="tb_canceladmin_remarks" runat="server" style="margin-top:5px; margin-left:5px; width:96%"></asp:TextBox></div>
+            </div>
             <div class="col-xs-12 " style="padding-top:12px; color:white; font-weight:bold">
                 <asp:Button ID="button_Cancel_admin_approval" runat ="server" Text="Approve"  OnClick="button_apply_Click" CssClass="lsu-imagebtn"  style=" float:left ;margin-left:16px; background-image:url(../res/images/btnok.png); background-size:124px 44px" Width="124px" Height="44px"/>
                 <asp:Button ID="button_Cancel_admin_Reject"   runat ="server" Text="Reject"  OnClick="button_apply_Click" CssClass="lsu-imagebtn"  style="float:right;margin-right:16px; background-image:url(../res/images/btncancel.png); background-size:124px 44px" Width="124px" Height="44px" />
