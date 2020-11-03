@@ -259,7 +259,8 @@ input,button,a {outline:0 none;}
     border-color: #faebcc;
 }
     
-.Flostalert-danger {
+.Flostalert-danger 
+{
     position: fixed;
     top: 40%;
     left: 50%;
@@ -274,4 +275,17 @@ input,button,a {outline:0 none;}
     color: #a94442;
     background-color: #f2dede;
     border-color: #ebccd1;
+}
+
+.loginSelect
+{
+    font-size:14px;
+    font-weight:bold;
+    color:#2c8ea9;/*  #588da7    #2c8ea9 70ok  */
+}
+
+.loginUnSelect
+{
+    font-size:13px;
+    color:darkgrey;
 }

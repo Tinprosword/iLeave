@@ -15,3 +15,25 @@ Trace：   在 System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath
    在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
    在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 ********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/3 17:25:48
+Url：http://192.168.19.210:8091/sign.aspx
+Message：未能加载类型“WEBUI.Sign”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetType(System.String, Boolean, Boolean)
+Trace：   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/3 17:26:03
+Url：http://192.168.19.210:8091/sign.aspx
+Message：未能加载类型“WEBUI.Sign”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetType(System.String, Boolean, Boolean)
+Trace：   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+********************************************************************************************

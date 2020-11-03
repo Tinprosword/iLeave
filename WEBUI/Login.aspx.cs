@@ -14,11 +14,6 @@ namespace WEBUI
 
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
-            BLL.Page.MyCookie myCookie = BLL.Page.MyCookieManage.GetCookie();
-            if (myCookie == null || myCookie.serverAddress == "")
-            {
-                Response.Redirect("sign.aspx");
-            }
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
@@ -42,13 +37,33 @@ namespace WEBUI
             string isremember = cookie.isRemember;
             LSLibrary.WebAPP.LanguageType language = cookie.language;
 
-            this.rbl_language.SelectedValue = ((int)language).ToString();
+            DisplayLanguage(language);
+
             this.cb_remember.Checked = (isremember == "1" ? true : false);
 
             
             if (!string.IsNullOrEmpty(isremember) && isremember == "1")
             {
                 ProgressLogin(cookie.loginname, cookie.loginpsw);
+            }
+        }
+
+        private void DisplayLanguage(LSLibrary.WebAPP.LanguageType tt)
+        {
+            this.lb_eng.CssClass = "loginUnSelect";
+            this.lb_sc.CssClass = "loginUnSelect";
+            this.lb_tc.CssClass = "loginUnSelect";
+            if (tt == LSLibrary.WebAPP.LanguageType.english)
+            {
+                this.lb_eng.CssClass = "loginSelect";
+            }
+            else if (tt == LSLibrary.WebAPP.LanguageType.sc)
+            {
+                this.lb_sc.CssClass = "loginSelect";
+            }
+            else
+            {
+                this.lb_tc.CssClass = "loginSelect";
             }
         }
 
@@ -119,13 +134,15 @@ namespace WEBUI
             }
         }
 
-        protected void rbl_language_SelectedIndexChanged(object sender, EventArgs e)
+        protected void lb_eng_Click(object sender, EventArgs e)
         {
-            var selectlang = (LSLibrary.WebAPP.LanguageType)int.Parse(this.rbl_language.SelectedValue);
+            LinkButton lb = (LinkButton)sender;
+
+            LSLibrary.WebAPP.LanguageType selectlang = (LSLibrary.WebAPP.LanguageType)int.Parse(lb.CommandArgument);
             BLL.Page.MyCookieManage.SetCookie_language(selectlang);
             LSLibrary.WebAPP.BaseLanguage baseLanguage = BLL.MultiLanguageHelper.GetLanguagePacket(selectlang);
             LoadLableLanguage(baseLanguage);
+            DisplayLanguage(selectlang);
         }
-
     }
 }

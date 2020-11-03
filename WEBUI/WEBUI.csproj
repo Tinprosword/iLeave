@@ -114,6 +114,7 @@
     <Content Include="Res\images\addfile2.png" />
     <Content Include="Res\images\addfile3.png" />
     <Content Include="Res\images\back.png" />
+    <Content Include="Res\images\back2.png" />
     <Content Include="Res\images\bad.png" />
     <Content Include="Res\images\btncancel.png" />
     <Content Include="Res\images\btnok.png" />
@@ -139,6 +140,7 @@
     <Content Include="Res\images\Content_Page_Color_Botton_E.png" />
     <Content Include="Res\images\Content_Page_Color_Botton_F.png" />
     <Content Include="Res\images\Content_Page_Color_Botton_G.png" />
+    <Content Include="Res\images\earth.png" />
     <Content Include="Res\images\exit.png" />
     <Content Include="Res\images\file.png" />
     <Content Include="Res\images\iconfont_iconfontsetting.png" />
@@ -166,7 +168,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="template.aspx" />
-    <Content Include="Sign.aspx" />
     <Content Include="test.aspx" />
     <Content Include="testPost.aspx" />
     <Content Include="Web.config">
@@ -305,13 +306,6 @@
     <Compile Include="template.aspx.cs">
       <DependentUpon>template.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Sign.aspx.cs">
-      <DependentUpon>Sign.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Sign.aspx.designer.cs">
-      <DependentUpon>Sign.aspx</DependentUpon>
     </Compile>
     <Compile Include="test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>

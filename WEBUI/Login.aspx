@@ -17,15 +17,10 @@
                         <td  style="width:30%">&nbsp;</td>
                         <td  style="width:40%;color:white;">DW-iLeave</td>
                         <td  style="width:30%; font-size:13px;color:white; vertical-align:bottom;">
-                            <asp:RadioButtonList ID="rbl_language"  runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="rbl_language_SelectedIndexChanged" AutoPostBack="true">
-                                <asp:ListItem Value="0">Eng.</asp:ListItem>
-                                <asp:ListItem Value="1">简</asp:ListItem>
-                                <asp:ListItem Value="2">繁</asp:ListItem>
-                            </asp:RadioButtonList>
                         </td>
                      </tr>   
                 </table>
-                <table class="col-xs-12 lsu-bigtable" style="background-image:url(/res/images/login_page_bg.png); background-repeat:no-repeat;background-size:360px 620px; height:620px;">
+                <table class="col-xs-12 lsu-bigtable" style="background-image:url(res/images/login_page_bg.png); background-repeat:no-repeat;background-size:360px 620px; height:620px;">
                     <tr><td style="width:40px"></td><td style="height:160px"></td><td></td></tr>
                     <tr>
                         <td colspan="3" style="height:60px; text-align:center"><asp:Image ID="Image1" runat="server" ImageUrl="~/Res/images/login_page_icon.png" Width="60" Height="60"/></td>
@@ -45,8 +40,18 @@
                     <tr style="height:20px;">
                         <td></td>
                         <td class="lsf-fontsizes1">
-                            <asp:CheckBox ID="cb_remember" runat="server" OnCheckedChanged="cb_remember_CheckedChanged"  AutoPostBack="true"/>&nbsp;
-                            <asp:Literal ID="lt_remember2" runat="server">Remember Me</asp:Literal>
+                            <table>
+                                <tr>
+                                    <td style="width:20px"><asp:CheckBox ID="cb_remember" runat="server" OnCheckedChanged="cb_remember_CheckedChanged"  AutoPostBack="true"/></td>
+                                    <td style="width:100px"><asp:Literal ID="lt_remember2" runat="server">Remember Me</asp:Literal></td>
+                                    <td style="width:25px"><asp:Image ID="Image2" runat="server" ImageUrl="~/Res/images/earth.png" Width="21px" Height="21px" /></td>
+                                    <td style="width:135px">
+                                        <asp:LinkButton CssClass="loginSelect" Text="English" ID="lb_eng" OnClick="lb_eng_Click" runat="server" CommandArgument="0"></asp:LinkButton>&nbsp;&nbsp;
+                                        <asp:LinkButton CssClass="loginUnSelect" Text="简体" ID="lb_sc" OnClick="lb_eng_Click" runat="server" CommandArgument="1"></asp:LinkButton>&nbsp;&nbsp;
+                                        <asp:LinkButton CssClass="loginUnSelect" ID="lb_tc" runat="server" OnClick="lb_eng_Click" Text="繁體" CommandArgument="2"></asp:LinkButton>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                     <tr><td style="height:200px"></td></tr>
