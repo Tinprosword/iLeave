@@ -14,14 +14,16 @@ function MyPostBack(postback_target,postback_argument)
 
 
 //可以用作来弹出窗口
-function ShowDivByfixname(windowname) {
+function ShowDivByfixname(windowname)
+{
     var winabc = $("div[fixname='" + windowname + "']");
     winabc.show();
     return;
 }
 
 // When the user clicks on <span> (x), close the modal
-function HiddenDivByfixname(windowname) {
+function HiddenDivByfixname(windowname)
+{
     var winabc = $("div[fixname='" + windowname + "']");
     winabc.hide();
     return;
@@ -31,4 +33,11 @@ function HiddenDivByfixname(windowname) {
 function GOHistory()
 {
     history.back();
+}
+
+function ShowMessage()//msg,css,ms
+{
+    $('#fixmsg').html("test").addClass("Flostalert-success").show().delay(20000).fadeOut();
+    return true;
+    //ShowMessage
 }

@@ -109,6 +109,99 @@
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\locales\bootstrap-datetimepicker.zh-TW.js" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\modal.js" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\npm.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker.css" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker.min.css" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker.standalone.css" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker3.css" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker3.min.css" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker3.standalone.css" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\js\bootstrap-datepicker.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\js\bootstrap-datepicker.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker-en-CA.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.ar-tn.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.ar.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.az.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.bg.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.bm.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.bn.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.br.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.bs.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.ca.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.cs.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.cy.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.da.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.de.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.el.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.en-AU.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.en-CA.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.en-GB.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.en-IE.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.en-NZ.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.en-ZA.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.eo.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.es.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.et.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.eu.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.fa.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.fi.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.fo.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.fr-CH.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.fr.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.gl.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.he.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.hi.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.hr.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.hu.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.hy.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.id.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.is.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.it-CH.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.it.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.ja.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.ka.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.kh.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.kk.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.km.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.ko.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.kr.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.lt.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.lv.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.me.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.mk.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.mn.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.ms.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.nl-BE.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.nl.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.no.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.oc.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.pl.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.pt-BR.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.pt.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.ro.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.rs-latin.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.rs.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.ru.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.si.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.sk.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.sl.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.sq.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.sr-latin.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.sr.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.sv.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.sw.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.ta.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.tg.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.th.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.tk.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.tr.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.uk.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.uz-cyrl.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.uz-latn.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.vi.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.zh-CN.min.js" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\locales\bootstrap-datepicker.zh-TW.min.js" />
     <Content Include="Res\images\add.png" />
     <Content Include="Res\images\adddate2.png" />
     <Content Include="Res\images\addfile2.png" />
@@ -168,6 +261,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="template.aspx" />
+    <Content Include="template2.aspx" />
     <Content Include="test.aspx" />
     <Content Include="testPost.aspx" />
     <Content Include="Web.config">
@@ -307,6 +401,13 @@
       <DependentUpon>template.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="template2.aspx.cs">
+      <DependentUpon>template2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="template2.aspx.designer.cs">
+      <DependentUpon>template2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -343,6 +444,10 @@
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="temp.txt" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker.css.map" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker.standalone.css.map" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker3.css.map" />
+    <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker3.standalone.css.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

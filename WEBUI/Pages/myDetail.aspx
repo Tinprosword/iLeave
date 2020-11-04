@@ -77,7 +77,7 @@
             <div class="row">
                 <div class="col-xs-12" ><asp:TextBox ID="tb_wait_admin_remarks" runat="server" style="margin-top:5px; margin-left:5px; width:96%"></asp:TextBox></div>
             </div>
-            <div class="col-xs-12" style="padding-top:12px; color:white; font-weight:bold">
+            <div class="col-xs-12" style="padding-top:<%=BLL.GlobalVariate.setHeight()%>px; color:white; font-weight:bold">
                 <asp:Button ID="button_wait_admin_approval" runat="server" Text="Approve"  CssClass="lsu-imagebtn"  OnClick="button_apply_Click" style=" float:left ;margin-left:16px; background-image:url(../res/images/btnok.png); background-size:124px 44px" Width="124px" Height="44px"/>
                 <asp:Button ID="button_wait_admin_reject" runat="server" Text="Reject"  CssClass="lsu-imagebtn" OnClick="button_apply_Click" style="float:right;margin-right:16px; background-image:url(../res/images/btncancel.png); background-size:124px 44px" Width="124px" Height="44px" />
             </div>
@@ -89,18 +89,18 @@
             <div class="row">
                 <div class="col-xs-12" ><asp:TextBox ID="tb_canceladmin_remarks" runat="server" style="margin-top:5px; margin-left:5px; width:96%"></asp:TextBox></div>
             </div>
-            <div class="col-xs-12 " style="padding-top:12px; color:white; font-weight:bold">
+            <div class="col-xs-12 " style="padding-top:<%=BLL.GlobalVariate.setHeight()%>px; color:white; font-weight:bold">
                 <asp:Button ID="button_Cancel_admin_approval" runat ="server" Text="Approve"  OnClick="button_apply_Click" CssClass="lsu-imagebtn"  style=" float:left ;margin-left:16px; background-image:url(../res/images/btnok.png); background-size:124px 44px" Width="124px" Height="44px"/>
                 <asp:Button ID="button_Cancel_admin_Reject"   runat ="server" Text="Reject"  OnClick="button_apply_Click" CssClass="lsu-imagebtn"  style="float:right;margin-right:16px; background-image:url(../res/images/btncancel.png); background-size:124px 44px" Width="124px" Height="44px" />
             </div>
         </asp:Panel>
         <asp:Panel ID="waitingApproval_user" runat="server" Visible="false">
-            <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
+            <div class="col-xs-12 lsf-center" style="padding-top:<%=BLL.GlobalVariate.setHeight()%>px; color:white; font-weight:bold">
                 <asp:Button ID="button_wait_user_Withdraw" runat="server" Text="Withdraw"  OnClick="button_apply_Click" CssClass="lsu-imagebtn"  style="float:unset;margin-right:16px; background-image:url(../res/images/btnok.png); background-size:124px 44px" Width="124px" Height="44px" />
             </div>
         </asp:Panel>
         <asp:Panel ID="approved_user" runat="server" Visible="false">
-            <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
+            <div class="col-xs-12 lsf-center" style="padding-top:<%=BLL.GlobalVariate.setHeight()%>px; color:white; font-weight:bold">
                 <asp:Button ID="button_approval_user_Cancel" runat="server" Text="Cancel"  OnClick="button_apply_Click" CssClass="lsu-imagebtn"  style="float:unset;margin-right:16px; background-image:url(../res/images/btnok.png); background-size:124px 44px" Width="124px" Height="44px" />
             </div>
         </asp:Panel>

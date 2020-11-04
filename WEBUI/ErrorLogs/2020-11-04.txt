@@ -1,0 +1,238 @@
+ip:192.168.19.210
+DataTime：2020/11/4 9:45:00
+Url：http://192.168.19.210:8091/template.aspx
+Message：未能加载类型“WEBUI.Sign”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetType(System.String, Boolean, Boolean)
+Trace：   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 9:45:42
+Url：http://192.168.19.210:8091/template.aspx
+Message：未能加载类型“WEBUI.Sign”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetType(System.String, Boolean, Boolean)
+Trace：   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 9:46:29
+Url：http://192.168.19.210:8091/template.aspx
+Message：未能加载类型“WEBUI.Sign”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetType(System.String, Boolean, Boolean)
+Trace：   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 9:46:44
+Url：http://192.168.19.210:8091/template.aspx
+Message：未能加载类型“WEBUI.Sign”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetType(System.String, Boolean, Boolean)
+Trace：   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 9:47:15
+Url：http://192.168.19.210:8091/template.aspx
+Message：未能加载类型“WEBUI.Sign”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetType(System.String, Boolean, Boolean)
+Trace：   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 9:48:15
+Url：http://192.168.19.210:8091/pages/template.aspx
+Message：文件“/pages/template.aspx”不存在。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void CheckVirtualFileExists(System.Web.VirtualPath)
+Trace：   在 System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 9:48:20
+Url：http://192.168.19.210:8091/template.aspx
+Message：未能加载类型“WEBUI.Sign”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetType(System.String, Boolean, Boolean)
+Trace：   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 9:48:40
+Url：http://192.168.19.210:8091/template.aspx
+Message：未能加载类型“WEBUI.Sign”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetType(System.String, Boolean, Boolean)
+Trace：   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 9:54:36
+Url：http://192.168.19.210:8091/template.aspx
+Message：未能加载类型“WEBUI.Sign”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetType(System.String, Boolean, Boolean)
+Trace：   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 9:55:06
+Url：http://192.168.19.210:8091/template.aspx
+Message：未能加载类型“WEBUI.Sign”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetType(System.String, Boolean, Boolean)
+Trace：   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 9:55:53
+Url：http://192.168.19.210:8091/template.aspx
+Message：未能加载类型“WEBUI.Sign”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetType(System.String, Boolean, Boolean)
+Trace：   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 9:56:01
+Url：http://192.168.19.210:8091/template.aspx
+Message：未能加载类型“WEBUI.Sign”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetType(System.String, Boolean, Boolean)
+Trace：   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 9:56:22
+Url：http://192.168.19.210:8091/template.aspx
+Message：未能加载类型“WEBUI.Sign”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetType(System.String, Boolean, Boolean)
+Trace：   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 9:57:04
+Url：http://192.168.19.210:8091/template.aspx
+Message：未能加载类型“WEBUI.Sign”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetType(System.String, Boolean, Boolean)
+Trace：   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 9:57:20
+Url：http://192.168.19.210:8091/template.aspx
+Message：未能加载类型“WEBUI.Sign”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetType(System.String, Boolean, Boolean)
+Trace：   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 10:41:30
+Url：http://192.168.19.210:8091/pages/approval.aspx?applicationType=0
+Message：该字符串未被识别为有效的 DateTime。有一个未知单词(从索引 0 处开始)。
+Source：mscorlib
+Type：System.FormatException
+Function：System.DateTime Parse(System.String, System.Globalization.DateTimeFormatInfo, System.Globalization.DateTimeStyles)
+Trace：   在 System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   在 WEBUI.Pages.approval.GetDatasource(LeaveBigRangeStatus leaveBigRangeStatus, Int32 approverUid, String datestrFrom, String userName)
+   在 WEBUI.Pages.approval.tb_date_TextChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.TextBox.OnTextChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 10:41:37
+Url：http://192.168.19.210:8091/pages/approval.aspx?applicationType=0
+Message：该字符串未被识别为有效的 DateTime。有一个未知单词(从索引 0 处开始)。
+Source：mscorlib
+Type：System.FormatException
+Function：System.DateTime Parse(System.String, System.Globalization.DateTimeFormatInfo, System.Globalization.DateTimeStyles)
+Trace：   在 System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   在 WEBUI.Pages.approval.GetDatasource(LeaveBigRangeStatus leaveBigRangeStatus, Int32 approverUid, String datestrFrom, String userName)
+   在 WEBUI.Pages.approval.tb_date_TextChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.TextBox.OnTextChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 10:50:33
+Url：http://192.168.19.210:8091/template2.aspx
+Message：未能加载类型“WEBUI.template2”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetType(System.String, Boolean, Boolean)
+Trace：   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 11:01:00
+Url：http://192.168.19.210:8091/pages/approval.aspx?applicationType=0
+Message：该字符串未被识别为有效的 DateTime。有一个未知单词(从索引 0 处开始)。
+Source：mscorlib
+Type：System.FormatException
+Function：System.DateTime Parse(System.String, System.Globalization.DateTimeFormatInfo, System.Globalization.DateTimeStyles)
+Trace：   在 System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   在 WEBUI.Pages.approval.GetDatasource(LeaveBigRangeStatus leaveBigRangeStatus, Int32 approverUid, String datestrFrom, String userName)
+   在 WEBUI.Pages.approval.tb_date_TextChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.TextBox.OnTextChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/4 11:01:24
+Url：http://192.168.19.210:8091/pages/approval.aspx?applicationType=0
+Message：该字符串未被识别为有效的 DateTime。有一个未知单词(从索引 0 处开始)。
+Source：mscorlib
+Type：System.FormatException
+Function：System.DateTime Parse(System.String, System.Globalization.DateTimeFormatInfo, System.Globalization.DateTimeStyles)
+Trace：   在 System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   在 WEBUI.Pages.approval.GetDatasource(LeaveBigRangeStatus leaveBigRangeStatus, Int32 approverUid, String datestrFrom, String userName)
+   在 WEBUI.Pages.approval.tb_date_TextChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.TextBox.OnTextChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

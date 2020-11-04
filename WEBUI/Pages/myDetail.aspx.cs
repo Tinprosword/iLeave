@@ -241,10 +241,8 @@ namespace WEBUI.Pages
             }
             if (result)
             {
-                //string url = "mydetail.aspx?requestid={0}&action={1}&applicationType={2}";
-                //url = string.Format(url, requestId, action, applicationType);
-                ((WEBUI.Controls.leave)this.Master).SetupMsg(tipmsg,2000,WEBUI.Controls.leave.msgtype.success);
-                LSLibrary.WebAPP.httpHelper.ResponseRedirectDalay(2.3f, backurl, Response);
+                Response.Redirect(backurl);
+                //LSLibrary.WebAPP.httpHelper.ResponseRedirectDalay(2.3f, backurl, Response);
             }
             else
             {

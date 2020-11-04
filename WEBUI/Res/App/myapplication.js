@@ -1,13 +1,9 @@
-﻿$("input[fixname='datefrom']").datetimepicker({
-    language: 'fr',
-    weekStart: 1,
-    todayBtn: 1,
-    clearBtn: 1,
-    autoclose: 1,
-    todayHighlight: 1,
-    startView: 2,
-    minView: 2,
-    forceParse: 0
+﻿$("input[fixname='datefrom']").datepicker({
+    language: 'zh-CN', //语言
+    autoclose: true, //选择后自动关闭
+    clearBtn: true,//清除按钮
+    format: "yyyy-mm-dd",//日期格式
+    todayBtn: true,
 });
 
 $("input[fixname='datefrom']").attr("readonly", true);

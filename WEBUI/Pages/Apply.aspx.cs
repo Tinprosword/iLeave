@@ -265,11 +265,9 @@ namespace WEBUI.Pages
                     copyFileTo(pics[i].bigImageRelatepath, pics[i].bigImageHrTempAbsolutePath);
                 }
                 BLL.Leave.InsertAttachment(pics, loginer.userInfo.id, loginer.userInfo.personid, reslut);
-                ((WEBUI.Controls.leave)this.Master).SetupMsg("Success", 2000, WEBUI.Controls.leave.msgtype.success);
-
-                LSLibrary.WebAPP.httpHelper.ResponseRedirectDalay(2.3f, "main.aspx", Response);
-
-                //Response.Redirect("~/pages/main.aspx",false);
+                //((WEBUI.Controls.leave)this.Master).SetupMsg(BLL.MultiLanguageHelper.GetLanguagePacket().apply_apply, 2000, WEBUI.Controls.leave.msgtype.success);
+                Response.Redirect("myapplications.aspx?applicationType=0");
+                //LSLibrary.WebAPP.httpHelper.ResponseRedirectDalay(2.3f, "", Response);
             }
             else
             {

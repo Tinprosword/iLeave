@@ -12,6 +12,7 @@ namespace WEBUI.Controls
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            lt_jsfixmsg.Text = "";
             if (!IsPostBack)
             {
                 this.appcss.Href += "?lastmodify=" + BLL.GlobalVariate.appcssLastmodify;

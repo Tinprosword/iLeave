@@ -138,6 +138,21 @@ namespace BLL
         #endregion
 
         #region global string 用于js css文件的修改后自动重新下载.
+        public static bool isfixheight = false;
+        public static string setHeight()
+        {
+            if (isfixheight)
+            {
+                return "107";
+            }
+            else
+            {
+                return "12";
+            }
+        }
+     
+
+
         public static string appcssLastmodify
         {
             get
