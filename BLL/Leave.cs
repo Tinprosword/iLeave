@@ -236,7 +236,7 @@ namespace BLL
             return result;
         }
 
-        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyManageLeaveMaster(int uid, GlobalVariate.LeaveBigRangeStatus status, DateTime? from, string name)
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyManageLeaveMaster(int uid, GlobalVariate.LeaveBigRangeStatus status, DateTime? from, string name,DateTime? to)
         {
             List<LeaveRequestMaster> result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMasterByApprovarUID(uid).ToList();
             if (result.Count() > 0)
@@ -257,6 +257,10 @@ namespace BLL
                 {
                     result = result.Where(x => x.leavefrom >= from).ToList();
                 }
+                if (to != null)
+                {
+                    result = result.Where(x => x.leaveto <= to).ToList();
+                }
                 if (!string.IsNullOrEmpty(name))
                 {
                     result = result.Where(x => x.uname.ToUpper().Contains(name.ToUpper())).ToList();
@@ -264,6 +268,14 @@ namespace BLL
                 result = result.OrderByDescending(x => x.leavefrom).ToList();
             }
             return result;
+        }
+
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyManageLeaveMaster(int uid, GlobalVariate.LeaveBigRangeStatus status, int year, string name)
+        {
+            DateTime from = new DateTime(year, 1, 1);
+            int dayCount = DateTime.DaysInMonth(year, 12);
+            DateTime? to = new DateTime(year,12, dayCount);
+            return GetMyManageLeaveMaster(uid, status, from, name, to);
         }
 
 

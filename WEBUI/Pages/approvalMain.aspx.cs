@@ -35,20 +35,18 @@ namespace WEBUI
         { }
 
 
-        protected void reject(object sender, EventArgs e)
-        {
-            Response.Redirect("approval.aspx?applicationType=2", true);
-        }
-
-
         protected void wait(object sender, EventArgs e)
         {
-            Response.Redirect("approval.aspx?applicationType=0", true);
+            Response.Redirect("approval_wait.aspx?applicationType=0", true);
         }
-
         protected void approved(object sender, EventArgs e)
         {
-            Response.Redirect("approval.aspx?applicationType=1", true);
+            Response.Redirect("approval_wait.aspx?applicationType=1", true);
         }
+        protected void reject(object sender, EventArgs e)
+        {
+            Response.Redirect("approval_wait.aspx?applicationType=2", true);
+        }
+
     }
 }

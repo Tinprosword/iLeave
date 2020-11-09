@@ -3137,6 +3137,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private string maxLeaveCodeField;
         
+        private string pathsField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public System.Nullable<int> WorkflowTypeID {
@@ -3317,6 +3319,16 @@ namespace WebServiceLayer.WebReference_leave {
             }
             set {
                 this.maxLeaveCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string paths {
+            get {
+                return this.pathsField;
+            }
+            set {
+                this.pathsField = value;
             }
         }
     }

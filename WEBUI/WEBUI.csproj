@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pages\approval_wait.aspx" />
     <Content Include="Pages\ErrorPage.aspx" />
     <Content Include="Pages\approvalMain.aspx" />
     <Content Include="Global.asax" />
@@ -87,6 +88,13 @@
     <Content Include="Pages\showpic2.aspx" />
     <Content Include="Pages\Test.aspx" />
     <Content Include="Pages\Test.html" />
+    <Compile Include="Pages\approval_wait.aspx.cs">
+      <DependentUpon>approval_wait.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\approval_wait.aspx.designer.cs">
+      <DependentUpon>approval_wait.aspx</DependentUpon>
+    </Compile>
     <Compile Include="readme.cs" />
     <Content Include="Res\App\appcss.css" />
     <Content Include="Res\App\apply.js" />

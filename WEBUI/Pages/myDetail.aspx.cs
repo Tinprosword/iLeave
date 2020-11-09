@@ -9,9 +9,9 @@ namespace WEBUI.Pages
     //1.action 判断用户  2.根据用户类别和请求状态 显示不同的按钮操作.  3. 可能会存在需要查询worktaskid 的时候,这个情况:根据请求类型和状态来获得worktaskid.来调用方法.
     public partial class myDetail : BLL.CustomLoginTemplate
     {
-        private int action;
+        private int action;//user or approver.
         private int requestId;
-        private string applicationType;
+        private string applicationType;//wait app rej
         private WebServiceLayer.WebReference_leave.LeaveRequestMaster LeaveRequestMaster;
         private List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> LeaveRequestDetails;
         private WebServiceLayer.WebReference_leave.t_WorkflowInfo RelatedWorkInfo;

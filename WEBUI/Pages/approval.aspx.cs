@@ -87,7 +87,7 @@ namespace WEBUI.Pages
             {
                 dateFrom = DateTime.Parse(datestrFrom);
             }
-            return BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, leaveBigRangeStatus, dateFrom, userName);
+            return BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, leaveBigRangeStatus, dateFrom, userName,null);
         }
 
         private BLL.GlobalVariate.LeaveBigRangeStatus getStatus()
@@ -105,7 +105,6 @@ namespace WEBUI.Pages
             {
                 result = BLL.GlobalVariate.LeaveBigRangeStatus.withdraw;
             }
-
             return result;
         }
 
@@ -121,6 +120,5 @@ namespace WEBUI.Pages
             this.repeater_myapplications.DataBind();
         }
 
-        
     }
 }
