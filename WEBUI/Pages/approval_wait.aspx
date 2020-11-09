@@ -28,15 +28,32 @@
                     <a href="a.jpg"><%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetAttachment()%></a>
                 </div>
                 <div class="col-xs-12 divheighter"><asp:Label ID="lb_remark" runat="server" Text="Remark"></asp:Label></div>
-                <div class="col-xs-12">
-                    <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" Width="98%" Height="40px"></asp:TextBox>
-                </div>
-                <div class="col-xs-12">
-                    <div class="col-xs-5" style="float:left; padding-left:5px;">
-                        <asp:Button ID="btn_approve" runat="server" Text="Approve" style="border:2px solid #8da9cd;background-color:white; width:100px;"  CommandArgument="<%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status%>"/>
+                <asp:Panel ID="panel_waitingApprove" runat="server" Visible="<%#BLL.GlobalVariate.testvalue %>">
+                    <div class="col-xs-12">
+                        <asp:TextBox ID="tb_waitapproveRemark" runat="server" TextMode="MultiLine" Width="98%" Height="40px"></asp:TextBox>
                     </div>
-                <div class="col-xs-5" style="float:right; text-align:right;padding-left:5px;"><asp:Button ID="Button6" runat="server" Text="Reject" style="border:2px solid #cd7a7a;background-color:white;width:100px;"/></div>
-                </div>
+                    <div class="col-xs-12">
+                        <div class="col-xs-5" style="float:left; padding-left:5px;">
+                            <asp:Button ID="btn_approve_approve" runat="server" Text="Approve" style="border:2px solid #8da9cd;background-color:white; width:100px;"  CommandArgument="<%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>" />
+                        </div>
+                        <div class="col-xs-5" style="float:right; text-align:right;padding-left:5px;">
+                            <asp:Button ID="btn_approve_reject" runat="server" Text="Reject" style="border:2px solid #cd7a7a;background-color:white;width:100px;" CommandArgument="<%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>" />
+                        </div>
+                    </div>
+                </asp:Panel>
+                <asp:Panel ID="panel_waitingCancel" runat="server" Visible="<%#BLL.GlobalVariate.testvalue %>">
+                    <div class="col-xs-12">
+                        <asp:TextBox ID="tb_waitcancelRemark" runat="server" TextMode="MultiLine" Width="98%" Height="40px"></asp:TextBox>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="col-xs-5" style="float:left; padding-left:5px;">
+                            <asp:Button ID="btn_cancel_approve" runat="server" Text="Approve" style="border:2px solid #8da9cd;background-color:white; width:100px;"  CommandArgument="<%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>" />
+                        </div>
+                        <div class="col-xs-5" style="float:right; text-align:right;padding-left:5px;">
+                            <asp:Button ID="btn_cancel_reject" runat="server" Text="Reject" style="border:2px solid #cd7a7a;background-color:white;width:100px;" CommandArgument="<%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>" />
+                        </div>
+                    </div>
+                </asp:Panel>
                 <div class="col-xs-12" style="height:20px;">&nbsp;</div>
             </ItemTemplate>
         </asp:Repeater>

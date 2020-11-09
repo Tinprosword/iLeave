@@ -39,5 +39,11 @@ namespace WebServiceLayer.MyModel
             string result = data.paths == null ? "" : data.paths;
             return result;
         }
+
+        public bool Info_BShowPanel(int usertype,int bigrange,int requestBigrange)
+        {
+
+            return true;
+        }
     }
 }

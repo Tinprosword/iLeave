@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="approvalMain.aspx.cs" Inherits="WEBUI.approvalMain" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="approvalMain.aspx.cs" Inherits="WEBUI.Pages.approvalMain" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <div class="col-xs-12 lsf-center" style="margin-top:6px;">

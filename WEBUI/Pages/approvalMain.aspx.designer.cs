@@ -7,7 +7,7 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace WEBUI {
+namespace WEBUI.Pages {
     
     
     public partial class approvalMain {

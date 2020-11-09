@@ -11,15 +11,25 @@ namespace WEBUI.Pages
 {
     public partial class approval_wait : BLL.CustomLoginTemplate
     {
-        private readonly string tip = "Staff";
+        public static string qs_bigRange = "applicationType";
 
+        private readonly string tip = "Staff";
+        private GlobalVariate.LeaveBigRangeStatus applicationType = GlobalVariate.LeaveBigRangeStatus.waitapproval;
+        
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
+            if (!string.IsNullOrEmpty(Request.QueryString[qs_bigRange]))
+            {
+                applicationType = GlobalVariate.LeaveBigRangeStatus.waitapproval;
+            }
+            else
+            {
+                Response.Redirect("main.aspx", true);
+            }
         }
 
         protected override void InitPage_OnFirstLoad2()
-        {
-        }
+        {}
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
@@ -37,8 +47,6 @@ namespace WEBUI.Pages
 
         }
 
-        
-
         protected void ddl_year_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetupRepeat();
@@ -48,7 +56,6 @@ namespace WEBUI.Pages
         {
             SetupRepeat();
         }
-
 
         private void SetupNavinigation()
         {
@@ -60,7 +67,7 @@ namespace WEBUI.Pages
         {
             int year = int.Parse(this.ddl_year.SelectedValue);
             string name = this.tb_staff.Text.Trim() == tip ? "" : this.tb_staff.Text.Trim();
-            this.rp_list.DataSource = BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, GlobalVariate.LeaveBigRangeStatus.waitapproval, year, name);
+            this.rp_list.DataSource = BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, applicationType, year, name);
             this.rp_list.DataBind();
         }
     }

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WEBUI
+namespace WEBUI.Pages
 {
     public partial class approvalMain :BLL.CustomLoginTemplate
     {
@@ -37,15 +37,15 @@ namespace WEBUI
 
         protected void wait(object sender, EventArgs e)
         {
-            Response.Redirect("approval_wait.aspx?applicationType=0", true);
+            Response.Redirect("approval_wait.aspx?" + approval_wait.qs_bigRange + "=0", true);
         }
         protected void approved(object sender, EventArgs e)
         {
-            Response.Redirect("approval_wait.aspx?applicationType=1", true);
+            Response.Redirect("approval_wait.aspx?" + approval_wait.qs_bigRange + "=1", true);
         }
         protected void reject(object sender, EventArgs e)
         {
-            Response.Redirect("approval_wait.aspx?applicationType=2", true);
+            Response.Redirect("approval_wait.aspx?" + approval_wait.qs_bigRange + "=2", true);
         }
 
     }

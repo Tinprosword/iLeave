@@ -13,6 +13,7 @@ namespace BLL
         public static string Session_CanlendarToApply = "Session_CanlendarToApply";
         public static string Session_ApplyToUpload = "Session_ApplyToUpload";
         public static string Session_UploadToApply = "Session_UploadToApply";
+        public static bool testvalue = true;
         
         #endregion
 
