@@ -7,13 +7,12 @@
 //todo fix height by one key.                               ok
 //todo submiting  success(response.re) .failure(msg)        no(需要ajax)
 //todo cancel,withdraw(discard)                             no(等待确认)
-//todo list add 2 button (change page)                      no
+//todo list add 2 button (change page)                      yes(需要处理图片)
 //todo detial 需要加balance .重新打个包?                    no  
 
 //todo web site  delete 'sign.aspx'                         ok.
 //todo multiple language    3 .                             ok(no android)
 //todo apply->waiting                                       ok.
-
 
 
 //附件大小的样子。                                          no
