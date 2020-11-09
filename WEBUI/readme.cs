@@ -5,10 +5,14 @@
 
 //todo 日历的样式.丢失图片									ok
 //todo fix height by one key.                               ok
-//todo submiting  success(response.re) .failure(msg)        no(需要ajax)
+//todo submiting  success(response.re) .failure(msg)        ok(给所有按钮加上)
 //todo cancel,withdraw(discard)                             no(等待确认)
 //todo list add 2 button (change page)                      yes(需要处理图片)
-//todo detial 需要加balance .重新打个包?                    no  
+//todo detial 需要加balance .重新打个包?                    no
+//todo android 显示图片样子有点问题.                        no
+//2.upload ->camera.										no
+//todo1.iven mov 超时推出错误。								no
+//todo 3 calendar transfer to office 365 team's calendar.   no
 
 //todo web site  delete 'sign.aspx'                         ok.
 //todo multiple language    3 .                             ok(no android)
@@ -16,13 +20,6 @@
 
 
 
-//附件大小的样子。                                          no
-//todo 日历的样式.											no
-//todo alert success msg.									no
-//2.upload ->camera.										no
-//todo1.iven mov 说了一个错误。								no
-//todo 3 calendar transfer to office 365 team's calendar.   no
-//todo1.bg		                                            ok
 
 
 

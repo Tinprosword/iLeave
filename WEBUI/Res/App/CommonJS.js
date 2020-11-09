@@ -35,9 +35,21 @@ function GOHistory()
     history.back();
 }
 
-function ShowMessage()//msg,css,ms
+function sleep(d)
 {
-    $('#fixmsg').html("test").addClass("Flostalert-success").show().delay(20000).fadeOut();
-    return true;
-    //ShowMessage
+    var t = Date.now();
+    while (Date.now() - t <= d);
+}
+
+function go()
+{
+    MyPostBack('aa', '');
+}
+
+
+function ShowMessage(msg,eventName)
+{
+    $('#fixmsg').html(msg).addClass("Flostalert-success").show().delay(1500).fadeOut();
+    setTimeout("go(" + eventName + ")", 2000);
+    return false;
 }

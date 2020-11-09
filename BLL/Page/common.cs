@@ -65,5 +65,18 @@ namespace BLL
             }
         }
 
+
+        public static void RegisterMyPostback(string eventName,HttpRequest Request,EventHandler eventHandler,object sender,EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Request.Form["mypostback_target"]))
+            {
+                string traget = Request.Form["mypostback_target"];
+                if (traget == eventName)
+                {
+                    eventHandler(sender, e);
+                }
+            }
+        }
+
     }
 }

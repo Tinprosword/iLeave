@@ -1,0 +1,32 @@
+ip:192.168.19.210
+DataTime：2020/11/10 6:41:10
+Url：http://192.168.19.210:8091/pages/Apply.aspx?action=backCalendar
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void button_apply_Click(System.Object, System.EventArgs)
+Trace：   在 WEBUI.Pages.Apply.button_apply_Click(Object sender, EventArgs e)
+   在 WEBUI.Pages.Apply.InitPage_OnEachLoadAfterCheckSessionAndF5_1()
+   在 LSLibrary.WebAPP.PageTemplate_logined.Page_Init(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/10 6:44:25
+Url：http://192.168.19.210:8091/pages/Apply.aspx?action=backCalendar
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void button_apply_Click(System.Object, System.EventArgs)
+Trace：   在 WEBUI.Pages.Apply.button_apply_Click(Object sender, EventArgs e)
+   在 WEBUI.Pages.Apply.InitPage_OnEachLoadAfterCheckSessionAndF5_1()
+   在 LSLibrary.WebAPP.PageTemplate_logined.Page_Init(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

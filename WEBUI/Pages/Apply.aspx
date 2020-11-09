@@ -93,15 +93,11 @@
         </div>
       
         <div class="col-xs-12 lsf-center" style="padding-top:<%=BLL.GlobalVariate.setHeight()%>px; color:white;font-weight:bold">
-            <%--<asp:Button ID="button_wait_user_Withdraw" runat="server" Text="Withdraw"  OnClick="button_apply_Click" CssClass="lsu-imagebtn"  style="float:unset;margin-right:16px; background-image:url(../res/images/btnok.png); background-size:124px 44px" Width="124px" Height="44px" />--%>
-            <asp:Button ID="button_apply" runat="server" Text="Apply"  CssClass="lsu-imagebtn"  style="background-image:url(../res/images/btnok.png);background-size:124px 44px" Height="44px" Width="124px" OnClick="button_apply_Click" />
+            <asp:Button ID="button_apply" runat="server" Text="Apply" CssClass="lsu-imagebtn" style="background-image:url(../res/images/btnok.png);background-size:124px 44px" Height="44px" Width="124px" fixname="bbtn" OnClientClick="return ShowMessage('Submit,Please wait','aa')" UseSubmitBehavior="false" />
         </div>
     </div>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="contentjs" runat="server">
     <script src="../Res/App/apply.js?lastmodify=<%=BLL.GlobalVariate.applyjsLastmodify %>"></script>
-    <asp:Literal ID="lt_AlertJS" runat="server" EnableViewState="false"/>
-    <asp:Literal ID="lt_model_datafrom" runat="server"/>
-    <asp:Literal ID="lt_model_datato" runat="server"/>
     <asp:Literal ID="lt_js_prg" runat="server"/>
 </asp:Content>

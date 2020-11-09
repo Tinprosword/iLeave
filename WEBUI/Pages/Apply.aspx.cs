@@ -38,7 +38,6 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
-            this.lt_AlertJS.Text = "";
             this.literal_errormsga.Text = "";
             this.literal_errormsga.Visible = false;
             this.repeater_leave.ItemDataBound += Repeater_leave_ItemDataBound;
@@ -338,9 +337,8 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {
-            
+            BLL.common.RegisterMyPostback("aa", this.Request, button_apply_Click, null, null);
         }
         #endregion
-
     }
 }
