@@ -213,7 +213,6 @@ namespace WEBUI.Pages
                 result = BLL.workflow.ApproveRequest_leave(requestId, loginer.userInfo.id, remarks, out errormsg);
                 tipmsg = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproveok;
                 backurl = "approval.aspx?applicationType=0";
-                
             }
             else if (button.ID == this.button_wait_admin_reject.ID)
             {
@@ -221,7 +220,6 @@ namespace WEBUI.Pages
                 result = BLL.workflow.RejectRequest_leave(requestId, loginer.userInfo.id, remarks, out errormsg);
                 tipmsg = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproverej;
                 backurl = "approval.aspx?applicationType=0";
-                
             }
             else if (button.ID == this.button_Cancel_admin_approval.ID)
             {
@@ -229,7 +227,6 @@ namespace WEBUI.Pages
                 result = BLL.workflow.ApprovalCancelRequest_leave(requestId, loginer.userInfo.id,remarks, out errormsg);
                 tipmsg = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproveok;
                 backurl = "approval.aspx?applicationType=0";
-                
             }
             else if (button.ID == this.button_Cancel_admin_Reject.ID)
             {
@@ -237,7 +234,6 @@ namespace WEBUI.Pages
                 result = BLL.workflow.RejectCancelRequest_leave(requestId, loginer.userInfo.id, remarks, out errormsg);
                 tipmsg = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproverej;
                 backurl = "approval.aspx?applicationType=0";
-                
             }
             if (result)
             {

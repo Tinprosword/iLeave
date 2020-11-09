@@ -11,10 +11,10 @@ namespace WEBUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(Request.QueryString["message"]))
-            {
-                this.Label1.Text = "Error Msg:" + Server.UrlDecode(Request.QueryString["message"]);
-            }
+            //if (!string.IsNullOrWhiteSpace(Request.QueryString["message"]))
+            //{
+                //this.Label1.Text = "Error Msg:" + Server.UrlDecode(Request.QueryString["message"]);
+            //}
         }
     }
 }
