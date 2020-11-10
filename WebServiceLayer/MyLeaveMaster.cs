@@ -24,7 +24,7 @@ namespace WebServiceLayer.MyModel
         public string Info_GetBalance()
         {
             string result = "";
-            result = data.maxLeaveCode + ":x Day";
+            result = "Annual Leave Balance";
             return result;
         }
 

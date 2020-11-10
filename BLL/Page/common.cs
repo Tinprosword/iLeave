@@ -65,6 +65,19 @@ namespace BLL
             }
         }
 
+        public static void CheckMyPostbackEventNameStart(string eventName, HttpRequest Request, EventHandler eventHandler, object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Request.Form["mypostback_target"]))
+            {
+                string traget = Request.Form["mypostback_target"];
+                if (traget.StartsWith(eventName))
+                {
+                    sender = traget;
+                    eventHandler(sender, e);
+                }
+            }
+        }
+
         public static void OnClickAttachment(string relativePath,HttpResponse Response,HttpServerUtility Server)
         {
             string filePath = Server.MapPath(relativePath);
@@ -77,6 +90,12 @@ namespace BLL
             {
                 Response.Redirect(relativePath);
             }
+        }
+
+        public static string ShowJsFunction(string msg,string eventName)
+        {
+            string js = "return ShowMessage('" + msg + "','"+eventName+"');";
+            return js;
         }
 
     }

@@ -53,11 +53,13 @@ namespace WEBUI.Pages
             this.tb_staff.SetTip(tip);
         }
 
-        private void SetupButtonEvent()
-        {}
-
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
-        {}
+        {
+            BLL.common.CheckMyPostbackEventNameStart("1", Request, btn_Click, null, null);
+            BLL.common.CheckMyPostbackEventNameStart("2", Request, btn_Click, null, null);
+            BLL.common.CheckMyPostbackEventNameStart("3", Request, btn_Click, null, null);
+            BLL.common.CheckMyPostbackEventNameStart("4", Request, btn_Click, null, null);
+        }
 
         protected void ddl_year_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -127,11 +129,13 @@ namespace WEBUI.Pages
         protected void btn_Click(object sender, EventArgs e)
         {
             string errormsg;
-            Button btn = (Button)sender;
-            int itemIndex = int.Parse(btn.Attributes["itemIndex"]);
-            int btntype = int.Parse(btn.Attributes["btnType"]);
+            string[] pas = ((string)sender).Split(new char[] { '|' });
 
-            int requestId = int.Parse(btn.Attributes["requestID"]);
+            int btntype = int.Parse(pas[0]);
+            int itemIndex = int.Parse(pas[1]);
+            int requestId = int.Parse(pas[2]);
+
+
             string remarks1 = ((TextBox)this.rp_list.Items[itemIndex].FindControl("panel_waitingApprove").FindControl("tb_waitapproveRemark")).Text;
             string remarks2 = ((TextBox)this.rp_list.Items[itemIndex].FindControl("panel_waitingCancel").FindControl("tb_waitcancelRemark")).Text;
 

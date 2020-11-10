@@ -21,7 +21,7 @@
                     <label class="lsf-clearPadding" style="padding:0px;  margin:0px;height:1px;background-color:dimgray; width:90%; padding-left:3px; padding-right:3px;"></label></div>
                 <div class="col-xs-12 divheighter"><asp:Label ID="lb_name" runat="server"><%#((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).uname%></asp:Label></div>
                 <div class="col-xs-12 divheighter"><asp:Label ID="lb_date" runat="server"><%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetFromto()%></asp:Label></div>
-                <div class="col-xs-12 divheighter"><asp:Label ID="lb_leave" runat="server" Text="Annual Leave Balance:2.0"></asp:Label></div>
+                <div class="col-xs-12 divheighter"><asp:Label ID="lb_leave" runat="server"><%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetBalance()%></asp:Label></div>
                 <div class="col-xs-12 divheighter"><asp:Label ID="lb_applydate" runat="server" Text="Apply Date:2019-02-05"></asp:Label></div>
                 <div class="col-xs-12 divheighter">
                     <asp:Label ID="lb_attachment" runat="server" Text="Attachment:"></asp:Label>
@@ -39,10 +39,10 @@
                     </div>
                     <div class="col-xs-12">
                         <div class="col-xs-5" style="float:left; padding-left:5px;">
-                            <asp:Button ID="btn_approve_approve" runat="server" Text="Approval" style="border:2px solid #8da9cd;background-color:white; width:100px;"   OnClick="btn_Click" btnType="1" requestID="<%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>" itemIndex="<%#Container.ItemIndex %>" />
+                            <asp:Button ID="btn_approve_approve" runat="server" Text="Approval" style="border:2px solid #8da9cd;background-color:white; width:100px;"  OnClientClick='<%#BLL.common.ShowJsFunction(BLL.GlobalVariate.submit_success,"1|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID) %>' />
                         </div>
                         <div class="col-xs-5" style="float:right; text-align:right;padding-left:5px;">
-                            <asp:Button ID="btn_approve_reject" runat="server" Text="Reject" style="border:2px solid #cd7a7a;background-color:white;width:100px;"  OnClick="btn_Click" btnType="2"  requestID="<%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>" itemIndex="<%#Container.ItemIndex %>" />
+                            <asp:Button ID="btn_approve_reject" runat="server" Text="Reject" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClientClick='<%#BLL.common.ShowJsFunction(BLL.GlobalVariate.submit_success,"2|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID) %>' />
                         </div>
                     </div>
                 </asp:Panel>
@@ -53,10 +53,10 @@
                     </div>
                     <div class="col-xs-12">
                         <div class="col-xs-5" style="float:left; padding-left:5px;">
-                            <asp:Button ID="btn_cancel_approve" runat="server" Text="Approval" style="border:2px solid #8da9cd;background-color:white; width:100px;" OnClick="btn_Click" btnType="3"  requestID="<%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>" itemIndex="<%#Container.ItemIndex %>" />
+                            <asp:Button ID="btn_cancel_approve" runat="server" Text="Approval" style="border:2px solid #8da9cd;background-color:white; width:100px;" OnClientClick='<%#BLL.common.ShowJsFunction(BLL.GlobalVariate.submit_success,"3|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID) %>'/>
                         </div>
                         <div class="col-xs-5" style="float:right; text-align:right;padding-left:5px;">
-                            <asp:Button ID="btn_cancel_reject" runat="server" Text="Reject" style="border:2px solid #cd7a7a;background-color:white;width:100px;"  OnClick="btn_Click" btnType="4" requestID="<%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>" itemIndex="<%#Container.ItemIndex %>" />
+                            <asp:Button ID="btn_cancel_reject" runat="server" Text="Reject" style="border:2px solid #cd7a7a;background-color:white;width:100px;"  OnClientClick='<%#BLL.common.ShowJsFunction(BLL.GlobalVariate.submit_success,"4|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID) %>' />
                         </div>
                     </div>
                 </asp:Panel>
