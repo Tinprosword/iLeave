@@ -318,25 +318,33 @@ namespace BLL
             List<MODEL.Apply.app_uploadpic> data = new List<MODEL.Apply.app_uploadpic>();
             for (int i = 0; i < attachments.Count; i++)
             {
-                string filename = LSLibrary.FileUtil.GetFileName(attachments[i].Path);
-
-                string bigFile = "~/" + BLL.Leave.picPath + "/" + filename;
-                string reduceFile = "~/" + BLL.Leave.picPath + "/" + BLL.Leave.reducePath + "/" + filename;
-                try
-                {
-                    common.CopyAttendanceAndReduce(attachments[i].Path, server.MapPath(bigFile), server.MapPath(reduceFile));
-                    MODEL.Apply.app_uploadpic tempItem = GeneratePicModel(filename, server);
-                    data.Add(tempItem);
-                }
-                catch
-                {
-                    string badfile = "~/Res/images/bad.png";
-                    MODEL.Apply.app_uploadpic tempItem = GeneratePicModel(badfile, server);
-                    data.Add(tempItem);
-                }
+                string dbpath = attachments[i].Path;
+                data.Add(GetOneAttendance(dbpath, server));
             }
             return data;
         }
+
+        public static MODEL.Apply.app_uploadpic GetOneAttendance(string absolutePath,HttpServerUtility server)
+        {
+            MODEL.Apply.app_uploadpic tempItem = null;
+
+            string filename = LSLibrary.FileUtil.GetFileName(absolutePath);
+
+            string bigFile = "~/" + BLL.Leave.picPath + "/" + filename;
+            string reduceFile = "~/" + BLL.Leave.picPath + "/" + BLL.Leave.reducePath + "/" + filename;
+            try
+            {
+                common.CopyAttendanceAndReduce(absolutePath, server.MapPath(bigFile), server.MapPath(reduceFile));
+                tempItem = GeneratePicModel(filename, server);
+            }
+            catch
+            {
+                string badfile = "~/Res/images/bad.png";
+                tempItem = GeneratePicModel(badfile, server);
+            }
+            return tempItem;
+        }
+
 
         public static MODEL.Apply.app_uploadpic GeneratePicModel(string filename,System.Web.HttpServerUtility server)
         {

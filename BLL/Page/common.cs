@@ -78,5 +78,19 @@ namespace BLL
             }
         }
 
+        public static void OnClickAttachment(string relativePath,HttpResponse Response,HttpServerUtility Server)
+        {
+            string filePath = Server.MapPath(relativePath);
+            bool isimage = BLL.common.IsImagge(System.IO.Path.GetFileName(filePath));
+            if (isimage)
+            {
+                Response.Redirect("showpic2.aspx?path=" + HttpUtility.HtmlEncode(relativePath));
+            }
+            else
+            {
+                Response.Redirect(relativePath);
+            }
+        }
+
     }
 }

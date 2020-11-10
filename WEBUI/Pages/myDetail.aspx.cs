@@ -271,16 +271,7 @@ namespace WEBUI.Pages
         protected void linkbtn_file_Click(object sender, EventArgs e)
         {
             LinkButton linkButton = (LinkButton)sender;
-            string filePath = Server.MapPath(linkButton.CommandArgument);
-            bool isimage = BLL.common.IsImagge(System.IO.Path.GetFileName(filePath));
-            if (isimage)
-            {
-                Response.Redirect("showpic2.aspx?path=" + HttpUtility.HtmlEncode(linkButton.CommandArgument));
-            }
-            else
-            {
-                Response.Redirect(linkButton.CommandArgument);
-            }
+            BLL.common.OnClickAttachment(linkButton.CommandArgument, Response, Server);
         }
 
     }

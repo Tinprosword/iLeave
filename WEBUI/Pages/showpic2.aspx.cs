@@ -36,6 +36,12 @@ namespace WEBUI.Pages
                 picpath = System.Web.HttpUtility.UrlDecode(Request.QueryString["path"]);
                 this.Image1.ImageUrl = picpath;
             }
+            else if (!string.IsNullOrEmpty(Request.QueryString["dbpath"]))
+            {
+                picpath = System.Web.HttpUtility.UrlDecode(Request.QueryString["dbpath"]);
+                var model= BLL.Leave.GetOneAttendance(picpath, Server);
+                this.Image1.ImageUrl = model.bigImageRelatepath;
+            }
 
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(false, BLL.MultiLanguageHelper.GetLanguagePacket().Back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx", true,null,true);
         }

@@ -25,7 +25,7 @@
                 <div class="col-xs-12 divheighter"><asp:Label ID="lb_applydate" runat="server" Text="Apply Date:2019-02-05"></asp:Label></div>
                 <div class="col-xs-12 divheighter">
                     <asp:Label ID="lb_attachment" runat="server" Text="Attachment:"></asp:Label>
-                    <a href="a.jpg"><%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetAttachment()%></a>
+                    <%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetAttachment()%>
                 </div>
                 
                 <div class="col-xs-12 divheighter"><asp:Label ID="Label1" runat="server" Text="Remark"></asp:Label></div>

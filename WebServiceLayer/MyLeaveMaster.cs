@@ -34,15 +34,23 @@ namespace WebServiceLayer.MyModel
             return result;
         }
 
+        //生成<a> .连接后来处理图片的copy和现实.
         public string Info_GetAttachment()
         {
             string result = data.paths == null ? "" : data.paths;
-            return result;
+            List<string> pics = result.Split(new char[] { '|' },StringSplitOptions.RemoveEmptyEntries).ToList();
+            //"<a href="xx.jpg">aa</a>"
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < pics.Count; i++)
+            {
+                string urlpath = pics[i];
+                sb.Append("<a href='showpic2.aspx?dbpath="+urlpath+"'>aa.jpg</a>&nbsp;");
+            }
+            return sb.ToString();
         }
 
         public bool Info_BShowPanel(int usertype,int bigrange,int requestBigrange)
         {
-
             return true;
         }
     }
