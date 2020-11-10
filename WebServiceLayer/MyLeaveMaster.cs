@@ -39,12 +39,16 @@ namespace WebServiceLayer.MyModel
         {
             string result = data.paths == null ? "" : data.paths;
             List<string> pics = result.Split(new char[] { '|' },StringSplitOptions.RemoveEmptyEntries).ToList();
-            //"<a href="xx.jpg">aa</a>"
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < pics.Count; i++)
             {
                 string urlpath = pics[i];
-                sb.Append("<a href='showpic2.aspx?dbpath="+urlpath+"'>aa.jpg</a>&nbsp;");
+                string filename = LSLibrary.FileUtil.GetFileNameNoExtension(urlpath);
+                string fileextent= LSLibrary.FileUtil.GetExtension(urlpath);
+                filename = LSLibrary.StringUtil.SubString(filename, 10, "..");
+                filename += fileextent;
+
+                sb.Append("<a href='showpic2.aspx?dbpath=" + urlpath + "'>" + filename + "</a>&nbsp;");
             }
             return sb.ToString();
         }

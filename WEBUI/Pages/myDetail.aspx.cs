@@ -158,7 +158,6 @@ namespace WEBUI.Pages
             this.waitingCanceling_admin.Visible = false;
             this.approved_user.Visible = false;
 
-
             //根据状态图,按钮组合只有5种情况, 依据2个变量.所以4种情况不算多,可以全列出,用visable来控制.
             if (action == 0)
             {

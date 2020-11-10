@@ -38,8 +38,7 @@ namespace WEBUI.Pages
             }
             else if (!string.IsNullOrEmpty(Request.QueryString["dbpath"]))
             {
-                picpath = System.Web.HttpUtility.UrlDecode(Request.QueryString["dbpath"]);
-                var model= BLL.Leave.GetOneAttendance(picpath, Server);
+                var model = BLL.Leave.GetOneAttendance(picpath, Server);
                 this.Image1.ImageUrl = model.bigImageRelatepath;
             }
 

@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row" id="mainpage">
         <div class ="col-xs-12" style="overflow:scroll; height:620px">
-            <asp:Image ID="Image1" runat="server" Width="98%" Height="98%" />
+            <asp:Image ID="Image1" runat="server" Width="98%" Height="90%" />
         </div>
     </div>
 </asp:Content>

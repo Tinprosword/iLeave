@@ -9,11 +9,11 @@
 //todo submiting  success(response.re) .failure(msg)        ok(给所有按钮加上)
 //todo cancel,withdraw(discard)                             no(等待确认)
 //todo list add 2 button (change page)                      yes(需要处理图片)
-//todo detial 需要加balance .重新打个包?                    no
 //todo android 显示图片样子有点问题.                        yes(需要到android测试)
-//2.upload ->camera.										no
+//2.upload ->camera.										yes
 //todo1.iven mov 超时推出错误。								no
 //todo 3 calendar transfer to office 365 team's calendar.   no
+
 
 
 

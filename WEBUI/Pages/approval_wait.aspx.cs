@@ -50,13 +50,10 @@ namespace WEBUI.Pages
             SetupNavinigation();
             SetupRepeat();
             this.tb_staff.SetTip(tip);
-
         }
 
         private void SetupButtonEvent()
-        {
-           
-        }
+        {}
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {}
@@ -85,6 +82,7 @@ namespace WEBUI.Pages
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, CurrentTitle, "~/pages/approvalmain.aspx", true);
         }
 
+
         private void SetupRepeat()
         {
             int year = int.Parse(this.ddl_year.SelectedValue);
@@ -92,7 +90,6 @@ namespace WEBUI.Pages
             this.rp_list.DataSource = BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, theBigrange, year, name);
             this.rp_list.DataBind();
         }
-
 
 
         public bool BShow_WaitApplyPanel(GlobalVariate.LeaveBigRangeStatus myBigRange,byte states)
