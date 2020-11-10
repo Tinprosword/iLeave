@@ -25,7 +25,7 @@
                 <div class="col-xs-12 divheighter"><asp:Label ID="lb_applydate" runat="server" Text="Apply Date:2019-02-05"></asp:Label></div>
                 <div class="col-xs-12 divheighter">
                     <asp:Label ID="lb_attachment" runat="server" Text="Attachment:"></asp:Label>
-                    <%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetAttachment()%>
+                    <%# GetAttachmentHtml(   ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID  )%>
                 </div>
 <%--                <asp:Panel ID="panle_other" runat="server" Visible="<%#BShow_OtherApplyPanel(theBigrange)%>">
                     <div class="col-xs-12">

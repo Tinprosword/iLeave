@@ -186,7 +186,7 @@ namespace BLL
         }
 
 
-        public static void InsertAttachment(List<MODEL.Apply.app_uploadpic> pics,int UploaderUid,int personid,int requestID)
+        public static void InsertAttachment(List<MODEL.Apply.App_AttachmentInfo> pics,int UploaderUid,int personid,int requestID)
         {
             for (int i = 0; i < pics.Count(); i++)
             {
@@ -194,7 +194,7 @@ namespace BLL
                 info.TypeID = 53;
                 info.RelatedPartyID = personid;
                 info.FunctionID = 0;
-                info.Path = pics[i].bigImageHrTempAbsolutePath;
+                info.Path = pics[i].originAttendance_HRDBPath;
                 info.ModifiedDate = System.DateTime.Now;
                 info.ExpiryDate = new DateTime(1900, 1, 1);
                 info.NoticePeriod = -1;
@@ -311,22 +311,22 @@ namespace BLL
         }
 
 
-        public static List<MODEL.Apply.app_uploadpic> getAttendance(string uid, int requestID,HttpServerUtility server)
+        public static List<MODEL.Apply.App_AttachmentInfo> getAttendanceModel(string uid, int requestID,HttpServerUtility server)
         {
             List<WebServiceLayer.WebReference_leave.AttachmentInfo> attachments = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetAttachmentInfoByRequestID_Leave(requestID).ToList();
 
-            List<MODEL.Apply.app_uploadpic> data = new List<MODEL.Apply.app_uploadpic>();
+            List<MODEL.Apply.App_AttachmentInfo> data = new List<MODEL.Apply.App_AttachmentInfo>();
             for (int i = 0; i < attachments.Count; i++)
             {
                 string dbpath = attachments[i].Path;
-                data.Add(GetOneAttendance(dbpath, server));
+                data.Add(CopyHr2leaveAndGenearteModel(dbpath, server));
             }
             return data;
         }
 
-        public static MODEL.Apply.app_uploadpic GetOneAttendance(string absolutePath,HttpServerUtility server)
+        public static MODEL.Apply.App_AttachmentInfo CopyHr2leaveAndGenearteModel(string absolutePath,HttpServerUtility server)
         {
-            MODEL.Apply.app_uploadpic tempItem = null;
+            MODEL.Apply.App_AttachmentInfo tempItem = null;
 
             string filename = LSLibrary.FileUtil.GetFileName(absolutePath);
 
@@ -335,18 +335,18 @@ namespace BLL
             try
             {
                 common.CopyAttendanceAndReduce(absolutePath, server.MapPath(bigFile), server.MapPath(reduceFile));
-                tempItem = GeneratePicModel(filename, server);
+                tempItem = GenerateAttachmentModel(filename, server);
             }
             catch
             {
                 string badfile = "~/Res/images/bad.png";
-                tempItem = GeneratePicModel(badfile, server);
+                tempItem = GenerateAttachmentModel(badfile, server);
             }
             return tempItem;
         }
 
 
-        public static MODEL.Apply.app_uploadpic GeneratePicModel(string filename,System.Web.HttpServerUtility server)
+        public static MODEL.Apply.App_AttachmentInfo GenerateAttachmentModel(string filename,System.Web.HttpServerUtility server)
         {
             string bigFile = "~/" + BLL.Leave.picPath + "/" + filename;
             string reduceFile = "~/" + BLL.Leave.picPath + "/" + BLL.Leave.reducePath + "/" + filename;
@@ -357,7 +357,7 @@ namespace BLL
                 reduceFile = BLL.Leave.defaultPic;
             }
 
-            MODEL.Apply.app_uploadpic temppic = new MODEL.Apply.app_uploadpic(bigFile, reduceFile, BLL.Leave.GetAttachmentAbsolutePath() + filename);
+            MODEL.Apply.App_AttachmentInfo temppic = new MODEL.Apply.App_AttachmentInfo(bigFile, reduceFile, BLL.Leave.GetAttachmentAbsolutePath() + filename);
             return temppic;
         }
 

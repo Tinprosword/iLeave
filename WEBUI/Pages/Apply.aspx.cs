@@ -256,14 +256,14 @@ namespace WEBUI.Pages
         {
             //1,获得数据   2,调用ws,进行插入.  3.并把图片放置到制定目录，并插入到数据库
             List<MODEL.Apply.apply_LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).LeaveList;
-            List<MODEL.Apply.app_uploadpic> pics = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).uploadpic;
+            List<MODEL.Apply.App_AttachmentInfo> pics = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).uploadpic;
             string errorMsg = "";
             int reslut = BLL.Leave.InsertLeave(LeaveList, loginer.userInfo.id, (int)loginer.userInfo.employID, null, this.tb_remarks.Text.Trim(), ref errorMsg);
             if (reslut >= 0)
             {
                 for (int i = 0; i < pics.Count; i++)
                 {
-                    copyFileTo(pics[i].bigImageRelatepath, pics[i].bigImageHrTempAbsolutePath);
+                    copyFileTo(pics[i].originAttendance_RelatePath, pics[i].originAttendance_HRDBPath);
                 }
                 BLL.Leave.InsertAttachment(pics, loginer.userInfo.id, loginer.userInfo.personid, reslut);
                 //((WEBUI.Controls.leave)this.Master).SetupMsg(BLL.MultiLanguageHelper.GetLanguagePacket().apply_apply, 2000, WEBUI.Controls.leave.msgtype.success);
@@ -300,7 +300,7 @@ namespace WEBUI.Pages
             this.button_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_button;
         }
 
-        private void SavePageDataToViewState(bool owlist, bool owtype, bool owpics, List<MODEL.Apply.apply_LeaveData> leavelist, List<LSLibrary.WebAPP.ValueText<int>> leavetype, List<MODEL.Apply.app_uploadpic> uploadPics)
+        private void SavePageDataToViewState(bool owlist, bool owtype, bool owpics, List<MODEL.Apply.apply_LeaveData> leavelist, List<LSLibrary.WebAPP.ValueText<int>> leavetype, List<MODEL.Apply.App_AttachmentInfo> uploadPics)
         {
             MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
             applyPage.LeaveTypeSelectValue = this.ddl_leavetype.SelectedValue;

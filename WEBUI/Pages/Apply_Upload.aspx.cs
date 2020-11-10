@@ -57,13 +57,13 @@ namespace WEBUI.Pages
             string bigAbsolutionPath = Server.MapPath("../" + BLL.Leave.picPath);
 
             string errmsg;
-            List<string> uploadBigFiles = uploadPicAndReduce(bigAbsolutionPath, out errmsg);
+            List<string> uploadBigFiles = uploadAttachmentAndReduce(bigAbsolutionPath, out errmsg);
 
             MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, ViewState);
 
             for (int i = 0; i < uploadBigFiles.Count; i++)
             {
-                MODEL.Apply.app_uploadpic temppic = BLL.Leave.GeneratePicModel(uploadBigFiles[i], Server);
+                MODEL.Apply.App_AttachmentInfo temppic = BLL.Leave.GenerateAttachmentModel(uploadBigFiles[i], Server);
                 applyPage.uploadpic.Add(temppic);
             }
             LSLibrary.WebAPP.ViewStateHelper.SetValue(Apply.ViewState_PageName, applyPage, ViewState);
@@ -73,7 +73,7 @@ namespace WEBUI.Pages
         }
 
 
-        private List<string> uploadPicAndReduce(string absolutePath, out string errorMsg)
+        private List<string> uploadAttachmentAndReduce(string absolutePath, out string errorMsg)
         {
             List<string> types = null;//all format is ok.
             List<string> files = BLL.common.UploadAttendanceAndReduce(Request, absolutePath, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg);
@@ -119,7 +119,7 @@ namespace WEBUI.Pages
         {
             LinkButton linkButton = (LinkButton)sender;
             string filePath = Server.MapPath(linkButton.CommandArgument);
-            bool isimage= BLL.common.IsImagge(System.IO.Path.GetFileName(filePath));
+            bool isimage= LSLibrary.FileUtil.IsImagge(System.IO.Path.GetFileName(filePath));
 
             if (isimage)
             {
@@ -130,6 +130,7 @@ namespace WEBUI.Pages
                 Response.Redirect(linkButton.CommandArgument);
             }
         }
+
 
     }
 }

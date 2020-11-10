@@ -112,7 +112,7 @@ namespace WEBUI.Pages
 
         private void setupAttendance(int rqid)
         {
-            List<MODEL.Apply.app_uploadpic> attandance = BLL.Leave.getAttendance(loginer.loginName, rqid,Server);
+            List<MODEL.Apply.App_AttachmentInfo> attandance = BLL.Leave.getAttendanceModel(loginer.loginName, rqid,Server);
             if (attandance != null)
             {
                 this.repeater_pic.DataSource = attandance;

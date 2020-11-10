@@ -35,23 +35,27 @@ namespace WebServiceLayer.MyModel
         }
 
         //生成<a> .连接后来处理图片的copy和现实.
-        public string Info_GetAttachment()
-        {
-            string result = data.paths == null ? "" : data.paths;
-            List<string> pics = result.Split(new char[] { '|' },StringSplitOptions.RemoveEmptyEntries).ToList();
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < pics.Count; i++)
-            {
-                string urlpath = pics[i];
-                string filename = LSLibrary.FileUtil.GetFileNameNoExtension(urlpath);
-                string fileextent= LSLibrary.FileUtil.GetExtension(urlpath);
-                filename = LSLibrary.StringUtil.SubString(filename, 10, "..");
-                filename += fileextent;
+        //public string Info_GetAttachment()
+        //{
+        //    string result = data.paths == null ? "" : data.paths;
+        //    List<string> pics = result.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
-                sb.Append("<a href='showpic2.aspx?dbpath=" + urlpath + "'>" + filename + "</a>&nbsp;");
-            }
-            return sb.ToString();
-        }
+
+        //    //string result = data.paths == null ? "" : data.paths;
+        //    //List<string> pics = result.Split(new char[] { '|' },StringSplitOptions.RemoveEmptyEntries).ToList();
+        //    //StringBuilder sb = new StringBuilder();
+        //    //for (int i = 0; i < pics.Count; i++)
+        //    //{
+        //    //    string urlpath = pics[i];
+
+        //    //    string filename = LSLibrary.FileUtil.GetFileName(urlpath);
+        //    //    string showfilename = LSLibrary.FileUtil.SubFileName(filename, 10, "");
+
+        //    //    sb.Append("<a href='showpic2.aspx?dbpath=" + urlpath + "'>" + showfilename + "</a>&nbsp;");
+
+        //    //}
+        //    //return sb.ToString();
+        //}
 
         public bool Info_BShowPanel(int usertype,int bigrange,int requestBigrange)
         {

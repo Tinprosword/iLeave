@@ -13,20 +13,7 @@ namespace BLL
 
         public static bool canReduceImage(string image)
         {
-            return IsImagge(image);
-        }
-
-        public static bool IsImagge(string filename)
-        {
-            string type = filename.Remove(0, filename.IndexOf('.') + 1);
-            if (type == "jpg" || type == "png" | type == "gif" | type == "bmp" | type== "jpeg")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return LSLibrary.FileUtil.IsImagge(image);
         }
 
         public static List<string> UploadAttendanceAndReduce(HttpRequest httpRequest, string fpath, List<string> fileExtendsType, string NameAppendStr, out string errmsg, int filesizeM = 10)
@@ -81,7 +68,7 @@ namespace BLL
         public static void OnClickAttachment(string relativePath,HttpResponse Response,HttpServerUtility Server)
         {
             string filePath = Server.MapPath(relativePath);
-            bool isimage = BLL.common.IsImagge(System.IO.Path.GetFileName(filePath));
+            bool isimage = LSLibrary.FileUtil.IsImagge(System.IO.Path.GetFileName(filePath));
             if (isimage)
             {
                 Response.Redirect("showpic2.aspx?path=" + HttpUtility.HtmlEncode(relativePath));

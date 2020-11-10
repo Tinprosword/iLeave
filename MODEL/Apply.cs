@@ -15,14 +15,14 @@ namespace MODEL
             public string ddlsectionSelectvalue;
             public string remarks;
 
-            public List<app_uploadpic> uploadpic;
+            public List<App_AttachmentInfo> uploadpic;
             public List<apply_LeaveData> LeaveList;
             public List<LSLibrary.WebAPP.ValueText<int>> leavetype;
 
             public ViewState_page()
             {
                 LeaveList = new List<MODEL.Apply.apply_LeaveData>();
-                uploadpic = new List<MODEL.Apply.app_uploadpic>();
+                uploadpic = new List<MODEL.Apply.App_AttachmentInfo>();
                 leavetype = new List<LSLibrary.WebAPP.ValueText<int>>();
             }
 
@@ -79,35 +79,35 @@ namespace MODEL
         }
 
         [Serializable]
-        public class app_uploadpic
+        public class App_AttachmentInfo
         {
-            public string bigImageRelatepath;
-            public string reduceImageRelatePath;
+            public string originAttendance_RelatePath;
+            public string reduceAttendance_Image_RelatePath;
             public string tempID;
-            public string bigImageHrTempAbsolutePath;
+            public string originAttendance_HRDBPath;
 
-            public app_uploadpic(string path, string _reduceImage,string _bigImageAbsolutePath)
+            public App_AttachmentInfo(string path, string _reduceImage,string _bigImageAbsolutePath)
             {
-                this.bigImageRelatepath = path;
+                this.originAttendance_RelatePath = path;
                 this.tempID = System.DateTime.Now.ToString("yyyyMMddhhmmss");
-                this.reduceImageRelatePath = _reduceImage;
-                this.bigImageHrTempAbsolutePath = _bigImageAbsolutePath;
+                this.reduceAttendance_Image_RelatePath = _reduceImage;
+                this.originAttendance_HRDBPath = _bigImageAbsolutePath;
             }
 
             public string GetFileName(int maxLength=0)
             {
-                string result = "";
-                if (!string.IsNullOrEmpty(bigImageRelatepath))
-                {
-                    result = LSLibrary.FileUtil.GetFileNameNoExtension(bigImageRelatepath);
-                    if (maxLength != 0 && result.Length>maxLength)
-                    {
-                        result = result.Substring(0, maxLength);
-                    }
-                    result += LSLibrary.FileUtil.GetExtension(bigImageRelatepath);
-                }
+                return LSLibrary.FileUtil.SubFileName(originAttendance_RelatePath, maxLength, "");
+            }
+
+            public string Get_originAttendance_RealRelatePath()
+            {
+                string result= originAttendance_RelatePath.Substring(1);
+                result = ".." + result;
                 return result;
             }
+
+
+
         }
     }
 }
