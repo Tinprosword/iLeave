@@ -97,6 +97,8 @@ namespace WEBUI.Pages
 
             this.repeater_leave.DataSource = leaveDays;
             this.repeater_leave.DataBind();
+
+            this.button_apply.OnClientClick = "return ShowMessage('" + BLL.GlobalVariate.submit_success + "','aa')";//OnClientClick='return ShowMessage(<%=BLL.GlobalVariate.submit_success%>,"aa")'
         }
 
         private string GetAttachmentNumberPath(int number)
@@ -337,7 +339,7 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {
-            BLL.common.RegisterMyPostback("aa", this.Request, button_apply_Click, null, null);
+            BLL.common.CheckMyPostback("aa", this.Request, button_apply_Click, null, null);
         }
         #endregion
     }

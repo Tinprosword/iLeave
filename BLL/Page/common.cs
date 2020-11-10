@@ -66,7 +66,7 @@ namespace BLL
         }
 
 
-        public static void RegisterMyPostback(string eventName,HttpRequest Request,EventHandler eventHandler,object sender,EventArgs e)
+        public static void CheckMyPostback(string eventName,HttpRequest Request,EventHandler eventHandler,object sender,EventArgs e)
         {
             if (!string.IsNullOrEmpty(Request.Form["mypostback_target"]))
             {

@@ -93,7 +93,7 @@
         </div>
       
         <div class="col-xs-12 lsf-center" style="padding-top:<%=BLL.GlobalVariate.setHeight()%>px; color:white;font-weight:bold">
-            <asp:Button ID="button_apply" runat="server" Text="Apply" CssClass="lsu-imagebtn" style="background-image:url(../res/images/btnok.png);background-size:124px 44px" Height="44px" Width="124px" fixname="bbtn" OnClientClick="return ShowMessage('Submit,Please wait','aa')" UseSubmitBehavior="false" />
+            <asp:Button ID="button_apply" runat="server" Text="Apply" CssClass="lsu-imagebtn" style="background-image:url(../res/images/btnok.png);background-size:124px 44px" Height="44px" Width="124px"/>
         </div>
     </div>
 </asp:Content>

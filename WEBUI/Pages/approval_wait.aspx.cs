@@ -50,6 +50,12 @@ namespace WEBUI.Pages
             SetupNavinigation();
             SetupRepeat();
             this.tb_staff.SetTip(tip);
+
+        }
+
+        private void SetupButtonEvent()
+        {
+           
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()

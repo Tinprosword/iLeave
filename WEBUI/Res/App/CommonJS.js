@@ -35,21 +35,21 @@ function GOHistory()
     history.back();
 }
 
+
 function sleep(d)
 {
     var t = Date.now();
     while (Date.now() - t <= d);
 }
 
-function go()
+function go(eventname)
 {
-    MyPostBack('aa', '');
+    MyPostBack(eventname, '');
 }
-
 
 function ShowMessage(msg,eventName)
 {
     $('#fixmsg').html(msg).addClass("Flostalert-success").show().delay(1500).fadeOut();
-    setTimeout("go(" + eventName + ")", 2000);
+    setTimeout(function () { go(eventName) }, 2000);
     return false;
 }

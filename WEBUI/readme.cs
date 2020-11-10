@@ -3,6 +3,7 @@
 //public void openFileChooser(...);
 //}
 
+
 //todo 日历的样式.丢失图片									ok
 //todo fix height by one key.                               ok
 //todo submiting  success(response.re) .failure(msg)        ok(给所有按钮加上)
@@ -14,12 +15,11 @@
 //todo1.iven mov 超时推出错误。								no
 //todo 3 calendar transfer to office 365 team's calendar.   no
 
+
+
 //todo web site  delete 'sign.aspx'                         ok.
 //todo multiple language    3 .                             ok(no android)
 //todo apply->waiting                                       ok.
-
-
-
 
 
 

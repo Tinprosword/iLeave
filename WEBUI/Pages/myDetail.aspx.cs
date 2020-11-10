@@ -38,8 +38,17 @@ namespace WEBUI.Pages
             }
         }
 
+
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
-        {}
+        {
+            BLL.common.CheckMyPostback("button_approval_user_Cancel", Request, button_apply_Click, this.button_approval_user_Cancel, null);
+            BLL.common.CheckMyPostback("button_Cancel_admin_approval", Request, button_apply_Click, this.button_Cancel_admin_approval, null);
+            BLL.common.CheckMyPostback("button_Cancel_admin_Reject", Request, button_apply_Click, this.button_Cancel_admin_Reject, null);
+            BLL.common.CheckMyPostback("button_wait_admin_approval", Request, button_apply_Click, this.button_wait_admin_approval, null);
+            BLL.common.CheckMyPostback("button_wait_admin_reject", Request, button_apply_Click, this.button_wait_admin_reject, null);
+            BLL.common.CheckMyPostback("button_wait_user_Withdraw", Request, button_apply_Click, this.button_wait_user_Withdraw, null);
+        }
+
 
         protected override void InitPage_OnFirstLoad2()
         {}
@@ -57,7 +66,19 @@ namespace WEBUI.Pages
             setupAttendance(requestId);
             SetupButtons();
             SetupMultiLanguage();
+            SetupBtnEvent();
         }
+
+        private void SetupBtnEvent()
+        {
+            this.button_approval_user_Cancel.OnClientClick = "return ShowMessage('" + BLL.GlobalVariate.submit_success + "','button_approval_user_Cancel');";
+            this.button_Cancel_admin_approval.OnClientClick = "return ShowMessage('" + BLL.GlobalVariate.submit_success + "','button_Cancel_admin_approval');";
+            this.button_Cancel_admin_Reject.OnClientClick = "return ShowMessage('" + BLL.GlobalVariate.submit_success + "','button_Cancel_admin_Reject');";
+            this.button_wait_admin_approval.OnClientClick = "return ShowMessage('" + BLL.GlobalVariate.submit_success + "','button_wait_admin_approval');";
+            this.button_wait_admin_reject.OnClientClick = "return ShowMessage('" + BLL.GlobalVariate.submit_success + "','button_wait_admin_reject');";
+            this.button_wait_user_Withdraw.OnClientClick = "return ShowMessage('" + BLL.GlobalVariate.submit_success + "','button_wait_user_Withdraw');";
+        }
+
 
         private void SetupNavigation()
         {
@@ -129,6 +150,7 @@ namespace WEBUI.Pages
             }
         }
 
+
         private void SetupButtons()
         {
             this.waitingApproval_admin.Visible = false;
@@ -162,6 +184,7 @@ namespace WEBUI.Pages
             }
         }
 
+
         private void SetupMultiLanguage()
         {
             this.lt_name.Text = BLL.MultiLanguageHelper.GetLanguagePacket().myapplications_name;
@@ -184,7 +207,6 @@ namespace WEBUI.Pages
             this.button_Cancel_admin_Reject.Text= BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_reject;
             this.button_wait_user_Withdraw.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_withdraw;
             this.button_approval_user_Cancel.Text = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_cancel;
-
         }
 
         protected void button_apply_Click(object sender, EventArgs e)
@@ -260,5 +282,6 @@ namespace WEBUI.Pages
                 Response.Redirect(linkButton.CommandArgument);
             }
         }
+
     }
 }
