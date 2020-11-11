@@ -4,8 +4,8 @@
 //}
 
 
-//todo 有2个自动挥发处理。 appoval_wait
-
+//todo 按钮的高度                                           no
+//todo 有2个自动挥发处理。 appoval_wait                     no
 //todo 日历的样式.丢失图片									ok
 //todo fix height by one key.                               ok
 //todo submiting  success(response.re) .failure(msg)        ok

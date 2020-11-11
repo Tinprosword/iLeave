@@ -28,7 +28,7 @@
                 </ItemTemplate>
             </asp:Repeater>
         </div>
-        <div class="col-xs-12 lsf-center" style="padding-top:<%=BLL.GlobalVariate.setHeight()%>px; color:white; font-weight:bold">
+        <div class="col-xs-12 lsf-center" style="padding-top:<%=BLL.GlobalVariate.setHeight(12)%>px; color:white; font-weight:bold">
             <asp:Button ID="button_apply" runat="server" Text="Back" OnClick="button_apply_Click1" CssClass="lsu-imagebtn"  style="background-image:url(../res/images/btnok.png);background-size:124px 44px" Height="44px" Width="124px"/>
         </div>
     </div>
