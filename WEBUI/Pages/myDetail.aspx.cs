@@ -105,7 +105,7 @@ namespace WEBUI.Pages
             }
             else
             {
-                backUrl = "~/pages/approval.aspx?applicationType=" + applicationType;
+                backUrl = "~/pages/approval_wait.aspx?applicationType=" + applicationType;
             }
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, backTtile, currentTitle, backUrl, true);
         }
@@ -233,28 +233,28 @@ namespace WEBUI.Pages
                 string remarks = this.tb_wait_admin_remarks.Text.Trim();
                 result = BLL.workflow.ApproveRequest_leave(requestId, loginer.userInfo.id, remarks, out errormsg);
                 tipmsg = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproveok;
-                backurl = "approval.aspx?applicationType=0";
+                backurl = "approval_wait.aspx?applicationType=0";
             }
             else if (button.ID == this.button_wait_admin_reject.ID)
             {
                 string remarks = this.tb_wait_admin_remarks.Text.Trim();
                 result = BLL.workflow.RejectRequest_leave(requestId, loginer.userInfo.id, remarks, out errormsg);
                 tipmsg = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproverej;
-                backurl = "approval.aspx?applicationType=0";
+                backurl = "approval_wait.aspx?applicationType=0";
             }
             else if (button.ID == this.button_Cancel_admin_approval.ID)
             {
                 string remarks = this.tb_canceladmin_remarks.Text.Trim();
                 result = BLL.workflow.ApprovalCancelRequest_leave(requestId, loginer.userInfo.id,remarks, out errormsg);
                 tipmsg = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproveok;
-                backurl = "approval.aspx?applicationType=0";
+                backurl = "approval_wait.aspx?applicationType=0";
             }
             else if (button.ID == this.button_Cancel_admin_Reject.ID)
             {
                 string remarks = this.tb_canceladmin_remarks.Text.Trim();
                 result = BLL.workflow.RejectCancelRequest_leave(requestId, loginer.userInfo.id, remarks, out errormsg);
                 tipmsg = BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproverej;
-                backurl = "approval.aspx?applicationType=0";
+                backurl = "approval_wait.aspx?applicationType=0";
             }
             if (result)
             {

@@ -20,8 +20,9 @@ namespace MODEL
         public string surname;
         public string firstname;
         public string namech;
+        public int ScreenHeight;
 
-        public UserInfo(int id, string loginName, string nickname, string sessionid, int? employID, string employNnumber, int? staffid, string staffNumber, int personid,string surname,string firstname,string ch)
+        public UserInfo(int id, string loginName, string nickname, string sessionid, int? employID, string employNnumber, int? staffid, string staffNumber, int personid,string surname,string firstname,string ch,int sh)
         {
             this.id = id;
             this.loginName = loginName;
@@ -35,6 +36,7 @@ namespace MODEL
             this.surname = surname;
             this.firstname = firstname;
             this.namech = ch;
+            this.ScreenHeight = sh;
         }
 
         public bool hasValidEmploynumber()

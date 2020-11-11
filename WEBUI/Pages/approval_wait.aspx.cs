@@ -59,6 +59,12 @@ namespace WEBUI.Pages
             BLL.common.CheckMyPostbackEventNameStart("2", Request, btn_Click, null, null);
             BLL.common.CheckMyPostbackEventNameStart("3", Request, btn_Click, null, null);
             BLL.common.CheckMyPostbackEventNameStart("4", Request, btn_Click, null, null);
+
+            string requestid = ((WEBUI.Controls.leave)this.Master).GetMyPostBackArgumentByTargetname("detail");
+            if (!string.IsNullOrEmpty(requestid))
+            {
+                Response.Redirect("~/Pages/myDetail.aspx?applicationType=" + ((int)theBigrange) + "&action=1&requestid=" + requestid, true);
+            }
         }
 
         protected void ddl_year_SelectedIndexChanged(object sender, EventArgs e)

@@ -80,6 +80,7 @@
     <Content Include="Pages\calendar.aspx" />
     <Content Include="Pages\chooseEmployment.aspx" />
     <Content Include="Pages\Demo.html" />
+    <Content Include="Pages\getHeight.aspx" />
     <Content Include="Pages\Main.aspx" />
     <Content Include="Pages\MyApplicationMain.aspx" />
     <Content Include="Pages\myapplications.aspx" />
@@ -94,6 +95,13 @@
     </Compile>
     <Compile Include="Pages\approval_wait.aspx.designer.cs">
       <DependentUpon>approval_wait.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\getHeight.aspx.cs">
+      <DependentUpon>getHeight.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\getHeight.aspx.designer.cs">
+      <DependentUpon>getHeight.aspx</DependentUpon>
     </Compile>
     <Compile Include="readme.cs" />
     <Content Include="Res\App\appcss.css" />

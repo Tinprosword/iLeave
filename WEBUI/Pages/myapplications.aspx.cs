@@ -21,15 +21,16 @@ namespace WEBUI.Pages
                 Response.Redirect("Main.aspx");
             }
 
+            
+        }
+
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
+        {
             string requestid = ((WEBUI.Controls.leave)this.Master).GetMyPostBackArgumentByTargetname("detail");
             if (!string.IsNullOrEmpty(requestid))
             {
                 Response.Redirect("~/Pages/myDetail.aspx?applicationType=" + applicationType + "&action=0&requestid=" + requestid, true);
             }
-        }
-
-        protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
-        {
         }
 
         protected override void InitPage_OnFirstLoad2()

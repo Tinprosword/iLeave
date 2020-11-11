@@ -141,12 +141,22 @@ namespace BLL
         #endregion
 
         #region global string 用于js css文件的修改后自动重新下载.
-        public static bool isfixheight = true;
         public static string setHeight()
         {
-            if (isfixheight)
+            string agent = HttpContext.Current.Request.UserAgent;
+            LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType type = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
+            if (type == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android || type == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone)
             {
-                return "107";
+                LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> loginer = LSLibrary.WebAPP.LoginManager.GetLoinger<MODEL.UserInfo>();
+                if (loginer != null && loginer.userInfo != null && loginer.userInfo.ScreenHeight >= 680)
+                {
+                    return (loginer.userInfo.ScreenHeight - 680).ToString();
+                }
+                else
+                {
+                    return "12";
+                }
+                
             }
             else
             {

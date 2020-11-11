@@ -29,7 +29,7 @@ namespace WEBUI.Pages
                 canlogins = WebServiceLayer.MyWebService.GlobalWebServices.ws_user.FilterCanLoginUser(allinfos);
                 if (canlogins != null && canlogins.Count() == 1)
                 {
-                    Response.Redirect("main.aspx");
+                    Response.Redirect("getheight.aspx");
                 }
             }
             else
@@ -78,7 +78,7 @@ namespace WEBUI.Pages
             //if (sourceType == 1)
             //{
                 BLL.User_wsref.ChangeInfoToSession(eid, eno,sid,sno);
-                Response.Redirect("main.aspx");
+                Response.Redirect("getheight.aspx");
             //}
             //else
             //{

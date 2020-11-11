@@ -4,13 +4,15 @@
 //}
 
 
+//todo 有2个自动挥发处理。 appoval_wait
+
 //todo 日历的样式.丢失图片									ok
 //todo fix height by one key.                               ok
-//todo submiting  success(response.re) .failure(msg)        ok(给所有按钮加上)
-//todo list add 2 button (change page)                      yes(balance)
-//todo android 显示图片样子有点问题.                        yes(需要到android测试)
+//todo submiting  success(response.re) .failure(msg)        ok
+//todo list add 2 button (change page)                      yes(balance?)
+//todo android 显示图片样子有点问题.                        yes
 //2.upload ->camera.										yes
-//todo 高度                                                 no
+//todo 高度                                                 yes
 //todo1.iven mov 超时推出错误。								no
 
 //todo cancel,withdraw(discard)                             no(等待确认)

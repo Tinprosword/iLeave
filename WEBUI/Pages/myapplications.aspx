@@ -15,7 +15,6 @@
         </div>
     </div>
     <div class="row">
-<%--<table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white;padding-left:2px;"></table>--%>
         <div class="col-xs-12 lsf-clearPadding" style="height:400px; overflow-y:scroll;padding-left:2px;padding-right:0px">
             <table class="col-xs-12 lsu-table-xs" style="font-size:13px">
                 <tr class="lss-bgcolor-blue" style="color:white">
@@ -25,7 +24,7 @@
                 </tr>
                 <asp:Repeater ID="repeater_myapplications" runat="server">
                     <ItemTemplate>
-                        <tr style="height:42px; <%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>"  onclick="MyPostBack('detail',<%#Eval("RequestID") %>)">
+                        <tr style="height:42px; <%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>" onclick="MyPostBack('detail',<%#Eval("RequestID") %>)">
                             <td class="col-xs-5" style="padding:0px;  font-weight:bold"><%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).leavefrom.ToString("yyyy-MM-dd")%> <label class="lss-color-blue" style="font-weight:bolder; font-size:16px"> > </label> <%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).leaveto.ToString("MM-dd")%></td>
                             <td class="col-xs-2" style="padding:0px"><%# ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).totaldays %> D</td>
                             <td class="col-xs-5" style="padding:0px"><%#  BLL.workflow.GetTypeDesc( ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).WorkflowTypeID,((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).minleaveCode,false) %></td>

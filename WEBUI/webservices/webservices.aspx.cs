@@ -14,11 +14,16 @@ namespace WEBUI.webservices
         {
             if(!IsPostBack)
             {
-                if (Request.QueryString["action"]== "ws")
+                if (Request.QueryString["action"] == "ws")
                 {
                     Response.Clear();
                     string wsport = getXml(LSLibrary.WebAPP.WebConfig.getValue("webServices"));
                     Response.Write(wsport);
+                }
+                else if (Request.QueryString["action"] == "saveheight" && !string.IsNullOrEmpty(Request.QueryString["sc"]))
+                {
+                    string sc = Request.QueryString["sc"];
+                    BLL.User_wsref.ChangeSessionHeight(int.Parse(sc));
                 }
                 else
                 {
