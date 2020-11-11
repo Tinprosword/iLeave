@@ -7,7 +7,7 @@ namespace BLL
     {
         #region global string
         public static string login_error = "invalid user and password.";
-        public static string submit_success = "Submitted successfully.";
+        //public static string submit_success = "Submitted,Please wait.";
 
         public static string path_uploadPic = "uploadPic";
         public static HttpServerUtility pageServer;

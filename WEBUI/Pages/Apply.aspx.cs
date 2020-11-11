@@ -98,7 +98,7 @@ namespace WEBUI.Pages
             this.repeater_leave.DataSource = leaveDays;
             this.repeater_leave.DataBind();
 
-            this.button_apply.OnClientClick = "return ShowMessage('" + BLL.GlobalVariate.submit_success + "','aa')";//OnClientClick='return ShowMessage(<%=BLL.GlobalVariate.submit_success%>,"aa")'
+            this.button_apply.OnClientClick = "return ShowMessage('" + BLL.MultiLanguageHelper.GetLanguagePacket().submit_success + "','aa')";//OnClientClick='return ShowMessage(<%=BLL.GlobalVariate.submit_success%>,"aa")'
         }
 
         private string GetAttachmentNumberPath(int number)

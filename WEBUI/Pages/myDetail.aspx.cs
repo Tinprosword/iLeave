@@ -71,12 +71,12 @@ namespace WEBUI.Pages
 
         private void SetupBtnEvent()
         {
-            this.button_approval_user_Cancel.OnClientClick = "return ShowMessage('" + BLL.GlobalVariate.submit_success + "','button_approval_user_Cancel');";
-            this.button_Cancel_admin_approval.OnClientClick = "return ShowMessage('" + BLL.GlobalVariate.submit_success + "','button_Cancel_admin_approval');";
-            this.button_Cancel_admin_Reject.OnClientClick = "return ShowMessage('" + BLL.GlobalVariate.submit_success + "','button_Cancel_admin_Reject');";
-            this.button_wait_admin_approval.OnClientClick = "return ShowMessage('" + BLL.GlobalVariate.submit_success + "','button_wait_admin_approval');";
-            this.button_wait_admin_reject.OnClientClick = "return ShowMessage('" + BLL.GlobalVariate.submit_success + "','button_wait_admin_reject');";
-            this.button_wait_user_Withdraw.OnClientClick = "return ShowMessage('" + BLL.GlobalVariate.submit_success + "','button_wait_user_Withdraw');";
+            this.button_approval_user_Cancel.OnClientClick = "return ShowMessage('" + BLL.MultiLanguageHelper.GetLanguagePacket().submit_success + "','button_approval_user_Cancel');";
+            this.button_Cancel_admin_approval.OnClientClick = "return ShowMessage('" + BLL.MultiLanguageHelper.GetLanguagePacket().submit_success + "','button_Cancel_admin_approval');";
+            this.button_Cancel_admin_Reject.OnClientClick = "return ShowMessage('" + BLL.MultiLanguageHelper.GetLanguagePacket().submit_success + "','button_Cancel_admin_Reject');";
+            this.button_wait_admin_approval.OnClientClick = "return ShowMessage('" + BLL.MultiLanguageHelper.GetLanguagePacket().submit_success + "','button_wait_admin_approval');";
+            this.button_wait_admin_reject.OnClientClick = "return ShowMessage('" + BLL.MultiLanguageHelper.GetLanguagePacket().submit_success + "','button_wait_admin_reject');";
+            this.button_wait_user_Withdraw.OnClientClick = "return ShowMessage('" + BLL.MultiLanguageHelper.GetLanguagePacket().submit_success + "','button_wait_user_Withdraw');";
         }
 
 

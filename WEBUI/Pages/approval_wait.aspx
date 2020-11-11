@@ -39,10 +39,10 @@
                     </div>
                     <div class="col-xs-12">
                         <div class="col-xs-5" style="float:left; padding-left:5px;">
-                            <asp:Button ID="btn_approve_approve" runat="server" Text="Approval" style="border:2px solid #8da9cd;background-color:white; width:100px;"  OnClientClick='<%#BLL.common.ShowJsFunction(BLL.GlobalVariate.submit_success,"1|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID) %>' />
+                            <asp:Button ID="btn_approve_approve" runat="server" Text="Approval" style="border:2px solid #8da9cd;background-color:white; width:100px;"  OnClientClick='<%#BLL.common.ShowJsFunction(BLL.MultiLanguageHelper.GetLanguagePacket().submit_success,"1|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID) %>' />
                         </div>
                         <div class="col-xs-5" style="float:right; text-align:right;padding-left:5px;">
-                            <asp:Button ID="btn_approve_reject" runat="server" Text="Reject" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClientClick='<%#BLL.common.ShowJsFunction(BLL.GlobalVariate.submit_success,"2|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID) %>' />
+                            <asp:Button ID="btn_approve_reject" runat="server" Text="Reject" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClientClick='<%#BLL.common.ShowJsFunction(BLL.MultiLanguageHelper.GetLanguagePacket().submit_success,"2|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID) %>' />
                         </div>
                     </div>
                 </asp:Panel>
@@ -53,10 +53,10 @@
                     </div>
                     <div class="col-xs-12">
                         <div class="col-xs-5" style="float:left; padding-left:5px;">
-                            <asp:Button ID="btn_cancel_approve" runat="server" Text="Approval" style="border:2px solid #8da9cd;background-color:white; width:100px;" OnClientClick='<%#BLL.common.ShowJsFunction(BLL.GlobalVariate.submit_success,"3|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID) %>'/>
+                            <asp:Button ID="btn_cancel_approve" runat="server" Text="Approval" style="border:2px solid #8da9cd;background-color:white; width:100px;" OnClientClick='<%#BLL.common.ShowJsFunction(BLL.MultiLanguageHelper.GetLanguagePacket().submit_success,"3|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID) %>'/>
                         </div>
                         <div class="col-xs-5" style="float:right; text-align:right;padding-left:5px;">
-                            <asp:Button ID="btn_cancel_reject" runat="server" Text="Reject" style="border:2px solid #cd7a7a;background-color:white;width:100px;"  OnClientClick='<%#BLL.common.ShowJsFunction(BLL.GlobalVariate.submit_success,"4|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID) %>' />
+                            <asp:Button ID="btn_cancel_reject" runat="server" Text="Reject" style="border:2px solid #cd7a7a;background-color:white;width:100px;"  OnClientClick='<%#BLL.common.ShowJsFunction(BLL.MultiLanguageHelper.GetLanguagePacket().submit_success,"4|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID) %>' />
                         </div>
                     </div>
                 </asp:Panel>
