@@ -3139,6 +3139,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private string pathsField;
         
+        private string leaveDescField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public System.Nullable<int> WorkflowTypeID {
@@ -3329,6 +3331,16 @@ namespace WebServiceLayer.WebReference_leave {
             }
             set {
                 this.pathsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string leaveDesc {
+            get {
+                return this.leaveDescField;
+            }
+            set {
+                this.leaveDescField = value;
             }
         }
     }

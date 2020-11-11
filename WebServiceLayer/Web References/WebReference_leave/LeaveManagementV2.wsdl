@@ -600,6 +600,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="minleaveCode" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="maxLeaveCode" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="paths" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="leaveDesc" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetLeaveMasterByEmploymentID">

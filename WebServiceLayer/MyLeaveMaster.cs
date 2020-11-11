@@ -23,8 +23,7 @@ namespace WebServiceLayer.MyModel
 
         public string Info_GetBalance()
         {
-            string result = "";
-            result = "Annual Leave Balance";
+            string result = data.leaveDesc;
             return result;
         }
 
