@@ -1,0 +1,108 @@
+ip:192.168.19.210
+DataTime：2020/11/12 15:21:14
+Url：http://192.168.19.210:8091/Login.aspx
+Message：服务器无法处理请求。 ---> 列名 'ContractRenewalDate' 无效。
+列名 'PaidHolidayStartDateTypeID' 无效。
+列名 'PaidHolidayStartDateByMonth' 无效。
+列名 'PaidHolidayStartDateBySpecifyDate' 无效。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.AuthenticateUser(String UserName, String PasswordHash)
+   在 BLL.User_wsref.CheckLogin(String uid, String password)
+   在 WEBUI.Login.ProgressLogin(String userid, String password)
+   在 WEBUI.Login.Button1_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/12 15:25:08
+Url：http://192.168.19.210:8091/Login.aspx
+Message：服务器无法处理请求。 ---> 列名 'ContractRenewalDate' 无效。
+列名 'PaidHolidayStartDateTypeID' 无效。
+列名 'PaidHolidayStartDateByMonth' 无效。
+列名 'PaidHolidayStartDateBySpecifyDate' 无效。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.AuthenticateUser(String UserName, String PasswordHash)
+   在 BLL.User_wsref.CheckLogin(String uid, String password)
+   在 WEBUI.Login.ProgressLogin(String userid, String password)
+   在 WEBUI.Login.Button1_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/12 15:26:11
+Url：http://192.168.19.210:8091/pages/approval_wait.aspx?applicationType=0
+Message：服务器无法处理请求。 ---> 列名 'GpsLocationName' 无效。
+列名 'GPSLat' 无效。
+列名 'GPSLng' 无效。
+列名 'LeaveDocumentPath' 无效。
+列名 'LeaveDocument2Path' 无效。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_leave(Int32 requestid, Int32 UserID, String remark)
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg)
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e)
+   在 BLL.common.CheckMyPostbackEventNameStart(String eventName, HttpRequest Request, EventHandler eventHandler, Object sender, EventArgs e)
+   在 WEBUI.Pages.approval_wait.PageLoad_Reset_ReInitUIOnEachLoad5()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 68
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/12 15:29:38
+Url：http://192.168.19.210:8091/pages/approval_wait.aspx?applicationType=0
+Message：服务器无法处理请求。 ---> 列名 'GpsLocationName' 无效。
+列名 'GPSLat' 无效。
+列名 'GPSLng' 无效。
+列名 'LeaveDocumentPath' 无效。
+列名 'LeaveDocument2Path' 无效。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_leave(Int32 requestid, Int32 UserID, String remark)
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg)
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e)
+   在 BLL.common.CheckMyPostbackEventNameStart(String eventName, HttpRequest Request, EventHandler eventHandler, Object sender, EventArgs e)
+   在 WEBUI.Pages.approval_wait.PageLoad_Reset_ReInitUIOnEachLoad5()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 68
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/12 15:32:29
+Url：http://192.168.19.210:8091/pages/approval_wait.aspx?applicationType=0
+Message：服务器无法处理请求。 ---> 列名 'GpsLocationName' 无效。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_leave(Int32 requestid, Int32 UserID, String remark)
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg)
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e)
+   在 BLL.common.CheckMyPostbackEventNameStart(String eventName, HttpRequest Request, EventHandler eventHandler, Object sender, EventArgs e)
+   在 WEBUI.Pages.approval_wait.PageLoad_Reset_ReInitUIOnEachLoad5()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 68
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
