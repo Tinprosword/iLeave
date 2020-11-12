@@ -12,14 +12,19 @@ namespace WEBUI.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             //保存高度到session.
-            string js = "var height=document.documentElement.clientHeight;";
-            //js += "alert(height);";
-            js += "var url='../webservices/webservices.aspx?action=saveheight&sc='+height;";
-            //js += "alert(url);";
+            //string js = "var height1=document.documentElement.clientHeight;";
+            //js += "var height2=document.documentElement.offsetHeight;";
+            //js += "var height3=document.documentElement.scrollHeight;";
+            string js = "var height=window.screen.availHeight;";
+            js += "var width=window.screen.availWidth;";
+            //js += "var height5=window.screen.height;";
+            js += "var url='../webservices/webservices.aspx?action=saveheight&sc='+height+'&sw='+width;";
+            js += "alert(width);";
+            js += "alert(height);";
+            js += "alert(url);";
             js += "$.get(url); ";
             js += "window.location.href='main.aspx';";
             lt_jsGetheight.Text = "<script>"+js+"</script>";
-
         }
     }
 }

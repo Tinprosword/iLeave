@@ -130,12 +130,12 @@ namespace BLL
             MODEL.UserInfo userInfo = null;
             if (personBaseinfo != null && personBaseinfo.e_id!=null)
             {
-                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, personBaseinfo.e_id, personBaseinfo.e_EmploymentNumber, personBaseinfo.s_id, personBaseinfo.s_StaffNumber, personBaseinfo.p_id, personBaseinfo.p_Surname, personBaseinfo.p_Othername,personBaseinfo.p_NameCH,0);
+                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, personBaseinfo.e_id, personBaseinfo.e_EmploymentNumber, personBaseinfo.s_id, personBaseinfo.s_StaffNumber, personBaseinfo.p_id, personBaseinfo.p_Surname, personBaseinfo.p_Othername,personBaseinfo.p_NameCH,0,0);
                 LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(personBaseinfo.u_Username, userInfo));
             }
             else if(personBaseinfo != null && personBaseinfo.e_id == null)
             {
-                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, null, null, null, null, personBaseinfo.p_id, "", "",personBaseinfo.p_NameCH,0);
+                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, null, null, null, null, personBaseinfo.p_id, "", "",personBaseinfo.p_NameCH,0,0);
                 LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(personBaseinfo.u_Username, userInfo));
             }
             return userInfo;
@@ -157,10 +157,11 @@ namespace BLL
             LSLibrary.WebAPP.LoginManager.SetLoginer(loginer);
         }
 
-        public static void ChangeSessionHeight(int sh)
+        public static void ChangeSessionHeight(int sh,int sw)
         {
             LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> loginer = LSLibrary.WebAPP.LoginManager.GetLoinger<MODEL.UserInfo>();
             loginer.userInfo.ScreenHeight = sh;
+            loginer.userInfo.ScreenWidth = sw;
             LSLibrary.WebAPP.LoginManager.SetLoginer(loginer);
         }
 

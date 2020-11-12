@@ -142,6 +142,7 @@ namespace BLL
 
         #region global string 用于js css文件的修改后自动重新下载.
 
+        //输入一个360*640高度下某控件的高度，会计算出一个自适应手机高度，此控件的高。
         public static string setHeight(int GoodHeight)
         {
             int SCNormalHeight = 640;
@@ -150,9 +151,13 @@ namespace BLL
             if (type == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android || type == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone)
             {
                 LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> loginer = LSLibrary.WebAPP.LoginManager.GetLoinger<MODEL.UserInfo>();
-                if (loginer != null && loginer.userInfo != null && loginer.userInfo.ScreenHeight >= SCNormalHeight+90)
+                if (loginer != null && loginer.userInfo != null && loginer.userInfo.ScreenHeight > SCNormalHeight)
                 {
-                    return (loginer.userInfo.ScreenHeight - SCNormalHeight + GoodHeight-90).ToString();
+                    int value = (loginer.userInfo.ScreenHeight - SCNormalHeight + GoodHeight);//0计算多出的高度
+                    value =(int) (value * (360.0 / loginer.userInfo.ScreenWidth)); // 1.考虑缩放比例调整。
+                    int offset = (int)(0.133 * loginer.userInfo.ScreenHeight - 80);//2。自己写的一个遮挡栏多于普通栏的偏移值
+                    value=value - offset;
+                    return value.ToString();
                 }
                 else
                 {

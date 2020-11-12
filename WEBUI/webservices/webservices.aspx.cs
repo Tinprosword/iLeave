@@ -20,10 +20,11 @@ namespace WEBUI.webservices
                     string wsport = getXml(LSLibrary.WebAPP.WebConfig.getValue("webServices"));
                     Response.Write(wsport);
                 }
-                else if (Request.QueryString["action"] == "saveheight" && !string.IsNullOrEmpty(Request.QueryString["sc"]))
+                else if (Request.QueryString["action"] == "saveheight" && !string.IsNullOrEmpty(Request.QueryString["sc"]) && !string.IsNullOrEmpty(Request.QueryString["sw"]))
                 {
                     string sc = Request.QueryString["sc"];
-                    BLL.User_wsref.ChangeSessionHeight(int.Parse(sc));
+                    string sw = Request.QueryString["sw"];
+                    BLL.User_wsref.ChangeSessionHeight(int.Parse(sc),int.Parse(sw));
                 }
                 else
                 {

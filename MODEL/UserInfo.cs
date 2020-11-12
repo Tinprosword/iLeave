@@ -21,8 +21,9 @@ namespace MODEL
         public string firstname;
         public string namech;
         public int ScreenHeight;
+        public int ScreenWidth;
 
-        public UserInfo(int id, string loginName, string nickname, string sessionid, int? employID, string employNnumber, int? staffid, string staffNumber, int personid,string surname,string firstname,string ch,int sh)
+        public UserInfo(int id, string loginName, string nickname, string sessionid, int? employID, string employNnumber, int? staffid, string staffNumber, int personid,string surname,string firstname,string ch,int sh,int sw)
         {
             this.id = id;
             this.loginName = loginName;
@@ -37,6 +38,7 @@ namespace MODEL
             this.firstname = firstname;
             this.namech = ch;
             this.ScreenHeight = sh;
+            ScreenWidth = sw;
         }
 
         public bool hasValidEmploynumber()
