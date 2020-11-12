@@ -19,9 +19,9 @@ namespace WEBUI.Pages
             js += "var width=window.screen.availWidth;";
             //js += "var height5=window.screen.height;";
             js += "var url='../webservices/webservices.aspx?action=saveheight&sc='+height+'&sw='+width;";
-            js += "alert(width);";
-            js += "alert(height);";
-            js += "alert(url);";
+            //js += "alert(width);";
+            //js += "alert(height);";
+            //js += "alert(url);";
             js += "$.get(url); ";
             js += "window.location.href='main.aspx';";
             lt_jsGetheight.Text = "<script>"+js+"</script>";
