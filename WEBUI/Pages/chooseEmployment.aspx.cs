@@ -75,16 +75,8 @@ namespace WEBUI.Pages
             int sid = int.Parse(btn.Attributes["sid"]);
             string sno = btn.Attributes["sno"];
 
-            //if (sourceType == 1)
-            //{
-                BLL.User_wsref.ChangeInfoToSession(eid, eno,sid,sno);
-                Response.Redirect("getheight.aspx");
-            //}
-            //else
-            //{
-            //    BLL.User_wsref.ChangeInfoToSession(eid, eno,sid,sno);
-            //    //todo back
-            //}
+            BLL.User_wsref.ChangeInfoToSession(eid, eno, sid, sno, true);
+            Response.Redirect("getheight.aspx");
         }
 
 
