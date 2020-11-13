@@ -106,3 +106,40 @@ Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse
    在 System.Web.UI.Control.LoadRecursive()
    在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
 ********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/12 16:25:13
+Url：http://192.168.19.210:8091/Login.aspx
+Message：服务器无法处理请求。 ---> 列名 'ContractRenewalDate' 无效。
+列名 'PaidHolidayStartDateTypeID' 无效。
+列名 'PaidHolidayStartDateByMonth' 无效。
+列名 'PaidHolidayStartDateBySpecifyDate' 无效。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.AuthenticateUser(String UserName, String PasswordHash)
+   在 BLL.User_wsref.CheckLogin(String uid, String password)
+   在 WEBUI.Login.ProgressLogin(String userid, String password)
+   在 WEBUI.Login.Button1_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/12 16:37:06
+Url：http://192.168.19.210:8091/pages/calendar.aspx
+Message：服务器无法处理请求。 ---> 对象名 'v_System_Calendar' 无效。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetRoster(DateTime date, Int32[] employmentID)
+   在 BLL.calendar.GetRoster(DateTime date, List`1 employmentID)
+   在 WEBUI.Pages.calendar.SetupRepeater()
+   在 WEBUI.Pages.calendar.cb_holiday_CheckedChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.CheckBox.OnCheckedChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

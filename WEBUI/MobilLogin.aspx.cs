@@ -11,22 +11,22 @@ namespace WEBUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string action = Request.Form["Type"];
+            string action = Request["Type"];
             if(action=="login")
             {
                 
-                string loginID = Request.Form["Uid"];//login id
-                string id = Request.Form["id"];
+                string loginID = Request["Uid"];//login id
+                string id = Request["id"];
                 int intID = int.Parse(id);
-                string language = Request.Form["language"];
+                string language = Request["language"];
                 int intLanguage = 0;
                 int.TryParse(language, out intLanguage);
-                string https= Request.Form["https"];
+                string https= Request["https"];
                 bool bhttps = https == "1" ? true : false;
-                string address = Request.Form["server"];
-                string sessionID = Request.Form["sessionid"];
-                string password = Request.Form["password"];
-                string isremember = Request.Form["isremember"];
+                string address = Request["server"];
+                string sessionID = Request["sessionid"];
+                string password = Request["password"];
+                string isremember = Request["isremember"];
 
                 BLL.Page.MyCookie myCookie = new BLL.Page.MyCookie();
                 myCookie.language = (LSLibrary.WebAPP.LanguageType)intLanguage;
