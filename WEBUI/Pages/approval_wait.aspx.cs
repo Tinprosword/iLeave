@@ -13,7 +13,7 @@ namespace WEBUI.Pages
     public partial class approval_wait : BLL.CustomLoginTemplate
     {
         public static string qs_bigRange = "applicationType";
-        private readonly string tip = "Staff";
+        private readonly string tip = "Search Staff";
         protected GlobalVariate.LeaveBigRangeStatus theBigrange = GlobalVariate.LeaveBigRangeStatus.waitapproval;
         
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
