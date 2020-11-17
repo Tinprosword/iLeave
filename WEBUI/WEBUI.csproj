@@ -269,10 +269,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="template.aspx" />
-    <Content Include="template2.aspx" />
-    <Content Include="test.aspx" />
-    <Content Include="testPost.aspx" />
+    <Content Include="temp\template.aspx" />
+    <Content Include="temp\template2.aspx" />
+    <Content Include="temp\test.aspx" />
+    <Content Include="temp\testPost.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -406,29 +406,29 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="template.aspx.cs">
+    <Compile Include="temp\template.aspx.cs">
       <DependentUpon>template.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="template2.aspx.cs">
+    <Compile Include="temp\template2.aspx.cs">
       <DependentUpon>template2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="template2.aspx.designer.cs">
+    <Compile Include="temp\template2.aspx.designer.cs">
       <DependentUpon>template2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="test.aspx.cs">
+    <Compile Include="temp\test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="test.aspx.designer.cs">
+    <Compile Include="temp\test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
     </Compile>
-    <Compile Include="testPost.aspx.cs">
+    <Compile Include="temp\testPost.aspx.cs">
       <DependentUpon>testPost.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="testPost.aspx.designer.cs">
+    <Compile Include="temp\testPost.aspx.designer.cs">
       <DependentUpon>testPost.aspx</DependentUpon>
     </Compile>
     <Compile Include="webservices\webservices.aspx.cs">
@@ -452,7 +452,7 @@
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Res\Bootstrap\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
-    <Content Include="temp.txt" />
+    <Content Include="temp\temp.txt" />
     <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker.css.map" />
     <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker3.css.map" />
