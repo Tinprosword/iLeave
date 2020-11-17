@@ -26,7 +26,7 @@
                     </tr>--%>
                     <tr>
                         <td style="width: 130px">
-                            <asp:Literal ID="lt_language0" runat="server">退出帐户</asp:Literal>
+                            <asp:Literal ID="lt_language0" runat="server">切换帐户</asp:Literal>
                         </td>
                         <td>
                             <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/exit.png"  Width="30px" OnClick="loginout_Click"/>
