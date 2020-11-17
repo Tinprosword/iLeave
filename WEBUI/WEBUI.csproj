@@ -269,6 +269,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="temp\ajaxpage.aspx" />
     <Content Include="temp\template.aspx" />
     <Content Include="temp\template2.aspx" />
     <Content Include="temp\test.aspx" />
@@ -405,6 +406,13 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="temp\ajaxpage.aspx.cs">
+      <DependentUpon>ajaxpage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="temp\ajaxpage.aspx.designer.cs">
+      <DependentUpon>ajaxpage.aspx</DependentUpon>
     </Compile>
     <Compile Include="temp\template.aspx.cs">
       <DependentUpon>template.aspx</DependentUpon>
