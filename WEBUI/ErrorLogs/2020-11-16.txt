@@ -1,0 +1,20 @@
+ip:192.168.19.210
+DataTime：2020/11/16 10:39:53
+Url：http://192.168.19.210:8091/Login.aspx
+Message：由于目标计算机积极拒绝，无法连接。 192.168.19.200:6001
+Source：System
+Type：System.Net.Sockets.SocketException
+Function：Void DoConnect(System.Net.EndPoint, System.Net.SocketAddress)
+Trace：   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/16 10:40:03
+Url：http://192.168.19.210:8091/Login.aspx
+Message：由于目标计算机积极拒绝，无法连接。 192.168.19.200:6001
+Source：System
+Type：System.Net.Sockets.SocketException
+Function：Void DoConnect(System.Net.EndPoint, System.Net.SocketAddress)
+Trace：   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+********************************************************************************************
