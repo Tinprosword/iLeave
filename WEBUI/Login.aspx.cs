@@ -9,11 +9,16 @@ namespace WEBUI
 {
     public partial class Login :BLL.CustomCommonTemplate
     {
+        private string queryAction = "";
         protected override void InitPage_OnBeforeF5RegisterEvent()
         {}
 
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
+            if (!string.IsNullOrEmpty(Request.QueryString["action"]))
+            {
+                queryAction = Request.QueryString["action"];
+            }
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
@@ -41,10 +46,26 @@ namespace WEBUI
 
             this.cb_remember.Checked = (isremember == "1" ? true : false);
 
-            
-            if (!string.IsNullOrEmpty(isremember) && isremember == "1")
+
+            if (!string.IsNullOrEmpty(isremember) && isremember == "1" && queryAction == "")
             {
                 ProgressLogin(cookie.loginname, cookie.loginpsw);
+            }
+            else
+            {
+                if (queryAction != "")
+                {
+                    if (!string.IsNullOrEmpty(isremember) && isremember == "1")
+                    {
+                        this.tb_user.Text = cookie.loginname;
+                        this.tb_password.Text = cookie.loginpsw;
+                    }
+                    else
+                    {
+                        this.tb_user.Text = "";
+                        this.tb_password.Text = "";
+                    }
+                }
             }
         }
 

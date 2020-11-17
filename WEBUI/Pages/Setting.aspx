@@ -29,7 +29,15 @@
                             <asp:Literal ID="lt_language0" runat="server">切换帐户</asp:Literal>
                         </td>
                         <td>
-                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/exit.png"  Width="30px" OnClick="loginout_Click"/>
+                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/exchange.png"  Width="30px" OnClick="loginout_Click"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 130px">
+                            <asp:Literal ID="lt_changeServer" runat="server">更换服务地址</asp:Literal>
+                        </td>
+                        <td>
+                            <asp:ImageButton ID="btn_changeserver" runat="server" ImageUrl="~/Res/images/exchange.png"  Width="30px" OnClick="btn_changeserver_Click"/>
                         </td>
                     </tr>
                 </table>

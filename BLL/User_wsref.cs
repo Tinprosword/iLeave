@@ -34,24 +34,37 @@ namespace BLL
 
         public static void GoBackToLogin()
         {
+            MorePlayground("sys", "loginout", "sys", "loginout", "~/login.aspx?action=userloginout");
+        }
+
+        public static void GoBackToSign()
+        {
+            MorePlayground("sys", "signin", "sys", "signin", "");
+        }
+
+        private static void MorePlayground(string AndroidMsgtype,string androidMsgValue, string appleMsgtype, string appleMsgValue, string pclink)
+        {
             string agent = HttpContext.Current.Request.UserAgent;
 
             LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
             if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android)//android
             {
                 HttpContext.Current.Response.Clear();
-                HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid("sys", "loginout", HttpContext.Current.Server));
+                HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid(AndroidMsgtype, androidMsgValue, HttpContext.Current.Server));
                 HttpContext.Current.Response.End();
             }
             else if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone)//ios
             {
                 HttpContext.Current.Response.Clear();
-                HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid("sys", "loginout", HttpContext.Current.Server));
+                HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid(appleMsgtype, appleMsgValue, HttpContext.Current.Server));
                 HttpContext.Current.Response.End();
             }
             else//pc
             {
-                HttpContext.Current.Response.Redirect("~/login.aspx",true);
+                if (!string.IsNullOrEmpty(pclink))
+                {
+                    HttpContext.Current.Response.Redirect(pclink, true);
+                }
             }
         }
 

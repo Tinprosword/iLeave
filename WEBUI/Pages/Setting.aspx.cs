@@ -44,6 +44,7 @@ namespace WEBUI.Pages
             this.lt_address.Text = language.setting_service;
             this.lt_language.Text = language.setting_language;
             this.lt_language0.Text = language.setting_logout;
+            this.lt_changeServer.Text = language.setting_changeLink;
         }
 
 
@@ -60,7 +61,6 @@ namespace WEBUI.Pages
         protected void loginout_Click(object sender, ImageClickEventArgs e)
         {
             LSLibrary.WebAPP.LoginManager.Logoff();
-            BLL.Page.MyCookieManage.SetCookie_isRmember("0");
             Response.Redirect("setting.aspx");
         }
 
@@ -82,6 +82,11 @@ namespace WEBUI.Pages
             }
             else//pc
             {}
+        }
+
+        protected void btn_changeserver_Click(object sender, ImageClickEventArgs e)
+        {
+            BLL.User_wsref.GoBackToSign();
         }
 
 
