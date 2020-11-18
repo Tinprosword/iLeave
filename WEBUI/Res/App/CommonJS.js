@@ -30,25 +30,6 @@ function GOHistory()
 }
 
 
-function sleep(d)
-{
-    var t = Date.now();
-    while (Date.now() - t <= d);
-}
-
-function go(eventname)
-{
-    MyPostBack(eventname, '');
-}
-
-function ShowMessage(msg,eventName)
-{
-    $('#fixmsg').html(msg).addClass("Flostalert-success").show().delay(1500).fadeOut();
-    setTimeout(function () { go(eventName) }, 2000);
-    return false;
-}
-
-
 //ajax start
 function SingleResult(url, Postdata, datatype, callfun) {
     $.ajax({
@@ -121,6 +102,8 @@ function ModelsResultWithWaitHardCodeMID(url, Postdata, datatype, callfun) {
 
 
 function SingleResult_StringWithWaitHardCodeMID(url, Postdata, callfun) {
+    alert('a')
+    alert(url);
     SingleResultWithWait(url, Postdata, "string", callfun, "myModal");
 }
 

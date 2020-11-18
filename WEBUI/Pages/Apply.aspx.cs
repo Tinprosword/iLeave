@@ -77,6 +77,11 @@ namespace WEBUI.Pages
             SetMultiLanguage();
         }
 
+
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
+        {
+        }
+
         private void LoadUI(List<LSLibrary.WebAPP.ValueText<int>> leveTypeData,string leaveTypeSelectedValue,string ddlSectionSelected,string remarks,List<MODEL.Apply.apply_LeaveData> leaveDays,int numberofAttachment)
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current,"~/pages/main.aspx", true);
@@ -98,7 +103,7 @@ namespace WEBUI.Pages
             this.repeater_leave.DataSource = leaveDays;
             this.repeater_leave.DataBind();
 
-            this.button_apply.OnClientClick = "return ShowMessage('" + BLL.MultiLanguageHelper.GetLanguagePacket().submit_success + "','aa')";//OnClientClick='return ShowMessage(<%=BLL.GlobalVariate.submit_success%>,"aa")'
+            //this.button_apply.OnClientClick = "return ShowMessage('" + BLL.MultiLanguageHelper.GetLanguagePacket().submit_success + "','aa')";//OnClientClick='return ShowMessage(<%=BLL.GlobalVariate.submit_success%>,"aa")'
         }
 
         private string GetAttachmentNumberPath(int number)
@@ -337,10 +342,7 @@ namespace WEBUI.Pages
         }
 
 
-        protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
-        {
-            BLL.common.CheckMyPostback("aa", this.Request, button_apply_Click, null, null);
-        }
+        
         #endregion
     }
 }

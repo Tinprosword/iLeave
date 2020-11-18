@@ -16,7 +16,7 @@
             <input type="button" value="showtimeByAjaxmodel" onclick="testGetModel()"/>
             <input type="button" value="showtimeByAjaxmodel" onclick="testGetModels()"/>
             <br />
-            <asp:Button ID="Button1" runat="server" Text="showtimeBydotnet" />
+            <asp:Button ID="Button1" runat="server" Text="showtimeBydotnet" OnClientClick="SingleResult('testws.asmx/HelloWorld', { a: '3', b: '4' }, 'string', justShowIt, alertstart, alertcom);" />
         </div>
 
         <script src="../Res/jquery/jquery.min.js"></script>
