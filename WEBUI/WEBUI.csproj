@@ -274,6 +274,7 @@
     <Content Include="temp\template2.aspx" />
     <Content Include="temp\test.aspx" />
     <Content Include="temp\testPost.aspx" />
+    <Content Include="temp\testws.asmx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -438,6 +439,10 @@
     </Compile>
     <Compile Include="temp\testPost.aspx.designer.cs">
       <DependentUpon>testPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="temp\testws.asmx.cs">
+      <DependentUpon>testws.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="webservices\webservices.aspx.cs">
       <DependentUpon>webservices.aspx</DependentUpon>

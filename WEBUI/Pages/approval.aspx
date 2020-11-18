@@ -59,4 +59,5 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
     <script src="../Res/App/approval.js?lastmodify=<%=BLL.GlobalVariate.myapprovaljsLastmodify %>"></script>
+    
 </asp:Content>

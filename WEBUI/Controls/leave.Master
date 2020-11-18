@@ -14,7 +14,24 @@
     <form id="form1" runat="server">
         <input type="hidden" name="mypostback_target" id="mypostback_target" value="" />
         <input type="hidden" name="mypostback_argument" id="mypostback_argument" value="" />
-        <div id="fixmsg"></div>
+        <div id="fixmsg"></div><!--废弃-->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="true"><!--弹出等待框-->
+            <div class="modal-dialog" style="display:block">
+                <span style="font-family: Arial, Helvetica, sans-serif;"><!--设置模态框属性--></span>
+                <div class="modal-content" style="height: 60px;margin-top: 280px; width:80%; margin-left:10%;">
+                    <!--设置模态框content属性-->
+               <%--<div class="modal-header" style="text-align:left;font-size: small;height: 8px;margin-bottom: 5px;">
+                        <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            x
+                        </button>-->
+                        <p style="margin-top: -10px;"></p>
+                    </div>--%>
+                    <div class="modal-body" style="text-align: center;font-size: large;height: 20px;line-height:20px; vertical-align:central;">
+                        <p>请稍候...   Please wait...</p>
+                    </div>
+                </div><!-- /.modal-content  -->
+            </div><!-- /.modal -->
+        </div>
         <div class="container-fluid">
             <div class="row">
                 <div id="Navigation" class="lss-bannercolor-black" style="line-height:40px;height:40px;" runat="server" visible="false">

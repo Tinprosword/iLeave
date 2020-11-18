@@ -37,3 +37,5 @@
         </div>
     </div>
 </asp:Content>
+<asp:Content ContentPlaceHolderID="contentjs" runat="server">
+</asp:Content>
