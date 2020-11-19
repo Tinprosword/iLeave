@@ -24,9 +24,18 @@ namespace WEBUI
             c.id = 1;
             c.name = "c";
 
-            LSLibrary.MyJson myJson = new LSLibrary.MyJson();
-            string cc= myJson.JsonObject(c);
+            MODEL.Apply.ViewState_page vsp = new MODEL.Apply.ViewState_page();
+
+
+            string cc= LSLibrary.MyJson.SObj(vsp);
             this.Label1.Text = cc;
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            string json1 = this.Label1.Text;
+            var a= LSLibrary.MyJson.UnSObj<MODEL.Apply.ViewState_page>(json1);
+            int b = 4;
         }
 
         public class book
@@ -64,5 +73,6 @@ namespace WEBUI
             }
         }
 
+        
     }
 }
