@@ -17,9 +17,14 @@ namespace WEBUI.temp
     public class testws : System.Web.Services.WebService
     {
         [WebMethod]
-        public string HelloWorld()
+        public string HelloWorld(string abc)
         {
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(2000);
+
+            
+
+            
+
             return "Hello World";
         }
 

@@ -19,7 +19,20 @@ namespace WEBUI
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            this.Label1.Text= TestMultiply.names[TestMultiply.GetLanguageType()];
+            //this.Label1.Text= TestMultiply.names[TestMultiply.GetLanguageType()];
+            book c = new book();
+            c.id = 1;
+            c.name = "c";
+
+            LSLibrary.MyJson myJson = new LSLibrary.MyJson();
+            string cc= myJson.JsonObject(c);
+            this.Label1.Text = cc;
+        }
+
+        public class book
+        {
+            public int id = 4;
+            public string name = "c";
         }
 
         private class TestMultiply

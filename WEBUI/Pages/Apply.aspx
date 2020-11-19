@@ -93,28 +93,27 @@
         </div>
       
         <div class="col-xs-12 lsf-center" style="padding-top:11px; color:white;font-weight:bold">
-            <asp:Button ID="button_apply" OnClientClick="SingleResult_StringWithWaitHardCodeMID('../temp/testws.asmx/HelloWorld', {}, showit);return false;" runat="server" Text="Apply" CssClass="lsu-imagebtn" style="background-image:url(../res/images/btnok.png);background-size:124px 44px" Height="44px" Width="124px" UseSubmitBehavior="false"/>
-            <input type="button" value="test" onclick="SingleResult_StringWithWaitHardCodeMID('../temp/testws.asmx/HelloWorld', {}, showit);" />
+            <asp:Button ID="button_apply" OnClientClick="return sendit()" runat="server" Text="Apply" CssClass="lsu-imagebtn" style="background-image:url(../res/images/btnok.png);background-size:124px 44px" Height="44px" Width="124px"/>
         </div>
     </div>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="contentjs" runat="server">
     <script type="text/javascript">
-        //OnClientClick="SingleResult_StringWithWaitHardCodeMID('../temp/testws.asmx/HelloWorld',{},justAlert)"
-        //SingleResult_StringWithWaitHardCodeMID('../temp/testws.asmx/HelloWorld', {}, showit);
-
-        function ok()
+        function sendit()
         {
-            SingleResult_StringWithWaitHardCodeMID('../temp/testws.asmx/HelloWorld', {}, showit);
+            var viewstate = $('#__VIEWSTATE').val();
+            alert(viewstate);
+            SingleResult_StringWithWaitHardCodeMID('../temp/testws.asmx/HelloWorld', { a: viewstate }, showit);
             return false;
         }
 
-        function showit(result) {
+
+        function showit(result)
+        {
             alert(result);
         }
     </script>
 
     <script src="../Res/App/apply.js?lastmodify=<%=BLL.GlobalVariate.applyjsLastmodify %>"></script>
     <asp:Literal ID="lt_js_prg" runat="server"/>
-    
 </asp:Content>

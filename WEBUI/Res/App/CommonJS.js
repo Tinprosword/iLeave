@@ -59,7 +59,8 @@ function ModelsResult(url, Postdata, rootname, eachFun) {
 
 
 
-function SingleResultWithWait(url, Postdata, datatype, callfun, modelid) {
+function SingleResultWithWait(url, Postdata, datatype, callfun, modelid)
+{
     var myModelID = "#" + modelid + "";
     $.ajax({
         type: "post",
@@ -102,8 +103,6 @@ function ModelsResultWithWaitHardCodeMID(url, Postdata, datatype, callfun) {
 
 
 function SingleResult_StringWithWaitHardCodeMID(url, Postdata, callfun) {
-    alert('a')
-    alert(url);
     SingleResultWithWait(url, Postdata, "string", callfun, "myModal");
 }
 
@@ -115,6 +114,8 @@ function SingleResult_intWithWaitHardCodeMID(url, Postdata, callfun) {
 function getMember(obj, memberName) {
     return $(obj).children(memberName).text();
 }
+
+
 //ajax end
 
 //beforeSend: function () {       //ajax发送请求时的操作，得到请求结果前有效
