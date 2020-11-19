@@ -260,34 +260,39 @@ namespace WEBUI.Pages
         #region [module] apply
         protected void button_apply_Click(object sender, EventArgs e)
         {
-            initJavascript();
+            string waitCode= LSLibrary.WebAPP.httpHelper.WaitDiv_show("Please Wait,请等待.");
+            System.Threading.Thread.Sleep(500);//休眠半秒,获得较好显示体验.
+            Response.Write(waitCode);
             Response.Flush();
 
-            System.Threading.Thread.Sleep(2000);
+            //1,获得数据   2,调用ws,进行插入.  3.并把图片放置到制定目录，并插入到数据库
+            List<MODEL.Apply.apply_LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).LeaveList;
+            List<MODEL.Apply.App_AttachmentInfo> pics = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).uploadpic;
+            string errorMsg = "";
+            int reslut = BLL.Leave.InsertLeave(LeaveList, loginer.userInfo.id, (int)loginer.userInfo.employID, null, this.tb_remarks.Text.Trim(), ref errorMsg);
+            if (reslut >= 0)
+            {
+                for (int i = 0; i < pics.Count; i++)
+                {
+                    copyFileTo(pics[i].originAttendance_RelatePath, pics[i].originAttendance_HRDBPath);
+                }
+                BLL.Leave.InsertAttachment(pics, loginer.userInfo.id, loginer.userInfo.personid, reslut);
 
-            ////1,获得数据   2,调用ws,进行插入.  3.并把图片放置到制定目录，并插入到数据库
-            //List<MODEL.Apply.apply_LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).LeaveList;
-            //List<MODEL.Apply.App_AttachmentInfo> pics = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).uploadpic;
-            //string errorMsg = "";
-            //int reslut = BLL.Leave.InsertLeave(LeaveList, loginer.userInfo.id, (int)loginer.userInfo.employID, null, this.tb_remarks.Text.Trim(), ref errorMsg);
-            //if (reslut >= 0)
-            //{
-            //    for (int i = 0; i < pics.Count; i++)
-            //    {
-            //        copyFileTo(pics[i].originAttendance_RelatePath, pics[i].originAttendance_HRDBPath);
-            //    }
-            //    BLL.Leave.InsertAttachment(pics, loginer.userInfo.id, loginer.userInfo.personid, reslut);
-            //    //((WEBUI.Controls.leave)this.Master).SetupMsg(BLL.MultiLanguageHelper.GetLanguagePacket().apply_apply, 2000, WEBUI.Controls.leave.msgtype.success);
-            //    Response.Redirect("myapplications.aspx?applicationType=0");
-            //    //LSLibrary.WebAPP.httpHelper.ResponseRedirectDalay(2.3f, "", Response);
-            //}
-            //else
-            //{
-            //    this.literal_errormsga.Visible = true;
-            //    this.literal_errormsga.Text = errorMsg;
-            //}
+                this.PreRenderComplete += Apply_PreRenderComplete;
+            }
+            else
+            {
+                this.literal_errormsga.Visible = true;
+                this.literal_errormsga.Text = errorMsg;
+            }
+        }
 
-            this.ClientScript.RegisterStartupScript(this.GetType(), "0", "var targelem = document.getElementById('loader_container');targelem.style.display='none';targelem.style.visibility='hidden';", true);
+        private void Apply_PreRenderComplete(object sender, EventArgs e)
+        {
+            Apply page = (Apply)sender;
+            page.Response.Clear();
+            page.Response.Write(LSLibrary.WebAPP.MyJSHelper.Goto("myapplications.aspx?applicationType=0"));
+            page.Response.End();
         }
 
         private void copyFileTo(string filePath,string descPath)
@@ -367,22 +372,6 @@ namespace WEBUI.Pages
         #endregion
 
 
-        public static void initJavascript()
-        {
-            HttpContext.Current.Response.Write("<style>");
-            HttpContext.Current.Response.Write("#loader_container {text-align:center; position:absolute; top:40%; width:100%; left: 0;}");
-            HttpContext.Current.Response.Write("#loader {font-family:Tahoma, Helvetica, sans; font-size:11.5px; color:#000000; background-color:#FFFFFF; padding:10px 0 16px 0; margin:0 auto; display:block; width:130px; border:1px solid #5a667b; text-align:left; z-index:2;}");
-            HttpContext.Current.Response.Write("#progress {height:5px; font-size:1px; width:1px; position:relative; top:1px; left:0px; background-color:#8894a8;}");
-            HttpContext.Current.Response.Write("#loader_bg {background-color:#e4e7eb; position:relative; top:8px; left:8px; height:7px; width:113px; font-size:1px;}");
-            HttpContext.Current.Response.Write("</style>");
-            HttpContext.Current.Response.Write("<div id=loader_container>");
-            HttpContext.Current.Response.Write("<div id=loader>");
-            HttpContext.Current.Response.Write("<div align=center>页面正在加载中 ...</div>");
-            HttpContext.Current.Response.Write("<div id=loader_bg><div id=progress> </div></div>");
-            HttpContext.Current.Response.Write("</div></div>");
-
-
-            HttpContext.Current.Response.Flush();
-        }
+        
     }
 }

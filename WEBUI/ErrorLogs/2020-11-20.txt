@@ -1,0 +1,39 @@
+ip:192.168.19.210
+DataTime：2020/11/20 6:24:20
+Url：http://192.168.19.210:8091/pages/Apply.aspx?action=backCalendar
+Message：无法在发送 HTTP 标头之后进行重定向。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void Redirect(System.String, Boolean, Boolean)
+Trace：   在 System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   在 WEBUI.Pages.Apply.button_apply_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/20 6:29:19
+Url：http://192.168.19.210:8091/pages/Apply.aspx?action=backCalendar
+Message：无法在发送 HTTP 标头之后进行重定向。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void Redirect(System.String, Boolean, Boolean)
+Trace：   在 System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   在 WEBUI.Pages.Apply.button_apply_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/20 6:30:06
+Url：http://192.168.19.210:8091/pages/Apply.aspx?action=backCalendar
+Message：无法在发送 HTTP 标头之后进行重定向。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void Redirect(System.String, Boolean, Boolean)
+Trace：   在 System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   在 WEBUI.Pages.Apply.button_apply_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
