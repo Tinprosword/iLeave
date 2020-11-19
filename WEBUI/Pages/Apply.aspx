@@ -93,7 +93,7 @@
         </div>
       
         <div class="col-xs-12 lsf-center" style="padding-top:11px; color:white;font-weight:bold">
-            <asp:Button ID="button_apply" OnClientClick="return sendit()" runat="server" Text="Apply" CssClass="lsu-imagebtn" style="background-image:url(../res/images/btnok.png);background-size:124px 44px" Height="44px" Width="124px"/>
+            <asp:Button ID="button_apply" runat="server" Text="Apply" CssClass="lsu-imagebtn" style="background-image:url(../res/images/btnok.png);background-size:124px 44px" Height="44px" Width="124px" OnClick="button_apply_Click"/>
         </div>
     </div>
 </asp:Content>
