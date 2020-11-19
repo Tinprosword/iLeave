@@ -342,7 +342,20 @@ namespace WEBUI.Pages
         }
 
 
-        
+
+
+
+        #endregion
+
+        #region keep value for ajax
+        protected void Page_PreRender()
+        {
+            MODEL.Apply.ViewState_page pagedate = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
+            MODEL.Apply.ajax_data_apply ajaxdata = new MODEL.Apply.ajax_data_apply();
+            ajaxdata.pagedata = pagedate;
+            ajaxdata.loginid = loginer.userInfo.employID??0;
+            ((WEBUI.Controls.leave)this.Master).SetPageState(LSLibrary.MyJson.SObj(ajaxdata));
+        }
         #endregion
     }
 }

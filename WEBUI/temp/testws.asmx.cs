@@ -21,11 +21,32 @@ namespace WEBUI.temp
         {
             System.Threading.Thread.Sleep(2000);
 
-            
+            MODEL.Apply.ajax_data_apply pagedate = LSLibrary.MyJson.UnSObj<MODEL.Apply.ajax_data_apply>(abc);
+            return pagedate.pagedata.LeaveTypeSelectValue + "." + pagedate.loginid;
 
-            
 
-            return "Hello World";
+            ////1,获得数据   2,调用ws,进行插入.  3.并把图片放置到制定目录，并插入到数据库
+            //List<MODEL.Apply.apply_LeaveData> LeaveList = pagedate.LeaveList;
+            //List<MODEL.Apply.App_AttachmentInfo> pics = pagedate.uploadpic;
+            //string errorMsg = "";
+            //int reslut = BLL.Leave.InsertLeave(LeaveList, 3, 4, null, "444", ref errorMsg);
+            //if (reslut >= 0)
+            //{
+            //    for (int i = 0; i < pics.Count; i++)
+            //    {
+            //        copyFileTo(pics[i].originAttendance_RelatePath, pics[i].originAttendance_HRDBPath);
+            //    }
+            //    BLL.Leave.InsertAttachment(pics, loginer.userInfo.id, loginer.userInfo.personid, reslut);
+            //    //((WEBUI.Controls.leave)this.Master).SetupMsg(BLL.MultiLanguageHelper.GetLanguagePacket().apply_apply, 2000, WEBUI.Controls.leave.msgtype.success);
+            //    Response.Redirect("myapplications.aspx?applicationType=0");
+            //    //LSLibrary.WebAPP.httpHelper.ResponseRedirectDalay(2.3f, "", Response);
+            //}
+            //else
+            //{
+            //    this.literal_errormsga.Visible = true;
+            //    this.literal_errormsga.Text = errorMsg;
+            //}
+
         }
 
         [WebMethod]

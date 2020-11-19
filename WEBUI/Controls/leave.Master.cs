@@ -78,10 +78,5 @@ namespace WEBUI.Controls
             this.PageState.Value = value;
         }
 
-        public string GetPageState()
-        {
-            return this.PageState.Value;
-        }
-
     }
 }

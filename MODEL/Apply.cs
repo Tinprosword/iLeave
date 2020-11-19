@@ -9,6 +9,13 @@ namespace MODEL
     public class Apply
     {
         [Serializable]
+        public class ajax_data_apply
+        {
+            public ViewState_page pagedata;
+            public int loginid;
+        }
+
+        [Serializable]
         public class ViewState_page
         {
             public string LeaveTypeSelectValue;

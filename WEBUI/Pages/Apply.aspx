@@ -101,12 +101,11 @@
     <script type="text/javascript">
         function sendit()
         {
-            var viewstate = $('#__VIEWSTATE').val();
+            var viewstate = $('#PageState').val();
             alert(viewstate);
-            SingleResult_StringWithWaitHardCodeMID('../temp/testws.asmx/HelloWorld', { a: viewstate }, showit);
+            SingleResult_StringWithWaitHardCodeMID('../temp/testws.asmx/HelloWorld', { abc: viewstate }, showit);
             return false;
         }
-
 
         function showit(result)
         {
