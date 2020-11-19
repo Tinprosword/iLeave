@@ -98,7 +98,10 @@ namespace BLL
             return js;
         }
 
+        public static void SetToHiddenInput(string value)
+        {
 
+        }
 
     }
 }

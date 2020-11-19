@@ -9,6 +9,9 @@ namespace WEBUI.Controls
 {
     public partial class leave : System.Web.UI.MasterPage
     {
+        
+
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -66,6 +69,18 @@ namespace WEBUI.Controls
             }
 
             this.lt_jsfixmsg.Text = "<script>$('#fixmsg').html('" + msg + "').addClass('"+ cssname + "').show().delay(" + mintime + ").fadeOut();</script>";
+        }
+
+
+
+        public void SetPageState(string value)
+        {
+            this.PageState.Value = value;
+        }
+
+        public string GetPageState()
+        {
+            return this.PageState.Value;
         }
 
     }

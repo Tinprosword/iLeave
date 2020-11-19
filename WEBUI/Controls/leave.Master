@@ -14,6 +14,7 @@
     <form id="form1" runat="server">
         <input type="hidden" name="mypostback_target" id="mypostback_target" value="" />
         <input type="hidden" name="mypostback_argument" id="mypostback_argument" value="" />
+        <input type="hidden" name="PageState" id="PageState" value="" runat="server" />
         <div id="fixmsg"></div><!--废弃-->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="true"><!--弹出等待框-->
             <div class="modal-dialog" style="display:block">
