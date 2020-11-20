@@ -13,12 +13,14 @@ namespace WEBUI.Pages
     public partial class approval_wait : BLL.CustomLoginTemplate
     {
         public static string qs_bigRange = "applicationType";
+        public static string qs_action = "action";
         private readonly string tip = "Search Staff";
         protected GlobalVariate.LeaveBigRangeStatus theBigrange = GlobalVariate.LeaveBigRangeStatus.waitapproval;
-        
+        protected int actionType = 0;
+
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
-            if (!string.IsNullOrEmpty(Request.QueryString[qs_bigRange]))
+            if (!string.IsNullOrEmpty(Request.QueryString[qs_bigRange]) && !string.IsNullOrEmpty(Request.QueryString[qs_action]))
             {
                 string bigrange = Request.QueryString[qs_bigRange];
                 if (bigrange == "0")
@@ -33,6 +35,9 @@ namespace WEBUI.Pages
                 {
                     theBigrange = GlobalVariate.LeaveBigRangeStatus.withdraw;
                 }
+
+                string strAction = Request.QueryString[qs_action];
+                int.TryParse(strAction, out actionType);
             }
             else
             {
@@ -50,12 +55,11 @@ namespace WEBUI.Pages
         {
             SetupNavinigation();
             SetupRepeat();
-            this.tb_staff.SetTip(tip);
+            SetupSearch();
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
-        {
-        }
+        {}
 
         protected void ddl_year_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -78,7 +82,12 @@ namespace WEBUI.Pages
             {
                 CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().approvalmain_menu3;
             }
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, CurrentTitle, "~/pages/approvalmain.aspx", true);
+            string backurl = "~/pages/approvalmain.aspx";
+            if (actionType == 1)
+            {
+                backurl= "~/pages/myapplicationmain.aspx";
+            }
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, CurrentTitle, backurl, true);
         }
 
 
@@ -86,35 +95,62 @@ namespace WEBUI.Pages
         {
             int year = int.Parse(this.ddl_year.SelectedValue);
             string name = this.tb_staff.Text.Trim() == tip ? "" : this.tb_staff.Text.Trim();
-            this.rp_list.DataSource = BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, theBigrange, year, name);
+
+            List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> ds = null;
+            if (actionType == 0)
+            {
+                ds = BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, theBigrange, year, name);
+            }
+            else
+            {
+                ds = BLL.Leave.GetMyLeaveMaster(loginer.userInfo.personid, theBigrange, year);
+            }
+
+            this.rp_list.DataSource = ds;
             this.rp_list.DataBind();
         }
 
+        private void SetupSearch()
+        {
+            this.tb_staff.SetTip(tip);
+            this.tb_staff.Visible = actionType == 0;
+        }
 
-        public bool BShow_WaitApplyPanel(GlobalVariate.LeaveBigRangeStatus myBigRange,byte states)
+
+        public bool BShow_WaitApplyPanel(GlobalVariate.LeaveBigRangeStatus myBigRange, byte states,int action)
         {
             bool result = false;
-            if (myBigRange == GlobalVariate.LeaveBigRangeStatus.waitapproval && states == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE)
+            if (myBigRange == GlobalVariate.LeaveBigRangeStatus.waitapproval && states == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && action==0)
             {
                 result = true;
             }
             return result;
         }
 
-        public bool BShow_WaitCancelPanel(GlobalVariate.LeaveBigRangeStatus myBigRange, byte states)
+        public bool BShow_WaitCancelPanel(GlobalVariate.LeaveBigRangeStatus myBigRange, byte states,int action)
         {
             bool result = false;
-            if (myBigRange == GlobalVariate.LeaveBigRangeStatus.waitapproval && states == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL)
+            if (myBigRange == GlobalVariate.LeaveBigRangeStatus.waitapproval && states == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL && action==0)
             {
                 result = true;
             }
             return result;
         }
 
-        public bool BShow_OtherApplyPanel(GlobalVariate.LeaveBigRangeStatus myBigRange)
+        public bool BShow_UserWaitingPanel(GlobalVariate.LeaveBigRangeStatus myBigRange, byte states, int action)
         {
             bool result = false;
-            if (myBigRange != GlobalVariate.LeaveBigRangeStatus.waitapproval)
+            if (myBigRange == GlobalVariate.LeaveBigRangeStatus.waitapproval && states == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && action == 1)
+            {
+                result = true;
+            }
+            return result;
+        }
+
+        public bool BShow_UserApprovedPanel(GlobalVariate.LeaveBigRangeStatus myBigRange, byte states, int action)
+        {
+            bool result = false;
+            if (myBigRange == GlobalVariate.LeaveBigRangeStatus.approvaled && states == (int)BLL.GlobalVariate.ApprovalRequestStatus.APPROVE && action == 1)
             {
                 result = true;
             }
@@ -130,6 +166,7 @@ namespace WEBUI.Pages
             
 
             string errormsg;
+            bool callResult = true;
             string[] pas = ((Button)sender).CommandArgument.Split(new char[] { '|' });
 
             int btntype = int.Parse(pas[0]);
@@ -137,25 +174,34 @@ namespace WEBUI.Pages
             int requestId = int.Parse(pas[2]);
 
 
-            string remarks1 = ((TextBox)this.rp_list.Items[itemIndex].FindControl("panel_waitingApprove").FindControl("tb_waitapproveRemark")).Text;
-            string remarks2 = ((TextBox)this.rp_list.Items[itemIndex].FindControl("panel_waitingCancel").FindControl("tb_waitcancelRemark")).Text;
+            string remarks1 = ((TextBox)this.rp_list.Items[itemIndex].FindControl("panel_admin_waitingApprove").FindControl("tb_waitapproveRemark")).Text;
+            string remarks2 = ((TextBox)this.rp_list.Items[itemIndex].FindControl("panel_admin_waitingCancel").FindControl("tb_waitcancelRemark")).Text;
 
             if (btntype == 1)//approve apply
             {
-                BLL.workflow.ApproveRequest_leave(requestId, loginer.userInfo.id, remarks1, out errormsg);
+                callResult=BLL.workflow.ApproveRequest_leave(requestId, loginer.userInfo.id, remarks1, out errormsg);
             }
             else if (btntype == 2)//reject apply
             {
-                BLL.workflow.RejectRequest_leave(requestId, loginer.userInfo.id, remarks1, out errormsg);
+                callResult = BLL.workflow.RejectRequest_leave(requestId, loginer.userInfo.id, remarks1, out errormsg);
             }
             else if (btntype == 3)//approve cancel
             {
-                BLL.workflow.ApprovalCancelRequest_leave(requestId, loginer.userInfo.id, remarks2, out errormsg);
+                callResult = BLL.workflow.ApprovalCancelRequest_leave(requestId, loginer.userInfo.id, remarks2, out errormsg);
             }
             else if (btntype == 4)//reject cancel
             {
-                BLL.workflow.RejectCancelRequest_leave(requestId, loginer.userInfo.id, remarks2, out errormsg);
+                callResult = BLL.workflow.RejectCancelRequest_leave(requestId, loginer.userInfo.id, remarks2, out errormsg);
             }
+            else if (btntype == 5)//withdraw
+            {
+                callResult = BLL.workflow.WithDrawRequest_leave(requestId, loginer.userInfo.id, "", out errormsg);
+            }
+            else if (btntype == 6)//cancel
+            {
+                callResult = BLL.workflow.CancelRequest_leave(requestId, loginer.userInfo.id, "", out errormsg);
+            }
+
             SetupRepeat();
 
             this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();

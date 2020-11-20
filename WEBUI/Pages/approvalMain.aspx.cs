@@ -37,15 +37,15 @@ namespace WEBUI.Pages
 
         protected void wait(object sender, EventArgs e)
         {
-            Response.Redirect("approval_wait.aspx?" + approval_wait.qs_bigRange + "=0", true);
+            Response.Redirect("approval_wait.aspx?" + approval_wait.qs_bigRange + "=0&" + approval_wait.qs_action + "=0", true);
         }
         protected void approved(object sender, EventArgs e)
         {
-            Response.Redirect("approval_wait.aspx?" + approval_wait.qs_bigRange + "=1", true);
+            Response.Redirect("approval_wait.aspx?" + approval_wait.qs_bigRange + "=1&" + approval_wait.qs_action + "=0", true);
         }
         protected void reject(object sender, EventArgs e)
         {
-            Response.Redirect("approval_wait.aspx?" + approval_wait.qs_bigRange + "=2", true);
+            Response.Redirect("approval_wait.aspx?" + approval_wait.qs_bigRange + "=2&" + approval_wait.qs_action + "=0", true);
         }
 
     }

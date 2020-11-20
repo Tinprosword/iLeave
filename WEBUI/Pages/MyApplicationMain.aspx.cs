@@ -31,21 +31,21 @@ namespace WEBUI.Pages
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {}
 
-      
-        protected void reject(object sender, EventArgs e)
-        {
-            Response.Redirect("myapplications.aspx?applicationType=2", true);
-        }
-
 
         protected void wait(object sender, EventArgs e)
         {
-            Response.Redirect("myapplications.aspx?applicationType=0", true);
+            Response.Redirect("approval_wait.aspx?" + approval_wait.qs_bigRange + "=0&" + approval_wait.qs_action + "=1", true);
         }
 
         protected void approved(object sender, EventArgs e)
         {
-            Response.Redirect("myapplications.aspx?applicationType=1", true);
+            Response.Redirect("approval_wait.aspx?" + approval_wait.qs_bigRange + "=1&" + approval_wait.qs_action + "=1", true);
         }
+
+        protected void reject(object sender, EventArgs e)
+        {
+            Response.Redirect("approval_wait.aspx?" + approval_wait.qs_bigRange + "=2&" + approval_wait.qs_action + "=1", true);
+        }
+
     }
 }
