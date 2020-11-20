@@ -23,7 +23,7 @@ namespace WebServiceLayer.MyModel
 
         public string Info_GetBalance()
         {
-            string result = data.leaveDesc;
+            string result = data.leaveDesc+""+data.WorkflowTypeID;
             return result;
         }
 

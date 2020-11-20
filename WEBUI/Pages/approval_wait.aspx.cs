@@ -55,16 +55,6 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {
-            BLL.common.CheckMyPostbackEventNameStart("1", Request, btn_Click, null, null);
-            BLL.common.CheckMyPostbackEventNameStart("2", Request, btn_Click, null, null);
-            BLL.common.CheckMyPostbackEventNameStart("3", Request, btn_Click, null, null);
-            BLL.common.CheckMyPostbackEventNameStart("4", Request, btn_Click, null, null);
-
-            string requestid = ((WEBUI.Controls.leave)this.Master).GetMyPostBackArgumentByTargetname("detail");
-            if (!string.IsNullOrEmpty(requestid))
-            {
-                Response.Redirect("~/Pages/myDetail.aspx?applicationType=" + ((int)theBigrange) + "&action=1&requestid=" + requestid, true);
-            }
         }
 
         protected void ddl_year_SelectedIndexChanged(object sender, EventArgs e)
@@ -134,8 +124,13 @@ namespace WEBUI.Pages
 
         protected void btn_Click(object sender, EventArgs e)
         {
+            string waitDiv = LSLibrary.WebAPP.httpHelper.WaitDiv_show(BLL.MultiLanguageHelper.GetLanguagePacket().submit_success);
+            Response.Write(waitDiv);
+            Response.Flush();
+            
+
             string errormsg;
-            string[] pas = ((string)sender).Split(new char[] { '|' });
+            string[] pas = ((Button)sender).CommandArgument.Split(new char[] { '|' });
 
             int btntype = int.Parse(pas[0]);
             int itemIndex = int.Parse(pas[1]);
@@ -161,8 +156,9 @@ namespace WEBUI.Pages
             {
                 BLL.workflow.RejectCancelRequest_leave(requestId, loginer.userInfo.id, remarks2, out errormsg);
             }
-
             SetupRepeat();
+
+            this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
         }
 
 

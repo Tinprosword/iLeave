@@ -37,3 +37,147 @@ Trace：   在 System.Web.HttpResponse.Redirect(String url, Boolean endResponse,
    在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
    在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
 ********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/20 12:49:21
+Url：http://192.168.19.210:8091/pages/approval_wait.aspx?applicationType=0
+Message：服务器无法处理请求。 ---> 序列不包含任何元素
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_leave(Int32 requestid, Int32 UserID, String remark) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 507
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\workflow.cs:行号 41
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 140
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/20 12:49:29
+Url：http://192.168.19.210:8091/pages/approval_wait.aspx?applicationType=0
+Message：服务器无法处理请求。 ---> 序列不包含任何元素
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_leave(Int32 requestid, Int32 UserID, String remark) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 507
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\workflow.cs:行号 41
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 140
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/20 12:50:27
+Url：http://192.168.19.210:8091/pages/approval_wait.aspx?applicationType=0
+Message：服务器无法处理请求。 ---> 序列不包含任何元素
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_leave(Int32 requestid, Int32 UserID, String remark) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 507
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\workflow.cs:行号 41
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/20 14:25:56
+Url：http://192.168.19.210:8091/pages/approval_wait.aspx?applicationType=0
+Message：服务器无法处理请求。 ---> 序列不包含任何元素
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_leave(Int32 requestid, Int32 UserID, String remark) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 507
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\workflow.cs:行号 41
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/20 14:27:58
+Url：http://192.168.19.210:8091/pages/approval_wait.aspx?applicationType=0
+Message：服务器无法处理请求。 ---> 序列不包含任何元素
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_leave(Int32 requestid, Int32 UserID, String remark) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 507
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\workflow.cs:行号 41
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/20 14:31:11
+Url：http://192.168.19.210:8091/pages/approval_wait.aspx?applicationType=0
+Message：服务器无法处理请求。 ---> 序列不包含任何元素
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_leave(Int32 requestid, Int32 UserID, String remark)
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg)
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/20 14:31:40
+Url：http://192.168.19.210:8091/pages/approval_wait.aspx?applicationType=0
+Message：服务器无法处理请求。 ---> 序列不包含任何元素
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_leave(Int32 requestid, Int32 UserID, String remark)
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg)
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/20 14:31:50
+Url：http://192.168.19.210:8091/pages/approval_wait.aspx?applicationType=0
+Message：服务器无法处理请求。 ---> 序列不包含任何元素
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_leave(Int32 requestid, Int32 UserID, String remark)
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg)
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/20 14:33:25
+Url：http://192.168.19.210:8091/pages/approval_wait.aspx?applicationType=0
+Message：服务器无法处理请求。 ---> 序列不包含任何元素
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_leave(Int32 requestid, Int32 UserID, String remark)
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg)
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
