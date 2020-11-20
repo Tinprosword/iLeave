@@ -241,6 +241,7 @@
     <Content Include="Res\images\Content_Page_Color_Botton_E.png" />
     <Content Include="Res\images\Content_Page_Color_Botton_F.png" />
     <Content Include="Res\images\Content_Page_Color_Botton_G.png" />
+    <Content Include="Res\images\details.png" />
     <Content Include="Res\images\earth.png" />
     <Content Include="Res\images\exchange.png" />
     <Content Include="Res\images\exit.png" />
