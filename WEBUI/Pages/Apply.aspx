@@ -55,14 +55,6 @@
             </tr>
         </table>
         <div class=" col-xs-12" style="height:2px"></div>
-        <%--<table class="col-xs-12 lsu-table-xs lss-bgcolor-blue" style="color:white">
-            <tr>
-                <td class="col-xs-3"><asp:Literal ID="ltlistdate" runat="server"></asp:Literal></td>
-                <td class="col-xs-4"><asp:Literal ID="ltlisttype" runat="server"></asp:Literal></td>
-                <td class="col-xs-4"><asp:Literal ID="lt_listsection" runat="server"></asp:Literal></td>
-                <td class="col-xs-1">  </td>
-            </tr>
-        </table>--%>
         <div class="col-xs-12 lsf-clearPadding" style="height:<%=BLL.GlobalVariate.setHeight(200)%>px; overflow-y:scroll;">
             <table class="col-xs-12 lsu-table-xs">
                 <tr class="lss-bgcolor-blue" style="color:white">

@@ -70,6 +70,7 @@ function ModelsResult(url, Postdata, rootname, eachFun) {
         data: Postdata,
         async: true,
         success: function (result) {
+            //alert(result);
             $(result).find(rootname).each(eachFun);//eachFun(i,obj)
         },
         error: function () { }

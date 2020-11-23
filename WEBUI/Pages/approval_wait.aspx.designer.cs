@@ -13,6 +13,33 @@ namespace WEBUI.Pages {
     public partial class approval_wait {
         
         /// <summary>
+        /// ltlistdate 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltlistdate;
+        
+        /// <summary>
+        /// ltlisttype 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltlisttype;
+        
+        /// <summary>
+        /// lt_listsection 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_listsection;
+        
+        /// <summary>
         /// ddl_year 控件。
         /// </summary>
         /// <remarks>

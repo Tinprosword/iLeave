@@ -164,7 +164,6 @@ namespace WEBUI.Pages
             Response.Write(waitDiv);
             Response.Flush();
             
-
             string errormsg;
             bool callResult = true;
             string[] pas = ((Button)sender).CommandArgument.Split(new char[] { '|' });
@@ -172,7 +171,6 @@ namespace WEBUI.Pages
             int btntype = int.Parse(pas[0]);
             int itemIndex = int.Parse(pas[1]);
             int requestId = int.Parse(pas[2]);
-
 
             string remarks1 = ((TextBox)this.rp_list.Items[itemIndex].FindControl("panel_admin_waitingApprove").FindControl("tb_waitapproveRemark")).Text;
             string remarks2 = ((TextBox)this.rp_list.Items[itemIndex].FindControl("panel_admin_waitingCancel").FindControl("tb_waitcancelRemark")).Text;
@@ -201,7 +199,6 @@ namespace WEBUI.Pages
             {
                 callResult = BLL.workflow.CancelRequest_leave(requestId, loginer.userInfo.id, "", out errormsg);
             }
-
             SetupRepeat();
 
             this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();

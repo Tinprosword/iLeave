@@ -280,6 +280,7 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="webservices\Leave.asmx" />
     <Content Include="webservices\webservices.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -451,6 +452,10 @@
     </Compile>
     <Compile Include="temp\testws.asmx.cs">
       <DependentUpon>testws.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="webservices\Leave.asmx.cs">
+      <DependentUpon>Leave.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="webservices\webservices.aspx.cs">
