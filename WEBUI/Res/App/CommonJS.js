@@ -29,6 +29,25 @@ function GOHistory()
     history.back();
 }
 
+//model
+function showModel(modelid) {
+    var myModelID = "#" + modelid + "";
+    $(myModelID).modal({ backdrop: 'static' }); 
+}
+
+function hiddenModel(myModelID) {
+    $(myModelID).modal('hide');
+}
+
+function showMyModel() {
+    showModel('myModal');
+}
+
+function hiddenMyModel() {
+    hiddenModel('myModal');
+}
+//model end
+
 
 //ajax start
 function SingleResult(url, Postdata, datatype, callfun) {
@@ -114,16 +133,22 @@ function SingleResult_intWithWaitHardCodeMID(url, Postdata, callfun) {
 function getMember(obj, memberName) {
     return $(obj).children(memberName).text();
 }
-
-
 //ajax end
 
-//beforeSend: function () {       //ajax发送请求时的操作，得到请求结果前有效
-//    $('#myModal').modal({
-//        backdrop: 'static'      //<span style="color:#FF6666;">设置模态框之外点击无效</span>
-//    });
-//    $('#myModal').modal('show');   //弹出模态框
-//},
-//complete: function () {            //ajax得到请求结果后的操作
-//    $('#myModal').modal('hide');  //隐藏模态框
-//},
+
+//div start
+// 弹窗
+function showWindow(showmsg) {
+    $('#showdiv').show(); //显示弹窗
+    $('.content').append(showmsg); //追加内容
+    $('#cover').css('display', 'block'); //显示遮罩层
+}
+
+// 关闭弹窗
+function closeWindow() {
+    $('#showdiv').hide(); //隐藏弹窗
+    $('#cover').css('display', 'none'); //显示遮罩层
+    $('#showdiv .content').html(""); //清空追加的内容
+}
+
+//end div

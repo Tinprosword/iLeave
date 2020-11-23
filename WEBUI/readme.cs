@@ -4,6 +4,7 @@
 //}
 
 
+//todo 总结弹出遮住层.
 //todo 按钮的高度                                           no
 //todo 有2个自动挥发处理。 appoval_wait                     no
 //todo 日历的样式.丢失图片									ok
