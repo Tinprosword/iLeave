@@ -26,7 +26,6 @@
                     <tr><td class="col-xs-3 lsf-clearPadding;" style="padding-left:1px;">Balance</td><td><div id="lbbalance">0</div></td></tr>
                     <tr><td style="padding-left:1px;">Leave Apply</td><td><div id="lbapply">1</div></td></tr>
                 </table>
-
                 <table class="col-xs-12 lsu-table-xs lsf-clearPadding" style="margin-bottom:15px;">
                     <tr class="lss-bgcolor-blue" style="color:white; height:24px;">
                         <td colspan="20" class="col-xs-12">Approval history</td>
@@ -53,62 +52,22 @@
                         <td class="col-xs-1" style="width:20px;">&nbsp;</td>
                     </tr>
                 </table>
-                    <div class="col-xs-12 lsf-clearPadding" style="width:100%; height:150px; overflow-y:scroll; overflow-x:hidden;">
-                        <table class="col-xs-12 lsu-table-xs lsf-clearPadding">
-                            <tr>
-                                <td class="col-xs-3">2020-0201</td>
-                                <td class="col-xs-3">Full Day</td>
-                                <td class="col-xs-2">0.375</td>
-                                <td class="col-xs-4"></td>
-                            </tr>
-                            <tr>
-                                <td>2020-0201</td>
-                                <td>Full Day</td>
-                                <td>0.375</td>
-                            </tr>
-                            <tr>
-                                <td>2020-0201</td>
-                                <td>Full Day</td>
-                                <td>0.375</td>
-                            </tr>
-                            <tr>
-                                <td>2020-0201</td>
-                                <td>Full Day</td>
-                                <td>0.375</td>
-                            </tr>
-                            <tr>
-                                <td>2020-0201</td>
-                                <td>Full Day</td>
-                                <td>0.375</td>
-                            </tr>
-                            <tr>
-                                <td>2020-0201</td>
-                                <td>Full Day</td>
-                                <td>0.375</td>
-                            </tr>
-                            <tr>
-                                <td>2020-0201</td>
-                                <td>Full Day</td>
-                                <td>0.375</td>
-                            </tr>
-                            <tr>
-                                <td>2020-0201</td>
-                                <td>Full Day</td>
-                                <td>0.375</td>
-                            </tr>
-                            <tr>
-                                <td>2020-0201</td>
-                                <td>Full Day</td>
-                                <td>0.375</td>
-                            </tr>
-                            <tr>
-                                <td>2020-0201</td>
-                                <td>Full Day</td>
-                                <td>0.375</td>
-                            </tr>
-                        </table>
-                    </div>
+                <div class="col-xs-12 lsf-clearPadding" style="width:100%; height:150px; overflow-y:scroll; overflow-x:hidden;">
+                    <table class="col-xs-12 lsu-table-xs lsf-clearPadding">
+                        <tr>
+                            <td class="col-xs-3">2020-02-01</td>
+                            <td class="col-xs-3">Full Day</td>
+                            <td class="col-xs-2">0.375</td>
+                            <td class="col-xs-4"></td>
+                        </tr>
+                        <tr>
+                            <td>2020-02-01</td>
+                            <td>Full Day</td>
+                            <td>0.375</td>
+                        </tr>
+                    </table>
                 </div>
+            </div>
         </div>
     </form>
     <script src="../Res/jquery/jquery.min.js"></script>

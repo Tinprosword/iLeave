@@ -119,6 +119,20 @@ namespace BLL
             }
         }
 
+        public static Dictionary<int, double> sectionsUnit
+        {
+            get
+            {
+                Dictionary<int, double> temp = new Dictionary<int, double>();
+                temp.Add(0, 1);
+                temp.Add(1, 0.5);
+                temp.Add(2, 0.5);
+                temp.Add(3, 1.5);
+                //temp.Add( 4,"Hours");
+                return temp;
+            }
+        }
+
 
         public static Dictionary<ApprovalRequestStatus, string> RequestDesc
         {
@@ -129,7 +143,7 @@ namespace BLL
                 temp.Add(ApprovalRequestStatus.APPROVE, "Approved");
                 temp.Add(ApprovalRequestStatus.REJECT, "Reject");
                 temp.Add(ApprovalRequestStatus.WAIT_FOR_CANCEL, "Wait for cancel");
-                temp.Add(ApprovalRequestStatus.CONFIRM_CANCEL, "Cancel");
+                temp.Add(ApprovalRequestStatus.CONFIRM_CANCEL, "Canceled");
                 temp.Add(ApprovalRequestStatus.CANCEL, "Withdraw");
                 temp.Add(ApprovalRequestStatus.NEW, "New");
                 temp.Add(ApprovalRequestStatus.SENDEMAIL, "SendEmail");

@@ -299,7 +299,8 @@ input,button,a {outline:0 none;}
 
 
 
-#cover {
+#cover 
+{
 	background-color:black;
 	position:absolute;
 	left:0px;
@@ -311,12 +312,13 @@ input,button,a {outline:0 none;}
 	display:none;
 	z-index:3;
 }
-#showdiv {
+#showdiv 
+{
 	margin:0 auto;
 	height:400px;
 	display:none;
 	position:absolute;
-	top:10%;
+	top:15%;
 	z-index:3;
 	background:#fff;
 	display:block;

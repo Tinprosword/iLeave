@@ -504,10 +504,12 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveBalanceType(leaveid);
         }
 
+
         public static double GetCleanValue(int leaveid,int staffid,int employid)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetGross(staffid, employid, leaveid);
         }
+
 
         public static double GetWaitValue(int leaveid, int staffid,int employid)
         {
@@ -519,6 +521,14 @@ namespace BLL
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.Base_Gett_Leave(leave);
         }
+
+
+        public static List<WebServiceLayer.WebReference_leave.LeaveHistory> GetLeaveHistoryByRequest(int requestid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveHistory(requestid).ToList();
+        }
+
+
         #endregion
     }
 }

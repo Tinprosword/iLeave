@@ -1,29 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="approval_wait.aspx.cs" Inherits="WEBUI.Pages.approval_wait" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div id="showdiv" class="col-xs-10" style="left:9%;display:none;"> 
-        <div class="center-box3;" style="float:right; margin-right:5px; padding-right:0px;margin-top:5px;padding-top:0px;" onclick="closeWindow()"><img src="../Res/images/close.png"  style="width:27px; height:27px"/></div>
-        <div class=" col-xs-12 lsf-clearPadding">
-            <div style="height:15px">&nbsp;</div>
-            Balance:<label id="lbbalance"></label>
-            <div style="height:100px; overflow-y:scroll;">
-                <table class="col-xs-12 lsu-table-xs lsf-clearPadding">
-                    <tr class="lss-bgcolor-blue" style="color:white; height:24px;">
-                        <td class="col-xs-3" style="width:18%">date<asp:Literal ID="ltlistdate" runat="server"></asp:Literal></td>
-                        <td class="col-xs-4" style="width:44%">type<asp:Literal ID="ltlisttype" runat="server"></asp:Literal></td>
-                        <td class="col-xs-4" style="width:24%">section<asp:Literal ID="lt_listsection" runat="server"></asp:Literal></td>
-                        <td class="col-xs-1" style="width:14%">  </td>
-                    </tr>
-                    <tr>
-                        <td class="col-xs-3" style="width:18%">1</td>
-                        <td class="col-xs-4" style="width:44%">2</td>
-                        <td class="col-xs-4" style="width:24%">3</td>
-                        <td class="col-xs-1" style="width:14%">4</td>
-                    </tr>
-                </table>
-            </div>
-            History:<label id="bookname"></label>
-        </div>
-    </div>
+
+    <div id="ajaxContainer" class="col-xs-12 lsf-clearPadding"></div>
+
     <div class ="col-xs-12" style="height:10px; padding:0px">&nbsp</div>
     <div class="row" style="padding-bottom:10px;margin-top:10px; height:23px;">
         <div class="col-xs-4" style="padding-left:15px; width:80px">
@@ -44,7 +23,7 @@
                 <div class="col-xs-12" style=" line-height:8px;text-align:center;padding:0px;  margin:0px; padding-top:1px; padding-bottom:4px" onclick="MyPostBack('detail',<%#((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID %>)">
                     <label class="lsf-clearPadding" style="padding:0px;  margin:0px;height:1px;background-color:dimgray; width:90%; padding-left:3px; padding-right:3px;"></label>
                 </div>
-                <div class="col-xs-12 divheighter"><asp:Label ID="lb_name" runat="server"><%#((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).uname%></asp:Label><img alt="Detail" src="../Res/images/details.png" style="width:24px; height:24px; float:right; margin-right:10px;" onclick="ModelsResult('../webservices/leave.asmx/testws',{},'Data_GetLeaveDetail',onGetData)"/></div><%//function ModelsResult(url, Postdata, rootname, eachFun)  requestID:26063,leaveCode:'aa',staff:'sid',employmentNo:'eid'%>
+                <div class="col-xs-12 divheighter"><asp:Label ID="lb_name" runat="server"><%#((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).uname%></asp:Label><img alt="Detail" src="../Res/images/details.png" style="width:24px; height:24px; float:right; margin-right:10px;" onclick="SingleResult('../webservices/leave.asmx/GetLeaveDetail_html',{requestID:<%#((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>,leaveid:<%#((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).MinLeaveID%>,staff:<%#(int)loginer.userInfo.staffid %>,employmentNo:<%#(int)loginer.userInfo.employID%>},'string',onGetData)"/></div><%//function ModelsResult(url, Postdata, rootname, eachFun)  requestID:26063,leaveCode:'aa',staff:'sid',employmentNo:'eid'%>
                 <div class="col-xs-12 divheighter"><asp:Label ID="lb_date" runat="server"><%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetFromto()%></asp:Label></div>
                 <div class="col-xs-12 divheighter"><asp:Label ID="lb_leave" runat="server"><%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetBalance()%></asp:Label></div>
                 <div class="col-xs-12 divheighter"><asp:Label ID="lb_applydate" runat="server" Text="Apply Date:2019-02-05"></asp:Label></div>
@@ -99,11 +78,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
     <asp:Literal ID="js_waitdiv" runat="server"></asp:Literal>
     <script>
-        function onGetData(i, obj) {
-            //alert("success acess");
-            var name = getMember(obj, "balance");
-            //alert(name);
-            $("#lbbalance").text(name);
+        function onGetData(obj)
+        {
+            $("#ajaxContainer").html(obj);
             showWindow('ongetdate');
         }
     </script>

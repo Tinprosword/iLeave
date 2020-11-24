@@ -1,0 +1,36 @@
+ip:192.168.19.210
+DataTime：2020/11/24 9:36:19
+Url：http://192.168.19.210:8091/Login.aspx
+Message：由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.19.200:9001
+Source：System
+Type：System.Net.Sockets.SocketException
+Function：Void DoConnect(System.Net.EndPoint, System.Net.SocketAddress)
+Trace：   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/24 11:33:32
+Url：http://192.168.19.210:8091/Login.aspx
+Message：未能加载文件或程序集“System.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”或它的某一个依赖项。句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Source：LSLibrary
+Type：System.IO.FileLoadException
+Function：System.String getValue(System.String)
+Trace：   在 LSLibrary.WebAPP.WebConfig.getValue(String settingName)
+   在 WebServiceLayer.MyWebService.GetWebServices() 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Class1.cs:行号 14
+   在 WebServiceLayer.MyWebService.WebServicesHelper..ctor() 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Class1.cs:行号 54
+   在 WebServiceLayer.MyWebService.WebServicesHelper.GetInstance() 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Class1.cs:行号 43
+   在 WebServiceLayer.MyWebService..cctor() 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Class1.cs:行号 10
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2020/11/24 11:33:48
+Url：http://192.168.19.210:8091/login.aspx?action=userloginout
+Message：未能加载文件或程序集“System.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a”或它的某一个依赖项。句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Source：LSLibrary
+Type：System.IO.FileLoadException
+Function：System.String getValue(System.String)
+Trace：   在 LSLibrary.WebAPP.WebConfig.getValue(String settingName)
+   在 WebServiceLayer.MyWebService.GetWebServices() 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Class1.cs:行号 14
+   在 WebServiceLayer.MyWebService.WebServicesHelper..ctor() 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Class1.cs:行号 54
+   在 WebServiceLayer.MyWebService.WebServicesHelper.GetInstance() 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Class1.cs:行号 43
+   在 WebServiceLayer.MyWebService..cctor() 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Class1.cs:行号 10
+********************************************************************************************

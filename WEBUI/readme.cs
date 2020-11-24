@@ -4,6 +4,10 @@
 //}
 
 
+
+//todo history .0.375 0.5 0.1 混合处理
+//todo history user  太长。
+
 //todo 总结弹出遮住层.
 
 

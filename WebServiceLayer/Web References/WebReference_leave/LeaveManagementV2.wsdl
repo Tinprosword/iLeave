@@ -2,25 +2,13 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="Gett_WorkflowTaskByInfoID">
+      <s:element name="Base_Insertt_WorkflowTask">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="infoID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="newObject" type="tns:t_WorkflowTask" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="Gett_WorkflowTaskByInfoIDResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Gett_WorkflowTaskByInfoIDResult" type="tns:ArrayOfT_WorkflowTask" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfT_WorkflowTask">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="t_WorkflowTask" nillable="true" type="tns:t_WorkflowTask" />
-        </s:sequence>
-      </s:complexType>
       <s:complexType name="t_WorkflowTask">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
@@ -40,215 +28,74 @@
           <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:element name="Gett_WorkflowTaskByRequestID">
+      <s:element name="Base_Insertt_WorkflowTaskResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="request" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Base_Insertt_WorkflowTaskResult" type="tns:t_WorkflowTask" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="Gett_WorkflowTaskByRequestIDResponse">
+      <s:element name="Base_Updatet_WorkflowTask">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Gett_WorkflowTaskByRequestIDResult" type="tns:ArrayOfT_WorkflowTask" />
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateObject" type="tns:t_WorkflowTask" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID">
+      <s:element name="Base_Updatet_WorkflowTaskResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="UID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Base_Updatet_WorkflowTaskResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDResponse">
+      <s:element name="Base_Deletet_WorkflowTask">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDResult" type="tns:ArrayOfT_WorkflowTask" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteObject" type="tns:t_WorkflowTask" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="CreateNewRequest">
+      <s:element name="Base_Deletet_WorkflowTaskResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="p_ExistingWorkflowTask" type="tns:MyWorkflowTask" />
-            <s:element minOccurs="1" maxOccurs="1" name="TaskType" type="tns:WorkflowTypeID" />
-            <s:element minOccurs="0" maxOccurs="1" name="p_ApprovalRequest" type="tns:ArrayOfStaffLeaveRequest" />
-            <s:element minOccurs="1" maxOccurs="1" name="createrUID" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="p_strDescription" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="p_strFormulatedURL" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="baseURL" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="p_strWorkflowInfoParameter" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="p_intLeaveRequestID" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="p_intEmploymentID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Base_Deletet_WorkflowTaskResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="MyWorkflowTask">
+      <s:element name="Base_Gett_WorkflowTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetObject" type="tns:t_WorkflowTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Gett_WorkflowTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Base_Gett_WorkflowTaskResult" type="tns:t_WorkflowTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_GetListt_WorkflowTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="whereSql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_GetListt_WorkflowTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Base_GetListt_WorkflowTaskResult" type="tns:ArrayOfT_WorkflowTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfT_WorkflowTask">
         <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="InOutTypeID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="WorkflowInfoID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="CurrentStep" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="TypeName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="FormulatedURL" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="LeaveRequestID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsRead" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="FromUserName" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="PositionDescription" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ToUserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="t_WorkflowTask" nillable="true" type="tns:t_WorkflowTask" />
         </s:sequence>
       </s:complexType>
-      <s:simpleType name="WorkflowTypeID">
-        <s:restriction base="s:string">
-          <s:enumeration value="LEAVE_APPLICATION" />
-          <s:enumeration value="UPDATE_PERSON_INFO" />
-          <s:enumeration value="UPDATE_TRAINING_RECORD" />
-          <s:enumeration value="UPDATE_QUALIFICATION_RECORD" />
-          <s:enumeration value="PAYROLL_LOCK" />
-          <s:enumeration value="CLOT_APPLICATION" />
-          <s:enumeration value="OT_APPROVAL" />
-          <s:enumeration value="MEDICAL_CLAIM" />
-          <s:enumeration value="ATTENDANCE" />
-          <s:enumeration value="DOCTOR_VISIT" />
-          <s:enumeration value="CANCEL_LEAVE_APPLICATION" />
-          <s:enumeration value="EXPENSE_CLAIM" />
-        </s:restriction>
-      </s:simpleType>
-      <s:complexType name="ArrayOfStaffLeaveRequest">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="StaffLeaveRequest" nillable="true" type="tns:StaffLeaveRequest" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="StaffLeaveRequest">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="LeaveID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="LeaveTypeName" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="LeaveDate" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsHalfDay" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="Unit" type="s:double" />
-          <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="DeleteKey" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="Section" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="EmploymentNumber" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CompareKey" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="NameCH" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="HolidayCode" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="LeaveCalculationTypeID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="LeaveCalculationTypeDesc" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="FirstEmploymentID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="FirstEmploymentNumber" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsApproved" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="DelegationToStaffID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="LeaveHours" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="TotalWorkHours" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="Sections" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="LeaveHoursFrom" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="LeaveHoursTo" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="DisplaySection" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="DisplayUnit" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="CreateNewRequestResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="CreateNewRequestResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="ApproveRequest_leave">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="ApproveRequest_leaveResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="WithDrawRequest_leave">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="WithDrawRequest_leaveResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="RejectRequest_leave">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="RejectRequest_leaveResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="CancelRequest_leave">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="CancelRequest_leaveResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="CancelRequest_leaveResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="ApproveCancelRequest_leave">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="ApproveCancelRequest_leaveResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="RejectCancelRequest_leave">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="RejectCancelRequest_leaveResponse">
-        <s:complexType />
-      </s:element>
       <s:element name="Base_Insertt_Leave">
         <s:complexType>
           <s:sequence>
@@ -365,80 +212,6 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="t_Leave" nillable="true" type="tns:t_Leave" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetContractByEmployids">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="eids" type="tns:ArrayOfInt" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfInt">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetContractByEmployidsResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetContractByEmployidsResult" type="tns:ArrayOfEmployment_Contract" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfEmployment_Contract">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Employment_Contract" nillable="true" type="tns:Employment_Contract" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Employment_Contract">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="employmentid" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="contractid" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="zonecode" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="isAssociate" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetRoster">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
-            <s:element minOccurs="0" maxOccurs="1" name="employmentID" type="tns:ArrayOfInt" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetRosterResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetRosterResult" type="tns:ArrayOfV_System_Calendar" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfV_System_Calendar">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_Calendar" nillable="true" type="tns:v_System_Calendar" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="v_System_Calendar">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="FirstEmploymentID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ContractID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="ZoneCode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="EnglishName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Chinese" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="DispayName" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="ShiftCode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Time" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="RemarkCode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Subteam" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Zone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="RemarkList" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Program" type="s:string" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="GetAllLeaveTypeByStaffID">
         <s:complexType>
           <s:sequence>
@@ -462,6 +235,47 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfStaffLeaveRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StaffLeaveRequest" nillable="true" type="tns:StaffLeaveRequest" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StaffLeaveRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeaveTypeName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsHalfDay" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Unit" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeleteKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Section" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmploymentNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompareKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NameCH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HolidayCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveCalculationTypeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeaveCalculationTypeDesc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FirstEmploymentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstEmploymentNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsApproved" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DelegationToStaffID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveHours" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalWorkHours" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sections" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveHoursFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveHoursTo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DisplaySection" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayUnit" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="InsertOnlineLeaveApplicationRequestResponse">
         <s:complexType>
           <s:sequence>
@@ -478,6 +292,11 @@
           <s:element minOccurs="0" maxOccurs="1" name="CompletedRatio" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="IsMessageList" type="s:boolean" />
           <s:element minOccurs="0" maxOccurs="1" name="ErrorMessageList" type="tns:ArrayOfErrorMessageItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ArrayOfErrorMessageItem">
@@ -1064,6 +883,288 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="Gett_WorkflowTaskByInfoID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="infoID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Gett_WorkflowTaskByInfoIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Gett_WorkflowTaskByInfoIDResult" type="tns:ArrayOfT_WorkflowTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Gett_WorkflowTaskByRequestID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="request" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Gett_WorkflowTaskByRequestIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Gett_WorkflowTaskByRequestIDResult" type="tns:ArrayOfT_WorkflowTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDResult" type="tns:ArrayOfT_WorkflowTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeaveHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeaveHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveHistoryResult" type="tns:ArrayOfLeaveHistory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLeaveHistory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LeaveHistory" nillable="true" type="tns:LeaveHistory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LeaveHistory">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Requester" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequesterEmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplyDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="uid" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateNewRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_ExistingWorkflowTask" type="tns:MyWorkflowTask" />
+            <s:element minOccurs="1" maxOccurs="1" name="TaskType" type="tns:WorkflowTypeID" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_ApprovalRequest" type="tns:ArrayOfStaffLeaveRequest" />
+            <s:element minOccurs="1" maxOccurs="1" name="createrUID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_strDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_strFormulatedURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="baseURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_strWorkflowInfoParameter" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="p_intLeaveRequestID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="p_intEmploymentID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MyWorkflowTask">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InOutTypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkflowInfoID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentStep" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FormulatedURL" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveRequestID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsRead" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FromUserName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PositionDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ToUserName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="WorkflowTypeID">
+        <s:restriction base="s:string">
+          <s:enumeration value="LEAVE_APPLICATION" />
+          <s:enumeration value="UPDATE_PERSON_INFO" />
+          <s:enumeration value="UPDATE_TRAINING_RECORD" />
+          <s:enumeration value="UPDATE_QUALIFICATION_RECORD" />
+          <s:enumeration value="PAYROLL_LOCK" />
+          <s:enumeration value="CLOT_APPLICATION" />
+          <s:enumeration value="OT_APPROVAL" />
+          <s:enumeration value="MEDICAL_CLAIM" />
+          <s:enumeration value="ATTENDANCE" />
+          <s:enumeration value="DOCTOR_VISIT" />
+          <s:enumeration value="CANCEL_LEAVE_APPLICATION" />
+          <s:enumeration value="EXPENSE_CLAIM" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CreateNewRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateNewRequestResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApproveRequest_leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApproveRequest_leaveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="WithDrawRequest_leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WithDrawRequest_leaveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RejectRequest_leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RejectRequest_leaveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CancelRequest_leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelRequest_leaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CancelRequest_leaveResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApproveCancelRequest_leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApproveCancelRequest_leaveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RejectCancelRequest_leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RejectCancelRequest_leaveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetContractByEmployids">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="eids" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContractByEmployidsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetContractByEmployidsResult" type="tns:ArrayOfEmployment_Contract" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEmployment_Contract">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Employment_Contract" nillable="true" type="tns:Employment_Contract" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Employment_Contract">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="employmentid" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="contractid" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="zonecode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isAssociate" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRoster">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="employmentID" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRosterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRosterResult" type="tns:ArrayOfV_System_Calendar" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfV_System_Calendar">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_Calendar" nillable="true" type="tns:v_System_Calendar" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="v_System_Calendar">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FirstEmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContractID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZoneCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EnglishName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Chinese" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DispayName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShiftCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Time" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RemarkCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subteam" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RemarkList" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Program" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="Base_Insertt_WorkflowInfo">
         <s:complexType>
           <s:sequence>
@@ -1154,78 +1255,7 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="t_WorkflowInfo" nillable="true" type="tns:t_WorkflowInfo" />
         </s:sequence>
       </s:complexType>
-      <s:element name="Base_Insertt_WorkflowTask">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="newObject" type="tns:t_WorkflowTask" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Insertt_WorkflowTaskResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Base_Insertt_WorkflowTaskResult" type="tns:t_WorkflowTask" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Updatet_WorkflowTask">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="UpdateObject" type="tns:t_WorkflowTask" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Updatet_WorkflowTaskResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="Base_Updatet_WorkflowTaskResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Deletet_WorkflowTask">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="DeleteObject" type="tns:t_WorkflowTask" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Deletet_WorkflowTaskResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="Base_Deletet_WorkflowTaskResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Gett_WorkflowTask">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetObject" type="tns:t_WorkflowTask" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Gett_WorkflowTaskResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Base_Gett_WorkflowTaskResult" type="tns:t_WorkflowTask" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_GetListt_WorkflowTask">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="whereSql" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_GetListt_WorkflowTaskResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Base_GetListt_WorkflowTaskResult" type="tns:ArrayOfT_WorkflowTask" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="ArrayOfT_WorkflowTask" nillable="true" type="tns:ArrayOfT_WorkflowTask" />
-      <s:element name="int" type="s:int" />
       <s:element name="ArrayOfT_Leave" nillable="true" type="tns:ArrayOfT_Leave" />
       <s:element name="string" nillable="true" type="s:string" />
       <s:element name="ArrayOfAttachmentInfo" nillable="true" type="tns:ArrayOfAttachmentInfo" />
@@ -1236,68 +1266,40 @@
       <s:element name="LeaveBalanceType" type="tns:LeaveBalanceType" />
       <s:element name="double" type="s:double" />
       <s:element name="ArrayOfDouble" nillable="true" type="tns:ArrayOfDouble" />
+      <s:element name="ArrayOfLeaveHistory" nillable="true" type="tns:ArrayOfLeaveHistory" />
+      <s:element name="int" type="s:int" />
       <s:element name="ArrayOfT_WorkflowInfo" nillable="true" type="tns:ArrayOfT_WorkflowInfo" />
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="Gett_WorkflowTaskByInfoIDSoapIn">
-    <wsdl:part name="parameters" element="tns:Gett_WorkflowTaskByInfoID" />
+  <wsdl:message name="Base_Insertt_WorkflowTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_Insertt_WorkflowTask" />
   </wsdl:message>
-  <wsdl:message name="Gett_WorkflowTaskByInfoIDSoapOut">
-    <wsdl:part name="parameters" element="tns:Gett_WorkflowTaskByInfoIDResponse" />
+  <wsdl:message name="Base_Insertt_WorkflowTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_Insertt_WorkflowTaskResponse" />
   </wsdl:message>
-  <wsdl:message name="Gett_WorkflowTaskByRequestIDSoapIn">
-    <wsdl:part name="parameters" element="tns:Gett_WorkflowTaskByRequestID" />
+  <wsdl:message name="Base_Updatet_WorkflowTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_Updatet_WorkflowTask" />
   </wsdl:message>
-  <wsdl:message name="Gett_WorkflowTaskByRequestIDSoapOut">
-    <wsdl:part name="parameters" element="tns:Gett_WorkflowTaskByRequestIDResponse" />
+  <wsdl:message name="Base_Updatet_WorkflowTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_Updatet_WorkflowTaskResponse" />
   </wsdl:message>
-  <wsdl:message name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDSoapIn">
-    <wsdl:part name="parameters" element="tns:GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID" />
+  <wsdl:message name="Base_Deletet_WorkflowTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_Deletet_WorkflowTask" />
   </wsdl:message>
-  <wsdl:message name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDSoapOut">
-    <wsdl:part name="parameters" element="tns:GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDResponse" />
+  <wsdl:message name="Base_Deletet_WorkflowTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_Deletet_WorkflowTaskResponse" />
   </wsdl:message>
-  <wsdl:message name="CreateNewRequestSoapIn">
-    <wsdl:part name="parameters" element="tns:CreateNewRequest" />
+  <wsdl:message name="Base_Gett_WorkflowTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_Gett_WorkflowTask" />
   </wsdl:message>
-  <wsdl:message name="CreateNewRequestSoapOut">
-    <wsdl:part name="parameters" element="tns:CreateNewRequestResponse" />
+  <wsdl:message name="Base_Gett_WorkflowTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_Gett_WorkflowTaskResponse" />
   </wsdl:message>
-  <wsdl:message name="ApproveRequest_leaveSoapIn">
-    <wsdl:part name="parameters" element="tns:ApproveRequest_leave" />
+  <wsdl:message name="Base_GetListt_WorkflowTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_GetListt_WorkflowTask" />
   </wsdl:message>
-  <wsdl:message name="ApproveRequest_leaveSoapOut">
-    <wsdl:part name="parameters" element="tns:ApproveRequest_leaveResponse" />
-  </wsdl:message>
-  <wsdl:message name="WithDrawRequest_leaveSoapIn">
-    <wsdl:part name="parameters" element="tns:WithDrawRequest_leave" />
-  </wsdl:message>
-  <wsdl:message name="WithDrawRequest_leaveSoapOut">
-    <wsdl:part name="parameters" element="tns:WithDrawRequest_leaveResponse" />
-  </wsdl:message>
-  <wsdl:message name="RejectRequest_leaveSoapIn">
-    <wsdl:part name="parameters" element="tns:RejectRequest_leave" />
-  </wsdl:message>
-  <wsdl:message name="RejectRequest_leaveSoapOut">
-    <wsdl:part name="parameters" element="tns:RejectRequest_leaveResponse" />
-  </wsdl:message>
-  <wsdl:message name="CancelRequest_leaveSoapIn">
-    <wsdl:part name="parameters" element="tns:CancelRequest_leave" />
-  </wsdl:message>
-  <wsdl:message name="CancelRequest_leaveSoapOut">
-    <wsdl:part name="parameters" element="tns:CancelRequest_leaveResponse" />
-  </wsdl:message>
-  <wsdl:message name="ApproveCancelRequest_leaveSoapIn">
-    <wsdl:part name="parameters" element="tns:ApproveCancelRequest_leave" />
-  </wsdl:message>
-  <wsdl:message name="ApproveCancelRequest_leaveSoapOut">
-    <wsdl:part name="parameters" element="tns:ApproveCancelRequest_leaveResponse" />
-  </wsdl:message>
-  <wsdl:message name="RejectCancelRequest_leaveSoapIn">
-    <wsdl:part name="parameters" element="tns:RejectCancelRequest_leave" />
-  </wsdl:message>
-  <wsdl:message name="RejectCancelRequest_leaveSoapOut">
-    <wsdl:part name="parameters" element="tns:RejectCancelRequest_leaveResponse" />
+  <wsdl:message name="Base_GetListt_WorkflowTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_GetListt_WorkflowTaskResponse" />
   </wsdl:message>
   <wsdl:message name="Base_Insertt_LeaveSoapIn">
     <wsdl:part name="parameters" element="tns:Base_Insertt_Leave" />
@@ -1328,18 +1330,6 @@
   </wsdl:message>
   <wsdl:message name="Base_GetListt_LeaveSoapOut">
     <wsdl:part name="parameters" element="tns:Base_GetListt_LeaveResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetContractByEmployidsSoapIn">
-    <wsdl:part name="parameters" element="tns:GetContractByEmployids" />
-  </wsdl:message>
-  <wsdl:message name="GetContractByEmployidsSoapOut">
-    <wsdl:part name="parameters" element="tns:GetContractByEmployidsResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetRosterSoapIn">
-    <wsdl:part name="parameters" element="tns:GetRoster" />
-  </wsdl:message>
-  <wsdl:message name="GetRosterSoapOut">
-    <wsdl:part name="parameters" element="tns:GetRosterResponse" />
   </wsdl:message>
   <wsdl:message name="GetAllLeaveTypeByStaffIDSoapIn">
     <wsdl:part name="parameters" element="tns:GetAllLeaveTypeByStaffID" />
@@ -1539,6 +1529,84 @@
   <wsdl:message name="GetWaitingSoapOut">
     <wsdl:part name="parameters" element="tns:GetWaitingResponse" />
   </wsdl:message>
+  <wsdl:message name="Gett_WorkflowTaskByInfoIDSoapIn">
+    <wsdl:part name="parameters" element="tns:Gett_WorkflowTaskByInfoID" />
+  </wsdl:message>
+  <wsdl:message name="Gett_WorkflowTaskByInfoIDSoapOut">
+    <wsdl:part name="parameters" element="tns:Gett_WorkflowTaskByInfoIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="Gett_WorkflowTaskByRequestIDSoapIn">
+    <wsdl:part name="parameters" element="tns:Gett_WorkflowTaskByRequestID" />
+  </wsdl:message>
+  <wsdl:message name="Gett_WorkflowTaskByRequestIDSoapOut">
+    <wsdl:part name="parameters" element="tns:Gett_WorkflowTaskByRequestIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveHistorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetLeaveHistory" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveHistorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetLeaveHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateNewRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateNewRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateNewRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateNewRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApproveRequest_leaveSoapIn">
+    <wsdl:part name="parameters" element="tns:ApproveRequest_leave" />
+  </wsdl:message>
+  <wsdl:message name="ApproveRequest_leaveSoapOut">
+    <wsdl:part name="parameters" element="tns:ApproveRequest_leaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="WithDrawRequest_leaveSoapIn">
+    <wsdl:part name="parameters" element="tns:WithDrawRequest_leave" />
+  </wsdl:message>
+  <wsdl:message name="WithDrawRequest_leaveSoapOut">
+    <wsdl:part name="parameters" element="tns:WithDrawRequest_leaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="RejectRequest_leaveSoapIn">
+    <wsdl:part name="parameters" element="tns:RejectRequest_leave" />
+  </wsdl:message>
+  <wsdl:message name="RejectRequest_leaveSoapOut">
+    <wsdl:part name="parameters" element="tns:RejectRequest_leaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelRequest_leaveSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelRequest_leave" />
+  </wsdl:message>
+  <wsdl:message name="CancelRequest_leaveSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelRequest_leaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApproveCancelRequest_leaveSoapIn">
+    <wsdl:part name="parameters" element="tns:ApproveCancelRequest_leave" />
+  </wsdl:message>
+  <wsdl:message name="ApproveCancelRequest_leaveSoapOut">
+    <wsdl:part name="parameters" element="tns:ApproveCancelRequest_leaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="RejectCancelRequest_leaveSoapIn">
+    <wsdl:part name="parameters" element="tns:RejectCancelRequest_leave" />
+  </wsdl:message>
+  <wsdl:message name="RejectCancelRequest_leaveSoapOut">
+    <wsdl:part name="parameters" element="tns:RejectCancelRequest_leaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetContractByEmployidsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetContractByEmployids" />
+  </wsdl:message>
+  <wsdl:message name="GetContractByEmployidsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetContractByEmployidsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRoster" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRosterResponse" />
+  </wsdl:message>
   <wsdl:message name="Base_Insertt_WorkflowInfoSoapIn">
     <wsdl:part name="parameters" element="tns:Base_Insertt_WorkflowInfo" />
   </wsdl:message>
@@ -1569,92 +1637,12 @@
   <wsdl:message name="Base_GetListt_WorkflowInfoSoapOut">
     <wsdl:part name="parameters" element="tns:Base_GetListt_WorkflowInfoResponse" />
   </wsdl:message>
-  <wsdl:message name="Base_Insertt_WorkflowTaskSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_Insertt_WorkflowTask" />
+  <wsdl:message name="Base_GetListt_WorkflowTaskHttpPostIn">
+    <wsdl:part name="whereSql" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="Base_Insertt_WorkflowTaskSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_Insertt_WorkflowTaskResponse" />
-  </wsdl:message>
-  <wsdl:message name="Base_Updatet_WorkflowTaskSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_Updatet_WorkflowTask" />
-  </wsdl:message>
-  <wsdl:message name="Base_Updatet_WorkflowTaskSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_Updatet_WorkflowTaskResponse" />
-  </wsdl:message>
-  <wsdl:message name="Base_Deletet_WorkflowTaskSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_Deletet_WorkflowTask" />
-  </wsdl:message>
-  <wsdl:message name="Base_Deletet_WorkflowTaskSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_Deletet_WorkflowTaskResponse" />
-  </wsdl:message>
-  <wsdl:message name="Base_Gett_WorkflowTaskSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_Gett_WorkflowTask" />
-  </wsdl:message>
-  <wsdl:message name="Base_Gett_WorkflowTaskSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_Gett_WorkflowTaskResponse" />
-  </wsdl:message>
-  <wsdl:message name="Base_GetListt_WorkflowTaskSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_GetListt_WorkflowTask" />
-  </wsdl:message>
-  <wsdl:message name="Base_GetListt_WorkflowTaskSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_GetListt_WorkflowTaskResponse" />
-  </wsdl:message>
-  <wsdl:message name="Gett_WorkflowTaskByInfoIDHttpPostIn">
-    <wsdl:part name="infoID" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="Gett_WorkflowTaskByInfoIDHttpPostOut">
+  <wsdl:message name="Base_GetListt_WorkflowTaskHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfT_WorkflowTask" />
   </wsdl:message>
-  <wsdl:message name="Gett_WorkflowTaskByRequestIDHttpPostIn">
-    <wsdl:part name="request" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="Gett_WorkflowTaskByRequestIDHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfT_WorkflowTask" />
-  </wsdl:message>
-  <wsdl:message name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDHttpPostIn">
-    <wsdl:part name="UID" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfT_WorkflowTask" />
-  </wsdl:message>
-  <wsdl:message name="ApproveRequest_leaveHttpPostIn">
-    <wsdl:part name="requestid" type="s:string" />
-    <wsdl:part name="UserID" type="s:string" />
-    <wsdl:part name="remark" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="ApproveRequest_leaveHttpPostOut" />
-  <wsdl:message name="WithDrawRequest_leaveHttpPostIn">
-    <wsdl:part name="requestid" type="s:string" />
-    <wsdl:part name="UserID" type="s:string" />
-    <wsdl:part name="remark" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="WithDrawRequest_leaveHttpPostOut" />
-  <wsdl:message name="RejectRequest_leaveHttpPostIn">
-    <wsdl:part name="requestid" type="s:string" />
-    <wsdl:part name="UserID" type="s:string" />
-    <wsdl:part name="remark" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="RejectRequest_leaveHttpPostOut" />
-  <wsdl:message name="CancelRequest_leaveHttpPostIn">
-    <wsdl:part name="requestid" type="s:string" />
-    <wsdl:part name="UserID" type="s:string" />
-    <wsdl:part name="remark" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="CancelRequest_leaveHttpPostOut">
-    <wsdl:part name="Body" element="tns:int" />
-  </wsdl:message>
-  <wsdl:message name="ApproveCancelRequest_leaveHttpPostIn">
-    <wsdl:part name="requestid" type="s:string" />
-    <wsdl:part name="UserID" type="s:string" />
-    <wsdl:part name="remark" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="ApproveCancelRequest_leaveHttpPostOut" />
-  <wsdl:message name="RejectCancelRequest_leaveHttpPostIn">
-    <wsdl:part name="requestid" type="s:string" />
-    <wsdl:part name="UserID" type="s:string" />
-    <wsdl:part name="remark" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="RejectCancelRequest_leaveHttpPostOut" />
   <wsdl:message name="Base_GetListt_LeaveHttpPostIn">
     <wsdl:part name="whereSql" type="s:string" />
   </wsdl:message>
@@ -1820,58 +1808,94 @@
   <wsdl:message name="GetWaitingHttpPostOut">
     <wsdl:part name="Body" element="tns:double" />
   </wsdl:message>
+  <wsdl:message name="Gett_WorkflowTaskByInfoIDHttpPostIn">
+    <wsdl:part name="infoID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Gett_WorkflowTaskByInfoIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfT_WorkflowTask" />
+  </wsdl:message>
+  <wsdl:message name="Gett_WorkflowTaskByRequestIDHttpPostIn">
+    <wsdl:part name="request" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Gett_WorkflowTaskByRequestIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfT_WorkflowTask" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDHttpPostIn">
+    <wsdl:part name="UID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfT_WorkflowTask" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveHistoryHttpPostIn">
+    <wsdl:part name="requestId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveHistoryHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfLeaveHistory" />
+  </wsdl:message>
+  <wsdl:message name="ApproveRequest_leaveHttpPostIn">
+    <wsdl:part name="requestid" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+    <wsdl:part name="remark" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ApproveRequest_leaveHttpPostOut" />
+  <wsdl:message name="WithDrawRequest_leaveHttpPostIn">
+    <wsdl:part name="requestid" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+    <wsdl:part name="remark" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WithDrawRequest_leaveHttpPostOut" />
+  <wsdl:message name="RejectRequest_leaveHttpPostIn">
+    <wsdl:part name="requestid" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+    <wsdl:part name="remark" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RejectRequest_leaveHttpPostOut" />
+  <wsdl:message name="CancelRequest_leaveHttpPostIn">
+    <wsdl:part name="requestid" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+    <wsdl:part name="remark" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CancelRequest_leaveHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="ApproveCancelRequest_leaveHttpPostIn">
+    <wsdl:part name="requestid" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+    <wsdl:part name="remark" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ApproveCancelRequest_leaveHttpPostOut" />
+  <wsdl:message name="RejectCancelRequest_leaveHttpPostIn">
+    <wsdl:part name="requestid" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+    <wsdl:part name="remark" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RejectCancelRequest_leaveHttpPostOut" />
   <wsdl:message name="Base_GetListt_WorkflowInfoHttpPostIn">
     <wsdl:part name="whereSql" type="s:string" />
   </wsdl:message>
   <wsdl:message name="Base_GetListt_WorkflowInfoHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfT_WorkflowInfo" />
   </wsdl:message>
-  <wsdl:message name="Base_GetListt_WorkflowTaskHttpPostIn">
-    <wsdl:part name="whereSql" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="Base_GetListt_WorkflowTaskHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfT_WorkflowTask" />
-  </wsdl:message>
   <wsdl:portType name="LeaveManagementV2Soap">
-    <wsdl:operation name="Gett_WorkflowTaskByInfoID">
-      <wsdl:input message="tns:Gett_WorkflowTaskByInfoIDSoapIn" />
-      <wsdl:output message="tns:Gett_WorkflowTaskByInfoIDSoapOut" />
+    <wsdl:operation name="Base_Insertt_WorkflowTask">
+      <wsdl:input message="tns:Base_Insertt_WorkflowTaskSoapIn" />
+      <wsdl:output message="tns:Base_Insertt_WorkflowTaskSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="Gett_WorkflowTaskByRequestID">
-      <wsdl:input message="tns:Gett_WorkflowTaskByRequestIDSoapIn" />
-      <wsdl:output message="tns:Gett_WorkflowTaskByRequestIDSoapOut" />
+    <wsdl:operation name="Base_Updatet_WorkflowTask">
+      <wsdl:input message="tns:Base_Updatet_WorkflowTaskSoapIn" />
+      <wsdl:output message="tns:Base_Updatet_WorkflowTaskSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID">
-      <wsdl:input message="tns:GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDSoapIn" />
-      <wsdl:output message="tns:GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDSoapOut" />
+    <wsdl:operation name="Base_Deletet_WorkflowTask">
+      <wsdl:input message="tns:Base_Deletet_WorkflowTaskSoapIn" />
+      <wsdl:output message="tns:Base_Deletet_WorkflowTaskSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="CreateNewRequest">
-      <wsdl:input message="tns:CreateNewRequestSoapIn" />
-      <wsdl:output message="tns:CreateNewRequestSoapOut" />
+    <wsdl:operation name="Base_Gett_WorkflowTask">
+      <wsdl:input message="tns:Base_Gett_WorkflowTaskSoapIn" />
+      <wsdl:output message="tns:Base_Gett_WorkflowTaskSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="ApproveRequest_leave">
-      <wsdl:input message="tns:ApproveRequest_leaveSoapIn" />
-      <wsdl:output message="tns:ApproveRequest_leaveSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="WithDrawRequest_leave">
-      <wsdl:input message="tns:WithDrawRequest_leaveSoapIn" />
-      <wsdl:output message="tns:WithDrawRequest_leaveSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="RejectRequest_leave">
-      <wsdl:input message="tns:RejectRequest_leaveSoapIn" />
-      <wsdl:output message="tns:RejectRequest_leaveSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="CancelRequest_leave">
-      <wsdl:input message="tns:CancelRequest_leaveSoapIn" />
-      <wsdl:output message="tns:CancelRequest_leaveSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="ApproveCancelRequest_leave">
-      <wsdl:input message="tns:ApproveCancelRequest_leaveSoapIn" />
-      <wsdl:output message="tns:ApproveCancelRequest_leaveSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="RejectCancelRequest_leave">
-      <wsdl:input message="tns:RejectCancelRequest_leaveSoapIn" />
-      <wsdl:output message="tns:RejectCancelRequest_leaveSoapOut" />
+    <wsdl:operation name="Base_GetListt_WorkflowTask">
+      <wsdl:input message="tns:Base_GetListt_WorkflowTaskSoapIn" />
+      <wsdl:output message="tns:Base_GetListt_WorkflowTaskSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Base_Insertt_Leave">
       <wsdl:input message="tns:Base_Insertt_LeaveSoapIn" />
@@ -1892,14 +1916,6 @@
     <wsdl:operation name="Base_GetListt_Leave">
       <wsdl:input message="tns:Base_GetListt_LeaveSoapIn" />
       <wsdl:output message="tns:Base_GetListt_LeaveSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetContractByEmployids">
-      <wsdl:input message="tns:GetContractByEmployidsSoapIn" />
-      <wsdl:output message="tns:GetContractByEmployidsSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetRoster">
-      <wsdl:input message="tns:GetRosterSoapIn" />
-      <wsdl:output message="tns:GetRosterSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetAllLeaveTypeByStaffID">
       <wsdl:input message="tns:GetAllLeaveTypeByStaffIDSoapIn" />
@@ -2033,6 +2049,58 @@
       <wsdl:input message="tns:GetWaitingSoapIn" />
       <wsdl:output message="tns:GetWaitingSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="Gett_WorkflowTaskByInfoID">
+      <wsdl:input message="tns:Gett_WorkflowTaskByInfoIDSoapIn" />
+      <wsdl:output message="tns:Gett_WorkflowTaskByInfoIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Gett_WorkflowTaskByRequestID">
+      <wsdl:input message="tns:Gett_WorkflowTaskByRequestIDSoapIn" />
+      <wsdl:output message="tns:Gett_WorkflowTaskByRequestIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID">
+      <wsdl:input message="tns:GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDSoapIn" />
+      <wsdl:output message="tns:GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveHistory">
+      <wsdl:input message="tns:GetLeaveHistorySoapIn" />
+      <wsdl:output message="tns:GetLeaveHistorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewRequest">
+      <wsdl:input message="tns:CreateNewRequestSoapIn" />
+      <wsdl:output message="tns:CreateNewRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApproveRequest_leave">
+      <wsdl:input message="tns:ApproveRequest_leaveSoapIn" />
+      <wsdl:output message="tns:ApproveRequest_leaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WithDrawRequest_leave">
+      <wsdl:input message="tns:WithDrawRequest_leaveSoapIn" />
+      <wsdl:output message="tns:WithDrawRequest_leaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RejectRequest_leave">
+      <wsdl:input message="tns:RejectRequest_leaveSoapIn" />
+      <wsdl:output message="tns:RejectRequest_leaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelRequest_leave">
+      <wsdl:input message="tns:CancelRequest_leaveSoapIn" />
+      <wsdl:output message="tns:CancelRequest_leaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApproveCancelRequest_leave">
+      <wsdl:input message="tns:ApproveCancelRequest_leaveSoapIn" />
+      <wsdl:output message="tns:ApproveCancelRequest_leaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RejectCancelRequest_leave">
+      <wsdl:input message="tns:RejectCancelRequest_leaveSoapIn" />
+      <wsdl:output message="tns:RejectCancelRequest_leaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContractByEmployids">
+      <wsdl:input message="tns:GetContractByEmployidsSoapIn" />
+      <wsdl:output message="tns:GetContractByEmployidsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoster">
+      <wsdl:input message="tns:GetRosterSoapIn" />
+      <wsdl:output message="tns:GetRosterSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="Base_Insertt_WorkflowInfo">
       <wsdl:input message="tns:Base_Insertt_WorkflowInfoSoapIn" />
       <wsdl:output message="tns:Base_Insertt_WorkflowInfoSoapOut" />
@@ -2053,63 +2121,11 @@
       <wsdl:input message="tns:Base_GetListt_WorkflowInfoSoapIn" />
       <wsdl:output message="tns:Base_GetListt_WorkflowInfoSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="Base_Insertt_WorkflowTask">
-      <wsdl:input message="tns:Base_Insertt_WorkflowTaskSoapIn" />
-      <wsdl:output message="tns:Base_Insertt_WorkflowTaskSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Base_Updatet_WorkflowTask">
-      <wsdl:input message="tns:Base_Updatet_WorkflowTaskSoapIn" />
-      <wsdl:output message="tns:Base_Updatet_WorkflowTaskSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Base_Deletet_WorkflowTask">
-      <wsdl:input message="tns:Base_Deletet_WorkflowTaskSoapIn" />
-      <wsdl:output message="tns:Base_Deletet_WorkflowTaskSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Base_Gett_WorkflowTask">
-      <wsdl:input message="tns:Base_Gett_WorkflowTaskSoapIn" />
-      <wsdl:output message="tns:Base_Gett_WorkflowTaskSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_WorkflowTask">
-      <wsdl:input message="tns:Base_GetListt_WorkflowTaskSoapIn" />
-      <wsdl:output message="tns:Base_GetListt_WorkflowTaskSoapOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LeaveManagementV2HttpPost">
-    <wsdl:operation name="Gett_WorkflowTaskByInfoID">
-      <wsdl:input message="tns:Gett_WorkflowTaskByInfoIDHttpPostIn" />
-      <wsdl:output message="tns:Gett_WorkflowTaskByInfoIDHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Gett_WorkflowTaskByRequestID">
-      <wsdl:input message="tns:Gett_WorkflowTaskByRequestIDHttpPostIn" />
-      <wsdl:output message="tns:Gett_WorkflowTaskByRequestIDHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID">
-      <wsdl:input message="tns:GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDHttpPostIn" />
-      <wsdl:output message="tns:GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="ApproveRequest_leave">
-      <wsdl:input message="tns:ApproveRequest_leaveHttpPostIn" />
-      <wsdl:output message="tns:ApproveRequest_leaveHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="WithDrawRequest_leave">
-      <wsdl:input message="tns:WithDrawRequest_leaveHttpPostIn" />
-      <wsdl:output message="tns:WithDrawRequest_leaveHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="RejectRequest_leave">
-      <wsdl:input message="tns:RejectRequest_leaveHttpPostIn" />
-      <wsdl:output message="tns:RejectRequest_leaveHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="CancelRequest_leave">
-      <wsdl:input message="tns:CancelRequest_leaveHttpPostIn" />
-      <wsdl:output message="tns:CancelRequest_leaveHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="ApproveCancelRequest_leave">
-      <wsdl:input message="tns:ApproveCancelRequest_leaveHttpPostIn" />
-      <wsdl:output message="tns:ApproveCancelRequest_leaveHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="RejectCancelRequest_leave">
-      <wsdl:input message="tns:RejectCancelRequest_leaveHttpPostIn" />
-      <wsdl:output message="tns:RejectCancelRequest_leaveHttpPostOut" />
+    <wsdl:operation name="Base_GetListt_WorkflowTask">
+      <wsdl:input message="tns:Base_GetListt_WorkflowTaskHttpPostIn" />
+      <wsdl:output message="tns:Base_GetListt_WorkflowTaskHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="Base_GetListt_Leave">
       <wsdl:input message="tns:Base_GetListt_LeaveHttpPostIn" />
@@ -2219,19 +2235,55 @@
       <wsdl:input message="tns:GetWaitingHttpPostIn" />
       <wsdl:output message="tns:GetWaitingHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="Gett_WorkflowTaskByInfoID">
+      <wsdl:input message="tns:Gett_WorkflowTaskByInfoIDHttpPostIn" />
+      <wsdl:output message="tns:Gett_WorkflowTaskByInfoIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Gett_WorkflowTaskByRequestID">
+      <wsdl:input message="tns:Gett_WorkflowTaskByRequestIDHttpPostIn" />
+      <wsdl:output message="tns:Gett_WorkflowTaskByRequestIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID">
+      <wsdl:input message="tns:GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDHttpPostIn" />
+      <wsdl:output message="tns:GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveHistory">
+      <wsdl:input message="tns:GetLeaveHistoryHttpPostIn" />
+      <wsdl:output message="tns:GetLeaveHistoryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApproveRequest_leave">
+      <wsdl:input message="tns:ApproveRequest_leaveHttpPostIn" />
+      <wsdl:output message="tns:ApproveRequest_leaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WithDrawRequest_leave">
+      <wsdl:input message="tns:WithDrawRequest_leaveHttpPostIn" />
+      <wsdl:output message="tns:WithDrawRequest_leaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RejectRequest_leave">
+      <wsdl:input message="tns:RejectRequest_leaveHttpPostIn" />
+      <wsdl:output message="tns:RejectRequest_leaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelRequest_leave">
+      <wsdl:input message="tns:CancelRequest_leaveHttpPostIn" />
+      <wsdl:output message="tns:CancelRequest_leaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApproveCancelRequest_leave">
+      <wsdl:input message="tns:ApproveCancelRequest_leaveHttpPostIn" />
+      <wsdl:output message="tns:ApproveCancelRequest_leaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RejectCancelRequest_leave">
+      <wsdl:input message="tns:RejectCancelRequest_leaveHttpPostIn" />
+      <wsdl:output message="tns:RejectCancelRequest_leaveHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="Base_GetListt_WorkflowInfo">
       <wsdl:input message="tns:Base_GetListt_WorkflowInfoHttpPostIn" />
       <wsdl:output message="tns:Base_GetListt_WorkflowInfoHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_WorkflowTask">
-      <wsdl:input message="tns:Base_GetListt_WorkflowTaskHttpPostIn" />
-      <wsdl:output message="tns:Base_GetListt_WorkflowTaskHttpPostOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LeaveManagementV2Soap" type="tns:LeaveManagementV2Soap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="Gett_WorkflowTaskByInfoID">
-      <soap:operation soapAction="http://tempuri.org/Gett_WorkflowTaskByInfoID" style="document" />
+    <wsdl:operation name="Base_Insertt_WorkflowTask">
+      <soap:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowTask" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2239,8 +2291,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Gett_WorkflowTaskByRequestID">
-      <soap:operation soapAction="http://tempuri.org/Gett_WorkflowTaskByRequestID" style="document" />
+    <wsdl:operation name="Base_Updatet_WorkflowTask">
+      <soap:operation soapAction="http://tempuri.org/Base_Updatet_WorkflowTask" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2248,8 +2300,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID">
-      <soap:operation soapAction="http://tempuri.org/GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID" style="document" />
+    <wsdl:operation name="Base_Deletet_WorkflowTask">
+      <soap:operation soapAction="http://tempuri.org/Base_Deletet_WorkflowTask" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2257,8 +2309,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CreateNewRequest">
-      <soap:operation soapAction="http://tempuri.org/CreateNewRequest" style="document" />
+    <wsdl:operation name="Base_Gett_WorkflowTask">
+      <soap:operation soapAction="http://tempuri.org/Base_Gett_WorkflowTask" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2266,53 +2318,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ApproveRequest_leave">
-      <soap:operation soapAction="http://tempuri.org/ApproveRequest_leave" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="WithDrawRequest_leave">
-      <soap:operation soapAction="http://tempuri.org/WithDrawRequest_leave" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RejectRequest_leave">
-      <soap:operation soapAction="http://tempuri.org/RejectRequest_leave" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CancelRequest_leave">
-      <soap:operation soapAction="http://tempuri.org/CancelRequest_leave" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ApproveCancelRequest_leave">
-      <soap:operation soapAction="http://tempuri.org/ApproveCancelRequest_leave" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RejectCancelRequest_leave">
-      <soap:operation soapAction="http://tempuri.org/RejectCancelRequest_leave" style="document" />
+    <wsdl:operation name="Base_GetListt_WorkflowTask">
+      <soap:operation soapAction="http://tempuri.org/Base_GetListt_WorkflowTask" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2358,24 +2365,6 @@
     </wsdl:operation>
     <wsdl:operation name="Base_GetListt_Leave">
       <soap:operation soapAction="http://tempuri.org/Base_GetListt_Leave" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetContractByEmployids">
-      <soap:operation soapAction="http://tempuri.org/GetContractByEmployids" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetRoster">
-      <soap:operation soapAction="http://tempuri.org/GetRoster" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2680,6 +2669,123 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Gett_WorkflowTaskByInfoID">
+      <soap:operation soapAction="http://tempuri.org/Gett_WorkflowTaskByInfoID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Gett_WorkflowTaskByRequestID">
+      <soap:operation soapAction="http://tempuri.org/Gett_WorkflowTaskByRequestID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID">
+      <soap:operation soapAction="http://tempuri.org/GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveHistory">
+      <soap:operation soapAction="http://tempuri.org/GetLeaveHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewRequest">
+      <soap:operation soapAction="http://tempuri.org/CreateNewRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveRequest_leave">
+      <soap:operation soapAction="http://tempuri.org/ApproveRequest_leave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WithDrawRequest_leave">
+      <soap:operation soapAction="http://tempuri.org/WithDrawRequest_leave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RejectRequest_leave">
+      <soap:operation soapAction="http://tempuri.org/RejectRequest_leave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelRequest_leave">
+      <soap:operation soapAction="http://tempuri.org/CancelRequest_leave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveCancelRequest_leave">
+      <soap:operation soapAction="http://tempuri.org/ApproveCancelRequest_leave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RejectCancelRequest_leave">
+      <soap:operation soapAction="http://tempuri.org/RejectCancelRequest_leave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContractByEmployids">
+      <soap:operation soapAction="http://tempuri.org/GetContractByEmployids" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoster">
+      <soap:operation soapAction="http://tempuri.org/GetRoster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Base_Insertt_WorkflowInfo">
       <soap:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowInfo" style="document" />
       <wsdl:input>
@@ -2725,56 +2831,11 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Base_Insertt_WorkflowTask">
-      <soap:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Updatet_WorkflowTask">
-      <soap:operation soapAction="http://tempuri.org/Base_Updatet_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Deletet_WorkflowTask">
-      <soap:operation soapAction="http://tempuri.org/Base_Deletet_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Gett_WorkflowTask">
-      <soap:operation soapAction="http://tempuri.org/Base_Gett_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_WorkflowTask">
-      <soap:operation soapAction="http://tempuri.org/Base_GetListt_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LeaveManagementV2Soap12" type="tns:LeaveManagementV2Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="Gett_WorkflowTaskByInfoID">
-      <soap12:operation soapAction="http://tempuri.org/Gett_WorkflowTaskByInfoID" style="document" />
+    <wsdl:operation name="Base_Insertt_WorkflowTask">
+      <soap12:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowTask" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2782,8 +2843,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Gett_WorkflowTaskByRequestID">
-      <soap12:operation soapAction="http://tempuri.org/Gett_WorkflowTaskByRequestID" style="document" />
+    <wsdl:operation name="Base_Updatet_WorkflowTask">
+      <soap12:operation soapAction="http://tempuri.org/Base_Updatet_WorkflowTask" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2791,8 +2852,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID">
-      <soap12:operation soapAction="http://tempuri.org/GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID" style="document" />
+    <wsdl:operation name="Base_Deletet_WorkflowTask">
+      <soap12:operation soapAction="http://tempuri.org/Base_Deletet_WorkflowTask" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2800,8 +2861,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CreateNewRequest">
-      <soap12:operation soapAction="http://tempuri.org/CreateNewRequest" style="document" />
+    <wsdl:operation name="Base_Gett_WorkflowTask">
+      <soap12:operation soapAction="http://tempuri.org/Base_Gett_WorkflowTask" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2809,53 +2870,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ApproveRequest_leave">
-      <soap12:operation soapAction="http://tempuri.org/ApproveRequest_leave" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="WithDrawRequest_leave">
-      <soap12:operation soapAction="http://tempuri.org/WithDrawRequest_leave" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RejectRequest_leave">
-      <soap12:operation soapAction="http://tempuri.org/RejectRequest_leave" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CancelRequest_leave">
-      <soap12:operation soapAction="http://tempuri.org/CancelRequest_leave" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ApproveCancelRequest_leave">
-      <soap12:operation soapAction="http://tempuri.org/ApproveCancelRequest_leave" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RejectCancelRequest_leave">
-      <soap12:operation soapAction="http://tempuri.org/RejectCancelRequest_leave" style="document" />
+    <wsdl:operation name="Base_GetListt_WorkflowTask">
+      <soap12:operation soapAction="http://tempuri.org/Base_GetListt_WorkflowTask" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -2901,24 +2917,6 @@
     </wsdl:operation>
     <wsdl:operation name="Base_GetListt_Leave">
       <soap12:operation soapAction="http://tempuri.org/Base_GetListt_Leave" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetContractByEmployids">
-      <soap12:operation soapAction="http://tempuri.org/GetContractByEmployids" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetRoster">
-      <soap12:operation soapAction="http://tempuri.org/GetRoster" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -3223,6 +3221,123 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Gett_WorkflowTaskByInfoID">
+      <soap12:operation soapAction="http://tempuri.org/Gett_WorkflowTaskByInfoID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Gett_WorkflowTaskByRequestID">
+      <soap12:operation soapAction="http://tempuri.org/Gett_WorkflowTaskByRequestID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID">
+      <soap12:operation soapAction="http://tempuri.org/GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveHistory">
+      <soap12:operation soapAction="http://tempuri.org/GetLeaveHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewRequest">
+      <soap12:operation soapAction="http://tempuri.org/CreateNewRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveRequest_leave">
+      <soap12:operation soapAction="http://tempuri.org/ApproveRequest_leave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WithDrawRequest_leave">
+      <soap12:operation soapAction="http://tempuri.org/WithDrawRequest_leave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RejectRequest_leave">
+      <soap12:operation soapAction="http://tempuri.org/RejectRequest_leave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelRequest_leave">
+      <soap12:operation soapAction="http://tempuri.org/CancelRequest_leave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveCancelRequest_leave">
+      <soap12:operation soapAction="http://tempuri.org/ApproveCancelRequest_leave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RejectCancelRequest_leave">
+      <soap12:operation soapAction="http://tempuri.org/RejectCancelRequest_leave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContractByEmployids">
+      <soap12:operation soapAction="http://tempuri.org/GetContractByEmployids" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoster">
+      <soap12:operation soapAction="http://tempuri.org/GetRoster" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Base_Insertt_WorkflowInfo">
       <soap12:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowInfo" style="document" />
       <wsdl:input>
@@ -3268,124 +3383,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Base_Insertt_WorkflowTask">
-      <soap12:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Updatet_WorkflowTask">
-      <soap12:operation soapAction="http://tempuri.org/Base_Updatet_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Deletet_WorkflowTask">
-      <soap12:operation soapAction="http://tempuri.org/Base_Deletet_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Gett_WorkflowTask">
-      <soap12:operation soapAction="http://tempuri.org/Base_Gett_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_WorkflowTask">
-      <soap12:operation soapAction="http://tempuri.org/Base_GetListt_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LeaveManagementV2HttpPost" type="tns:LeaveManagementV2HttpPost">
     <http:binding verb="POST" />
-    <wsdl:operation name="Gett_WorkflowTaskByInfoID">
-      <http:operation location="/Gett_WorkflowTaskByInfoID" />
+    <wsdl:operation name="Base_GetListt_WorkflowTask">
+      <http:operation location="/Base_GetListt_WorkflowTask" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
       <wsdl:output>
         <mime:mimeXml part="Body" />
       </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Gett_WorkflowTaskByRequestID">
-      <http:operation location="/Gett_WorkflowTaskByRequestID" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID">
-      <http:operation location="/GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ApproveRequest_leave">
-      <http:operation location="/ApproveRequest_leave" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output />
-    </wsdl:operation>
-    <wsdl:operation name="WithDrawRequest_leave">
-      <http:operation location="/WithDrawRequest_leave" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output />
-    </wsdl:operation>
-    <wsdl:operation name="RejectRequest_leave">
-      <http:operation location="/RejectRequest_leave" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output />
-    </wsdl:operation>
-    <wsdl:operation name="CancelRequest_leave">
-      <http:operation location="/CancelRequest_leave" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ApproveCancelRequest_leave">
-      <http:operation location="/ApproveCancelRequest_leave" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output />
-    </wsdl:operation>
-    <wsdl:operation name="RejectCancelRequest_leave">
-      <http:operation location="/RejectCancelRequest_leave" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output />
     </wsdl:operation>
     <wsdl:operation name="Base_GetListt_Leave">
       <http:operation location="/Base_GetListt_Leave" />
@@ -3630,8 +3638,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_WorkflowInfo">
-      <http:operation location="/Base_GetListt_WorkflowInfo" />
+    <wsdl:operation name="Gett_WorkflowTaskByInfoID">
+      <http:operation location="/Gett_WorkflowTaskByInfoID" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -3639,8 +3647,79 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_WorkflowTask">
-      <http:operation location="/Base_GetListt_WorkflowTask" />
+    <wsdl:operation name="Gett_WorkflowTaskByRequestID">
+      <http:operation location="/Gett_WorkflowTaskByRequestID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID">
+      <http:operation location="/GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveHistory">
+      <http:operation location="/GetLeaveHistory" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveRequest_leave">
+      <http:operation location="/ApproveRequest_leave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="WithDrawRequest_leave">
+      <http:operation location="/WithDrawRequest_leave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="RejectRequest_leave">
+      <http:operation location="/RejectRequest_leave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="CancelRequest_leave">
+      <http:operation location="/CancelRequest_leave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveCancelRequest_leave">
+      <http:operation location="/ApproveCancelRequest_leave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="RejectCancelRequest_leave">
+      <http:operation location="/RejectCancelRequest_leave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="Base_GetListt_WorkflowInfo">
+      <http:operation location="/Base_GetListt_WorkflowInfo" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -3651,13 +3730,13 @@
   </wsdl:binding>
   <wsdl:service name="LeaveManagementV2">
     <wsdl:port name="LeaveManagementV2Soap" binding="tns:LeaveManagementV2Soap">
-      <soap:address location="http://192.168.19.200:8889/ServicesWithSession/LeaveManagementV2.asmx" />
+      <soap:address location="http://192.168.19.200:9001/ServicesWithSession/LeaveManagementV2.asmx" />
     </wsdl:port>
     <wsdl:port name="LeaveManagementV2Soap12" binding="tns:LeaveManagementV2Soap12">
-      <soap12:address location="http://192.168.19.200:8889/ServicesWithSession/LeaveManagementV2.asmx" />
+      <soap12:address location="http://192.168.19.200:9001/ServicesWithSession/LeaveManagementV2.asmx" />
     </wsdl:port>
     <wsdl:port name="LeaveManagementV2HttpPost" binding="tns:LeaveManagementV2HttpPost">
-      <http:address location="http://192.168.19.200:8889/ServicesWithSession/LeaveManagementV2.asmx" />
+      <http:address location="http://192.168.19.200:9001/ServicesWithSession/LeaveManagementV2.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

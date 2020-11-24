@@ -83,10 +83,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>WebServiceLayer_WebReference_codesettings_CodeSettingsV2</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://192.168.19.200:8889/ServicesWithSession/LeaveManagementV2.asmx">
+    <WebReferenceUrl Include="http://192.168.19.200:9001/ServicesWithSession/LeaveManagementV2.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WebReference_leave\</RelPath>
-      <UpdateFromURL>http://192.168.19.200:8889/ServicesWithSession/LeaveManagementV2.asmx</UpdateFromURL>
+      <UpdateFromURL>http://192.168.19.200:9001/ServicesWithSession/LeaveManagementV2.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -127,6 +127,9 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebReference_leave\LeaveBalanceType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebReference_leave\LeaveHistory.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebReference_leave\LeaveManagementV2.wsdl" />

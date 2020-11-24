@@ -29,25 +29,15 @@ namespace WebServiceLayer.WebReference_leave {
     [System.Web.Services.WebServiceBindingAttribute(Name="LeaveManagementV2Soap", Namespace="http://tempuri.org/")]
     public partial class LeaveManagementV2 : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback Gett_WorkflowTaskByInfoIDOperationCompleted;
+        private System.Threading.SendOrPostCallback Base_Insertt_WorkflowTaskOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Gett_WorkflowTaskByRequestIDOperationCompleted;
+        private System.Threading.SendOrPostCallback Base_Updatet_WorkflowTaskOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDOperationCompleted;
+        private System.Threading.SendOrPostCallback Base_Deletet_WorkflowTaskOperationCompleted;
         
-        private System.Threading.SendOrPostCallback CreateNewRequestOperationCompleted;
+        private System.Threading.SendOrPostCallback Base_Gett_WorkflowTaskOperationCompleted;
         
-        private System.Threading.SendOrPostCallback ApproveRequest_leaveOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback WithDrawRequest_leaveOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback RejectRequest_leaveOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback CancelRequest_leaveOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback ApproveCancelRequest_leaveOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback RejectCancelRequest_leaveOperationCompleted;
+        private System.Threading.SendOrPostCallback Base_GetListt_WorkflowTaskOperationCompleted;
         
         private System.Threading.SendOrPostCallback Base_Insertt_LeaveOperationCompleted;
         
@@ -58,10 +48,6 @@ namespace WebServiceLayer.WebReference_leave {
         private System.Threading.SendOrPostCallback Base_Gett_LeaveOperationCompleted;
         
         private System.Threading.SendOrPostCallback Base_GetListt_LeaveOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetContractByEmployidsOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetRosterOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetAllLeaveTypeByStaffIDOperationCompleted;
         
@@ -129,6 +115,32 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetWaitingOperationCompleted;
         
+        private System.Threading.SendOrPostCallback Gett_WorkflowTaskByInfoIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback Gett_WorkflowTaskByRequestIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetLeaveHistoryOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CreateNewRequestOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ApproveRequest_leaveOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback WithDrawRequest_leaveOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RejectRequest_leaveOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CancelRequest_leaveOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ApproveCancelRequest_leaveOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RejectCancelRequest_leaveOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetContractByEmployidsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetRosterOperationCompleted;
+        
         private System.Threading.SendOrPostCallback Base_Insertt_WorkflowInfoOperationCompleted;
         
         private System.Threading.SendOrPostCallback Base_Updatet_WorkflowInfoOperationCompleted;
@@ -138,16 +150,6 @@ namespace WebServiceLayer.WebReference_leave {
         private System.Threading.SendOrPostCallback Base_Gett_WorkflowInfoOperationCompleted;
         
         private System.Threading.SendOrPostCallback Base_GetListt_WorkflowInfoOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback Base_Insertt_WorkflowTaskOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback Base_Updatet_WorkflowTaskOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback Base_Deletet_WorkflowTaskOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback Base_Gett_WorkflowTaskOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback Base_GetListt_WorkflowTaskOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -188,34 +190,19 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
-        public event Gett_WorkflowTaskByInfoIDCompletedEventHandler Gett_WorkflowTaskByInfoIDCompleted;
+        public event Base_Insertt_WorkflowTaskCompletedEventHandler Base_Insertt_WorkflowTaskCompleted;
         
         /// <remarks/>
-        public event Gett_WorkflowTaskByRequestIDCompletedEventHandler Gett_WorkflowTaskByRequestIDCompleted;
+        public event Base_Updatet_WorkflowTaskCompletedEventHandler Base_Updatet_WorkflowTaskCompleted;
         
         /// <remarks/>
-        public event GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompletedEventHandler GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompleted;
+        public event Base_Deletet_WorkflowTaskCompletedEventHandler Base_Deletet_WorkflowTaskCompleted;
         
         /// <remarks/>
-        public event CreateNewRequestCompletedEventHandler CreateNewRequestCompleted;
+        public event Base_Gett_WorkflowTaskCompletedEventHandler Base_Gett_WorkflowTaskCompleted;
         
         /// <remarks/>
-        public event ApproveRequest_leaveCompletedEventHandler ApproveRequest_leaveCompleted;
-        
-        /// <remarks/>
-        public event WithDrawRequest_leaveCompletedEventHandler WithDrawRequest_leaveCompleted;
-        
-        /// <remarks/>
-        public event RejectRequest_leaveCompletedEventHandler RejectRequest_leaveCompleted;
-        
-        /// <remarks/>
-        public event CancelRequest_leaveCompletedEventHandler CancelRequest_leaveCompleted;
-        
-        /// <remarks/>
-        public event ApproveCancelRequest_leaveCompletedEventHandler ApproveCancelRequest_leaveCompleted;
-        
-        /// <remarks/>
-        public event RejectCancelRequest_leaveCompletedEventHandler RejectCancelRequest_leaveCompleted;
+        public event Base_GetListt_WorkflowTaskCompletedEventHandler Base_GetListt_WorkflowTaskCompleted;
         
         /// <remarks/>
         public event Base_Insertt_LeaveCompletedEventHandler Base_Insertt_LeaveCompleted;
@@ -231,12 +218,6 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event Base_GetListt_LeaveCompletedEventHandler Base_GetListt_LeaveCompleted;
-        
-        /// <remarks/>
-        public event GetContractByEmployidsCompletedEventHandler GetContractByEmployidsCompleted;
-        
-        /// <remarks/>
-        public event GetRosterCompletedEventHandler GetRosterCompleted;
         
         /// <remarks/>
         public event GetAllLeaveTypeByStaffIDCompletedEventHandler GetAllLeaveTypeByStaffIDCompleted;
@@ -338,6 +319,45 @@ namespace WebServiceLayer.WebReference_leave {
         public event GetWaitingCompletedEventHandler GetWaitingCompleted;
         
         /// <remarks/>
+        public event Gett_WorkflowTaskByInfoIDCompletedEventHandler Gett_WorkflowTaskByInfoIDCompleted;
+        
+        /// <remarks/>
+        public event Gett_WorkflowTaskByRequestIDCompletedEventHandler Gett_WorkflowTaskByRequestIDCompleted;
+        
+        /// <remarks/>
+        public event GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompletedEventHandler GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompleted;
+        
+        /// <remarks/>
+        public event GetLeaveHistoryCompletedEventHandler GetLeaveHistoryCompleted;
+        
+        /// <remarks/>
+        public event CreateNewRequestCompletedEventHandler CreateNewRequestCompleted;
+        
+        /// <remarks/>
+        public event ApproveRequest_leaveCompletedEventHandler ApproveRequest_leaveCompleted;
+        
+        /// <remarks/>
+        public event WithDrawRequest_leaveCompletedEventHandler WithDrawRequest_leaveCompleted;
+        
+        /// <remarks/>
+        public event RejectRequest_leaveCompletedEventHandler RejectRequest_leaveCompleted;
+        
+        /// <remarks/>
+        public event CancelRequest_leaveCompletedEventHandler CancelRequest_leaveCompleted;
+        
+        /// <remarks/>
+        public event ApproveCancelRequest_leaveCompletedEventHandler ApproveCancelRequest_leaveCompleted;
+        
+        /// <remarks/>
+        public event RejectCancelRequest_leaveCompletedEventHandler RejectCancelRequest_leaveCompleted;
+        
+        /// <remarks/>
+        public event GetContractByEmployidsCompletedEventHandler GetContractByEmployidsCompleted;
+        
+        /// <remarks/>
+        public event GetRosterCompletedEventHandler GetRosterCompleted;
+        
+        /// <remarks/>
         public event Base_Insertt_WorkflowInfoCompletedEventHandler Base_Insertt_WorkflowInfoCompleted;
         
         /// <remarks/>
@@ -353,344 +373,147 @@ namespace WebServiceLayer.WebReference_leave {
         public event Base_GetListt_WorkflowInfoCompletedEventHandler Base_GetListt_WorkflowInfoCompleted;
         
         /// <remarks/>
-        public event Base_Insertt_WorkflowTaskCompletedEventHandler Base_Insertt_WorkflowTaskCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Insertt_WorkflowTask", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_WorkflowTask Base_Insertt_WorkflowTask(t_WorkflowTask newObject) {
+            object[] results = this.Invoke("Base_Insertt_WorkflowTask", new object[] {
+                        newObject});
+            return ((t_WorkflowTask)(results[0]));
+        }
         
         /// <remarks/>
-        public event Base_Updatet_WorkflowTaskCompletedEventHandler Base_Updatet_WorkflowTaskCompleted;
+        public void Base_Insertt_WorkflowTaskAsync(t_WorkflowTask newObject) {
+            this.Base_Insertt_WorkflowTaskAsync(newObject, null);
+        }
         
         /// <remarks/>
-        public event Base_Deletet_WorkflowTaskCompletedEventHandler Base_Deletet_WorkflowTaskCompleted;
+        public void Base_Insertt_WorkflowTaskAsync(t_WorkflowTask newObject, object userState) {
+            if ((this.Base_Insertt_WorkflowTaskOperationCompleted == null)) {
+                this.Base_Insertt_WorkflowTaskOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Insertt_WorkflowTaskOperationCompleted);
+            }
+            this.InvokeAsync("Base_Insertt_WorkflowTask", new object[] {
+                        newObject}, this.Base_Insertt_WorkflowTaskOperationCompleted, userState);
+        }
+        
+        private void OnBase_Insertt_WorkflowTaskOperationCompleted(object arg) {
+            if ((this.Base_Insertt_WorkflowTaskCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Base_Insertt_WorkflowTaskCompleted(this, new Base_Insertt_WorkflowTaskCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
-        public event Base_Gett_WorkflowTaskCompletedEventHandler Base_Gett_WorkflowTaskCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Updatet_WorkflowTask", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool Base_Updatet_WorkflowTask(t_WorkflowTask UpdateObject) {
+            object[] results = this.Invoke("Base_Updatet_WorkflowTask", new object[] {
+                        UpdateObject});
+            return ((bool)(results[0]));
+        }
         
         /// <remarks/>
-        public event Base_GetListt_WorkflowTaskCompletedEventHandler Base_GetListt_WorkflowTaskCompleted;
+        public void Base_Updatet_WorkflowTaskAsync(t_WorkflowTask UpdateObject) {
+            this.Base_Updatet_WorkflowTaskAsync(UpdateObject, null);
+        }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Gett_WorkflowTaskByInfoID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public t_WorkflowTask[] Gett_WorkflowTaskByInfoID(int infoID) {
-            object[] results = this.Invoke("Gett_WorkflowTaskByInfoID", new object[] {
-                        infoID});
+        public void Base_Updatet_WorkflowTaskAsync(t_WorkflowTask UpdateObject, object userState) {
+            if ((this.Base_Updatet_WorkflowTaskOperationCompleted == null)) {
+                this.Base_Updatet_WorkflowTaskOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Updatet_WorkflowTaskOperationCompleted);
+            }
+            this.InvokeAsync("Base_Updatet_WorkflowTask", new object[] {
+                        UpdateObject}, this.Base_Updatet_WorkflowTaskOperationCompleted, userState);
+        }
+        
+        private void OnBase_Updatet_WorkflowTaskOperationCompleted(object arg) {
+            if ((this.Base_Updatet_WorkflowTaskCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Base_Updatet_WorkflowTaskCompleted(this, new Base_Updatet_WorkflowTaskCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Deletet_WorkflowTask", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool Base_Deletet_WorkflowTask(t_WorkflowTask DeleteObject) {
+            object[] results = this.Invoke("Base_Deletet_WorkflowTask", new object[] {
+                        DeleteObject});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Base_Deletet_WorkflowTaskAsync(t_WorkflowTask DeleteObject) {
+            this.Base_Deletet_WorkflowTaskAsync(DeleteObject, null);
+        }
+        
+        /// <remarks/>
+        public void Base_Deletet_WorkflowTaskAsync(t_WorkflowTask DeleteObject, object userState) {
+            if ((this.Base_Deletet_WorkflowTaskOperationCompleted == null)) {
+                this.Base_Deletet_WorkflowTaskOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Deletet_WorkflowTaskOperationCompleted);
+            }
+            this.InvokeAsync("Base_Deletet_WorkflowTask", new object[] {
+                        DeleteObject}, this.Base_Deletet_WorkflowTaskOperationCompleted, userState);
+        }
+        
+        private void OnBase_Deletet_WorkflowTaskOperationCompleted(object arg) {
+            if ((this.Base_Deletet_WorkflowTaskCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Base_Deletet_WorkflowTaskCompleted(this, new Base_Deletet_WorkflowTaskCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Gett_WorkflowTask", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_WorkflowTask Base_Gett_WorkflowTask(t_WorkflowTask GetObject) {
+            object[] results = this.Invoke("Base_Gett_WorkflowTask", new object[] {
+                        GetObject});
+            return ((t_WorkflowTask)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Base_Gett_WorkflowTaskAsync(t_WorkflowTask GetObject) {
+            this.Base_Gett_WorkflowTaskAsync(GetObject, null);
+        }
+        
+        /// <remarks/>
+        public void Base_Gett_WorkflowTaskAsync(t_WorkflowTask GetObject, object userState) {
+            if ((this.Base_Gett_WorkflowTaskOperationCompleted == null)) {
+                this.Base_Gett_WorkflowTaskOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Gett_WorkflowTaskOperationCompleted);
+            }
+            this.InvokeAsync("Base_Gett_WorkflowTask", new object[] {
+                        GetObject}, this.Base_Gett_WorkflowTaskOperationCompleted, userState);
+        }
+        
+        private void OnBase_Gett_WorkflowTaskOperationCompleted(object arg) {
+            if ((this.Base_Gett_WorkflowTaskCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Base_Gett_WorkflowTaskCompleted(this, new Base_Gett_WorkflowTaskCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_GetListt_WorkflowTask", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_WorkflowTask[] Base_GetListt_WorkflowTask(string whereSql) {
+            object[] results = this.Invoke("Base_GetListt_WorkflowTask", new object[] {
+                        whereSql});
             return ((t_WorkflowTask[])(results[0]));
         }
         
         /// <remarks/>
-        public void Gett_WorkflowTaskByInfoIDAsync(int infoID) {
-            this.Gett_WorkflowTaskByInfoIDAsync(infoID, null);
+        public void Base_GetListt_WorkflowTaskAsync(string whereSql) {
+            this.Base_GetListt_WorkflowTaskAsync(whereSql, null);
         }
         
         /// <remarks/>
-        public void Gett_WorkflowTaskByInfoIDAsync(int infoID, object userState) {
-            if ((this.Gett_WorkflowTaskByInfoIDOperationCompleted == null)) {
-                this.Gett_WorkflowTaskByInfoIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGett_WorkflowTaskByInfoIDOperationCompleted);
+        public void Base_GetListt_WorkflowTaskAsync(string whereSql, object userState) {
+            if ((this.Base_GetListt_WorkflowTaskOperationCompleted == null)) {
+                this.Base_GetListt_WorkflowTaskOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_GetListt_WorkflowTaskOperationCompleted);
             }
-            this.InvokeAsync("Gett_WorkflowTaskByInfoID", new object[] {
-                        infoID}, this.Gett_WorkflowTaskByInfoIDOperationCompleted, userState);
+            this.InvokeAsync("Base_GetListt_WorkflowTask", new object[] {
+                        whereSql}, this.Base_GetListt_WorkflowTaskOperationCompleted, userState);
         }
         
-        private void OnGett_WorkflowTaskByInfoIDOperationCompleted(object arg) {
-            if ((this.Gett_WorkflowTaskByInfoIDCompleted != null)) {
+        private void OnBase_GetListt_WorkflowTaskOperationCompleted(object arg) {
+            if ((this.Base_GetListt_WorkflowTaskCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Gett_WorkflowTaskByInfoIDCompleted(this, new Gett_WorkflowTaskByInfoIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Gett_WorkflowTaskByRequestID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public t_WorkflowTask[] Gett_WorkflowTaskByRequestID(int request) {
-            object[] results = this.Invoke("Gett_WorkflowTaskByRequestID", new object[] {
-                        request});
-            return ((t_WorkflowTask[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void Gett_WorkflowTaskByRequestIDAsync(int request) {
-            this.Gett_WorkflowTaskByRequestIDAsync(request, null);
-        }
-        
-        /// <remarks/>
-        public void Gett_WorkflowTaskByRequestIDAsync(int request, object userState) {
-            if ((this.Gett_WorkflowTaskByRequestIDOperationCompleted == null)) {
-                this.Gett_WorkflowTaskByRequestIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGett_WorkflowTaskByRequestIDOperationCompleted);
-            }
-            this.InvokeAsync("Gett_WorkflowTaskByRequestID", new object[] {
-                        request}, this.Gett_WorkflowTaskByRequestIDOperationCompleted, userState);
-        }
-        
-        private void OnGett_WorkflowTaskByRequestIDOperationCompleted(object arg) {
-            if ((this.Gett_WorkflowTaskByRequestIDCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Gett_WorkflowTaskByRequestIDCompleted(this, new Gett_WorkflowTaskByRequestIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public t_WorkflowTask[] GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID(int UID) {
-            object[] results = this.Invoke("GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID", new object[] {
-                        UID});
-            return ((t_WorkflowTask[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDAsync(int UID) {
-            this.GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDAsync(UID, null);
-        }
-        
-        /// <remarks/>
-        public void GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDAsync(int UID, object userState) {
-            if ((this.GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDOperationCompleted == null)) {
-                this.GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDOperationCompleted);
-            }
-            this.InvokeAsync("GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID", new object[] {
-                        UID}, this.GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDOperationCompleted, userState);
-        }
-        
-        private void OnGetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDOperationCompleted(object arg) {
-            if ((this.GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompleted(this, new GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CreateNewRequest", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int CreateNewRequest(MyWorkflowTask p_ExistingWorkflowTask, WorkflowTypeID TaskType, StaffLeaveRequest[] p_ApprovalRequest, int createrUID, string p_strDescription, string p_strFormulatedURL, string baseURL, string p_strWorkflowInfoParameter, int p_intLeaveRequestID, int p_intEmploymentID) {
-            object[] results = this.Invoke("CreateNewRequest", new object[] {
-                        p_ExistingWorkflowTask,
-                        TaskType,
-                        p_ApprovalRequest,
-                        createrUID,
-                        p_strDescription,
-                        p_strFormulatedURL,
-                        baseURL,
-                        p_strWorkflowInfoParameter,
-                        p_intLeaveRequestID,
-                        p_intEmploymentID});
-            return ((int)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void CreateNewRequestAsync(MyWorkflowTask p_ExistingWorkflowTask, WorkflowTypeID TaskType, StaffLeaveRequest[] p_ApprovalRequest, int createrUID, string p_strDescription, string p_strFormulatedURL, string baseURL, string p_strWorkflowInfoParameter, int p_intLeaveRequestID, int p_intEmploymentID) {
-            this.CreateNewRequestAsync(p_ExistingWorkflowTask, TaskType, p_ApprovalRequest, createrUID, p_strDescription, p_strFormulatedURL, baseURL, p_strWorkflowInfoParameter, p_intLeaveRequestID, p_intEmploymentID, null);
-        }
-        
-        /// <remarks/>
-        public void CreateNewRequestAsync(MyWorkflowTask p_ExistingWorkflowTask, WorkflowTypeID TaskType, StaffLeaveRequest[] p_ApprovalRequest, int createrUID, string p_strDescription, string p_strFormulatedURL, string baseURL, string p_strWorkflowInfoParameter, int p_intLeaveRequestID, int p_intEmploymentID, object userState) {
-            if ((this.CreateNewRequestOperationCompleted == null)) {
-                this.CreateNewRequestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateNewRequestOperationCompleted);
-            }
-            this.InvokeAsync("CreateNewRequest", new object[] {
-                        p_ExistingWorkflowTask,
-                        TaskType,
-                        p_ApprovalRequest,
-                        createrUID,
-                        p_strDescription,
-                        p_strFormulatedURL,
-                        baseURL,
-                        p_strWorkflowInfoParameter,
-                        p_intLeaveRequestID,
-                        p_intEmploymentID}, this.CreateNewRequestOperationCompleted, userState);
-        }
-        
-        private void OnCreateNewRequestOperationCompleted(object arg) {
-            if ((this.CreateNewRequestCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.CreateNewRequestCompleted(this, new CreateNewRequestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ApproveRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void ApproveRequest_leave(int requestid, int UserID, string remark) {
-            this.Invoke("ApproveRequest_leave", new object[] {
-                        requestid,
-                        UserID,
-                        remark});
-        }
-        
-        /// <remarks/>
-        public void ApproveRequest_leaveAsync(int requestid, int UserID, string remark) {
-            this.ApproveRequest_leaveAsync(requestid, UserID, remark, null);
-        }
-        
-        /// <remarks/>
-        public void ApproveRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
-            if ((this.ApproveRequest_leaveOperationCompleted == null)) {
-                this.ApproveRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnApproveRequest_leaveOperationCompleted);
-            }
-            this.InvokeAsync("ApproveRequest_leave", new object[] {
-                        requestid,
-                        UserID,
-                        remark}, this.ApproveRequest_leaveOperationCompleted, userState);
-        }
-        
-        private void OnApproveRequest_leaveOperationCompleted(object arg) {
-            if ((this.ApproveRequest_leaveCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.ApproveRequest_leaveCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/WithDrawRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void WithDrawRequest_leave(int requestid, int UserID, string remark) {
-            this.Invoke("WithDrawRequest_leave", new object[] {
-                        requestid,
-                        UserID,
-                        remark});
-        }
-        
-        /// <remarks/>
-        public void WithDrawRequest_leaveAsync(int requestid, int UserID, string remark) {
-            this.WithDrawRequest_leaveAsync(requestid, UserID, remark, null);
-        }
-        
-        /// <remarks/>
-        public void WithDrawRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
-            if ((this.WithDrawRequest_leaveOperationCompleted == null)) {
-                this.WithDrawRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnWithDrawRequest_leaveOperationCompleted);
-            }
-            this.InvokeAsync("WithDrawRequest_leave", new object[] {
-                        requestid,
-                        UserID,
-                        remark}, this.WithDrawRequest_leaveOperationCompleted, userState);
-        }
-        
-        private void OnWithDrawRequest_leaveOperationCompleted(object arg) {
-            if ((this.WithDrawRequest_leaveCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.WithDrawRequest_leaveCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RejectRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void RejectRequest_leave(int requestid, int UserID, string remark) {
-            this.Invoke("RejectRequest_leave", new object[] {
-                        requestid,
-                        UserID,
-                        remark});
-        }
-        
-        /// <remarks/>
-        public void RejectRequest_leaveAsync(int requestid, int UserID, string remark) {
-            this.RejectRequest_leaveAsync(requestid, UserID, remark, null);
-        }
-        
-        /// <remarks/>
-        public void RejectRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
-            if ((this.RejectRequest_leaveOperationCompleted == null)) {
-                this.RejectRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRejectRequest_leaveOperationCompleted);
-            }
-            this.InvokeAsync("RejectRequest_leave", new object[] {
-                        requestid,
-                        UserID,
-                        remark}, this.RejectRequest_leaveOperationCompleted, userState);
-        }
-        
-        private void OnRejectRequest_leaveOperationCompleted(object arg) {
-            if ((this.RejectRequest_leaveCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.RejectRequest_leaveCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CancelRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int CancelRequest_leave(int requestid, int UserID, string remark) {
-            object[] results = this.Invoke("CancelRequest_leave", new object[] {
-                        requestid,
-                        UserID,
-                        remark});
-            return ((int)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void CancelRequest_leaveAsync(int requestid, int UserID, string remark) {
-            this.CancelRequest_leaveAsync(requestid, UserID, remark, null);
-        }
-        
-        /// <remarks/>
-        public void CancelRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
-            if ((this.CancelRequest_leaveOperationCompleted == null)) {
-                this.CancelRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCancelRequest_leaveOperationCompleted);
-            }
-            this.InvokeAsync("CancelRequest_leave", new object[] {
-                        requestid,
-                        UserID,
-                        remark}, this.CancelRequest_leaveOperationCompleted, userState);
-        }
-        
-        private void OnCancelRequest_leaveOperationCompleted(object arg) {
-            if ((this.CancelRequest_leaveCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.CancelRequest_leaveCompleted(this, new CancelRequest_leaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ApproveCancelRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void ApproveCancelRequest_leave(int requestid, int UserID, string remark) {
-            this.Invoke("ApproveCancelRequest_leave", new object[] {
-                        requestid,
-                        UserID,
-                        remark});
-        }
-        
-        /// <remarks/>
-        public void ApproveCancelRequest_leaveAsync(int requestid, int UserID, string remark) {
-            this.ApproveCancelRequest_leaveAsync(requestid, UserID, remark, null);
-        }
-        
-        /// <remarks/>
-        public void ApproveCancelRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
-            if ((this.ApproveCancelRequest_leaveOperationCompleted == null)) {
-                this.ApproveCancelRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnApproveCancelRequest_leaveOperationCompleted);
-            }
-            this.InvokeAsync("ApproveCancelRequest_leave", new object[] {
-                        requestid,
-                        UserID,
-                        remark}, this.ApproveCancelRequest_leaveOperationCompleted, userState);
-        }
-        
-        private void OnApproveCancelRequest_leaveOperationCompleted(object arg) {
-            if ((this.ApproveCancelRequest_leaveCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.ApproveCancelRequest_leaveCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RejectCancelRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void RejectCancelRequest_leave(int requestid, int UserID, string remark) {
-            this.Invoke("RejectCancelRequest_leave", new object[] {
-                        requestid,
-                        UserID,
-                        remark});
-        }
-        
-        /// <remarks/>
-        public void RejectCancelRequest_leaveAsync(int requestid, int UserID, string remark) {
-            this.RejectCancelRequest_leaveAsync(requestid, UserID, remark, null);
-        }
-        
-        /// <remarks/>
-        public void RejectCancelRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
-            if ((this.RejectCancelRequest_leaveOperationCompleted == null)) {
-                this.RejectCancelRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRejectCancelRequest_leaveOperationCompleted);
-            }
-            this.InvokeAsync("RejectCancelRequest_leave", new object[] {
-                        requestid,
-                        UserID,
-                        remark}, this.RejectCancelRequest_leaveOperationCompleted, userState);
-        }
-        
-        private void OnRejectCancelRequest_leaveOperationCompleted(object arg) {
-            if ((this.RejectCancelRequest_leaveCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.RejectCancelRequest_leaveCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Base_GetListt_WorkflowTaskCompleted(this, new Base_GetListt_WorkflowTaskCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -836,66 +659,6 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.Base_GetListt_LeaveCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.Base_GetListt_LeaveCompleted(this, new Base_GetListt_LeaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetContractByEmployids", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Employment_Contract[] GetContractByEmployids(int[] eids) {
-            object[] results = this.Invoke("GetContractByEmployids", new object[] {
-                        eids});
-            return ((Employment_Contract[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetContractByEmployidsAsync(int[] eids) {
-            this.GetContractByEmployidsAsync(eids, null);
-        }
-        
-        /// <remarks/>
-        public void GetContractByEmployidsAsync(int[] eids, object userState) {
-            if ((this.GetContractByEmployidsOperationCompleted == null)) {
-                this.GetContractByEmployidsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetContractByEmployidsOperationCompleted);
-            }
-            this.InvokeAsync("GetContractByEmployids", new object[] {
-                        eids}, this.GetContractByEmployidsOperationCompleted, userState);
-        }
-        
-        private void OnGetContractByEmployidsOperationCompleted(object arg) {
-            if ((this.GetContractByEmployidsCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetContractByEmployidsCompleted(this, new GetContractByEmployidsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetRoster", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public v_System_Calendar[] GetRoster(System.DateTime date, int[] employmentID) {
-            object[] results = this.Invoke("GetRoster", new object[] {
-                        date,
-                        employmentID});
-            return ((v_System_Calendar[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetRosterAsync(System.DateTime date, int[] employmentID) {
-            this.GetRosterAsync(date, employmentID, null);
-        }
-        
-        /// <remarks/>
-        public void GetRosterAsync(System.DateTime date, int[] employmentID, object userState) {
-            if ((this.GetRosterOperationCompleted == null)) {
-                this.GetRosterOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRosterOperationCompleted);
-            }
-            this.InvokeAsync("GetRoster", new object[] {
-                        date,
-                        employmentID}, this.GetRosterOperationCompleted, userState);
-        }
-        
-        private void OnGetRosterOperationCompleted(object arg) {
-            if ((this.GetRosterCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetRosterCompleted(this, new GetRosterCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1886,6 +1649,422 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Gett_WorkflowTaskByInfoID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_WorkflowTask[] Gett_WorkflowTaskByInfoID(int infoID) {
+            object[] results = this.Invoke("Gett_WorkflowTaskByInfoID", new object[] {
+                        infoID});
+            return ((t_WorkflowTask[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Gett_WorkflowTaskByInfoIDAsync(int infoID) {
+            this.Gett_WorkflowTaskByInfoIDAsync(infoID, null);
+        }
+        
+        /// <remarks/>
+        public void Gett_WorkflowTaskByInfoIDAsync(int infoID, object userState) {
+            if ((this.Gett_WorkflowTaskByInfoIDOperationCompleted == null)) {
+                this.Gett_WorkflowTaskByInfoIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGett_WorkflowTaskByInfoIDOperationCompleted);
+            }
+            this.InvokeAsync("Gett_WorkflowTaskByInfoID", new object[] {
+                        infoID}, this.Gett_WorkflowTaskByInfoIDOperationCompleted, userState);
+        }
+        
+        private void OnGett_WorkflowTaskByInfoIDOperationCompleted(object arg) {
+            if ((this.Gett_WorkflowTaskByInfoIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Gett_WorkflowTaskByInfoIDCompleted(this, new Gett_WorkflowTaskByInfoIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Gett_WorkflowTaskByRequestID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_WorkflowTask[] Gett_WorkflowTaskByRequestID(int request) {
+            object[] results = this.Invoke("Gett_WorkflowTaskByRequestID", new object[] {
+                        request});
+            return ((t_WorkflowTask[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Gett_WorkflowTaskByRequestIDAsync(int request) {
+            this.Gett_WorkflowTaskByRequestIDAsync(request, null);
+        }
+        
+        /// <remarks/>
+        public void Gett_WorkflowTaskByRequestIDAsync(int request, object userState) {
+            if ((this.Gett_WorkflowTaskByRequestIDOperationCompleted == null)) {
+                this.Gett_WorkflowTaskByRequestIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGett_WorkflowTaskByRequestIDOperationCompleted);
+            }
+            this.InvokeAsync("Gett_WorkflowTaskByRequestID", new object[] {
+                        request}, this.Gett_WorkflowTaskByRequestIDOperationCompleted, userState);
+        }
+        
+        private void OnGett_WorkflowTaskByRequestIDOperationCompleted(object arg) {
+            if ((this.Gett_WorkflowTaskByRequestIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Gett_WorkflowTaskByRequestIDCompleted(this, new Gett_WorkflowTaskByRequestIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_WorkflowTask[] GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID(int UID) {
+            object[] results = this.Invoke("GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID", new object[] {
+                        UID});
+            return ((t_WorkflowTask[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDAsync(int UID) {
+            this.GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDAsync(UID, null);
+        }
+        
+        /// <remarks/>
+        public void GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDAsync(int UID, object userState) {
+            if ((this.GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDOperationCompleted == null)) {
+                this.GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDOperationCompleted);
+            }
+            this.InvokeAsync("GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUID", new object[] {
+                        UID}, this.GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDOperationCompleted, userState);
+        }
+        
+        private void OnGetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDOperationCompleted(object arg) {
+            if ((this.GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompleted(this, new GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLeaveHistory", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public LeaveHistory[] GetLeaveHistory(int requestId) {
+            object[] results = this.Invoke("GetLeaveHistory", new object[] {
+                        requestId});
+            return ((LeaveHistory[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetLeaveHistoryAsync(int requestId) {
+            this.GetLeaveHistoryAsync(requestId, null);
+        }
+        
+        /// <remarks/>
+        public void GetLeaveHistoryAsync(int requestId, object userState) {
+            if ((this.GetLeaveHistoryOperationCompleted == null)) {
+                this.GetLeaveHistoryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLeaveHistoryOperationCompleted);
+            }
+            this.InvokeAsync("GetLeaveHistory", new object[] {
+                        requestId}, this.GetLeaveHistoryOperationCompleted, userState);
+        }
+        
+        private void OnGetLeaveHistoryOperationCompleted(object arg) {
+            if ((this.GetLeaveHistoryCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetLeaveHistoryCompleted(this, new GetLeaveHistoryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CreateNewRequest", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int CreateNewRequest(MyWorkflowTask p_ExistingWorkflowTask, WorkflowTypeID TaskType, StaffLeaveRequest[] p_ApprovalRequest, int createrUID, string p_strDescription, string p_strFormulatedURL, string baseURL, string p_strWorkflowInfoParameter, int p_intLeaveRequestID, int p_intEmploymentID) {
+            object[] results = this.Invoke("CreateNewRequest", new object[] {
+                        p_ExistingWorkflowTask,
+                        TaskType,
+                        p_ApprovalRequest,
+                        createrUID,
+                        p_strDescription,
+                        p_strFormulatedURL,
+                        baseURL,
+                        p_strWorkflowInfoParameter,
+                        p_intLeaveRequestID,
+                        p_intEmploymentID});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CreateNewRequestAsync(MyWorkflowTask p_ExistingWorkflowTask, WorkflowTypeID TaskType, StaffLeaveRequest[] p_ApprovalRequest, int createrUID, string p_strDescription, string p_strFormulatedURL, string baseURL, string p_strWorkflowInfoParameter, int p_intLeaveRequestID, int p_intEmploymentID) {
+            this.CreateNewRequestAsync(p_ExistingWorkflowTask, TaskType, p_ApprovalRequest, createrUID, p_strDescription, p_strFormulatedURL, baseURL, p_strWorkflowInfoParameter, p_intLeaveRequestID, p_intEmploymentID, null);
+        }
+        
+        /// <remarks/>
+        public void CreateNewRequestAsync(MyWorkflowTask p_ExistingWorkflowTask, WorkflowTypeID TaskType, StaffLeaveRequest[] p_ApprovalRequest, int createrUID, string p_strDescription, string p_strFormulatedURL, string baseURL, string p_strWorkflowInfoParameter, int p_intLeaveRequestID, int p_intEmploymentID, object userState) {
+            if ((this.CreateNewRequestOperationCompleted == null)) {
+                this.CreateNewRequestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateNewRequestOperationCompleted);
+            }
+            this.InvokeAsync("CreateNewRequest", new object[] {
+                        p_ExistingWorkflowTask,
+                        TaskType,
+                        p_ApprovalRequest,
+                        createrUID,
+                        p_strDescription,
+                        p_strFormulatedURL,
+                        baseURL,
+                        p_strWorkflowInfoParameter,
+                        p_intLeaveRequestID,
+                        p_intEmploymentID}, this.CreateNewRequestOperationCompleted, userState);
+        }
+        
+        private void OnCreateNewRequestOperationCompleted(object arg) {
+            if ((this.CreateNewRequestCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CreateNewRequestCompleted(this, new CreateNewRequestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ApproveRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void ApproveRequest_leave(int requestid, int UserID, string remark) {
+            this.Invoke("ApproveRequest_leave", new object[] {
+                        requestid,
+                        UserID,
+                        remark});
+        }
+        
+        /// <remarks/>
+        public void ApproveRequest_leaveAsync(int requestid, int UserID, string remark) {
+            this.ApproveRequest_leaveAsync(requestid, UserID, remark, null);
+        }
+        
+        /// <remarks/>
+        public void ApproveRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
+            if ((this.ApproveRequest_leaveOperationCompleted == null)) {
+                this.ApproveRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnApproveRequest_leaveOperationCompleted);
+            }
+            this.InvokeAsync("ApproveRequest_leave", new object[] {
+                        requestid,
+                        UserID,
+                        remark}, this.ApproveRequest_leaveOperationCompleted, userState);
+        }
+        
+        private void OnApproveRequest_leaveOperationCompleted(object arg) {
+            if ((this.ApproveRequest_leaveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ApproveRequest_leaveCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/WithDrawRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void WithDrawRequest_leave(int requestid, int UserID, string remark) {
+            this.Invoke("WithDrawRequest_leave", new object[] {
+                        requestid,
+                        UserID,
+                        remark});
+        }
+        
+        /// <remarks/>
+        public void WithDrawRequest_leaveAsync(int requestid, int UserID, string remark) {
+            this.WithDrawRequest_leaveAsync(requestid, UserID, remark, null);
+        }
+        
+        /// <remarks/>
+        public void WithDrawRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
+            if ((this.WithDrawRequest_leaveOperationCompleted == null)) {
+                this.WithDrawRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnWithDrawRequest_leaveOperationCompleted);
+            }
+            this.InvokeAsync("WithDrawRequest_leave", new object[] {
+                        requestid,
+                        UserID,
+                        remark}, this.WithDrawRequest_leaveOperationCompleted, userState);
+        }
+        
+        private void OnWithDrawRequest_leaveOperationCompleted(object arg) {
+            if ((this.WithDrawRequest_leaveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.WithDrawRequest_leaveCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RejectRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void RejectRequest_leave(int requestid, int UserID, string remark) {
+            this.Invoke("RejectRequest_leave", new object[] {
+                        requestid,
+                        UserID,
+                        remark});
+        }
+        
+        /// <remarks/>
+        public void RejectRequest_leaveAsync(int requestid, int UserID, string remark) {
+            this.RejectRequest_leaveAsync(requestid, UserID, remark, null);
+        }
+        
+        /// <remarks/>
+        public void RejectRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
+            if ((this.RejectRequest_leaveOperationCompleted == null)) {
+                this.RejectRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRejectRequest_leaveOperationCompleted);
+            }
+            this.InvokeAsync("RejectRequest_leave", new object[] {
+                        requestid,
+                        UserID,
+                        remark}, this.RejectRequest_leaveOperationCompleted, userState);
+        }
+        
+        private void OnRejectRequest_leaveOperationCompleted(object arg) {
+            if ((this.RejectRequest_leaveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RejectRequest_leaveCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CancelRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int CancelRequest_leave(int requestid, int UserID, string remark) {
+            object[] results = this.Invoke("CancelRequest_leave", new object[] {
+                        requestid,
+                        UserID,
+                        remark});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CancelRequest_leaveAsync(int requestid, int UserID, string remark) {
+            this.CancelRequest_leaveAsync(requestid, UserID, remark, null);
+        }
+        
+        /// <remarks/>
+        public void CancelRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
+            if ((this.CancelRequest_leaveOperationCompleted == null)) {
+                this.CancelRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCancelRequest_leaveOperationCompleted);
+            }
+            this.InvokeAsync("CancelRequest_leave", new object[] {
+                        requestid,
+                        UserID,
+                        remark}, this.CancelRequest_leaveOperationCompleted, userState);
+        }
+        
+        private void OnCancelRequest_leaveOperationCompleted(object arg) {
+            if ((this.CancelRequest_leaveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CancelRequest_leaveCompleted(this, new CancelRequest_leaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ApproveCancelRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void ApproveCancelRequest_leave(int requestid, int UserID, string remark) {
+            this.Invoke("ApproveCancelRequest_leave", new object[] {
+                        requestid,
+                        UserID,
+                        remark});
+        }
+        
+        /// <remarks/>
+        public void ApproveCancelRequest_leaveAsync(int requestid, int UserID, string remark) {
+            this.ApproveCancelRequest_leaveAsync(requestid, UserID, remark, null);
+        }
+        
+        /// <remarks/>
+        public void ApproveCancelRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
+            if ((this.ApproveCancelRequest_leaveOperationCompleted == null)) {
+                this.ApproveCancelRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnApproveCancelRequest_leaveOperationCompleted);
+            }
+            this.InvokeAsync("ApproveCancelRequest_leave", new object[] {
+                        requestid,
+                        UserID,
+                        remark}, this.ApproveCancelRequest_leaveOperationCompleted, userState);
+        }
+        
+        private void OnApproveCancelRequest_leaveOperationCompleted(object arg) {
+            if ((this.ApproveCancelRequest_leaveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ApproveCancelRequest_leaveCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RejectCancelRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void RejectCancelRequest_leave(int requestid, int UserID, string remark) {
+            this.Invoke("RejectCancelRequest_leave", new object[] {
+                        requestid,
+                        UserID,
+                        remark});
+        }
+        
+        /// <remarks/>
+        public void RejectCancelRequest_leaveAsync(int requestid, int UserID, string remark) {
+            this.RejectCancelRequest_leaveAsync(requestid, UserID, remark, null);
+        }
+        
+        /// <remarks/>
+        public void RejectCancelRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
+            if ((this.RejectCancelRequest_leaveOperationCompleted == null)) {
+                this.RejectCancelRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRejectCancelRequest_leaveOperationCompleted);
+            }
+            this.InvokeAsync("RejectCancelRequest_leave", new object[] {
+                        requestid,
+                        UserID,
+                        remark}, this.RejectCancelRequest_leaveOperationCompleted, userState);
+        }
+        
+        private void OnRejectCancelRequest_leaveOperationCompleted(object arg) {
+            if ((this.RejectCancelRequest_leaveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RejectCancelRequest_leaveCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetContractByEmployids", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Employment_Contract[] GetContractByEmployids(int[] eids) {
+            object[] results = this.Invoke("GetContractByEmployids", new object[] {
+                        eids});
+            return ((Employment_Contract[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetContractByEmployidsAsync(int[] eids) {
+            this.GetContractByEmployidsAsync(eids, null);
+        }
+        
+        /// <remarks/>
+        public void GetContractByEmployidsAsync(int[] eids, object userState) {
+            if ((this.GetContractByEmployidsOperationCompleted == null)) {
+                this.GetContractByEmployidsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetContractByEmployidsOperationCompleted);
+            }
+            this.InvokeAsync("GetContractByEmployids", new object[] {
+                        eids}, this.GetContractByEmployidsOperationCompleted, userState);
+        }
+        
+        private void OnGetContractByEmployidsOperationCompleted(object arg) {
+            if ((this.GetContractByEmployidsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetContractByEmployidsCompleted(this, new GetContractByEmployidsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetRoster", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public v_System_Calendar[] GetRoster(System.DateTime date, int[] employmentID) {
+            object[] results = this.Invoke("GetRoster", new object[] {
+                        date,
+                        employmentID});
+            return ((v_System_Calendar[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetRosterAsync(System.DateTime date, int[] employmentID) {
+            this.GetRosterAsync(date, employmentID, null);
+        }
+        
+        /// <remarks/>
+        public void GetRosterAsync(System.DateTime date, int[] employmentID, object userState) {
+            if ((this.GetRosterOperationCompleted == null)) {
+                this.GetRosterOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRosterOperationCompleted);
+            }
+            this.InvokeAsync("GetRoster", new object[] {
+                        date,
+                        employmentID}, this.GetRosterOperationCompleted, userState);
+        }
+        
+        private void OnGetRosterOperationCompleted(object arg) {
+            if ((this.GetRosterCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetRosterCompleted(this, new GetRosterCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Insertt_WorkflowInfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public t_WorkflowInfo Base_Insertt_WorkflowInfo(t_WorkflowInfo newObject) {
             object[] results = this.Invoke("Base_Insertt_WorkflowInfo", new object[] {
@@ -2027,151 +2206,6 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.Base_GetListt_WorkflowInfoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.Base_GetListt_WorkflowInfoCompleted(this, new Base_GetListt_WorkflowInfoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Insertt_WorkflowTask", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public t_WorkflowTask Base_Insertt_WorkflowTask(t_WorkflowTask newObject) {
-            object[] results = this.Invoke("Base_Insertt_WorkflowTask", new object[] {
-                        newObject});
-            return ((t_WorkflowTask)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void Base_Insertt_WorkflowTaskAsync(t_WorkflowTask newObject) {
-            this.Base_Insertt_WorkflowTaskAsync(newObject, null);
-        }
-        
-        /// <remarks/>
-        public void Base_Insertt_WorkflowTaskAsync(t_WorkflowTask newObject, object userState) {
-            if ((this.Base_Insertt_WorkflowTaskOperationCompleted == null)) {
-                this.Base_Insertt_WorkflowTaskOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Insertt_WorkflowTaskOperationCompleted);
-            }
-            this.InvokeAsync("Base_Insertt_WorkflowTask", new object[] {
-                        newObject}, this.Base_Insertt_WorkflowTaskOperationCompleted, userState);
-        }
-        
-        private void OnBase_Insertt_WorkflowTaskOperationCompleted(object arg) {
-            if ((this.Base_Insertt_WorkflowTaskCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Base_Insertt_WorkflowTaskCompleted(this, new Base_Insertt_WorkflowTaskCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Updatet_WorkflowTask", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool Base_Updatet_WorkflowTask(t_WorkflowTask UpdateObject) {
-            object[] results = this.Invoke("Base_Updatet_WorkflowTask", new object[] {
-                        UpdateObject});
-            return ((bool)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void Base_Updatet_WorkflowTaskAsync(t_WorkflowTask UpdateObject) {
-            this.Base_Updatet_WorkflowTaskAsync(UpdateObject, null);
-        }
-        
-        /// <remarks/>
-        public void Base_Updatet_WorkflowTaskAsync(t_WorkflowTask UpdateObject, object userState) {
-            if ((this.Base_Updatet_WorkflowTaskOperationCompleted == null)) {
-                this.Base_Updatet_WorkflowTaskOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Updatet_WorkflowTaskOperationCompleted);
-            }
-            this.InvokeAsync("Base_Updatet_WorkflowTask", new object[] {
-                        UpdateObject}, this.Base_Updatet_WorkflowTaskOperationCompleted, userState);
-        }
-        
-        private void OnBase_Updatet_WorkflowTaskOperationCompleted(object arg) {
-            if ((this.Base_Updatet_WorkflowTaskCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Base_Updatet_WorkflowTaskCompleted(this, new Base_Updatet_WorkflowTaskCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Deletet_WorkflowTask", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool Base_Deletet_WorkflowTask(t_WorkflowTask DeleteObject) {
-            object[] results = this.Invoke("Base_Deletet_WorkflowTask", new object[] {
-                        DeleteObject});
-            return ((bool)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void Base_Deletet_WorkflowTaskAsync(t_WorkflowTask DeleteObject) {
-            this.Base_Deletet_WorkflowTaskAsync(DeleteObject, null);
-        }
-        
-        /// <remarks/>
-        public void Base_Deletet_WorkflowTaskAsync(t_WorkflowTask DeleteObject, object userState) {
-            if ((this.Base_Deletet_WorkflowTaskOperationCompleted == null)) {
-                this.Base_Deletet_WorkflowTaskOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Deletet_WorkflowTaskOperationCompleted);
-            }
-            this.InvokeAsync("Base_Deletet_WorkflowTask", new object[] {
-                        DeleteObject}, this.Base_Deletet_WorkflowTaskOperationCompleted, userState);
-        }
-        
-        private void OnBase_Deletet_WorkflowTaskOperationCompleted(object arg) {
-            if ((this.Base_Deletet_WorkflowTaskCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Base_Deletet_WorkflowTaskCompleted(this, new Base_Deletet_WorkflowTaskCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Gett_WorkflowTask", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public t_WorkflowTask Base_Gett_WorkflowTask(t_WorkflowTask GetObject) {
-            object[] results = this.Invoke("Base_Gett_WorkflowTask", new object[] {
-                        GetObject});
-            return ((t_WorkflowTask)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void Base_Gett_WorkflowTaskAsync(t_WorkflowTask GetObject) {
-            this.Base_Gett_WorkflowTaskAsync(GetObject, null);
-        }
-        
-        /// <remarks/>
-        public void Base_Gett_WorkflowTaskAsync(t_WorkflowTask GetObject, object userState) {
-            if ((this.Base_Gett_WorkflowTaskOperationCompleted == null)) {
-                this.Base_Gett_WorkflowTaskOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Gett_WorkflowTaskOperationCompleted);
-            }
-            this.InvokeAsync("Base_Gett_WorkflowTask", new object[] {
-                        GetObject}, this.Base_Gett_WorkflowTaskOperationCompleted, userState);
-        }
-        
-        private void OnBase_Gett_WorkflowTaskOperationCompleted(object arg) {
-            if ((this.Base_Gett_WorkflowTaskCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Base_Gett_WorkflowTaskCompleted(this, new Base_Gett_WorkflowTaskCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_GetListt_WorkflowTask", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public t_WorkflowTask[] Base_GetListt_WorkflowTask(string whereSql) {
-            object[] results = this.Invoke("Base_GetListt_WorkflowTask", new object[] {
-                        whereSql});
-            return ((t_WorkflowTask[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void Base_GetListt_WorkflowTaskAsync(string whereSql) {
-            this.Base_GetListt_WorkflowTaskAsync(whereSql, null);
-        }
-        
-        /// <remarks/>
-        public void Base_GetListt_WorkflowTaskAsync(string whereSql, object userState) {
-            if ((this.Base_GetListt_WorkflowTaskOperationCompleted == null)) {
-                this.Base_GetListt_WorkflowTaskOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_GetListt_WorkflowTaskOperationCompleted);
-            }
-            this.InvokeAsync("Base_GetListt_WorkflowTask", new object[] {
-                        whereSql}, this.Base_GetListt_WorkflowTaskOperationCompleted, userState);
-        }
-        
-        private void OnBase_GetListt_WorkflowTaskOperationCompleted(object arg) {
-            if ((this.Base_GetListt_WorkflowTaskCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Base_GetListt_WorkflowTaskCompleted(this, new Base_GetListt_WorkflowTaskCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2521,6 +2555,654 @@ namespace WebServiceLayer.WebReference_leave {
             }
             set {
                 this.serveOfNoticeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class v_System_Calendar {
+        
+        private int staffIDField;
+        
+        private int employmentIDField;
+        
+        private int firstEmploymentIDField;
+        
+        private int contractIDField;
+        
+        private string zoneCodeField;
+        
+        private string englishNameField;
+        
+        private string chineseField;
+        
+        private string dispayNameField;
+        
+        private System.DateTime dateField;
+        
+        private string shiftCodeField;
+        
+        private string timeField;
+        
+        private string remarkField;
+        
+        private string remarkCodeField;
+        
+        private string subteamField;
+        
+        private string zoneField;
+        
+        private string remarkListField;
+        
+        private string programField;
+        
+        /// <remarks/>
+        public int StaffID {
+            get {
+                return this.staffIDField;
+            }
+            set {
+                this.staffIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int EmploymentID {
+            get {
+                return this.employmentIDField;
+            }
+            set {
+                this.employmentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int FirstEmploymentID {
+            get {
+                return this.firstEmploymentIDField;
+            }
+            set {
+                this.firstEmploymentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ContractID {
+            get {
+                return this.contractIDField;
+            }
+            set {
+                this.contractIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ZoneCode {
+            get {
+                return this.zoneCodeField;
+            }
+            set {
+                this.zoneCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string EnglishName {
+            get {
+                return this.englishNameField;
+            }
+            set {
+                this.englishNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Chinese {
+            get {
+                return this.chineseField;
+            }
+            set {
+                this.chineseField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DispayName {
+            get {
+                return this.dispayNameField;
+            }
+            set {
+                this.dispayNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime Date {
+            get {
+                return this.dateField;
+            }
+            set {
+                this.dateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ShiftCode {
+            get {
+                return this.shiftCodeField;
+            }
+            set {
+                this.shiftCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Time {
+            get {
+                return this.timeField;
+            }
+            set {
+                this.timeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Remark {
+            get {
+                return this.remarkField;
+            }
+            set {
+                this.remarkField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string RemarkCode {
+            get {
+                return this.remarkCodeField;
+            }
+            set {
+                this.remarkCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Subteam {
+            get {
+                return this.subteamField;
+            }
+            set {
+                this.subteamField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Zone {
+            get {
+                return this.zoneField;
+            }
+            set {
+                this.zoneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string RemarkList {
+            get {
+                return this.remarkListField;
+            }
+            set {
+                this.remarkListField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Program {
+            get {
+                return this.programField;
+            }
+            set {
+                this.programField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Employment_Contract {
+        
+        private int employmentidField;
+        
+        private int contractidField;
+        
+        private string zonecodeField;
+        
+        private int isAssociateField;
+        
+        private string descriptionField;
+        
+        /// <remarks/>
+        public int employmentid {
+            get {
+                return this.employmentidField;
+            }
+            set {
+                this.employmentidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int contractid {
+            get {
+                return this.contractidField;
+            }
+            set {
+                this.contractidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string zonecode {
+            get {
+                return this.zonecodeField;
+            }
+            set {
+                this.zonecodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int isAssociate {
+            get {
+                return this.isAssociateField;
+            }
+            set {
+                this.isAssociateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class MyWorkflowTask {
+        
+        private int idField;
+        
+        private int userIDField;
+        
+        private int inOutTypeIDField;
+        
+        private int typeIDField;
+        
+        private int workflowInfoIDField;
+        
+        private int currentStepField;
+        
+        private string typeNameField;
+        
+        private string descriptionField;
+        
+        private string formulatedURLField;
+        
+        private int leaveRequestIDField;
+        
+        private System.DateTime modifiedDateField;
+        
+        private int modifiedUserField;
+        
+        private System.DateTime createDateField;
+        
+        private int createUserField;
+        
+        private bool isReadField;
+        
+        private string remarkField;
+        
+        private string fromUserNameField;
+        
+        private int statusField;
+        
+        private int employmentIDField;
+        
+        private string positionDescriptionField;
+        
+        private string toUserNameField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int UserID {
+            get {
+                return this.userIDField;
+            }
+            set {
+                this.userIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int InOutTypeID {
+            get {
+                return this.inOutTypeIDField;
+            }
+            set {
+                this.inOutTypeIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int TypeID {
+            get {
+                return this.typeIDField;
+            }
+            set {
+                this.typeIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int WorkflowInfoID {
+            get {
+                return this.workflowInfoIDField;
+            }
+            set {
+                this.workflowInfoIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CurrentStep {
+            get {
+                return this.currentStepField;
+            }
+            set {
+                this.currentStepField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string TypeName {
+            get {
+                return this.typeNameField;
+            }
+            set {
+                this.typeNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string FormulatedURL {
+            get {
+                return this.formulatedURLField;
+            }
+            set {
+                this.formulatedURLField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int LeaveRequestID {
+            get {
+                return this.leaveRequestIDField;
+            }
+            set {
+                this.leaveRequestIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ModifiedDate {
+            get {
+                return this.modifiedDateField;
+            }
+            set {
+                this.modifiedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ModifiedUser {
+            get {
+                return this.modifiedUserField;
+            }
+            set {
+                this.modifiedUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CreateUser {
+            get {
+                return this.createUserField;
+            }
+            set {
+                this.createUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsRead {
+            get {
+                return this.isReadField;
+            }
+            set {
+                this.isReadField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Remark {
+            get {
+                return this.remarkField;
+            }
+            set {
+                this.remarkField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string FromUserName {
+            get {
+                return this.fromUserNameField;
+            }
+            set {
+                this.fromUserNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int EmploymentID {
+            get {
+                return this.employmentIDField;
+            }
+            set {
+                this.employmentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PositionDescription {
+            get {
+                return this.positionDescriptionField;
+            }
+            set {
+                this.positionDescriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ToUserName {
+            get {
+                return this.toUserNameField;
+            }
+            set {
+                this.toUserNameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LeaveHistory {
+        
+        private int requestIDField;
+        
+        private string usernameField;
+        
+        private string requesterField;
+        
+        private string remarkField;
+        
+        private byte statusField;
+        
+        private int requesterEmploymentIDField;
+        
+        private System.DateTime applyDateField;
+        
+        private int uidField;
+        
+        /// <remarks/>
+        public int RequestID {
+            get {
+                return this.requestIDField;
+            }
+            set {
+                this.requestIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Username {
+            get {
+                return this.usernameField;
+            }
+            set {
+                this.usernameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Requester {
+            get {
+                return this.requesterField;
+            }
+            set {
+                this.requesterField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Remark {
+            get {
+                return this.remarkField;
+            }
+            set {
+                this.remarkField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public byte Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RequesterEmploymentID {
+            get {
+                return this.requesterEmploymentIDField;
+            }
+            set {
+                this.requesterEmploymentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ApplyDate {
+            get {
+                return this.applyDateField;
+            }
+            set {
+                this.applyDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int uid {
+            get {
+                return this.uidField;
+            }
+            set {
+                this.uidField = value;
             }
         }
     }
@@ -3757,49 +4439,89 @@ namespace WebServiceLayer.WebReference_leave {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class v_System_Calendar {
+    public partial class StaffLeaveRequest {
         
-        private int staffIDField;
+        private int idField;
+        
+        private int statusField;
         
         private int employmentIDField;
         
+        private int leaveIDField;
+        
+        private string leaveTypeNameField;
+        
+        private System.DateTime leaveDateField;
+        
+        private bool isHalfDayField;
+        
+        private double unitField;
+        
+        private string remarksField;
+        
+        private string deleteKeyField;
+        
+        private string descriptionField;
+        
+        private System.DateTime createDateField;
+        
+        private int sectionField;
+        
+        private string employmentNumberField;
+        
+        private string compareKeyField;
+        
+        private string nameField;
+        
+        private string nameCHField;
+        
+        private string holidayCodeField;
+        
+        private int leaveCalculationTypeIDField;
+        
+        private string leaveCalculationTypeDescField;
+        
         private int firstEmploymentIDField;
         
-        private int contractIDField;
+        private string firstEmploymentNumberField;
         
-        private string zoneCodeField;
+        private bool isApprovedField;
         
-        private string englishNameField;
+        private int requestIDField;
         
-        private string chineseField;
+        private System.Nullable<int> delegationToStaffIDField;
         
-        private string dispayNameField;
+        private double leaveHoursField;
         
-        private System.DateTime dateField;
+        private double totalWorkHoursField;
         
-        private string shiftCodeField;
+        private double sectionsField;
         
-        private string timeField;
+        private System.DateTime leaveHoursFromField;
         
-        private string remarkField;
+        private System.DateTime leaveHoursToField;
         
-        private string remarkCodeField;
+        private int displaySectionField;
         
-        private string subteamField;
-        
-        private string zoneField;
-        
-        private string remarkListField;
-        
-        private string programField;
+        private string displayUnitField;
         
         /// <remarks/>
-        public int StaffID {
+        public int ID {
             get {
-                return this.staffIDField;
+                return this.idField;
             }
             set {
-                this.staffIDField = value;
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
             }
         }
         
@@ -3814,211 +4536,72 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
-        public int FirstEmploymentID {
+        public int LeaveID {
             get {
-                return this.firstEmploymentIDField;
+                return this.leaveIDField;
             }
             set {
-                this.firstEmploymentIDField = value;
+                this.leaveIDField = value;
             }
         }
         
         /// <remarks/>
-        public int ContractID {
+        public string LeaveTypeName {
             get {
-                return this.contractIDField;
+                return this.leaveTypeNameField;
             }
             set {
-                this.contractIDField = value;
+                this.leaveTypeNameField = value;
             }
         }
         
         /// <remarks/>
-        public string ZoneCode {
+        public System.DateTime LeaveDate {
             get {
-                return this.zoneCodeField;
+                return this.leaveDateField;
             }
             set {
-                this.zoneCodeField = value;
+                this.leaveDateField = value;
             }
         }
         
         /// <remarks/>
-        public string EnglishName {
+        public bool IsHalfDay {
             get {
-                return this.englishNameField;
+                return this.isHalfDayField;
             }
             set {
-                this.englishNameField = value;
+                this.isHalfDayField = value;
             }
         }
         
         /// <remarks/>
-        public string Chinese {
+        public double Unit {
             get {
-                return this.chineseField;
+                return this.unitField;
             }
             set {
-                this.chineseField = value;
+                this.unitField = value;
             }
         }
         
         /// <remarks/>
-        public string DispayName {
+        public string Remarks {
             get {
-                return this.dispayNameField;
+                return this.remarksField;
             }
             set {
-                this.dispayNameField = value;
+                this.remarksField = value;
             }
         }
         
         /// <remarks/>
-        public System.DateTime Date {
+        public string DeleteKey {
             get {
-                return this.dateField;
+                return this.deleteKeyField;
             }
             set {
-                this.dateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ShiftCode {
-            get {
-                return this.shiftCodeField;
-            }
-            set {
-                this.shiftCodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Time {
-            get {
-                return this.timeField;
-            }
-            set {
-                this.timeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Remark {
-            get {
-                return this.remarkField;
-            }
-            set {
-                this.remarkField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string RemarkCode {
-            get {
-                return this.remarkCodeField;
-            }
-            set {
-                this.remarkCodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Subteam {
-            get {
-                return this.subteamField;
-            }
-            set {
-                this.subteamField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Zone {
-            get {
-                return this.zoneField;
-            }
-            set {
-                this.zoneField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string RemarkList {
-            get {
-                return this.remarkListField;
-            }
-            set {
-                this.remarkListField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Program {
-            get {
-                return this.programField;
-            }
-            set {
-                this.programField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Employment_Contract {
-        
-        private int employmentidField;
-        
-        private int contractidField;
-        
-        private string zonecodeField;
-        
-        private int isAssociateField;
-        
-        private string descriptionField;
-        
-        /// <remarks/>
-        public int employmentid {
-            get {
-                return this.employmentidField;
-            }
-            set {
-                this.employmentidField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int contractid {
-            get {
-                return this.contractidField;
-            }
-            set {
-                this.contractidField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string zonecode {
-            get {
-                return this.zonecodeField;
-            }
-            set {
-                this.zonecodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int isAssociate {
-            get {
-                return this.isAssociateField;
-            }
-            set {
-                this.isAssociateField = value;
+                this.deleteKeyField = value;
             }
         }
         
@@ -4029,6 +4612,217 @@ namespace WebServiceLayer.WebReference_leave {
             }
             set {
                 this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Section {
+            get {
+                return this.sectionField;
+            }
+            set {
+                this.sectionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string EmploymentNumber {
+            get {
+                return this.employmentNumberField;
+            }
+            set {
+                this.employmentNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CompareKey {
+            get {
+                return this.compareKeyField;
+            }
+            set {
+                this.compareKeyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string NameCH {
+            get {
+                return this.nameCHField;
+            }
+            set {
+                this.nameCHField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string HolidayCode {
+            get {
+                return this.holidayCodeField;
+            }
+            set {
+                this.holidayCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int LeaveCalculationTypeID {
+            get {
+                return this.leaveCalculationTypeIDField;
+            }
+            set {
+                this.leaveCalculationTypeIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string LeaveCalculationTypeDesc {
+            get {
+                return this.leaveCalculationTypeDescField;
+            }
+            set {
+                this.leaveCalculationTypeDescField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int FirstEmploymentID {
+            get {
+                return this.firstEmploymentIDField;
+            }
+            set {
+                this.firstEmploymentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string FirstEmploymentNumber {
+            get {
+                return this.firstEmploymentNumberField;
+            }
+            set {
+                this.firstEmploymentNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsApproved {
+            get {
+                return this.isApprovedField;
+            }
+            set {
+                this.isApprovedField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RequestID {
+            get {
+                return this.requestIDField;
+            }
+            set {
+                this.requestIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> DelegationToStaffID {
+            get {
+                return this.delegationToStaffIDField;
+            }
+            set {
+                this.delegationToStaffIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double LeaveHours {
+            get {
+                return this.leaveHoursField;
+            }
+            set {
+                this.leaveHoursField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double TotalWorkHours {
+            get {
+                return this.totalWorkHoursField;
+            }
+            set {
+                this.totalWorkHoursField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double Sections {
+            get {
+                return this.sectionsField;
+            }
+            set {
+                this.sectionsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime LeaveHoursFrom {
+            get {
+                return this.leaveHoursFromField;
+            }
+            set {
+                this.leaveHoursFromField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime LeaveHoursTo {
+            get {
+                return this.leaveHoursToField;
+            }
+            set {
+                this.leaveHoursToField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int DisplaySection {
+            get {
+                return this.displaySectionField;
+            }
+            set {
+                this.displaySectionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DisplayUnit {
+            get {
+                return this.displayUnitField;
+            }
+            set {
+                this.displayUnitField = value;
             }
         }
     }
@@ -4493,656 +5287,26 @@ namespace WebServiceLayer.WebReference_leave {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class StaffLeaveRequest {
-        
-        private int idField;
-        
-        private int statusField;
-        
-        private int employmentIDField;
-        
-        private int leaveIDField;
-        
-        private string leaveTypeNameField;
-        
-        private System.DateTime leaveDateField;
-        
-        private bool isHalfDayField;
-        
-        private double unitField;
-        
-        private string remarksField;
-        
-        private string deleteKeyField;
-        
-        private string descriptionField;
-        
-        private System.DateTime createDateField;
-        
-        private int sectionField;
-        
-        private string employmentNumberField;
-        
-        private string compareKeyField;
-        
-        private string nameField;
-        
-        private string nameCHField;
-        
-        private string holidayCodeField;
-        
-        private int leaveCalculationTypeIDField;
-        
-        private string leaveCalculationTypeDescField;
-        
-        private int firstEmploymentIDField;
-        
-        private string firstEmploymentNumberField;
-        
-        private bool isApprovedField;
-        
-        private int requestIDField;
-        
-        private System.Nullable<int> delegationToStaffIDField;
-        
-        private double leaveHoursField;
-        
-        private double totalWorkHoursField;
-        
-        private double sectionsField;
-        
-        private System.DateTime leaveHoursFromField;
-        
-        private System.DateTime leaveHoursToField;
-        
-        private int displaySectionField;
-        
-        private string displayUnitField;
+    public enum LeaveBalanceType {
         
         /// <remarks/>
-        public int ID {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
+        accumulabel_sinceJoin_al,
         
         /// <remarks/>
-        public int Status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
+        accumulabel_sinceJoin_sl,
         
         /// <remarks/>
-        public int EmploymentID {
-            get {
-                return this.employmentIDField;
-            }
-            set {
-                this.employmentIDField = value;
-            }
-        }
+        accumulabel_sinceJoin_noalsl,
         
         /// <remarks/>
-        public int LeaveID {
-            get {
-                return this.leaveIDField;
-            }
-            set {
-                this.leaveIDField = value;
-            }
-        }
+        accumulabel_overridea,
         
         /// <remarks/>
-        public string LeaveTypeName {
-            get {
-                return this.leaveTypeNameField;
-            }
-            set {
-                this.leaveTypeNameField = value;
-            }
-        }
+        noaccumulabel_fsl,
         
         /// <remarks/>
-        public System.DateTime LeaveDate {
-            get {
-                return this.leaveDateField;
-            }
-            set {
-                this.leaveDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool IsHalfDay {
-            get {
-                return this.isHalfDayField;
-            }
-            set {
-                this.isHalfDayField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public double Unit {
-            get {
-                return this.unitField;
-            }
-            set {
-                this.unitField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Remarks {
-            get {
-                return this.remarksField;
-            }
-            set {
-                this.remarksField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string DeleteKey {
-            get {
-                return this.deleteKeyField;
-            }
-            set {
-                this.deleteKeyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                this.descriptionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime CreateDate {
-            get {
-                return this.createDateField;
-            }
-            set {
-                this.createDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int Section {
-            get {
-                return this.sectionField;
-            }
-            set {
-                this.sectionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string EmploymentNumber {
-            get {
-                return this.employmentNumberField;
-            }
-            set {
-                this.employmentNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string CompareKey {
-            get {
-                return this.compareKeyField;
-            }
-            set {
-                this.compareKeyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string NameCH {
-            get {
-                return this.nameCHField;
-            }
-            set {
-                this.nameCHField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string HolidayCode {
-            get {
-                return this.holidayCodeField;
-            }
-            set {
-                this.holidayCodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int LeaveCalculationTypeID {
-            get {
-                return this.leaveCalculationTypeIDField;
-            }
-            set {
-                this.leaveCalculationTypeIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string LeaveCalculationTypeDesc {
-            get {
-                return this.leaveCalculationTypeDescField;
-            }
-            set {
-                this.leaveCalculationTypeDescField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int FirstEmploymentID {
-            get {
-                return this.firstEmploymentIDField;
-            }
-            set {
-                this.firstEmploymentIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string FirstEmploymentNumber {
-            get {
-                return this.firstEmploymentNumberField;
-            }
-            set {
-                this.firstEmploymentNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool IsApproved {
-            get {
-                return this.isApprovedField;
-            }
-            set {
-                this.isApprovedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int RequestID {
-            get {
-                return this.requestIDField;
-            }
-            set {
-                this.requestIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> DelegationToStaffID {
-            get {
-                return this.delegationToStaffIDField;
-            }
-            set {
-                this.delegationToStaffIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public double LeaveHours {
-            get {
-                return this.leaveHoursField;
-            }
-            set {
-                this.leaveHoursField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public double TotalWorkHours {
-            get {
-                return this.totalWorkHoursField;
-            }
-            set {
-                this.totalWorkHoursField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public double Sections {
-            get {
-                return this.sectionsField;
-            }
-            set {
-                this.sectionsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime LeaveHoursFrom {
-            get {
-                return this.leaveHoursFromField;
-            }
-            set {
-                this.leaveHoursFromField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime LeaveHoursTo {
-            get {
-                return this.leaveHoursToField;
-            }
-            set {
-                this.leaveHoursToField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int DisplaySection {
-            get {
-                return this.displaySectionField;
-            }
-            set {
-                this.displaySectionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string DisplayUnit {
-            get {
-                return this.displayUnitField;
-            }
-            set {
-                this.displayUnitField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class MyWorkflowTask {
-        
-        private int idField;
-        
-        private int userIDField;
-        
-        private int inOutTypeIDField;
-        
-        private int typeIDField;
-        
-        private int workflowInfoIDField;
-        
-        private int currentStepField;
-        
-        private string typeNameField;
-        
-        private string descriptionField;
-        
-        private string formulatedURLField;
-        
-        private int leaveRequestIDField;
-        
-        private System.DateTime modifiedDateField;
-        
-        private int modifiedUserField;
-        
-        private System.DateTime createDateField;
-        
-        private int createUserField;
-        
-        private bool isReadField;
-        
-        private string remarkField;
-        
-        private string fromUserNameField;
-        
-        private int statusField;
-        
-        private int employmentIDField;
-        
-        private string positionDescriptionField;
-        
-        private string toUserNameField;
-        
-        /// <remarks/>
-        public int ID {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int UserID {
-            get {
-                return this.userIDField;
-            }
-            set {
-                this.userIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int InOutTypeID {
-            get {
-                return this.inOutTypeIDField;
-            }
-            set {
-                this.inOutTypeIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int TypeID {
-            get {
-                return this.typeIDField;
-            }
-            set {
-                this.typeIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int WorkflowInfoID {
-            get {
-                return this.workflowInfoIDField;
-            }
-            set {
-                this.workflowInfoIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int CurrentStep {
-            get {
-                return this.currentStepField;
-            }
-            set {
-                this.currentStepField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string TypeName {
-            get {
-                return this.typeNameField;
-            }
-            set {
-                this.typeNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                this.descriptionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string FormulatedURL {
-            get {
-                return this.formulatedURLField;
-            }
-            set {
-                this.formulatedURLField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int LeaveRequestID {
-            get {
-                return this.leaveRequestIDField;
-            }
-            set {
-                this.leaveRequestIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime ModifiedDate {
-            get {
-                return this.modifiedDateField;
-            }
-            set {
-                this.modifiedDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int ModifiedUser {
-            get {
-                return this.modifiedUserField;
-            }
-            set {
-                this.modifiedUserField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime CreateDate {
-            get {
-                return this.createDateField;
-            }
-            set {
-                this.createDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int CreateUser {
-            get {
-                return this.createUserField;
-            }
-            set {
-                this.createUserField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool IsRead {
-            get {
-                return this.isReadField;
-            }
-            set {
-                this.isReadField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Remark {
-            get {
-                return this.remarkField;
-            }
-            set {
-                this.remarkField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string FromUserName {
-            get {
-                return this.fromUserNameField;
-            }
-            set {
-                this.fromUserNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int Status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int EmploymentID {
-            get {
-                return this.employmentIDField;
-            }
-            set {
-                this.employmentIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string PositionDescription {
-            get {
-                return this.positionDescriptionField;
-            }
-            set {
-                this.positionDescriptionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ToUserName {
-            get {
-                return this.toUserNameField;
-            }
-            set {
-                this.toUserNameField = value;
-            }
-        }
+        noaccumulabel_other,
     }
     
     /// <remarks/>
@@ -5189,43 +5353,122 @@ namespace WebServiceLayer.WebReference_leave {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public enum LeaveBalanceType {
-        
-        /// <remarks/>
-        accumulabel_sinceJoin_al,
-        
-        /// <remarks/>
-        accumulabel_sinceJoin_sl,
-        
-        /// <remarks/>
-        accumulabel_sinceJoin_noalsl,
-        
-        /// <remarks/>
-        accumulabel_overridea,
-        
-        /// <remarks/>
-        noaccumulabel_fsl,
-        
-        /// <remarks/>
-        noaccumulabel_other,
-    }
-    
-    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Gett_WorkflowTaskByInfoIDCompletedEventHandler(object sender, Gett_WorkflowTaskByInfoIDCompletedEventArgs e);
+    public delegate void Base_Insertt_WorkflowTaskCompletedEventHandler(object sender, Base_Insertt_WorkflowTaskCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Gett_WorkflowTaskByInfoIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Base_Insertt_WorkflowTaskCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Gett_WorkflowTaskByInfoIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Base_Insertt_WorkflowTaskCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_WorkflowTask Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_WorkflowTask)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Base_Updatet_WorkflowTaskCompletedEventHandler(object sender, Base_Updatet_WorkflowTaskCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Base_Updatet_WorkflowTaskCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Base_Updatet_WorkflowTaskCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Base_Deletet_WorkflowTaskCompletedEventHandler(object sender, Base_Deletet_WorkflowTaskCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Base_Deletet_WorkflowTaskCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Base_Deletet_WorkflowTaskCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Base_Gett_WorkflowTaskCompletedEventHandler(object sender, Base_Gett_WorkflowTaskCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Base_Gett_WorkflowTaskCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Base_Gett_WorkflowTaskCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_WorkflowTask Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_WorkflowTask)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Base_GetListt_WorkflowTaskCompletedEventHandler(object sender, Base_GetListt_WorkflowTaskCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Base_GetListt_WorkflowTaskCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Base_GetListt_WorkflowTaskCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -5238,130 +5481,6 @@ namespace WebServiceLayer.WebReference_leave {
             }
         }
     }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Gett_WorkflowTaskByRequestIDCompletedEventHandler(object sender, Gett_WorkflowTaskByRequestIDCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Gett_WorkflowTaskByRequestIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal Gett_WorkflowTaskByRequestIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public t_WorkflowTask[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((t_WorkflowTask[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompletedEventHandler(object sender, GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public t_WorkflowTask[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((t_WorkflowTask[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void CreateNewRequestCompletedEventHandler(object sender, CreateNewRequestCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class CreateNewRequestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal CreateNewRequestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public int Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((int)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void ApproveRequest_leaveCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void WithDrawRequest_leaveCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void RejectRequest_leaveCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void CancelRequest_leaveCompletedEventHandler(object sender, CancelRequest_leaveCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class CancelRequest_leaveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal CancelRequest_leaveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public int Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((int)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void ApproveCancelRequest_leaveCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void RejectCancelRequest_leaveCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
@@ -5489,58 +5608,6 @@ namespace WebServiceLayer.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((t_Leave[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetContractByEmployidsCompletedEventHandler(object sender, GetContractByEmployidsCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetContractByEmployidsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetContractByEmployidsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public Employment_Contract[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((Employment_Contract[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetRosterCompletedEventHandler(object sender, GetRosterCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetRosterCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetRosterCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public v_System_Calendar[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((v_System_Calendar[])(this.results[0]));
             }
         }
     }
@@ -6383,6 +6450,234 @@ namespace WebServiceLayer.WebReference_leave {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Gett_WorkflowTaskByInfoIDCompletedEventHandler(object sender, Gett_WorkflowTaskByInfoIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Gett_WorkflowTaskByInfoIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Gett_WorkflowTaskByInfoIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_WorkflowTask[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_WorkflowTask[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Gett_WorkflowTaskByRequestIDCompletedEventHandler(object sender, Gett_WorkflowTaskByRequestIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Gett_WorkflowTaskByRequestIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Gett_WorkflowTaskByRequestIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_WorkflowTask[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_WorkflowTask[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompletedEventHandler(object sender, GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_WorkflowTask[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_WorkflowTask[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetLeaveHistoryCompletedEventHandler(object sender, GetLeaveHistoryCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetLeaveHistoryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetLeaveHistoryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public LeaveHistory[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((LeaveHistory[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void CreateNewRequestCompletedEventHandler(object sender, CreateNewRequestCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CreateNewRequestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CreateNewRequestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void ApproveRequest_leaveCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void WithDrawRequest_leaveCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void RejectRequest_leaveCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void CancelRequest_leaveCompletedEventHandler(object sender, CancelRequest_leaveCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CancelRequest_leaveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CancelRequest_leaveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void ApproveCancelRequest_leaveCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void RejectCancelRequest_leaveCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetContractByEmployidsCompletedEventHandler(object sender, GetContractByEmployidsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetContractByEmployidsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetContractByEmployidsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Employment_Contract[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Employment_Contract[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetRosterCompletedEventHandler(object sender, GetRosterCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetRosterCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetRosterCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public v_System_Calendar[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((v_System_Calendar[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void Base_Insertt_WorkflowInfoCompletedEventHandler(object sender, Base_Insertt_WorkflowInfoCompletedEventArgs e);
     
     /// <remarks/>
@@ -6507,136 +6802,6 @@ namespace WebServiceLayer.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((t_WorkflowInfo[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Base_Insertt_WorkflowTaskCompletedEventHandler(object sender, Base_Insertt_WorkflowTaskCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Base_Insertt_WorkflowTaskCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal Base_Insertt_WorkflowTaskCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public t_WorkflowTask Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((t_WorkflowTask)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Base_Updatet_WorkflowTaskCompletedEventHandler(object sender, Base_Updatet_WorkflowTaskCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Base_Updatet_WorkflowTaskCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal Base_Updatet_WorkflowTaskCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public bool Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Base_Deletet_WorkflowTaskCompletedEventHandler(object sender, Base_Deletet_WorkflowTaskCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Base_Deletet_WorkflowTaskCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal Base_Deletet_WorkflowTaskCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public bool Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Base_Gett_WorkflowTaskCompletedEventHandler(object sender, Base_Gett_WorkflowTaskCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Base_Gett_WorkflowTaskCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal Base_Gett_WorkflowTaskCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public t_WorkflowTask Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((t_WorkflowTask)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Base_GetListt_WorkflowTaskCompletedEventHandler(object sender, Base_GetListt_WorkflowTaskCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Base_GetListt_WorkflowTaskCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal Base_GetListt_WorkflowTaskCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public t_WorkflowTask[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((t_WorkflowTask[])(this.results[0]));
             }
         }
     }

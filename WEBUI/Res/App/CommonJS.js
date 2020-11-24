@@ -136,8 +136,9 @@ function getMember(obj, memberName) {
 }
 //ajax end
 
-
 //div start
+
+
 // 弹窗
 function showWindow(showmsg) {
     $('#showdiv').show(); //显示弹窗
@@ -146,10 +147,10 @@ function showWindow(showmsg) {
 }
 
 // 关闭弹窗
-function closeWindow() {
+function closeWindow()
+{
     $('#showdiv').hide(); //隐藏弹窗
     $('#cover').css('display', 'none'); //显示遮罩层
     $('#showdiv .content').html(""); //清空追加的内容
 }
-
 //end div
