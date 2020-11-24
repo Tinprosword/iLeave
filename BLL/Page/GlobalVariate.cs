@@ -93,7 +93,8 @@ namespace BLL
         {
             waitapproval,
             approvaled,
-            withdraw
+            withdraw,
+            beyongdWait
         }
 
         public string GetStateDesc(ApprovalRequestStatus status)

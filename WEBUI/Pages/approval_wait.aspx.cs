@@ -54,7 +54,7 @@ namespace WEBUI.Pages
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
             SetupNavinigation();
-            SetupRepeat();
+            SetupRepeater();
             SetupSearchAndTab();
         }
 
@@ -63,12 +63,12 @@ namespace WEBUI.Pages
 
         protected void ddl_year_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SetupRepeat();
+            SetupRepeater();
         }
 
         protected void tb_staff_TextChanged(object sender, EventArgs e)
         {
-            SetupRepeat();
+            SetupRepeater();
         }
 
         private void SetupNavinigation()
@@ -83,7 +83,7 @@ namespace WEBUI.Pages
         }
 
 
-        private void SetupRepeat()
+        private void SetupRepeater()
         {
             int year = int.Parse(this.ddl_year.SelectedValue);
             string name = this.tb_staff.Text.Trim() == tip ? "" : this.tb_staff.Text.Trim();
@@ -210,7 +210,7 @@ namespace WEBUI.Pages
             {
                 callResult = BLL.workflow.CancelRequest_leave(requestId, loginer.userInfo.id, "", out errormsg);
             }
-            SetupRepeat();
+            SetupRepeater();
 
             this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
         }
@@ -235,5 +235,19 @@ namespace WEBUI.Pages
             return sb.ToString();
         }
 
+        protected void DropDownList1_TextChanged(object sender, EventArgs e)
+        {
+            DropDownList ddl = (DropDownList)sender;
+            string value = ddl.SelectedValue;
+            if (value == "0")
+            {
+                theBigrange = GlobalVariate.LeaveBigRangeStatus.waitapproval;
+            }
+            else if(value == "3")
+            {
+                theBigrange = GlobalVariate.LeaveBigRangeStatus.beyongdWait;
+            }
+            SetupRepeater();
+        }
     }
 }

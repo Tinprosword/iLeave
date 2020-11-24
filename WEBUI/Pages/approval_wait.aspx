@@ -3,7 +3,7 @@
     <div class="row">
         <ul id="myTabApproval" class="nav nav-tabs lsf-clearPadding" runat="server">
 	            <li id="myTabApproval_pending" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?applicationType=0&action=0'">Pending</a></li>
-	            <li id="myTabApproval_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?applicationType=1&action=0'">History</a></li>
+	            <li id="myTabApproval_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?applicationType=3&action=0'">History</a></li>
         </ul>
         <ul id="myTabApply" class="nav nav-tabs lsf-clearPadding" runat="server">
 	            <li id="myTabapply_new" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" onclick="window.location.href='apply.aspx'">New</a></li>
@@ -23,6 +23,10 @@
         </div>
         <div class="col-xs-4">
             <asp:TextBox ID="tb_staff" runat="server" AutoPostBack="true"  OnTextChanged="tb_staff_TextChanged"></asp:TextBox>
+            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnTextChanged="DropDownList1_TextChanged">
+                <asp:ListItem Text="Pedding" Value="0"></asp:ListItem>
+                <asp:ListItem Text="History" Value="3"></asp:ListItem>
+            </asp:DropDownList>
         </div>
     </div>
     <div class="row" style="padding-bottom:0px;margin-top:10px; height:510px;overflow-y:scroll">
