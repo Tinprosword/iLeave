@@ -13,7 +13,15 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="showdiv" class="col-xs-10 lsf-clearPadding" style="left:9%;width:360px">
+        <ul id="myTab" class="nav nav-tabs">
+	        <li class="active"><a href="" data-toggle="tab" onclick="window.location.href='template.aspx'">Pending</a></li>
+	        <li><a href="" data-toggle="tab" onclick="window.location.href='template2.aspx'">History</a></li>
+        </ul>
+
+        temp1
+
+
+        <%--<div id="showdiv" class="col-xs-10 lsf-clearPadding" style="left:9%;width:360px">
             <table class="col-xs-12 lsu-table-xs lsf-clearPadding">
                 <tr class="lss-bgcolor-blue  lsf-clearPadding" style="color:white; height:24px;">
                     <td class="col-xs-10" style="text-align:left">Leave Detail</td><td class="col-xs-1"><img src="../Res/images/close.png"  style="width:27px; height:27px"/></td>
@@ -68,7 +76,7 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </div>--%>
     </form>
     <script src="../Res/jquery/jquery.min.js"></script>
     <script src="../Res/App/CommonJS.js"></script>
