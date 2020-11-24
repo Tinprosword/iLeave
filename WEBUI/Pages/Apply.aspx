@@ -2,6 +2,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
     <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+
+    <div class="row">
+        <ul id="myTabApply" class="nav nav-tabs lsf-clearPadding" runat="server">
+	            <li id="myTabapply_new" runat="server" class="active"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" onclick="window.location.href='apply.aspx'">New</a></li>
+	            <li id="myTabapply_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?applicationType=0&action=1'">History</a></li>
+        </ul>
+    </div>
+
     <div class="row" id="mainpage">
         <div class ="col-xs-12" style="height:2px; padding:0px">&nbsp</div>
         <table class="col-xs-12 lsu-tablem1">

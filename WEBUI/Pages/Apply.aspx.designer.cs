@@ -13,6 +13,33 @@ namespace WEBUI.Pages {
     public partial class Apply {
         
         /// <summary>
+        /// myTabApply 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl myTabApply;
+        
+        /// <summary>
+        /// myTabapply_new 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl myTabapply_new;
+        
+        /// <summary>
+        /// myTabapply_history 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl myTabapply_history;
+        
+        /// <summary>
         /// lt_name 控件。
         /// </summary>
         /// <remarks>

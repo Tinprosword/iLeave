@@ -125,9 +125,6 @@ namespace WEBUI.Pages
             {
                 this.myTabApproval.Visible = false;
                 this.myTabApply.Visible = true;
-
-                this.myTabapply_history.Attributes.Add("class", "active");
-                this.myTabapply_new.Attributes.Remove("class");
             }
         }
 
