@@ -70,21 +70,21 @@
   <ItemGroup>
     <Content Include="Pages\approval_wait.aspx" />
     <Content Include="Pages\ErrorPage.aspx" />
-    <Content Include="Pages\approvalMain.aspx" />
+    <Content Include="temp\delete\approvalMain.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
     <Content Include="MobilLogin.aspx" />
     <Content Include="Pages\Apply.aspx" />
     <Content Include="Pages\Apply_Upload.aspx" />
-    <Content Include="Pages\approval.aspx" />
+    <Content Include="temp\delete\approval.aspx" />
     <Content Include="Pages\calendar.aspx" />
     <Content Include="Pages\chooseEmployment.aspx" />
     <Content Include="Pages\Demo.html" />
     <Content Include="Pages\getHeight.aspx" />
     <Content Include="Pages\Main.aspx" />
-    <Content Include="Pages\MyApplicationMain.aspx" />
-    <Content Include="Pages\myapplications.aspx" />
-    <Content Include="Pages\myDetail.aspx" />
+    <Content Include="temp\delete\MyApplicationMain.aspx" />
+    <Content Include="temp\delete\myapplications.aspx" />
+    <Content Include="temp\delete\myDetail.aspx" />
     <Content Include="Pages\Setting.aspx" />
     <Content Include="Pages\showpic2.aspx" />
     <Content Include="Pages\Test.aspx" />
@@ -291,11 +291,11 @@
     <Compile Include="Pages\ErrorPage.aspx.designer.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\approvalMain.aspx.cs">
+    <Compile Include="temp\delete\approvalMain.aspx.cs">
       <DependentUpon>approvalMain.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\approvalMain.aspx.designer.cs">
+    <Compile Include="temp\delete\approvalMain.aspx.designer.cs">
       <DependentUpon>approvalMain.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controls\leave.Master.cs">
@@ -335,11 +335,11 @@
     <Compile Include="Pages\Apply_Upload.aspx.designer.cs">
       <DependentUpon>Apply_Upload.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\approval.aspx.cs">
+    <Compile Include="temp\delete\approval.aspx.cs">
       <DependentUpon>approval.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\approval.aspx.designer.cs">
+    <Compile Include="temp\delete\approval.aspx.designer.cs">
       <DependentUpon>approval.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\calendar.aspx.cs">
@@ -363,25 +363,25 @@
     <Compile Include="Pages\Main.aspx.designer.cs">
       <DependentUpon>Main.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MyApplicationMain.aspx.cs">
+    <Compile Include="temp\delete\MyApplicationMain.aspx.cs">
       <DependentUpon>MyApplicationMain.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\MyApplicationMain.aspx.designer.cs">
+    <Compile Include="temp\delete\MyApplicationMain.aspx.designer.cs">
       <DependentUpon>MyApplicationMain.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\myapplications.aspx.cs">
+    <Compile Include="temp\delete\myapplications.aspx.cs">
       <DependentUpon>myapplications.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\myapplications.aspx.designer.cs">
+    <Compile Include="temp\delete\myapplications.aspx.designer.cs">
       <DependentUpon>myapplications.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\myDetail.aspx.cs">
+    <Compile Include="temp\delete\myDetail.aspx.cs">
       <DependentUpon>myDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\myDetail.aspx.designer.cs">
+    <Compile Include="temp\delete\myDetail.aspx.designer.cs">
       <DependentUpon>myDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Setting.aspx.cs">

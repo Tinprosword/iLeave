@@ -23,7 +23,7 @@ namespace WEBUI.Pages
             this.lt_applyleaveabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().mymyapplicationmain_wait;
             this.lt_applicationsabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().mymyapplicationmain_approved;
             this.lt_approal.Text = BLL.MultiLanguageHelper.GetLanguagePacket().mymyapplicationmain_rejected;
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, BLL.MultiLanguageHelper.GetLanguagePacket().main_approval, "~/pages/main.aspx", true);
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, BLL.MultiLanguageHelper.GetLanguagePacket().main_approvalTitle, "~/pages/main.aspx", true);
         }
 
         

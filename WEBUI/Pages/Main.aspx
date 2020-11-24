@@ -7,10 +7,10 @@
             <asp:ImageButton ID="apply" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_A.png" Width="318px" Height="80px" OnClick="Apply_Click"/>
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_applyleaveabc" runat="server" OnClick="Apply_Click" CssClass="fixLink"></asp:LinkButton></div>
         </div>
-        <div class="col-xs-12 lsf-center" style="margin-top:6px;">
+<%--        <div class="col-xs-12 lsf-center" style="margin-top:6px;">
             <asp:ImageButton ID="application" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_B.png" Width="318px" Height="80px" OnClick="Application_Click"/>
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_applicationsabc" runat="server" OnClick="Application_Click" CssClass="fixLink"></asp:LinkButton></div>
-        </div>
+        </div>--%>
         <div class="col-xs-12 lsf-center" style="margin-top:6px;">
             <asp:ImageButton ID="approval" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_C.png" Width="318px" Height="80px" OnClick="Approval_Click"/>
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_approal" runat="server" OnClick="Approval_Click" CssClass="fixLink"></asp:LinkButton></div>

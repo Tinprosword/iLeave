@@ -35,8 +35,7 @@ namespace WEBUI.Pages
         private void SetMultiLanguage()
         {
             this.lt_applyleaveabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_apply;
-            this.lt_applicationsabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_applications;
-            this.lt_approal.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_approval;
+            this.lt_approal.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_approvalTitle;
             this.lt_calendarabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_calendar;
             //this.lt_downloadsplitabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_downplaylisp;
             //this.lt_downloadtaxabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_downtax;
@@ -59,7 +58,7 @@ namespace WEBUI.Pages
 
         protected void Approval_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/pages/approvalmain.aspx");
+            Response.Redirect("~/pages/approval_wait.aspx?applicationType=0&action=0");
         }
 
         protected void Canlendar_Click(object sender, EventArgs e)

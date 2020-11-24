@@ -55,7 +55,7 @@ namespace WEBUI.Pages
         {
             SetupNavinigation();
             SetupRepeat();
-            SetupSearch();
+            SetupSearchAndTab();
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
@@ -73,20 +73,12 @@ namespace WEBUI.Pages
 
         private void SetupNavinigation()
         {
-            string CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().approvalmain_menu1;
-            if (theBigrange == GlobalVariate.LeaveBigRangeStatus.approvaled)
+            string CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().main_approvalTitle;
+            if (actionType ==1)
             {
-                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().approvalmain_menu2;
+                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().main_applicationsTitle;
             }
-            else if (theBigrange == GlobalVariate.LeaveBigRangeStatus.withdraw)
-            {
-                CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().approvalmain_menu3;
-            }
-            string backurl = "~/pages/approvalmain.aspx";
-            if (actionType == 1)
-            {
-                backurl= "~/pages/myapplicationmain.aspx";
-            }
+            string backurl = "~/pages/main.aspx";
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, CurrentTitle, backurl, true);
         }
 
@@ -110,12 +102,34 @@ namespace WEBUI.Pages
             this.rp_list.DataBind();
         }
 
-        private void SetupSearch()
+        private void SetupSearchAndTab()
         {
             this.tb_staff.SetTip(tip);
             this.tb_staff.Visible = actionType == 0;
-        }
+            if (actionType == 0)
+            {
+                this.myTabApproval.Visible = true;
+                this.myTabApply.Visible = false;
+                if (theBigrange == GlobalVariate.LeaveBigRangeStatus.waitapproval)
+                {
+                    this.myTabApproval_pending.Attributes.Add("class", "active");
+                    this.myTabApproval_history.Attributes.Remove("class");
+                }
+                else
+                {
+                    this.myTabApproval_history.Attributes.Add("class", "active");
+                    this.myTabApproval_pending.Attributes.Remove("class");
+                }
+            }
+            else
+            {
+                this.myTabApproval.Visible = false;
+                this.myTabApply.Visible = true;
 
+                this.myTabapply_history.Attributes.Add("class", "active");
+                this.myTabapply_new.Attributes.Remove("class");
+            }
+        }
 
         public bool BShow_WaitApplyPanel(GlobalVariate.LeaveBigRangeStatus myBigRange, byte states,int action)
         {

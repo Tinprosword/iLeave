@@ -1,8 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="approval_wait.aspx.cs" Inherits="WEBUI.Pages.approval_wait" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <div class="row">
+        <ul id="myTabApproval" class="nav nav-tabs lsf-clearPadding" runat="server">
+	            <li id="myTabApproval_pending" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?applicationType=0&action=0'">Pending</a></li>
+	            <li id="myTabApproval_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?applicationType=1&action=0'">History</a></li>
+        </ul>
+        <ul id="myTabApply" class="nav nav-tabs lsf-clearPadding" runat="server">
+	            <li id="myTabapply_new" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" onclick="window.location.href='apply.aspx'">New</a></li>
+	            <li id="myTabapply_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?applicationType=3&action=1'">History</a></li>
+        </ul>
+    </div>
     <div id="ajaxContainer" class="col-xs-12 lsf-clearPadding"></div>
-
     <div class ="col-xs-12" style="height:10px; padding:0px">&nbsp</div>
     <div class="row" style="padding-bottom:10px;margin-top:10px; height:23px;">
         <div class="col-xs-4" style="padding-left:15px; width:80px">
