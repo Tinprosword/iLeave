@@ -3,7 +3,7 @@
 <html>
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="../Res/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../Res/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet"/>
     <link href="../Res/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet"/>
     <link href="../Res/datepicker/bootstrap-datepicker-1.9.0/css/bootstrap-datepicker3.min.css" rel="stylesheet"/>
     <link href="../Res/App/appcss.css" rel="stylesheet" id="appcss" runat="server"/>

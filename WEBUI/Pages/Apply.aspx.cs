@@ -284,6 +284,7 @@ namespace WEBUI.Pages
             {
                 this.literal_errormsga.Visible = true;
                 this.literal_errormsga.Text = errorMsg;
+                this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
             }
         }
 
@@ -291,7 +292,7 @@ namespace WEBUI.Pages
         {
             Apply page = (Apply)sender;
             page.Response.Clear();
-            page.Response.Write(LSLibrary.WebAPP.MyJSHelper.Goto("myapplications.aspx?applicationType=0"));
+            page.Response.Write(LSLibrary.WebAPP.MyJSHelper.Goto("approval_wait.aspx?action=1"));
             page.Response.End();
         }
 

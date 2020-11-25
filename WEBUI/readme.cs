@@ -4,15 +4,13 @@
 //}
 
 
-//todo wait 页面。apply
+//todo png 压缩。
+//todo detial remak 会很长。                                no
+
+//todo tab color.                                           ok
 //todo history .0.375 0.5 0.1 混合处理
-//todo history user  太长。
 
-//todo 总结弹出遮住层.
-
-
-//todo 按钮的高度                                           no
-//todo 有2个自动挥发处理。 appoval_wait                     no
+//todo 按钮的高度                                           yes
 //todo 日历的样式.丢失图片									ok
 //todo fix height by one key.                               ok
 //todo submiting  success(response.re) .failure(msg)        ok
@@ -27,6 +25,8 @@
 
 
 
+
+//todo 总结弹出遮住层.
 //todo web site  delete 'sign.aspx'                         ok.
 //todo multiple language    3 .                             ok(no android)
 //todo apply->waiting                                       ok.

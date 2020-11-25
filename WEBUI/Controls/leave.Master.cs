@@ -45,6 +45,16 @@ namespace WEBUI.Controls
             return result;
         }
 
+        public string GetMyPostTargetname()
+        {
+            string result = null;
+            if (!string.IsNullOrEmpty(Request.Form["mypostback_target"]))
+            {
+                result = Request.Form["mypostback_target"];
+            }
+            return result;
+        }
+
         public enum msgtype
         {
             success,

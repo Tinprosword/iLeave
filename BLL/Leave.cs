@@ -211,7 +211,7 @@ namespace BLL
         #endregion
 
         #region search application
-        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyLeaveMaster(int pid, GlobalVariate.LeaveBigRangeStatus status, DateTime? from)
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyLeaveMaster(int pid, GlobalVariate.LeaveBigRangeStatus status, DateTime? from, DateTime? to)
         {
             List<LeaveRequestMaster> result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMasterByPID(pid).ToList();
             if (status == GlobalVariate.LeaveBigRangeStatus.waitapproval)
@@ -235,7 +235,11 @@ namespace BLL
             {
                 result = result.Where(x => x.leavefrom >= from).ToList();
             }
-            result=result.OrderByDescending(x => x.leavefrom).ToList();
+            if (to != null)
+            {
+                result = result.Where(x => x.leaveto <= to).ToList();
+            }
+            result =result.OrderByDescending(x => x.leavefrom).ToList();
             return result;
         }
 
@@ -284,7 +288,7 @@ namespace BLL
             DateTime from = new DateTime(year, 1, 1);
             int dayCount = DateTime.DaysInMonth(year, 12);
             DateTime? to = new DateTime(year, 12, dayCount);
-            return GetMyLeaveMaster(pid, status, from);
+            return GetMyLeaveMaster(pid, status, from,to);
         }
 
         public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyManageLeaveMaster(int uid, GlobalVariate.LeaveBigRangeStatus status, int year, string name)

@@ -134,7 +134,7 @@ namespace WEBUI.Pages
             {
                 dateFrom = DateTime.Parse(datestrFrom);
             }
-            result = BLL.Leave.GetMyLeaveMaster(pid, chooseStatus, dateFrom);
+            result = BLL.Leave.GetMyLeaveMaster(pid, chooseStatus, dateFrom,null);
             return result;
         }
 

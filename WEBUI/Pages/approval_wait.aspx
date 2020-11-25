@@ -2,8 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <ul id="myTabApproval" class="nav nav-tabs lsf-clearPadding" runat="server">
-	            <li id="myTabApproval_pending" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?applicationType=0&action=0'">Pending</a></li>
-	            <li id="myTabApproval_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?applicationType=3&action=0'">History</a></li>
+	            <li id="myTabApproval_pending" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" runat="server" id="Approvalpending" onclick="MyPostBack('p','')">Pending</a></li>
+	            <li id="myTabApproval_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" runat="server" id="ApprovalHistory" onclick="MyPostBack('h','')">History</a></li>
         </ul>
         <ul id="myTabApply" class="nav nav-tabs lsf-clearPadding" runat="server">
 	            <li id="myTabapply_new" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" onclick="window.location.href='apply.aspx'">New</a></li>
@@ -23,7 +23,7 @@
         </div>
         <div class="col-xs-4">
             <asp:TextBox ID="tb_staff" runat="server" AutoPostBack="true"  OnTextChanged="tb_staff_TextChanged"></asp:TextBox>
-            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnTextChanged="DropDownList1_TextChanged">
+            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnTextChanged="DropDownList1_TextChanged"  Height="26px" Width="90px">
                 <asp:ListItem Text="Pedding" Value="0"></asp:ListItem>
                 <asp:ListItem Text="History" Value="3"></asp:ListItem>
             </asp:DropDownList>
@@ -44,7 +44,7 @@
                     <asp:Label ID="lb_attachment" runat="server" Text="Attachment:"></asp:Label>
                     <%# GetAttachmentHtml(   ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID  )%>
                 </div>
-                <asp:Panel ID="panel_admin_waitingApprove" runat="server" Visible="<%#BShow_WaitApplyPanel(theBigrange,((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,actionType) %>">
+                <asp:Panel ID="panel_admin_waitingApprove" runat="server" Visible="<%#BShow_WaitApplyPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,actionType) %>">
                     <div class="col-xs-12 divheighter"><asp:Label ID="Label1" runat="server" Text="Approval Remark:"></asp:Label></div>
                     <div class="col-xs-12">
                         <asp:TextBox ID="tb_waitapproveRemark" runat="server" TextMode="MultiLine" Width="98%" Height="40px"></asp:TextBox>
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                 </asp:Panel>
-                <asp:Panel ID="panel_admin_waitingCancel" runat="server" Visible="<%#BShow_WaitCancelPanel(theBigrange,((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,actionType) %>">
+                <asp:Panel ID="panel_admin_waitingCancel" runat="server" Visible="<%#BShow_WaitCancelPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,actionType) %>">
                     <div class="col-xs-12 divheighter"><asp:Label ID="Label2" runat="server" Text="Remark"></asp:Label></div>
                     <div class="col-xs-12">
                         <asp:TextBox ID="tb_waitcancelRemark" runat="server" TextMode="MultiLine" Width="98%" Height="40px"></asp:TextBox>
@@ -72,12 +72,12 @@
                         </div>
                     </div>
                 </asp:Panel>
-                <asp:Panel ID="panel_user_waiting" runat="server" Visible="<%#BShow_UserWaitingPanel(theBigrange,((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,actionType) %>">
+                <asp:Panel ID="panel_user_waiting" runat="server" Visible="<%#BShow_UserWaitingPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,actionType) %>">
                     <div class="col-xs-5" style="float:left; padding-left:15px;">
                         <asp:Button ID="Button2" runat="server" Text="Withdraw" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClick="btn_Click" CommandArgument=<%#"5|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>/>
                     </div>
                 </asp:Panel>
-                <asp:Panel ID="panel_user_approved" runat="server" Visible="<%#BShow_UserApprovedPanel(theBigrange,((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,actionType) %>">
+                <asp:Panel ID="panel_user_approved" runat="server" Visible="<%#BShow_UserApprovedPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,actionType) %>">
                     <div class="col-xs-5" style="float:left; padding-left:15px;">
                         <asp:Button ID="Button1" runat="server" Text="Cancel" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClick="btn_Click" CommandArgument=<%#"6|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>/>
                     </div>

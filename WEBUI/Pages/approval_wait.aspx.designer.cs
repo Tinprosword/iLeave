@@ -31,6 +31,15 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl myTabApproval_pending;
         
         /// <summary>
+        /// Approvalpending 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor Approvalpending;
+        
+        /// <summary>
         /// myTabApproval_history 控件。
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl myTabApproval_history;
+        
+        /// <summary>
+        /// ApprovalHistory 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor ApprovalHistory;
         
         /// <summary>
         /// myTabApply 控件。
