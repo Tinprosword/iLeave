@@ -68,7 +68,15 @@ namespace WEBUI.Pages
             SetupNavinigation();
             SetupSearchAndTab();
             SetupRepeater();
-            
+            MultplayLanguage();
+        }
+
+        private void MultplayLanguage()
+        {
+            this.lt_new.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_new;
+            this.lt_myrecord.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_MyRecord;
+            this.lt_pending.Text= BLL.MultiLanguageHelper.GetLanguagePacket().apply_pending;
+            this.lt_processed.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed;
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
@@ -137,6 +145,8 @@ namespace WEBUI.Pages
             this.tb_staff.SetTip(tip);
             this.tb_staff.Visible = actionType == 0;
             //statues
+            this.DropDownList1.Items.Add(new ListItem(BLL.MultiLanguageHelper.GetLanguagePacket().apply_pending, "0"));
+            this.DropDownList1.Items.Add(new ListItem(BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed, "3"));
             this.DropDownList1.Visible = actionType == 1;
         }
 

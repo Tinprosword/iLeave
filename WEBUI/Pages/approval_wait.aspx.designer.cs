@@ -40,6 +40,15 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor Approvalpending;
         
         /// <summary>
+        /// lt_pending 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_pending;
+        
+        /// <summary>
         /// myTabApproval_history 控件。
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor ApprovalHistory;
+        
+        /// <summary>
+        /// lt_processed 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_processed;
         
         /// <summary>
         /// myTabApply 控件。
@@ -76,6 +94,15 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl myTabapply_new;
         
         /// <summary>
+        /// lt_new 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_new;
+        
+        /// <summary>
         /// myTabapply_history 控件。
         /// </summary>
         /// <remarks>
@@ -83,6 +110,15 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl myTabapply_history;
+        
+        /// <summary>
+        /// lt_myrecord 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_myrecord;
         
         /// <summary>
         /// ddl_year 控件。

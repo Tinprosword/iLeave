@@ -317,6 +317,8 @@ namespace WEBUI.Pages
             this.ltlisttype.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_list_type;
             this.lt_listsection.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_list_section;
             this.button_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_button;
+            this.lt_new.Text= BLL.MultiLanguageHelper.GetLanguagePacket().apply_new;
+            this.lt_myrecord.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_MyRecord;
         }
 
         private void SavePageDataToViewState(bool owlist, bool owtype, bool owpics, List<MODEL.Apply.apply_LeaveData> leavelist, List<LSLibrary.WebAPP.ValueText<int>> leavetype, List<MODEL.Apply.App_AttachmentInfo> uploadPics)

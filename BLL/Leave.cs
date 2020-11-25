@@ -239,7 +239,7 @@ namespace BLL
             {
                 result = result.Where(x => x.leaveto <= to).ToList();
             }
-            result =result.OrderByDescending(x => x.leavefrom).ToList();
+            result =result.OrderByDescending(x => x.leavefrom).ThenByDescending(x=>x.createDate).ToList();
             return result;
         }
 
@@ -278,7 +278,7 @@ namespace BLL
                 {
                     result = result.Where(x => x.uname.ToUpper().Contains(name.ToUpper())).ToList();
                 }
-                result = result.OrderByDescending(x => x.leavefrom).ToList();
+                result = result.OrderByDescending(x => x.leavefrom).ThenByDescending(x=>x.createDate).ToList();
             }
             return result;
         }

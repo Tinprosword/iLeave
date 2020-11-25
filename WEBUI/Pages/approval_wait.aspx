@@ -2,12 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <ul id="myTabApproval" class="nav nav-tabs lsf-clearPadding" runat="server">
-	            <li id="myTabApproval_pending" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" runat="server" id="Approvalpending" onclick="MyPostBack('p','')">Pending</a></li>
-	            <li id="myTabApproval_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" runat="server" id="ApprovalHistory" onclick="MyPostBack('h','')">History</a></li>
+	            <li id="myTabApproval_pending" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" runat="server" id="Approvalpending" onclick="MyPostBack('p','')"><asp:Literal ID="lt_pending" runat="server" Text="Pending"/></a></li>
+	            <li id="myTabApproval_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" runat="server" id="ApprovalHistory" onclick="MyPostBack('h','')"><asp:Literal ID="lt_processed" runat="server" Text="History"/></a></li>
         </ul>
         <ul id="myTabApply" class="nav nav-tabs lsf-clearPadding" runat="server">
-	            <li id="myTabapply_new" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" onclick="window.location.href='apply.aspx'">New</a></li>
-	            <li id="myTabapply_history" runat="server" class="active"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?applicationType=3&action=1'">History</a></li>
+	            <li id="myTabapply_new" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" onclick="window.location.href='apply.aspx'"><asp:Literal ID="lt_new" runat="server" Text="New"></asp:Literal></a></li>
+	            <li id="myTabapply_history" runat="server" class="active"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?applicationType=3&action=1'"><asp:Literal ID="lt_myrecord" runat="server" Text="History"/></a></li>
         </ul>
     </div>
     <div id="ajaxContainer" class="col-xs-12 lsf-clearPadding"></div>
@@ -24,8 +24,7 @@
         <div class="col-xs-4">
             <asp:TextBox ID="tb_staff" runat="server" AutoPostBack="true"  OnTextChanged="tb_staff_TextChanged"></asp:TextBox>
             <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnTextChanged="DropDownList1_TextChanged"  Height="26px" Width="90px">
-                <asp:ListItem Text="Pedding" Value="0"></asp:ListItem>
-                <asp:ListItem Text="History" Value="3"></asp:ListItem>
+
             </asp:DropDownList>
         </div>
     </div>

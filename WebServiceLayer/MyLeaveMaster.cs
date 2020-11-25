@@ -23,7 +23,15 @@ namespace WebServiceLayer.MyModel
 
         public string Info_GetBalance()
         {
-            string result = data.leaveDesc+""+data.WorkflowTypeID;
+            string result = "";
+            if (data.WorkflowTypeID == 0)
+            {
+                result = data.leaveDesc;
+            }
+            else
+            {
+                result = "Cancel " + data.leaveDesc;
+            }
             return result;
         }
 
