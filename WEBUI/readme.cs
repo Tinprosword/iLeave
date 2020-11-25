@@ -4,8 +4,9 @@
 //}
 
 
-//todo png 压缩。
+//todo png 压缩。                                           no
 //todo detial remak 会很长。                                no
+//todo can't approve.                                       no
 
 //todo tab color.                                           ok
 //todo history .0.375 0.5 0.1 混合处理
