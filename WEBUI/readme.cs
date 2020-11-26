@@ -3,10 +3,26 @@
 //public void openFileChooser(...);
 //}
 
+//todo  tab color.
+//todo ddr 2020 wait_.aspx.
+//todo calendar ->add button.
+//todo zone code-zone desc- contrid.
+//defualt->full day show all
+//3 section -?三节.
+//todo 深刻。 ddl
+//todo  pic show bu 出来。
+ //remairk 重新放一行。
+ //detial 靠右边数字
+ //detail 仲文，
+ //apply remark ：每出来。
+ //reject 需要remark.
+ //acton need to detial msg.
+ //todo calendar show adminer's apply.
+
 
 //todo png 压缩。                                           no
 //todo detial remak 会很长。                                no
-//todo can't approve.                                       no
+//todo can't approve.                                       ok
 
 //todo tab color.                                           ok
 //todo history .0.375 0.5 0.1 混合处理
@@ -20,8 +36,6 @@
 //2.upload ->camera.										yes
 //todo 高度                                                 yes
 //todo1.iven mov 超时推出错误。								no
-
-//todo cancel,withdraw(discard)                             no(等待确认)
 //todo 3 calendar transfer to office 365 team's calendar.   no
 
 

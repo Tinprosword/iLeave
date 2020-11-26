@@ -30,7 +30,7 @@ namespace WEBUI.webservices
         public string GetLeaveDetail_html(int requestID, int leaveid, int staff, int employmentNo)
         {
             double balance = BLL.Leave.GetCleanValue(leaveid, staff, employmentNo);
-            string strBalance= balance == -99999 ? "--" : balance.ToString("0.##") + " D";
+            string strBalance= balance == -99999 ? "--" : balance.ToString("0.##") + " Days";
             List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> detail= BLL.Leave.GetExtendLeaveDetailsByReuestID(requestID);
             List<WebServiceLayer.WebReference_leave.LeaveHistory> history = BLL.Leave.GetLeaveHistoryByRequest(requestID);
 
@@ -56,7 +56,7 @@ namespace WEBUI.webservices
 		                        <div style='height:2px'>&nbsp;</div>
 		                        <table class='col-xs-12 lsf-clearPadding' style='margin-bottom:9px;'>
 			                        <tr><td class='col-xs-4 lsf-clearPadding;' style='padding-left:1px;'>Balance</td><td><div id='lbbalance'>{0}</div></td></tr>
-			                        <tr><td style='padding-left:1px;'>Leave Apply</td><td><div id='lbapply'>{1}</div></td></tr>
+			                        <tr><td style='padding-left:1px;'>Leave Apply</td><td><div id='lbapply'>{1} Days</div></td></tr>
 		                        </table>
 {3}
 		                        <table class='col-xs-12 lsu-table-xs lsf-clearPadding'>
