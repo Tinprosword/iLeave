@@ -14,7 +14,7 @@
     <div class ="col-xs-12" style="height:10px; padding:0px">&nbsp</div>
     <div class="row" style="padding-bottom:10px;margin-top:10px; height:23px;">
         <div class="col-xs-4" style="padding-left:15px; width:80px">
-            <asp:DropDownList ID="ddl_year" runat="server" Width="60px" Height="26px" OnSelectedIndexChanged="ddl_year_SelectedIndexChanged" AutoPostBack="true">
+            <asp:DropDownList ID="ddl_year" runat="server"  Height="26px" OnSelectedIndexChanged="ddl_year_SelectedIndexChanged" AutoPostBack="true">
                 <asp:ListItem Value="2018">2018</asp:ListItem>
                 <asp:ListItem Value="2019">2019</asp:ListItem>
                 <asp:ListItem Value="2020" Selected="True">2020</asp:ListItem>

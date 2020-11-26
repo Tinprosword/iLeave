@@ -114,7 +114,7 @@ namespace BLL
                 temp.Add(0, BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_fullday);
                 temp.Add(1, BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_am);
                 temp.Add(2, BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_pm);
-                temp.Add(3, "3Sections");
+                temp.Add(3, BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_3section);
                 //temp.Add( 4,"Hours");
                 return temp;
             }

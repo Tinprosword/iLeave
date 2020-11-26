@@ -3,29 +3,28 @@
 //public void openFileChooser(...);
 //}
 
+
 //todo  tab color.
-//todo ddr 2020 wait_.aspx.
+
 //todo calendar ->add button.
-//todo zone code-zone desc- contrid.
-//defualt->full day show all
-//3 section -?三节.
-//todo 深刻。 ddl
-//todo  pic show bu 出来。
- //remairk 重新放一行。
- //detial 靠右边数字
- //detail 仲文，
- //apply remark ：每出来。
- //reject 需要remark.
- //acton need to detial msg.
- //todo calendar show adminer's apply.
+//todo zone code-zone desc- contractid.
 
-
+//defualt->full day show all                                ok.
+//3 section -?三节.                                         ok
+//todo ddl 2020 wait_.aspx.                                 ok.
+//detail 仲文                                               ok.
+//detial 靠右边数字                                         ok.
+//apply remark ：出来。                                     ok.
+//todo calendar show adminer's apply.                       ok.
+//acton need to detial msg.                                 no
+//reject 需要remark.                                        no.
+//todo  pic show bu出来                                     no.
+//todo history .0.375 0.5 0.1 混合处理                      no
 //todo png 压缩。                                           no
-//todo detial remak 会很长。                                no
-//todo can't approve.                                       ok
 
+//todo can't approve.                                       ok
 //todo tab color.                                           ok
-//todo history .0.375 0.5 0.1 混合处理
+
 
 //todo 按钮的高度                                           yes
 //todo 日历的样式.丢失图片									ok

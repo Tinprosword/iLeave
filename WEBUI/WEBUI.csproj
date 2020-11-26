@@ -271,6 +271,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="temp\ajaxpage.aspx" />
+    <Content Include="temp\demo2.aspx" />
     <Content Include="temp\template.aspx" />
     <Content Include="temp\template2.aspx" />
     <Content Include="temp\test.aspx" />
@@ -417,6 +418,13 @@
     </Compile>
     <Compile Include="temp\ajaxpage.aspx.designer.cs">
       <DependentUpon>ajaxpage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="temp\demo2.aspx.cs">
+      <DependentUpon>demo2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="temp\demo2.aspx.designer.cs">
+      <DependentUpon>demo2.aspx</DependentUpon>
     </Compile>
     <Compile Include="temp\template.aspx.cs">
       <DependentUpon>template.aspx</DependentUpon>
