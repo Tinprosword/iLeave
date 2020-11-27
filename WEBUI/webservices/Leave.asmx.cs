@@ -71,9 +71,9 @@ namespace WEBUI.webservices
 			                        <tr class='lss-bgcolor-blue' style='color:white; height:24px;'>
                                         <td>
                                             <table class='col-xs-12 lsu-table-xs lsf-clearPadding'><tr>
-				                                <td class='col-xs-4'>[col1]<asp:Literal ID='Literal1' runat='server'></asp:Literal></td>
-				                                <td class='col-xs-3'>[col2]<asp:Literal ID='Literal2' runat='server'></asp:Literal></td>
-				                                <td class='col-xs-2' style='text-align:right'>[col3]<asp:Literal ID='Literal3' runat='server'></asp:Literal></td>
+				                                <td class='col-xs-4' style='width:120px'>[col1]<asp:Literal ID='Literal1' runat='server'></asp:Literal></td>
+				                                <td class='col-xs-4' style='width:120px'>[col2]<asp:Literal ID='Literal2' runat='server'></asp:Literal></td>
+				                                <td class='col-xs-2' style='width:60px;text-align:right;'>[col3]<asp:Literal ID='Literal3' runat='server'></asp:Literal></td>
 				                                <td class='col-xs-3'>&nbsp;</td>
                                             </tr></table>
                                         </td>
@@ -105,9 +105,10 @@ namespace WEBUI.webservices
         private string GenerateHtml(List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> models)
         {
             StringBuilder result = new StringBuilder();
-            string item = @"<tr style='{3}'><td class='col-xs-4'>{0}</div></td>
-					            <td class='col-xs-3'>{1}</td>
-					            <td class='col-xs-2' style='text-align:right'>{2}</td>
+            string item = @"<tr style='{3}'>
+                                <td class='col-xs-4' style='width:120px'>{0}</div></td>
+					            <td class='col-xs-4' style='width:120px'>{1}</td>
+					            <td class='col-xs-2' style='width:60px;text-align:right;'>{2}&nbsp;&nbsp;</td>
 					            <td class='col-xs-3'></td></tr>";
 
             for (int i = 0; i < models.Count; i++)
@@ -127,8 +128,8 @@ namespace WEBUI.webservices
 			                        </tr>
 			                        <tr style='height:20px; padding:0px; margin:0px;'>
 				                        <td class='col-xs-4'>Approver</td>
-				                        <td class='col-xs-3'>Date</td>
-				                        <td class='col-xs-5'>Status</td>
+				                        <td class='col-xs-4'>Date</td>
+				                        <td class='col-xs-4'>Status</td>
 			                        </tr>
 {0}
 		                        </table>";

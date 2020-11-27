@@ -98,20 +98,6 @@
     </div>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="contentjs" runat="server">
-    <script type="text/javascript">
-        function sendit()
-        {
-            var viewstate = $('#PageState').val();
-            alert(viewstate);
-            SingleResult_StringWithWaitHardCodeMID('../temp/testws.asmx/HelloWorld', { abc: viewstate }, showit);
-            return false;
-        }
-
-        function showit(result)
-        {
-            alert(result);
-        }
-    </script>
 
     <script src="../Res/App/apply.js?lastmodify=<%=BLL.GlobalVariate.applyjsLastmodify %>"></script>
     <asp:Literal ID="lt_js_prg" runat="server"/>

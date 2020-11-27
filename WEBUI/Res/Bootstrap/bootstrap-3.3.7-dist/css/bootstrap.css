@@ -4037,7 +4037,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
-.nav-tabs > li.active > a:focus {
+.nav-tabs > li.active > a:focus 
+{
   color: white;
   font-weight:bold;
   cursor: default;
