@@ -20,7 +20,7 @@
                         </td>
                      </tr>   
                 </table>
-                <table class="col-xs-12 lsu-bigtable" style="background-image:url(res/images/login_page_bg.png); background-repeat:no-repeat;background-size:360px 620px; height:620px;">
+                <table class="col-xs-12 lsu-bigtable" style="background-image:url(res/images/login_page_bg.jpg); background-repeat:no-repeat;background-size:360px 620px; height:620px;">
                     <tr><td style="width:40px"></td><td style="height:160px"></td><td></td></tr>
                     <tr>
                         <td colspan="3" style="height:60px; text-align:center"><asp:Image ID="Image1" runat="server" ImageUrl="~/Res/images/login_page_icon.png" Width="60" Height="60"/></td>

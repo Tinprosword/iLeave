@@ -14,12 +14,13 @@
 //detial 靠右边数字                                         ok.
 //apply remark ：出来。                                     ok.
 //todo calendar show adminer's apply.                       ok.
+//action need to detail msg.                                ok.
+//reject 需要remark.                                        ok.
 
-//action need to detail msg.                                no
-//reject 需要remark.                                        no.
-//todo  pic show bu出来                                     no.
-//todo history .0.375 0.5 0.1 混合处理                      no
-//todo png 压缩。                                           no
+
+
+//todo  pic show bu出来                                     ok(建立晴空的原因)
+//todo history .0.375 0.5 0.1 混合处理                      ok("0.###");
 //todo duplicate zone                                       no
 //iphone 没有camena。                                       no
 

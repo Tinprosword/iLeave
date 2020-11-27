@@ -12,7 +12,7 @@
     </div>
     <div id="ajaxContainer" class="col-xs-12 lsf-clearPadding"></div>
     <div class ="col-xs-12" style="height:10px; padding:0px">&nbsp</div>
-    <div class="row" style="padding-bottom:10px;margin-top:10px; height:23px;">
+    <div class="row" style="margin-top:10px;">
         <div class="col-xs-4" style="padding-left:15px; width:80px">
             <asp:DropDownList ID="ddl_year" runat="server"  Height="26px" OnSelectedIndexChanged="ddl_year_SelectedIndexChanged" AutoPostBack="true">
                 <asp:ListItem Value="2018">2018</asp:ListItem>
@@ -24,11 +24,11 @@
         <div class="col-xs-4">
             <asp:TextBox ID="tb_staff" runat="server" AutoPostBack="true"  OnTextChanged="tb_staff_TextChanged"></asp:TextBox>
             <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnTextChanged="DropDownList1_TextChanged"  Height="26px" Width="90px">
-
             </asp:DropDownList>
         </div>
+        <asp:Label ID="lb_errormsg" runat="server" class="col-xs-12" style="color:red; height:12px">hiabc</asp:Label>
     </div>
-    <div class="row" style="padding-bottom:0px;margin-top:10px; height:510px;overflow-y:scroll">
+    <div class="row" style="padding-bottom:0px;margin-top:1px; height:510px;overflow-y:scroll">
         <asp:Repeater ID="rp_list" runat="server">
             <ItemTemplate>
                 <div class="col-xs-12" style=" line-height:8px;text-align:center;padding:0px;  margin:0px; padding-top:1px; padding-bottom:4px" onclick="MyPostBack('detail',<%#((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID %>)">

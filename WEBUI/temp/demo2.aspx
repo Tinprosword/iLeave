@@ -17,7 +17,7 @@
             <td>&nbsp;</td>
         </tr>
     </table>
-
+    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
 </asp:Content>

@@ -284,6 +284,7 @@ namespace WEBUI.Pages
 
                 this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
                 //this.PreRenderComplete += Apply_PreRenderComplete;
+                
             }
             else
             {

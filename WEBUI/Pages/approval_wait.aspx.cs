@@ -61,7 +61,9 @@ namespace WEBUI.Pages
         {}
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
-        {}
+        {
+            this.lb_errormsg.Visible = false;
+        }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
@@ -193,10 +195,6 @@ namespace WEBUI.Pages
 
         protected void btn_Click(object sender, EventArgs e)
         {
-            string waitDiv = LSLibrary.WebAPP.httpHelper.WaitDiv_show(BLL.MultiLanguageHelper.GetLanguagePacket().submit_success);
-            Response.Write(waitDiv);
-            Response.Flush();
-
             string errormsg = "";
             bool callResult = true;
             string[] pas = ((Button)sender).CommandArgument.Split(new char[] { '|' });
@@ -208,51 +206,64 @@ namespace WEBUI.Pages
             string remarks1 = ((TextBox)this.rp_list.Items[itemIndex].FindControl("panel_admin_waitingApprove").FindControl("tb_waitapproveRemark")).Text;
             string remarks2 = ((TextBox)this.rp_list.Items[itemIndex].FindControl("panel_admin_waitingCancel").FindControl("tb_waitcancelRemark")).Text;
 
-            string successMsg = "";
-            if (btntype == 1)//approve apply
-            {
-                callResult=BLL.workflow.ApproveRequest_leave(requestId, loginer.userInfo.id, remarks1, out errormsg);
-                successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproveok);
-            }
-            else if (btntype == 2)//reject apply
-            {
-                callResult = BLL.workflow.RejectRequest_leave(requestId, loginer.userInfo.id, remarks1, out errormsg);
-                successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproverej);
-            }
-            else if (btntype == 3)//approve cancel
-            {
-                callResult = BLL.workflow.ApprovalCancelRequest_leave(requestId, loginer.userInfo.id, remarks2, out errormsg);
-                successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproveok);
-            }
-            else if (btntype == 4)//reject cancel
-            {
-                callResult = BLL.workflow.RejectCancelRequest_leave(requestId, loginer.userInfo.id, remarks2, out errormsg);
-                successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproverej);
-            }
-            else if (btntype == 5)//withdraw
-            {
-                callResult = BLL.workflow.WithDrawRequest_leave(requestId, loginer.userInfo.id, "", out errormsg);
-                successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgwithdraw);
-            }
-            else if (btntype == 6)//cancel
-            {
-                callResult = BLL.workflow.CancelRequest_leave(requestId, loginer.userInfo.id, "", out errormsg);
-                successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgcancel);
-            }
-            SetupRepeater();
 
-            if (callResult)
+            if ((btntype==2 && string.IsNullOrEmpty(remarks1)) || btntype==4 && string.IsNullOrEmpty(remarks2))
             {
-                Response.Write(successMsg+".");
+                this.lb_errormsg.Visible = true;
+                this.lb_errormsg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_needRemark; //todo multiple??????
             }
             else
             {
-                Response.Write(errormsg);
-            }
-            Response.Flush();
-            System.Threading.Thread.Sleep(2000);//休眠2秒,获得较好显示体验
+                string waitDiv = LSLibrary.WebAPP.httpHelper.WaitDiv_show(BLL.MultiLanguageHelper.GetLanguagePacket().submit_success);
+                Response.Write(waitDiv);
+                Response.Flush();
 
-            this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
+                string successMsg = "";
+                if (btntype == 1)//approve apply
+                {
+                    callResult = BLL.workflow.ApproveRequest_leave(requestId, loginer.userInfo.id, remarks1, out errormsg);
+                    successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproveok);
+                }
+                else if (btntype == 2)//reject apply
+                {
+                    callResult = BLL.workflow.RejectRequest_leave(requestId, loginer.userInfo.id, remarks1, out errormsg);
+                    successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproverej);
+                }
+                else if (btntype == 3)//approve cancel
+                {
+                    callResult = BLL.workflow.ApprovalCancelRequest_leave(requestId, loginer.userInfo.id, remarks2, out errormsg);
+                    successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproveok);
+                }
+                else if (btntype == 4)//reject cancel
+                {
+                    callResult = BLL.workflow.RejectCancelRequest_leave(requestId, loginer.userInfo.id, remarks2, out errormsg);
+                    successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproverej);
+                }
+                else if (btntype == 5)//withdraw
+                {
+                    callResult = BLL.workflow.WithDrawRequest_leave(requestId, loginer.userInfo.id, "", out errormsg);
+                    successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgwithdraw);
+                }
+                else if (btntype == 6)//cancel
+                {
+                    callResult = BLL.workflow.CancelRequest_leave(requestId, loginer.userInfo.id, "", out errormsg);
+                    successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgcancel);
+                }
+                SetupRepeater();
+
+                if (callResult)
+                {
+                    Response.Write(successMsg + ".");
+                }
+                else
+                {
+                    Response.Write(errormsg);
+                }
+                Response.Flush();
+                System.Threading.Thread.Sleep(2000);//休眠2秒,获得较好显示体验
+
+                this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
+            }
         }
 
 
