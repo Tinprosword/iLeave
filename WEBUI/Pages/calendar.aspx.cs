@@ -203,6 +203,7 @@ namespace WEBUI.Pages
                 if (ii != null) eids2.Add((int)ii);
             }
             var contracts = BLL.calendar.GetContractByEmployids(eids2.ToArray());
+
             this.ddlzone.Items.Add(new ListItem("All Zone", "0|"));
             for (int i = 0; i < contracts.Count; i++)
             {
