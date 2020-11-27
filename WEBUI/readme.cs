@@ -5,6 +5,9 @@
 
 
 //todo  tab color.                                          no.
+//iphone 没有camena。                                       no
+
+
 //todo calendar ->add button.                               ok.
 //todo zone code-zone desc- contractid.                     ok.
 //defualt->full day show all                                ok.
@@ -16,13 +19,9 @@
 //todo calendar show adminer's apply.                       ok.
 //action need to detail msg.                                ok.
 //reject 需要remark.                                        ok.
-
-
-
 //todo  pic show bu出来                                     ok(建立晴空的原因)
 //todo history .0.375 0.5 0.1 混合处理                      ok("0.###");
-//todo duplicate zone                                       no
-//iphone 没有camena。                                       no
+//todo duplicate zone                                       yes.
 
 //todo can't approve.                                       ok
 //todo tab color.                                           ok
