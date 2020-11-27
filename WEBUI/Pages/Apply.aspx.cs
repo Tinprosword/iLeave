@@ -260,8 +260,7 @@ namespace WEBUI.Pages
         #region [module] apply
         protected void button_apply_Click(object sender, EventArgs e)
         {
-            string waitCode= LSLibrary.WebAPP.httpHelper.WaitDiv_show("Please Wait,请等待.");
-            System.Threading.Thread.Sleep(500);//休眠半秒,获得较好显示体验.
+            string waitCode= LSLibrary.WebAPP.httpHelper.WaitDiv_show(BLL.MultiLanguageHelper.GetLanguagePacket().submit_success);
             Response.Write(waitCode);
             Response.Flush();
 
@@ -278,7 +277,13 @@ namespace WEBUI.Pages
                 }
                 BLL.Leave.InsertAttachment(pics, loginer.userInfo.id, loginer.userInfo.personid, reslut);
 
-                this.PreRenderComplete += Apply_PreRenderComplete;
+                string successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().apply_msgapplyok);
+                Response.Write(successMsg+".");
+                Response.Flush();
+                System.Threading.Thread.Sleep(2000);//休眠2秒,获得较好显示体验
+
+                this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
+                //this.PreRenderComplete += Apply_PreRenderComplete;
             }
             else
             {

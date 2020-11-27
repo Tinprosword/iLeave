@@ -4,11 +4,9 @@
 //}
 
 
-//todo  tab color.
-
-//todo calendar ->add button.
-//todo zone code-zone desc- contractid.
-
+//todo  tab color.                                          no.
+//todo calendar ->add button.                               ok.
+//todo zone code-zone desc- contractid.                     ok.
 //defualt->full day show all                                ok.
 //3 section -?三节.                                         ok
 //todo ddl 2020 wait_.aspx.                                 ok.
@@ -16,17 +14,20 @@
 //detial 靠右边数字                                         ok.
 //apply remark ：出来。                                     ok.
 //todo calendar show adminer's apply.                       ok.
-//acton need to detial msg.                                 no
+
+//action need to detail msg.                                no
 //reject 需要remark.                                        no.
 //todo  pic show bu出来                                     no.
 //todo history .0.375 0.5 0.1 混合处理                      no
 //todo png 压缩。                                           no
+//todo duplicate zone                                       no
+//iphone 没有camena。                                       no
 
 //todo can't approve.                                       ok
 //todo tab color.                                           ok
 
 
-//todo 按钮的高度                                           yes
+//todo 按钮的高度                                           yes3*
 //todo 日历的样式.丢失图片									ok
 //todo fix height by one key.                               ok
 //todo submiting  success(response.re) .failure(msg)        ok

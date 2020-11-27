@@ -8,7 +8,7 @@
             <asp:TextBox Width="100%" ID="tb_name" runat="server" OnTextChanged="tb_name_TextChanged" AutoPostBack="true" style="border:1px solid #808080"></asp:TextBox>
         </div>
         <div class="col-xs-12 " style="margin-top:8px; margin-bottom:8px;">
-            <asp:DropDownList ID="ddlzone" Height="24px" runat="server"  CssClass="col-xs-7" OnSelectedIndexChanged="unit_SelectedIndexChanged" AutoPostBack="true">
+            <asp:DropDownList ID="ddlzone" Height="24px" runat="server"  CssClass="col-xs-7 lsf-clearPadding" OnSelectedIndexChanged="unit_SelectedIndexChanged" AutoPostBack="true">
             </asp:DropDownList>
             <div style="float:left;padding-top:1px;" class="overlable">
                 &nbsp;&nbsp;&nbsp;<asp:RadioButton  ID="cb_leave" runat="server"  OnCheckedChanged="cb_leave_CheckedChanged" GroupName="leaveroster" Text="假期"  Checked="true"  AutoPostBack="true"  Font-Bold="false"></asp:RadioButton>
@@ -23,10 +23,11 @@
             <div class="col-xs-7" style="width:64%;"><asp:Image ID="Image2" runat="server" ImageUrl="~/Res/images/square.png" BackColor="#f3e926" />&nbsp;<asp:Literal ID="lt_wait" runat="server">wait for approval</asp:Literal></div>
         </div>
         <div class="col-xs-9 lss-color-blue" style=" font-weight:bold; font-size:18px;margin-top:15px"><asp:Label ID="Label1" Height="21px" runat="server" Text="lb_date">2020-04-07</asp:Label></div>
-        <div class="col-xs-2 lss-color-blue" style="margin-top:10px; text-align:right" id="app_ok" runat="server" visible="false">
-            <asp:Button ID="btn_ok" runat="server" Text="Add" BackColor="#588da7" ForeColor="White" BorderWidth="0" Width="45px" Height="27px" Font-Size="16px" /></div>
+        <div class="col-xs-3 lss-color-blue" style="margin-top:10px; text-align:right; padding-right:32px;" id="app_ok" runat="server" visible="false">
+            <asp:Button ID="btn_ok" runat="server" Text="Add" BackColor="#588da7" ForeColor="White" BorderWidth="0" Height="27px" Font-Size="16px" />
+        </div>
         <div class="col-xs-12" id="leaveDiv" runat="server" visible="true">
-            <div class="col-xs-12 lsf-clearPadding" style="height:150px; overflow-y:scroll">
+            <div class="col-xs-12 lsf-clearPadding" style="height:150px; overflow-y:scroll;">
                 <table class="col-xs-12 lsu-table-xs lsf-clearPadding">
                     <tr class="lss-bgcolor-blue" style="color:white;padding-right:0px">
                         <td class="col-xs-4"><asp:Literal ID="lt_name" runat="server">Name</asp:Literal></td>

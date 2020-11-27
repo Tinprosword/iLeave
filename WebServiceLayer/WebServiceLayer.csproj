@@ -72,10 +72,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://192.168.19.200:8889/ServicesWithSession/CodeSettingsV2.asmx">
+    <WebReferenceUrl Include="http://192.168.19.200:9999/DW-iHR/BLL/ServicesWithSession/CodeSettingsV2.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WebReference_codesettings\</RelPath>
-      <UpdateFromURL>http://192.168.19.200:8889/ServicesWithSession/CodeSettingsV2.asmx</UpdateFromURL>
+      <UpdateFromURL>http://192.168.19.200:9999/DW-iHR/BLL/ServicesWithSession/CodeSettingsV2.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -83,10 +83,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>WebServiceLayer_WebReference_codesettings_CodeSettingsV2</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://192.168.19.200:9001/ServicesWithSession/LeaveManagementV2.asmx">
+    <WebReferenceUrl Include="http://192.168.19.200:9999/DW-iHR/BLL/ServicesWithSession/LeaveManagementV2.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WebReference_leave\</RelPath>
-      <UpdateFromURL>http://192.168.19.200:9001/ServicesWithSession/LeaveManagementV2.asmx</UpdateFromURL>
+      <UpdateFromURL>http://192.168.19.200:9999/DW-iHR/BLL/ServicesWithSession/LeaveManagementV2.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -94,10 +94,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>WebServiceLayer_WebReference_leave_LeaveManagementV2</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://192.168.19.200:8889/ServicesWithSession/UserManagementV2.asmx">
+    <WebReferenceUrl Include="http://192.168.19.200:9999/DW-iHR/BLL/ServicesWithSession/UserManagementV2.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WebReference_user\</RelPath>
-      <UpdateFromURL>http://192.168.19.200:8889/ServicesWithSession/UserManagementV2.asmx</UpdateFromURL>
+      <UpdateFromURL>http://192.168.19.200:9999/DW-iHR/BLL/ServicesWithSession/UserManagementV2.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -186,19 +186,19 @@
     <None Include="Web References\WebReference_user\UserManagementV2.wsdl" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\WebReference_codesettings\CodeSettingsV2.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Web References\WebReference_leave\LeaveManagementV2.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\WebReference_user\UserManagementV2.disco" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Function\LSLibrary_dotNet\LSLibrary.csproj">
       <Project>{53ac195e-dcff-47c4-bc02-7e0241ff520c}</Project>
       <Name>LSLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WebReference_user\UserManagementV2.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WebReference_codesettings\CodeSettingsV2.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

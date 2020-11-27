@@ -63,7 +63,7 @@
             </tr>
         </table>
         <div class=" col-xs-12" style="height:2px"></div>
-        <div class="col-xs-12 lsf-clearPadding" style="height:<%=BLL.GlobalVariate.setHeight(171)%>px; overflow-y:scroll;">
+        <div class="col-xs-12 lsf-clearPadding" style="height:<%=BLL.GlobalVariate.setHeight(167)%>px; overflow-y:scroll;">
             <table class="col-xs-12 lsu-table-xs">
                 <tr class="lss-bgcolor-blue" style="color:white">
                     <td class="col-xs-3" style="width:18%"><asp:Literal ID="ltlistdate" runat="server"></asp:Literal></td>

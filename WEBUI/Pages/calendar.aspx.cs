@@ -206,7 +206,7 @@ namespace WEBUI.Pages
             this.ddlzone.Items.Add(new ListItem("All Zone", "0|"));
             for (int i = 0; i < contracts.Count; i++)
             {
-                this.ddlzone.Items.Add(new ListItem(contracts[i].zonecode + " - " + contracts[i].Description , contracts[i].contractid + "|" + contracts[i].zonecode));
+                this.ddlzone.Items.Add(new ListItem(contracts[i].zonecode +":"+ contracts[i].zonedescription+ " - " + contracts[i].Description , contracts[i].contractid + "|" + contracts[i].zonecode));
             }
             this.ddlzone.SelectedIndex = 0;
         }
