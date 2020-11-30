@@ -5,7 +5,7 @@
             <div class="col-xs-10" style="padding-top:2px"><asp:FileUpload ID="FileUpload1" runat="server"  Width="99%" Style="padding-bottom:5px;height:50px; font-size:16px"></asp:FileUpload></div>
             <div class="col-xs-1"><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/upload2.png" Width="42px" Height="42px" OnClick="Upload_Click" /></div>
         </div>
-        <div class="col-xs-12" style="padding:0px; overflow-y:scroll; height:<%=BLL.GlobalVariate.setHeight(410)%>px;">
+        <div class="col-xs-12" style="padding:0px; overflow-y:scroll; height:500px;">
             <asp:Repeater ID="repeater_attandance" runat="server" EnableViewState="true">
                 <ItemTemplate>
                     <div class="col-xs-6" style="width:48%; height:130px;float:left;border:1px solid #f4f4f4">
@@ -28,9 +28,6 @@
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
-        </div>
-        <div class="col-xs-12 lsf-center" style="padding-top:12px; color:white; font-weight:bold">
-            <asp:Button ID="button_apply" runat="server" Text="Back" OnClick="button_apply_Click1" CssClass="lsu-imagebtn"  style="background-image:url(../res/images/btnok.png);background-size:124px 44px" Height="44px" Width="124px"/>
         </div>
     </div>
 </asp:Content>

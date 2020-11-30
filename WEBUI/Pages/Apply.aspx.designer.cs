@@ -220,6 +220,15 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.TextBox tb_remarks;
         
         /// <summary>
+        /// btn_apply 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_apply;
+        
+        /// <summary>
         /// literal_errormsga 控件。
         /// </summary>
         /// <remarks>
@@ -263,15 +272,6 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater repeater_leave;
-        
-        /// <summary>
-        /// button_apply 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_apply;
         
         /// <summary>
         /// lt_js_prg 控件。

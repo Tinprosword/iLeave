@@ -16,19 +16,20 @@
         <table class="col-xs-12 lsu-tablem1">
             <tr>
                 <td style="width:80px"><asp:Literal ID="lt_name" runat="server">Name</asp:Literal></td>
-                <td>
+                <td colspan="2">
                     <div style="float:left;"><asp:Literal ID="literal_applier" runat="server"></asp:Literal></div>
                 </td>
             </tr>
             <tr>
                 <td><asp:Literal ID="lt_leave" runat="server">Leave</asp:Literal></td>
-                <td>
+                <td colspan="2">
                     <asp:DropDownList ID="ddl_leavetype" runat="server" Width="90%" AutoPostBack="true" jqname="ddl_leavetype" OnSelectedIndexChanged="ddl_leavetype_SelectedIndexChanged"></asp:DropDownList>
                 </td>
+                
             </tr>
             <tr>
                 <td><asp:Literal ID="lt_apply" runat="server">Apply</asp:Literal></td>
-                <td>
+                <td colspan="2">
                     <asp:label ID="lt_applydays" runat="server" Width="50px"> </asp:label>
                     <asp:label ID="lt_balance" runat="server" Width="68px">Banlance</asp:label>
                     <asp:label ID="lt_balancedays" runat="server"> </asp:label>&nbsp;<asp:label Font-Size="14px" ID="lt_balancedetail" runat="server"></asp:label>
@@ -36,14 +37,14 @@
             </tr>
             <tr>
                 <td><asp:Literal ID="lt_section" runat="server">Section</asp:Literal></td>
-                <td>
+                <td colspan="2">
                     <asp:DropDownList ID="dropdl_section" runat="server" Width="90%">
                     </asp:DropDownList>
                 </td>
             </tr>
             <tr>
                 <td></td>
-                <td>
+                <td colspan="2">
                     <div style="float:left;padding-left:10px" id="aa">
                         <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/adddate2.png" Width="40px" Height="40px"  OnClick="Canlendar_Click"/>
                     </div>
@@ -57,14 +58,17 @@
             </tr>
             <tr>
                 <td><asp:Literal ID="lt_remarks" runat="server">Remarks</asp:Literal></td>
-                <td><asp:TextBox ID="tb_remarks" runat="server" Width="90%"></asp:TextBox> </td>
+                <td style="vertical-align:bottom">
+                    <asp:TextBox ID="tb_remarks" runat="server" Height="50px" Width="100%" TextMode="MultiLine" style="padding-bottom:0px;"></asp:TextBox>
+                </td>
+                <td style="width:30px; vertical-align:bottom;padding-bottom:12px;"><asp:Button ID="btn_apply" runat="server" Text="Submit" BackColor="#2573a4" ForeColor="White" BorderWidth="0" Height="34px" Font-Size="16px" style="border-radius:5px 5px 5px 5px"  OnClick="button_apply_Click"/></td>
             </tr>
             <tr>
-                <td colspan="2" style="color:red"><asp:Literal ID="literal_errormsga" runat="server" Visible="false"></asp:Literal></td>
+                <td colspan="3" style="color:red"><asp:Literal ID="literal_errormsga" runat="server" Visible="false"></asp:Literal></td>
             </tr>
         </table>
         <div class=" col-xs-12" style="height:2px"></div>
-        <div class="col-xs-12 lsf-clearPadding" style="height:<%=BLL.GlobalVariate.setHeight(167)%>px; overflow-y:scroll;">
+        <div class="col-xs-12 lsf-clearPadding" style="height:235px; overflow-y:scroll;">
             <table class="col-xs-12 lsu-table-xs">
                 <tr class="lss-bgcolor-blue" style="color:white">
                     <td class="col-xs-3" style="width:18%"><asp:Literal ID="ltlistdate" runat="server"></asp:Literal></td>
@@ -88,13 +92,8 @@
                             <td style="text-align:right"><asp:ImageButton ID="delete" Width="30px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="30px" ImageUrl="~/Res/images/close.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeid %>" /></td>
                         </tr>
                     </ItemTemplate>
-
                 </asp:Repeater>
             </table>
-        </div>
-      
-        <div class="col-xs-12 lsf-center" style="padding-top:11px; color:white;font-weight:bold">
-            <asp:Button ID="button_apply" runat="server" Text="Apply" CssClass="lsu-imagebtn" style="background-image:url(../res/images/btnok.png);background-size:124px 44px" Height="44px" Width="124px" OnClick="button_apply_Click"/>
         </div>
     </div>
 </asp:Content>

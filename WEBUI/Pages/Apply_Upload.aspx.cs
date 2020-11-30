@@ -21,7 +21,6 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
-            this.button_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_upload_btnback;
 
             object PreViewstate = LSLibrary.WebAPP.PageSessionHelper.GetValueAndCleanSoon(BLL.GlobalVariate.Session_ApplyToUpload);
             if (PreViewstate != null)
@@ -130,7 +129,5 @@ namespace WEBUI.Pages
                 Response.Redirect(linkButton.CommandArgument);
             }
         }
-
-
     }
 }
