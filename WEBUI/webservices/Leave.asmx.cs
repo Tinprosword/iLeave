@@ -31,7 +31,7 @@ namespace WEBUI.webservices
         {
             double balance = BLL.Leave.GetCleanValue(leaveid, staff, employmentNo);
             string strBalance = balance == -99999 ? "--" : balance.ToString("0.###");
-            List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> detail= BLL.Leave.GetExtendLeaveDetailsByReuestID(requestID);
+            List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> detail = BLL.Leave.GetExtendLeaveDetailsByReuestID(requestID);
             List<WebServiceLayer.WebReference_leave.LeaveHistory> history = BLL.Leave.GetLeaveHistoryByRequest(requestID);
 
             double appSum = 0;
@@ -53,31 +53,31 @@ namespace WEBUI.webservices
             string language_apply = BLL.MultiLanguageHelper.GetLanguagePacket().approval_applycount;
 
             string html = @"
-                            <div id='showdiv' class='col-xs-12 lsf-clearPadding' style='display:none;'>
+                            <div id='showdiv' class='col-xs-12 lsf-clearPadding' style='display:none'>
 	                        <table class='col-xs-12 lsu-table-xs4padding lsf-clearPadding'>
 		                        <tr class='lss-bgcolor-blue  lsf-clearPadding' style='color:white; height:24px;'>
-			                        <td class='col-xs-10' style='text-align:left;padding-left:4px'>[title1]</td><td class='col-xs-1'><img src='../Res/images/close.png'  style='width:27px; height:27px' onclick='closeWindow()'/></td>
+			                        <td class='col-xs-10' style='text-align:left'>[title1]</td><td class='col-xs-1'><img src='../Res/images/close.png'  style='width:27px; height:27px' onclick='closeWindow()'/></td>
 		                        </tr>
 	                        </table>
 	                        <div class='center-box3;' style='float:right; margin-right:5px; padding-right:0px;margin-top:5px;padding-top:0px;' ></div>
 	                        <div class='col-xs-12 lsf-clearPadding'>
 		                        <div style='height:2px'>&nbsp;</div>
 		                        <table class='col-xs-12 lsf-clearPadding' style='margin-bottom:9px;'>
-			                        <tr><td class='col-xs-4 lsf-clearPadding;' style='padding-left:4px;padding-right:4px'>[balance]</td><td style='text-align:right;width:40px;'><div id='lbbalance'>{0}</div></td><td>&nbsp;&nbsp;&nbsp;Day(s)</td></tr>
+			                        <tr><td class='col-xs-4 lsf-clearPadding;' style='padding-left:4px;padding-right:1px'>[balance]</td><td style='text-align:right;width:40px;'><div id='lbbalance'>{0}</div></td><td>&nbsp;&nbsp;&nbsp;Day(s)</td></tr>
 			                        <tr><td style='padding-left:4px;padding-right:1px'>[apply]</td><td style='text-align:right'><div id='lbapply'>{1}</div></td><td>&nbsp;&nbsp;&nbsp;Day(s)</td></tr>
 		                        </table>
 {3}
-		                        <table class='col-xs-12 lsu-table-xs4padding lsf-clearPadding'>
+		                        <table class='col-xs-12 lsu-table-xs lsf-clearPadding'>
 			                        <tr class='lss-bgcolor-blue' style='color:white; height:24px;'>
                                         <td>
                                             <table class='col-xs-12 lsu-table-xs4padding lsf-clearPadding'><tr>
-				                                <td class='col-xs-4' style='width:120px;padding-left:4px'>[col1]<asp:Literal ID='Literal1' runat='server'></asp:Literal></td>
-				                                <td class='col-xs-4' style='width:120px;'>[col2]<asp:Literal ID='Literal2' runat='server'></asp:Literal></td>
+				                                <td class='col-xs-4' style='width:120px'>[col1]<asp:Literal ID='Literal1' runat='server'></asp:Literal></td>
+				                                <td class='col-xs-4' style='width:120px'>[col2]<asp:Literal ID='Literal2' runat='server'></asp:Literal></td>
 				                                <td class='col-xs-2' style='width:60px;text-align:right;'>[col3]<asp:Literal ID='Literal3' runat='server'></asp:Literal></td>
 				                                <td class='col-xs-3'>&nbsp;</td>
                                             </tr></table>
                                         </td>
-				                        <td class='col-xs-1;lsf-clearPadding;' style='width:17px;'>&nbsp;</td>
+				                        <td class='col-xs-1' style='width:17px;'>&nbsp;</td>
 			                        </tr>
 		                        </table>
 		                        <div class='col-xs-12 lsf-clearPadding' style='width:100%; height:150px; overflow-y:scroll; overflow-x:hidden;'>
@@ -88,7 +88,7 @@ namespace WEBUI.webservices
 	                        </div>
                         </div>";
 
-            string result= string.Format(html, strBalance, appSum,leaveList,historyList);
+            string result = string.Format(html, strBalance, appSum, leaveList, historyList);
 
             result = result.Replace("[title1]", language_title);
             result = result.Replace("[title2]", language_title2);
@@ -106,10 +106,10 @@ namespace WEBUI.webservices
         {
             StringBuilder result = new StringBuilder();
             string item = @"<tr style='{3}'>
-                                <td class='col-xs-4;lsf-clearPadding' style='width:120px;padding-left:4px'>{0}</div></td>
-					            <td class='col-xs-4;lsf-clearPadding' style='width:120px'>{1}</td>
-					            <td class='col-xs-2;lsf-clearPadding' style='width:60px;text-align:right;'>{2}&nbsp;&nbsp;</td>
-					            <td class='col-xs-3;lsf-clearPadding'></td></tr>";
+                                <td class='col-xs-4' style='width:120px'>{0}</div></td>
+					            <td class='col-xs-4' style='width:120px'>{1}</td>
+					            <td class='col-xs-2' style='width:60px;text-align:right;'>{2}&nbsp;&nbsp;</td>
+					            <td class='col-xs-3'></td></tr>";
 
             for (int i = 0; i < models.Count; i++)
             {
@@ -124,7 +124,7 @@ namespace WEBUI.webservices
             string result = "";
             string wraper = @"<table class='col-xs-12 lsu-table-xs4padding lsf-clearPadding' style='margin-bottom:15px;'>
 			                        <tr class='lss-bgcolor-blue' style='color:white; height:24px;'>
-				                        <td colspan='20' class='col-xs-12' style='padding-left:4px'>[title2]</td>
+				                        <td colspan='20' class='col-xs-12'>[title2]</td>
 			                        </tr>
 {0}
 		                        </table>";
@@ -134,17 +134,17 @@ namespace WEBUI.webservices
                             <td>{5}. {0}</td>
 				            <td>{1}</td>
 				            <td>{2}</td></tr>
-				            <tr style='{4};'><td colspan='4' style='padding-bottom:8px;'>&nbsp;&nbsp;&nbsp;&nbsp;Remark:{3}</td></tr>";
-            
+				            <tr style='height:10px;{4}'><td colspan='4' style='padding-bottom:8px;'>&nbsp;&nbsp;&nbsp;&nbsp;Remark:{3}</td></tr>";
+
 
             if (history.Count > 0)
             {
                 StringBuilder tempresult = new StringBuilder();
                 for (int i = 0; i < history.Count; i++)
                 {
-                    tempresult.Append(string.Format(item, history[i].Requester, history[i].ApplyDate.ToString("yyyy-MM-dd"), BLL.GlobalVariate.RequestDesc[(BLL.GlobalVariate.ApprovalRequestStatus)(int)history[i].Status],history[i].Remark,BLL.Leave.SetBackgroundColor(i),(i+1).ToString()));
+                    tempresult.Append(string.Format(item, history[i].Requester, history[i].ApplyDate.ToString("yyyy-MM-dd"), BLL.GlobalVariate.RequestDesc[(BLL.GlobalVariate.ApprovalRequestStatus)(int)history[i].Status], history[i].Remark, BLL.Leave.SetBackgroundColor(i),(i+1).ToString()));
                 }
-                result= string.Format(wraper, tempresult.ToString());
+                result = string.Format(wraper, tempresult.ToString());
             }
             return result.ToString();
         }

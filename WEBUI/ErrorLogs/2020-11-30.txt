@@ -1,0 +1,47 @@
+ip:::1
+DataTime：2020/11/30 14:23:27
+Url：http://localhost:8091/pages/approval_wati.aspx?action=1&applicationtype=0
+Message：文件“/pages/approval_wati.aspx”不存在。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void CheckVirtualFileExists(System.Web.VirtualPath)
+Trace：   在 System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************
+ip:::1
+DataTime：2020/11/30 14:37:35
+Url：http://localhost:8091/pages/approval_wait.aspx?action=1&applicationtype=0
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void MultplayLanguage()
+Trace：   在 WEBUI.Pages.approval_wait.MultplayLanguage()
+   在 WEBUI.Pages.approval_wait.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2020/11/30 14:37:38
+Url：http://localhost:8091/pages/approval_wait.aspx?action=1&applicationtype=3
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void MultplayLanguage()
+Trace：   在 WEBUI.Pages.approval_wait.MultplayLanguage()
+   在 WEBUI.Pages.approval_wait.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

@@ -17,44 +17,22 @@ namespace WEBUI.Pages
         private readonly string tip = "Search Staff";
 
         protected int actionType = 0;
+        protected GlobalVariate.LeaveBigRangeStatus bigRange = 0;
 
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
-            if (!string.IsNullOrEmpty(Request.QueryString[qs_action]))
+            if (!string.IsNullOrEmpty(Request.QueryString[qs_action]) && !string.IsNullOrEmpty(Request.QueryString[qs_bigRange]))
             {
                 string strAction = Request.QueryString[qs_action];
                 int.TryParse(strAction, out actionType);
+                int intbig = 0;
+                int.TryParse(Request.QueryString[qs_bigRange], out intbig);
+                bigRange=(GlobalVariate.LeaveBigRangeStatus)intbig;
             }
             else
             {
                 Response.Redirect("main.aspx", true);
             }
-
-            string targetName = ((WEBUI.Controls.leave)this.Master).GetMyPostTargetname();
-            if (targetName == "p")
-            {
-                this.Page.LoadComplete += Page_LoadComplete;
-            }
-            else if(targetName == "h")
-            {
-                this.Page.LoadComplete += Page_LoadComplete2;
-            }
-        }
-
-        private void Page_LoadComplete(object sender, EventArgs e)
-        {
-            this.myTabApproval_pending.Attributes.Add("class", "active");
-            this.myTabApproval_history.Attributes.Remove("class");
-
-            SetupRepeater();
-        }
-
-        private void Page_LoadComplete2(object sender, EventArgs e)
-        {
-            this.myTabApproval_history.Attributes.Add("class", "active");
-            this.myTabApproval_pending.Attributes.Remove("class");
-
-            SetupRepeater();
         }
 
         protected override void InitPage_OnFirstLoad2()
@@ -76,7 +54,9 @@ namespace WEBUI.Pages
         private void MultplayLanguage()
         {
             this.lt_new.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_new;
-            this.lt_myrecord.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_MyRecord;
+            this.lt_mypending.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_pending;
+            this.lt_myhistory.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed;
+
             this.lt_pending.Text= BLL.MultiLanguageHelper.GetLanguagePacket().apply_pending;
             this.lt_processed.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed;
         }
@@ -89,10 +69,6 @@ namespace WEBUI.Pages
             SetupRepeater();
         }
 
-        protected void tb_staff_TextChanged(object sender, EventArgs e)
-        {
-            SetupRepeater();
-        }
 
         private void SetupNavinigation()
         {
@@ -135,21 +111,39 @@ namespace WEBUI.Pages
                 this.myTabApproval.Visible = true;
                 this.myTabApply.Visible = false;
 
-                this.myTabApproval_pending.Attributes.Add("class", "active");
+
+                this.myTabApproval_pending.Attributes.Remove("class");
                 this.myTabApproval_history.Attributes.Remove("class");
+                if (bigRange == GlobalVariate.LeaveBigRangeStatus.waitapproval)
+                {
+                    this.myTabApproval_pending.Attributes.Add("class", "active");
+                }
+                else
+                {
+                    this.myTabApproval_history.Attributes.Add("class", "active");
+                }
             }
             else
             {
                 this.myTabApproval.Visible = false;
                 this.myTabApply.Visible = true;
+
+                this.myTabapply_new.Attributes.Remove("class");
+                this.myTabapply_pending.Attributes.Remove("class");
+                this.myTabapply_history.Attributes.Remove("class");
+
+                if (bigRange == GlobalVariate.LeaveBigRangeStatus.waitapproval)
+                {
+                    this.myTabapply_pending.Attributes.Add("class", "active");
+                }
+                else
+                {
+                    this.myTabapply_history.Attributes.Add("class", "active");
+                }
             }
             //staff
             this.tb_staff.SetTip(tip);
             this.tb_staff.Visible = actionType == 0;
-            //statues
-            this.DropDownList1.Items.Add(new ListItem(BLL.MultiLanguageHelper.GetLanguagePacket().apply_pending, "0"));
-            this.DropDownList1.Items.Add(new ListItem(BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed, "3"));
-            this.DropDownList1.Visible = actionType == 1;
         }
 
         public bool BShow_WaitApplyPanel(GlobalVariate.LeaveBigRangeStatus myBigRange, byte states,int action)
@@ -210,7 +204,7 @@ namespace WEBUI.Pages
             if ((btntype==2 && string.IsNullOrEmpty(remarks1)) || btntype==4 && string.IsNullOrEmpty(remarks2))
             {
                 this.lb_errormsg.Visible = true;
-                this.lb_errormsg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_needRemark; //todo multiple??????
+                this.lb_errormsg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_needRemark;
             }
             else
             {
@@ -304,16 +298,12 @@ namespace WEBUI.Pages
 
         protected GlobalVariate.LeaveBigRangeStatus GetBigRange()
         {
-            GlobalVariate.LeaveBigRangeStatus currentBigRange = GlobalVariate.LeaveBigRangeStatus.waitapproval;
-            if (actionType == 0)
-            {
-                currentBigRange = string.IsNullOrEmpty(this.myTabApproval_pending.Attributes["class"]) ? GlobalVariate.LeaveBigRangeStatus.beyongdWait : GlobalVariate.LeaveBigRangeStatus.waitapproval;
-            }
-            else
-            {
-                currentBigRange = (GlobalVariate.LeaveBigRangeStatus)int.Parse(this.DropDownList1.SelectedValue);
-            }
-            return currentBigRange;
+            return bigRange;
+        }
+
+        protected void ib_search_Click(object sender, ImageClickEventArgs e)
+        {
+            SetupRepeater();
         }
     }
 }

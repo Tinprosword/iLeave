@@ -297,7 +297,7 @@ namespace WEBUI.Pages
         {
             Apply page = (Apply)sender;
             page.Response.Clear();
-            page.Response.Write(LSLibrary.WebAPP.MyJSHelper.Goto("approval_wait.aspx?action=1"));
+            page.Response.Write(LSLibrary.WebAPP.MyJSHelper.Goto("approval_wait.aspx?action=1&applicationtype=0"));
             page.Response.End();
         }
 
@@ -323,7 +323,8 @@ namespace WEBUI.Pages
             this.lt_listsection.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_list_section;
             this.button_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_button;
             this.lt_new.Text= BLL.MultiLanguageHelper.GetLanguagePacket().apply_new;
-            this.lt_myrecord.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_MyRecord;
+            this.lt_mypending.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_pending;
+            this.lt_myhistory.Text= BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed;
         }
 
         private void SavePageDataToViewState(bool owlist, bool owtype, bool owpics, List<MODEL.Apply.apply_LeaveData> leavelist, List<LSLibrary.WebAPP.ValueText<int>> leavetype, List<MODEL.Apply.App_AttachmentInfo> uploadPics)

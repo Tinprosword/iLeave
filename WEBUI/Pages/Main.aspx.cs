@@ -58,7 +58,7 @@ namespace WEBUI.Pages
 
         protected void Approval_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/pages/approval_wait.aspx?action=0");
+            Response.Redirect("~/pages/approval_wait.aspx?action=0&applicationtype=0");
         }
 
         protected void Canlendar_Click(object sender, EventArgs e)

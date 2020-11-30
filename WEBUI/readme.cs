@@ -4,27 +4,21 @@
 //}
 
 
-// APPLY->NEW PEN HIS.
-//CALEDA .SEARCH ICON.
-
-
-//DETAIL -> MARGIN LEFT 2 SPACE .                           no
+//iphone 没有camena。                                       no
 //TODO IMG->BIG IMG                                         no
-
-
-//order by FirstEmploymentID,employmentnumber . calendar.   yes
-//FULL DAY. DAY(S)                                          yes
-//DETIAL 1.2.3. LINE. DELETE TITLE.                         yes
-
-
 //approvar remark                                           no
 //check workflow                                            no
 
 
-//iphone 没有camena。                                       no
-
-
+//DETAIL -> MARGIN LEFT 2 SPACE .                           ok
+//CALEDA .SEARCH ICON.                                      yes
+//order by FirstEmploymentID,employmentnumber . calendar.   yes
+//FULL DAY. DAY(S)                                          yes
+//DETIAL 1.2.3. LINE. DELETE TITLE.                         yes
+// APPLY->NEW PEN HIS.                                      ok
 //tod Full Day DDL.                                         yes
+
+
 //todo  tab color.                                          yes
 //todo calendar ->add button.                               ok.
 //todo zone code-zone desc- contractid.                     ok.

@@ -2,12 +2,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <ul id="myTabApproval" class="nav nav-tabs lsf-clearPadding" runat="server">
-	            <li id="myTabApproval_pending" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" runat="server" id="Approvalpending" onclick="MyPostBack('p','')"><asp:Literal ID="lt_pending" runat="server" Text="Pending"/></a></li>
-	            <li id="myTabApproval_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" runat="server" id="ApprovalHistory" onclick="MyPostBack('h','')"><asp:Literal ID="lt_processed" runat="server" Text="History"/></a></li>
+	            <li id="myTabApproval_pending" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" runat="server" id="Approvalpending" onclick="window.location.href='approval_wait.aspx?action=0&applicationtype=0'"><asp:Literal ID="lt_pending" runat="server" Text="Pending"/></a></li>
+	            <li id="myTabApproval_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" runat="server" id="ApprovalHistory" onclick="window.location.href='approval_wait.aspx?action=0&applicationtype=3'"><asp:Literal ID="lt_processed" runat="server" Text="History"/></a></li>
         </ul>
         <ul id="myTabApply" class="nav nav-tabs lsf-clearPadding" runat="server">
 	            <li id="myTabapply_new" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" onclick="window.location.href='apply.aspx'"><asp:Literal ID="lt_new" runat="server" Text="New"></asp:Literal></a></li>
-	            <li id="myTabapply_history" runat="server" class="active"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?applicationType=3&action=1'"><asp:Literal ID="lt_myrecord" runat="server" Text="History"/></a></li>
+	            <li id="myTabapply_pending" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?action=1&applicationtype=0'"><asp:Literal ID="lt_mypending" runat="server" Text="Pending"/></a></li>
+                <li id="myTabapply_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?action=1&applicationtype=3'"><asp:Literal ID="lt_myhistory" runat="server" Text="History"/></a></li>
         </ul>
     </div>
     <div id="ajaxContainer" class="col-xs-12 lsf-clearPadding"></div>
@@ -21,12 +22,13 @@
                 <asp:ListItem Value="2021">2021</asp:ListItem>
             </asp:DropDownList>
         </div>
-        <div class="col-xs-4">
-            <asp:TextBox ID="tb_staff" runat="server" AutoPostBack="true"  OnTextChanged="tb_staff_TextChanged"></asp:TextBox>
-            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnTextChanged="DropDownList1_TextChanged"  Height="26px" Width="90px">
-            </asp:DropDownList>
+        <div class="col-xs-4" style="width:160px; padding-right:2px">
+            <asp:TextBox ID="tb_staff" Width="100%"  runat="server"></asp:TextBox>
         </div>
-        <asp:Label ID="lb_errormsg" runat="server" class="col-xs-12" style="color:red; height:12px">hiabc</asp:Label>
+        <div class="col-xs-1 lsf-clearPadding" style="width:30px;"><asp:ImageButton ID="ib_search" OnClick="ib_search_Click"  ImageUrl="~/Res/images/search.png" runat="server" Width="28px" Height="26px" /></div>
+        <div class="col-xs-12">
+            <asp:Label ID="lb_errormsg" runat="server" class="col-xs-12" style="color:red; height:12px">hiabc</asp:Label>
+        </div>
     </div>
     <div class="row" style="padding-bottom:0px;margin-top:1px; height:510px;overflow-y:scroll">
         <asp:Repeater ID="rp_list" runat="server">
