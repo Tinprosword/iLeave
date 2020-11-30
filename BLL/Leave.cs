@@ -409,7 +409,7 @@ namespace BLL
                 WebServiceLayer.WebReference_user.t_Employment t_Employment = BLL.User_wsref.getEmploymentByid(employid);
                 int position = t_Employment.PositionID;
                 List<int> sections = BLL.CodeSetting.GetSections(position, leaveid);
-                var ddlSourceAppend = BLL.Leave.ConvertInt2DropDownList(sections);
+                var ddlSourceAppend = BLL.Leave.ConvertInt2SectionDropDownList(sections);
                 ddlSource.AddRange(ddlSourceAppend);
             }
             return ddlSource;
@@ -428,7 +428,7 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetAllLeaveTypeByStaffID(sid).ToList();
         }
 
-        public static List<LSLibrary.WebAPP.ValueText<int>> ConvertInt2DropDownList(List<int> source)
+        public static List<LSLibrary.WebAPP.ValueText<int>> ConvertInt2SectionDropDownList(List<int> source)
         {
             List<LSLibrary.WebAPP.ValueText<int>> result = new List<LSLibrary.WebAPP.ValueText<int>>();
             for (int i = 0; i < source.Count(); i++)

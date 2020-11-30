@@ -283,8 +283,7 @@ namespace WEBUI.Pages
                 System.Threading.Thread.Sleep(2000);//休眠2秒,获得较好显示体验
 
                 this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
-                //this.PreRenderComplete += Apply_PreRenderComplete;
-                
+                this.PreRenderComplete += Apply_PreRenderComplete;
             }
             else
             {

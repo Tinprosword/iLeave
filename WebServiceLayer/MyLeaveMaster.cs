@@ -14,10 +14,10 @@ namespace WebServiceLayer.MyModel
             data = _data;
         }
 
-        public string Info_GetFromto()
+        public string Info_GetFromto(string to,string day)
         {
-            string result = "{0} To {1}({2} Day)";
-            result= string.Format(result, data.leavefrom.ToString("yyyy-MM-dd"), data.leaveto.ToString("yyyy-MM-dd"), data.totaldays);
+            string result = "{0} {3} {1}({2} {4})";
+            result = string.Format(result, data.leavefrom.ToString("yyyy-MM-dd"), data.leaveto.ToString("yyyy-MM-dd"), data.totaldays, to, day);
             return result;
         }
 
@@ -35,9 +35,14 @@ namespace WebServiceLayer.MyModel
             return result;
         }
 
+        public string Info_GetApprovalRemark()
+        {
+            return data.remarks;
+        }
+
         public string Info_GetApplydate()
         {
-            string result = "Apply Date:" + data.createDate.ToString("yyyy-MM-dd");
+            string result = data.createDate.ToString("yyyy-MM-dd");
             return result;
         }
 
