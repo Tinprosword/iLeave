@@ -144,6 +144,7 @@ namespace WEBUI.Pages
             //staff
             this.tb_staff.SetTip(tip);
             this.tb_staff.Visible = actionType == 0;
+            this.ib_search.Visible = actionType == 0;
         }
 
         public bool BShow_WaitApplyPanel(GlobalVariate.LeaveBigRangeStatus myBigRange, byte states,int action)

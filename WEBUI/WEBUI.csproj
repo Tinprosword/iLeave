@@ -70,6 +70,9 @@
   <ItemGroup>
     <Content Include="Pages\approval_wait.aspx" />
     <Content Include="Pages\ErrorPage.aspx" />
+    <Content Include="Res\images\login_page_bg.jpg" />
+    <Content Include="Res\images\ok2.png" />
+    <Content Include="Res\images\search.png" />
     <Content Include="temp\delete\approvalMain.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />

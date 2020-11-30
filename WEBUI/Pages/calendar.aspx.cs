@@ -55,6 +55,10 @@ namespace WEBUI.Pages
             }
             else if (this.cb_holiday.Checked)
             {
+                this.Calendar1.PreRender += Calendar1_GetStatistic;
+                this.Calendar1.DayRender += Calendar_displayStatistic;
+                this.Calendar1.DayRender += Calendar_displayViewStateCells;
+                this.Calendar1.DayRender += Calendar_displaySelectCell;
                 RegisterClickCellEventAndSetCanlendarValue();
             }
 
@@ -93,7 +97,7 @@ namespace WEBUI.Pages
 
             if (this.cb_leave.Checked)
             {
-                this.divTip.Visible = true;
+                //this.divTip.Visible = true;
                 this.leaveDiv.Visible = true;
                 this.rosterDiv.Visible = false;
                 var repeaterSource = BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(this.Calendar1.SelectedDate, eid);
@@ -102,7 +106,7 @@ namespace WEBUI.Pages
             }
             else if (this.cb_holiday.Checked)
             {
-                this.divTip.Visible = false;
+                //this.divTip.Visible = false;
                 this.leaveDiv.Visible = false;
                 this.rosterDiv.Visible = true;
                 var repeaterSource = BLL.calendar.GetRoster(this.Calendar1.SelectedDate, eid);
@@ -367,20 +371,20 @@ namespace WEBUI.Pages
         #region show holiday
         protected void cb_leave_CheckedChanged(object sender, EventArgs e)
         {
-            this.Calendar1.PreRender += Calendar1_GetStatistic;
-            this.Calendar1.DayRender += Calendar_displayStatistic;
-            this.Calendar1.DayRender += Calendar_displayViewStateCells;
-            this.Calendar1.DayRender += Calendar_displaySelectCell;
+            //this.Calendar1.PreRender += Calendar1_GetStatistic;
+            //this.Calendar1.DayRender += Calendar_displayStatistic;
+            //this.Calendar1.DayRender += Calendar_displayViewStateCells;
+            //this.Calendar1.DayRender += Calendar_displaySelectCell;
 
             SetupRepeater();
         }
 
         protected void cb_holiday_CheckedChanged(object sender, EventArgs e)
         {
-            this.Calendar1.PreRender -= Calendar1_GetStatistic;
-            this.Calendar1.DayRender -= Calendar_displayStatistic;
-            this.Calendar1.DayRender -= Calendar_displayViewStateCells;
-            this.Calendar1.DayRender -= Calendar_displaySelectCell;
+            //this.Calendar1.PreRender -= Calendar1_GetStatistic;
+            //this.Calendar1.DayRender -= Calendar_displayStatistic;
+            //this.Calendar1.DayRender -= Calendar_displayViewStateCells;
+            //this.Calendar1.DayRender -= Calendar_displaySelectCell;
 
             SetupRepeater();
         }
