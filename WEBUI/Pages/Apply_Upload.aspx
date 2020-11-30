@@ -12,6 +12,7 @@
                         <table>
                             <tr><td>
                                 <div style="height:100px; width:100px; float:left; padding-top:10px; padding-left:2px;">
+ 
                                     <asp:Image ID="Image1" runat="server" ImageUrl="<%# ((MODEL.Apply.App_AttachmentInfo)Container.DataItem).reduceAttendance_Image_RelatePath %>"  Height="100%" Width="100%" />
                                 </div>
                                 <div style="height:30px; width:30px; float:left; position:relative; left:-15px; top:0px;">
