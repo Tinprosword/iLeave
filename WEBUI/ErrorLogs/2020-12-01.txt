@@ -1,0 +1,307 @@
+ip:::1
+DataTime：2020/12/1 9:24:17
+Url：http://localhost:8091/Login.aspx
+Message：由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.19.200:9999
+Source：System
+Type：System.Net.Sockets.SocketException
+Function：Void DoConnect(System.Net.EndPoint, System.Net.SocketAddress)
+Trace：   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+********************************************************************************************
+ip:::1
+DataTime：2020/12/1 9:41:08
+Url：http://localhost:8091/pages/apply.aspx
+Message：客户端发现响应内容类型为“text/html; charset=utf-8”，但应为“text/xml”。
+请求失败，错误信息为:
+--
+<html>
+    <head>
+        <title>运行时错误</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>“/DW-iHR/BLL”应用程序中的服务器错误。<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>运行时错误</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> 说明: </b>服务器上出现应用程序错误。此应用程序的当前自定义错误设置禁止远程查看应用程序错误的详细信息(出于安全原因)。但可以通过在本地服务器计算机上运行的浏览器查看。
+            <br><br>
+
+            <b>详细信息:</b> 若要使他人能够在远程计算机上查看此特定错误消息的详细信息，请在位于当前 Web 应用程序根目录下的“web.config”配置文件中创建一个 <customErrors> 标记。然后应将此 <customErrors> 标记的“mode”属性设置为“Off”。<br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+<!-- Web.Config 配置文件 -->
+
+<configuration>
+    <system.web>
+        <customErrors mode="Off"/>
+    </system.web>
+</configuration></pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b>注释:</b> 通过修改应用程序的 <customErrors> 配置标记的“defaultRedirect”属性，使之指向自定义错误页的 URL，可以用自定义错误页替换所看到的当前错误页。<br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+<!-- Web.Config 配置文件 -->
+
+<configuration>
+    <system.web>
+        <customErrors mode="RemoteOnly" defaultRedirect="mycustompage.htm"/>
+    </system.web>
+</configuration></pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+    </body>
+</html>
+
+--.
+Source：System.Web.Services
+Type：System.InvalidOperationException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.IsLogin()
+   在 BLL.User_wsref.CheckWsLogin()
+   在 BLL.Leave.GetLeavesByStaffID(Int32 sid)
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2020/12/1 9:41:14
+Url：http://localhost:8091/pages/apply.aspx
+Message：客户端发现响应内容类型为“text/html; charset=utf-8”，但应为“text/xml”。
+请求失败，错误信息为:
+--
+<html>
+    <head>
+        <title>运行时错误</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>“/DW-iHR/BLL”应用程序中的服务器错误。<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>运行时错误</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> 说明: </b>服务器上出现应用程序错误。此应用程序的当前自定义错误设置禁止远程查看应用程序错误的详细信息(出于安全原因)。但可以通过在本地服务器计算机上运行的浏览器查看。
+            <br><br>
+
+            <b>详细信息:</b> 若要使他人能够在远程计算机上查看此特定错误消息的详细信息，请在位于当前 Web 应用程序根目录下的“web.config”配置文件中创建一个 <customErrors> 标记。然后应将此 <customErrors> 标记的“mode”属性设置为“Off”。<br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+<!-- Web.Config 配置文件 -->
+
+<configuration>
+    <system.web>
+        <customErrors mode="Off"/>
+    </system.web>
+</configuration></pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b>注释:</b> 通过修改应用程序的 <customErrors> 配置标记的“defaultRedirect”属性，使之指向自定义错误页的 URL，可以用自定义错误页替换所看到的当前错误页。<br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+<!-- Web.Config 配置文件 -->
+
+<configuration>
+    <system.web>
+        <customErrors mode="RemoteOnly" defaultRedirect="mycustompage.htm"/>
+    </system.web>
+</configuration></pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+    </body>
+</html>
+
+--.
+Source：System.Web.Services
+Type：System.InvalidOperationException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.IsLogin()
+   在 BLL.User_wsref.CheckWsLogin()
+   在 BLL.Leave.GetLeavesByStaffID(Int32 sid)
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2020/12/1 9:41:24
+Url：http://localhost:8091/pages/apply.aspx
+Message：客户端发现响应内容类型为“text/html; charset=utf-8”，但应为“text/xml”。
+请求失败，错误信息为:
+--
+<html>
+    <head>
+        <title>运行时错误</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>“/DW-iHR/BLL”应用程序中的服务器错误。<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>运行时错误</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> 说明: </b>服务器上出现应用程序错误。此应用程序的当前自定义错误设置禁止远程查看应用程序错误的详细信息(出于安全原因)。但可以通过在本地服务器计算机上运行的浏览器查看。
+            <br><br>
+
+            <b>详细信息:</b> 若要使他人能够在远程计算机上查看此特定错误消息的详细信息，请在位于当前 Web 应用程序根目录下的“web.config”配置文件中创建一个 <customErrors> 标记。然后应将此 <customErrors> 标记的“mode”属性设置为“Off”。<br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+<!-- Web.Config 配置文件 -->
+
+<configuration>
+    <system.web>
+        <customErrors mode="Off"/>
+    </system.web>
+</configuration></pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b>注释:</b> 通过修改应用程序的 <customErrors> 配置标记的“defaultRedirect”属性，使之指向自定义错误页的 URL，可以用自定义错误页替换所看到的当前错误页。<br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+<!-- Web.Config 配置文件 -->
+
+<configuration>
+    <system.web>
+        <customErrors mode="RemoteOnly" defaultRedirect="mycustompage.htm"/>
+    </system.web>
+</configuration></pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+    </body>
+</html>
+
+--.
+Source：System.Web.Services
+Type：System.InvalidOperationException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.IsLogin()
+   在 BLL.User_wsref.CheckWsLogin()
+   在 BLL.Leave.GetLeavesByStaffID(Int32 sid)
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2020/12/1 10:16:33
+Url：http://localhost:8091/Pages/Apply_Upload.aspx
+Message：无法将类型为“System.Web.UI.WebControls.ImageButton”的对象强制转换为类型“System.Web.UI.WebControls.LinkButton”。
+Source：WEBUI
+Type：System.InvalidCastException
+Function：Void linkbtn_file_Click(System.Object, System.EventArgs)
+Trace：   在 WEBUI.Pages.Apply_Upload.linkbtn_file_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.ImageButton.OnClick(ImageClickEventArgs e)
+   在 System.Web.UI.WebControls.ImageButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

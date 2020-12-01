@@ -116,17 +116,30 @@ namespace WEBUI.Pages
 
         protected void linkbtn_file_Click(object sender, EventArgs e)
         {
-            LinkButton linkButton = (LinkButton)sender;
-            string filePath = Server.MapPath(linkButton.CommandArgument);
+            string filePath = "";
+            string augument = "";
+            if (sender is LinkButton)
+            {
+                LinkButton linkButton = (LinkButton)sender;
+                filePath = Server.MapPath(linkButton.CommandArgument);
+                augument = linkButton.CommandArgument;
+            }
+            else
+            {
+                ImageButton imageButton = (ImageButton)sender;
+                filePath = Server.MapPath(imageButton.CommandArgument);
+                augument = imageButton.CommandArgument;
+            }
+            
             bool isimage= LSLibrary.FileUtil.IsImagge(System.IO.Path.GetFileName(filePath));
 
             if (isimage)
             {
-                Response.Redirect("showpic2.aspx?path=" + HttpUtility.HtmlEncode(linkButton.CommandArgument));
+                Response.Redirect("showpic2.aspx?path=" + HttpUtility.HtmlEncode(augument));
             }
             else
             {
-                Response.Redirect(linkButton.CommandArgument);
+                Response.Redirect(augument);
             }
         }
     }

@@ -4,11 +4,11 @@
 //}
 
 
-//iphone 没有camena。                                       no
+//bll 需要分开出去                                          no
 //TODO IMG->BIG IMG                                         no
 //approvar remark                                           no
 //check workflow                                            no
-
+//iphone 没有camena。                                       no
 
 //DETAIL -> MARGIN LEFT 2 SPACE .                           ok
 //CALEDA .SEARCH ICON.                                      yes
