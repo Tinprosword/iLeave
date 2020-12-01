@@ -6,7 +6,7 @@
 //probably bug:detail change states 1 to 2 hardcode.
 
 
-
+//status display is too long.                               no
 //for picture, please keep same width and high ratio , now it changed the picutre layout
 //change user = Logout = 登出 put right top. use door.      no
 //bll 需要分开出去                                          no
@@ -16,17 +16,18 @@
 //iphone 没有camena。                                       no
 
 
+//name                                                      ok.
 //hidden change server                                      ok.
 //todo margin is too                                        ok.
 //delete enumber.                                           ok.
 //Approved on 2020-12-01                                    ok.
 //put <   in center of page.                                ok.
-//DETAIL -> MARGIN LEFT 2 SPACE .                           ok
+//DETAIL -> MARGIN LEFT 2 SPACE .                           ok 
 //CALEDA .SEARCH ICON.                                      yes
 //order by FirstEmploymentID,employmentnumber . calendar.   yes
 //FULL DAY. DAY(S)                                          yes
 //DETIAL 1.2.3. LINE. DELETE TITLE.                         yes
-// APPLY->NEW PEN HIS.                                      ok
+// APPLY->NEW PEN HIS.                                      ok 
 //tod Full Day DDL.                                         yes
 
 
@@ -34,7 +35,7 @@
 //todo calendar ->add button.                               ok.
 //todo zone code-zone desc- contractid.                     ok.
 //defualt->full day show all                                ok.
-//3 section -?三节.                                         ok
+//3 section -?三节.                                         ok 
 //todo ddl 2020 wait_.aspx.                                 ok.
 //detail 仲文                                               ok.
 //detial 靠右边数字                                         ok.

@@ -142,10 +142,29 @@ namespace BLL
                 Dictionary<ApprovalRequestStatus, string> temp = new Dictionary<ApprovalRequestStatus, string>();
                 temp.Add(ApprovalRequestStatus.WAIT_FOR_APPROVE, "Wait for approval");
                 temp.Add(ApprovalRequestStatus.APPROVE, "Approved");
-                temp.Add(ApprovalRequestStatus.REJECT, "Reject");
+                temp.Add(ApprovalRequestStatus.REJECT, "Rejected");
                 temp.Add(ApprovalRequestStatus.WAIT_FOR_CANCEL, "Wait for cancel");
                 temp.Add(ApprovalRequestStatus.CONFIRM_CANCEL, "Canceled");
                 temp.Add(ApprovalRequestStatus.CANCEL, "Withdraw");
+                temp.Add(ApprovalRequestStatus.NEW, "New");
+                temp.Add(ApprovalRequestStatus.SENDEMAIL, "SendEmail");
+
+                return temp;
+            }
+        }
+
+
+        public static Dictionary<ApprovalRequestStatus, string> RequestActionDesc//作为动作的描述词，用于detail'log
+        {
+            get
+            {
+                Dictionary<ApprovalRequestStatus, string> temp = new Dictionary<ApprovalRequestStatus, string>();
+                temp.Add(ApprovalRequestStatus.WAIT_FOR_APPROVE, "Approved");
+                temp.Add(ApprovalRequestStatus.APPROVE, "Approved");
+                temp.Add(ApprovalRequestStatus.REJECT, "Rejected");
+                temp.Add(ApprovalRequestStatus.WAIT_FOR_CANCEL, "Approve(Cancel leave)");
+                temp.Add(ApprovalRequestStatus.CONFIRM_CANCEL, "Approve(Cancel leave)");
+                temp.Add(ApprovalRequestStatus.CANCEL, "Approve(Cancel leave)");
                 temp.Add(ApprovalRequestStatus.NEW, "New");
                 temp.Add(ApprovalRequestStatus.SENDEMAIL, "SendEmail");
 

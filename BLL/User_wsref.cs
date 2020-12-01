@@ -85,7 +85,11 @@ namespace BLL
             return result;
         }
 
-        
+        public static WebServiceLayer.WebReference_user.PersonBaseinfo[] GetPersonBaseInfoByUid(int uid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfo("u_id=" + uid);
+        }
+
         public static WebServiceLayer.WebReference_user.PersonBaseinfo[] GetPersonBaseInfoByLikeName(string Containname)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfo("p_Nickname like '%" + Containname + "%' or p_Surname like '%" + Containname + "%' or p_othername like '%" + Containname + "%' or p_namech like '%" + Containname + "%' or (p_Surname+' '+p_Othername) like '%"+Containname+"%'");

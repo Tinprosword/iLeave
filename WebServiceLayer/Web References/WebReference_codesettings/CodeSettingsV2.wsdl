@@ -2,6 +2,20 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetSystemParameter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSystemParameterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSystemParameterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetLeaveSections">
         <s:complexType>
           <s:sequence>
@@ -22,14 +36,27 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
         </s:sequence>
       </s:complexType>
+      <s:element name="string" nillable="true" type="s:string" />
       <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="GetSystemParameterSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSystemParameter" />
+  </wsdl:message>
+  <wsdl:message name="GetSystemParameterSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSystemParameterResponse" />
+  </wsdl:message>
   <wsdl:message name="GetLeaveSectionsSoapIn">
     <wsdl:part name="parameters" element="tns:GetLeaveSections" />
   </wsdl:message>
   <wsdl:message name="GetLeaveSectionsSoapOut">
     <wsdl:part name="parameters" element="tns:GetLeaveSectionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSystemParameterHttpPostIn">
+    <wsdl:part name="name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSystemParameterHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="GetLeaveSectionsHttpPostIn">
     <wsdl:part name="leaveClass" type="s:string" />
@@ -39,12 +66,20 @@
     <wsdl:part name="Body" element="tns:ArrayOfInt" />
   </wsdl:message>
   <wsdl:portType name="CodeSettingsV2Soap">
+    <wsdl:operation name="GetSystemParameter">
+      <wsdl:input message="tns:GetSystemParameterSoapIn" />
+      <wsdl:output message="tns:GetSystemParameterSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetLeaveSections">
       <wsdl:input message="tns:GetLeaveSectionsSoapIn" />
       <wsdl:output message="tns:GetLeaveSectionsSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="CodeSettingsV2HttpPost">
+    <wsdl:operation name="GetSystemParameter">
+      <wsdl:input message="tns:GetSystemParameterHttpPostIn" />
+      <wsdl:output message="tns:GetSystemParameterHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetLeaveSections">
       <wsdl:input message="tns:GetLeaveSectionsHttpPostIn" />
       <wsdl:output message="tns:GetLeaveSectionsHttpPostOut" />
@@ -52,6 +87,15 @@
   </wsdl:portType>
   <wsdl:binding name="CodeSettingsV2Soap" type="tns:CodeSettingsV2Soap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSystemParameter">
+      <soap:operation soapAction="http://tempuri.org/GetSystemParameter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetLeaveSections">
       <soap:operation soapAction="http://tempuri.org/GetLeaveSections" style="document" />
       <wsdl:input>
@@ -64,6 +108,15 @@
   </wsdl:binding>
   <wsdl:binding name="CodeSettingsV2Soap12" type="tns:CodeSettingsV2Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSystemParameter">
+      <soap12:operation soapAction="http://tempuri.org/GetSystemParameter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetLeaveSections">
       <soap12:operation soapAction="http://tempuri.org/GetLeaveSections" style="document" />
       <wsdl:input>
@@ -76,6 +129,15 @@
   </wsdl:binding>
   <wsdl:binding name="CodeSettingsV2HttpPost" type="tns:CodeSettingsV2HttpPost">
     <http:binding verb="POST" />
+    <wsdl:operation name="GetSystemParameter">
+      <http:operation location="/GetSystemParameter" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetLeaveSections">
       <http:operation location="/GetLeaveSections" />
       <wsdl:input>

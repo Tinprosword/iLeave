@@ -29,6 +29,8 @@ namespace WebServiceLayer.WebReference_codesettings {
     [System.Web.Services.WebServiceBindingAttribute(Name="CodeSettingsV2Soap", Namespace="http://tempuri.org/")]
     public partial class CodeSettingsV2 : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback GetSystemParameterOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetLeaveSectionsOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
@@ -70,7 +72,39 @@ namespace WebServiceLayer.WebReference_codesettings {
         }
         
         /// <remarks/>
+        public event GetSystemParameterCompletedEventHandler GetSystemParameterCompleted;
+        
+        /// <remarks/>
         public event GetLeaveSectionsCompletedEventHandler GetLeaveSectionsCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetSystemParameter", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetSystemParameter(string name) {
+            object[] results = this.Invoke("GetSystemParameter", new object[] {
+                        name});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetSystemParameterAsync(string name) {
+            this.GetSystemParameterAsync(name, null);
+        }
+        
+        /// <remarks/>
+        public void GetSystemParameterAsync(string name, object userState) {
+            if ((this.GetSystemParameterOperationCompleted == null)) {
+                this.GetSystemParameterOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetSystemParameterOperationCompleted);
+            }
+            this.InvokeAsync("GetSystemParameter", new object[] {
+                        name}, this.GetSystemParameterOperationCompleted, userState);
+        }
+        
+        private void OnGetSystemParameterOperationCompleted(object arg) {
+            if ((this.GetSystemParameterCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetSystemParameterCompleted(this, new GetSystemParameterCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLeaveSections", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -119,6 +153,32 @@ namespace WebServiceLayer.WebReference_codesettings {
                 return true;
             }
             return false;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetSystemParameterCompletedEventHandler(object sender, GetSystemParameterCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetSystemParameterCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetSystemParameterCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
         }
     }
     

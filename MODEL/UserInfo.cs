@@ -43,6 +43,8 @@ namespace MODEL
             moreEmployment = more;
         }
 
+        
+
         public bool hasValidEmploynumber()
         {
             bool result = true;
@@ -53,10 +55,54 @@ namespace MODEL
             return result;
         }
 
-        public string GetDisplayName()
+        //1. Surname + Othername                Leung Shun
+        //2. Surname + Othername or Nick name    Leung Linson
+        //3. Nick Mame + Surname Linson Leung
+        //4. Chinese Name or(1,2,3,)
+        //5. Chinese Name + Nick name
+        public string GetDisplayName(int type)
         {
-            return surname + " " + firstname+" "+namech;
+            if (type == 1)
+            {
+                return surname + " " + firstname;
+            }
+            else if (type == 2)
+            {
+                if (!string.IsNullOrEmpty(firstname))
+                {
+                    return surname + " " + firstname;
+                }
+                else
+                {
+                    return surname + " " + nickname;
+                }
+            }
+            else if (type == 3)
+            {
+                return nickname + " " + surname;
+            }
+            else if (type == 4)
+            {
+                if (!string.IsNullOrEmpty(namech))
+                {
+                    return namech;
+                }
+                else
+                {
+                    return surname + " " + firstname;
+                }
+            }
+            else if (type == 5)
+            {
+                return namech + " " + nickname;
+            }
+            else
+            {
+                return surname + " " + firstname + " " + namech;
+            }
         }
+
+
 
     }
 }

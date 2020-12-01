@@ -29,6 +29,12 @@ namespace WEBUI.webservices
         [WebMethod]
         public string GetLeaveDetail_html(int requestID, int leaveid, int staff, int employmentNo)
         {
+            var namtype = BLL.CodeSetting.GetSystemParameter(BLL.CodeSetting.staffNameFormat);
+            int intnameType = 1;
+            int.TryParse(namtype, out intnameType);
+
+
+
             double balance = BLL.Leave.GetCleanValue(leaveid, staff, employmentNo);
             string strBalance = balance == -99999 ? "--" : balance.ToString("0.###");
             List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> detail = BLL.Leave.GetExtendLeaveDetailsByReuestID(requestID);
@@ -42,7 +48,7 @@ namespace WEBUI.webservices
 
             string leaveList = GenerateHtml(detail);
 
-            string historyList = GenetratHistory(history);
+            string historyList = GenetratHistory(history,intnameType);
 
             string language_title = BLL.MultiLanguageHelper.GetLanguagePacket().approval_title;
             string language_title2 = BLL.MultiLanguageHelper.GetLanguagePacket().approval_approvalHistory;
@@ -115,11 +121,14 @@ namespace WEBUI.webservices
             {
                 result.Append(string.Format(item, ((DateTime)models[i].LeaveFrom).ToString("yyyy-MM-dd"), BLL.GlobalVariate.sections[models[i].Section], BLL.GlobalVariate.sectionsUnit[models[i].Section].ToString(), BLL.Leave.SetBackgroundColor(i)));
             }
-
             return result.ToString();
         }
 
-        private string GenetratHistory(List<WebServiceLayer.WebReference_leave.LeaveHistory> history)
+
+
+
+
+        private string GenetratHistory(List<WebServiceLayer.WebReference_leave.LeaveHistory> history,int nametype)
         {
             string result = "";
             string wraper = @"<table class='col-xs-12 lsu-table-xs4padding lsf-clearPadding' style='margin-bottom:15px;'>
@@ -132,16 +141,28 @@ namespace WEBUI.webservices
 
             string item = @"<tr style='height:15px;{4}'>
                             <td>{5}. {0}</td>
-				            <td colspan='2'>{2} on {1}</td></tr>
+				            <td colspan='2'>{2} on '{1}'</td></tr>
 				            <tr style='height:10px;{4}'><td colspan='4' style='padding-bottom:8px;'>&nbsp;&nbsp;&nbsp;&nbsp;Remark:{3}</td></tr>";
 
 
             if (history.Count > 0)
             {
                 StringBuilder tempresult = new StringBuilder();
+
                 for (int i = 0; i < history.Count; i++)
                 {
-                    tempresult.Append(string.Format(item, history[i].Requester, history[i].ApplyDate.ToString("yyyy-MM-dd"), BLL.GlobalVariate.RequestDesc[(BLL.GlobalVariate.ApprovalRequestStatus)(int)history[i].Status], history[i].Remark, BLL.Leave.SetBackgroundColor(i),(i+1).ToString()));
+                    var users= BLL.User_wsref.GetPersonBaseInfoByUid(history[i].uid).ToList();
+                    string userName = "";
+                    if (users != null && users.Count > 0)
+                    {
+                        MODEL.UserInfo approverInfo = new MODEL.UserInfo((int)users[0].u_id, "", users[0].p_Nickname, "", users[0].e_id, users[0].e_EmploymentNumber, users[0].s_id, users[0].s_StaffNumber, users[0].p_id, users[0].p_Surname, users[0].p_Othername, users[0].p_NameCH, 0, 0, true);
+
+                        userName = approverInfo.GetDisplayName(nametype);
+                    }
+
+                   
+
+                    tempresult.Append(string.Format(item, userName, history[i].ApplyDate.ToString("yyyy-MM-dd"), BLL.GlobalVariate.RequestActionDesc[(BLL.GlobalVariate.ApprovalRequestStatus)(int)history[i].Status], history[i].Remark, BLL.Leave.SetBackgroundColor(i),(i+1).ToString()));
                 }
                 result = string.Format(wraper, tempresult.ToString());
             }
