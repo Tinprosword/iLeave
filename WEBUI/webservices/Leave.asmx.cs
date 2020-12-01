@@ -132,8 +132,7 @@ namespace WEBUI.webservices
 
             string item = @"<tr style='height:15px;{4}'>
                             <td>{5}. {0}</td>
-				            <td>{1}</td>
-				            <td>{2}</td></tr>
+				            <td colspan='2'>{2} on {1}</td></tr>
 				            <tr style='height:10px;{4}'><td colspan='4' style='padding-bottom:8px;'>&nbsp;&nbsp;&nbsp;&nbsp;Remark:{3}</td></tr>";
 
 

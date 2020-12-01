@@ -33,6 +33,19 @@ namespace WEBUI.Pages
             this.lb_serveraddress.Text = myCookie.serverAddress;
             int intLanguagae = (int)myCookie.language;
             this.cb_languagea.SelectedValue = intLanguagae.ToString();
+
+
+            string agent = HttpContext.Current.Request.UserAgent;
+            LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
+
+            if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.pc)
+            {
+                this.panel_changeServer.Visible = false;
+            }
+            else
+            {
+                this.panel_changeServer.Visible = true;
+            }
         }
 
 

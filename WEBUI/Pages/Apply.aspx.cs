@@ -87,7 +87,7 @@ namespace WEBUI.Pages
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current,"~/pages/main.aspx", true);
 
-            this.literal_applier.Text = loginer.userInfo.GetDisplayName()+" (" + loginer.userInfo.employNnumber+")";
+            this.literal_applier.Text = loginer.userInfo.GetDisplayName();
 
             LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.ddl_leavetype, leveTypeData);
             this.ddl_leavetype.SelectedValue = leaveTypeSelectedValue;

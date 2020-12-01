@@ -3,13 +3,24 @@
 //public void openFileChooser(...);
 //}
 
+//probably bug:detail change states 1 to 2 hardcode.
 
+
+
+//for picture, please keep same width and high ratio , now it changed the picutre layout
+//change user = Logout = 登出 put right top. use door.      no
 //bll 需要分开出去                                          no
 //TODO IMG->BIG IMG                                         no
 //approvar remark                                           no
 //check workflow                                            no
 //iphone 没有camena。                                       no
 
+
+//hidden change server                                      ok.
+//todo margin is too                                        ok.
+//delete enumber.                                           ok.
+//Approved on 2020-12-01                                    ok.
+//put <   in center of page.                                ok.
 //DETAIL -> MARGIN LEFT 2 SPACE .                           ok
 //CALEDA .SEARCH ICON.                                      yes
 //order by FirstEmploymentID,employmentnumber . calendar.   yes

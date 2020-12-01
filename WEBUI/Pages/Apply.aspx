@@ -63,10 +63,8 @@
                 </td>
                 <td style="width:30px; vertical-align:bottom;padding-bottom:12px;"><asp:Button ID="btn_apply" runat="server" Text="Submit" BackColor="#2573a4" ForeColor="White" BorderWidth="0" Height="34px" Font-Size="16px" style="border-radius:5px 5px 5px 5px"  OnClick="button_apply_Click"/></td>
             </tr>
-            <tr>
-                <td colspan="3" style="color:red"><asp:Literal ID="literal_errormsga" runat="server" Visible="false"></asp:Literal></td>
-            </tr>
         </table>
+        <div class=" col-xs-12" style="height:16px; color:red;padding-left:15px;"><asp:Literal ID="literal_errormsga" runat="server" Visible="false"></asp:Literal></div>
         <div class=" col-xs-12" style="height:2px"></div>
         <div class="col-xs-12 lsf-clearPadding" style="height:235px; overflow-y:scroll;">
             <table class="col-xs-12 lsu-table-xs">

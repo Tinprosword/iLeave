@@ -32,6 +32,7 @@
                             <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/exitaccount.png"  Width="30px" OnClick="loginout_Click"/>
                         </td>
                     </tr>
+                    <asp:Panel ID="panel_changeServer" runat="server" Visible="true">
                     <tr>
                         <td style="width: 130px">
                             <asp:Literal ID="lt_changeServer" runat="server">更换服务地址</asp:Literal>
@@ -40,6 +41,7 @@
                             <asp:ImageButton ID="btn_changeserver" runat="server" ImageUrl="~/Res/images/changeserver.png"  Width="30px" OnClick="btn_changeserver_Click"/>
                         </td>
                     </tr>
+                    </asp:Panel>
                 </table>
             </div>
 </asp:Content>

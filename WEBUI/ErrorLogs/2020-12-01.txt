@@ -305,3 +305,47 @@ Trace：   在 WEBUI.Pages.Apply_Upload.linkbtn_file_Click(Object sender, EventA
    在 System.Web.UI.WebControls.ImageButton.RaisePostBackEvent(String eventArgument)
    在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
 ********************************************************************************************
+ip:::1
+DataTime：2020/12/1 10:55:03
+Url：http://localhost:8091/Login.aspx
+Message：请求因 HTTP 状态 404 失败: Not Found。
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.AuthenticateUser(String UserName, String PasswordHash)
+   在 BLL.User_wsref.CheckLogin(String uid, String password)
+   在 WEBUI.Login.ProgressLogin(String userid, String password)
+   在 WEBUI.Login.Button1_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2020/12/1 10:55:10
+Url：http://localhost:8091/Login.aspx
+Message：请求因 HTTP 状态 404 失败: Not Found。
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.AuthenticateUser(String UserName, String PasswordHash)
+   在 BLL.User_wsref.CheckLogin(String uid, String password)
+   在 WEBUI.Login.ProgressLogin(String userid, String password)
+   在 WEBUI.Login.Button1_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2020/12/1 10:59:18
+Url：http://localhost:8091/pages/approval_wait.aspx?action=0&applicationtype=0
+Message：远程主机强迫关闭了一个现有的连接。
+Source：System
+Type：System.Net.Sockets.SocketException
+Function：Int32 Receive(Byte[], Int32, Int32, System.Net.Sockets.SocketFlags)
+Trace：   在 System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   在 System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+********************************************************************************************
