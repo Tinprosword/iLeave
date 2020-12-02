@@ -155,12 +155,10 @@ namespace WEBUI.webservices
                     string userName = "";
                     if (users != null && users.Count > 0)
                     {
-                        MODEL.UserInfo approverInfo = new MODEL.UserInfo((int)users[0].u_id, "", users[0].p_Nickname, "", users[0].e_id, users[0].e_EmploymentNumber, users[0].s_id, users[0].s_StaffNumber, users[0].p_id, users[0].p_Surname, users[0].p_Othername, users[0].p_NameCH, 0, 0, true);
+                        MODEL.UserInfo approverInfo = new MODEL.UserInfo((int)users[0].u_id, "", users[0].p_Nickname, "", users[0].e_id, users[0].e_EmploymentNumber, users[0].s_id, users[0].s_StaffNumber, users[0].p_id, users[0].p_Surname, users[0].p_Othername, users[0].p_NameCH, 0, 0, true,false);
 
                         userName = approverInfo.GetDisplayName(nametype);
                     }
-
-                   
 
                     tempresult.Append(string.Format(item, userName, history[i].ApplyDate.ToString("yyyy-MM-dd"), BLL.GlobalVariate.RequestActionDesc[(BLL.GlobalVariate.ApprovalRequestStatus)(int)history[i].Status], history[i].Remark, BLL.Leave.SetBackgroundColor(i),(i+1).ToString()));
                 }

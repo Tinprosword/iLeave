@@ -35,16 +35,14 @@ namespace WEBUI.Pages
             this.cb_languagea.SelectedValue = intLanguagae.ToString();
 
 
-            string agent = HttpContext.Current.Request.UserAgent;
-            LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
 
-            if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.pc)
+            if (loginer.userInfo.isAppLogin)
             {
-                this.panel_changeServer.Visible = false;
+                this.panel_changeServer.Visible = true;
             }
             else
             {
-                this.panel_changeServer.Visible = true;
+                this.panel_changeServer.Visible = false;
             }
         }
 

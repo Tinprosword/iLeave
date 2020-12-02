@@ -103,7 +103,7 @@ namespace WEBUI
                         BLL.Page.MyCookieManage.SetCookie_psw(password);
                     }
 
-                    MODEL.UserInfo userInfo= BLL.User_wsref.GetAndSaveInfoToSession(userid, loginResult);
+                    MODEL.UserInfo userInfo= BLL.User_wsref.GetAndSaveInfoToSession(userid, loginResult,false);
                     if (userInfo != null)
                     {
                         Response.Redirect("~/Pages/chooseEmployment.aspx?pid=" + userInfo.personid+"&sourcetype=1");

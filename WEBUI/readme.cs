@@ -7,7 +7,7 @@
 
 
 
-//不是区分mobile and pc ,rather than app or web             no
+
 //android poweroff put right                                no
 //status display is too long.and need multiLanguage         no
 //approvar remark                                           no
@@ -17,7 +17,7 @@
 //bll 需要分开出去                                          no
 
 
-
+//不是区分mobile and pc ,rather than app or web             ok
 //change user = Logout = 登出 put right top. use door.      ok
 //for picture, please keep same width and high ratio ,      ok
 //name                                                      ok.

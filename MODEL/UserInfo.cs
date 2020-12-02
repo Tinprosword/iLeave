@@ -23,8 +23,9 @@ namespace MODEL
         public int ScreenHeight;
         public int ScreenWidth;
         public bool moreEmployment;
+        public bool isAppLogin;
 
-        public UserInfo(int id, string loginName, string nickname, string sessionid, int? employID, string employNnumber, int? staffid, string staffNumber, int personid,string surname,string firstname,string ch,int sh,int sw,bool more)
+        public UserInfo(int id, string loginName, string nickname, string sessionid, int? employID, string employNnumber, int? staffid, string staffNumber, int personid,string surname,string firstname,string ch,int sh,int sw,bool more,bool isapp)
         {
             this.id = id;
             this.loginName = loginName;
@@ -41,6 +42,7 @@ namespace MODEL
             this.ScreenHeight = sh;
             ScreenWidth = sw;
             moreEmployment = more;
+            isAppLogin = isapp;
         }
 
         

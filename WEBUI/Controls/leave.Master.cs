@@ -88,7 +88,7 @@ namespace WEBUI.Controls
         protected void ib_exit_Click(object sender, ImageClickEventArgs e)
         {
             LSLibrary.WebAPP.LoginManager.Logoff();
-            Response.Redirect("/login.aspx?action=back");
+            BLL.User_wsref.GoBackToLogin();
         }
     }
 }

@@ -131,7 +131,7 @@ namespace BLL
         }
 
         //no person .no employmnet 无法登陆.
-        public static MODEL.UserInfo GetAndSaveInfoToSession(string userid, WebServiceLayer.WebReference_user.LoginResult loginResult)
+        public static MODEL.UserInfo GetAndSaveInfoToSession(string userid, WebServiceLayer.WebReference_user.LoginResult loginResult,bool isAppLogin)
         {
             WebServiceLayer.WebReference_user.t_Person person = BLL.User_wsref.GerPersonByuid(loginResult.Result);
             WebServiceLayer.WebReference_user.PersonBaseinfo personEmplyment = null;
@@ -139,22 +139,22 @@ namespace BLL
             if (person != null)
             {
                 personEmplyment = BLL.User_wsref.GetDefaultLoginEmployment(person.ID);
-                userInfo = SaveInfoToSession(personEmplyment, loginResult.SessionID);
+                userInfo = SaveInfoToSession(personEmplyment, loginResult.SessionID,isAppLogin);
             }
             return userInfo;
         }
 
-        public static MODEL.UserInfo SaveInfoToSession(WebServiceLayer.WebReference_user.PersonBaseinfo personBaseinfo,string sessinonID)
+        public static MODEL.UserInfo SaveInfoToSession(WebServiceLayer.WebReference_user.PersonBaseinfo personBaseinfo,string sessinonID,bool isAppLogin)
         {
             MODEL.UserInfo userInfo = null;
             if (personBaseinfo != null && personBaseinfo.e_id!=null)
             {
-                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, personBaseinfo.e_id, personBaseinfo.e_EmploymentNumber, personBaseinfo.s_id, personBaseinfo.s_StaffNumber, personBaseinfo.p_id, personBaseinfo.p_Surname, personBaseinfo.p_Othername,personBaseinfo.p_NameCH,0,0,false);
+                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, personBaseinfo.e_id, personBaseinfo.e_EmploymentNumber, personBaseinfo.s_id, personBaseinfo.s_StaffNumber, personBaseinfo.p_id, personBaseinfo.p_Surname, personBaseinfo.p_Othername,personBaseinfo.p_NameCH,0,0,false,isAppLogin);
                 LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(personBaseinfo.u_Username, userInfo));
             }
             else if(personBaseinfo != null && personBaseinfo.e_id == null)
             {
-                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, null, null, null, null, personBaseinfo.p_id, "", "",personBaseinfo.p_NameCH,0,0,false);
+                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, null, null, null, null, personBaseinfo.p_id, "", "",personBaseinfo.p_NameCH,0,0,false,isAppLogin);
                 LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(personBaseinfo.u_Username, userInfo));
             }
             return userInfo;
