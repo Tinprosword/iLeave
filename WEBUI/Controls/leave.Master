@@ -28,7 +28,7 @@
                 </div>
                 <div id="Navigation2" class="lss-bannercolor-black" style="line-height:40px;height:40px;" runat="server" visible="false">
                     <div class="col-xs-2" >
-                        <input type="image" src="../Res/images/back2.png" onclick="GOHistory(); return false;" style="width:50px;height:30px;padding-top:5px; padding-bottom:5px" />
+                        <input type="image" src="../Res/images/back2.png" onclick="GOHistory(); return false;" style="width:60px;height:40px;padding-top:8px; padding-bottom:8px;" />
                     </div>
                     <div class="col-xs-6 lsf-center lsf-fontsizem1" style="color:white;font-weight:bold" ><asp:Literal ID="Literal1" runat="server"></asp:Literal></div>
                 </div>

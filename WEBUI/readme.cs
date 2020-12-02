@@ -5,15 +5,13 @@
 
 //probably bug:detail change states 1 to 2 hardcode.
 
-
-
-//status display is too long.and need multiLanguage         no
-//TODO IMG->BIG IMG                                         no
 //iphone 没有camena。                                       no
 //bll 需要分开出去                                          no
 //check workflow                                            no
 
+//TODO IMG->BIG IMG. error:pic gohistory()                  no
 
+//status display is too long.and need multiLanguage         ok
 //approvar remark                                           ok
 //android poweroff put right                                ok
 //不是区分mobile and pc ,rather than app or web             ok
