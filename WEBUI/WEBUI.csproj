@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="Pages\approval_wait.aspx" />
     <Content Include="Pages\ErrorPage.aspx" />
+    <Content Include="Res\images\biger.png" />
     <Content Include="Res\images\changeserver.png" />
     <Content Include="Res\images\exitaccount.png" />
     <Content Include="Res\images\login_page_bg.jpg" />

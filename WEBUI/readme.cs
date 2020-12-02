@@ -7,7 +7,7 @@
 
 
 //status display is too long.                               no
-//for picture, please keep same width and high ratio , now it changed the picutre layout
+
 //change user = Logout = 登出 put right top. use door.      no
 //bll 需要分开出去                                          no
 //TODO IMG->BIG IMG                                         no
@@ -16,6 +16,8 @@
 //iphone 没有camena。                                       no
 
 
+
+//for picture, please keep same width and high ratio ,      ok
 //name                                                      ok.
 //hidden change server                                      ok.
 //todo margin is too                                        ok.
@@ -27,7 +29,7 @@
 //order by FirstEmploymentID,employmentnumber . calendar.   yes
 //FULL DAY. DAY(S)                                          yes
 //DETIAL 1.2.3. LINE. DELETE TITLE.                         yes
-// APPLY->NEW PEN HIS.                                      ok 
+//APPLY->NEW PEN HIS.                                       ok 
 //tod Full Day DDL.                                         yes
 
 
