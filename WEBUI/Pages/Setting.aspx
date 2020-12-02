@@ -24,14 +24,14 @@
                             <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Res/images/changeUser.png"  Width="30px" OnClick="changeUser_Click"/>
                         </td>
                     </tr>--%>
-                    <tr>
+<%--                    <tr>
                         <td style="width: 130px">
                             <asp:Literal ID="lt_language0" runat="server">切换帐户</asp:Literal>
                         </td>
                         <td>
-                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/exitaccount.png"  Width="30px" OnClick="loginout_Click"/>
+                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/exit33.png"  Width="30px" OnClick="loginout_Click"/>
                         </td>
-                    </tr>
+                    </tr>--%>
                     <asp:Panel ID="panel_changeServer" runat="server" Visible="true">
                     <tr>
                         <td style="width: 130px">

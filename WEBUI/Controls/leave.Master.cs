@@ -85,5 +85,10 @@ namespace WEBUI.Controls
             this.PageState.Value = value;
         }
 
+        protected void ib_exit_Click(object sender, ImageClickEventArgs e)
+        {
+            LSLibrary.WebAPP.LoginManager.Logoff();
+            Response.Redirect("/login.aspx?action=back");
+        }
     }
 }

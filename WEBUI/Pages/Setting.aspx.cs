@@ -56,7 +56,6 @@ namespace WEBUI.Pages
         {
             this.lt_address.Text = language.setting_service;
             this.lt_language.Text = language.setting_language;
-            this.lt_language0.Text = language.setting_logout;
             this.lt_changeServer.Text = language.setting_changeLink;
         }
 
@@ -69,14 +68,6 @@ namespace WEBUI.Pages
             LSLibrary.WebAPP.BaseLanguage NewLanguage= BLL.MultiLanguageHelper.GetLanguagePacket(chooseLanguage);
             LoadLableLanguage(NewLanguage);
         }
-
-
-        protected void loginout_Click(object sender, ImageClickEventArgs e)
-        {
-            LSLibrary.WebAPP.LoginManager.Logoff();
-            Response.Redirect("setting.aspx");
-        }
-
 
         private static void OnChangeSettingSendNotice(int languagetype,Literal literal)
         {

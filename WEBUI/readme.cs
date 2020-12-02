@@ -6,17 +6,19 @@
 //probably bug:detail change states 1 to 2 hardcode.
 
 
-//status display is too long.                               no
 
-//change user = Logout = 登出 put right top. use door.      no
-//bll 需要分开出去                                          no
-//TODO IMG->BIG IMG                                         no
+//不是区分mobile and pc ,rather than app or web             no
+//android poweroff put right                                no
+//status display is too long.and need multiLanguage         no
 //approvar remark                                           no
+//TODO IMG->BIG IMG                                         no
 //check workflow                                            no
 //iphone 没有camena。                                       no
+//bll 需要分开出去                                          no
 
 
 
+//change user = Logout = 登出 put right top. use door.      ok
 //for picture, please keep same width and high ratio ,      ok
 //name                                                      ok.
 //hidden change server                                      ok.
@@ -31,8 +33,6 @@
 //DETIAL 1.2.3. LINE. DELETE TITLE.                         yes
 //APPLY->NEW PEN HIS.                                       ok 
 //tod Full Day DDL.                                         yes
-
-
 //todo  tab color.                                          yes
 //todo calendar ->add button.                               ok.
 //todo zone code-zone desc- contractid.                     ok.

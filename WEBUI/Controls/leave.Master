@@ -21,10 +21,10 @@
             <div class="row">
                 <div id="Navigation" class="lss-bannercolor-black" style="line-height:40px;height:40px;" runat="server" visible="false">
                     <div class="col-xs-1 lsf-clearPadding" style="height:40px;">
-                        <asp:ImageButton ID="ib_back" runat="server" ImageUrl="~/Res/images/back2.png" Width="50px" Height="40px" style="padding-top:8px;padding-bottom:8px;padding-left:6px;"/>
+                        <asp:ImageButton ID="ib_back" runat="server" ImageUrl="~/Res/images/back2.png" Width="60px" Height="40px" style="padding-top:8px;padding-bottom:8px;padding-left:6px;"/>
                     </div>
                     <div class="col-xs-9 lsf-center lsf-fontsizem1" style="color:white;font-weight:bold" ><asp:Literal ID="label_title" runat="server"></asp:Literal></div>
-                    <div class="col-xs-1" >&nbsp;</div>
+                    <div class="col-xs-1" ><asp:ImageButton ID="ib_exit" OnClick="ib_exit_Click" runat="server" ImageUrl="~/Res/images/exit33.png" Width="39px" Height="40px" style="padding-top:6px;padding-bottom:5px;"/></div>
                 </div>
                 <div id="Navigation2" class="lss-bannercolor-black" style="line-height:40px;height:40px;" runat="server" visible="false">
                     <div class="col-xs-2" >
