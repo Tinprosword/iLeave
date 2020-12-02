@@ -98,7 +98,7 @@ namespace BLL
         {
             int result = -1;//默认为一般错误
             WebServiceLayer.MyWebService.WebServicesHelper webServicesHelper = WebServiceLayer.MyWebService.WebServicesHelper.GetInstance();
-            List<WebServiceLayer.WebReference_leave.StaffLeaveRequest> detail = GenerateLeaveRequest(originDetail, userid, employmentid);
+            List<WebServiceLayer.WebReference_leave.StaffLeaveRequest> detail = GenerateLeaveRequest(originDetail, userid, employmentid,remarks);
 
             messageInfo = new WebServiceLayer.WebReference_leave.ErrorMessageInfo();
             try
@@ -115,7 +115,7 @@ namespace BLL
         }
 
 
-        private static List<WebServiceLayer.WebReference_leave.StaffLeaveRequest> GenerateLeaveRequest(List<MODEL.Apply.apply_LeaveData> originDetail, int uid, int employmentID)
+        private static List<WebServiceLayer.WebReference_leave.StaffLeaveRequest> GenerateLeaveRequest(List<MODEL.Apply.apply_LeaveData> originDetail, int uid, int employmentID,string remark)
         {
             List<WebServiceLayer.WebReference_leave.StaffLeaveRequest> result = new List<WebServiceLayer.WebReference_leave.StaffLeaveRequest>();
 
@@ -146,7 +146,7 @@ namespace BLL
                     newItem.LeaveTypeName = originDetail[i].leavetypeDescription;
                     newItem.Name = null;
                     newItem.NameCH = null;
-                    newItem.Remarks = "";
+                    newItem.Remarks = remark;
                     newItem.RequestID = 0;
                     newItem.Section = originDetail[i].sectionid;
                     newItem.Status = 0;

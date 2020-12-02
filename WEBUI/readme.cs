@@ -7,21 +7,21 @@
 
 
 
-
-//android poweroff put right                                no
 //status display is too long.and need multiLanguage         no
-//approvar remark                                           no
 //TODO IMG->BIG IMG                                         no
-//check workflow                                            no
 //iphone 没有camena。                                       no
 //bll 需要分开出去                                          no
+//check workflow                                            no
 
 
+//approvar remark                                           ok
+//android poweroff put right                                ok
 //不是区分mobile and pc ,rather than app or web             ok
 //change user = Logout = 登出 put right top. use door.      ok
 //for picture, please keep same width and high ratio ,      ok
 //name                                                      ok.
 //hidden change server                                      ok.
+
 //todo margin is too                                        ok.
 //delete enumber.                                           ok.
 //Approved on 2020-12-01                                    ok.
