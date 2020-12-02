@@ -180,7 +180,7 @@ namespace WEBUI.Pages
         public bool BShow_UserApprovedPanel(GlobalVariate.LeaveBigRangeStatus myBigRange, byte states, int action)
         {
             bool result = false;
-            if (myBigRange == GlobalVariate.LeaveBigRangeStatus.approvaled && states == (int)BLL.GlobalVariate.ApprovalRequestStatus.APPROVE && action == 1)
+            if (myBigRange == GlobalVariate.LeaveBigRangeStatus.beyongdWait && states == (int)BLL.GlobalVariate.ApprovalRequestStatus.APPROVE && action == 1)
             {
                 result = true;
             }
