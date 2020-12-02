@@ -16,16 +16,6 @@ namespace WEBUI.webservices
     [System.Web.Script.Services.ScriptService]
     public class Leave : System.Web.Services.WebService
     {
-        //[WebMethod]
-        //public Data_GetLeaveDetail GetLeaveDetail(int requestID,int leaveCode,int staff,int employmentNo)
-        //{
-        //    Data_GetLeaveDetail data = new Data_GetLeaveDetail();
-
-        //    data.balance = BLL.Leave.GetCleanValue(leaveCode, staff, employmentNo);
-        //    data.detail = BLL.Leave.GetExtendLeaveDetailsByReuestID(requestID);
-        //    return data;
-        //}
-
         [WebMethod]
         public string GetLeaveDetail_html(int requestID, int leaveid, int staff, int employmentNo)
         {
@@ -139,11 +129,12 @@ namespace WEBUI.webservices
 		                        </table>";
 
 
-            string item = @"<tr style='height:15px;{4}'>
-                            <td>{5}. {0}</td>
-				            <td colspan='2'>{2} on '{1}'</td></tr>
-				            <tr style='height:10px;{4}'><td colspan='4' style='padding-bottom:8px;'>&nbsp;&nbsp;&nbsp;&nbsp;Remark:{3}</td></tr>";
+            string item1 = @"<tr style='height:15px;'>
+				            <td colspan='3'>{5}. {0} {2} on {1}</td></tr>
+				            <tr><td colspan='4'><div style='border:solid 1px #696969;padding-left:4px;margin-left:16px;margin-right:4px'>{3}</div></td></tr>";
 
+            string item2 = @"<tr style='height:15px;'>
+				            <td colspan='3'>{5}. {0} {2} on {1}</td></tr>";
 
             if (history.Count > 0)
             {
@@ -159,8 +150,14 @@ namespace WEBUI.webservices
 
                         userName = approverInfo.GetDisplayName(nametype);
                     }
-
-                    tempresult.Append(string.Format(item, userName, history[i].ApplyDate.ToString("yyyy-MM-dd"), BLL.GlobalVariate.RequestActionDesc[(BLL.GlobalVariate.ApprovalRequestStatus)(int)history[i].Status], history[i].Remark, BLL.Leave.SetBackgroundColor(i),(i+1).ToString()));
+                    if (!string.IsNullOrEmpty(history[i].Remark))
+                    {
+                        tempresult.Append(string.Format(item1, userName, history[i].ApplyDate.ToString("yyyy-MM-dd"), BLL.GlobalVariate.RequestActionDesc[(BLL.GlobalVariate.ApprovalRequestStatus)(int)history[i].Status], history[i].Remark, BLL.Leave.SetBackgroundColor(i), (i + 1).ToString()));
+                    }
+                    else
+                    {
+                        tempresult.Append(string.Format(item2, userName, history[i].ApplyDate.ToString("yyyy-MM-dd"), BLL.GlobalVariate.RequestActionDesc[(BLL.GlobalVariate.ApprovalRequestStatus)(int)history[i].Status], history[i].Remark, BLL.Leave.SetBackgroundColor(i), (i + 1).ToString()));
+                    }
                 }
                 result = string.Format(wraper, tempresult.ToString());
             }

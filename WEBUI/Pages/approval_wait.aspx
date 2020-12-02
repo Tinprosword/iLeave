@@ -30,7 +30,7 @@
             <asp:Label ID="lb_errormsg" runat="server" class="col-xs-12" style="color:red; height:12px">hiabc</asp:Label>
         </div>
     </div>
-    <div class="row" style="padding-bottom:0px;margin-top:1px; height:510px;overflow-y:scroll">
+    <div class="row" style="padding-bottom:0px;margin-top:1px; height:500px;overflow-y:scroll">
         <asp:Repeater ID="rp_list" runat="server">
             <ItemTemplate>
                 <div class="col-xs-12" style=" line-height:8px;text-align:center;padding:0px;  margin:0px; padding-top:1px; padding-bottom:4px" onclick="MyPostBack('detail',<%#((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID %>)">
