@@ -19,8 +19,8 @@
 //不是区分mobile and pc ,rather than app or web             ok
 //change user = Logout = 登出 put right top. use door.      ok
 //for picture, please keep same width and high ratio ,      ok
-//name                                                      ok.
-//hidden change server                                      ok.
+//name                                                      ok
+//hidden change server                                      ok
 
 //todo margin is too                                        ok.
 //delete enumber.                                           ok.

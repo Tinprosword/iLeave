@@ -134,7 +134,7 @@ namespace WEBUI.webservices
 				            <tr><td colspan='4'><div style='border:solid 1px #696969;padding-left:4px;margin-left:16px;margin-right:4px'>{3}</div></td></tr>";
 
             string item2 = @"<tr style='height:15px;'>
-				            <td colspan='3'>{5}. {0} {2} on {1}</td></tr>";
+				            <td colspan='3'>{5}. {0} {2} {1}</td></tr>";
 
             if (history.Count > 0)
             {

@@ -159,14 +159,14 @@ namespace BLL
             get
             {
                 Dictionary<ApprovalRequestStatus, string> temp = new Dictionary<ApprovalRequestStatus, string>();
-                temp.Add(ApprovalRequestStatus.WAIT_FOR_APPROVE, "Approved");
-                temp.Add(ApprovalRequestStatus.APPROVE, "Approved");
-                temp.Add(ApprovalRequestStatus.REJECT, "Rejected");
-                temp.Add(ApprovalRequestStatus.WAIT_FOR_CANCEL, "Approve(Cancel leave)");
-                temp.Add(ApprovalRequestStatus.CONFIRM_CANCEL, "Approve(Cancel leave)");
-                temp.Add(ApprovalRequestStatus.CANCEL, "Approve(Cancel leave)");
-                temp.Add(ApprovalRequestStatus.NEW, "New");
-                temp.Add(ApprovalRequestStatus.SENDEMAIL, "SendEmail");
+                temp.Add(ApprovalRequestStatus.WAIT_FOR_APPROVE, BLL.MultiLanguageHelper.GetLanguagePacket().approval_approvedon);
+                temp.Add(ApprovalRequestStatus.APPROVE, BLL.MultiLanguageHelper.GetLanguagePacket().approval_approvedon);
+                temp.Add(ApprovalRequestStatus.REJECT, BLL.MultiLanguageHelper.GetLanguagePacket().approval_rejectedon);
+                temp.Add(ApprovalRequestStatus.WAIT_FOR_CANCEL, BLL.MultiLanguageHelper.GetLanguagePacket().approval_appcancelon);
+                temp.Add(ApprovalRequestStatus.CONFIRM_CANCEL, BLL.MultiLanguageHelper.GetLanguagePacket().approval_appcancelon);
+                temp.Add(ApprovalRequestStatus.CANCEL, BLL.MultiLanguageHelper.GetLanguagePacket().approval_appcancelon);
+                temp.Add(ApprovalRequestStatus.NEW, "New on");
+                temp.Add(ApprovalRequestStatus.SENDEMAIL, "SendEmail on");
 
                 return temp;
             }
