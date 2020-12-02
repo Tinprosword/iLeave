@@ -3,13 +3,14 @@
 //public void openFileChooser(...);
 //}
 
-//probably bug:detail change states 1 to 2 hardcode.
 
+//probably bug:detail change states 1 to 2 hardcode.        no
 //iphone 没有camena。                                       no
 //bll 需要分开出去                                          no
 //check workflow                                            no
-
 //TODO IMG->BIG IMG. error:pic gohistory()                  no
+
+
 
 //status display is too long.and need multiLanguage         ok
 //approvar remark                                           ok
@@ -20,29 +21,30 @@
 //name                                                      ok
 //hidden change server                                      ok
 
-//todo margin is too                                        ok.
-//delete enumber.                                           ok.
-//Approved on 2020-12-01                                    ok.
-//put <   in center of page.                                ok.
-//DETAIL -> MARGIN LEFT 2 SPACE .                           ok 
-//CALEDA .SEARCH ICON.                                      yes
-//order by FirstEmploymentID,employmentnumber . calendar.   yes
-//FULL DAY. DAY(S)                                          yes
-//DETIAL 1.2.3. LINE. DELETE TITLE.                         yes
-//APPLY->NEW PEN HIS.                                       ok 
-//tod Full Day DDL.                                         yes
-//todo  tab color.                                          yes
-//todo calendar ->add button.                               ok.
-//todo zone code-zone desc- contractid.                     ok.
-//defualt->full day show all                                ok.
-//3 section -?三节.                                         ok 
-//todo ddl 2020 wait_.aspx.                                 ok.
-//detail 仲文                                               ok.
-//detial 靠右边数字                                         ok.
-//apply remark ：出来。                                     ok.
-//todo calendar show adminer's apply.                       ok.
-//action need to detail msg.                                ok.
-//reject 需要remark.                                        ok.
+
+//todo margin is too                                        ok
+//delete enumber.                                           ok
+//Approved on 2020-12-01                                    ok
+//put <   in center of page.                                ok
+//DETAIL -> MARGIN LEFT 2 SPACE .                           ok
+//CALEDA .SEARCH ICON.                                      ok
+//order by FirstEmploymentID,employmentnumber . calendar.   ok
+//FULL DAY. DAY(S)                                          ok
+//DETIAL 1.2.3. LINE. DELETE TITLE.                         ok
+//APPLY->NEW PEN HIS.                                       ok
+//tod Full Day DDL.                                         ok
+//todo  tab color.                                          ok
+//todo calendar ->add button.                               ok
+//todo zone code-zone desc- contractid.                     ok
+//defualt->full day show all                                ok
+//3 section -?三节.                                         ok
+//todo ddl 2020 wait_.aspx.                                 ok
+//detail 仲文                                               ok
+//detial 靠右边数字                                         ok
+//apply remark ：出来。                                     ok
+//todo calendar show adminer's apply.                       ok
+//action need to detail msg.                                ok
+//reject 需要remark.                                        ok
 //todo  pic show bu出来                                     ok(建立晴空的原因)
 //todo history .0.375 0.5 0.1 混合处理                      ok("0.###");
 //todo duplicate zone                                       yes.
