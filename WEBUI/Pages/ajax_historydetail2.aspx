@@ -64,7 +64,7 @@
 		    </tbody>
 		</table>
                          
-		<div class="col-xs-12 lsf-clearPadding" style="width:100%;  height:190px; overflow-y:scroll; overflow-x:hidden;">
+		<div class="col-xs-12 lsf-clearPadding" style="width:100%;  height:190px; overflow-y:scroll; overflow-x:hidden;" id="divlist" runat="server">
 			<table class="col-xs-12 lsu-table-xs4padding lsf-clearPadding">
                 <tbody>
                     <asp:Repeater ID="rp_list" runat="server">

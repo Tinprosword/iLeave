@@ -47,11 +47,13 @@ namespace WEBUI.Pages
 
                 //history
                 List<WebServiceLayer.WebReference_leave.LeaveHistory> history = BLL.Leave.GetLeaveHistoryByRequest(requestID);
-                //panel_history.Visible = history.Count == 0 ? false : true;
+                panel_history.Visible = history.Count == 0 ? false : true;
                 this.rp_history.DataSource = history;
                 this.rp_history.DataBind();
 
                 //detail
+                int actureHeight = panel_history.Visible == true ? 190 : 190 + 150+44;
+                this.divlist.Style.Add("height", actureHeight.ToString()+"px");
                 this.rp_list.DataSource = detail;
                 this.rp_list.DataBind();
 
