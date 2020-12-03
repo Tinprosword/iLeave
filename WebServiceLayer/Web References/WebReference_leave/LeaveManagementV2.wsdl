@@ -279,7 +279,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Requester" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="RequesterEmploymentID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="ApplyDate" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="uid" type="s:int" />
@@ -633,6 +633,11 @@
           <s:element minOccurs="0" maxOccurs="1" name="maxLeaveCode" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="paths" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="leaveDesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="p_Surname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="p_Othername" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="p_Nickname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="p_NameCH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="u_Username" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetLeaveMasterByEmploymentID">
@@ -1151,6 +1156,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="isAssociate" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="zonedescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetRoster">

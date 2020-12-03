@@ -91,7 +91,8 @@ namespace WEBUI.Pages
             int intNameType= 1;
             int.TryParse(nameType, out intNameType);
 
-            this.literal_applier.Text = loginer.userInfo.GetDisplayName(intNameType);
+            MODEL.UserName tempUserName = new MODEL.UserName(loginer.userInfo.surname, loginer.userInfo.firstname, loginer.userInfo.nickname, loginer.userInfo.namech);
+            this.literal_applier.Text = tempUserName.GetDisplayName(intNameType);
 
             LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.ddl_leavetype, leveTypeData);
             this.ddl_leavetype.SelectedValue = leaveTypeSelectedValue;

@@ -3128,6 +3128,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private string zonedescriptionField;
         
+        private string codeField;
+        
         /// <remarks/>
         public int employmentid {
             get {
@@ -3185,6 +3187,16 @@ namespace WebServiceLayer.WebReference_leave {
             }
             set {
                 this.zonedescriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
             }
         }
     }
@@ -3805,6 +3817,16 @@ namespace WebServiceLayer.WebReference_leave {
         
         private string leaveDescField;
         
+        private string p_SurnameField;
+        
+        private string p_OthernameField;
+        
+        private string p_NicknameField;
+        
+        private string p_NameCHField;
+        
+        private string u_UsernameField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public System.Nullable<int> WorkflowTypeID {
@@ -4005,6 +4027,56 @@ namespace WebServiceLayer.WebReference_leave {
             }
             set {
                 this.leaveDescField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string p_Surname {
+            get {
+                return this.p_SurnameField;
+            }
+            set {
+                this.p_SurnameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string p_Othername {
+            get {
+                return this.p_OthernameField;
+            }
+            set {
+                this.p_OthernameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string p_Nickname {
+            get {
+                return this.p_NicknameField;
+            }
+            set {
+                this.p_NicknameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string p_NameCH {
+            get {
+                return this.p_NameCHField;
+            }
+            set {
+                this.p_NameCHField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string u_Username {
+            get {
+                return this.u_UsernameField;
+            }
+            set {
+                this.u_UsernameField = value;
             }
         }
     }
@@ -5086,7 +5158,7 @@ namespace WebServiceLayer.WebReference_leave {
         
         private string remarkField;
         
-        private byte statusField;
+        private int statusField;
         
         private int requesterEmploymentIDField;
         
@@ -5135,7 +5207,7 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
-        public byte Status {
+        public int Status {
             get {
                 return this.statusField;
             }

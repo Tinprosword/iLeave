@@ -15,6 +15,7 @@ namespace WEBUI.Pages
         public static string qs_bigRange = "applicationType";
         public static string qs_action = "action";
         private readonly string tip = "Search Staff";
+        private int nametype = 1;
 
         protected int actionType = 0;
         protected GlobalVariate.LeaveBigRangeStatus bigRange = 0;
@@ -28,6 +29,10 @@ namespace WEBUI.Pages
                 int intbig = 0;
                 int.TryParse(Request.QueryString[qs_bigRange], out intbig);
                 bigRange=(GlobalVariate.LeaveBigRangeStatus)intbig;
+
+
+                string nameType = BLL.CodeSetting.GetSystemParameter(BLL.CodeSetting.staffNameFormat);
+                int.TryParse(nameType, out nametype);
             }
             else
             {
@@ -305,6 +310,12 @@ namespace WEBUI.Pages
         protected void ib_search_Click(object sender, ImageClickEventArgs e)
         {
             SetupRepeater();
+        }
+
+        public string GetStaffName(WebServiceLayer.WebReference_leave.LeaveRequestMaster leaveRequestMaster)
+        {
+            MODEL.UserName tempUser = new MODEL.UserName(leaveRequestMaster.p_Surname, leaveRequestMaster.p_Othername, leaveRequestMaster.p_Nickname, leaveRequestMaster.p_NameCH);
+            return tempUser.GetDisplayName(nametype);
         }
     }
 }

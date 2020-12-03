@@ -3,15 +3,35 @@
 //public void openFileChooser(...);
 //}
 
+//check layout                                              no
+//leave status behind of user name                          no
 
 
+//1.  1.td
+//3. approval history detail:格式
+//1 2020-11-21 Wong Chi Man
+//  Remark: This is reject message
+//  in the first week
 
-//check layout.
+//2 2020-11-21 Wong Chi Man
+//  Remark: This is reject message
+//  in the first week
+
+//3 2020-11-21 Wong Chi Man
+//  Remark: This is reject message
+//  in the first week
+
 //iphone 没有camena。                                       no
 //bll 需要分开出去                                          no
 //check workflow                                            no
 
 
+
+//check all staff name.                                     ok
+//loginout icon                                             ok
+//contract code: zone code -desc  sort by contract code, zone code   ok.
+//calendar deltet tip.                                      ok
+//2.  staff remark mutilline.                               ok
 //status display is too long.and need multiLanguage         ok
 //approvar remark                                           ok
 //android poweroff put right                                ok

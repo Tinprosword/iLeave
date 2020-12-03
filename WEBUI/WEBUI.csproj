@@ -72,6 +72,16 @@
     <Content Include="Pages\ErrorPage.aspx" />
     <Content Include="Res\images\biger.png" />
     <Content Include="Res\images\changeserver.png" />
+    <Content Include="Res\images\exit21.png" />
+    <Content Include="Res\images\exit22.png" />
+    <Content Include="Res\images\exit23.png" />
+    <Content Include="Res\images\exit24.png" />
+    <Content Include="Res\images\exit25.png" />
+    <Content Include="Res\images\exit26.png" />
+    <Content Include="Res\images\exit27.png" />
+    <Content Include="Res\images\exit28.png" />
+    <Content Include="Res\images\exit29.png" />
+    <Content Include="Res\images\exit30.png" />
     <Content Include="Res\images\exit33.png" />
     <Content Include="Res\images\exitaccount.png" />
     <Content Include="Res\images\login_page_bg.jpg" />

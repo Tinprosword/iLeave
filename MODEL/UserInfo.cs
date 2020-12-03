@@ -56,6 +56,22 @@ namespace MODEL
             }
             return result;
         }
+    }
+
+    public class UserName
+    {
+        public string surname;
+        public string firstname;
+        public string nickname;
+        public string namech;
+
+        public UserName(string surname, string firstname, string nickname, string namech)
+        {
+            this.surname = surname;
+            this.firstname = firstname;
+            this.nickname = nickname;
+            this.namech = namech;
+        }
 
         //1. Surname + Othername                Leung Shun
         //2. Surname + Othername or Nick name    Leung Linson
@@ -103,8 +119,5 @@ namespace MODEL
                 return surname + " " + firstname + " " + namech;
             }
         }
-
-
-
     }
 }
