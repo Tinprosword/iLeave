@@ -13,6 +13,24 @@ namespace WEBUI.Pages {
     public partial class ajax_historydetail2 {
         
         /// <summary>
+        /// lt_leavedetail 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_leavedetail;
+        
+        /// <summary>
+        /// lt_bancetitle 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_bancetitle;
+        
+        /// <summary>
         /// lt_balance 控件。
         /// </summary>
         /// <remarks>
@@ -20,6 +38,24 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lt_balance;
+        
+        /// <summary>
+        /// lt_applycount 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_applycount;
+        
+        /// <summary>
+        /// lt_apply 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_apply;
         
         /// <summary>
         /// panel_history 控件。
@@ -31,6 +67,15 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Panel panel_history;
         
         /// <summary>
+        /// lt_historytitle 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_historytitle;
+        
+        /// <summary>
         /// rp_history 控件。
         /// </summary>
         /// <remarks>
@@ -38,6 +83,15 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rp_history;
+        
+        /// <summary>
+        /// lt_col1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_col1;
         
         /// <summary>
         /// Literal1 控件。
@@ -49,6 +103,15 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Literal Literal1;
         
         /// <summary>
+        /// lt_col2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_col2;
+        
+        /// <summary>
         /// Literal2 控件。
         /// </summary>
         /// <remarks>
@@ -58,6 +121,15 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Literal Literal2;
         
         /// <summary>
+        /// lt_col3 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_col3;
+        
+        /// <summary>
         /// Literal3 控件。
         /// </summary>
         /// <remarks>
@@ -65,5 +137,14 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal Literal3;
+        
+        /// <summary>
+        /// rp_list 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rp_list;
     }
 }
