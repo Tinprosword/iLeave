@@ -16,63 +16,6 @@ namespace WEBUI
         {
             
         }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            //this.Label1.Text= TestMultiply.names[TestMultiply.GetLanguageType()];
-            book c = new book();
-            c.id = 1;
-            c.name = "c";
-
-            MODEL.Apply.ViewState_page vsp = new MODEL.Apply.ViewState_page();
-
-
-            string cc= LSLibrary.MyJson.SObj(vsp);
-            this.Label1.Text = cc;
-        }
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            string json1 = this.Label1.Text;
-            var a= LSLibrary.MyJson.UnSObj<MODEL.Apply.ViewState_page>(json1);
-            int b = 4;
-        }
-
-        public class book
-        {
-            public int id = 4;
-            public string name = "c";
-        }
-
-        private class TestMultiply
-        {
-            public static string[] names = new string[] { "v1", "v2" };
-
-            public static int GetLanguageType()
-            {
-                return 1; // assume get value from cooike.
-            }
-        }
-
-
-        public void addNumber(int number)
-        {
-            var watermarkedStream = new MemoryStream();
-            using (var img = System.Drawing.Image.FromStream(File.OpenRead(@"D:\_\WatermarkDemo.png")))
-            {
-                using (var graphic = System.Drawing.Graphics.FromImage(img))
-                {
-                    var font = new Font("微软雅黑", 30, FontStyle.Bold, GraphicsUnit.Pixel);
-                    var color = Color.FromArgb(128, 255, 255, 255);
-                    var brush = new SolidBrush(color);
-                    var point = new Point(img.Width - 130, img.Height - 50);
-
-                    graphic.DrawString("1", font, brush, point);
-                    img.Save(watermarkedStream, ImageFormat.Png);
-                }
-            }
-        }
-
         
     }
 }

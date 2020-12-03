@@ -9,11 +9,26 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Button" />
-        </div>
+        <table style="width: 100%; ">
+            <tr style="table-layout:fixed"><td colspan="3">aaa</td></tr>
+            <tbody style="overflow-y:auto; height:15px">
+            <tr>
+                <td>&nbsp;1</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp2;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp3;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+                </tbody>
+        </table>
     </form>
 </body>
 </html>
