@@ -4,12 +4,12 @@
 //}
 
 
-//probably bug:detail change states 1 to 2 hardcode.        no
+
+
+//check layout.
 //iphone 没有camena。                                       no
 //bll 需要分开出去                                          no
 //check workflow                                            no
-//TODO IMG->BIG IMG. error:pic gohistory()                  no
-
 
 
 //status display is too long.and need multiLanguage         ok
@@ -53,7 +53,7 @@
 //todo tab color.                                           ok
 
 
-//todo 按钮的高度                                           yes3*
+//todo 按钮的高度                                           yes
 //todo 日历的样式.丢失图片									ok
 //todo fix height by one key.                               ok
 //todo submiting  success(response.re) .failure(msg)        ok
@@ -93,3 +93,10 @@
 
 //todo page页面的多层继承写的不错，可以总结下了。 
 //todo f5 刷新问题
+
+
+
+
+
+//probably bug:detail change states 1 to 2 hardcode.        flag
+//TODO IMG->BIG IMG. error:pic gohistory()                  flag

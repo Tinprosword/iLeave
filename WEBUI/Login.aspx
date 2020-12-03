@@ -35,7 +35,7 @@
                     </tr>
 
                     <tr><td colspan="1"></td>
-                        <td colspan="2" style=""><asp:Button ID="Button1" runat="server" Text="Login"  Width="90%" BackColor="#588da7" Height="26px" BorderWidth="0" OnClick="Button1_Click"/></td>
+                        <td colspan="2" style=""><asp:Button ID="Button1" runat="server" Text="Login"  Width="90%" BackColor="#588da7" Height="30px" BorderWidth="0" OnClick="Button1_Click"/></td>
                     </tr>
                     <tr style="height:20px;">
                         <td></td>

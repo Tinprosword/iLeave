@@ -264,3 +264,4 @@ __pycache__/
 *.pyc
 /Function
 /DBHelper
+/WEBUI/ErrorLogs/2020-12-03.txt
