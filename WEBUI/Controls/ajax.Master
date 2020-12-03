@@ -1,0 +1,22 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ajax.master.cs" Inherits="WEBUI.Controls.ajax" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="../Res/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../Res/Bootstrap/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet"/>
+    <link href="../Res/datepicker/bootstrap-datepicker-1.9.0/css/bootstrap-datepicker3.min.css" rel="stylesheet"/>
+    <link href="../Res/App/appcss.css" rel="stylesheet" id="appcss" runat="server"/>
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="mycontent" class="row">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

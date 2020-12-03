@@ -91,7 +91,8 @@
     <script>
         function onGetData(obj)
         {
-            $("#ajaxContainer").html(obj);
+            var contentHtml = $(obj).find("#mycontent").html();
+            $("#ajaxContainer").html(contentHtml);
             showWindow('ongetdate');
         }
     </script>

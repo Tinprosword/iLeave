@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pages\ajax_historydetail2.aspx" />
     <Content Include="Pages\approval_wait.aspx" />
     <Content Include="Pages\ErrorPage.aspx" />
     <Content Include="Res\images\biger.png" />
@@ -106,6 +107,20 @@
     <Content Include="Pages\showpic2.aspx" />
     <Content Include="Pages\Test.aspx" />
     <Content Include="Pages\Test.html" />
+    <Compile Include="Controls\ajax.Master.cs">
+      <DependentUpon>ajax.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ajax.Master.designer.cs">
+      <DependentUpon>ajax.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ajax_historydetail2.aspx.cs">
+      <DependentUpon>ajax_historydetail2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ajax_historydetail2.aspx.designer.cs">
+      <DependentUpon>ajax_historydetail2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\approval_wait.aspx.cs">
       <DependentUpon>approval_wait.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -283,6 +298,7 @@
     <Content Include="Res\images\upload2.png" />
     <Content Include="Res\images\changeuser.png" />
     <Content Include="Res\jquery\jquery.min.js" />
+    <Content Include="Controls\ajax.Master" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
