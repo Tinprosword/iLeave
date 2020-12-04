@@ -7,27 +7,6 @@ using System.Web;
 
 
 ////注意ResetUIOnEachLoad,只做一些清除工作, 会有很多工作其实是放入到 事件结尾处,由某个事件所带来的ui更新,并非每次都要
-//public abstract class PageTemplate_logined : PageTemplate_Common
-//{
-
-//    protected abstract void InitPageVaralbal0_OnsessionoutRegisterEvent();
-//    protected abstract void CheckLogin();
-
-//    protected override void Page_Init(object sender, EventArgs e)
-//    {
-//        InitPage_OnBeforeF5RegisterEvent();
-//        isF5 = CheckF5();
-//        InitPageVaralbal0_OnsessionoutRegisterEvent();
-//        //todo how to get session?
-//        //LoginManager.CheckIsLogin();
-//        CheckLogin();
-//        InitPage_OnEachLoadAfterCheckSessionAndF5_1();
-//        if (!IsPostBack)
-//        {
-//            InitPage_OnFirstLoad2();
-//        }
-//    }
-//}
 
 namespace BLL
 {
@@ -45,32 +24,25 @@ namespace BLL
             LSLibrary.WebAPP.LoginManager.OnSessionTimeOutHandler = BLL.User_wsref.GoBackToLogin;
         }
 
-
-    //    InitPage_OnBeforeF5RegisterEvent();
-    //    isF5 = CheckF5();
-    //    InitPage_OnEachLoadAfterCheckSessionAndF5_1();
-    //        if (!IsPostBack)
-    //        {
-    //            InitPage_OnFirstLoad2();
-    //}
-
-    protected override void Page_Init(object sender, EventArgs e)
-    {
-        loginer = BLL.User_wsref.GetLoginer();
-
-        InitPage_OnBeforeF5RegisterEvent();
-        isF5 = CheckF5();
-        InitPageVaralbal0_OnsessionoutRegisterEvent();
-        //todo how to get session?
-        LSLibrary.WebAPP.LoginManager.CheckIsLogin(loginer.userInfo.isAppLogin);
-        InitPage_OnEachLoadAfterCheckSessionAndF5_1();
-        if (!IsPostBack)
+        protected override void Page_Init(object sender, EventArgs e)
         {
-            InitPage_OnFirstLoad2();
-        }
+            loginer = BLL.User_wsref.GetLoginer();
 
-        base.Page_Init(sender, e);
-    }
+            InitPage_OnBeforeF5RegisterEvent();
+            isF5 = CheckF5();
+            InitPageVaralbal0_OnsessionoutRegisterEvent();
+
+            var  mycookie=  BLL.Page.MyCookieManage.GetCookie();
+
+            LSLibrary.WebAPP.LoginManager.CheckIsLogin();
+            InitPage_OnEachLoadAfterCheckSessionAndF5_1();
+            if (!IsPostBack)
+            {
+                InitPage_OnFirstLoad2();
+            }
+
+            base.Page_Init(sender, e);
+        }
 
         protected override void Page_Load(object sender, EventArgs e)
         {

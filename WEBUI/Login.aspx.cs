@@ -98,12 +98,14 @@ namespace WEBUI
                 {
                     if (this.cb_remember.Checked)
                     {
-                        BLL.Page.MyCookieManage.SetCookie_isRmember("1");
-                        BLL.Page.MyCookieManage.SetCookie_name(userid);
-                        BLL.Page.MyCookieManage.SetCookie_psw(password);
+                        var cookie= BLL.Page.MyCookieManage.GetCookie();
+                        cookie.isRemember = "1";
+                        cookie.loginname = userid;
+                        cookie.loginpsw = password;
+                        BLL.Page.MyCookieManage.SetCookie(cookie);
                     }
 
-                    MODEL.UserInfo userInfo= BLL.User_wsref.GetAndSaveInfoToSession(userid, loginResult,false);
+                    MODEL.UserInfo userInfo= BLL.User_wsref.GetAndSaveInfoToSession(userid, loginResult);
                     if (userInfo != null)
                     {
                         Response.Redirect("~/Pages/chooseEmployment.aspx?pid=" + userInfo.personid+"&sourcetype=1");
@@ -147,11 +149,15 @@ namespace WEBUI
         {
             if (!this.cb_remember.Checked)
             {
-                BLL.Page.MyCookieManage.SetCookie_isRmember("0");
+                var myc= BLL.Page.MyCookieManage.GetCookie();
+                myc.isRemember = "0";
+                BLL.Page.MyCookieManage.SetCookie(myc);
             }
             else
             {
-                BLL.Page.MyCookieManage.SetCookie_isRmember("1");
+                var myc = BLL.Page.MyCookieManage.GetCookie();
+                myc.isRemember = "1";
+                BLL.Page.MyCookieManage.SetCookie(myc);
             }
         }
 
@@ -160,7 +166,11 @@ namespace WEBUI
             LinkButton lb = (LinkButton)sender;
 
             LSLibrary.WebAPP.LanguageType selectlang = (LSLibrary.WebAPP.LanguageType)int.Parse(lb.CommandArgument);
-            BLL.Page.MyCookieManage.SetCookie_language(selectlang);
+
+            var myc = BLL.Page.MyCookieManage.GetCookie();
+            myc.language = selectlang;
+            BLL.Page.MyCookieManage.SetCookie(myc);
+
             LSLibrary.WebAPP.BaseLanguage baseLanguage = BLL.MultiLanguageHelper.GetLanguagePacket(selectlang);
             LoadLableLanguage(baseLanguage);
             DisplayLanguage(selectlang);

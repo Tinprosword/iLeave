@@ -18,7 +18,7 @@ namespace BLL.Page
 
     public class MyCookieManage
     {
-        public static readonly string  COOKIE_SERVERADDRESS = "cookie_serveraddress";
+        public static readonly string COOKIE_SERVERADDRESS = "cookie_serveraddress";
         private static readonly string COOKIE_LANGUAGE = "LANGUAGE";
         private static readonly string COOKIE_IsRemember = "IsRemember";
         private static readonly string COOKIE_loginname = "COOKIE_loginname";
@@ -27,44 +27,38 @@ namespace BLL.Page
 
         public static MyCookie GetCookie()
         {
-            LSLibrary.WebAPP.LanguageType languageType = LSLibrary.WebAPP.LanguageType.english;
+            //get each value .if contain null . init cookie  other return value
             string cookieValue = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_LANGUAGE);
-            if (string.IsNullOrWhiteSpace(cookieValue) == false)
+            string address = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_SERVERADDRESS);
+            string isremember = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_IsRemember);
+            string name = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_loginname);
+            string pass = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_pass);
+            string isapp = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_ISAPP);
+
+
+            MyCookie mycookie = new MyCookie();
+            if (cookieValue == null || address == null || isremember == null || name == null || pass == null || isapp == null)
             {
-                try
-                {
-                    languageType = (LSLibrary.WebAPP.LanguageType)(int.Parse(cookieValue));
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+                mycookie.language = LSLibrary.WebAPP.LanguageType.english;
+                mycookie.serverAddress = "";
+                mycookie.isRemember = "0";
+                mycookie.loginname = "";
+                mycookie.loginpsw = "";
+                mycookie.isAppLogin = "0";
+            }
+            else
+            {
+                mycookie.language = (LSLibrary.WebAPP.LanguageType)int.Parse(cookieValue);
+                mycookie.serverAddress = address;
+                mycookie.isRemember = isremember;
+                mycookie.loginname = name;
+                mycookie.loginpsw = pass;
+                mycookie.isAppLogin = isapp;
             }
 
-            string address = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_SERVERADDRESS);
-            address = string.IsNullOrWhiteSpace(address) ? "" : address;
+            SetCookie(mycookie);
 
-            string isremember= LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_IsRemember);
-            isremember= string.IsNullOrWhiteSpace(isremember) ? "" : isremember;
-
-            string name = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_loginname);
-            name = string.IsNullOrWhiteSpace(name) ? "" : name;
-
-            string pass = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_pass);
-            pass = string.IsNullOrWhiteSpace(pass) ? "" : pass;
-
-            string isapp = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_ISAPP);
-            isapp = string.IsNullOrWhiteSpace(isapp) ? "" : isapp;
-
-            MyCookie result = new MyCookie();
-            result.language = languageType;
-            result.serverAddress = address;
-            result.isRemember = isremember;
-            result.loginname = name;
-            result.loginpsw = pass;
-            result.isAppLogin = isapp;
-
-            return result;
+            return mycookie;
         }
 
         public static void SetCookie(MyCookie myCookie)
@@ -77,30 +71,30 @@ namespace BLL.Page
             SetCookie_isapp(myCookie.isAppLogin);
         }
 
-        public static void SetCookie_language(LSLibrary.WebAPP.LanguageType language)
+        private static void SetCookie_language(LSLibrary.WebAPP.LanguageType language)
         {
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_LANGUAGE, ((int)language).ToString(), 360);
         }
 
-        public static void SetCookie_address(string address)
+        private static void SetCookie_address(string address)
         {
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_SERVERADDRESS, address, 360);
         }
 
-        public static void SetCookie_isRmember(string isrem)
+        private static void SetCookie_isRmember(string isrem)
         {
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_IsRemember, isrem, 360);
         }
 
-        public static void SetCookie_name(string name)
+        private static void SetCookie_name(string name)
         {
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_loginname, name, 360);
         }
-        public static void SetCookie_psw(string paw)
+        private static void SetCookie_psw(string paw)
         {
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_pass, paw, 360);
         }
-        public static void SetCookie_isapp(string isapp)
+        private static void SetCookie_isapp(string isapp)
         {
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_ISAPP, isapp, 360);
         }

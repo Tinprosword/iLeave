@@ -88,7 +88,7 @@ namespace WEBUI.Controls
         protected void ib_exit_Click(object sender, ImageClickEventArgs e)
         {
             LSLibrary.WebAPP.LoginManager.Logoff();
-            BLL.User_wsref.GoBackToLogin(((BLL.CustomLoginTemplate)Page).loginer.userInfo.isAppLogin);
+            BLL.User_wsref.GoBackToLogin();
         }
     }
 }

@@ -34,7 +34,7 @@ namespace WEBUI.Pages
             }
             else
             {
-                BLL.User_wsref.GoBackToLogin(loginer.userInfo.isAppLogin);
+                BLL.User_wsref.GoBackToLogin();
             }
         }
 
