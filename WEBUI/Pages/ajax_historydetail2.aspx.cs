@@ -15,6 +15,10 @@ namespace WEBUI.Pages
         private int employmentNo;
         public int lan = 1;
 
+        public static int list_dataheight = 150;
+        public static int historytitleHeight = 150;
+        public static int totalHeight = 155 + list_dataheight + historytitleHeight;
+
         public int nametype = 1;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -52,7 +56,7 @@ namespace WEBUI.Pages
                 this.rp_history.DataBind();
 
                 //detail
-                int actureHeight = panel_history.Visible == true ? 190 : 190 + 150+44;
+                int actureHeight = panel_history.Visible == true ? list_dataheight : list_dataheight + list_dataheight + 30;
                 this.divlist.Style.Add("height", actureHeight.ToString()+"px");
                 this.rp_list.DataSource = detail;
                 this.rp_list.DataBind();

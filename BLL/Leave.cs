@@ -61,7 +61,6 @@ namespace BLL
         //>0 ok:request id. -1 check error -2.insert error
         public static int InsertLeave(List<MODEL.Apply.apply_LeaveData> originDetail, int userid, int employmentid, int? staffid, string remarks, ref string errorMsg)
         {
-            BLL.User_wsref.CheckWsLogin();
 
             errorMsg = "";
             int result = -1;
@@ -422,7 +421,6 @@ namespace BLL
 
         public static List<WebServiceLayer.WebReference_leave.t_Leave> GetLeavesByStaffID(int sid)
         {
-            BLL.User_wsref.CheckWsLogin();
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetAllLeaveTypeByStaffID(sid).ToList();
         }
 

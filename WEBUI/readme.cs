@@ -6,13 +6,12 @@
 
 
 //check layout                                              no
-//exit 5 direction.                                         no
 //iphone 没有camena                                         no
 //bll 需要分开出去                                          no
 //check workflow                                            no
 
 
-
+//exit 5 direction.                                         ok
 //leave status behind of user name                          ok
 //3. approval history detail:格式和高度                     ok
 //1.  1.td                                                  ok

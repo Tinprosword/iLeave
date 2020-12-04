@@ -23,7 +23,7 @@
             <tr>
                 <td><asp:Literal ID="lt_leave" runat="server">Leave</asp:Literal></td>
                 <td colspan="2">
-                    <asp:DropDownList ID="ddl_leavetype" runat="server" Width="90%" AutoPostBack="true" jqname="ddl_leavetype" OnSelectedIndexChanged="ddl_leavetype_SelectedIndexChanged"></asp:DropDownList>
+                    <asp:DropDownList style="height:24px" ID="ddl_leavetype" runat="server" Width="90%" AutoPostBack="true" jqname="ddl_leavetype" OnSelectedIndexChanged="ddl_leavetype_SelectedIndexChanged"></asp:DropDownList>
                 </td>
                 
             </tr>
@@ -38,7 +38,7 @@
             <tr>
                 <td><asp:Literal ID="lt_section" runat="server">Section</asp:Literal></td>
                 <td colspan="2">
-                    <asp:DropDownList ID="dropdl_section" runat="server" Width="90%">
+                    <asp:DropDownList ID="dropdl_section" runat="server" Width="90%" style="height:24px">
                     </asp:DropDownList>
                 </td>
             </tr>

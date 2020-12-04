@@ -319,7 +319,6 @@ input,button,a {outline:0 none;}
 #showdiv 
 {
 	margin:0 auto;
-	height:500px;/*127+ 170+150*/
 	display:none;
 	position:absolute;
 	top:15%;

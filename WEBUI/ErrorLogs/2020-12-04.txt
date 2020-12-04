@@ -14,3 +14,211 @@ Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse
    在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
    在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
 ********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/12/4 14:02:16
+Url：http://192.168.19.210:8091/Pages/main.aspx
+Message：未将对象引用设置到对象的实例。
+Source：BLL
+Type：System.NullReferenceException
+Function：Void Page_Init(System.Object, System.EventArgs)
+Trace：   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2020/12/4 14:27:18
+Url：http://localhost:8091/pages/approval_wait.aspx?action=0&applicationtype=0
+Message：未将对象引用设置到对象的实例。
+Source：BLL
+Type：System.NullReferenceException
+Function：Void Page_Init(System.Object, System.EventArgs)
+Trace：   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2020/12/4 14:27:24
+Url：http://localhost:8091/pages/main.aspx
+Message：未将对象引用设置到对象的实例。
+Source：BLL
+Type：System.NullReferenceException
+Function：Void Page_Init(System.Object, System.EventArgs)
+Trace：   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2020/12/4 14:27:27
+Url：http://localhost:8091/pages/main.aspx
+Message：未将对象引用设置到对象的实例。
+Source：BLL
+Type：System.NullReferenceException
+Function：Void Page_Init(System.Object, System.EventArgs)
+Trace：   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/12/4 14:40:11
+Url：http://192.168.19.210:8091/pages/approval_wait.aspx?action=0&applicationtype=0
+Message：未将对象引用设置到对象的实例。
+Source：BLL
+Type：System.NullReferenceException
+Function：Void Page_Init(System.Object, System.EventArgs)
+Trace：   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/12/4 14:40:14
+Url：http://192.168.19.210:8091/pages/main.aspx
+Message：未将对象引用设置到对象的实例。
+Source：BLL
+Type：System.NullReferenceException
+Function：Void Page_Init(System.Object, System.EventArgs)
+Trace：   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/12/4 14:40:16
+Url：http://192.168.19.210:8091/pages/main.aspx
+Message：未将对象引用设置到对象的实例。
+Source：BLL
+Type：System.NullReferenceException
+Function：Void Page_Init(System.Object, System.EventArgs)
+Trace：   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/12/4 14:40:22
+Url：http://192.168.19.210:8091/pages/main.aspx
+Message：未将对象引用设置到对象的实例。
+Source：BLL
+Type：System.NullReferenceException
+Function：Void Page_Init(System.Object, System.EventArgs)
+Trace：   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/12/4 14:40:30
+Url：http://192.168.19.210:8091/pages/main.aspx
+Message：未将对象引用设置到对象的实例。
+Source：BLL
+Type：System.NullReferenceException
+Function：Void Page_Init(System.Object, System.EventArgs)
+Trace：   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/12/4 14:40:59
+Url：http://192.168.19.210:8091/pages/main.aspx
+Message：未将对象引用设置到对象的实例。
+Source：BLL
+Type：System.NullReferenceException
+Function：Void Page_Init(System.Object, System.EventArgs)
+Trace：   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/12/4 14:41:02
+Url：http://192.168.19.210:8091/pages/main.aspx
+Message：未将对象引用设置到对象的实例。
+Source：BLL
+Type：System.NullReferenceException
+Function：Void Page_Init(System.Object, System.EventArgs)
+Trace：   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/12/4 14:41:04
+Url：http://192.168.19.210:8091/pages/main.aspx
+Message：未将对象引用设置到对象的实例。
+Source：BLL
+Type：System.NullReferenceException
+Function：Void Page_Init(System.Object, System.EventArgs)
+Trace：   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/12/4 14:41:12
+Url：http://192.168.19.210:8091/pages/main.aspx
+Message：未将对象引用设置到对象的实例。
+Source：BLL
+Type：System.NullReferenceException
+Function：Void Page_Init(System.Object, System.EventArgs)
+Trace：   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/12/4 14:41:13
+Url：http://192.168.19.210:8091/pages/main.aspx
+Message：未将对象引用设置到对象的实例。
+Source：BLL
+Type：System.NullReferenceException
+Function：Void Page_Init(System.Object, System.EventArgs)
+Trace：   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/12/4 14:41:13
+Url：http://192.168.19.210:8091/pages/main.aspx
+Message：未将对象引用设置到对象的实例。
+Source：BLL
+Type：System.NullReferenceException
+Function：Void Page_Init(System.Object, System.EventArgs)
+Trace：   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2020/12/4 14:41:14
+Url：http://192.168.19.210:8091/pages/main.aspx
+Message：未将对象引用设置到对象的实例。
+Source：BLL
+Type：System.NullReferenceException
+Function：Void Page_Init(System.Object, System.EventArgs)
+Trace：   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

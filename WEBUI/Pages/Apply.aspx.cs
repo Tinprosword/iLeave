@@ -383,9 +383,10 @@ namespace WEBUI.Pages
             ajaxdata.loginid = loginer.userInfo.employID??0;
             ((WEBUI.Controls.leave)this.Master).SetPageState(LSLibrary.MyJson.SObj(ajaxdata));
         }
+
         #endregion
 
 
-        
+
     }
 }
