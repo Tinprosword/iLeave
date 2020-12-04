@@ -27,17 +27,18 @@ namespace BLL
         public static void MPG_GoBackToLogin()
         {
             var cookie= BLL.Page.MyCookieManage.GetCookie();
-            MorePlayground("sys", "loginout", "sys", "loginout", "~/login.aspx?action=userloginout",cookie.isAppLogin=="1");
+            MorePlaygroundAction("sys", "loginout", "sys", "loginout", "~/login.aspx?action=userloginout",cookie.isAppLogin=="1");
         }
 
 
         public static void MPG_GoBackToSign()
         {
-            MorePlayground("sys", "signin", "sys", "signin", "",true);
+            MorePlaygroundAction("sys", "signin", "sys", "signin", "",true);
         }
 
 
-        private static void MorePlayground(string AndroidMsgtype,string androidMsgValue, string appleMsgtype, string appleMsgValue, string pclink,bool isapp)
+
+        public static void MorePlaygroundAction(string AndroidMsgtype,string androidMsgValue, string appleMsgtype, string appleMsgValue, string pclink,bool isapp)
         {
             string agent = HttpContext.Current.Request.UserAgent;
 

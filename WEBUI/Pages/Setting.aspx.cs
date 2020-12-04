@@ -56,37 +56,44 @@ namespace WEBUI.Pages
             this.lt_changeServer.Text = language.setting_changeLink;
         }
 
-        //多平台同步。
+      
         protected void cb_languagea_SelectedIndexChanged(object sender, EventArgs e)
         {
-            OnChangeSettingSendNotice(int.Parse(this.cb_languagea.SelectedValue), this.js_webview);
-            LSLibrary.WebAPP.LanguageType chooseLanguage = (LSLibrary.WebAPP.LanguageType)int.Parse(this.cb_languagea.SelectedValue);
+            int language = int.Parse(this.cb_languagea.SelectedValue);
 
+            //保存到其他平台
+            ChangeSettingSendNotice(language, this.js_webview);
+
+            //cooike 也需要保存
             var myc = BLL.Page.MyCookieManage.GetCookie();
-            myc.language = chooseLanguage;
+            myc.language = (LSLibrary.WebAPP.LanguageType)language;
             BLL.Page.MyCookieManage.SetCookie(myc);
 
-            LSLibrary.WebAPP.BaseLanguage NewLanguage= BLL.MultiLanguageHelper.GetLanguagePacket(chooseLanguage);
+            LSLibrary.WebAPP.BaseLanguage NewLanguage= BLL.MultiLanguageHelper.GetLanguagePacket(myc.language);
             LoadLableLanguage(NewLanguage);
         }
 
-        private static void OnChangeSettingSendNotice(int languagetype,Literal literal)
+        private static void ChangeSettingSendNotice(int languagetype,Literal literal)
         {
             string agent = HttpContext.Current.Request.UserAgent;
-
             LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
-            if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android)//android
+
+            var cookies= BLL.Page.MyCookieManage.GetCookie();
+
+            if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android && cookies.isAppLogin=="1")//android
             {
                 string js = LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid("savesetting", languagetype.ToString(), HttpContext.Current.Server);
                 literal.Text = js;
             }
-            else if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone)//ios
+            else if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone && cookies.isAppLogin == "1")//ios
             {
                 string js = LSLibrary.WebAPP.MyJSHelper.SendMessageToIphone("savesetting", languagetype.ToString(), HttpContext.Current.Server);
                 literal.Text = js;
             }
             else//pc
-            {}
+            {
+
+            }
         }
 
         protected void btn_changeserver_Click(object sender, ImageClickEventArgs e)
