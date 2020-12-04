@@ -503,15 +503,15 @@ namespace BLL
             {
                 if (leaveRequestMaster.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL)
                 {
-                    result = "Wait for cancel";
+                    result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_WaitForCancel;
                 }
                 else if (leaveRequestMaster.Status == (byte)GlobalVariate.ApprovalRequestStatus.CONFIRM_CANCEL)
                 {
-                    result = "Cancelled";
+                    result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_Cancelled;
                 }
                 else if (leaveRequestMaster.Status == (byte)GlobalVariate.ApprovalRequestStatus.REJECT)
                 {
-                    result = "Approved";
+                    result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_Approved;
                 }
                 else
                 {
@@ -522,19 +522,19 @@ namespace BLL
             {
                 if (leaveRequestMaster.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE)
                 {
-                    result = "Wait for approval";
+                    result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_WaitForApproval;
                 }
                 else if (leaveRequestMaster.Status == (byte)GlobalVariate.ApprovalRequestStatus.CANCEL)
                 {
-                    result = "Cancelled";
+                    result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_Cancelled;
                 }
                 else if (leaveRequestMaster.Status == (byte)GlobalVariate.ApprovalRequestStatus.APPROVE)
                 {
-                    result = "Approved";
+                    result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_Approved;
                 }
                 else if (leaveRequestMaster.Status == (byte)GlobalVariate.ApprovalRequestStatus.REJECT)
                 {
-                    result = "Rejected";
+                    result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_Rejected;
                 }
                 else
                 {
