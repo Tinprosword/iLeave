@@ -4,7 +4,7 @@
 //}
 
 
-
+//over time error on web and app                            no
 //check layout                                              no
 //iphone 没有camena                                         no
 //bll 需要分开出去                                          no
