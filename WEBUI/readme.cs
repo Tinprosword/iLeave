@@ -6,14 +6,14 @@
 
 //check layout                                              no
 //leave status behind of user name                          no
-//3. approval history detail:格式和高度                     no                             
+
 
 
 //iphone 没有camena。                                       no
 //bll 需要分开出去                                          no
 //check workflow                                            no
 
-
+//3. approval history detail:格式和高度                     ok     
 //1.  1.td                                                  ok
 //check all staff name.                                     ok
 //loginout icon                                             ok

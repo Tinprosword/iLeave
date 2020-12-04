@@ -317,5 +317,10 @@ namespace WEBUI.Pages
             MODEL.UserName tempUser = new MODEL.UserName(leaveRequestMaster.p_Surname, leaveRequestMaster.p_Othername, leaveRequestMaster.p_Nickname, leaveRequestMaster.p_NameCH);
             return tempUser.GetDisplayName(nametype);
         }
+
+        public string GetLeaveStatus(WebServiceLayer.WebReference_leave.LeaveRequestMaster leaveRequestMaster)
+        {
+            return BLL.Leave.GetLeaveStatusDesc(leaveRequestMaster);
+        }
     }
 }

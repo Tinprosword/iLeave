@@ -184,29 +184,6 @@ namespace BLL
         {
             return type==null?"": names[(int)type];
         }
-
-        public static string GetTypeDesc(int? type, string code,bool discardLeave)
-        {
-            string codeSimpleDesc = BLL.Leave.GetAllLeaveSimpleDesc()[code];
-
-            if (string.IsNullOrEmpty(codeSimpleDesc))
-            {
-                codeSimpleDesc = code;
-            }
-
-            string leave = discardLeave == true ? "" : " leave";
-
-
-            if (type != null && type == 0)
-            {
-                codeSimpleDesc = "Apply " + codeSimpleDesc + leave;
-            }
-            else if (type != null && type == 10)
-            {
-                codeSimpleDesc = "Cancel " + codeSimpleDesc + leave;
-            }
-            return codeSimpleDesc;
-        }
         #endregion
     }
 }
