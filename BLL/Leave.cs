@@ -492,20 +492,20 @@ namespace BLL
         //3.approved
         //5.waiting approval
         //6.Canceled
-        public static string GetLeaveStatusDesc(WebServiceLayer.WebReference_leave.LeaveRequestMaster leaveRequestMaster)
+        public static string GetLeaveStatusDesc(int? workflowid,int masterStatus)
         {
             string result = "";
-            if (leaveRequestMaster.WorkflowTypeID != null && leaveRequestMaster.WorkflowTypeID == 10)
+            if (workflowid == 10)
             {
-                if (leaveRequestMaster.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL)
+                if (masterStatus == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL)
                 {
                     result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_WaitForCancel;
                 }
-                else if (leaveRequestMaster.Status == (byte)GlobalVariate.ApprovalRequestStatus.CONFIRM_CANCEL)
+                else if (masterStatus == (byte)GlobalVariate.ApprovalRequestStatus.CONFIRM_CANCEL)
                 {
                     result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_Cancelled;
                 }
-                else if (leaveRequestMaster.Status == (byte)GlobalVariate.ApprovalRequestStatus.REJECT)
+                else if (masterStatus == (byte)GlobalVariate.ApprovalRequestStatus.REJECT)
                 {
                     result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_Approved;
                 }
@@ -516,19 +516,19 @@ namespace BLL
             }
             else
             {
-                if (leaveRequestMaster.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE)
+                if (masterStatus == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE)
                 {
                     result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_WaitForApproval;
                 }
-                else if (leaveRequestMaster.Status == (byte)GlobalVariate.ApprovalRequestStatus.CANCEL)
+                else if (masterStatus == (byte)GlobalVariate.ApprovalRequestStatus.CANCEL)
                 {
                     result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_Cancelled;
                 }
-                else if (leaveRequestMaster.Status == (byte)GlobalVariate.ApprovalRequestStatus.APPROVE)
+                else if (masterStatus == (byte)GlobalVariate.ApprovalRequestStatus.APPROVE)
                 {
                     result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_Approved;
                 }
-                else if (leaveRequestMaster.Status == (byte)GlobalVariate.ApprovalRequestStatus.REJECT)
+                else if (masterStatus == (byte)GlobalVariate.ApprovalRequestStatus.REJECT)
                 {
                     result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_Rejected;
                 }

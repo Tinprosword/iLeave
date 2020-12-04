@@ -320,7 +320,7 @@ namespace WEBUI.Pages
 
         public string GetLeaveStatus(WebServiceLayer.WebReference_leave.LeaveRequestMaster leaveRequestMaster)
         {
-            return BLL.Leave.GetLeaveStatusDesc(leaveRequestMaster);
+            return BLL.Leave.GetLeaveStatusDesc(leaveRequestMaster.WorkflowTypeID,leaveRequestMaster.Status);
         }
     }
 }

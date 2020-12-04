@@ -39,7 +39,7 @@
                             <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>">
                                 <td><%# ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).displayname %></td>
                                 <td><%# BLL.GlobalVariate.sections[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %></td>
-                                <td><%# BLL.GlobalVariate.RequestDesc[(BLL.GlobalVariate.ApprovalRequestStatus)(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Status)] %></td>
+                                <td><%# BLL.Leave.GetLeaveStatusDesc(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).WorkflowTypeID,((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).masterStatus) %></td>
                             </tr>
                         </ItemTemplate>
                     </asp:Repeater>
