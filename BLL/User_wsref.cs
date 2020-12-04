@@ -18,44 +18,37 @@ namespace BLL
         }
 
 
-        //public static void CheckWsLogin(bool isapp)
-        //{
-        //    if (!WebServiceLayer.MyWebService.GlobalWebServices.ws_user.IsLogin())
-        //    {
-        //        GoBackToLogin(isapp);
-        //    }
-        //}
-
         public static LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> GetLoginer()
         {
             return LSLibrary.WebAPP.LoginManager.GetLoinger<MODEL.UserInfo>();
         }
 
 
-        public static void GoBackToLogin()
+        public static void MPG_GoBackToLogin()
         {
-            MorePlayground("sys", "loginout", "sys", "loginout", "~/login.aspx?action=userloginout");
-        }
-
-        public static void GoBackToSign()
-        {
-            MorePlayground("sys", "signin", "sys", "signin", "");
+            var cookie= BLL.Page.MyCookieManage.GetCookie();
+            MorePlayground("sys", "loginout", "sys", "loginout", "~/login.aspx?action=userloginout",cookie.isAppLogin=="1");
         }
 
 
+        public static void MPG_GoBackToSign()
+        {
+            MorePlayground("sys", "signin", "sys", "signin", "",true);
+        }
 
-        private static void MorePlayground(string AndroidMsgtype,string androidMsgValue, string appleMsgtype, string appleMsgValue, string pclink)
+
+        private static void MorePlayground(string AndroidMsgtype,string androidMsgValue, string appleMsgtype, string appleMsgValue, string pclink,bool isapp)
         {
             string agent = HttpContext.Current.Request.UserAgent;
 
             LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
-            if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android)//android
+            if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android && isapp)//android
             {
                 HttpContext.Current.Response.Clear();
                 HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid(AndroidMsgtype, androidMsgValue, HttpContext.Current.Server));
                 HttpContext.Current.Response.End();
             }
-            else if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone)//ios
+            else if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone && isapp)//ios
             {
                 HttpContext.Current.Response.Clear();
                 HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid(appleMsgtype, appleMsgValue, HttpContext.Current.Server));

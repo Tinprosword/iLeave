@@ -21,7 +21,7 @@ namespace BLL
 
         protected  void InitPageVaralbal0_OnsessionoutRegisterEvent()
         {
-            LSLibrary.WebAPP.LoginManager.OnSessionTimeOutHandler = BLL.User_wsref.GoBackToLogin;
+            LSLibrary.WebAPP.LoginManager.OnSessionTimeOutHandler = BLL.User_wsref.MPG_GoBackToLogin;
         }
 
         protected override void Page_Init(object sender, EventArgs e)
@@ -31,9 +31,6 @@ namespace BLL
             InitPage_OnBeforeF5RegisterEvent();
             isF5 = CheckF5();
             InitPageVaralbal0_OnsessionoutRegisterEvent();
-
-            var  mycookie=  BLL.Page.MyCookieManage.GetCookie();
-
             LSLibrary.WebAPP.LoginManager.CheckIsLogin();
             InitPage_OnEachLoadAfterCheckSessionAndF5_1();
             if (!IsPostBack)

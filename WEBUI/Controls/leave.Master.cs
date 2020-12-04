@@ -9,10 +9,6 @@ namespace WEBUI.Controls
 {
     public partial class leave : System.Web.UI.MasterPage
     {
-        
-
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
             lt_jsfixmsg.Text = "";
@@ -79,16 +75,18 @@ namespace WEBUI.Controls
         }
 
 
-
         public void SetPageState(string value)
         {
             this.PageState.Value = value;
         }
 
+
         protected void ib_exit_Click(object sender, ImageClickEventArgs e)
         {
             LSLibrary.WebAPP.LoginManager.Logoff();
-            BLL.User_wsref.GoBackToLogin();
+            BLL.User_wsref.MPG_GoBackToLogin();
         }
+
+
     }
 }

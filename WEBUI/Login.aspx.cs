@@ -30,8 +30,6 @@ namespace WEBUI
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
-            //LSLibrary.WebAPP.MyJSHelper.SetTextBoxTip(this.tb_user, BLL.MultiLanguageHelper.GetLanguagePacket().login_user);
-            //LSLibrary.WebAPP.MyJSHelper.SetTextBoxTip(this.tb_password, BLL.MultiLanguageHelper.GetLanguagePacket().login_password);
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
@@ -67,6 +65,10 @@ namespace WEBUI
                     }
                 }
             }
+
+            //reset isapp=0
+            cookie.isAppLogin = "0";
+            BLL.Page.MyCookieManage.SetCookie(cookie);
         }
 
         private void DisplayLanguage(LSLibrary.WebAPP.LanguageType tt)

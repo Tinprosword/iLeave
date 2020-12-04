@@ -91,7 +91,7 @@ namespace WEBUI.Pages
 
         protected void btn_changeserver_Click(object sender, ImageClickEventArgs e)
         {
-            BLL.User_wsref.GoBackToSign();
+            BLL.User_wsref.MPG_GoBackToSign();
         }
 
 

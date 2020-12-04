@@ -34,7 +34,7 @@ namespace WEBUI.Pages
             }
             else
             {
-                BLL.User_wsref.GoBackToLogin();
+                BLL.User_wsref.MPG_GoBackToLogin();
             }
         }
 
