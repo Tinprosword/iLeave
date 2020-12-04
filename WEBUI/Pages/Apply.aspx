@@ -66,7 +66,7 @@
         </table>
         <div class=" col-xs-12" style="height:16px; color:red;padding-left:15px;"><asp:Literal ID="literal_errormsga" runat="server" Visible="false"></asp:Literal></div>
         <div class=" col-xs-12" style="height:2px"></div>
-        <div class="col-xs-12 lsf-clearPadding" style="height:235px; overflow-y:scroll;">
+        <div class="col-xs-12 lsf-clearPadding" style="height:265px; overflow-y:scroll;">
             <table class="col-xs-12 lsu-table-xs">
                 <tr class="lss-bgcolor-blue" style="color:white">
                     <td class="col-xs-3" style="width:18%"><asp:Literal ID="ltlistdate" runat="server"></asp:Literal></td>
