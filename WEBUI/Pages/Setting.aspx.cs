@@ -57,27 +57,27 @@ namespace WEBUI.Pages
             this.lt_changeServer.Text = language.setting_changeLink;
         }
 
-
+        //多平台同步。
         protected void cb_languagea_SelectedIndexChanged(object sender, EventArgs e)
         {
-            OnChangeSettingSendNotice(int.Parse(this.cb_languagea.SelectedValue), this.js_webview);
+            OnChangeSettingSendNotice(int.Parse(this.cb_languagea.SelectedValue), this.js_webview,loginer.userInfo.isAppLogin);
             LSLibrary.WebAPP.LanguageType chooseLanguage = (LSLibrary.WebAPP.LanguageType)int.Parse(this.cb_languagea.SelectedValue);
             BLL.Page.MyCookieManage.SetCookie_language(chooseLanguage);
             LSLibrary.WebAPP.BaseLanguage NewLanguage= BLL.MultiLanguageHelper.GetLanguagePacket(chooseLanguage);
             LoadLableLanguage(NewLanguage);
         }
 
-        private static void OnChangeSettingSendNotice(int languagetype,Literal literal)
+        private static void OnChangeSettingSendNotice(int languagetype,Literal literal,bool isapp)
         {
             string agent = HttpContext.Current.Request.UserAgent;
 
             LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
-            if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android)//android
+            if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android && isapp)//android
             {
                 string js = LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid("savesetting", languagetype.ToString(), HttpContext.Current.Server);
                 literal.Text = js;
             }
-            else if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone)//ios
+            else if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone && isapp)//ios
             {
                 string js = LSLibrary.WebAPP.MyJSHelper.SendMessageToIphone("savesetting", languagetype.ToString(), HttpContext.Current.Server);
                 literal.Text = js;

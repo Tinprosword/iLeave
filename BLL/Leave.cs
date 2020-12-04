@@ -6,18 +6,17 @@ using System.Threading.Tasks;
 using WebServiceLayer.WebReference_leave;
 using System.Web;
 
+
 namespace BLL
 {
     public class Leave
     {
-
         public static string reducePath = "reduce";
         public static string picPath = "uploadPic";
 
         public static string defaultPic= "~/Res/images/file.png";
         public static int leave_sections_nullSelect = -1;
         public static int leave_leaveid_nullSelect = 0;
-
 
         #region insert application
 
@@ -383,7 +382,6 @@ namespace BLL
         }
 
         #endregion
-
 
 
         #region unity
