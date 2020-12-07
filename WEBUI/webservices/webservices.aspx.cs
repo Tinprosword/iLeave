@@ -14,24 +14,9 @@ namespace WEBUI.webservices
         {
             if(!IsPostBack)
             {
-                if (Request.QueryString["action"] == "ws")
-                {
-                    Response.Clear();
-                    string wsport = getXml(LSLibrary.WebAPP.WebConfig.getValue("webServices"));
-                    Response.Write(wsport);
-                }
-                else if (Request.QueryString["action"] == "saveheight" && !string.IsNullOrEmpty(Request.QueryString["sc"]) && !string.IsNullOrEmpty(Request.QueryString["sw"]))
-                {
-                    string sc = Request.QueryString["sc"];
-                    string sw = Request.QueryString["sw"];
-                    BLL.User_wsref.ChangeSessionHeight(int.Parse(sc),int.Parse(sw));
-                }
-                else
-                {
-                    Response.Clear();
-                    Response.Write("");
-                    Response.End();
-                }
+                Response.Clear();
+                Response.Write("1");
+                Response.End();
             }
         }
 

@@ -11,7 +11,9 @@ namespace WebServiceLayer
 
         public static string GetWebServices()
         {
-            return LSLibrary.WebAPP.WebConfig.getValue("webServices");
+            var wsadd = LSLibrary.WebAPP.WebConfig.getValue("webServices");
+            var okdadd =LSLibrary.MyDES.GeneralDecrypt(wsadd);
+            return okdadd;
         }
 
         public static string GetCookieStringOfSessionID(string sessionid)

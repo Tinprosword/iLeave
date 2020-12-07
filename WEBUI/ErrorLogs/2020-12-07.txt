@@ -1,0 +1,19 @@
+ip:::1
+DataTime：2020/12/7 12:25:33
+Url：http://localhost:8099/pages/approval_wait.aspx?action=0&applicationtype=0
+Message：“form1”的 DefaultButton 必须是 IButtonControl 类型的控件的 ID。
+Source：System.Web
+Type：System.InvalidOperationException
+Function：Void RenderAttributes(System.Web.UI.HtmlTextWriter)
+Trace：   在 System.Web.UI.HtmlControls.HtmlForm.RenderAttributes(HtmlTextWriter writer)
+   在 System.Web.UI.HtmlControls.HtmlControl.RenderBeginTag(HtmlTextWriter writer)
+   在 System.Web.UI.HtmlControls.HtmlContainerControl.Render(HtmlTextWriter writer)
+   在 System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   在 System.Web.UI.HtmlControls.HtmlForm.RenderControl(HtmlTextWriter writer)
+   在 System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   在 System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   在 System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   在 System.Web.UI.Page.Render(HtmlTextWriter writer)
+   在 System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

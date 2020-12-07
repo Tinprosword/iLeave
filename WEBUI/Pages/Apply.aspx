@@ -4,10 +4,10 @@
     <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
 
     <div class="row">
-        <ul id="myTabApply" class="nav nav-tabs lsf-clearPadding" runat="server">
-	            <li id="myTabapply_new" runat="server" class="active"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" onclick="window.location.href='apply.aspx'"><asp:Literal ID="lt_new" runat="server" Text="New"></asp:Literal></a></li>
-	            <li id="myTabapply_pending" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?action=1&applicationtype=0'"><asp:Literal ID="lt_mypending" runat="server" Text="Pending"/></a></li>
-                <li id="myTabapply_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?action=1&applicationtype=3'"><asp:Literal ID="lt_myhistory" runat="server" Text="History"/></a></li>
+        <ul id="myTabApply" fixname="mytab"   class="nav nav-tabs lsf-clearPadding" runat="server">
+	            <li id="myTabapply_new" runat="server" class="active"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" <%--onclick="window.location.href='apply.aspx'--%>"><asp:Literal ID="lt_new" runat="server" Text="New"></asp:Literal></a></li>
+	            <li id="myTabapply_pending" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="<%=showPendEvent()%>"><asp:Literal ID="lt_mypending" runat="server" Text="Pending"/></a></li>
+                <li id="myTabapply_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="<%=showhisEvent()%>"><asp:Literal ID="lt_myhistory" runat="server" Text="History"/></a></li>
         </ul>
     </div>
 
@@ -100,4 +100,5 @@
     <script src="../Res/App/apply.js?lastmodify=<%=BLL.GlobalVariate.applyjsLastmodify %>"></script>
     <asp:Literal ID="lt_js_prg" runat="server"/>
     <asp:Literal ID="js_waitdiv" runat="server"/>
+
 </asp:Content>

@@ -369,6 +369,15 @@ namespace WEBUI.Pages
         }
 
 
+        public string showPendEvent()
+        {
+            return "return checkNewTab('"+BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab+"',1,0)";
+        }
+
+        public string showhisEvent()
+        {
+            return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,3)";
+        }
 
 
 

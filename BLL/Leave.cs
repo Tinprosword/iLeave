@@ -33,6 +33,7 @@ namespace BLL
             if (originDetail.Count == 0)
             {
                 result = -1;
+                message = MultiLanguageHelper.GetLanguagePacket().apply_msg_emptydate;
             }
             else
             {

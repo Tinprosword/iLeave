@@ -27,8 +27,6 @@ namespace ut
         }
     }
 
-    
-
 
     [TestClass]
     public class UnitTest1
@@ -42,6 +40,15 @@ namespace ut
             iCSHelper.InsertItem(item);
             iCSHelper.InsertItem(item2);
             iCSHelper.Save("c:\\abc\\");
+        }
+
+
+        [TestMethod]
+        public void testjiami()
+        {
+            string abc = LSLibrary.DesStand.encrypt("http://192.168.19.210:8099", "abd58237", "abd58237");
+            string docode = LSLibrary.DesStand.decrypt(abc, "abd58237", "abd58237");
+            int a = 4;
         }
 
 

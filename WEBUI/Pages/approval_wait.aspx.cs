@@ -43,9 +43,26 @@ namespace WEBUI.Pages
         protected override void InitPage_OnFirstLoad2()
         {}
 
+        
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
             this.lb_errormsg.Visible = false;
+            if (actionType == 1 && bigRange == GlobalVariate.LeaveBigRangeStatus.waitapproval)
+            {
+                this.lt_jsscrolltop.Text = "<script>$('#maindata').scrollTop(300);</script>";
+            }
+            else if (actionType == 1 && bigRange == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
+            {
+                this.lt_jsscrolltop.Text = "<script>$('#maindata').scrollTop(0);</script>";
+            }
+            else if (actionType == 0 && bigRange == GlobalVariate.LeaveBigRangeStatus.waitapproval)
+            {
+                this.lt_jsscrolltop.Text = "<script>$('#maindata').scrollTop(100);</script>";
+            }
+            else if (actionType == 0 && bigRange == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
+            {
+                this.lt_jsscrolltop.Text = "<script>$('#maindata').scrollTop(200);</script>";
+            }
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()

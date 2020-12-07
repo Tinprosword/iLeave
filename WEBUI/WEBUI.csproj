@@ -71,6 +71,7 @@
     <Content Include="Pages\ajax_historydetail2.aspx" />
     <Content Include="Pages\approval_wait.aspx" />
     <Content Include="Pages\ErrorPage.aspx" />
+    <Content Include="Res\App\applywait.js" />
     <Content Include="Res\images\biger.png" />
     <Content Include="Res\images\changeserver.png" />
     <Content Include="Res\images\exit21.png" />

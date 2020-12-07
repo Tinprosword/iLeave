@@ -1,37 +1,49 @@
-﻿function checkChooseDate() {
-    var selectval = $("select[jqname='ddl_leavetype']").val();
-    if (selectval == -1) {
-        alert("please select leavetype");
+﻿function checkNewTab(msg,act,type)
+{
+    if (confirm(msg))
+    {
+        event.preventDefault();
+        window.location.href = 'approval_wait.aspx?action=' + act + '&applicationtype='+type;
+    }
+    else
+    {
+        var target = $("ul[fixname='mytab'] li:eq(0)");
+        var target2 = $("ul[fixname='mytab'] li:eq(1)");
+        var target3 = $("ul[fixname='mytab'] li:eq(2)");
+
+        target.removeClass();
+        target2.removeClass();
+        target3.removeClass();
+
+        window.setTimeout(function ()
+        {
+            var target = $("ul[fixname='mytab'] li:eq(0)");
+            var target2 = $("ul[fixname='mytab'] li:eq(1)");
+            var target3 = $("ul[fixname='mytab'] li:eq(2)");
+
+            target.addClass("active");
+            target2.addClass("active");
+            target3.addClass("active");
+
+            target2.removeClass();
+            target3.removeClass();
+
+        }, 1);
+
+        window.setTimeout(function () {
+            var target = $("ul[fixname='mytab'] li:eq(0)");
+            var target2 = $("ul[fixname='mytab'] li:eq(1)");
+            var target3 = $("ul[fixname='mytab'] li:eq(2)");
+
+            target.addClass("active");
+            target2.addClass("active");
+            target3.addClass("active");
+
+            target2.removeClass();
+            target3.removeClass();
+
+        }, 100);
+
         return false;
     }
-    else {
-        return true;
-    }
 }
-
-
-
-//$("input[fixname='tb_from']").datetimepicker({
-//    language: 'fr',
-//    weekStart: 1,
-//    todayBtn: 1,
-//    autoclose: 1,
-//    todayHighlight: 1,
-//    startView: 2,
-//    minView: 2,
-//    forceParse: 0
-//});
-//$("input[fixname='tb_to']").datetimepicker({
-//    language: 'zh-CN',
-//    weekStart: 1,
-//    todayBtn: 1,
-//    autoclose: 1,
-//    todayHighlight: 1,
-//    startView: 2,
-//    minView: 2,
-//    forceParse: 0
-//});
-
-
-//$("input[fixname='tb_from']").attr("readonly", true);
-//$("input[fixname='tb_to']").attr("readonly", true);

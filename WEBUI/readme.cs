@@ -4,13 +4,32 @@
 //}
 
 
-//over time error on web and app                            no
+//probably bug:detail change states 1 to 2 hardcode.        flag
+//TODO IMG->BIG IMG. error:pic gohistory()                  flag
+
+//iphone 没有camena                                         other no
+//bll 需要分开出去                                          other no
+
+
+//4.upload contril language.
+//6. chinese ->
+
+
+//9. android encode.ios encode.
+
+
+
 //check layout                                              no
-//iphone 没有camena                                         no
-//bll 需要分开出去                                          no
 //check workflow                                            no
+//detail 页面 处理完毕后需要回到原来位置.                   no
 
 
+//7.config password                                         ok
+//5.message :Please select leave dat                        ok
+//2. new message                                            ok         
+//8. wait.page default focus:                               ok
+//1, pic ->url                                              ok
+//over time error on web and app                            ok
 //exit 5 direction.                                         ok
 //leave status behind of user name                          ok
 //3. approval history detail:格式和高度                     ok
@@ -105,6 +124,3 @@
 
 
 
-
-//probably bug:detail change states 1 to 2 hardcode.        flag
-//TODO IMG->BIG IMG. error:pic gohistory()                  flag
