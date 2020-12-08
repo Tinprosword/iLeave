@@ -16,15 +16,15 @@
 
 
 
-//detail 页面 处理完毕后需要回到原来位置.                   no
 //9. android encode.ios encode.                             no
 
 
+//detail 页面 处理完毕后需要回到原来位置.                   yes
 //4.upload contril language.                                no(no way)
 //6. chinese ->                                             ok
 //7.config password                                         ok
 //5.message :Please select leave dat                        ok
-//2. new message                                            ok         
+//2. new message                                            ok
 //8. wait.page default focus:                               ok
 //1, pic ->url                                              ok
 //over time error on web and app                            ok

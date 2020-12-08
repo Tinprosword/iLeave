@@ -30,7 +30,6 @@ namespace WEBUI.Pages
                 int.TryParse(Request.QueryString[qs_bigRange], out intbig);
                 bigRange=(GlobalVariate.LeaveBigRangeStatus)intbig;
 
-
                 string nameType = BLL.CodeSetting.GetSystemParameter(BLL.CodeSetting.staffNameFormat);
                 int.TryParse(nameType, out nametype);
             }
@@ -41,28 +40,14 @@ namespace WEBUI.Pages
         }
 
         protected override void InitPage_OnFirstLoad2()
-        {}
+        {
+
+        }
 
         
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
             this.lb_errormsg.Visible = false;
-            if (actionType == 1 && bigRange == GlobalVariate.LeaveBigRangeStatus.waitapproval)
-            {
-                this.lt_jsscrolltop.Text = "<script>$('#maindata').scrollTop(300);</script>";
-            }
-            else if (actionType == 1 && bigRange == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
-            {
-                this.lt_jsscrolltop.Text = "<script>$('#maindata').scrollTop(0);</script>";
-            }
-            else if (actionType == 0 && bigRange == GlobalVariate.LeaveBigRangeStatus.waitapproval)
-            {
-                this.lt_jsscrolltop.Text = "<script>$('#maindata').scrollTop(100);</script>";
-            }
-            else if (actionType == 0 && bigRange == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
-            {
-                this.lt_jsscrolltop.Text = "<script>$('#maindata').scrollTop(200);</script>";
-            }
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
@@ -71,6 +56,7 @@ namespace WEBUI.Pages
             SetupSearchAndTab();
             SetupRepeater();
             MultplayLanguage();
+            this.lt_jsscrolltop.Text = "<script>setCookie('st',0);</script>";
         }
 
         private void MultplayLanguage()
@@ -84,11 +70,13 @@ namespace WEBUI.Pages
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
-        {}
+        {
+        }
 
         protected void ddl_year_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetupRepeater();
+            this.lt_jsscrolltop.Text = "<script>var vv=setCookie('st',0);";
         }
 
 
@@ -280,6 +268,8 @@ namespace WEBUI.Pages
                 System.Threading.Thread.Sleep(2000);//休眠2秒,获得较好显示体验
 
                 this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
+
+                this.lt_jsscrolltop.Text = "<script>var vv=getCookie('st'); $('#maindata').scrollTop(vv);</script>";
             }
         }
 

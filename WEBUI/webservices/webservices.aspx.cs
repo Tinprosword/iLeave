@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
+using System.Web.SessionState;
 
 namespace WEBUI.webservices
 {
@@ -14,12 +15,29 @@ namespace WEBUI.webservices
         {
             if(!IsPostBack)
             {
-                Response.Clear();
-                Response.Write("1");
-                Response.End();
+                if (!string.IsNullOrEmpty(Request.QueryString["Action"]))
+                {
+                    string Actionname = Request.QueryString["Action"];
+
+                    if (Actionname == "ws")
+                    {
+                        Response.Clear();
+                        Response.Write(getXml("1"));
+                        Response.End();
+                    }
+                    else
+                    {
+                        
+                    }
+                }
+                else
+                {
+                    Response.Clear();
+                    Response.Write(getXml(""));
+                    Response.End();
+                }
             }
         }
-
 
         public string getXml(string a)
         {

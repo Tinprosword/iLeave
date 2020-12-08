@@ -24,5 +24,7 @@ namespace WEBUI.webservices
             string rr = LSLibrary.HttpWebRequestHelper.HttpPost(baseUri + "pages/ajax_historydetail2.aspx", postdata, "");
             return rr;
         }
+
+
     }
 }

@@ -50,6 +50,13 @@ function hiddenMyModel() {
 
 
 //ajax start
+function AjaxGet(url) {
+    $.ajax({
+        type: "get",
+        url: url,
+    });
+}
+
 function SingleResult(url, Postdata, datatype, callfun) {
     $.ajax({
         type: "post",
