@@ -106,18 +106,25 @@ namespace BLL
 
         #region common dictionary full day 2 ampm 3 3secton 4 houre
 
-        public static Dictionary<int, string> sections
+        public static string GetSectionMultLanguage(int index, int lange=-1)
         {
-            get
+            LSLibrary.WebAPP.BaseLanguage baseLanguage = null;
+            if (lange == -1)
             {
-                Dictionary<int, string> temp = new Dictionary<int, string>();
-                temp.Add(0, BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_fullday);
-                temp.Add(1, BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_am);
-                temp.Add(2, BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_pm);
-                temp.Add(3, BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_3section);
-                //temp.Add( 4,"Hours");
-                return temp;
+                baseLanguage = BLL.MultiLanguageHelper.GetLanguagePacket();
             }
+            else
+            {
+                baseLanguage = BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lange);
+            }
+
+            Dictionary<int, string> temp = new Dictionary<int, string>();
+            temp.Add(0, baseLanguage.apply_ddlsetion_fullday);
+            temp.Add(1, baseLanguage.apply_ddlsetion_am);
+            temp.Add(2, baseLanguage.apply_ddlsetion_pm);
+            temp.Add(3, baseLanguage.apply_ddlsetion_3section);
+            //temp.Add( 4,"Hours");
+            return temp[index];
         }
 
         public static Dictionary<int, double> sectionsUnit

@@ -10,15 +10,32 @@
     <link href="../Res/App/appcss.css" rel="stylesheet" id="appcss" runat="server"/>
     <%--<script src="Res/App/autoScale.js?lasttime=<%=BLL.GlobalVariate.autoscalejsLastmodify %>"></script>--%>
     <title></title>
+
+    <style type="text/css">
+
+btn_scan{width:68px;height:23px;line-height:23px;display:inline-block;*display:inline;zoom:1;margin:0;*margin-right:6px;background:url(../images/btn2.png) no-repeat;background-position:0% 0%;border:0;}
+btn_scan_h{background:url(../images/btn2.png) no-repeat;background-position:100% 100%;}
+title .btn_file,.title8 .btn_file{width:68px;height:23px;border:0;opacity:0;filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);}
+    </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
-        <ul id="myTab" class="nav nav-tabs">
+
+         <div class="btn_scan" onmouseout="this.className='btn_scan'" onmouseover="this.className='btn_scan btn_scan_h'"><input type="file" class="btn_file" value="浏览" /></div>
+
+<%--        <div class="col-xs-10" style="padding-top:2px">
+            <span style="float:left; width:90px; position:relative;left:90px; z-index:-10;border:1px solid #808080;padding:5px;">Choose File</span>
+            <asp:FileUpload ID="FileUpload1"   runat="server"   capture="camera" accept = "image/*" Style="height:50px; width:90px;float:left; opacity:0;"></asp:FileUpload>
+        </div>--%>
+
+
+        <%--<ul id="myTab" class="nav nav-tabs">
 	        <li class="active"><a href="" data-toggle="tab" onclick="window.location.href='template.aspx'">Pending</a></li>
 	        <li><a href="" data-toggle="tab" onclick="window.location.href='template2.aspx'">History</a></li>
         </ul>
 
-        temp1
+        temp1--%>
 
 
         <%--<div id="showdiv" class="col-xs-10 lsf-clearPadding" style="left:9%;width:360px">

@@ -14,7 +14,7 @@ namespace WEBUI.Pages
     //3 附加一个请假页面过来，加载viewstate. 点击单元格保存数据。 在calendar rendar事件时,显示所有选择日期。
     public partial class calendar : BLL.CustomLoginTemplate
     {
-        private readonly string searchTip = "Search staff";
+        private readonly string searchTip = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_serchTip;
         private readonly string css_select = "btnBox btnBlueBoxSelect";
         private readonly string css_unselect = "btnBox btnBlueBoxUnSelect";
         private bool isFromApply = false;

@@ -1,0 +1,11 @@
+ip:::1
+DataTime：2020/12/8 10:17:05
+Url：http://localhost:8099/Pages/Apply_Upload.aspx
+Message：标记包含重复的“Style”特性。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void ProcessError(System.String)
+Trace：   在 System.Web.UI.TemplateParser.ProcessError(String message)
+   在 System.Web.UI.TemplateParser.ProcessBeginTag(Match match, String inputText)
+   在 System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+********************************************************************************************

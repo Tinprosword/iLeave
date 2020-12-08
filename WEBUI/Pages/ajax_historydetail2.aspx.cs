@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace WEBUI.Pages
@@ -76,6 +74,8 @@ namespace WEBUI.Pages
                 this.lt_col3.Text = language_col3;
                 this.lt_bancetitle.Text = language_balance;
                 this.lt_applycount.Text = language_apply;
+                this.lt_days2.Text = BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lan).approval_days;
+                this.lt_days.Text = BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lan).approval_days;
             }
         }
 

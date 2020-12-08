@@ -430,9 +430,9 @@ namespace BLL
             List<LSLibrary.WebAPP.ValueText<int>> result = new List<LSLibrary.WebAPP.ValueText<int>>();
             for (int i = 0; i < source.Count(); i++)
             {
-                if (BLL.GlobalVariate.sections.Keys.Contains(source[i]))
+                if (true)
                 {
-                    LSLibrary.WebAPP.ValueText<int> item = new LSLibrary.WebAPP.ValueText<int>(source[i], BLL.GlobalVariate.sections[source[i]]);
+                    LSLibrary.WebAPP.ValueText<int> item = new LSLibrary.WebAPP.ValueText<int>(source[i], BLL.GlobalVariate.GetSectionMultLanguage(source[i]));
                     result.Add(item);
                 }
             }

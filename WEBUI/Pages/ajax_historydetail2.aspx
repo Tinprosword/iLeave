@@ -12,8 +12,8 @@
         
 		<table class="col-xs-12 lsf-clearPadding" style="margin-bottom:9px; height:40px;">
 			<tbody>
-                <tr><td class="col-xs-4 lsf-clearPadding;" style="padding-left:4px;padding-right:1px"><asp:Literal ID="lt_bancetitle" runat="server">lt</asp:Literal></td><td style="text-align:right;width:40px;"><div id="lbbalance"><asp:Literal ID="lt_balance" runat="server">3.81</asp:Literal></div></td><td>&nbsp;&nbsp;&nbsp;Day(s)</td></tr>
-			    <tr><td style="padding-left:4px;padding-right:1px"><asp:Literal ID="lt_applycount" runat="server">lt</asp:Literal></td><td style="text-align:right"><div id="lbapply"><asp:Literal ID="lt_apply" runat="server">3.81</asp:Literal></div></td><td>&nbsp;&nbsp;&nbsp;Day(s)</td></tr>
+                <tr><td class="col-xs-4 lsf-clearPadding;" style="padding-left:4px;padding-right:1px"><asp:Literal ID="lt_bancetitle" runat="server">lt</asp:Literal></td><td style="text-align:right;width:40px;"><div id="lbbalance"><asp:Literal ID="lt_balance" runat="server">3.81</asp:Literal></div></td><td>&nbsp;&nbsp;&nbsp;<asp:Literal ID="lt_days" runat="server">Day(s)</asp:Literal></td></tr>
+			    <tr><td style="padding-left:4px;padding-right:1px"><asp:Literal ID="lt_applycount" runat="server">lt</asp:Literal></td><td style="text-align:right"><div id="lbapply"><asp:Literal ID="lt_apply" runat="server">3.81</asp:Literal></div></td><td>&nbsp;&nbsp;&nbsp;<asp:Literal ID="lt_days2" runat="server">Day(s)</asp:Literal></td></tr>
 		    </tbody>
 		</table>
 
@@ -71,7 +71,7 @@
                         <ItemTemplate>
                             <tr style="">
                                 <td class="col-xs-4" style="width:120px"><%#((DateTime)((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveFrom).ToString("yyyy-MM-dd")%></td>
-					            <td class="col-xs-4" style="width:120px"><%#BLL.GlobalVariate.sections[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %></td>
+					            <td class="col-xs-4" style="width:120px"><%#BLL.GlobalVariate.GetSectionMultLanguage(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section,lan) %></td>
 					            <td class="col-xs-2" style="width:60px;text-align:right;"><%#BLL.GlobalVariate.sectionsUnit[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %>&nbsp;</td>
 					            <td class="col-xs-3"></td>
                             </tr>

@@ -14,7 +14,7 @@ namespace WEBUI.Pages
     {
         public static string qs_bigRange = "applicationType";
         public static string qs_action = "action";
-        private readonly string tip = "Search Staff";
+        private readonly string tip = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_serchTip;
         private int nametype = 1;
 
         protected int actionType = 0;

@@ -11,19 +11,17 @@
 //bll 需要分开出去                                          other no
 
 
-//4.upload contril language.
-//6. chinese ->
-
-
-//9. android encode.ios encode.
-
-
-
 //check layout                                              no
 //check workflow                                            no
+
+
+
 //detail 页面 处理完毕后需要回到原来位置.                   no
+//9. android encode.ios encode.                             no
 
 
+//4.upload contril language.                                no(no way)
+//6. chinese ->                                             ok
 //7.config password                                         ok
 //5.message :Please select leave dat                        ok
 //2. new message                                            ok         

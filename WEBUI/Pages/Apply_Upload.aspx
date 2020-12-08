@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <div class="col-xs-12" style="padding-top:10px;padding-bottom:5px;">
-            <div class="col-xs-10" style="padding-top:2px"><asp:FileUpload ID="FileUpload1" runat="server"  Width="99%" capture="camera" accept = "image/*" Style="padding-bottom:5px;height:50px; font-size:16px"></asp:FileUpload></div>
+            <div class="col-xs-10" style="padding-top:2px"><asp:FileUpload ID="FileUpload1" runat="server" Width="99%" capture="camera" accept = "image/*" Style="padding-bottom:5px;height:50px; font-size:16px;opacity: 0"></asp:FileUpload></div>
             <div class="col-xs-1"><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/upload2.png" Width="42px" Height="42px" OnClick="Upload_Click" /></div>
         </div>
         <div class="col-xs-12" style="padding:0px; overflow-y:scroll; height:500px;">
