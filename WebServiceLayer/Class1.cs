@@ -9,7 +9,7 @@ namespace WebServiceLayer
     {
         public static WebServicesHelper GlobalWebServices = WebServicesHelper.GetInstance();
 
-        public static string GetWebServices()
+        public static string GetDecodeWebServicesAddress()
         {
             var wsadd = LSLibrary.WebAPP.WebConfig.getValue("webServices");
             var okdadd =LSLibrary.MyDES.GeneralDecrypt(wsadd);
@@ -53,9 +53,9 @@ namespace WebServiceLayer
                 ws_leave.CookieContainer = cookieContainer;
                 ws_codesetting.CookieContainer = cookieContainer;
 
-                ws_user.Url = GetWebServices()+ "/ServicesWithSession/UserManagementV2.asmx";
-                ws_leave.Url = GetWebServices()+ "/ServicesWithSession/LeaveManagementV2.asmx";
-                ws_codesetting.Url = GetWebServices()+ "/ServicesWithSession/CodeSettingsV2.asmx";
+                ws_user.Url = GetDecodeWebServicesAddress()+ "/ServicesWithSession/UserManagementV2.asmx";
+                ws_leave.Url = GetDecodeWebServicesAddress()+ "/ServicesWithSession/LeaveManagementV2.asmx";
+                ws_codesetting.Url = GetDecodeWebServicesAddress()+ "/ServicesWithSession/CodeSettingsV2.asmx";
             }
 
         }

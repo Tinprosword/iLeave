@@ -22,7 +22,8 @@ namespace WEBUI.webservices
                     if (Actionname == "ws")
                     {
                         Response.Clear();
-                        Response.Write(getXml("1"));
+
+                        Response.Write(getXml(WebServiceLayer.MyWebService.GetDecodeWebServicesAddress()));
                         Response.End();
                     }
                     else
