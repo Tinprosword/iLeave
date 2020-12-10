@@ -452,7 +452,9 @@ namespace WEBUI.Pages
             this.lt_section.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_listsection;
             this.lt_status.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_liststatus;
             this.btn_ok.Text= BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_add;
-
+            this.lt_displayname.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_listname;
+            this.lt_shiftCode.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_list2_shift;
+            this.lt_remark.Text= BLL.MultiLanguageHelper.GetLanguagePacket().cancendar_list2_remark;
         }
 
         private bool GetIsMeOrTeam()
