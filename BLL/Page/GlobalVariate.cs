@@ -124,6 +124,9 @@ namespace BLL
             temp.Add(2, baseLanguage.apply_ddlsetion_pm);
             temp.Add(3, baseLanguage.apply_ddlsetion_3section);
             //temp.Add( 4,"Hours");
+            temp.Add(4, "Other");
+            temp.Add(5, "Other");
+            temp.Add(6, "Other");
             return temp[index];
         }
 

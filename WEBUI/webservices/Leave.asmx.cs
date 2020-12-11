@@ -19,12 +19,16 @@ namespace WEBUI.webservices
         [WebMethod]
         public string GetLeaveDetail_html(int requestID, int leaveid, int staff, int employmentNo,int lan)
         {
-            var baseUri = new Uri(HttpContext.Current.Request.Url, "/");
+            //http://localhost:8099/webservices/leave.asmx/GetLeaveDetail_html
+            var baseUri = HttpContext.Current.Request.Url.OriginalString.Replace("webservices/leave.asmx/GetLeaveDetail_html", "");
+
+            //var baseUri = HttpContext.Current.Request.ApplicationPath;
+
+            var url = baseUri + "pages/ajax_historydetail2.aspx";
             string postdata = "requestID=" + requestID + "&leaveid=" + leaveid + "&staff=" + staff + "&employmentNo=" + employmentNo+"&lan="+lan;
-            string rr = LSLibrary.HttpWebRequestHelper.HttpPost(baseUri + "pages/ajax_historydetail2.aspx", postdata, "");
+            string rr = LSLibrary.HttpWebRequestHelper.HttpPost(url, postdata, "");
             return rr;
         }
-
 
     }
 }

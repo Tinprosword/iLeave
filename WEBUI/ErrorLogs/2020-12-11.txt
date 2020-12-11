@@ -1,0 +1,143 @@
+ip:::1
+DataTime：2020/12/11 11:27:47
+Url：http://localhost:8099/Login.aspx
+Message：索引和长度必须引用该字符串内的位置。
+参数名: length
+Source：mscorlib
+Type：System.ArgumentOutOfRangeException
+Function：System.String Substring(Int32, Int32)
+Trace：   在 System.String.Substring(Int32 startIndex, Int32 length)
+   在 LSLibrary.MyDES.GeneralDecrypt(String Message)
+   在 WebServiceLayer.MyWebService.GetDecodeWebServicesAddress()
+   在 WebServiceLayer.MyWebService.WebServicesHelper..ctor()
+   在 WebServiceLayer.MyWebService.WebServicesHelper.GetInstance()
+   在 WebServiceLayer.MyWebService..cctor()
+********************************************************************************************
+ip:::1
+DataTime：2020/12/11 11:29:00
+Url：http://localhost:8099/Login.aspx
+Message：Error in decryption!!
+Source：LSLibrary
+Type：System.Exception
+Function：System.String GeneralDecrypt(System.String)
+Trace：   在 LSLibrary.MyDES.GeneralDecrypt(String Message) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\Encrypt\DES.cs:行号 45
+   在 WebServiceLayer.MyWebService.GetDecodeWebServicesAddress() 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Class1.cs:行号 15
+   在 WebServiceLayer.MyWebService.WebServicesHelper..ctor() 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Class1.cs:行号 56
+   在 WebServiceLayer.MyWebService.WebServicesHelper.GetInstance() 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Class1.cs:行号 45
+   在 WebServiceLayer.MyWebService..cctor() 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Class1.cs:行号 10
+********************************************************************************************
+ip:::1
+DataTime：2020/12/11 11:32:47
+Url：http://localhost:8099/floder/Login.aspx
+Message：Error in decryption!!
+Source：LSLibrary
+Type：System.Exception
+Function：System.String GeneralDecrypt(System.String)
+Trace：   在 LSLibrary.MyDES.GeneralDecrypt(String Message)
+   在 WebServiceLayer.MyWebService.GetDecodeWebServicesAddress()
+   在 WebServiceLayer.MyWebService.WebServicesHelper..ctor()
+   在 WebServiceLayer.MyWebService.WebServicesHelper.GetInstance()
+   在 WebServiceLayer.MyWebService..cctor()
+********************************************************************************************
+ip:::1
+DataTime：2020/12/11 11:47:56
+Url：http://localhost:8099/floder/pages/apply.aspx
+Message：给定关键字不在字典中。
+Source：mscorlib
+Type：System.Collections.Generic.KeyNotFoundException
+Function：TValue get_Item(TKey)
+Trace：   在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 BLL.GlobalVariate.GetSectionMultLanguage(Int32 index, Int32 lange)
+   在 BLL.Leave.ConvertInt2SectionDropDownList(List`1 source)
+   在 BLL.Leave.GetDDLSectionsDataNoSelect(Int32 leaveid, Int32 employid)
+   在 BLL.Leave.GetDDLSectionsData(Int32 leaveid, Int32 employid)
+   在 WEBUI.Pages.Apply.ddl_leavetype_SelectedIndexChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2020/12/11 11:51:29
+Url：http://localhost:8099/floder/pages/apply.aspx
+Message：给定关键字不在字典中。
+Source：mscorlib
+Type：System.Collections.Generic.KeyNotFoundException
+Function：TValue get_Item(TKey)
+Trace：   在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 BLL.GlobalVariate.GetSectionMultLanguage(Int32 index, Int32 lange)
+   在 BLL.Leave.ConvertInt2SectionDropDownList(List`1 source)
+   在 BLL.Leave.GetDDLSectionsDataNoSelect(Int32 leaveid, Int32 employid)
+   在 BLL.Leave.GetDDLSectionsData(Int32 leaveid, Int32 employid)
+   在 WEBUI.Pages.Apply.ddl_leavetype_SelectedIndexChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2020/12/11 11:52:13
+Url：http://localhost:8099/floder/pages/apply.aspx
+Message：给定关键字不在字典中。
+Source：mscorlib
+Type：System.Collections.Generic.KeyNotFoundException
+Function：TValue get_Item(TKey)
+Trace：   在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 BLL.GlobalVariate.GetSectionMultLanguage(Int32 index, Int32 lange)
+   在 BLL.Leave.ConvertInt2SectionDropDownList(List`1 source)
+   在 BLL.Leave.GetDDLSectionsDataNoSelect(Int32 leaveid, Int32 employid)
+   在 BLL.Leave.GetDDLSectionsData(Int32 leaveid, Int32 employid)
+   在 WEBUI.Pages.Apply.ddl_leavetype_SelectedIndexChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2020/12/11 11:54:25
+Url：http://localhost:8099/pages/apply.aspx
+Message：给定关键字不在字典中。
+Source：mscorlib
+Type：System.Collections.Generic.KeyNotFoundException
+Function：TValue get_Item(TKey)
+Trace：   在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 BLL.GlobalVariate.GetSectionMultLanguage(Int32 index, Int32 lange) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\GlobalVariate.cs:行号 127
+   在 BLL.Leave.ConvertInt2SectionDropDownList(List`1 source) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Leave.cs:行号 435
+   在 BLL.Leave.GetDDLSectionsDataNoSelect(Int32 leaveid, Int32 employid) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Leave.cs:行号 410
+   在 BLL.Leave.GetDDLSectionsData(Int32 leaveid, Int32 employid) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Leave.cs:行号 418
+   在 WEBUI.Pages.Apply.ddl_leavetype_SelectedIndexChanged(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 215
+   在 System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2020/12/11 12:21:54
+Url：http://localhost:8099/Pages/chooseEmployment.aspx?pid=19072&sourcetype=1
+Message：磁盘空间不足。
+
+Source：mscorlib
+Type：System.IO.IOException
+Function：Void WinIOError(Int32, System.String)
+Trace：   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.WriteCore(Byte[] buffer, Int32 offset, Int32 count)
+   在 System.IO.FileStream.FlushInternalBuffer()
+   在 System.IO.FileStream.Flush(Boolean flushToDisk)
+   在 System.IO.StreamWriter.Flush(Boolean flushStream, Boolean flushEncoder)
+   在 System.Web.Compilation.AssemblyBuilder.AddCodeCompileUnit(BuildProvider buildProvider, CodeCompileUnit compileUnit)
+   在 System.Web.Compilation.BaseTemplateBuildProvider.GenerateCode(AssemblyBuilder assemblyBuilder)
+   在 System.Web.Compilation.AssemblyBuilder.AddBuildProvider(BuildProvider buildProvider)
+********************************************************************************************
+ip:::1
+DataTime：2020/12/11 12:21:54
+Url：http://localhost:8099/pages/errorpage.aspx?message=磁盘空间不足。%0d%0a
+Message：磁盘空间不足。
+
+Source：mscorlib
+Type：System.IO.IOException
+Function：Void WinIOError(Int32, System.String)
+Trace：   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.WriteCore(Byte[] buffer, Int32 offset, Int32 count)
+   在 System.IO.FileStream.FlushInternalBuffer()
+   在 System.IO.FileStream.Flush(Boolean flushToDisk)
+   在 System.IO.StreamWriter.Flush(Boolean flushStream, Boolean flushEncoder)
+   在 System.Web.Compilation.AssemblyBuilder.AddCodeCompileUnit(BuildProvider buildProvider, CodeCompileUnit compileUnit)
+   在 System.Web.Compilation.BaseTemplateBuildProvider.GenerateCode(AssemblyBuilder assemblyBuilder)
+   在 System.Web.Compilation.AssemblyBuilder.AddBuildProvider(BuildProvider buildProvider)
+********************************************************************************************

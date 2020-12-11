@@ -14,8 +14,40 @@ namespace WEBUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            leavebase leavebase = new leavebase();
+
+            this.Label1.Text = leavebase.add(1, 3).ToString();
         }
         
+
+
+    }
+
+    public class leavebase
+    {
+        public int add(int a, int b)
+        {
+            leaveAdv leaveAdv = new leaveAdv();
+
+            return leaveAdv.addAdv(a, b);
+        }
+
+
+    }
+
+    public class leaveAdv
+    {
+        public leavebase lb = new leavebase();
+
+        public int addAdv(int a, int b)
+        {
+            int res = lb.add(a, b);
+            return res * 2;
+        }
+
+        public int addSingle(int a, int b)
+        {
+            return (a + b) *3;
+        }
     }
 }
