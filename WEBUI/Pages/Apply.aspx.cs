@@ -21,6 +21,7 @@ namespace WEBUI.Pages
         public static string ViewState_PageName = "PageView";
         public List<LSLibrary.WebAPP.ValueText<int>> RPITEM_LeaveListSections;
 
+
         #region [page event]
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
@@ -369,14 +370,29 @@ namespace WEBUI.Pages
         }
 
 
+        //js传递apply sum 标签的值 ,如果为空表示没有做任何处理 . 否则有数据,那么传递不同的参数向js function.
         public string showPendEvent()
         {
-            return "return checkNewTab('"+BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab+"',1,0)";
+            if (!IsPostBack)
+            {
+                return "return checkNewTab('',1,0)";
+            }
+            else
+            {
+                return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,0)";
+            }
         }
 
         public string showhisEvent()
         {
-            return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,3)";
+            if (!IsPostBack)
+            {
+                return "return checkNewTab('',1,3)";
+            }
+            else
+            {
+                return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,3)";
+            }
         }
 
 
