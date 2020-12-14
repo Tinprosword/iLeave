@@ -708,6 +708,55 @@
           <s:element minOccurs="0" maxOccurs="1" name="Shift" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetZone">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetZoneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetZoneResult" type="tns:ArrayOfEmployment_Contract" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEmployment_Contract">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Employment_Contract" nillable="true" type="tns:Employment_Contract" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Employment_Contract">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="employmentid" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="contractid" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="zonecode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isAssociate" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="zonedescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetContractByEmployids">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="eids" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetContractByEmployidsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetContractByEmployidsResult" type="tns:ArrayOfEmployment_Contract" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="Test_ADD">
         <s:complexType>
           <s:sequence>
@@ -732,6 +781,7 @@
       <s:element name="ArrayOfPersonBaseinfo" nillable="true" type="tns:ArrayOfPersonBaseinfo" />
       <s:element name="double" type="s:double" />
       <s:element name="EmployDetail" nillable="true" type="tns:EmployDetail" />
+      <s:element name="ArrayOfEmployment_Contract" nillable="true" type="tns:ArrayOfEmployment_Contract" />
       <s:element name="int" type="s:int" />
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
@@ -908,6 +958,18 @@
   <wsdl:message name="GetEmployDetailByEidSoapOut">
     <wsdl:part name="parameters" element="tns:GetEmployDetailByEidResponse" />
   </wsdl:message>
+  <wsdl:message name="GetZoneSoapIn">
+    <wsdl:part name="parameters" element="tns:GetZone" />
+  </wsdl:message>
+  <wsdl:message name="GetZoneSoapOut">
+    <wsdl:part name="parameters" element="tns:GetZoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetContractByEmployidsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetContractByEmployids" />
+  </wsdl:message>
+  <wsdl:message name="GetContractByEmployidsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetContractByEmployidsResponse" />
+  </wsdl:message>
   <wsdl:message name="Test_ADDSoapIn">
     <wsdl:part name="parameters" element="tns:Test_ADD" />
   </wsdl:message>
@@ -972,6 +1034,12 @@
   </wsdl:message>
   <wsdl:message name="GetEmployDetailByEidHttpPostOut">
     <wsdl:part name="Body" element="tns:EmployDetail" />
+  </wsdl:message>
+  <wsdl:message name="GetZoneHttpPostIn">
+    <wsdl:part name="pid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetZoneHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfEmployment_Contract" />
   </wsdl:message>
   <wsdl:message name="Test_ADDHttpPostIn">
     <wsdl:part name="a" type="s:string" />
@@ -1093,6 +1161,14 @@
       <wsdl:input message="tns:GetEmployDetailByEidSoapIn" />
       <wsdl:output message="tns:GetEmployDetailByEidSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetZone">
+      <wsdl:input message="tns:GetZoneSoapIn" />
+      <wsdl:output message="tns:GetZoneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContractByEmployids">
+      <wsdl:input message="tns:GetContractByEmployidsSoapIn" />
+      <wsdl:output message="tns:GetContractByEmployidsSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="Test_ADD">
       <wsdl:input message="tns:Test_ADDSoapIn" />
       <wsdl:output message="tns:Test_ADDSoapOut" />
@@ -1138,6 +1214,10 @@
     <wsdl:operation name="GetEmployDetailByEid">
       <wsdl:input message="tns:GetEmployDetailByEidHttpPostIn" />
       <wsdl:output message="tns:GetEmployDetailByEidHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetZone">
+      <wsdl:input message="tns:GetZoneHttpPostIn" />
+      <wsdl:output message="tns:GetZoneHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="Test_ADD">
       <wsdl:input message="tns:Test_ADDHttpPostIn" />
@@ -1391,6 +1471,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetEmployDetailByEid">
       <soap:operation soapAction="http://tempuri.org/GetEmployDetailByEid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZone">
+      <soap:operation soapAction="http://tempuri.org/GetZone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContractByEmployids">
+      <soap:operation soapAction="http://tempuri.org/GetContractByEmployids" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1662,6 +1760,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetZone">
+      <soap12:operation soapAction="http://tempuri.org/GetZone" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContractByEmployids">
+      <soap12:operation soapAction="http://tempuri.org/GetContractByEmployids" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Test_ADD">
       <soap12:operation soapAction="http://tempuri.org/Test_ADD" style="document" />
       <wsdl:input>
@@ -1757,6 +1873,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetEmployDetailByEid">
       <http:operation location="/GetEmployDetailByEid" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZone">
+      <http:operation location="/GetZone" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

@@ -85,6 +85,10 @@ namespace WebServiceLayer.WebReference_user {
         
         private System.Threading.SendOrPostCallback GetEmployDetailByEidOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetZoneOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetContractByEmployidsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback Test_ADDOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
@@ -208,6 +212,12 @@ namespace WebServiceLayer.WebReference_user {
         
         /// <remarks/>
         public event GetEmployDetailByEidCompletedEventHandler GetEmployDetailByEidCompleted;
+        
+        /// <remarks/>
+        public event GetZoneCompletedEventHandler GetZoneCompleted;
+        
+        /// <remarks/>
+        public event GetContractByEmployidsCompletedEventHandler GetContractByEmployidsCompleted;
         
         /// <remarks/>
         public event Test_ADDCompletedEventHandler Test_ADDCompleted;
@@ -1025,6 +1035,64 @@ namespace WebServiceLayer.WebReference_user {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetZone", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Employment_Contract[] GetZone(int pid) {
+            object[] results = this.Invoke("GetZone", new object[] {
+                        pid});
+            return ((Employment_Contract[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetZoneAsync(int pid) {
+            this.GetZoneAsync(pid, null);
+        }
+        
+        /// <remarks/>
+        public void GetZoneAsync(int pid, object userState) {
+            if ((this.GetZoneOperationCompleted == null)) {
+                this.GetZoneOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetZoneOperationCompleted);
+            }
+            this.InvokeAsync("GetZone", new object[] {
+                        pid}, this.GetZoneOperationCompleted, userState);
+        }
+        
+        private void OnGetZoneOperationCompleted(object arg) {
+            if ((this.GetZoneCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetZoneCompleted(this, new GetZoneCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetContractByEmployids", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Employment_Contract[] GetContractByEmployids(int[] eids) {
+            object[] results = this.Invoke("GetContractByEmployids", new object[] {
+                        eids});
+            return ((Employment_Contract[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetContractByEmployidsAsync(int[] eids) {
+            this.GetContractByEmployidsAsync(eids, null);
+        }
+        
+        /// <remarks/>
+        public void GetContractByEmployidsAsync(int[] eids, object userState) {
+            if ((this.GetContractByEmployidsOperationCompleted == null)) {
+                this.GetContractByEmployidsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetContractByEmployidsOperationCompleted);
+            }
+            this.InvokeAsync("GetContractByEmployids", new object[] {
+                        eids}, this.GetContractByEmployidsOperationCompleted, userState);
+        }
+        
+        private void OnGetContractByEmployidsOperationCompleted(object arg) {
+            if ((this.GetContractByEmployidsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetContractByEmployidsCompleted(this, new GetContractByEmployidsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Test_ADD", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public int Test_ADD(int a, int b) {
             object[] results = this.Invoke("Test_ADD", new object[] {
@@ -1356,6 +1424,99 @@ namespace WebServiceLayer.WebReference_user {
             }
             set {
                 this.mobileUserLevelField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Employment_Contract {
+        
+        private int employmentidField;
+        
+        private int contractidField;
+        
+        private string zonecodeField;
+        
+        private int isAssociateField;
+        
+        private string descriptionField;
+        
+        private string zonedescriptionField;
+        
+        private string codeField;
+        
+        /// <remarks/>
+        public int employmentid {
+            get {
+                return this.employmentidField;
+            }
+            set {
+                this.employmentidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int contractid {
+            get {
+                return this.contractidField;
+            }
+            set {
+                this.contractidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string zonecode {
+            get {
+                return this.zonecodeField;
+            }
+            set {
+                this.zonecodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int isAssociate {
+            get {
+                return this.isAssociateField;
+            }
+            set {
+                this.isAssociateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string zonedescription {
+            get {
+                return this.zonedescriptionField;
+            }
+            set {
+                this.zonedescriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
             }
         }
     }
@@ -5100,6 +5261,58 @@ namespace WebServiceLayer.WebReference_user {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((EmployDetail)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetZoneCompletedEventHandler(object sender, GetZoneCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetZoneCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetZoneCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Employment_Contract[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Employment_Contract[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetContractByEmployidsCompletedEventHandler(object sender, GetContractByEmployidsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetContractByEmployidsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetContractByEmployidsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Employment_Contract[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Employment_Contract[])(this.results[0]));
             }
         }
     }
