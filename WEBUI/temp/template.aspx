@@ -22,7 +22,9 @@ title .btn_file,.title8 .btn_file{width:68px;height:23px;border:0;opacity:0;filt
 <body>
     <form id="form1" runat="server">
 
-         <div class="btn_scan" onmouseout="this.className='btn_scan'" onmouseover="this.className='btn_scan btn_scan_h'"><input type="file" class="btn_file" value="浏览" /></div>
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+        <%-- <div class="btn_scan" onmouseout="this.className='btn_scan'" onmouseover="this.className='btn_scan btn_scan_h'"><input type="file" class="btn_file" value="浏览" /></div>--%>
 
 <%--        <div class="col-xs-10" style="padding-top:2px">
             <span style="float:left; width:90px; position:relative;left:90px; z-index:-10;border:1px solid #808080;padding:5px;">Choose File</span>

@@ -21,7 +21,6 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
-
             object PreViewstate = LSLibrary.WebAPP.PageSessionHelper.GetValueAndCleanSoon(BLL.GlobalVariate.Session_ApplyToUpload);
             if (PreViewstate != null)
             {

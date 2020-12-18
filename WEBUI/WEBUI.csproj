@@ -309,6 +309,7 @@
     <Content Include="temp\template.aspx" />
     <Content Include="temp\template2.aspx" />
     <Content Include="temp\test.aspx" />
+    <Content Include="temp\test2.aspx" />
     <Content Include="temp\testPost.aspx" />
     <Content Include="temp\testWait.aspx" />
     <Content Include="temp\testws.asmx" />
@@ -372,7 +373,6 @@
     </Compile>
     <Compile Include="temp\delete\approval.aspx.cs">
       <DependentUpon>approval.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="temp\delete\approval.aspx.designer.cs">
       <DependentUpon>approval.aspx</DependentUpon>
@@ -407,14 +407,12 @@
     </Compile>
     <Compile Include="temp\delete\myapplications.aspx.cs">
       <DependentUpon>myapplications.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="temp\delete\myapplications.aspx.designer.cs">
       <DependentUpon>myapplications.aspx</DependentUpon>
     </Compile>
     <Compile Include="temp\delete\myDetail.aspx.cs">
       <DependentUpon>myDetail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="temp\delete\myDetail.aspx.designer.cs">
       <DependentUpon>myDetail.aspx</DependentUpon>
@@ -477,6 +475,13 @@
     </Compile>
     <Compile Include="temp\test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="temp\test2.aspx.cs">
+      <DependentUpon>test2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="temp\test2.aspx.designer.cs">
+      <DependentUpon>test2.aspx</DependentUpon>
     </Compile>
     <Compile Include="temp\testPost.aspx.cs">
       <DependentUpon>testPost.aspx</DependentUpon>

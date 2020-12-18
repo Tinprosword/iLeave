@@ -10,10 +10,7 @@
 
 //9. .ios encode.                                           no
 //iphone 没有camena                                         other no
-//bll 需要分开出去                                          other no
 //check workflow                                            no
-
-
 
 
 //check layout                                              yes
