@@ -18,7 +18,8 @@
                                 <div style="height:30px; width:30px; float:left; position:relative; left:-15px; top:0px;">
                                     <asp:ImageButton ID="imagebutton_close" runat="server" ImageUrl="~/Res/images/close.png" Width="100%" Height="100%" OnClick="imagebutton_close_Click" CommandArgument="<%# ((MODEL.Apply.App_AttachmentInfo)Container.DataItem).tempID %>"/>
                                 </div>
-                            </td></tr>
+                            </td>
+                            </tr>
                             <tr>
                                 <td>
                                     <asp:LinkButton ID="linkbtn_file" runat="server" OnClick="linkbtn_file_Click" CommandArgument="<%#((MODEL.Apply.App_AttachmentInfo)Container.DataItem).originAttendance_RelatePath %>"><%# ((MODEL.Apply.App_AttachmentInfo)Container.DataItem).GetFileName(15) %></asp:LinkButton>

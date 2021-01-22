@@ -837,26 +837,26 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ApproveRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void ApproveRequest_leave(int requestid, int UserID, string remark) {
+        public void ApproveRequest_leave(int requestid, int ApproverUid, string remark) {
             this.Invoke("ApproveRequest_leave", new object[] {
                         requestid,
-                        UserID,
+                        ApproverUid,
                         remark});
         }
         
         /// <remarks/>
-        public void ApproveRequest_leaveAsync(int requestid, int UserID, string remark) {
-            this.ApproveRequest_leaveAsync(requestid, UserID, remark, null);
+        public void ApproveRequest_leaveAsync(int requestid, int ApproverUid, string remark) {
+            this.ApproveRequest_leaveAsync(requestid, ApproverUid, remark, null);
         }
         
         /// <remarks/>
-        public void ApproveRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
+        public void ApproveRequest_leaveAsync(int requestid, int ApproverUid, string remark, object userState) {
             if ((this.ApproveRequest_leaveOperationCompleted == null)) {
                 this.ApproveRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnApproveRequest_leaveOperationCompleted);
             }
             this.InvokeAsync("ApproveRequest_leave", new object[] {
                         requestid,
-                        UserID,
+                        ApproverUid,
                         remark}, this.ApproveRequest_leaveOperationCompleted, userState);
         }
         

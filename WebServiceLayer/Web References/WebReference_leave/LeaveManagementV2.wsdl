@@ -394,7 +394,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ApproverUid" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
           </s:sequence>
         </s:complexType>
@@ -1722,7 +1722,7 @@
   </wsdl:message>
   <wsdl:message name="ApproveRequest_leaveHttpPostIn">
     <wsdl:part name="requestid" type="s:string" />
-    <wsdl:part name="UserID" type="s:string" />
+    <wsdl:part name="ApproverUid" type="s:string" />
     <wsdl:part name="remark" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ApproveRequest_leaveHttpPostOut" />
