@@ -76,6 +76,24 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.LinkButton lt_calendarabc;
         
         /// <summary>
+        /// Check 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton Check;
+        
+        /// <summary>
+        /// lt_check 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lt_check;
+        
+        /// <summary>
         /// Setting 控件。
         /// </summary>
         /// <remarks>

@@ -130,7 +130,7 @@ namespace BLL
                     newItem.Description = null;
                     newItem.EmploymentID = employmentID;
                     newItem.EmploymentNumber = null;
-                    newItem.FirstEmploymentID = 0;
+                    newItem.FirstEmploymentID = 0;//todo 0 fix it.
                     newItem.FirstEmploymentNumber = null;
                     newItem.HolidayCode = "";
                     newItem.ID = 0;

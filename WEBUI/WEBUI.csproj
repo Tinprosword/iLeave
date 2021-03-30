@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="Pages\ajax_historydetail2.aspx" />
     <Content Include="Pages\approval_wait.aspx" />
+    <Content Include="Pages\Check.aspx" />
     <Content Include="Pages\ErrorPage.aspx" />
     <Content Include="Res\App\applywait.js" />
     <Content Include="Res\images\biger.png" />
@@ -128,6 +129,13 @@
     </Compile>
     <Compile Include="Pages\approval_wait.aspx.designer.cs">
       <DependentUpon>approval_wait.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Check.aspx.cs">
+      <DependentUpon>Check.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Check.aspx.designer.cs">
+      <DependentUpon>Check.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\getHeight.aspx.cs">
       <DependentUpon>getHeight.aspx</DependentUpon>

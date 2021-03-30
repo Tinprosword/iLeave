@@ -40,6 +40,7 @@ namespace WEBUI.Pages
             //this.lt_downloadsplitabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_downplaylisp;
             //this.lt_downloadtaxabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_downtax;
             this.lt_setting.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_setting;
+            this.lt_check.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_check;
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
@@ -66,17 +67,10 @@ namespace WEBUI.Pages
             Response.Redirect("~/pages/calendar.aspx");
         }
 
-        protected void Roster_Click(object sender, EventArgs e)
-        {}
-
-        protected void Money_Click(object sender, EventArgs e)
-        {}
-
-        protected void Tax_Click(object sender, EventArgs e)
-        {}
-
-        protected void lt_applyleaveabc_Click(object sender, EventArgs e)
-        {}
+        protected void Check_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/pages/Check.aspx");
+        }
 
         protected void Setting_Click(object sender, EventArgs e)
         {
@@ -87,5 +81,6 @@ namespace WEBUI.Pages
         {
             Response.Redirect("~/Pages/chooseEmployment.aspx?pid=" + loginer.userInfo.personid + "&sourcetype=2");
         }
+
     }
 }

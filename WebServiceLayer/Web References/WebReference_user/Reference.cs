@@ -29,15 +29,15 @@ namespace WebServiceLayer.WebReference_user {
     [System.Web.Services.WebServiceBindingAttribute(Name="UserManagementV2Soap", Namespace="http://tempuri.org/")]
     public partial class UserManagementV2 : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback Base_Insertt_UserOperationCompleted;
+        private System.Threading.SendOrPostCallback Base_Insertt_StaffOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Base_Updatet_UserOperationCompleted;
+        private System.Threading.SendOrPostCallback Base_Updatet_StaffOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Base_Deletet_UserOperationCompleted;
+        private System.Threading.SendOrPostCallback Base_Deletet_StaffOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Base_Gett_UserOperationCompleted;
+        private System.Threading.SendOrPostCallback Base_Gett_StaffOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Base_GetListt_UserOperationCompleted;
+        private System.Threading.SendOrPostCallback Base_GetListt_StaffOperationCompleted;
         
         private System.Threading.SendOrPostCallback Base_Insertt_EmploymentOperationCompleted;
         
@@ -49,15 +49,15 @@ namespace WebServiceLayer.WebReference_user {
         
         private System.Threading.SendOrPostCallback Base_GetListt_EmploymentOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Base_Insertt_StaffOperationCompleted;
+        private System.Threading.SendOrPostCallback Base_Insertt_UserOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Base_Updatet_StaffOperationCompleted;
+        private System.Threading.SendOrPostCallback Base_Updatet_UserOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Base_Deletet_StaffOperationCompleted;
+        private System.Threading.SendOrPostCallback Base_Deletet_UserOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Base_Gett_StaffOperationCompleted;
+        private System.Threading.SendOrPostCallback Base_Gett_UserOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Base_GetListt_StaffOperationCompleted;
+        private System.Threading.SendOrPostCallback Base_GetListt_UserOperationCompleted;
         
         private System.Threading.SendOrPostCallback Base_Insertt_PersonOperationCompleted;
         
@@ -130,19 +130,19 @@ namespace WebServiceLayer.WebReference_user {
         }
         
         /// <remarks/>
-        public event Base_Insertt_UserCompletedEventHandler Base_Insertt_UserCompleted;
+        public event Base_Insertt_StaffCompletedEventHandler Base_Insertt_StaffCompleted;
         
         /// <remarks/>
-        public event Base_Updatet_UserCompletedEventHandler Base_Updatet_UserCompleted;
+        public event Base_Updatet_StaffCompletedEventHandler Base_Updatet_StaffCompleted;
         
         /// <remarks/>
-        public event Base_Deletet_UserCompletedEventHandler Base_Deletet_UserCompleted;
+        public event Base_Deletet_StaffCompletedEventHandler Base_Deletet_StaffCompleted;
         
         /// <remarks/>
-        public event Base_Gett_UserCompletedEventHandler Base_Gett_UserCompleted;
+        public event Base_Gett_StaffCompletedEventHandler Base_Gett_StaffCompleted;
         
         /// <remarks/>
-        public event Base_GetListt_UserCompletedEventHandler Base_GetListt_UserCompleted;
+        public event Base_GetListt_StaffCompletedEventHandler Base_GetListt_StaffCompleted;
         
         /// <remarks/>
         public event Base_Insertt_EmploymentCompletedEventHandler Base_Insertt_EmploymentCompleted;
@@ -160,19 +160,19 @@ namespace WebServiceLayer.WebReference_user {
         public event Base_GetListt_EmploymentCompletedEventHandler Base_GetListt_EmploymentCompleted;
         
         /// <remarks/>
-        public event Base_Insertt_StaffCompletedEventHandler Base_Insertt_StaffCompleted;
+        public event Base_Insertt_UserCompletedEventHandler Base_Insertt_UserCompleted;
         
         /// <remarks/>
-        public event Base_Updatet_StaffCompletedEventHandler Base_Updatet_StaffCompleted;
+        public event Base_Updatet_UserCompletedEventHandler Base_Updatet_UserCompleted;
         
         /// <remarks/>
-        public event Base_Deletet_StaffCompletedEventHandler Base_Deletet_StaffCompleted;
+        public event Base_Deletet_UserCompletedEventHandler Base_Deletet_UserCompleted;
         
         /// <remarks/>
-        public event Base_Gett_StaffCompletedEventHandler Base_Gett_StaffCompleted;
+        public event Base_Gett_UserCompletedEventHandler Base_Gett_UserCompleted;
         
         /// <remarks/>
-        public event Base_GetListt_StaffCompletedEventHandler Base_GetListt_StaffCompleted;
+        public event Base_GetListt_UserCompletedEventHandler Base_GetListt_UserCompleted;
         
         /// <remarks/>
         public event Base_Insertt_PersonCompletedEventHandler Base_Insertt_PersonCompleted;
@@ -223,147 +223,147 @@ namespace WebServiceLayer.WebReference_user {
         public event Test_ADDCompletedEventHandler Test_ADDCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Insertt_User", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public t_User Base_Insertt_User(t_User newObject) {
-            object[] results = this.Invoke("Base_Insertt_User", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Insertt_Staff", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_Staff Base_Insertt_Staff(t_Staff newObject) {
+            object[] results = this.Invoke("Base_Insertt_Staff", new object[] {
                         newObject});
-            return ((t_User)(results[0]));
+            return ((t_Staff)(results[0]));
         }
         
         /// <remarks/>
-        public void Base_Insertt_UserAsync(t_User newObject) {
-            this.Base_Insertt_UserAsync(newObject, null);
+        public void Base_Insertt_StaffAsync(t_Staff newObject) {
+            this.Base_Insertt_StaffAsync(newObject, null);
         }
         
         /// <remarks/>
-        public void Base_Insertt_UserAsync(t_User newObject, object userState) {
-            if ((this.Base_Insertt_UserOperationCompleted == null)) {
-                this.Base_Insertt_UserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Insertt_UserOperationCompleted);
+        public void Base_Insertt_StaffAsync(t_Staff newObject, object userState) {
+            if ((this.Base_Insertt_StaffOperationCompleted == null)) {
+                this.Base_Insertt_StaffOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Insertt_StaffOperationCompleted);
             }
-            this.InvokeAsync("Base_Insertt_User", new object[] {
-                        newObject}, this.Base_Insertt_UserOperationCompleted, userState);
+            this.InvokeAsync("Base_Insertt_Staff", new object[] {
+                        newObject}, this.Base_Insertt_StaffOperationCompleted, userState);
         }
         
-        private void OnBase_Insertt_UserOperationCompleted(object arg) {
-            if ((this.Base_Insertt_UserCompleted != null)) {
+        private void OnBase_Insertt_StaffOperationCompleted(object arg) {
+            if ((this.Base_Insertt_StaffCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Base_Insertt_UserCompleted(this, new Base_Insertt_UserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Base_Insertt_StaffCompleted(this, new Base_Insertt_StaffCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Updatet_User", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool Base_Updatet_User(t_User UpdateObject) {
-            object[] results = this.Invoke("Base_Updatet_User", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Updatet_Staff", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool Base_Updatet_Staff(t_Staff UpdateObject) {
+            object[] results = this.Invoke("Base_Updatet_Staff", new object[] {
                         UpdateObject});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void Base_Updatet_UserAsync(t_User UpdateObject) {
-            this.Base_Updatet_UserAsync(UpdateObject, null);
+        public void Base_Updatet_StaffAsync(t_Staff UpdateObject) {
+            this.Base_Updatet_StaffAsync(UpdateObject, null);
         }
         
         /// <remarks/>
-        public void Base_Updatet_UserAsync(t_User UpdateObject, object userState) {
-            if ((this.Base_Updatet_UserOperationCompleted == null)) {
-                this.Base_Updatet_UserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Updatet_UserOperationCompleted);
+        public void Base_Updatet_StaffAsync(t_Staff UpdateObject, object userState) {
+            if ((this.Base_Updatet_StaffOperationCompleted == null)) {
+                this.Base_Updatet_StaffOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Updatet_StaffOperationCompleted);
             }
-            this.InvokeAsync("Base_Updatet_User", new object[] {
-                        UpdateObject}, this.Base_Updatet_UserOperationCompleted, userState);
+            this.InvokeAsync("Base_Updatet_Staff", new object[] {
+                        UpdateObject}, this.Base_Updatet_StaffOperationCompleted, userState);
         }
         
-        private void OnBase_Updatet_UserOperationCompleted(object arg) {
-            if ((this.Base_Updatet_UserCompleted != null)) {
+        private void OnBase_Updatet_StaffOperationCompleted(object arg) {
+            if ((this.Base_Updatet_StaffCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Base_Updatet_UserCompleted(this, new Base_Updatet_UserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Base_Updatet_StaffCompleted(this, new Base_Updatet_StaffCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Deletet_User", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool Base_Deletet_User(t_User DeleteObject) {
-            object[] results = this.Invoke("Base_Deletet_User", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Deletet_Staff", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool Base_Deletet_Staff(t_Staff DeleteObject) {
+            object[] results = this.Invoke("Base_Deletet_Staff", new object[] {
                         DeleteObject});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void Base_Deletet_UserAsync(t_User DeleteObject) {
-            this.Base_Deletet_UserAsync(DeleteObject, null);
+        public void Base_Deletet_StaffAsync(t_Staff DeleteObject) {
+            this.Base_Deletet_StaffAsync(DeleteObject, null);
         }
         
         /// <remarks/>
-        public void Base_Deletet_UserAsync(t_User DeleteObject, object userState) {
-            if ((this.Base_Deletet_UserOperationCompleted == null)) {
-                this.Base_Deletet_UserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Deletet_UserOperationCompleted);
+        public void Base_Deletet_StaffAsync(t_Staff DeleteObject, object userState) {
+            if ((this.Base_Deletet_StaffOperationCompleted == null)) {
+                this.Base_Deletet_StaffOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Deletet_StaffOperationCompleted);
             }
-            this.InvokeAsync("Base_Deletet_User", new object[] {
-                        DeleteObject}, this.Base_Deletet_UserOperationCompleted, userState);
+            this.InvokeAsync("Base_Deletet_Staff", new object[] {
+                        DeleteObject}, this.Base_Deletet_StaffOperationCompleted, userState);
         }
         
-        private void OnBase_Deletet_UserOperationCompleted(object arg) {
-            if ((this.Base_Deletet_UserCompleted != null)) {
+        private void OnBase_Deletet_StaffOperationCompleted(object arg) {
+            if ((this.Base_Deletet_StaffCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Base_Deletet_UserCompleted(this, new Base_Deletet_UserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Base_Deletet_StaffCompleted(this, new Base_Deletet_StaffCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Gett_User", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public t_User Base_Gett_User(t_User GetObject) {
-            object[] results = this.Invoke("Base_Gett_User", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Gett_Staff", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_Staff Base_Gett_Staff(t_Staff GetObject) {
+            object[] results = this.Invoke("Base_Gett_Staff", new object[] {
                         GetObject});
-            return ((t_User)(results[0]));
+            return ((t_Staff)(results[0]));
         }
         
         /// <remarks/>
-        public void Base_Gett_UserAsync(t_User GetObject) {
-            this.Base_Gett_UserAsync(GetObject, null);
+        public void Base_Gett_StaffAsync(t_Staff GetObject) {
+            this.Base_Gett_StaffAsync(GetObject, null);
         }
         
         /// <remarks/>
-        public void Base_Gett_UserAsync(t_User GetObject, object userState) {
-            if ((this.Base_Gett_UserOperationCompleted == null)) {
-                this.Base_Gett_UserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Gett_UserOperationCompleted);
+        public void Base_Gett_StaffAsync(t_Staff GetObject, object userState) {
+            if ((this.Base_Gett_StaffOperationCompleted == null)) {
+                this.Base_Gett_StaffOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Gett_StaffOperationCompleted);
             }
-            this.InvokeAsync("Base_Gett_User", new object[] {
-                        GetObject}, this.Base_Gett_UserOperationCompleted, userState);
+            this.InvokeAsync("Base_Gett_Staff", new object[] {
+                        GetObject}, this.Base_Gett_StaffOperationCompleted, userState);
         }
         
-        private void OnBase_Gett_UserOperationCompleted(object arg) {
-            if ((this.Base_Gett_UserCompleted != null)) {
+        private void OnBase_Gett_StaffOperationCompleted(object arg) {
+            if ((this.Base_Gett_StaffCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Base_Gett_UserCompleted(this, new Base_Gett_UserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Base_Gett_StaffCompleted(this, new Base_Gett_StaffCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_GetListt_User", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public t_User[] Base_GetListt_User(string whereSql) {
-            object[] results = this.Invoke("Base_GetListt_User", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_GetListt_Staff", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_Staff[] Base_GetListt_Staff(string whereSql) {
+            object[] results = this.Invoke("Base_GetListt_Staff", new object[] {
                         whereSql});
-            return ((t_User[])(results[0]));
+            return ((t_Staff[])(results[0]));
         }
         
         /// <remarks/>
-        public void Base_GetListt_UserAsync(string whereSql) {
-            this.Base_GetListt_UserAsync(whereSql, null);
+        public void Base_GetListt_StaffAsync(string whereSql) {
+            this.Base_GetListt_StaffAsync(whereSql, null);
         }
         
         /// <remarks/>
-        public void Base_GetListt_UserAsync(string whereSql, object userState) {
-            if ((this.Base_GetListt_UserOperationCompleted == null)) {
-                this.Base_GetListt_UserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_GetListt_UserOperationCompleted);
+        public void Base_GetListt_StaffAsync(string whereSql, object userState) {
+            if ((this.Base_GetListt_StaffOperationCompleted == null)) {
+                this.Base_GetListt_StaffOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_GetListt_StaffOperationCompleted);
             }
-            this.InvokeAsync("Base_GetListt_User", new object[] {
-                        whereSql}, this.Base_GetListt_UserOperationCompleted, userState);
+            this.InvokeAsync("Base_GetListt_Staff", new object[] {
+                        whereSql}, this.Base_GetListt_StaffOperationCompleted, userState);
         }
         
-        private void OnBase_GetListt_UserOperationCompleted(object arg) {
-            if ((this.Base_GetListt_UserCompleted != null)) {
+        private void OnBase_GetListt_StaffOperationCompleted(object arg) {
+            if ((this.Base_GetListt_StaffCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Base_GetListt_UserCompleted(this, new Base_GetListt_UserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Base_GetListt_StaffCompleted(this, new Base_GetListt_StaffCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -513,147 +513,147 @@ namespace WebServiceLayer.WebReference_user {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Insertt_Staff", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public t_Staff Base_Insertt_Staff(t_Staff newObject) {
-            object[] results = this.Invoke("Base_Insertt_Staff", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Insertt_User", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_User Base_Insertt_User(t_User newObject) {
+            object[] results = this.Invoke("Base_Insertt_User", new object[] {
                         newObject});
-            return ((t_Staff)(results[0]));
+            return ((t_User)(results[0]));
         }
         
         /// <remarks/>
-        public void Base_Insertt_StaffAsync(t_Staff newObject) {
-            this.Base_Insertt_StaffAsync(newObject, null);
+        public void Base_Insertt_UserAsync(t_User newObject) {
+            this.Base_Insertt_UserAsync(newObject, null);
         }
         
         /// <remarks/>
-        public void Base_Insertt_StaffAsync(t_Staff newObject, object userState) {
-            if ((this.Base_Insertt_StaffOperationCompleted == null)) {
-                this.Base_Insertt_StaffOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Insertt_StaffOperationCompleted);
+        public void Base_Insertt_UserAsync(t_User newObject, object userState) {
+            if ((this.Base_Insertt_UserOperationCompleted == null)) {
+                this.Base_Insertt_UserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Insertt_UserOperationCompleted);
             }
-            this.InvokeAsync("Base_Insertt_Staff", new object[] {
-                        newObject}, this.Base_Insertt_StaffOperationCompleted, userState);
+            this.InvokeAsync("Base_Insertt_User", new object[] {
+                        newObject}, this.Base_Insertt_UserOperationCompleted, userState);
         }
         
-        private void OnBase_Insertt_StaffOperationCompleted(object arg) {
-            if ((this.Base_Insertt_StaffCompleted != null)) {
+        private void OnBase_Insertt_UserOperationCompleted(object arg) {
+            if ((this.Base_Insertt_UserCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Base_Insertt_StaffCompleted(this, new Base_Insertt_StaffCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Base_Insertt_UserCompleted(this, new Base_Insertt_UserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Updatet_Staff", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool Base_Updatet_Staff(t_Staff UpdateObject) {
-            object[] results = this.Invoke("Base_Updatet_Staff", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Updatet_User", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool Base_Updatet_User(t_User UpdateObject) {
+            object[] results = this.Invoke("Base_Updatet_User", new object[] {
                         UpdateObject});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void Base_Updatet_StaffAsync(t_Staff UpdateObject) {
-            this.Base_Updatet_StaffAsync(UpdateObject, null);
+        public void Base_Updatet_UserAsync(t_User UpdateObject) {
+            this.Base_Updatet_UserAsync(UpdateObject, null);
         }
         
         /// <remarks/>
-        public void Base_Updatet_StaffAsync(t_Staff UpdateObject, object userState) {
-            if ((this.Base_Updatet_StaffOperationCompleted == null)) {
-                this.Base_Updatet_StaffOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Updatet_StaffOperationCompleted);
+        public void Base_Updatet_UserAsync(t_User UpdateObject, object userState) {
+            if ((this.Base_Updatet_UserOperationCompleted == null)) {
+                this.Base_Updatet_UserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Updatet_UserOperationCompleted);
             }
-            this.InvokeAsync("Base_Updatet_Staff", new object[] {
-                        UpdateObject}, this.Base_Updatet_StaffOperationCompleted, userState);
+            this.InvokeAsync("Base_Updatet_User", new object[] {
+                        UpdateObject}, this.Base_Updatet_UserOperationCompleted, userState);
         }
         
-        private void OnBase_Updatet_StaffOperationCompleted(object arg) {
-            if ((this.Base_Updatet_StaffCompleted != null)) {
+        private void OnBase_Updatet_UserOperationCompleted(object arg) {
+            if ((this.Base_Updatet_UserCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Base_Updatet_StaffCompleted(this, new Base_Updatet_StaffCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Base_Updatet_UserCompleted(this, new Base_Updatet_UserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Deletet_Staff", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool Base_Deletet_Staff(t_Staff DeleteObject) {
-            object[] results = this.Invoke("Base_Deletet_Staff", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Deletet_User", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool Base_Deletet_User(t_User DeleteObject) {
+            object[] results = this.Invoke("Base_Deletet_User", new object[] {
                         DeleteObject});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void Base_Deletet_StaffAsync(t_Staff DeleteObject) {
-            this.Base_Deletet_StaffAsync(DeleteObject, null);
+        public void Base_Deletet_UserAsync(t_User DeleteObject) {
+            this.Base_Deletet_UserAsync(DeleteObject, null);
         }
         
         /// <remarks/>
-        public void Base_Deletet_StaffAsync(t_Staff DeleteObject, object userState) {
-            if ((this.Base_Deletet_StaffOperationCompleted == null)) {
-                this.Base_Deletet_StaffOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Deletet_StaffOperationCompleted);
+        public void Base_Deletet_UserAsync(t_User DeleteObject, object userState) {
+            if ((this.Base_Deletet_UserOperationCompleted == null)) {
+                this.Base_Deletet_UserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Deletet_UserOperationCompleted);
             }
-            this.InvokeAsync("Base_Deletet_Staff", new object[] {
-                        DeleteObject}, this.Base_Deletet_StaffOperationCompleted, userState);
+            this.InvokeAsync("Base_Deletet_User", new object[] {
+                        DeleteObject}, this.Base_Deletet_UserOperationCompleted, userState);
         }
         
-        private void OnBase_Deletet_StaffOperationCompleted(object arg) {
-            if ((this.Base_Deletet_StaffCompleted != null)) {
+        private void OnBase_Deletet_UserOperationCompleted(object arg) {
+            if ((this.Base_Deletet_UserCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Base_Deletet_StaffCompleted(this, new Base_Deletet_StaffCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Base_Deletet_UserCompleted(this, new Base_Deletet_UserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Gett_Staff", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public t_Staff Base_Gett_Staff(t_Staff GetObject) {
-            object[] results = this.Invoke("Base_Gett_Staff", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Gett_User", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_User Base_Gett_User(t_User GetObject) {
+            object[] results = this.Invoke("Base_Gett_User", new object[] {
                         GetObject});
-            return ((t_Staff)(results[0]));
+            return ((t_User)(results[0]));
         }
         
         /// <remarks/>
-        public void Base_Gett_StaffAsync(t_Staff GetObject) {
-            this.Base_Gett_StaffAsync(GetObject, null);
+        public void Base_Gett_UserAsync(t_User GetObject) {
+            this.Base_Gett_UserAsync(GetObject, null);
         }
         
         /// <remarks/>
-        public void Base_Gett_StaffAsync(t_Staff GetObject, object userState) {
-            if ((this.Base_Gett_StaffOperationCompleted == null)) {
-                this.Base_Gett_StaffOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Gett_StaffOperationCompleted);
+        public void Base_Gett_UserAsync(t_User GetObject, object userState) {
+            if ((this.Base_Gett_UserOperationCompleted == null)) {
+                this.Base_Gett_UserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_Gett_UserOperationCompleted);
             }
-            this.InvokeAsync("Base_Gett_Staff", new object[] {
-                        GetObject}, this.Base_Gett_StaffOperationCompleted, userState);
+            this.InvokeAsync("Base_Gett_User", new object[] {
+                        GetObject}, this.Base_Gett_UserOperationCompleted, userState);
         }
         
-        private void OnBase_Gett_StaffOperationCompleted(object arg) {
-            if ((this.Base_Gett_StaffCompleted != null)) {
+        private void OnBase_Gett_UserOperationCompleted(object arg) {
+            if ((this.Base_Gett_UserCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Base_Gett_StaffCompleted(this, new Base_Gett_StaffCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Base_Gett_UserCompleted(this, new Base_Gett_UserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_GetListt_Staff", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public t_Staff[] Base_GetListt_Staff(string whereSql) {
-            object[] results = this.Invoke("Base_GetListt_Staff", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_GetListt_User", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_User[] Base_GetListt_User(string whereSql) {
+            object[] results = this.Invoke("Base_GetListt_User", new object[] {
                         whereSql});
-            return ((t_Staff[])(results[0]));
+            return ((t_User[])(results[0]));
         }
         
         /// <remarks/>
-        public void Base_GetListt_StaffAsync(string whereSql) {
-            this.Base_GetListt_StaffAsync(whereSql, null);
+        public void Base_GetListt_UserAsync(string whereSql) {
+            this.Base_GetListt_UserAsync(whereSql, null);
         }
         
         /// <remarks/>
-        public void Base_GetListt_StaffAsync(string whereSql, object userState) {
-            if ((this.Base_GetListt_StaffOperationCompleted == null)) {
-                this.Base_GetListt_StaffOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_GetListt_StaffOperationCompleted);
+        public void Base_GetListt_UserAsync(string whereSql, object userState) {
+            if ((this.Base_GetListt_UserOperationCompleted == null)) {
+                this.Base_GetListt_UserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnBase_GetListt_UserOperationCompleted);
             }
-            this.InvokeAsync("Base_GetListt_Staff", new object[] {
-                        whereSql}, this.Base_GetListt_StaffOperationCompleted, userState);
+            this.InvokeAsync("Base_GetListt_User", new object[] {
+                        whereSql}, this.Base_GetListt_UserOperationCompleted, userState);
         }
         
-        private void OnBase_GetListt_StaffOperationCompleted(object arg) {
-            if ((this.Base_GetListt_StaffCompleted != null)) {
+        private void OnBase_GetListt_UserOperationCompleted(object arg) {
+            if ((this.Base_GetListt_UserCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Base_GetListt_StaffCompleted(this, new Base_GetListt_StaffCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.Base_GetListt_UserCompleted(this, new Base_GetListt_UserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1139,1613 +1139,6 @@ namespace WebServiceLayer.WebReference_user {
                 return true;
             }
             return false;
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class t_User {
-        
-        private int idField;
-        
-        private string usernameField;
-        
-        private string passwordHashField;
-        
-        private string fullnameField;
-        
-        private int userGroupIDField;
-        
-        private string phoneField;
-        
-        private string emailField;
-        
-        private string remarksField;
-        
-        private byte statusField;
-        
-        private System.DateTime modifiedDateField;
-        
-        private int modifiedUserField;
-        
-        private System.DateTime createDateField;
-        
-        private int createUserField;
-        
-        private System.Nullable<int> supervisorIDField;
-        
-        private int specialRightField;
-        
-        private string languageCodeField;
-        
-        private string domainUserField;
-        
-        private int failAttemptField;
-        
-        private System.DateTime lastLoginDateField;
-        
-        private System.DateTime expiryDateField;
-        
-        private bool isLockField;
-        
-        private string tokenKeyField;
-        
-        private int mobileUserLevelField;
-        
-        /// <remarks/>
-        public int ID {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Username {
-            get {
-                return this.usernameField;
-            }
-            set {
-                this.usernameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string PasswordHash {
-            get {
-                return this.passwordHashField;
-            }
-            set {
-                this.passwordHashField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Fullname {
-            get {
-                return this.fullnameField;
-            }
-            set {
-                this.fullnameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int UserGroupID {
-            get {
-                return this.userGroupIDField;
-            }
-            set {
-                this.userGroupIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Phone {
-            get {
-                return this.phoneField;
-            }
-            set {
-                this.phoneField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Email {
-            get {
-                return this.emailField;
-            }
-            set {
-                this.emailField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Remarks {
-            get {
-                return this.remarksField;
-            }
-            set {
-                this.remarksField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte Status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime ModifiedDate {
-            get {
-                return this.modifiedDateField;
-            }
-            set {
-                this.modifiedDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int ModifiedUser {
-            get {
-                return this.modifiedUserField;
-            }
-            set {
-                this.modifiedUserField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime CreateDate {
-            get {
-                return this.createDateField;
-            }
-            set {
-                this.createDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int CreateUser {
-            get {
-                return this.createUserField;
-            }
-            set {
-                this.createUserField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> SupervisorID {
-            get {
-                return this.supervisorIDField;
-            }
-            set {
-                this.supervisorIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int SpecialRight {
-            get {
-                return this.specialRightField;
-            }
-            set {
-                this.specialRightField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string LanguageCode {
-            get {
-                return this.languageCodeField;
-            }
-            set {
-                this.languageCodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string DomainUser {
-            get {
-                return this.domainUserField;
-            }
-            set {
-                this.domainUserField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int FailAttempt {
-            get {
-                return this.failAttemptField;
-            }
-            set {
-                this.failAttemptField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime LastLoginDate {
-            get {
-                return this.lastLoginDateField;
-            }
-            set {
-                this.lastLoginDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime ExpiryDate {
-            get {
-                return this.expiryDateField;
-            }
-            set {
-                this.expiryDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool IsLock {
-            get {
-                return this.isLockField;
-            }
-            set {
-                this.isLockField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string TokenKey {
-            get {
-                return this.tokenKeyField;
-            }
-            set {
-                this.tokenKeyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int MobileUserLevel {
-            get {
-                return this.mobileUserLevelField;
-            }
-            set {
-                this.mobileUserLevelField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Employment_Contract {
-        
-        private int employmentidField;
-        
-        private int contractidField;
-        
-        private string zonecodeField;
-        
-        private int isAssociateField;
-        
-        private string descriptionField;
-        
-        private string zonedescriptionField;
-        
-        private string codeField;
-        
-        /// <remarks/>
-        public int employmentid {
-            get {
-                return this.employmentidField;
-            }
-            set {
-                this.employmentidField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int contractid {
-            get {
-                return this.contractidField;
-            }
-            set {
-                this.contractidField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string zonecode {
-            get {
-                return this.zonecodeField;
-            }
-            set {
-                this.zonecodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int isAssociate {
-            get {
-                return this.isAssociateField;
-            }
-            set {
-                this.isAssociateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                this.descriptionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string zonedescription {
-            get {
-                return this.zonedescriptionField;
-            }
-            set {
-                this.zonedescriptionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Code {
-            get {
-                return this.codeField;
-            }
-            set {
-                this.codeField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class EmployDetail {
-        
-        private int e_idField;
-        
-        private int s_idField;
-        
-        private string s_staffnumberField;
-        
-        private string e_EmploymentNumberField;
-        
-        private string contractField;
-        
-        private string zoneField;
-        
-        private string positionField;
-        
-        private string shiftField;
-        
-        /// <remarks/>
-        public int e_id {
-            get {
-                return this.e_idField;
-            }
-            set {
-                this.e_idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int s_id {
-            get {
-                return this.s_idField;
-            }
-            set {
-                this.s_idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string s_staffnumber {
-            get {
-                return this.s_staffnumberField;
-            }
-            set {
-                this.s_staffnumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string e_EmploymentNumber {
-            get {
-                return this.e_EmploymentNumberField;
-            }
-            set {
-                this.e_EmploymentNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Contract {
-            get {
-                return this.contractField;
-            }
-            set {
-                this.contractField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Zone {
-            get {
-                return this.zoneField;
-            }
-            set {
-                this.zoneField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Position {
-            get {
-                return this.positionField;
-            }
-            set {
-                this.positionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Shift {
-            get {
-                return this.shiftField;
-            }
-            set {
-                this.shiftField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class PersonBaseinfo {
-        
-        private int p_idField;
-        
-        private string p_SurnameField;
-        
-        private string p_OthernameField;
-        
-        private string p_NicknameField;
-        
-        private string p_NameCHField;
-        
-        private string p_IDNumberField;
-        
-        private string p_SexField;
-        
-        private string p_emailField;
-        
-        private System.Nullable<int> u_idField;
-        
-        private string u_UsernameField;
-        
-        private System.Nullable<int> s_idField;
-        
-        private string s_StaffNumberField;
-        
-        private System.Nullable<byte> s_statusField;
-        
-        private System.Nullable<int> s_CompanyIDField;
-        
-        private System.Nullable<int> s_DepartmentIDField;
-        
-        private System.Nullable<int> s_PositionIDField;
-        
-        private System.Nullable<int> s_LeaveClassField;
-        
-        private System.Nullable<int> s_PayrollTypeField;
-        
-        private System.Nullable<int> e_idField;
-        
-        private System.Nullable<System.DateTime> e_CommenceDateField;
-        
-        private System.Nullable<System.DateTime> e_TerminateDateField;
-        
-        private string e_EmploymentNumberField;
-        
-        private string u_FullnameField;
-        
-        private string e_ZoneCodeField;
-        
-        private System.Nullable<int> e_ShiftIDField;
-        
-        private System.Nullable<short> e_AreaIDField;
-        
-        private System.Nullable<bool> e_IsMainField;
-        
-        private System.Nullable<byte> e_statusField;
-        
-        private System.Nullable<int> e_FirstEmploymentIDField;
-        
-        private System.Nullable<int> e_ApprovalGroupIDField;
-        
-        private System.Nullable<int> e_PositionIDField;
-        
-        private System.Nullable<int> e_contractidField;
-        
-        /// <remarks/>
-        public int p_id {
-            get {
-                return this.p_idField;
-            }
-            set {
-                this.p_idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string p_Surname {
-            get {
-                return this.p_SurnameField;
-            }
-            set {
-                this.p_SurnameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string p_Othername {
-            get {
-                return this.p_OthernameField;
-            }
-            set {
-                this.p_OthernameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string p_Nickname {
-            get {
-                return this.p_NicknameField;
-            }
-            set {
-                this.p_NicknameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string p_NameCH {
-            get {
-                return this.p_NameCHField;
-            }
-            set {
-                this.p_NameCHField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string p_IDNumber {
-            get {
-                return this.p_IDNumberField;
-            }
-            set {
-                this.p_IDNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string p_Sex {
-            get {
-                return this.p_SexField;
-            }
-            set {
-                this.p_SexField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string p_email {
-            get {
-                return this.p_emailField;
-            }
-            set {
-                this.p_emailField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> u_id {
-            get {
-                return this.u_idField;
-            }
-            set {
-                this.u_idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string u_Username {
-            get {
-                return this.u_UsernameField;
-            }
-            set {
-                this.u_UsernameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> s_id {
-            get {
-                return this.s_idField;
-            }
-            set {
-                this.s_idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string s_StaffNumber {
-            get {
-                return this.s_StaffNumberField;
-            }
-            set {
-                this.s_StaffNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<byte> s_status {
-            get {
-                return this.s_statusField;
-            }
-            set {
-                this.s_statusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> s_CompanyID {
-            get {
-                return this.s_CompanyIDField;
-            }
-            set {
-                this.s_CompanyIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> s_DepartmentID {
-            get {
-                return this.s_DepartmentIDField;
-            }
-            set {
-                this.s_DepartmentIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> s_PositionID {
-            get {
-                return this.s_PositionIDField;
-            }
-            set {
-                this.s_PositionIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> s_LeaveClass {
-            get {
-                return this.s_LeaveClassField;
-            }
-            set {
-                this.s_LeaveClassField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> s_PayrollType {
-            get {
-                return this.s_PayrollTypeField;
-            }
-            set {
-                this.s_PayrollTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> e_id {
-            get {
-                return this.e_idField;
-            }
-            set {
-                this.e_idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<System.DateTime> e_CommenceDate {
-            get {
-                return this.e_CommenceDateField;
-            }
-            set {
-                this.e_CommenceDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<System.DateTime> e_TerminateDate {
-            get {
-                return this.e_TerminateDateField;
-            }
-            set {
-                this.e_TerminateDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string e_EmploymentNumber {
-            get {
-                return this.e_EmploymentNumberField;
-            }
-            set {
-                this.e_EmploymentNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string u_Fullname {
-            get {
-                return this.u_FullnameField;
-            }
-            set {
-                this.u_FullnameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string e_ZoneCode {
-            get {
-                return this.e_ZoneCodeField;
-            }
-            set {
-                this.e_ZoneCodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> e_ShiftID {
-            get {
-                return this.e_ShiftIDField;
-            }
-            set {
-                this.e_ShiftIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<short> e_AreaID {
-            get {
-                return this.e_AreaIDField;
-            }
-            set {
-                this.e_AreaIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<bool> e_IsMain {
-            get {
-                return this.e_IsMainField;
-            }
-            set {
-                this.e_IsMainField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<byte> e_status {
-            get {
-                return this.e_statusField;
-            }
-            set {
-                this.e_statusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> e_FirstEmploymentID {
-            get {
-                return this.e_FirstEmploymentIDField;
-            }
-            set {
-                this.e_FirstEmploymentIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> e_ApprovalGroupID {
-            get {
-                return this.e_ApprovalGroupIDField;
-            }
-            set {
-                this.e_ApprovalGroupIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> e_PositionID {
-            get {
-                return this.e_PositionIDField;
-            }
-            set {
-                this.e_PositionIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> e_contractid {
-            get {
-                return this.e_contractidField;
-            }
-            set {
-                this.e_contractidField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class LoginResult {
-        
-        private int resultField;
-        
-        private string sessionIDField;
-        
-        /// <remarks/>
-        public int Result {
-            get {
-                return this.resultField;
-            }
-            set {
-                this.resultField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string SessionID {
-            get {
-                return this.sessionIDField;
-            }
-            set {
-                this.sessionIDField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class t_Person {
-        
-        private int idField;
-        
-        private string surnameField;
-        
-        private string othernameField;
-        
-        private string nicknameField;
-        
-        private string nameCHField;
-        
-        private string iDNumberField;
-        
-        private string passportNumberField;
-        
-        private string passportIssueCountryField;
-        
-        private System.Nullable<System.DateTime> visaExpiryDateField;
-        
-        private System.DateTime dateOfBirthField;
-        
-        private string placeOfBirthField;
-        
-        private string sexField;
-        
-        private string maritalStatusField;
-        
-        private string spouseField;
-        
-        private string nationalityField;
-        
-        private System.Nullable<char> addressAreaCodeField;
-        
-        private string addressOneField;
-        
-        private string addressTwoField;
-        
-        private string addressThreeField;
-        
-        private System.Nullable<char> correspondingAddressAreaCodeField;
-        
-        private string correspondingAddressOneField;
-        
-        private string correspondingAddressTwoField;
-        
-        private string correspondingAddressThreeField;
-        
-        private string phoneNumberField;
-        
-        private string emergencyContactPersonField;
-        
-        private string emergencyContactNumberField;
-        
-        private string remarksField;
-        
-        private string photoPathField;
-        
-        private bool isDisabilityField;
-        
-        private System.Nullable<float> capabilityPercentField;
-        
-        private byte statusField;
-        
-        private System.DateTime modifiedDateField;
-        
-        private int modifiedUserField;
-        
-        private System.DateTime createDateField;
-        
-        private int createUserField;
-        
-        private string mobilePhoneNumberField;
-        
-        private System.Nullable<int> userIDField;
-        
-        private System.Nullable<int> districtIDField;
-        
-        private string emergencyContactRelationshipField;
-        
-        private int qualificationIDField;
-        
-        private bool isHKIDPermanentField;
-        
-        private int firstYearOfWorkingInIndustryField;
-        
-        private double yearOfWorkingInIndustryField;
-        
-        private string residenceIdentityField;
-        
-        private string emailAddressField;
-        
-        private string vISAExpiryNoticePeriodField;
-        
-        private System.Nullable<int> noOfChildrenField;
-        
-        private double excludeNotRelatedYearField;
-        
-        private string industryNameField;
-        
-        private string titleField;
-        
-        private string personalEmailAddressField;
-        
-        private bool isMobilePhoneConsentField;
-        
-        private System.Nullable<bool> isReceiveEmailPaySlipField;
-        
-        private System.Nullable<bool> isReceiveEmailTaxationField;
-        
-        private string iDTypeField;
-        
-        /// <remarks/>
-        public int ID {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Surname {
-            get {
-                return this.surnameField;
-            }
-            set {
-                this.surnameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Othername {
-            get {
-                return this.othernameField;
-            }
-            set {
-                this.othernameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Nickname {
-            get {
-                return this.nicknameField;
-            }
-            set {
-                this.nicknameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string NameCH {
-            get {
-                return this.nameCHField;
-            }
-            set {
-                this.nameCHField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string IDNumber {
-            get {
-                return this.iDNumberField;
-            }
-            set {
-                this.iDNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string PassportNumber {
-            get {
-                return this.passportNumberField;
-            }
-            set {
-                this.passportNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string PassportIssueCountry {
-            get {
-                return this.passportIssueCountryField;
-            }
-            set {
-                this.passportIssueCountryField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<System.DateTime> VisaExpiryDate {
-            get {
-                return this.visaExpiryDateField;
-            }
-            set {
-                this.visaExpiryDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime DateOfBirth {
-            get {
-                return this.dateOfBirthField;
-            }
-            set {
-                this.dateOfBirthField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string PlaceOfBirth {
-            get {
-                return this.placeOfBirthField;
-            }
-            set {
-                this.placeOfBirthField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Sex {
-            get {
-                return this.sexField;
-            }
-            set {
-                this.sexField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string MaritalStatus {
-            get {
-                return this.maritalStatusField;
-            }
-            set {
-                this.maritalStatusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Spouse {
-            get {
-                return this.spouseField;
-            }
-            set {
-                this.spouseField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Nationality {
-            get {
-                return this.nationalityField;
-            }
-            set {
-                this.nationalityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<char> AddressAreaCode {
-            get {
-                return this.addressAreaCodeField;
-            }
-            set {
-                this.addressAreaCodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string AddressOne {
-            get {
-                return this.addressOneField;
-            }
-            set {
-                this.addressOneField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string AddressTwo {
-            get {
-                return this.addressTwoField;
-            }
-            set {
-                this.addressTwoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string AddressThree {
-            get {
-                return this.addressThreeField;
-            }
-            set {
-                this.addressThreeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<char> CorrespondingAddressAreaCode {
-            get {
-                return this.correspondingAddressAreaCodeField;
-            }
-            set {
-                this.correspondingAddressAreaCodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string CorrespondingAddressOne {
-            get {
-                return this.correspondingAddressOneField;
-            }
-            set {
-                this.correspondingAddressOneField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string CorrespondingAddressTwo {
-            get {
-                return this.correspondingAddressTwoField;
-            }
-            set {
-                this.correspondingAddressTwoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string CorrespondingAddressThree {
-            get {
-                return this.correspondingAddressThreeField;
-            }
-            set {
-                this.correspondingAddressThreeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string PhoneNumber {
-            get {
-                return this.phoneNumberField;
-            }
-            set {
-                this.phoneNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string EmergencyContactPerson {
-            get {
-                return this.emergencyContactPersonField;
-            }
-            set {
-                this.emergencyContactPersonField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string EmergencyContactNumber {
-            get {
-                return this.emergencyContactNumberField;
-            }
-            set {
-                this.emergencyContactNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Remarks {
-            get {
-                return this.remarksField;
-            }
-            set {
-                this.remarksField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string PhotoPath {
-            get {
-                return this.photoPathField;
-            }
-            set {
-                this.photoPathField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool IsDisability {
-            get {
-                return this.isDisabilityField;
-            }
-            set {
-                this.isDisabilityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<float> CapabilityPercent {
-            get {
-                return this.capabilityPercentField;
-            }
-            set {
-                this.capabilityPercentField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte Status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime ModifiedDate {
-            get {
-                return this.modifiedDateField;
-            }
-            set {
-                this.modifiedDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int ModifiedUser {
-            get {
-                return this.modifiedUserField;
-            }
-            set {
-                this.modifiedUserField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime CreateDate {
-            get {
-                return this.createDateField;
-            }
-            set {
-                this.createDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int CreateUser {
-            get {
-                return this.createUserField;
-            }
-            set {
-                this.createUserField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string MobilePhoneNumber {
-            get {
-                return this.mobilePhoneNumberField;
-            }
-            set {
-                this.mobilePhoneNumberField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> UserID {
-            get {
-                return this.userIDField;
-            }
-            set {
-                this.userIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> DistrictID {
-            get {
-                return this.districtIDField;
-            }
-            set {
-                this.districtIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string EmergencyContactRelationship {
-            get {
-                return this.emergencyContactRelationshipField;
-            }
-            set {
-                this.emergencyContactRelationshipField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int QualificationID {
-            get {
-                return this.qualificationIDField;
-            }
-            set {
-                this.qualificationIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool IsHKIDPermanent {
-            get {
-                return this.isHKIDPermanentField;
-            }
-            set {
-                this.isHKIDPermanentField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int FirstYearOfWorkingInIndustry {
-            get {
-                return this.firstYearOfWorkingInIndustryField;
-            }
-            set {
-                this.firstYearOfWorkingInIndustryField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public double YearOfWorkingInIndustry {
-            get {
-                return this.yearOfWorkingInIndustryField;
-            }
-            set {
-                this.yearOfWorkingInIndustryField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ResidenceIdentity {
-            get {
-                return this.residenceIdentityField;
-            }
-            set {
-                this.residenceIdentityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string EmailAddress {
-            get {
-                return this.emailAddressField;
-            }
-            set {
-                this.emailAddressField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string VISAExpiryNoticePeriod {
-            get {
-                return this.vISAExpiryNoticePeriodField;
-            }
-            set {
-                this.vISAExpiryNoticePeriodField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> NoOfChildren {
-            get {
-                return this.noOfChildrenField;
-            }
-            set {
-                this.noOfChildrenField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public double ExcludeNotRelatedYear {
-            get {
-                return this.excludeNotRelatedYearField;
-            }
-            set {
-                this.excludeNotRelatedYearField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string IndustryName {
-            get {
-                return this.industryNameField;
-            }
-            set {
-                this.industryNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Title {
-            get {
-                return this.titleField;
-            }
-            set {
-                this.titleField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string PersonalEmailAddress {
-            get {
-                return this.personalEmailAddressField;
-            }
-            set {
-                this.personalEmailAddressField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool IsMobilePhoneConsent {
-            get {
-                return this.isMobilePhoneConsentField;
-            }
-            set {
-                this.isMobilePhoneConsentField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<bool> IsReceiveEmailPaySlip {
-            get {
-                return this.isReceiveEmailPaySlipField;
-            }
-            set {
-                this.isReceiveEmailPaySlipField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<bool> IsReceiveEmailTaxation {
-            get {
-                return this.isReceiveEmailTaxationField;
-            }
-            set {
-                this.isReceiveEmailTaxationField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string IDType {
-            get {
-                return this.iDTypeField;
-            }
-            set {
-                this.iDTypeField = value;
-            }
         }
     }
     
@@ -3774,6 +2167,1651 @@ namespace WebServiceLayer.WebReference_user {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Employment_Contract {
+        
+        private int employmentidField;
+        
+        private int contractidField;
+        
+        private string zonecodeField;
+        
+        private int isAssociateField;
+        
+        private string descriptionField;
+        
+        private string zonedescriptionField;
+        
+        private string codeField;
+        
+        /// <remarks/>
+        public int employmentid {
+            get {
+                return this.employmentidField;
+            }
+            set {
+                this.employmentidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int contractid {
+            get {
+                return this.contractidField;
+            }
+            set {
+                this.contractidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string zonecode {
+            get {
+                return this.zonecodeField;
+            }
+            set {
+                this.zonecodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int isAssociate {
+            get {
+                return this.isAssociateField;
+            }
+            set {
+                this.isAssociateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string zonedescription {
+            get {
+                return this.zonedescriptionField;
+            }
+            set {
+                this.zonedescriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class EmployDetail {
+        
+        private int e_idField;
+        
+        private int s_idField;
+        
+        private string s_staffnumberField;
+        
+        private string e_EmploymentNumberField;
+        
+        private string contractField;
+        
+        private string zoneField;
+        
+        private string positionField;
+        
+        private string shiftField;
+        
+        /// <remarks/>
+        public int e_id {
+            get {
+                return this.e_idField;
+            }
+            set {
+                this.e_idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int s_id {
+            get {
+                return this.s_idField;
+            }
+            set {
+                this.s_idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string s_staffnumber {
+            get {
+                return this.s_staffnumberField;
+            }
+            set {
+                this.s_staffnumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string e_EmploymentNumber {
+            get {
+                return this.e_EmploymentNumberField;
+            }
+            set {
+                this.e_EmploymentNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Contract {
+            get {
+                return this.contractField;
+            }
+            set {
+                this.contractField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Zone {
+            get {
+                return this.zoneField;
+            }
+            set {
+                this.zoneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Position {
+            get {
+                return this.positionField;
+            }
+            set {
+                this.positionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Shift {
+            get {
+                return this.shiftField;
+            }
+            set {
+                this.shiftField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class PersonBaseinfo {
+        
+        private int p_idField;
+        
+        private string p_SurnameField;
+        
+        private string p_OthernameField;
+        
+        private string p_NicknameField;
+        
+        private string p_NameCHField;
+        
+        private string p_IDNumberField;
+        
+        private string p_SexField;
+        
+        private string p_emailField;
+        
+        private System.Nullable<int> u_idField;
+        
+        private string u_UsernameField;
+        
+        private System.Nullable<int> s_idField;
+        
+        private string s_StaffNumberField;
+        
+        private System.Nullable<byte> s_statusField;
+        
+        private System.Nullable<int> s_CompanyIDField;
+        
+        private System.Nullable<int> s_DepartmentIDField;
+        
+        private System.Nullable<int> s_PositionIDField;
+        
+        private System.Nullable<int> s_LeaveClassField;
+        
+        private System.Nullable<int> s_PayrollTypeField;
+        
+        private System.Nullable<int> e_idField;
+        
+        private System.Nullable<System.DateTime> e_CommenceDateField;
+        
+        private System.Nullable<System.DateTime> e_TerminateDateField;
+        
+        private string e_EmploymentNumberField;
+        
+        private string u_FullnameField;
+        
+        private string e_ZoneCodeField;
+        
+        private System.Nullable<int> e_ShiftIDField;
+        
+        private System.Nullable<short> e_AreaIDField;
+        
+        private System.Nullable<bool> e_IsMainField;
+        
+        private System.Nullable<byte> e_statusField;
+        
+        private System.Nullable<int> e_FirstEmploymentIDField;
+        
+        private System.Nullable<int> e_ApprovalGroupIDField;
+        
+        private System.Nullable<int> e_PositionIDField;
+        
+        private System.Nullable<int> e_contractidField;
+        
+        private string extendInfoField;
+        
+        private System.Nullable<short> s_SecurityGroupIDField;
+        
+        private System.Nullable<int> c_contractGroupidField;
+        
+        /// <remarks/>
+        public int p_id {
+            get {
+                return this.p_idField;
+            }
+            set {
+                this.p_idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string p_Surname {
+            get {
+                return this.p_SurnameField;
+            }
+            set {
+                this.p_SurnameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string p_Othername {
+            get {
+                return this.p_OthernameField;
+            }
+            set {
+                this.p_OthernameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string p_Nickname {
+            get {
+                return this.p_NicknameField;
+            }
+            set {
+                this.p_NicknameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string p_NameCH {
+            get {
+                return this.p_NameCHField;
+            }
+            set {
+                this.p_NameCHField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string p_IDNumber {
+            get {
+                return this.p_IDNumberField;
+            }
+            set {
+                this.p_IDNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string p_Sex {
+            get {
+                return this.p_SexField;
+            }
+            set {
+                this.p_SexField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string p_email {
+            get {
+                return this.p_emailField;
+            }
+            set {
+                this.p_emailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> u_id {
+            get {
+                return this.u_idField;
+            }
+            set {
+                this.u_idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string u_Username {
+            get {
+                return this.u_UsernameField;
+            }
+            set {
+                this.u_UsernameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> s_id {
+            get {
+                return this.s_idField;
+            }
+            set {
+                this.s_idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string s_StaffNumber {
+            get {
+                return this.s_StaffNumberField;
+            }
+            set {
+                this.s_StaffNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<byte> s_status {
+            get {
+                return this.s_statusField;
+            }
+            set {
+                this.s_statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> s_CompanyID {
+            get {
+                return this.s_CompanyIDField;
+            }
+            set {
+                this.s_CompanyIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> s_DepartmentID {
+            get {
+                return this.s_DepartmentIDField;
+            }
+            set {
+                this.s_DepartmentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> s_PositionID {
+            get {
+                return this.s_PositionIDField;
+            }
+            set {
+                this.s_PositionIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> s_LeaveClass {
+            get {
+                return this.s_LeaveClassField;
+            }
+            set {
+                this.s_LeaveClassField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> s_PayrollType {
+            get {
+                return this.s_PayrollTypeField;
+            }
+            set {
+                this.s_PayrollTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> e_id {
+            get {
+                return this.e_idField;
+            }
+            set {
+                this.e_idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<System.DateTime> e_CommenceDate {
+            get {
+                return this.e_CommenceDateField;
+            }
+            set {
+                this.e_CommenceDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<System.DateTime> e_TerminateDate {
+            get {
+                return this.e_TerminateDateField;
+            }
+            set {
+                this.e_TerminateDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string e_EmploymentNumber {
+            get {
+                return this.e_EmploymentNumberField;
+            }
+            set {
+                this.e_EmploymentNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string u_Fullname {
+            get {
+                return this.u_FullnameField;
+            }
+            set {
+                this.u_FullnameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string e_ZoneCode {
+            get {
+                return this.e_ZoneCodeField;
+            }
+            set {
+                this.e_ZoneCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> e_ShiftID {
+            get {
+                return this.e_ShiftIDField;
+            }
+            set {
+                this.e_ShiftIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<short> e_AreaID {
+            get {
+                return this.e_AreaIDField;
+            }
+            set {
+                this.e_AreaIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<bool> e_IsMain {
+            get {
+                return this.e_IsMainField;
+            }
+            set {
+                this.e_IsMainField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<byte> e_status {
+            get {
+                return this.e_statusField;
+            }
+            set {
+                this.e_statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> e_FirstEmploymentID {
+            get {
+                return this.e_FirstEmploymentIDField;
+            }
+            set {
+                this.e_FirstEmploymentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> e_ApprovalGroupID {
+            get {
+                return this.e_ApprovalGroupIDField;
+            }
+            set {
+                this.e_ApprovalGroupIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> e_PositionID {
+            get {
+                return this.e_PositionIDField;
+            }
+            set {
+                this.e_PositionIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> e_contractid {
+            get {
+                return this.e_contractidField;
+            }
+            set {
+                this.e_contractidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string extendInfo {
+            get {
+                return this.extendInfoField;
+            }
+            set {
+                this.extendInfoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<short> s_SecurityGroupID {
+            get {
+                return this.s_SecurityGroupIDField;
+            }
+            set {
+                this.s_SecurityGroupIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> c_contractGroupid {
+            get {
+                return this.c_contractGroupidField;
+            }
+            set {
+                this.c_contractGroupidField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LoginResult {
+        
+        private int resultField;
+        
+        private string sessionIDField;
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                return this.resultField;
+            }
+            set {
+                this.resultField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string SessionID {
+            get {
+                return this.sessionIDField;
+            }
+            set {
+                this.sessionIDField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class t_Person {
+        
+        private int idField;
+        
+        private string surnameField;
+        
+        private string othernameField;
+        
+        private string nicknameField;
+        
+        private string nameCHField;
+        
+        private string iDNumberField;
+        
+        private string passportNumberField;
+        
+        private string passportIssueCountryField;
+        
+        private System.Nullable<System.DateTime> visaExpiryDateField;
+        
+        private System.DateTime dateOfBirthField;
+        
+        private string placeOfBirthField;
+        
+        private string sexField;
+        
+        private string maritalStatusField;
+        
+        private string spouseField;
+        
+        private string nationalityField;
+        
+        private System.Nullable<char> addressAreaCodeField;
+        
+        private string addressOneField;
+        
+        private string addressTwoField;
+        
+        private string addressThreeField;
+        
+        private System.Nullable<char> correspondingAddressAreaCodeField;
+        
+        private string correspondingAddressOneField;
+        
+        private string correspondingAddressTwoField;
+        
+        private string correspondingAddressThreeField;
+        
+        private string phoneNumberField;
+        
+        private string emergencyContactPersonField;
+        
+        private string emergencyContactNumberField;
+        
+        private string remarksField;
+        
+        private string photoPathField;
+        
+        private bool isDisabilityField;
+        
+        private System.Nullable<float> capabilityPercentField;
+        
+        private byte statusField;
+        
+        private System.DateTime modifiedDateField;
+        
+        private int modifiedUserField;
+        
+        private System.DateTime createDateField;
+        
+        private int createUserField;
+        
+        private string mobilePhoneNumberField;
+        
+        private System.Nullable<int> userIDField;
+        
+        private System.Nullable<int> districtIDField;
+        
+        private string emergencyContactRelationshipField;
+        
+        private int qualificationIDField;
+        
+        private bool isHKIDPermanentField;
+        
+        private int firstYearOfWorkingInIndustryField;
+        
+        private double yearOfWorkingInIndustryField;
+        
+        private string residenceIdentityField;
+        
+        private string emailAddressField;
+        
+        private string vISAExpiryNoticePeriodField;
+        
+        private System.Nullable<int> noOfChildrenField;
+        
+        private double excludeNotRelatedYearField;
+        
+        private string industryNameField;
+        
+        private string titleField;
+        
+        private string personalEmailAddressField;
+        
+        private bool isMobilePhoneConsentField;
+        
+        private System.Nullable<bool> isReceiveEmailPaySlipField;
+        
+        private System.Nullable<bool> isReceiveEmailTaxationField;
+        
+        private string iDTypeField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Surname {
+            get {
+                return this.surnameField;
+            }
+            set {
+                this.surnameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Othername {
+            get {
+                return this.othernameField;
+            }
+            set {
+                this.othernameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Nickname {
+            get {
+                return this.nicknameField;
+            }
+            set {
+                this.nicknameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string NameCH {
+            get {
+                return this.nameCHField;
+            }
+            set {
+                this.nameCHField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string IDNumber {
+            get {
+                return this.iDNumberField;
+            }
+            set {
+                this.iDNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PassportNumber {
+            get {
+                return this.passportNumberField;
+            }
+            set {
+                this.passportNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PassportIssueCountry {
+            get {
+                return this.passportIssueCountryField;
+            }
+            set {
+                this.passportIssueCountryField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<System.DateTime> VisaExpiryDate {
+            get {
+                return this.visaExpiryDateField;
+            }
+            set {
+                this.visaExpiryDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime DateOfBirth {
+            get {
+                return this.dateOfBirthField;
+            }
+            set {
+                this.dateOfBirthField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PlaceOfBirth {
+            get {
+                return this.placeOfBirthField;
+            }
+            set {
+                this.placeOfBirthField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Sex {
+            get {
+                return this.sexField;
+            }
+            set {
+                this.sexField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string MaritalStatus {
+            get {
+                return this.maritalStatusField;
+            }
+            set {
+                this.maritalStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Spouse {
+            get {
+                return this.spouseField;
+            }
+            set {
+                this.spouseField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Nationality {
+            get {
+                return this.nationalityField;
+            }
+            set {
+                this.nationalityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<char> AddressAreaCode {
+            get {
+                return this.addressAreaCodeField;
+            }
+            set {
+                this.addressAreaCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string AddressOne {
+            get {
+                return this.addressOneField;
+            }
+            set {
+                this.addressOneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string AddressTwo {
+            get {
+                return this.addressTwoField;
+            }
+            set {
+                this.addressTwoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string AddressThree {
+            get {
+                return this.addressThreeField;
+            }
+            set {
+                this.addressThreeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<char> CorrespondingAddressAreaCode {
+            get {
+                return this.correspondingAddressAreaCodeField;
+            }
+            set {
+                this.correspondingAddressAreaCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CorrespondingAddressOne {
+            get {
+                return this.correspondingAddressOneField;
+            }
+            set {
+                this.correspondingAddressOneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CorrespondingAddressTwo {
+            get {
+                return this.correspondingAddressTwoField;
+            }
+            set {
+                this.correspondingAddressTwoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CorrespondingAddressThree {
+            get {
+                return this.correspondingAddressThreeField;
+            }
+            set {
+                this.correspondingAddressThreeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PhoneNumber {
+            get {
+                return this.phoneNumberField;
+            }
+            set {
+                this.phoneNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string EmergencyContactPerson {
+            get {
+                return this.emergencyContactPersonField;
+            }
+            set {
+                this.emergencyContactPersonField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string EmergencyContactNumber {
+            get {
+                return this.emergencyContactNumberField;
+            }
+            set {
+                this.emergencyContactNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Remarks {
+            get {
+                return this.remarksField;
+            }
+            set {
+                this.remarksField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PhotoPath {
+            get {
+                return this.photoPathField;
+            }
+            set {
+                this.photoPathField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsDisability {
+            get {
+                return this.isDisabilityField;
+            }
+            set {
+                this.isDisabilityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<float> CapabilityPercent {
+            get {
+                return this.capabilityPercentField;
+            }
+            set {
+                this.capabilityPercentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public byte Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ModifiedDate {
+            get {
+                return this.modifiedDateField;
+            }
+            set {
+                this.modifiedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ModifiedUser {
+            get {
+                return this.modifiedUserField;
+            }
+            set {
+                this.modifiedUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CreateUser {
+            get {
+                return this.createUserField;
+            }
+            set {
+                this.createUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string MobilePhoneNumber {
+            get {
+                return this.mobilePhoneNumberField;
+            }
+            set {
+                this.mobilePhoneNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> UserID {
+            get {
+                return this.userIDField;
+            }
+            set {
+                this.userIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> DistrictID {
+            get {
+                return this.districtIDField;
+            }
+            set {
+                this.districtIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string EmergencyContactRelationship {
+            get {
+                return this.emergencyContactRelationshipField;
+            }
+            set {
+                this.emergencyContactRelationshipField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int QualificationID {
+            get {
+                return this.qualificationIDField;
+            }
+            set {
+                this.qualificationIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsHKIDPermanent {
+            get {
+                return this.isHKIDPermanentField;
+            }
+            set {
+                this.isHKIDPermanentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int FirstYearOfWorkingInIndustry {
+            get {
+                return this.firstYearOfWorkingInIndustryField;
+            }
+            set {
+                this.firstYearOfWorkingInIndustryField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double YearOfWorkingInIndustry {
+            get {
+                return this.yearOfWorkingInIndustryField;
+            }
+            set {
+                this.yearOfWorkingInIndustryField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ResidenceIdentity {
+            get {
+                return this.residenceIdentityField;
+            }
+            set {
+                this.residenceIdentityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string EmailAddress {
+            get {
+                return this.emailAddressField;
+            }
+            set {
+                this.emailAddressField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string VISAExpiryNoticePeriod {
+            get {
+                return this.vISAExpiryNoticePeriodField;
+            }
+            set {
+                this.vISAExpiryNoticePeriodField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> NoOfChildren {
+            get {
+                return this.noOfChildrenField;
+            }
+            set {
+                this.noOfChildrenField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double ExcludeNotRelatedYear {
+            get {
+                return this.excludeNotRelatedYearField;
+            }
+            set {
+                this.excludeNotRelatedYearField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string IndustryName {
+            get {
+                return this.industryNameField;
+            }
+            set {
+                this.industryNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Title {
+            get {
+                return this.titleField;
+            }
+            set {
+                this.titleField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PersonalEmailAddress {
+            get {
+                return this.personalEmailAddressField;
+            }
+            set {
+                this.personalEmailAddressField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsMobilePhoneConsent {
+            get {
+                return this.isMobilePhoneConsentField;
+            }
+            set {
+                this.isMobilePhoneConsentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<bool> IsReceiveEmailPaySlip {
+            get {
+                return this.isReceiveEmailPaySlipField;
+            }
+            set {
+                this.isReceiveEmailPaySlipField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<bool> IsReceiveEmailTaxation {
+            get {
+                return this.isReceiveEmailTaxationField;
+            }
+            set {
+                this.isReceiveEmailTaxationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string IDType {
+            get {
+                return this.iDTypeField;
+            }
+            set {
+                this.iDTypeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class t_User {
+        
+        private int idField;
+        
+        private string usernameField;
+        
+        private string passwordHashField;
+        
+        private string fullnameField;
+        
+        private int userGroupIDField;
+        
+        private string phoneField;
+        
+        private string emailField;
+        
+        private string remarksField;
+        
+        private byte statusField;
+        
+        private System.DateTime modifiedDateField;
+        
+        private int modifiedUserField;
+        
+        private System.DateTime createDateField;
+        
+        private int createUserField;
+        
+        private System.Nullable<int> supervisorIDField;
+        
+        private int specialRightField;
+        
+        private string languageCodeField;
+        
+        private string domainUserField;
+        
+        private int failAttemptField;
+        
+        private System.DateTime lastLoginDateField;
+        
+        private System.DateTime expiryDateField;
+        
+        private bool isLockField;
+        
+        private string tokenKeyField;
+        
+        private int mobileUserLevelField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Username {
+            get {
+                return this.usernameField;
+            }
+            set {
+                this.usernameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PasswordHash {
+            get {
+                return this.passwordHashField;
+            }
+            set {
+                this.passwordHashField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Fullname {
+            get {
+                return this.fullnameField;
+            }
+            set {
+                this.fullnameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int UserGroupID {
+            get {
+                return this.userGroupIDField;
+            }
+            set {
+                this.userGroupIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Phone {
+            get {
+                return this.phoneField;
+            }
+            set {
+                this.phoneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Remarks {
+            get {
+                return this.remarksField;
+            }
+            set {
+                this.remarksField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public byte Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ModifiedDate {
+            get {
+                return this.modifiedDateField;
+            }
+            set {
+                this.modifiedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ModifiedUser {
+            get {
+                return this.modifiedUserField;
+            }
+            set {
+                this.modifiedUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CreateUser {
+            get {
+                return this.createUserField;
+            }
+            set {
+                this.createUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> SupervisorID {
+            get {
+                return this.supervisorIDField;
+            }
+            set {
+                this.supervisorIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int SpecialRight {
+            get {
+                return this.specialRightField;
+            }
+            set {
+                this.specialRightField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string LanguageCode {
+            get {
+                return this.languageCodeField;
+            }
+            set {
+                this.languageCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DomainUser {
+            get {
+                return this.domainUserField;
+            }
+            set {
+                this.domainUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int FailAttempt {
+            get {
+                return this.failAttemptField;
+            }
+            set {
+                this.failAttemptField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime LastLoginDate {
+            get {
+                return this.lastLoginDateField;
+            }
+            set {
+                this.lastLoginDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ExpiryDate {
+            get {
+                return this.expiryDateField;
+            }
+            set {
+                this.expiryDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsLock {
+            get {
+                return this.isLockField;
+            }
+            set {
+                this.isLockField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string TokenKey {
+            get {
+                return this.tokenKeyField;
+            }
+            set {
+                this.tokenKeyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int MobileUserLevel {
+            get {
+                return this.mobileUserLevelField;
+            }
+            set {
+                this.mobileUserLevelField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class t_Employment {
         
         private int idField;
@@ -4539,43 +4577,43 @@ namespace WebServiceLayer.WebReference_user {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Base_Insertt_UserCompletedEventHandler(object sender, Base_Insertt_UserCompletedEventArgs e);
+    public delegate void Base_Insertt_StaffCompletedEventHandler(object sender, Base_Insertt_StaffCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Base_Insertt_UserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Base_Insertt_StaffCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Base_Insertt_UserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Base_Insertt_StaffCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public t_User Result {
+        public t_Staff Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((t_User)(this.results[0]));
+                return ((t_Staff)(this.results[0]));
             }
         }
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Base_Updatet_UserCompletedEventHandler(object sender, Base_Updatet_UserCompletedEventArgs e);
+    public delegate void Base_Updatet_StaffCompletedEventHandler(object sender, Base_Updatet_StaffCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Base_Updatet_UserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Base_Updatet_StaffCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Base_Updatet_UserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Base_Updatet_StaffCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -4591,17 +4629,17 @@ namespace WebServiceLayer.WebReference_user {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Base_Deletet_UserCompletedEventHandler(object sender, Base_Deletet_UserCompletedEventArgs e);
+    public delegate void Base_Deletet_StaffCompletedEventHandler(object sender, Base_Deletet_StaffCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Base_Deletet_UserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Base_Deletet_StaffCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Base_Deletet_UserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Base_Deletet_StaffCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -4617,52 +4655,52 @@ namespace WebServiceLayer.WebReference_user {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Base_Gett_UserCompletedEventHandler(object sender, Base_Gett_UserCompletedEventArgs e);
+    public delegate void Base_Gett_StaffCompletedEventHandler(object sender, Base_Gett_StaffCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Base_Gett_UserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Base_Gett_StaffCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Base_Gett_UserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Base_Gett_StaffCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public t_User Result {
+        public t_Staff Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((t_User)(this.results[0]));
+                return ((t_Staff)(this.results[0]));
             }
         }
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Base_GetListt_UserCompletedEventHandler(object sender, Base_GetListt_UserCompletedEventArgs e);
+    public delegate void Base_GetListt_StaffCompletedEventHandler(object sender, Base_GetListt_StaffCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Base_GetListt_UserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Base_GetListt_StaffCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Base_GetListt_UserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Base_GetListt_StaffCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public t_User[] Result {
+        public t_Staff[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((t_User[])(this.results[0]));
+                return ((t_Staff[])(this.results[0]));
             }
         }
     }
@@ -4799,43 +4837,43 @@ namespace WebServiceLayer.WebReference_user {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Base_Insertt_StaffCompletedEventHandler(object sender, Base_Insertt_StaffCompletedEventArgs e);
+    public delegate void Base_Insertt_UserCompletedEventHandler(object sender, Base_Insertt_UserCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Base_Insertt_StaffCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Base_Insertt_UserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Base_Insertt_StaffCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Base_Insertt_UserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public t_Staff Result {
+        public t_User Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((t_Staff)(this.results[0]));
+                return ((t_User)(this.results[0]));
             }
         }
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Base_Updatet_StaffCompletedEventHandler(object sender, Base_Updatet_StaffCompletedEventArgs e);
+    public delegate void Base_Updatet_UserCompletedEventHandler(object sender, Base_Updatet_UserCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Base_Updatet_StaffCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Base_Updatet_UserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Base_Updatet_StaffCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Base_Updatet_UserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -4851,17 +4889,17 @@ namespace WebServiceLayer.WebReference_user {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Base_Deletet_StaffCompletedEventHandler(object sender, Base_Deletet_StaffCompletedEventArgs e);
+    public delegate void Base_Deletet_UserCompletedEventHandler(object sender, Base_Deletet_UserCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Base_Deletet_StaffCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Base_Deletet_UserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Base_Deletet_StaffCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Base_Deletet_UserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -4877,52 +4915,52 @@ namespace WebServiceLayer.WebReference_user {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Base_Gett_StaffCompletedEventHandler(object sender, Base_Gett_StaffCompletedEventArgs e);
+    public delegate void Base_Gett_UserCompletedEventHandler(object sender, Base_Gett_UserCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Base_Gett_StaffCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Base_Gett_UserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Base_Gett_StaffCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Base_Gett_UserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public t_Staff Result {
+        public t_User Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((t_Staff)(this.results[0]));
+                return ((t_User)(this.results[0]));
             }
         }
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Base_GetListt_StaffCompletedEventHandler(object sender, Base_GetListt_StaffCompletedEventArgs e);
+    public delegate void Base_GetListt_UserCompletedEventHandler(object sender, Base_GetListt_UserCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Base_GetListt_StaffCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class Base_GetListt_UserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal Base_GetListt_StaffCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal Base_GetListt_UserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public t_Staff[] Result {
+        public t_User[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((t_Staff[])(this.results[0]));
+                return ((t_User[])(this.results[0]));
             }
         }
     }

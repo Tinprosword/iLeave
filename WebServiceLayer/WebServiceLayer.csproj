@@ -129,6 +129,9 @@
     <None Include="Web References\WebReference_leave\LeaveBalanceType.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\WebReference_leave\LeaveCLTODetail.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\WebReference_leave\LeaveHistory.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -156,6 +159,9 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebReference_leave\v_System_Calendar.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebReference_leave\WorkflowTaskExtend.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebReference_user\EmployDetail.datasource">

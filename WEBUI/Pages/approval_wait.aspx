@@ -18,8 +18,8 @@
             <asp:DropDownList ID="ddl_year" runat="server"  Height="26px" OnSelectedIndexChanged="ddl_year_SelectedIndexChanged" AutoPostBack="true">
                 <asp:ListItem Value="2018">2018</asp:ListItem>
                 <asp:ListItem Value="2019">2019</asp:ListItem>
-                <asp:ListItem Value="2020" Selected="True">2020</asp:ListItem>
-                <asp:ListItem Value="2021">2021</asp:ListItem>
+                <asp:ListItem Value="2020" >2020</asp:ListItem>
+                <asp:ListItem Value="2021" Selected="True">2021</asp:ListItem>
             </asp:DropDownList>
         </div>
         <div class="col-xs-4" style="width:160px; padding-right:2px">

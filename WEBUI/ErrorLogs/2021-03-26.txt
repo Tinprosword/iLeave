@@ -1,0 +1,178 @@
+ip:::1
+DataTime：2021/3/26 9:29:17
+Url：http://localhost:8099/pages/apply.aspx
+Message：服务器无法处理请求。 ---> 不能将 Null 值赋给类型为 System.Int32 (不可为 null 的值类型)的成员。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetAllLeaveTypeByStaffID(Int32 staffid)
+   在 BLL.Leave.GetLeavesByStaffID(Int32 sid)
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/3/26 9:45:27
+Url：http://localhost:8099/pages/approval_wait.aspx?action=0&applicationtype=0
+Message：磁盘空间不足。
+
+Source：mscorlib
+Type：System.IO.IOException
+Function：Void WinIOError(Int32, System.String)
+Trace：   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.WriteCore(Byte[] buffer, Int32 offset, Int32 count)
+   在 System.IO.FileStream.FlushInternalBuffer()
+   在 System.IO.FileStream.Flush(Boolean flushToDisk)
+   在 System.IO.StreamWriter.Flush(Boolean flushStream, Boolean flushEncoder)
+   在 System.Web.Compilation.AssemblyBuilder.AddCodeCompileUnit(BuildProvider buildProvider, CodeCompileUnit compileUnit)
+   在 System.Web.Compilation.BaseTemplateBuildProvider.GenerateCode(AssemblyBuilder assemblyBuilder)
+   在 System.Web.Compilation.AssemblyBuilder.AddBuildProvider(BuildProvider buildProvider)
+********************************************************************************************
+ip:::1
+DataTime：2021/3/26 9:45:27
+Url：http://localhost:8099/pages/errorpage.aspx?message=磁盘空间不足。%0d%0a
+Message：磁盘空间不足。
+
+Source：mscorlib
+Type：System.IO.IOException
+Function：Void WinIOError(Int32, System.String)
+Trace：   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.WriteCore(Byte[] buffer, Int32 offset, Int32 count)
+   在 System.IO.FileStream.FlushInternalBuffer()
+   在 System.IO.FileStream.Flush(Boolean flushToDisk)
+   在 System.IO.StreamWriter.Flush(Boolean flushStream, Boolean flushEncoder)
+   在 System.Web.Compilation.AssemblyBuilder.AddCodeCompileUnit(BuildProvider buildProvider, CodeCompileUnit compileUnit)
+   在 System.Web.Compilation.BaseTemplateBuildProvider.GenerateCode(AssemblyBuilder assemblyBuilder)
+   在 System.Web.Compilation.AssemblyBuilder.AddBuildProvider(BuildProvider buildProvider)
+********************************************************************************************
+ip:::1
+DataTime：2021/3/26 9:45:28
+Url：http://localhost:8099/pages/errorpage.aspx?message=磁盘空间不足。%0d%0a
+Message：磁盘空间不足。
+
+Source：mscorlib
+Type：System.IO.IOException
+Function：Void WinIOError(Int32, System.String)
+Trace：   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.WriteCore(Byte[] buffer, Int32 offset, Int32 count)
+   在 System.IO.FileStream.FlushInternalBuffer()
+   在 System.IO.FileStream.Flush(Boolean flushToDisk)
+   在 System.IO.StreamWriter.Flush(Boolean flushStream, Boolean flushEncoder)
+   在 System.Web.Compilation.AssemblyBuilder.AddCodeCompileUnit(BuildProvider buildProvider, CodeCompileUnit compileUnit)
+   在 System.Web.Compilation.BaseTemplateBuildProvider.GenerateCode(AssemblyBuilder assemblyBuilder)
+   在 System.Web.Compilation.AssemblyBuilder.AddBuildProvider(BuildProvider buildProvider)
+********************************************************************************************
+ip:::1
+DataTime：2021/3/26 9:48:18
+Url：http://localhost:8099/pages/apply.aspx
+Message：服务器无法处理请求。 ---> 不能将 Null 值赋给类型为 System.Int32 (不可为 null 的值类型)的成员。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetAllLeaveTypeByStaffID(Int32 staffid)
+   在 BLL.Leave.GetLeavesByStaffID(Int32 sid)
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/3/26 9:49:22
+Url：http://localhost:8099/pages/apply.aspx
+Message：服务器无法处理请求。 ---> 不能将 Null 值赋给类型为 System.Int32 (不可为 null 的值类型)的成员。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetAllLeaveTypeByStaffID(Int32 staffid)
+   在 BLL.Leave.GetLeavesByStaffID(Int32 sid)
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/3/26 10:00:14
+Url：http://localhost:8099/pages/apply.aspx
+Message：服务器无法处理请求。 ---> 不能将 Null 值赋给类型为 System.Int32 (不可为 null 的值类型)的成员。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetAllLeaveTypeByStaffID(Int32 staffid)
+   在 BLL.Leave.GetLeavesByStaffID(Int32 sid)
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/3/26 17:50:22
+Url：http://localhost:8099/pages/calendar.aspx
+Message：操作超时
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetContractByEmployids(Int32[] eids)
+   在 BLL.calendar.GetContractByEmployids(Int32[] eids)
+   在 WEBUI.Pages.calendar.SetupZone(Int32 pid)
+   在 WEBUI.Pages.calendar.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/3/26 17:50:28
+Url：http://localhost:8099/pages/apply.aspx
+Message：服务器无法处理请求。 ---> 不能将 Null 值赋给类型为 System.Int32 (不可为 null 的值类型)的成员。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetAllLeaveTypeByStaffID(Int32 staffid)
+   在 BLL.Leave.GetLeavesByStaffID(Int32 sid)
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/3/26 17:51:04
+Url：http://localhost:8099/pages/apply.aspx
+Message：服务器无法处理请求。 ---> 不能将 Null 值赋给类型为 System.Int32 (不可为 null 的值类型)的成员。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetAllLeaveTypeByStaffID(Int32 staffid)
+   在 BLL.Leave.GetLeavesByStaffID(Int32 sid)
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
