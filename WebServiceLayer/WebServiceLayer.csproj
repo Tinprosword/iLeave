@@ -120,6 +120,9 @@
     <None Include="Web References\WebReference_leave\AttachmentInfo.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\WebReference_leave\AttendanceRawData.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\WebReference_leave\Employment_Contract.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>

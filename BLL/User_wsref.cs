@@ -111,15 +111,37 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.FilterValidUser(data);
         }
 
-        public static WebServiceLayer.WebReference_user.PersonBaseinfo GetDefaultLoginEmployment(int pid)
+
+        public static WebServiceLayer.WebReference_user.PersonBaseinfo GetDefaultLoginEmploymentAndEids(int pid,out List<int> eidsRefLoginemploymentFirsteid,out List<string> enosRefLoginEmploymentFirstID)
         {
             WebServiceLayer.WebReference_user.PersonBaseinfo result = null;
+            eidsRefLoginemploymentFirsteid = new List<int>();
+            enosRefLoginEmploymentFirstID = new List<string>();
             WebServiceLayer.WebReference_user.PersonBaseinfo[] allinfos = WebServiceLayer.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfoByPid(pid);
             WebServiceLayer.WebReference_user.PersonBaseinfo[] canlogins = WebServiceLayer.MyWebService.GlobalWebServices.ws_user.FilterCanLoginUser(allinfos);
             canlogins = canlogins.OrderByDescending(x => x.e_id).ToArray();
             if (canlogins != null && canlogins.Count() > 0)
             {
                 result = canlogins[0];
+                int? firsteid = result.e_FirstEmploymentID;
+                if (firsteid != null)
+                {
+                    var tempeids = allinfos.Where(x => x.e_FirstEmploymentID == firsteid).ToList();
+                    if (tempeids != null && tempeids.Count() > 0)
+                    {
+                        foreach (var temipitem in tempeids)
+                        {
+                            if (temipitem != null)
+                            {
+                                if (temipitem.e_id != null && temipitem.e_EmploymentNumber != null)
+                                {
+                                    eidsRefLoginemploymentFirsteid.Add((int)temipitem.e_id);
+                                    enosRefLoginEmploymentFirstID.Add(temipitem.e_EmploymentNumber);
+                                }
+                            }
+                        }
+                    }
+                }
             }
             return result;
         }
@@ -132,23 +154,26 @@ namespace BLL
             MODEL.UserInfo userInfo = null;
             if (person != null)
             {
-                personEmplyment = BLL.User_wsref.GetDefaultLoginEmployment(person.ID);
-                userInfo = SaveInfoToSession(personEmplyment, loginResult.SessionID);
+                List<int> eids;
+                List<string> enumbers;
+                personEmplyment = BLL.User_wsref.GetDefaultLoginEmploymentAndEids(person.ID,out eids,out enumbers);
+                userInfo = SaveInfoToSession(personEmplyment, loginResult.SessionID,eids,enumbers);
             }
             return userInfo;
         }
 
-        public static MODEL.UserInfo SaveInfoToSession(WebServiceLayer.WebReference_user.PersonBaseinfo personBaseinfo,string sessinonID)
+        public static MODEL.UserInfo SaveInfoToSession(WebServiceLayer.WebReference_user.PersonBaseinfo personBaseinfo,string sessinonID,List<int> eids,List<string> enos)
         {
             MODEL.UserInfo userInfo = null;
             if (personBaseinfo != null && personBaseinfo.e_id!=null)
             {
-                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, personBaseinfo.e_id, personBaseinfo.e_EmploymentNumber, personBaseinfo.s_id, personBaseinfo.s_StaffNumber, personBaseinfo.p_id, personBaseinfo.p_Surname, personBaseinfo.p_Othername,personBaseinfo.p_NameCH,0,0,false);
+                
+                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, personBaseinfo.e_id, personBaseinfo.e_EmploymentNumber, personBaseinfo.s_id, personBaseinfo.s_StaffNumber, personBaseinfo.p_id, personBaseinfo.p_Surname, personBaseinfo.p_Othername,personBaseinfo.p_NameCH,0,0,false,eids,enos);
                 LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(personBaseinfo.u_Username, userInfo));
             }
             else if(personBaseinfo != null && personBaseinfo.e_id == null)
             {
-                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, null, null, null, null, personBaseinfo.p_id, "", "",personBaseinfo.p_NameCH,0,0,false);
+                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, null, null, null, null, personBaseinfo.p_id, "", "",personBaseinfo.p_NameCH,0,0,false,eids,enos);
                 LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(personBaseinfo.u_Username, userInfo));
             }
             return userInfo;

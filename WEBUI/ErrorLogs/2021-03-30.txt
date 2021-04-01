@@ -173,3 +173,37 @@ Trace：   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPat
    在 System.Web.Compilation.BaseTemplateBuildProvider.GenerateCode(AssemblyBuilder assemblyBuilder)
    在 System.Web.Compilation.AssemblyBuilder.AddBuildProvider(BuildProvider buildProvider)
 ********************************************************************************************
+ip:::1
+DataTime：2021/3/30 14:29:44
+Url：http://localhost:8099/pages/Check.aspx
+Message：C:\Users\Administrator\source\repos\WebIleave\WEBUI\pages\Check.aspx(16): error CS1061: 'pages_check_aspx' does not contain a definition for 'button_left_Click' and no extension method 'button_left_Click' accepting a first argument of type 'pages_check_aspx' could be found (are you missing a using directive or an assembly reference?)
+Source：System.Web
+Type：System.Web.HttpCompileException
+Function：System.Web.Compilation.BuildResult CompileWebFile(System.Web.VirtualPath)
+Trace：   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************
+ip:::1
+DataTime：2021/3/30 14:30:13
+Url：http://localhost:8099/pages/Check.aspx
+Message：C:\Users\Administrator\source\repos\WebIleave\WEBUI\pages\Check.aspx(16): error CS1061: 'pages_check_aspx' does not contain a definition for 'button_left_Click' and no extension method 'button_left_Click' accepting a first argument of type 'pages_check_aspx' could be found (are you missing a using directive or an assembly reference?)
+Source：System.Web
+Type：System.Web.HttpCompileException
+Function：System.Web.Compilation.BuildResult CompileWebFile(System.Web.VirtualPath)
+Trace：   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************

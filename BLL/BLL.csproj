@@ -47,6 +47,7 @@
     <Compile Include="calendar.cs" />
     <Compile Include="Leave.cs" />
     <Compile Include="CodeSetting.cs" />
+    <Compile Include="Other.cs" />
     <Compile Include="Page\CustomLoginTemplate.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

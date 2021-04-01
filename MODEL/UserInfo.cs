@@ -23,8 +23,10 @@ namespace MODEL
         public int ScreenHeight;
         public int ScreenWidth;
         public bool moreEmployment;
+        public List<int> eidRefFirstEid;
+        public List<string> eNoRefFirstEid;
 
-        public UserInfo(int id, string loginName, string nickname, string sessionid, int? employID, string employNnumber, int? staffid, string staffNumber, int personid,string surname,string firstname,string ch,int sh,int sw,bool more)
+        public UserInfo(int id, string loginName, string nickname, string sessionid, int? employID, string employNnumber, int? staffid, string staffNumber, int personid,string surname,string firstname,string ch,int sh,int sw,bool more,List<int> eidsRefFirsteid, List<string> eNoRefFirsteid)
         {
             this.id = id;
             this.loginName = loginName;
@@ -41,6 +43,8 @@ namespace MODEL
             this.ScreenHeight = sh;
             ScreenWidth = sw;
             moreEmployment = more;
+            eidRefFirstEid = eidsRefFirsteid;
+            eNoRefFirstEid = eNoRefFirsteid;
         }
 
         

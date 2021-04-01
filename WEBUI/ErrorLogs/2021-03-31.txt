@@ -1,0 +1,67 @@
+ip:::1
+DataTime：2021/3/31 7:12:24
+Url：http://localhost:8099/pages/Check.aspx?action=mobile&lat=33&long=50&value=1
+Message：JSON root object has multiple properties. The root object must have a single property in order to create a valid XML document. Consider specifying a DeserializeRootElementName. Path 'result', line 3, position 13.
+Source：Newtonsoft.Json
+Type：Newtonsoft.Json.JsonSerializationException
+Function：Void DeserializeNode(Newtonsoft.Json.JsonReader, Newtonsoft.Json.Converters.IXmlDocument, System.Xml.XmlNamespaceManager, Newtonsoft.Json.Converters.IXmlNode)
+Trace：   在 Newtonsoft.Json.Converters.XmlNodeConverter.DeserializeNode(JsonReader reader, IXmlDocument document, XmlNamespaceManager manager, IXmlNode currentNode)
+   在 Newtonsoft.Json.Converters.XmlNodeConverter.ReadJson(JsonReader reader, Type objectType, Object existingValue, JsonSerializer serializer)
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.DeserializeConvertable(JsonConverter converter, JsonReader reader, Type objectType, Object existingValue)
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeXmlNode(String value, String deserializeRootElementName, Boolean writeArrayAttribute, Boolean encodeSpecialCharacters)
+   在 Newtonsoft.Json.JsonConvert.DeserializeXmlNode(String value)
+   在 LSLibrary.MyJson.UnSxml(String s) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\jsonnet\myJson.cs:行号 31
+   在 WEBUI.Pages.Check.InitPage_OnFirstLoad2() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx.cs:行号 37
+   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 38
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/3/31 7:21:35
+Url：http://localhost:8099/pages/Check.aspx?action=mobile&lat=30&long=107&value=1
+Message：Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+Source：Newtonsoft.Json
+Type：Newtonsoft.Json.JsonReaderException
+Function：Boolean ParseValue()
+Trace：   在 Newtonsoft.Json.JsonTextReader.ParseValue()
+   在 Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeXmlNode(String value, String deserializeRootElementName, Boolean writeArrayAttribute, Boolean encodeSpecialCharacters)
+   在 Newtonsoft.Json.JsonConvert.DeserializeXmlNode(String value, String deserializeRootElementName)
+   在 LSLibrary.MyJson.UnSxml(String s) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\jsonnet\myJson.cs:行号 31
+   在 WEBUI.Pages.Check.InitPage_OnFirstLoad2() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx.cs:行号 37
+   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 38
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/3/31 7:22:10
+Url：http://localhost:8099/pages/Check.aspx?action=mobile&lat=33&long=44&value=1
+Message：Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+Source：Newtonsoft.Json
+Type：Newtonsoft.Json.JsonReaderException
+Function：Boolean ParseValue()
+Trace：   在 Newtonsoft.Json.JsonTextReader.ParseValue()
+   在 Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   在 Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   在 Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   在 Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   在 Newtonsoft.Json.JsonConvert.DeserializeXmlNode(String value, String deserializeRootElementName, Boolean writeArrayAttribute, Boolean encodeSpecialCharacters)
+   在 Newtonsoft.Json.JsonConvert.DeserializeXmlNode(String value, String deserializeRootElementName)
+   在 LSLibrary.MyJson.UnSxml(String s) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\jsonnet\myJson.cs:行号 31
+   在 WEBUI.Pages.Check.InitPage_OnFirstLoad2() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx.cs:行号 37
+   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 38
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

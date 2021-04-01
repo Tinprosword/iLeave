@@ -116,6 +116,17 @@ namespace ut
         {
             WebServiceLayer.WebReference_user.UserManagementV2 userManagement = new WebServiceLayer.WebReference_user.UserManagementV2();
 
+
+        }
+
+
+        [TestMethod]
+        public void testtryParse()
+        {
+            string a = "abc";
+            DateTime tt = System.DateTime.Now;
+            DateTime.TryParse(a, out tt);
+            int abc = 44;
         }
 
 
