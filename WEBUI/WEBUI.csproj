@@ -75,6 +75,7 @@
     <Content Include="Res\App\applywait.js" />
     <Content Include="Res\App\check.css" />
     <Content Include="Res\images\back3.png" />
+    <Content Include="Res\images\back4.png" />
     <Content Include="Res\images\biger.png" />
     <Content Include="Res\images\changeserver.png" />
     <Content Include="Res\images\checkin-icon.png" />
