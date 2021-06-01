@@ -52,6 +52,19 @@
   <wsdl:message name="GetLeaveSectionsSoapOut">
     <wsdl:part name="parameters" element="tns:GetLeaveSectionsResponse" />
   </wsdl:message>
+  <wsdl:message name="GetSystemParameterHttpGetIn">
+    <wsdl:part name="name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSystemParameterHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveSectionsHttpGetIn">
+    <wsdl:part name="leaveClass" type="s:string" />
+    <wsdl:part name="position" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveSectionsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfInt" />
+  </wsdl:message>
   <wsdl:message name="GetSystemParameterHttpPostIn">
     <wsdl:part name="name" type="s:string" />
   </wsdl:message>
@@ -73,6 +86,16 @@
     <wsdl:operation name="GetLeaveSections">
       <wsdl:input message="tns:GetLeaveSectionsSoapIn" />
       <wsdl:output message="tns:GetLeaveSectionsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CodeSettingsV2HttpGet">
+    <wsdl:operation name="GetSystemParameter">
+      <wsdl:input message="tns:GetSystemParameterHttpGetIn" />
+      <wsdl:output message="tns:GetSystemParameterHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveSections">
+      <wsdl:input message="tns:GetLeaveSectionsHttpGetIn" />
+      <wsdl:output message="tns:GetLeaveSectionsHttpGetOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="CodeSettingsV2HttpPost">
@@ -127,6 +150,27 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="CodeSettingsV2HttpGet" type="tns:CodeSettingsV2HttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetSystemParameter">
+      <http:operation location="/GetSystemParameter" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveSections">
+      <http:operation location="/GetLeaveSections" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:binding name="CodeSettingsV2HttpPost" type="tns:CodeSettingsV2HttpPost">
     <http:binding verb="POST" />
     <wsdl:operation name="GetSystemParameter">
@@ -150,13 +194,16 @@
   </wsdl:binding>
   <wsdl:service name="CodeSettingsV2">
     <wsdl:port name="CodeSettingsV2Soap" binding="tns:CodeSettingsV2Soap">
-      <soap:address location="http://192.168.19.200:9999/DW-iHR/BLL/ServicesWithSession/CodeSettingsV2.asmx" />
+      <soap:address location="http://192.168.19.200/ReleaseBLL/ServicesWithSession/CodeSettingsV2.asmx" />
     </wsdl:port>
     <wsdl:port name="CodeSettingsV2Soap12" binding="tns:CodeSettingsV2Soap12">
-      <soap12:address location="http://192.168.19.200:9999/DW-iHR/BLL/ServicesWithSession/CodeSettingsV2.asmx" />
+      <soap12:address location="http://192.168.19.200/ReleaseBLL/ServicesWithSession/CodeSettingsV2.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CodeSettingsV2HttpGet" binding="tns:CodeSettingsV2HttpGet">
+      <http:address location="http://192.168.19.200/ReleaseBLL/ServicesWithSession/CodeSettingsV2.asmx" />
     </wsdl:port>
     <wsdl:port name="CodeSettingsV2HttpPost" binding="tns:CodeSettingsV2HttpPost">
-      <http:address location="http://192.168.19.200:9999/DW-iHR/BLL/ServicesWithSession/CodeSettingsV2.asmx" />
+      <http:address location="http://192.168.19.200/ReleaseBLL/ServicesWithSession/CodeSettingsV2.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

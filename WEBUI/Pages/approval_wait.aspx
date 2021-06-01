@@ -26,7 +26,7 @@
             <asp:TextBox ID="tb_staff" Width="100%"  runat="server"></asp:TextBox>
         </div>
         <div class="col-xs-1 lsf-clearPadding" style="width:30px;"><asp:ImageButton ID="ib_search" OnClick="ib_search_Click"  ImageUrl="~/Res/images/search.png" runat="server" Width="28px" Height="26px" /></div>
-        <div class="col-xs-12">
+        <div class="col-xs-12" style="height:16px" id="div_error" runat="server" visible="false">
             <asp:Label ID="lb_errormsg" runat="server" class="col-xs-12" style="color:red; height:12px">hiabc</asp:Label>
         </div>
     </div>

@@ -30,7 +30,7 @@ namespace WEBUI.Pages
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, BLL.MultiLanguageHelper.GetLanguagePacket().main_check, "~/pages/main.aspx", true);
             OnMobileLoadUrl();
 
-            multipleLanguage();
+            SetupmultipleLanguage();
             ShowDateOnLable(System.DateTime.Now);
             ShowInout(loginer.userInfo.eNoRefFirstEid, GetCurrentLableDate());
         }
@@ -44,7 +44,7 @@ namespace WEBUI.Pages
             {
                 culcode = "zh-Hans";
             }
-            else
+            else if(_cul == LSLibrary.WebAPP.LanguageType.tc)
             {
                 culcode = "zh-Hant";
             }
@@ -68,7 +68,7 @@ namespace WEBUI.Pages
                         string locationname = "";
                         try
                         {
-                            string mapurl = "http://api.map.baidu.com/geocoder?output=json&coord_type=wgs84&location=" + lat + "," + lon + "&key=OGbSHmIkHo2qLybXmSG2mr8pZ4uypIok";
+                            //string mapurl = "http://api.map.baidu.com/geocoder?output=json&coord_type=wgs84&location=" + lat + "," + lon + "&key=OGbSHmIkHo2qLybXmSG2mr8pZ4uypIok";
                             string mapurlBingo = GetLocationUrl(BLL.MultiLanguageHelper.GetChoose(), lat, lon);
 
                             System.Net.WebClient webClient = new WebClient();
@@ -111,7 +111,7 @@ namespace WEBUI.Pages
             }
         }
 
-        private void multipleLanguage()
+        private void SetupmultipleLanguage()
         {
             this.label_checkin.InnerText = BLL.MultiLanguageHelper.GetLanguagePacket().checkin;
             this.label_checkout.InnerText = BLL.MultiLanguageHelper.GetLanguagePacket().checkout;

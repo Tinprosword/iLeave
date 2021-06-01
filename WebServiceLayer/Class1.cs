@@ -16,6 +16,12 @@ namespace WebServiceLayer
             return okdadd;
         }
 
+        public static string GetWebServicesAddress()
+        {
+            var wsadd = LSLibrary.WebAPP.WebConfig.getValue("webServices");
+            return wsadd;
+        }
+
         public static string GetCookieStringOfSessionID(string sessionid)
         {
             string idname = LSLibrary.WebAPP.WebConfig.getValue("SessionIDName");

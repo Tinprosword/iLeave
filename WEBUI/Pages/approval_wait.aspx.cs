@@ -10,6 +10,8 @@ using System.Text;
 
 namespace WEBUI.Pages
 {
+    //todo 0 waiting approve .approved 是否要显示.  2.reject cancel 好像没有显示出来.显示了2条approved ,好像有点问题.
+    //accumulate 的处理验证.
     public partial class approval_wait : BLL.CustomLoginTemplate
     {
         public static string qs_bigRange = "applicationType";
@@ -47,7 +49,9 @@ namespace WEBUI.Pages
         
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
-            this.lb_errormsg.Visible = false;
+            lb_errormsg.Text = "";
+            lb_errormsg.Visible = false;
+            div_error.Visible = false;
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
@@ -59,18 +63,20 @@ namespace WEBUI.Pages
             this.lt_jsscrolltop.Text = "<script>setCookie('st',0);</script>";
         }
 
+        
+
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
+        {
+        }
+
         private void MultplayLanguage()
         {
             this.lt_new.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_new;
             this.lt_mypending.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_pending;
             this.lt_myhistory.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed;
 
-            this.lt_pending.Text= BLL.MultiLanguageHelper.GetLanguagePacket().apply_pending;
+            this.lt_pending.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_pending;
             this.lt_processed.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed;
-        }
-
-        protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
-        {
         }
 
         protected void ddl_year_SelectedIndexChanged(object sender, EventArgs e)
@@ -252,8 +258,18 @@ namespace WEBUI.Pages
                 }
                 else if (btntype == 6)//cancel
                 {
-                    callResult = BLL.workflow.CancelRequest_leave(requestId, loginer.userInfo.id, "", out errormsg);
-                    successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgcancel);
+                    var firstinfo = BLL.Leave.GetFirstRequestinfoa(requestId);
+                    if (!firstinfo.hasCancel)
+                    {
+                        callResult = BLL.workflow.CancelRequest_leave(requestId, loginer.userInfo.id, "", out errormsg);
+                        successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgcancel);
+                    }
+                    else
+                    {
+                        lb_errormsg.Text = "Can not cancel again";
+                        lb_errormsg.Visible = true;
+                        div_error.Visible = true;
+                    }
                 }
                 SetupRepeater();
 
@@ -266,7 +282,7 @@ namespace WEBUI.Pages
                     Response.Write(errormsg);
                 }
                 Response.Flush();
-                System.Threading.Thread.Sleep(2000);//休眠2秒,获得较好显示体验
+                System.Threading.Thread.Sleep(50);//休眠2秒,获得较好显示体验
 
                 this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
 

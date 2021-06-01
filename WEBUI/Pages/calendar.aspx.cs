@@ -19,6 +19,7 @@ namespace WEBUI.Pages
         private readonly string css_unselect = "btnBox btnBlueBoxUnSelect";
         private bool isFromApply = false;
         private Dictionary<DateTime, int> allStatistic = null;
+        private const string viewstate_statisc = "statistic";
 
         private readonly System.Drawing.Color apporvedcolor = System.Drawing.Color.FromArgb(0, 255, 0);
         private readonly System.Drawing.Color waitcolor = System.Drawing.Color.FromArgb(255, 255, 00); // System.Drawing.Color.FromArgb(234, 224, 56);//f3e926;  eae013
@@ -51,7 +52,7 @@ namespace WEBUI.Pages
                 this.Calendar1.DayRender += Calendar_displayViewStateCells;
                 this.Calendar1.DayRender += Calendar_displaySelectCell;
 
-                RegisterClickCellEventAndSetCanlendarValue();
+                ProcessEvent_ClickCellOrClickNextMonth();
             }
             else if (this.cb_holiday.Checked)
             {
@@ -59,7 +60,7 @@ namespace WEBUI.Pages
                 this.Calendar1.DayRender += Calendar_displayStatistic;
                 this.Calendar1.DayRender += Calendar_displayViewStateCells;
                 this.Calendar1.DayRender += Calendar_displaySelectCell;
-                RegisterClickCellEventAndSetCanlendarValue();
+                ProcessEvent_ClickCellOrClickNextMonth();
             }
 
             app_ok.Visible = isFromApply;
@@ -119,7 +120,7 @@ namespace WEBUI.Pages
 
 
 
-        private void RegisterClickCellEventAndSetCanlendarValue()
+        private void ProcessEvent_ClickCellOrClickNextMonth()
         {
             string target = Request.Params["__EVENTTARGET"];
             string argument = Request.Params["__EVENTARGUMENT"];
@@ -130,6 +131,7 @@ namespace WEBUI.Pages
                     int intdate = int.Parse(argument.Substring(1, argument.Length - 1));
                     DateTime date = TransferDate(intdate);
                     this.Calendar1.VisibleDate = date;
+                    ViewState[viewstate_statisc] = null;
                 }
                 else
                 {
@@ -142,11 +144,19 @@ namespace WEBUI.Pages
 
         private void Calendar1_GetStatistic(object sender, EventArgs e)
         {
-            bool isme = GetIsMeOrTeam();
-            List<int> eid = GetEmployIDs(isme, this.ddlzone.SelectedValue, this.tb_name.Text.Trim());
-            if (this.Calendar1.VisibleDate.Year > 1)
+            if (ViewState[viewstate_statisc] == null)
             {
-                FillStatistic(eid, this.Calendar1.VisibleDate.Year, this.Calendar1.VisibleDate.Month);
+                bool isme = GetIsMeOrTeam();
+                List<int> eid = GetEmployIDs(isme, this.ddlzone.SelectedValue, this.tb_name.Text.Trim());
+                if (this.Calendar1.VisibleDate.Year > 1)
+                {
+                    FillStatistic(eid, this.Calendar1.VisibleDate.Year, this.Calendar1.VisibleDate.Month);
+                }
+                ViewState[viewstate_statisc] = allStatistic;
+            }
+            else
+            {
+                allStatistic =(Dictionary<DateTime, int>) ViewState[viewstate_statisc];
             }
         }
 
@@ -336,11 +346,10 @@ namespace WEBUI.Pages
             this.Label1.Text = date.ToString("yyyy-MM-dd");
             calendar.SelectedDate = date;
             SetupRepeater();
-            if (Request.QueryString["action"] != null && Request.QueryString["action"] == "apply")
+            if (isFromApply)
             {
                 SaveChooseToViewState(calendar.SelectedDate);
             }
-            this.Calendar1.DayRender += Calendar_displaySelectCell;
         }
 
         protected void unit_SelectedIndexChanged(object sender, EventArgs e)
@@ -350,6 +359,7 @@ namespace WEBUI.Pages
 
         protected void btn_myself_Click(object sender, EventArgs e)
         {
+            ViewState[viewstate_statisc] = null;
             this.btn_myself.CssClass = css_select;
             this.btn_team.CssClass = css_unselect;
             SetupRepeater();
@@ -362,6 +372,7 @@ namespace WEBUI.Pages
 
         protected void btn_team_Click(object sender, EventArgs e)
         {
+            ViewState[viewstate_statisc] = null;
             this.btn_myself.CssClass = css_unselect;
             this.btn_team.CssClass = css_select;
             SetupRepeater();
@@ -413,6 +424,7 @@ namespace WEBUI.Pages
             return res;
         }
 
+        //todo 0这里应该有,是否跳过,周末和假期的设定.并且考虑把是否和与请假的日期对比功能放到这里来.虽然需要远程检测,但是流程上更统一,简洁.
         private void SaveChooseToViewState(DateTime dateTime)
         {
             MODEL.Apply.ViewState_page data = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, ViewState);
@@ -431,6 +443,7 @@ namespace WEBUI.Pages
 
                         var newitem = new MODEL.Apply.apply_LeaveData(leaveId, leavename, leavename, sectiontype, dateTime);
                         data.LeaveList.Add(newitem);
+                        data.LeaveList = data.LeaveList.OrderBy(x => x.LeaveDate).ToList();
                     }
                     else
                     {

@@ -63,7 +63,7 @@ namespace WEBUI.Pages
                 }
                 LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, preViewState, ViewState);
                 MODEL.Apply.ViewState_page applypage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, this.ViewState);
-                applypage.LeaveList=applypage.LeaveList.OrderByDescending(x => x.LeaveDate).ToList();
+                applypage.LeaveList = applypage.LeaveList.ToList();
                 LoadUI(applypage.leavetype, applypage.LeaveTypeSelectValue,  applypage.ddlsectionSelectvalue, applypage.remarks, applypage.LeaveList,applypage.uploadpic.Count());
                 IsLeaveTypeEnable();
                 this.lt_js_prg.Text = LSLibrary.WebAPP.MyJSHelper.CustomPost("", "");//避免有害刷新，所以手动post,引导无害刷新。
@@ -160,7 +160,6 @@ namespace WEBUI.Pages
         }
 
         #endregion
-
 
         #region [module] on click upload pic
         protected void Upload_Click(object sender, ImageClickEventArgs e)
@@ -286,7 +285,7 @@ namespace WEBUI.Pages
                 string successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().apply_msgapplyok);
                 Response.Write(successMsg+".");
                 Response.Flush();
-                System.Threading.Thread.Sleep(2000);//休眠2秒,获得较好显示体验
+                System.Threading.Thread.Sleep(50);//休眠2秒,获得较好显示体验
 
                 this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
                 this.PreRenderComplete += Apply_PreRenderComplete;
@@ -410,8 +409,6 @@ namespace WEBUI.Pages
         }
 
         #endregion
-
-
 
     }
 }

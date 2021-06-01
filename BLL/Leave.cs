@@ -102,7 +102,7 @@ namespace BLL
             messageInfo = new WebServiceLayer.WebReference_leave.ErrorMessageInfo();
             try
             {
-                messageInfo = webServicesHelper.ws_leave.InsertOnlineLeaveApplicationRequest(detail.ToArray(),  userid, staffid);
+                messageInfo = webServicesHelper.ws_leave.InsertRequest(true, detail.ToArray(), userid, staffid);
                 result = messageInfo.ProcessID;
             }
             catch
@@ -210,9 +210,17 @@ namespace BLL
         #endregion
 
         #region search application
+        public static FirstRequestInfo GetFirstRequestinfoa(int requestid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetFirstRequestInfo(requestid);
+        }
+
         public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyLeaveMaster(int pid, GlobalVariate.LeaveBigRangeStatus status, DateTime? from, DateTime? to)
         {
             List<LeaveRequestMaster> result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMasterByPID(pid).ToList();
+            int[] firstRequestId = result.Where(x => x.WorkflowTypeID == 0).Select(x => x.RequestID).ToArray();
+
+
             if (status == GlobalVariate.LeaveBigRangeStatus.waitapproval)
             {
                 result = result.Where(x => (x.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && x.WorkflowTypeID == 0) || (x.WorkflowTypeID == 10 && x.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL)).ToList();
@@ -227,7 +235,7 @@ namespace BLL
             //}
             else if (status == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
             {
-               result.RemoveAll(x => (x.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && x.WorkflowTypeID == 0) || (x.WorkflowTypeID == 10 && x.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL));
+                result = result.Where(x => x.Status != (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && x.WorkflowTypeID == 0).ToList();
             }
 
             if (from != null)
@@ -263,7 +271,7 @@ namespace BLL
                 //}
                 else if (status == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
                 {
-                    result.RemoveAll(x => (x.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && x.WorkflowTypeID == 0) || (x.WorkflowTypeID == 10 && x.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL));
+                    result= result.Where(x => x.Status != (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && x.WorkflowTypeID == 0).ToList();
                 }
                 if (from != null)
                 {

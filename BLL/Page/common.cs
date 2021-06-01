@@ -9,6 +9,9 @@ namespace BLL
 {
     public class common
     {
+        private static bool isdbug = false;
+        private static int devMode = 1100;//1fix ;0,cofing dec 1 nofig;  3:nouse   4 nouse.
+
         private static LSLibrary.LogUtil logUtil = new LSLibrary.LogUtil( GlobalVariate.pageServer.MapPath("mylog.txt"));
 
         public static bool canReduceImage(string image)
@@ -43,7 +46,7 @@ namespace BLL
             }
         }
 
-        private static bool isdbug=false;
+        
         public static void WriteLog(System.Diagnostics.StackFrame sf , string log)
         {
             if (isdbug)

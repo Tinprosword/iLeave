@@ -1,0 +1,10 @@
+ip:::1
+DataTime：2021/4/29 15:18:21
+Url：http://localhost:8099/Login.aspx
+Message：由于目标计算机积极拒绝，无法连接。 127.0.0.1:12345
+Source：System
+Type：System.Net.Sockets.SocketException
+Function：Void DoConnect(System.Net.EndPoint, System.Net.SocketAddress)
+Trace：   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+********************************************************************************************

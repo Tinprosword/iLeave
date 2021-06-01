@@ -1,0 +1,64 @@
+ip:::1
+DataTime：2021/5/11 10:45:04
+Url：http://localhost:8099/pages/approval_wait.aspx?action=0&applicationtype=0
+Message：服务器无法处理请求。 ---> 索引超出了数组界限。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_leave(Int32 requestid, Int32 ApproverUid, String remark)
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg)
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/5/11 10:48:16
+Url：http://localhost:8099/pages/approval_wait.aspx?action=0&applicationtype=0
+Message：服务器无法处理请求。 ---> 索引超出了数组界限。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_leave(Int32 requestid, Int32 ApproverUid, String remark)
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg)
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/5/11 10:48:33
+Url：http://localhost:8099/pages/approval_wait.aspx?action=0&applicationtype=0
+Message：服务器无法处理请求。 ---> 索引超出了数组界限。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_leave(Int32 requestid, Int32 ApproverUid, String remark)
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg)
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/5/11 11:35:21
+Url：http://localhost:8099/pages/approval_wait.aspx?action=0&applicationtype=0
+Message：服务器无法处理请求。 ---> 索引超出了数组界限。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_leave(Int32 requestid, Int32 ApproverUid, String remark)
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg)
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
