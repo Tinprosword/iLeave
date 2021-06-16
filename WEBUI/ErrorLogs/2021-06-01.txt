@@ -1,0 +1,132 @@
+ip:::1
+DataTime：2021/6/1 14:33:52
+Url：http://localhost:8099/pages/apply.aspx
+Message：服务器无法处理请求。 ---> 无法反射方法 LeaveManagementV2.GetNoWorkingDay。 ---> 反射“GetNoWorkingDayResult”时出错。 ---> BLLMobil.ServicesWithSession.model.DaySection_Leave 无法序列化，因为它没有无参数的构造函数。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetAllLeaveTypeByStaffID(Int32 staffid)
+   在 BLL.Leave.GetLeavesByStaffID(Int32 sid)
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/6/1 14:34:03
+Url：http://localhost:8099/pages/approval_wait.aspx?action=0&applicationtype=0
+Message：服务器无法处理请求。 ---> 无法反射方法 LeaveManagementV2.GetNoWorkingDay。 ---> 反射“GetNoWorkingDayResult”时出错。 ---> BLLMobil.ServicesWithSession.model.DaySection_Leave 无法序列化，因为它没有无参数的构造函数。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetLeaveMasterByApprovarUID(Int32 uid)
+   在 BLL.Leave.GetMyManageLeaveMaster(Int32 uid, LeaveBigRangeStatus status, Nullable`1 from, String name, Nullable`1 to)
+   在 BLL.Leave.GetMyManageLeaveMaster(Int32 uid, LeaveBigRangeStatus status, Int32 year, String name)
+   在 WEBUI.Pages.approval_wait.SetupRepeater()
+   在 WEBUI.Pages.approval_wait.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/6/1 14:34:20
+Url：http://localhost:8099/pages/calendar.aspx
+Message：服务器无法处理请求。 ---> 无法反射方法 LeaveManagementV2.GetNoWorkingDay。 ---> 反射“GetNoWorkingDayResult”时出错。 ---> BLLMobil.ServicesWithSession.model.DaySection_Leave 无法序列化，因为它没有无参数的构造函数。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetContractByEmployids(Int32[] eids)
+   在 BLL.calendar.GetContractByEmployids(Int32[] eids)
+   在 WEBUI.Pages.calendar.SetupZone(Int32 pid)
+   在 WEBUI.Pages.calendar.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/6/1 14:34:30
+Url：http://localhost:8099/pages/Check.aspx
+Message：服务器无法处理请求。 ---> 无法反射方法 LeaveManagementV2.GetNoWorkingDay。 ---> 反射“GetNoWorkingDayResult”时出错。 ---> BLLMobil.ServicesWithSession.model.DaySection_Leave 无法序列化，因为它没有无参数的构造函数。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetAttendanceByExternRef(String[] refs)
+   在 BLL.Other.GetAttendanceList(String[] refInfo)
+   在 WEBUI.Pages.Check.ShowInout(List`1 enos, DateTime day)
+   在 WEBUI.Pages.Check.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/6/1 14:34:33
+Url：http://localhost:8099/pages/apply.aspx
+Message：服务器无法处理请求。 ---> 无法反射方法 LeaveManagementV2.GetNoWorkingDay。 ---> 反射“GetNoWorkingDayResult”时出错。 ---> BLLMobil.ServicesWithSession.model.DaySection_Leave 无法序列化，因为它没有无参数的构造函数。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetAllLeaveTypeByStaffID(Int32 staffid)
+   在 BLL.Leave.GetLeavesByStaffID(Int32 sid)
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/6/1 14:36:10
+Url：http://localhost:8099/pages/apply.aspx
+Message：服务器无法处理请求。 ---> 无法反射方法 LeaveManagementV2.GetNoWorkingDay。 ---> 反射“GetNoWorkingDayResult”时出错。 ---> BLLMobil.ServicesWithSession.model.DaySection_Leave 无法序列化，因为它没有无参数的构造函数。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetAllLeaveTypeByStaffID(Int32 staffid)
+   在 BLL.Leave.GetLeavesByStaffID(Int32 sid)
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/6/1 14:36:18
+Url：http://localhost:8099/pages/approval_wait.aspx?action=0&applicationtype=0
+Message：服务器无法处理请求。 ---> 无法反射方法 LeaveManagementV2.GetNoWorkingDay。 ---> 反射“GetNoWorkingDayResult”时出错。 ---> BLLMobil.ServicesWithSession.model.DaySection_Leave 无法序列化，因为它没有无参数的构造函数。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetLeaveMasterByApprovarUID(Int32 uid)
+   在 BLL.Leave.GetMyManageLeaveMaster(Int32 uid, LeaveBigRangeStatus status, Nullable`1 from, String name, Nullable`1 to)
+   在 BLL.Leave.GetMyManageLeaveMaster(Int32 uid, LeaveBigRangeStatus status, Int32 year, String name)
+   在 WEBUI.Pages.approval_wait.SetupRepeater()
+   在 WEBUI.Pages.approval_wait.PageLoad_InitUIOnFirstLoad4()
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e)
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

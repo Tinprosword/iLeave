@@ -88,9 +88,7 @@ namespace WEBUI.Pages
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current,"~/pages/main.aspx", true);
 
-            string nameType = BLL.CodeSetting.GetSystemParameter(BLL.CodeSetting.staffNameFormat);
-            int intNameType= 1;
-            int.TryParse(nameType, out intNameType);
+            int intNameType = BLL.CodeSetting.GetNameType(BLL.MultiLanguageHelper.GetChoose());
 
             MODEL.UserName tempUserName = new MODEL.UserName(loginer.userInfo.surname, loginer.userInfo.firstname, loginer.userInfo.nickname, loginer.userInfo.namech);
             this.literal_applier.Text = tempUserName.GetDisplayName(intNameType);

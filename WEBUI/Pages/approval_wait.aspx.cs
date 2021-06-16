@@ -32,8 +32,7 @@ namespace WEBUI.Pages
                 int.TryParse(Request.QueryString[qs_bigRange], out intbig);
                 bigRange=(GlobalVariate.LeaveBigRangeStatus)intbig;
 
-                string nameType = BLL.CodeSetting.GetSystemParameter(BLL.CodeSetting.staffNameFormat);
-                int.TryParse(nameType, out nametype);
+                nametype = BLL.CodeSetting.GetNameType(BLL.MultiLanguageHelper.GetChoose());
             }
             else
             {

@@ -80,6 +80,7 @@ namespace MODEL
         //3. Nick Mame + Surname Linson Leung
         //4. Chinese Name or(1,2,3,)
         //5. Chinese Name + Nick name
+        //6. Chinese Name
         public string GetDisplayName(int type)
         {
             if (type == 1)
@@ -115,6 +116,10 @@ namespace MODEL
             else if (type == 5)
             {
                 return namech + " " + nickname;
+            }
+            else if (type == 6)
+            {
+                return namech;
             }
             else
             {
