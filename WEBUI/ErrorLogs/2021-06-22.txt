@@ -1,0 +1,18 @@
+ip:::1
+DataTime：2021/6/22 14:59:17
+Url：http://localhost:8099/Login.aspx
+Message：服务器无法处理请求。 ---> Cannot open database "IHR_NY_TEST2" requested by the login. The login failed.
+Login failed for user 'sa'.
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.AuthenticateUser(String UserName, String PasswordHash)
+   在 BLL.User_wsref.CheckLogin(String uid, String password)
+   在 WEBUI.Login.ProgressLogin(String userid, String password)
+   在 WEBUI.Login.Button1_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
