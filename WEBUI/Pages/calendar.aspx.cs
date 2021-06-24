@@ -503,6 +503,10 @@ namespace WEBUI.Pages
             string result = "";
 
             string sectionMuplay = BLL.GlobalVariate.GetSectionMultLanguage(section);
+            if (sectionMuplay == new LSLibrary.WebAPP.BaseLanguage().apply_ddlsetion_fullday)
+            {
+                sectionMuplay = "1Day";
+            }
 
             var theleave = leavesInfo.Where(x => x.ID == leaveCode).FirstOrDefault();
             if (theleave != null)
