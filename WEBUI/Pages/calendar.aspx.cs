@@ -26,6 +26,10 @@ namespace WEBUI.Pages
         private readonly System.Drawing.Color selectedColor = System.Drawing.Color.FromArgb(173, 216, 230);   //#2573a4  add8e6
         private readonly System.Drawing.Color btnokBGColor = System.Drawing.Color.FromArgb(88, 141, 167);//588da7
 
+        //页面额外属性
+        protected bool bHiddenLeaveCode = true;
+        protected List<WebServiceLayer.WebReference_leave.t_Leave> leavesInfo;
+
         #region pageevent
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
@@ -33,11 +37,21 @@ namespace WEBUI.Pages
             {
                 isFromApply = true;
             }
+
+
+            string value = BLL.CodeSetting.GetSystemParameter(BLL.CodeSetting.SystemParameter_showleaveCode);
+            if (!string.IsNullOrEmpty(value))
+            {
+                bHiddenLeaveCode = value == "1" ? true : false;
+            }
+            leavesInfo = BLL.Leave.GetAllLeave();
+
         }
 
 
         protected override void InitPage_OnFirstLoad2()
-        {}
+        {
+        }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
@@ -468,6 +482,8 @@ namespace WEBUI.Pages
             this.lt_displayname.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_listname;
             this.lt_shiftCode.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_list2_shift;
             this.lt_remark.Text= BLL.MultiLanguageHelper.GetLanguagePacket().cancendar_list2_remark;
+
+            this.lt_leavecode.Text = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_listLeaveCode;
         }
 
         private bool GetIsMeOrTeam()
@@ -476,9 +492,27 @@ namespace WEBUI.Pages
         }
         #endregion
 
+
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
-
+           
         }
+
+        public string ShowRP_LeaveCode(int leaveCode,int section)
+        {
+            string result = "";
+
+            string sectionMuplay = BLL.GlobalVariate.GetSectionMultLanguage(section);
+
+            var theleave = leavesInfo.Where(x => x.ID == leaveCode).FirstOrDefault();
+            if (theleave != null)
+            {
+                result = theleave.Code;
+                result = result.ToUpper().StartsWith("AL") == true ? "AL" : result;
+            }
+            result += "(" + sectionMuplay + ")";
+            return result;
+        }
+
     }
 }

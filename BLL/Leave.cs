@@ -483,6 +483,11 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.Base_Gett_Leave(leave);
         }
 
+        public static List<WebServiceLayer.WebReference_leave.t_Leave> GetAllLeave()
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.Base_GetListt_Leave("").ToList();
+        }
+
 
         public static List<WebServiceLayer.WebReference_leave.LeaveHistory> GetLeaveHistoryByRequest(int requestid)
         {
