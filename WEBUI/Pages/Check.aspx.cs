@@ -137,8 +137,16 @@ namespace WEBUI.Pages
             }
             else
             {
-                var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber, 22, 2, 1, loginer.userInfo.surname, "000", "01", "", "");
-                BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
+                var iguard = BLL.Other.GetIleavIGard();
+                if (iguard != null)
+                {
+                    int interfaceid = iguard.InterfaceID ?? 0;
+                    int centerfaceid = iguard.AttendanceInterfaceCenterID ?? 0;
+                    string deviceid = iguard.DeviceID;
+
+                    var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber,centerfaceid,interfaceid, 1, loginer.userInfo.surname,deviceid, "01", "", "");
+                    BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
+                }
                 ShowInout(loginer.userInfo.eNoRefFirstEid, GetCurrentLableDate());
             }
         }
@@ -155,9 +163,17 @@ namespace WEBUI.Pages
             }
             else
             {
-                var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "OUT", loginer.userInfo.employNnumber, 22, 2, 1, loginer.userInfo.surname, "000", "01", "", "");
-                BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
+                var iguard = BLL.Other.GetIleavIGard();
+                if (iguard != null)
+                {
+                    int interfaceid = iguard.InterfaceID ?? 0;
+                    int centerfaceid = iguard.AttendanceInterfaceCenterID ?? 0;
+                    string deviceid = iguard.DeviceID;
+                    var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "OUT", loginer.userInfo.employNnumber,centerfaceid,interfaceid, 1, loginer.userInfo.surname, deviceid, "01", "", "");
+                    BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
+                }
                 ShowInout(loginer.userInfo.eNoRefFirstEid, GetCurrentLableDate());
+                
             }
         }
 

@@ -14,6 +14,12 @@ namespace BLL
         }
 
 
+        public static WebServiceLayer.WebReference_leave.ILeaveIGuard GetIleavIGard()
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetIGuard("ileave");
+        }
+
+
         public static bool InsertAttendanceRawData(WebServiceLayer.WebReference_leave.AttendanceRawData[] data)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.InsertAttendance(data);
