@@ -31,16 +31,16 @@
                 <table class="col-xs-12 lsu-table-xs lsf-clearPadding">
                     <tr class="lss-bgcolor-blue" style="color:white;padding-right:0px">
                         <td class="col-xs-4"><asp:Literal ID="lt_name" runat="server">Name</asp:Literal></td>
-                        <td class="col-xs-3" style='display:<%=LSLibrary.WebAPP.HtmlCssHelper.CSS_DisplayValue(bHiddenLeaveCode)%>'><asp:Literal ID="lt_section" runat="server">Type</asp:Literal></td>
-                        <td class="col-xs-3" style='display:<%=LSLibrary.WebAPP.HtmlCssHelper.CSS_DisplayValue(!bHiddenLeaveCode)%>'><asp:Literal ID="lt_leavecode" runat="server">LeaveCode</asp:Literal></td>
+                        <td class="col-xs-3" style='display:<%=LSLibrary.WebAPP.HtmlCssHelper.CSS_DisplayValue(!bHiddenLeaveCode)%>'><asp:Literal ID="lt_section" runat="server">Type</asp:Literal></td>
+                        <td class="col-xs-3" style='display:<%=LSLibrary.WebAPP.HtmlCssHelper.CSS_DisplayValue(bHiddenLeaveCode)%>'><asp:Literal ID="lt_leavecode" runat="server">LeaveCode</asp:Literal></td>
                         <td class="col-xs-5"><asp:Literal ID="lt_status" runat="server">Status</asp:Literal></td>
                     </tr>
                     <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                         <ItemTemplate>
                             <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>">
                                 <td><%# ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).displayname %></td>
-                                <td style='display:<%=LSLibrary.WebAPP.HtmlCssHelper.CSS_DisplayValue(bHiddenLeaveCode)%>'><%# BLL.GlobalVariate.GetSectionMultLanguage(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section) %></td>
-                                <td style='display:<%=LSLibrary.WebAPP.HtmlCssHelper.CSS_DisplayValue(!bHiddenLeaveCode)%>'><%# ShowRP_LeaveCode( ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveID,((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section)%></td>
+                                <td style='display:<%=LSLibrary.WebAPP.HtmlCssHelper.CSS_DisplayValue(!bHiddenLeaveCode)%>'><%# BLL.GlobalVariate.GetSectionMultLanguage(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section) %></td>
+                                <td style='display:<%=LSLibrary.WebAPP.HtmlCssHelper.CSS_DisplayValue(bHiddenLeaveCode)%>'><%# ShowRP_LeaveCode( ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveID,((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section)%></td>
                                 <td><%# BLL.Leave.GetLeaveStatusDesc(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).WorkflowTypeID,((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).masterStatus) %></td>
                             </tr>
                         </ItemTemplate>
