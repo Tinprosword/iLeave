@@ -1,0 +1,221 @@
+ip:::1
+DataTime：2021/7/2 15:52:30
+Url：http://localhost:8099/pages/calendar.aspx
+Message：服务器无法处理请求。 ---> “)”附近有语法错误。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetExtendLeaveDetails_waitApproveAndApprovedBYEidAndDate(DateTime datetime, Int32[] employmentids)
+   在 BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(DateTime dt, List`1 employids)
+   在 WEBUI.Pages.calendar.SetupRepeater()
+   在 WEBUI.Pages.calendar.tb_name_TextChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.TextBox.OnTextChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/7/2 15:52:34
+Url：http://localhost:8099/pages/calendar.aspx
+Message：服务器无法处理请求。 ---> “)”附近有语法错误。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetExtendLeaveDetails_waitApproveAndApprovedBYEidAndDate(DateTime datetime, Int32[] employmentids)
+   在 BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(DateTime dt, List`1 employids)
+   在 WEBUI.Pages.calendar.SetupRepeater()
+   在 WEBUI.Pages.calendar.tb_name_TextChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.TextBox.OnTextChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/7/2 15:52:46
+Url：http://localhost:8099/pages/calendar.aspx
+Message：服务器无法处理请求。 ---> “)”附近有语法错误。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetExtendLeaveDetails_waitApproveAndApprovedBYEidAndDate(DateTime datetime, Int32[] employmentids)
+   在 BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(DateTime dt, List`1 employids)
+   在 WEBUI.Pages.calendar.SetupRepeater()
+   在 WEBUI.Pages.calendar.tb_name_TextChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.TextBox.OnTextChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/7/2 15:52:48
+Url：http://localhost:8099/pages/calendar.aspx
+Message：服务器无法处理请求。 ---> “)”附近有语法错误。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetExtendLeaveDetails_waitApproveAndApprovedBYEidAndDate(DateTime datetime, Int32[] employmentids)
+   在 BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(DateTime dt, List`1 employids)
+   在 WEBUI.Pages.calendar.SetupRepeater()
+   在 WEBUI.Pages.calendar.tb_name_TextChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.TextBox.OnTextChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/7/2 15:53:00
+Url：http://localhost:8099/pages/calendar.aspx
+Message：服务器无法处理请求。 ---> “)”附近有语法错误。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetExtendLeaveDetails_waitApproveAndApprovedBYEidAndDate(DateTime datetime, Int32[] employmentids)
+   在 BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(DateTime dt, List`1 employids)
+   在 WEBUI.Pages.calendar.SetupRepeater()
+   在 WEBUI.Pages.calendar.tb_name_TextChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.TextBox.OnTextChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/7/2 15:54:30
+Url：http://localhost:8099/pages/calendar.aspx
+Message：服务器无法处理请求。 ---> “)”附近有语法错误。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetExtendLeaveDetails_waitApproveAndApprovedBYEidAndDate(DateTime datetime, Int32[] employmentids)
+   在 BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(DateTime dt, List`1 employids)
+   在 WEBUI.Pages.calendar.SetupRepeater()
+   在 WEBUI.Pages.calendar.tb_name_TextChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.TextBox.OnTextChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/7/2 15:56:11
+Url：http://localhost:8099/pages/calendar.aspx
+Message：服务器无法处理请求。 ---> “)”附近有语法错误。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetExtendLeaveDetails_waitApproveAndApprovedBYEidAndDate(DateTime datetime, Int32[] employmentids)
+   在 BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(DateTime dt, List`1 employids)
+   在 WEBUI.Pages.calendar.SetupRepeater()
+   在 WEBUI.Pages.calendar.tb_name_TextChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.TextBox.OnTextChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/7/2 15:57:32
+Url：http://localhost:8099/pages/calendar.aspx
+Message：服务器无法处理请求。 ---> “)”附近有语法错误。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetExtendLeaveDetails_waitApproveAndApprovedBYEidAndDate(DateTime datetime, Int32[] employmentids)
+   在 BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(DateTime dt, List`1 employids)
+   在 WEBUI.Pages.calendar.SetupRepeater()
+   在 WEBUI.Pages.calendar.tb_name_TextChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.TextBox.OnTextChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/7/2 15:58:10
+Url：http://localhost:8099/pages/calendar.aspx
+Message：服务器无法处理请求。 ---> “)”附近有语法错误。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetExtendLeaveDetails_waitApproveAndApprovedBYEidAndDate(DateTime datetime, Int32[] employmentids)
+   在 BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(DateTime dt, List`1 employids)
+   在 WEBUI.Pages.calendar.SetupRepeater()
+   在 WEBUI.Pages.calendar.tb_name_TextChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.TextBox.OnTextChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/7/2 15:59:17
+Url：http://localhost:8099/pages/calendar.aspx
+Message：服务器无法处理请求。 ---> “)”附近有语法错误。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetExtendLeaveDetails_waitApproveAndApprovedBYEidAndDate(DateTime datetime, Int32[] employmentids)
+   在 BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(DateTime dt, List`1 employids)
+   在 WEBUI.Pages.calendar.SetupRepeater()
+   在 WEBUI.Pages.calendar.tb_name_TextChanged(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.TextBox.OnTextChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/7/2 16:03:57
+Url：http://localhost:8099/pages/calendar.aspx
+Message：服务器无法处理请求。 ---> “)”附近有语法错误。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetExtendLeaveDetails_waitApproveAndApprovedBYEidAndDate(DateTime datetime, Int32[] employmentids)
+   在 BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(DateTime dt, List`1 employids)
+   在 WEBUI.Pages.calendar.SetupRepeater()
+   在 WEBUI.Pages.calendar.btn_team_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/7/2 16:04:23
+Url：http://localhost:8099/pages/calendar.aspx
+Message：服务器无法处理请求。 ---> “)”附近有语法错误。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetExtendLeaveDetails_waitApproveAndApprovedBYEidAndDate(DateTime datetime, Int32[] employmentids)
+   在 BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(DateTime dt, List`1 employids)
+   在 WEBUI.Pages.calendar.SetupRepeater()
+   在 WEBUI.Pages.calendar.btn_team_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/7/2 16:04:51
+Url：http://localhost:8099/pages/calendar.aspx
+Message：服务器无法处理请求。 ---> “)”附近有语法错误。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetExtendLeaveDetails_waitApproveAndApprovedBYEidAndDate(DateTime datetime, Int32[] employmentids)
+   在 BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(DateTime dt, List`1 employids)
+   在 WEBUI.Pages.calendar.SetupRepeater()
+   在 WEBUI.Pages.calendar.btn_team_Click(Object sender, EventArgs e)
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

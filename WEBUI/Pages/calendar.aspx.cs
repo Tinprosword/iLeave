@@ -110,23 +110,40 @@ namespace WEBUI.Pages
         {
             List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue,this.tb_name.Text.Trim());
 
+            
             if (this.cb_leave.Checked)
             {
                 //this.divTip.Visible = true;
                 this.leaveDiv.Visible = true;
                 this.rosterDiv.Visible = false;
-                var repeaterSource = BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(this.Calendar1.SelectedDate, eid);
-                this.repeater_leave.DataSource = repeaterSource;
-                this.repeater_leave.DataBind();
+                if ((eid != null && eid.Count() > 0))
+                {
+                    var repeaterSource = BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(this.Calendar1.SelectedDate, eid);
+                    this.repeater_leave.DataSource = repeaterSource;
+                    this.repeater_leave.DataBind();
+                }
+                else
+                {
+                    this.repeater_leave.DataSource = null;
+                    this.repeater_leave.DataBind();
+                }
             }
-            else if (this.cb_holiday.Checked)
+            else if (this.cb_holiday.Checked && (eid != null && eid.Count() > 0))
             {
                 //this.divTip.Visible = false;
                 this.leaveDiv.Visible = false;
                 this.rosterDiv.Visible = true;
-                var repeaterSource = BLL.calendar.GetRoster(this.Calendar1.SelectedDate, eid);
-                this.rp_roster.DataSource = repeaterSource;
-                this.rp_roster.DataBind();
+                if ((eid != null && eid.Count() > 0))
+                {
+                    var repeaterSource = BLL.calendar.GetRoster(this.Calendar1.SelectedDate, eid);
+                    this.rp_roster.DataSource = repeaterSource;
+                    this.rp_roster.DataBind();
+                }
+                else
+                {
+                    this.rp_roster.DataSource = null;
+                    this.rp_roster.DataBind();
+                }
             }
         }
 
