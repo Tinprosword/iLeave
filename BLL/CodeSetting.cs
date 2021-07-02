@@ -35,7 +35,9 @@ namespace BLL
 
         public static string GetMenu()
         {
-            return "1235";
+            string result = "";
+            result = WebServiceLayer.MyWebService.GlobalWebServices.ws_codesetting.GetSystemParameter("ILEAVEHIDDENMENUS");
+            return result;
         }
 
     }

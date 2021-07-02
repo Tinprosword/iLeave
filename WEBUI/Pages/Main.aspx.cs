@@ -35,31 +35,30 @@ namespace WEBUI.Pages
 
         private void DisplayMenu(string v)
         {
+            this.menu1.Visible = this.menu2.Visible = this.menu3.Visible = this.menu4.Visible = this.menu5.Visible = true;
             if (!string.IsNullOrEmpty(v))
             {
-                this.menu1.Visible = this.menu2.Visible = this.menu3.Visible = this.menu4.Visible = this.menu5.Visible = false;
                 if (v.Contains("1"))
                 {
-                    this.menu1.Visible = true;
+                    this.menu1.Visible = false;
                 }
                 if (v.Contains("2"))
                 {
-                    this.menu2.Visible = true;
+                    this.menu2.Visible = false;
                 }
                 if (v.Contains("3"))
                 {
-                    this.menu3.Visible = true;
+                    this.menu3.Visible = false;
                 }
                 if (v.Contains("4"))
                 {
-                    this.menu4.Visible = true;
+                    this.menu4.Visible = false;
                 }
                 if (v.Contains("5"))
                 {
-                    this.menu5.Visible = true;
+                    this.menu5.Visible = false;
                 }
             }
-            
         }
 
         private void SetMultiLanguage()
