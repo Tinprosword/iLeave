@@ -29,7 +29,37 @@ namespace WEBUI.Pages
             {
                 ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "", "DW-iLeave", "~/pages/chooseEmployment.aspx?pid=" + loginer.userInfo.personid, false);
             }
+            DisplayMenu(BLL.CodeSetting.GetMenu());
             SetMultiLanguage();
+        }
+
+        private void DisplayMenu(string v)
+        {
+            if (!string.IsNullOrEmpty(v))
+            {
+                this.menu1.Visible = this.menu2.Visible = this.menu3.Visible = this.menu4.Visible = this.menu5.Visible = false;
+                if (v.Contains("1"))
+                {
+                    this.menu1.Visible = true;
+                }
+                if (v.Contains("2"))
+                {
+                    this.menu2.Visible = true;
+                }
+                if (v.Contains("3"))
+                {
+                    this.menu3.Visible = true;
+                }
+                if (v.Contains("4"))
+                {
+                    this.menu4.Visible = true;
+                }
+                if (v.Contains("5"))
+                {
+                    this.menu5.Visible = true;
+                }
+            }
+            
         }
 
         private void SetMultiLanguage()

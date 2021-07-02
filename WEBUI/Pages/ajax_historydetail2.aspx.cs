@@ -21,8 +21,7 @@ namespace WEBUI.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var namtype = BLL.CodeSetting.GetSystemParameter(BLL.CodeSetting.staffNameFormat);
-            int.TryParse(namtype, out nametype);
+            nametype = BLL.CodeSetting.GetNameType(BLL.MultiLanguageHelper.GetChoose());// BLL.CodeSetting.GetSystemParameter(BLL.CodeSetting.staffNameFormat);
 
             if (!IsPostBack)
             {

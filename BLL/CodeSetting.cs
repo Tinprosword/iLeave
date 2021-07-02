@@ -9,7 +9,6 @@ namespace BLL
 {
     public class CodeSetting
     {
-        public static string staffNameFormat = "LEAVE_CALENDAR_STAFF_NAME_FORMAT_iLeave";
         public static string SystemParameter_showleaveCode = "HIDE_LEAVECODE_IN_LEAVE_CALENDAR";
 
         public static List<int> GetSections(int position, int leave)
@@ -32,6 +31,11 @@ namespace BLL
             {
                 return 6;
             }
+        }
+
+        public static string GetMenu()
+        {
+            return "1235";
         }
 
     }
