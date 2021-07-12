@@ -58,6 +58,10 @@ namespace WEBUI.Pages
                 {
                     this.menu5.Visible = false;
                 }
+                if (v.Contains("6"))
+                {
+                    this.menu6.Visible = false;
+                }
             }
         }
 
@@ -66,10 +70,9 @@ namespace WEBUI.Pages
             this.lt_applyleaveabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_apply;
             this.lt_approal.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_approvalTitle;
             this.lt_calendarabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_calendar;
-            //this.lt_downloadsplitabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_downplaylisp;
-            //this.lt_downloadtaxabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_downtax;
             this.lt_setting.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_setting;
             this.lt_check.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_check;
+            this.lt_RosterInquiry.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_rosterInqury;
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
@@ -109,6 +112,10 @@ namespace WEBUI.Pages
         protected void Change_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Pages/chooseEmployment.aspx?pid=" + loginer.userInfo.personid + "&sourcetype=2");
+        }
+        protected void RosterInquiry_Click(object sender, EventArgs e)
+        {
+                
         }
 
     }
