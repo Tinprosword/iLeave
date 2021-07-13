@@ -155,6 +155,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetRosterInquiry_SecurityOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetUserinfoOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetPositionOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetTaskSequenceOperationCompleted;
@@ -409,6 +411,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event GetRosterInquiry_SecurityCompletedEventHandler GetRosterInquiry_SecurityCompleted;
+        
+        /// <remarks/>
+        public event GetUserinfoCompletedEventHandler GetUserinfoCompleted;
         
         /// <remarks/>
         public event GetPositionCompletedEventHandler GetPositionCompleted;
@@ -2309,31 +2314,61 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetRosterInquiry_Security", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void GetRosterInquiry_Security(bool allInfo, int[] firstEIDs) {
-            this.Invoke("GetRosterInquiry_Security", new object[] {
+        public v_System_iLeave_Security[] GetRosterInquiry_Security(bool allInfo, int staffid) {
+            object[] results = this.Invoke("GetRosterInquiry_Security", new object[] {
                         allInfo,
-                        firstEIDs});
+                        staffid});
+            return ((v_System_iLeave_Security[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetRosterInquiry_SecurityAsync(bool allInfo, int[] firstEIDs) {
-            this.GetRosterInquiry_SecurityAsync(allInfo, firstEIDs, null);
+        public void GetRosterInquiry_SecurityAsync(bool allInfo, int staffid) {
+            this.GetRosterInquiry_SecurityAsync(allInfo, staffid, null);
         }
         
         /// <remarks/>
-        public void GetRosterInquiry_SecurityAsync(bool allInfo, int[] firstEIDs, object userState) {
+        public void GetRosterInquiry_SecurityAsync(bool allInfo, int staffid, object userState) {
             if ((this.GetRosterInquiry_SecurityOperationCompleted == null)) {
                 this.GetRosterInquiry_SecurityOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRosterInquiry_SecurityOperationCompleted);
             }
             this.InvokeAsync("GetRosterInquiry_Security", new object[] {
                         allInfo,
-                        firstEIDs}, this.GetRosterInquiry_SecurityOperationCompleted, userState);
+                        staffid}, this.GetRosterInquiry_SecurityOperationCompleted, userState);
         }
         
         private void OnGetRosterInquiry_SecurityOperationCompleted(object arg) {
             if ((this.GetRosterInquiry_SecurityCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetRosterInquiry_SecurityCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetRosterInquiry_SecurityCompleted(this, new GetRosterInquiry_SecurityCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetUserinfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public UserInfo GetUserinfo(int pid) {
+            object[] results = this.Invoke("GetUserinfo", new object[] {
+                        pid});
+            return ((UserInfo)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetUserinfoAsync(int pid) {
+            this.GetUserinfoAsync(pid, null);
+        }
+        
+        /// <remarks/>
+        public void GetUserinfoAsync(int pid, object userState) {
+            if ((this.GetUserinfoOperationCompleted == null)) {
+                this.GetUserinfoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUserinfoOperationCompleted);
+            }
+            this.InvokeAsync("GetUserinfo", new object[] {
+                        pid}, this.GetUserinfoOperationCompleted, userState);
+        }
+        
+        private void OnGetUserinfoOperationCompleted(object arg) {
+            if ((this.GetUserinfoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetUserinfoCompleted(this, new GetUserinfoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4264,6 +4299,516 @@ namespace WebServiceLayer.WebReference_leave {
             }
             set {
                 this.appraisalField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class UserInfo {
+        
+        private int idField;
+        
+        private string userNameField;
+        
+        private string passWordHashField;
+        
+        private string fullNameField;
+        
+        private int userGroupIDField;
+        
+        private string phoneField;
+        
+        private string emailField;
+        
+        private string remarksField;
+        
+        private byte statusField;
+        
+        private string statusDescriptionField;
+        
+        private System.DateTime modifiedDateField;
+        
+        private int modifiedUserField;
+        
+        private System.DateTime createDateField;
+        
+        private int createUserField;
+        
+        private string userGroupCodeField;
+        
+        private string userGroupDescriptionField;
+        
+        private int personIDField;
+        
+        private int specialRightField;
+        
+        private int staffIDField;
+        
+        private string languageCodeField;
+        
+        private string domainUserField;
+        
+        private int failAttemptField;
+        
+        private System.DateTime lastLoginDateField;
+        
+        private System.DateTime expiryDateField;
+        
+        private bool isLockField;
+        
+        private string isLockDescriptionField;
+        
+        private bool isReceiveEmailField;
+        
+        private string tokenKeyField;
+        
+        private string fullNameWithNicknameField;
+        
+        private int mobileUserLevelField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string UserName {
+            get {
+                return this.userNameField;
+            }
+            set {
+                this.userNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PassWordHash {
+            get {
+                return this.passWordHashField;
+            }
+            set {
+                this.passWordHashField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string FullName {
+            get {
+                return this.fullNameField;
+            }
+            set {
+                this.fullNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int UserGroupID {
+            get {
+                return this.userGroupIDField;
+            }
+            set {
+                this.userGroupIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Phone {
+            get {
+                return this.phoneField;
+            }
+            set {
+                this.phoneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Remarks {
+            get {
+                return this.remarksField;
+            }
+            set {
+                this.remarksField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public byte Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string StatusDescription {
+            get {
+                return this.statusDescriptionField;
+            }
+            set {
+                this.statusDescriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ModifiedDate {
+            get {
+                return this.modifiedDateField;
+            }
+            set {
+                this.modifiedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ModifiedUser {
+            get {
+                return this.modifiedUserField;
+            }
+            set {
+                this.modifiedUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CreateUser {
+            get {
+                return this.createUserField;
+            }
+            set {
+                this.createUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string UserGroupCode {
+            get {
+                return this.userGroupCodeField;
+            }
+            set {
+                this.userGroupCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string UserGroupDescription {
+            get {
+                return this.userGroupDescriptionField;
+            }
+            set {
+                this.userGroupDescriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int PersonID {
+            get {
+                return this.personIDField;
+            }
+            set {
+                this.personIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int SpecialRight {
+            get {
+                return this.specialRightField;
+            }
+            set {
+                this.specialRightField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int StaffID {
+            get {
+                return this.staffIDField;
+            }
+            set {
+                this.staffIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string LanguageCode {
+            get {
+                return this.languageCodeField;
+            }
+            set {
+                this.languageCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DomainUser {
+            get {
+                return this.domainUserField;
+            }
+            set {
+                this.domainUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int FailAttempt {
+            get {
+                return this.failAttemptField;
+            }
+            set {
+                this.failAttemptField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime LastLoginDate {
+            get {
+                return this.lastLoginDateField;
+            }
+            set {
+                this.lastLoginDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ExpiryDate {
+            get {
+                return this.expiryDateField;
+            }
+            set {
+                this.expiryDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsLock {
+            get {
+                return this.isLockField;
+            }
+            set {
+                this.isLockField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string IsLockDescription {
+            get {
+                return this.isLockDescriptionField;
+            }
+            set {
+                this.isLockDescriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsReceiveEmail {
+            get {
+                return this.isReceiveEmailField;
+            }
+            set {
+                this.isReceiveEmailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string TokenKey {
+            get {
+                return this.tokenKeyField;
+            }
+            set {
+                this.tokenKeyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string FullNameWithNickname {
+            get {
+                return this.fullNameWithNicknameField;
+            }
+            set {
+                this.fullNameWithNicknameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int MobileUserLevel {
+            get {
+                return this.mobileUserLevelField;
+            }
+            set {
+                this.mobileUserLevelField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class v_System_iLeave_Security {
+        
+        private string employmentNumberField;
+        
+        private int staffIDField;
+        
+        private int firstEmploymentIDField;
+        
+        private int employmentIDField;
+        
+        private int contractIDField;
+        
+        private string stationCodeField;
+        
+        private string zoneCodeField;
+        
+        private string postionCodeField;
+        
+        private int positionIDField;
+        
+        private System.DateTime commenceDateField;
+        
+        private System.DateTime terminateDateField;
+        
+        /// <remarks/>
+        public string EmploymentNumber {
+            get {
+                return this.employmentNumberField;
+            }
+            set {
+                this.employmentNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int StaffID {
+            get {
+                return this.staffIDField;
+            }
+            set {
+                this.staffIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int FirstEmploymentID {
+            get {
+                return this.firstEmploymentIDField;
+            }
+            set {
+                this.firstEmploymentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int EmploymentID {
+            get {
+                return this.employmentIDField;
+            }
+            set {
+                this.employmentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ContractID {
+            get {
+                return this.contractIDField;
+            }
+            set {
+                this.contractIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string StationCode {
+            get {
+                return this.stationCodeField;
+            }
+            set {
+                this.stationCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ZoneCode {
+            get {
+                return this.zoneCodeField;
+            }
+            set {
+                this.zoneCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PostionCode {
+            get {
+                return this.postionCodeField;
+            }
+            set {
+                this.postionCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int PositionID {
+            get {
+                return this.positionIDField;
+            }
+            set {
+                this.positionIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CommenceDate {
+            get {
+                return this.commenceDateField;
+            }
+            set {
+                this.commenceDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime TerminateDate {
+            get {
+                return this.terminateDateField;
+            }
+            set {
+                this.terminateDateField = value;
             }
         }
     }
@@ -9404,7 +9949,55 @@ namespace WebServiceLayer.WebReference_leave {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetRosterInquiry_SecurityCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void GetRosterInquiry_SecurityCompletedEventHandler(object sender, GetRosterInquiry_SecurityCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetRosterInquiry_SecurityCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetRosterInquiry_SecurityCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public v_System_iLeave_Security[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((v_System_iLeave_Security[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetUserinfoCompletedEventHandler(object sender, GetUserinfoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetUserinfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetUserinfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public UserInfo Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((UserInfo)(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]

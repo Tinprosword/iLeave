@@ -170,6 +170,9 @@
     <None Include="Web References\WebReference_leave\t_WorkflowTask.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\WebReference_leave\UserInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\WebReference_leave\v_System_Calendar.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -177,6 +180,9 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebReference_leave\v_System_iLeave_Roster_List.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebReference_leave\v_System_iLeave_Security.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebReference_leave\WorkflowTaskExtend.datasource">

@@ -25,6 +25,31 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.InsertAttendance(data);
         }
 
+        public static WebServiceLayer.WebReference_leave.PositionInfo[] GetPositions()
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetPosition();
+        }
+
+        public static WebServiceLayer.WebReference_leave.v_System_iLeave_Security[] GetSecurity(bool all,int sid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetRosterInquiry_Security(all, sid);
+        }
+
+        public static WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List[] GetRoster_leavelist(string name, string zoneCode, string positionCode, System.DateTime datefrom, System.DateTime dateto)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetRosterInquiry_leave(name, zoneCode, positionCode, datefrom, dateto);
+        }
+
+        public static WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List[] GetRoster_Rosterlist(string name, string zoneCode, string positionCode, System.DateTime datefrom, System.DateTime dateto)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetRosterInquiry_Roster(name, zoneCode, positionCode, datefrom, dateto);
+        }
+
+        public static WebServiceLayer.WebReference_leave.UserInfo GetUser(int pid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetUserinfo(pid);
+        }
+
         public static WebServiceLayer.WebReference_leave.AttendanceRawData GenerateModel(DateTime logdate,int uid,string _Type,string _ExternalRef,int _AttendanceInterfaceCenterID,
             int _InterfaceID,int? _RemoteIdent,string _StaffName,string _DeviceID,string _Zone,string _GpsLocation,string _GpsLocationName)
         {
@@ -47,4 +72,5 @@ namespace BLL
             return result;
         }
     }
+
 }

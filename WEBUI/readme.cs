@@ -1,7 +1,47 @@
-﻿//android 打包不能混淆 
+﻿
+//android 打包不能混淆 
 //-keepclassmembers class * extends android.webkit.WebChromeClient{
+
 //public void openFileChooser(...);
 //}
+
+
+//todo 0 zone positon .是和loginer 固定相关。 zone->positon            ok.
+//3.datetime 默认当月。                                                ok.
+//修改ddl .晴空textbox.                                                ok.
+
+
+//2 t_user 控制只看自己还是相关zone.                                   ok.
+//界面的from 段，可以小点。                                            ok
+
+//4.带相关的参数到2个界面。
+//全地区和所有分地区 ，加起来没有 相等数量。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //probably bug:detail change states 1 to 2 hardcode.        flag

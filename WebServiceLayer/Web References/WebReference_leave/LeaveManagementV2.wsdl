@@ -1375,13 +1375,85 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="allInfo" type="s:boolean" />
-            <s:element minOccurs="0" maxOccurs="1" name="firstEIDs" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="GetRosterInquiry_SecurityResponse">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRosterInquiry_SecurityResult" type="tns:ArrayOfV_System_iLeave_Security" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfV_System_iLeave_Security">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_iLeave_Security" nillable="true" type="tns:v_System_iLeave_Security" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="v_System_iLeave_Security">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EmploymentNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FirstEmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContractID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="StationCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZoneCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostionCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PositionID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CommenceDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="TerminateDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserinfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserinfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserinfoResult" type="tns:UserInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PassWordHash" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FullName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserGroupID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserGroupCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserGroupDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PersonID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SpecialRight" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LanguageCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DomainUser" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FailAttempt" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastLoginDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpiryDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsLock" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsLockDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReceiveEmail" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="TokenKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FullNameWithNickname" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MobileUserLevel" type="s:int" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetPosition">
         <s:complexType />
       </s:element>
@@ -1721,6 +1793,8 @@
       <s:element name="ILeaveIGuard" nillable="true" type="tns:ILeaveIGuard" />
       <s:element name="ArrayOfV_System_iLeave_Leave_List" nillable="true" type="tns:ArrayOfV_System_iLeave_Leave_List" />
       <s:element name="ArrayOfV_System_iLeave_Roster_List" nillable="true" type="tns:ArrayOfV_System_iLeave_Roster_List" />
+      <s:element name="ArrayOfV_System_iLeave_Security" nillable="true" type="tns:ArrayOfV_System_iLeave_Security" />
+      <s:element name="UserInfo" nillable="true" type="tns:UserInfo" />
       <s:element name="ArrayOfPositionInfo" nillable="true" type="tns:ArrayOfPositionInfo" />
       <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
       <s:element name="ArrayOfWorkflowTaskExtend" nillable="true" type="tns:ArrayOfWorkflowTaskExtend" />
@@ -2118,6 +2192,12 @@
   <wsdl:message name="GetRosterInquiry_SecuritySoapOut">
     <wsdl:part name="parameters" element="tns:GetRosterInquiry_SecurityResponse" />
   </wsdl:message>
+  <wsdl:message name="GetUserinfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserinfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUserinfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserinfoResponse" />
+  </wsdl:message>
   <wsdl:message name="GetPositionSoapIn">
     <wsdl:part name="parameters" element="tns:GetPosition" />
   </wsdl:message>
@@ -2443,9 +2523,17 @@
   </wsdl:message>
   <wsdl:message name="GetRosterInquiry_SecurityHttpPostIn">
     <wsdl:part name="allInfo" type="s:string" />
-    <wsdl:part name="firstEIDs" type="s1:StringArray" />
+    <wsdl:part name="staffid" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetRosterInquiry_SecurityHttpPostOut" />
+  <wsdl:message name="GetRosterInquiry_SecurityHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfV_System_iLeave_Security" />
+  </wsdl:message>
+  <wsdl:message name="GetUserinfoHttpPostIn">
+    <wsdl:part name="pid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserinfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:UserInfo" />
+  </wsdl:message>
   <wsdl:message name="GetPositionHttpPostIn" />
   <wsdl:message name="GetPositionHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfPositionInfo" />
@@ -2778,6 +2866,10 @@
       <wsdl:input message="tns:GetRosterInquiry_SecuritySoapIn" />
       <wsdl:output message="tns:GetRosterInquiry_SecuritySoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetUserinfo">
+      <wsdl:input message="tns:GetUserinfoSoapIn" />
+      <wsdl:output message="tns:GetUserinfoSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetPosition">
       <wsdl:input message="tns:GetPositionSoapIn" />
       <wsdl:output message="tns:GetPositionSoapOut" />
@@ -2991,6 +3083,10 @@
     <wsdl:operation name="GetRosterInquiry_Security">
       <wsdl:input message="tns:GetRosterInquiry_SecurityHttpPostIn" />
       <wsdl:output message="tns:GetRosterInquiry_SecurityHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserinfo">
+      <wsdl:input message="tns:GetUserinfoHttpPostIn" />
+      <wsdl:output message="tns:GetUserinfoHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetPosition">
       <wsdl:input message="tns:GetPositionHttpPostIn" />
@@ -3607,6 +3703,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetRosterInquiry_Security">
       <soap:operation soapAction="http://tempuri.org/GetRosterInquiry_Security" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserinfo">
+      <soap:operation soapAction="http://tempuri.org/GetUserinfo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -4310,6 +4415,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetUserinfo">
+      <soap12:operation soapAction="http://tempuri.org/GetUserinfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetPosition">
       <soap12:operation soapAction="http://tempuri.org/GetPosition" style="document" />
       <wsdl:input>
@@ -4782,7 +4896,18 @@
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
-      <wsdl:output />
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserinfo">
+      <http:operation location="/GetUserinfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetPosition">
       <http:operation location="/GetPosition" />
