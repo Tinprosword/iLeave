@@ -35,12 +35,12 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetRosterInquiry_Security(all, sid);
         }
 
-        public static WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List[] GetRoster_leavelist(string name, string zoneCode, string positionCode, System.DateTime datefrom, System.DateTime dateto)
+        public static WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List[] GetRoster_leavelist(string name, string[] zoneCode, string[] positionCode, System.DateTime datefrom, System.DateTime dateto)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetRosterInquiry_leave(name, zoneCode, positionCode, datefrom, dateto);
         }
 
-        public static WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List[] GetRoster_Rosterlist(string name, string zoneCode, string positionCode, System.DateTime datefrom, System.DateTime dateto)
+        public static WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List[] GetRoster_Rosterlist(string name, string[] zoneCode, string[] positionCode, System.DateTime datefrom, System.DateTime dateto)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetRosterInquiry_Roster(name, zoneCode, positionCode, datefrom, dateto);
         }

@@ -1287,8 +1287,8 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="zoneCode" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="positionCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zoneCode" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="positionCode" type="tns:ArrayOfString" />
             <s:element minOccurs="1" maxOccurs="1" name="datefrom" type="s:dateTime" />
             <s:element minOccurs="1" maxOccurs="1" name="dateto" type="s:dateTime" />
           </s:sequence>
@@ -1331,8 +1331,8 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="zoneCode" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="positionCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zoneCode" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="positionCode" type="tns:ArrayOfString" />
             <s:element minOccurs="1" maxOccurs="1" name="datefrom" type="s:dateTime" />
             <s:element minOccurs="1" maxOccurs="1" name="dateto" type="s:dateTime" />
           </s:sequence>
@@ -2503,8 +2503,8 @@
   </wsdl:message>
   <wsdl:message name="GetRosterInquiry_leaveHttpPostIn">
     <wsdl:part name="name" type="s:string" />
-    <wsdl:part name="zoneCode" type="s:string" />
-    <wsdl:part name="positionCode" type="s:string" />
+    <wsdl:part name="zoneCode" type="s1:StringArray" />
+    <wsdl:part name="positionCode" type="s1:StringArray" />
     <wsdl:part name="datefrom" type="s:string" />
     <wsdl:part name="dateto" type="s:string" />
   </wsdl:message>
@@ -2513,8 +2513,8 @@
   </wsdl:message>
   <wsdl:message name="GetRosterInquiry_RosterHttpPostIn">
     <wsdl:part name="name" type="s:string" />
-    <wsdl:part name="zoneCode" type="s:string" />
-    <wsdl:part name="positionCode" type="s:string" />
+    <wsdl:part name="zoneCode" type="s1:StringArray" />
+    <wsdl:part name="positionCode" type="s1:StringArray" />
     <wsdl:part name="datefrom" type="s:string" />
     <wsdl:part name="dateto" type="s:string" />
   </wsdl:message>

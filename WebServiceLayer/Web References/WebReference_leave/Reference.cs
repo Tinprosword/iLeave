@@ -2240,7 +2240,7 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetRosterInquiry_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public v_System_iLeave_Leave_List[] GetRosterInquiry_leave(string name, string zoneCode, string positionCode, System.DateTime datefrom, System.DateTime dateto) {
+        public v_System_iLeave_Leave_List[] GetRosterInquiry_leave(string name, string[] zoneCode, string[] positionCode, System.DateTime datefrom, System.DateTime dateto) {
             object[] results = this.Invoke("GetRosterInquiry_leave", new object[] {
                         name,
                         zoneCode,
@@ -2251,12 +2251,12 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
-        public void GetRosterInquiry_leaveAsync(string name, string zoneCode, string positionCode, System.DateTime datefrom, System.DateTime dateto) {
+        public void GetRosterInquiry_leaveAsync(string name, string[] zoneCode, string[] positionCode, System.DateTime datefrom, System.DateTime dateto) {
             this.GetRosterInquiry_leaveAsync(name, zoneCode, positionCode, datefrom, dateto, null);
         }
         
         /// <remarks/>
-        public void GetRosterInquiry_leaveAsync(string name, string zoneCode, string positionCode, System.DateTime datefrom, System.DateTime dateto, object userState) {
+        public void GetRosterInquiry_leaveAsync(string name, string[] zoneCode, string[] positionCode, System.DateTime datefrom, System.DateTime dateto, object userState) {
             if ((this.GetRosterInquiry_leaveOperationCompleted == null)) {
                 this.GetRosterInquiry_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRosterInquiry_leaveOperationCompleted);
             }
@@ -2277,7 +2277,7 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetRosterInquiry_Roster", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public v_System_iLeave_Roster_List[] GetRosterInquiry_Roster(string name, string zoneCode, string positionCode, System.DateTime datefrom, System.DateTime dateto) {
+        public v_System_iLeave_Roster_List[] GetRosterInquiry_Roster(string name, string[] zoneCode, string[] positionCode, System.DateTime datefrom, System.DateTime dateto) {
             object[] results = this.Invoke("GetRosterInquiry_Roster", new object[] {
                         name,
                         zoneCode,
@@ -2288,12 +2288,12 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
-        public void GetRosterInquiry_RosterAsync(string name, string zoneCode, string positionCode, System.DateTime datefrom, System.DateTime dateto) {
+        public void GetRosterInquiry_RosterAsync(string name, string[] zoneCode, string[] positionCode, System.DateTime datefrom, System.DateTime dateto) {
             this.GetRosterInquiry_RosterAsync(name, zoneCode, positionCode, datefrom, dateto, null);
         }
         
         /// <remarks/>
-        public void GetRosterInquiry_RosterAsync(string name, string zoneCode, string positionCode, System.DateTime datefrom, System.DateTime dateto, object userState) {
+        public void GetRosterInquiry_RosterAsync(string name, string[] zoneCode, string[] positionCode, System.DateTime datefrom, System.DateTime dateto, object userState) {
             if ((this.GetRosterInquiry_RosterOperationCompleted == null)) {
                 this.GetRosterInquiry_RosterOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRosterInquiry_RosterOperationCompleted);
             }
