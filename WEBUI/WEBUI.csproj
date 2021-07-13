@@ -72,6 +72,7 @@
     <Content Include="Pages\approval_wait.aspx" />
     <Content Include="Pages\Check.aspx" />
     <Content Include="Pages\ErrorPage.aspx" />
+    <Content Include="Pages\RosterInquiry.aspx" />
     <Content Include="Res\App\applywait.js" />
     <Content Include="Res\App\check.css" />
     <Content Include="Res\images\back3.png" />
@@ -148,6 +149,13 @@
     </Compile>
     <Compile Include="Pages\getHeight.aspx.designer.cs">
       <DependentUpon>getHeight.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RosterInquiry.aspx.cs">
+      <DependentUpon>RosterInquiry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\RosterInquiry.aspx.designer.cs">
+      <DependentUpon>RosterInquiry.aspx</DependentUpon>
     </Compile>
     <Compile Include="readme.cs" />
     <Content Include="Res\App\appcss.css" />

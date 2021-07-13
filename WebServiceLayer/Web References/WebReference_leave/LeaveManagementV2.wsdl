@@ -1283,6 +1283,157 @@
           <s:element minOccurs="1" maxOccurs="1" name="AttendanceInterfaceCenterID" nillable="true" type="s:int" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetRosterInquiry_leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zoneCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="positionCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="datefrom" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateto" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRosterInquiry_leaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRosterInquiry_leaveResult" type="tns:ArrayOfV_System_iLeave_Leave_List" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfV_System_iLeave_Leave_List">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_iLeave_Leave_List" nillable="true" type="tns:v_System_iLeave_Leave_List" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="v_System_iLeave_Leave_List">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="English_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Chinese_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nickname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Search_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Position_Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zone_Code" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContractID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Leave" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="YYYY_MM_DD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MM_DD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shift_In" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shift_Out" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attend_In" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attend_Out" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRosterInquiry_Roster">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zoneCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="positionCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="datefrom" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateto" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRosterInquiry_RosterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRosterInquiry_RosterResult" type="tns:ArrayOfV_System_iLeave_Roster_List" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfV_System_iLeave_Roster_List">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_iLeave_Roster_List" nillable="true" type="tns:v_System_iLeave_Roster_List" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="v_System_iLeave_Roster_List">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="English_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Chinese_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nickname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Search_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Position_Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zone_Code" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContractID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Leave" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="YYYY_MM_DD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MM_DD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shift_In" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shift_Out" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attend_In" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attend_Out" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRosterInquiry_Security">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="allInfo" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="firstEIDs" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRosterInquiry_SecurityResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPosition">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPositionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPositionResult" type="tns:ArrayOfPositionInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPositionInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PositionInfo" nillable="true" type="tns:PositionInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PositionInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RankID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InternalRankID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxOTHourPerMonth" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="MainPosition" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark3" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SponsorRequirementYearOfService" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxSponsorTrainingFee" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxSponsorNoOfTimes" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxSponsorAmountPerTimes" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSponsorFeeResetAnnually" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RankLevel" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsALExcludeSAT" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsALExcludeSUN" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsALExcludeHoliday" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayScaleType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayScaleEntryPoint" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayScaleMidPoint" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayScaleMaxPoint" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAllowHalfDayLeave" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAllowHourlyLeave" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAllow3SectionLeave" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="JobType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveCutOffType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PointList" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SortSeq" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SL168" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Appraisal" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetTaskSequence">
         <s:complexType>
           <s:sequence>
@@ -1305,6 +1456,7 @@
           <s:enumeration value="DOCTOR_VISIT" />
           <s:enumeration value="CANCEL_LEAVE_APPLICATION" />
           <s:enumeration value="EXPENSE_CLAIM" />
+          <s:enumeration value="CANCEL_CLOT_APPLICATION" />
         </s:restriction>
       </s:simpleType>
       <s:element name="GetTaskSequenceResponse">
@@ -1567,6 +1719,9 @@
       <s:element name="ArrayOfDouble" nillable="true" type="tns:ArrayOfDouble" />
       <s:element name="ArrayOfAttendanceRawData" nillable="true" type="tns:ArrayOfAttendanceRawData" />
       <s:element name="ILeaveIGuard" nillable="true" type="tns:ILeaveIGuard" />
+      <s:element name="ArrayOfV_System_iLeave_Leave_List" nillable="true" type="tns:ArrayOfV_System_iLeave_Leave_List" />
+      <s:element name="ArrayOfV_System_iLeave_Roster_List" nillable="true" type="tns:ArrayOfV_System_iLeave_Roster_List" />
+      <s:element name="ArrayOfPositionInfo" nillable="true" type="tns:ArrayOfPositionInfo" />
       <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
       <s:element name="ArrayOfWorkflowTaskExtend" nillable="true" type="tns:ArrayOfWorkflowTaskExtend" />
       <s:element name="ArrayOfLeaveHistory" nillable="true" type="tns:ArrayOfLeaveHistory" />
@@ -1945,6 +2100,30 @@
   <wsdl:message name="GetIGuardSoapOut">
     <wsdl:part name="parameters" element="tns:GetIGuardResponse" />
   </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_leaveSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRosterInquiry_leave" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_leaveSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRosterInquiry_leaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_RosterSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRosterInquiry_Roster" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_RosterSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRosterInquiry_RosterResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_SecuritySoapIn">
+    <wsdl:part name="parameters" element="tns:GetRosterInquiry_Security" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_SecuritySoapOut">
+    <wsdl:part name="parameters" element="tns:GetRosterInquiry_SecurityResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPositionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPosition" />
+  </wsdl:message>
+  <wsdl:message name="GetPositionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPositionResponse" />
+  </wsdl:message>
   <wsdl:message name="GetTaskSequenceSoapIn">
     <wsdl:part name="parameters" element="tns:GetTaskSequence" />
   </wsdl:message>
@@ -2241,6 +2420,35 @@
   </wsdl:message>
   <wsdl:message name="GetIGuardHttpPostOut">
     <wsdl:part name="Body" element="tns:ILeaveIGuard" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_leaveHttpPostIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="zoneCode" type="s:string" />
+    <wsdl:part name="positionCode" type="s:string" />
+    <wsdl:part name="datefrom" type="s:string" />
+    <wsdl:part name="dateto" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_leaveHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfV_System_iLeave_Leave_List" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_RosterHttpPostIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="zoneCode" type="s:string" />
+    <wsdl:part name="positionCode" type="s:string" />
+    <wsdl:part name="datefrom" type="s:string" />
+    <wsdl:part name="dateto" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_RosterHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfV_System_iLeave_Roster_List" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_SecurityHttpPostIn">
+    <wsdl:part name="allInfo" type="s:string" />
+    <wsdl:part name="firstEIDs" type="s1:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_SecurityHttpPostOut" />
+  <wsdl:message name="GetPositionHttpPostIn" />
+  <wsdl:message name="GetPositionHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPositionInfo" />
   </wsdl:message>
   <wsdl:message name="GetTaskSequenceHttpPostIn">
     <wsdl:part name="WorkflowTypeID" type="s:string" />
@@ -2558,6 +2766,22 @@
       <wsdl:input message="tns:GetIGuardSoapIn" />
       <wsdl:output message="tns:GetIGuardSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_leave">
+      <wsdl:input message="tns:GetRosterInquiry_leaveSoapIn" />
+      <wsdl:output message="tns:GetRosterInquiry_leaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_Roster">
+      <wsdl:input message="tns:GetRosterInquiry_RosterSoapIn" />
+      <wsdl:output message="tns:GetRosterInquiry_RosterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_Security">
+      <wsdl:input message="tns:GetRosterInquiry_SecuritySoapIn" />
+      <wsdl:output message="tns:GetRosterInquiry_SecuritySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPosition">
+      <wsdl:input message="tns:GetPositionSoapIn" />
+      <wsdl:output message="tns:GetPositionSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetTaskSequence">
       <wsdl:input message="tns:GetTaskSequenceSoapIn" />
       <wsdl:output message="tns:GetTaskSequenceSoapOut" />
@@ -2755,6 +2979,22 @@
     <wsdl:operation name="GetIGuard">
       <wsdl:input message="tns:GetIGuardHttpPostIn" />
       <wsdl:output message="tns:GetIGuardHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_leave">
+      <wsdl:input message="tns:GetRosterInquiry_leaveHttpPostIn" />
+      <wsdl:output message="tns:GetRosterInquiry_leaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_Roster">
+      <wsdl:input message="tns:GetRosterInquiry_RosterHttpPostIn" />
+      <wsdl:output message="tns:GetRosterInquiry_RosterHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_Security">
+      <wsdl:input message="tns:GetRosterInquiry_SecurityHttpPostIn" />
+      <wsdl:output message="tns:GetRosterInquiry_SecurityHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPosition">
+      <wsdl:input message="tns:GetPositionHttpPostIn" />
+      <wsdl:output message="tns:GetPositionHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetTaskSequence">
       <wsdl:input message="tns:GetTaskSequenceHttpPostIn" />
@@ -3340,6 +3580,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetIGuard">
       <soap:operation soapAction="http://tempuri.org/GetIGuard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_leave">
+      <soap:operation soapAction="http://tempuri.org/GetRosterInquiry_leave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_Roster">
+      <soap:operation soapAction="http://tempuri.org/GetRosterInquiry_Roster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_Security">
+      <soap:operation soapAction="http://tempuri.org/GetRosterInquiry_Security" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPosition">
+      <soap:operation soapAction="http://tempuri.org/GetPosition" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -4007,6 +4283,42 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_leave">
+      <soap12:operation soapAction="http://tempuri.org/GetRosterInquiry_leave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_Roster">
+      <soap12:operation soapAction="http://tempuri.org/GetRosterInquiry_Roster" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_Security">
+      <soap12:operation soapAction="http://tempuri.org/GetRosterInquiry_Security" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPosition">
+      <soap12:operation soapAction="http://tempuri.org/GetPosition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetTaskSequence">
       <soap12:operation soapAction="http://tempuri.org/GetTaskSequence" style="document" />
       <wsdl:input>
@@ -4440,6 +4752,40 @@
     </wsdl:operation>
     <wsdl:operation name="GetIGuard">
       <http:operation location="/GetIGuard" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_leave">
+      <http:operation location="/GetRosterInquiry_leave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_Roster">
+      <http:operation location="/GetRosterInquiry_Roster" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_Security">
+      <http:operation location="/GetRosterInquiry_Security" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetPosition">
+      <http:operation location="/GetPosition" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

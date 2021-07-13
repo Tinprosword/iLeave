@@ -115,7 +115,7 @@ namespace WEBUI.Pages
         }
         protected void RosterInquiry_Click(object sender, EventArgs e)
         {
-                
+            Response.Redirect("~/pages/RosterInquiry.aspx?action=0");
         }
 
     }

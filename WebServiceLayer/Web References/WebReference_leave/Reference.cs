@@ -149,6 +149,14 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetIGuardOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetRosterInquiry_leaveOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetRosterInquiry_RosterOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetRosterInquiry_SecurityOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetPositionOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetTaskSequenceOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetWorkflowTaskExtendByUidOperationCompleted;
@@ -392,6 +400,18 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event GetIGuardCompletedEventHandler GetIGuardCompleted;
+        
+        /// <remarks/>
+        public event GetRosterInquiry_leaveCompletedEventHandler GetRosterInquiry_leaveCompleted;
+        
+        /// <remarks/>
+        public event GetRosterInquiry_RosterCompletedEventHandler GetRosterInquiry_RosterCompleted;
+        
+        /// <remarks/>
+        public event GetRosterInquiry_SecurityCompletedEventHandler GetRosterInquiry_SecurityCompleted;
+        
+        /// <remarks/>
+        public event GetPositionCompletedEventHandler GetPositionCompleted;
         
         /// <remarks/>
         public event GetTaskSequenceCompletedEventHandler GetTaskSequenceCompleted;
@@ -2214,6 +2234,137 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetRosterInquiry_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public v_System_iLeave_Leave_List[] GetRosterInquiry_leave(string name, string zoneCode, string positionCode, System.DateTime datefrom, System.DateTime dateto) {
+            object[] results = this.Invoke("GetRosterInquiry_leave", new object[] {
+                        name,
+                        zoneCode,
+                        positionCode,
+                        datefrom,
+                        dateto});
+            return ((v_System_iLeave_Leave_List[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetRosterInquiry_leaveAsync(string name, string zoneCode, string positionCode, System.DateTime datefrom, System.DateTime dateto) {
+            this.GetRosterInquiry_leaveAsync(name, zoneCode, positionCode, datefrom, dateto, null);
+        }
+        
+        /// <remarks/>
+        public void GetRosterInquiry_leaveAsync(string name, string zoneCode, string positionCode, System.DateTime datefrom, System.DateTime dateto, object userState) {
+            if ((this.GetRosterInquiry_leaveOperationCompleted == null)) {
+                this.GetRosterInquiry_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRosterInquiry_leaveOperationCompleted);
+            }
+            this.InvokeAsync("GetRosterInquiry_leave", new object[] {
+                        name,
+                        zoneCode,
+                        positionCode,
+                        datefrom,
+                        dateto}, this.GetRosterInquiry_leaveOperationCompleted, userState);
+        }
+        
+        private void OnGetRosterInquiry_leaveOperationCompleted(object arg) {
+            if ((this.GetRosterInquiry_leaveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetRosterInquiry_leaveCompleted(this, new GetRosterInquiry_leaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetRosterInquiry_Roster", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public v_System_iLeave_Roster_List[] GetRosterInquiry_Roster(string name, string zoneCode, string positionCode, System.DateTime datefrom, System.DateTime dateto) {
+            object[] results = this.Invoke("GetRosterInquiry_Roster", new object[] {
+                        name,
+                        zoneCode,
+                        positionCode,
+                        datefrom,
+                        dateto});
+            return ((v_System_iLeave_Roster_List[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetRosterInquiry_RosterAsync(string name, string zoneCode, string positionCode, System.DateTime datefrom, System.DateTime dateto) {
+            this.GetRosterInquiry_RosterAsync(name, zoneCode, positionCode, datefrom, dateto, null);
+        }
+        
+        /// <remarks/>
+        public void GetRosterInquiry_RosterAsync(string name, string zoneCode, string positionCode, System.DateTime datefrom, System.DateTime dateto, object userState) {
+            if ((this.GetRosterInquiry_RosterOperationCompleted == null)) {
+                this.GetRosterInquiry_RosterOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRosterInquiry_RosterOperationCompleted);
+            }
+            this.InvokeAsync("GetRosterInquiry_Roster", new object[] {
+                        name,
+                        zoneCode,
+                        positionCode,
+                        datefrom,
+                        dateto}, this.GetRosterInquiry_RosterOperationCompleted, userState);
+        }
+        
+        private void OnGetRosterInquiry_RosterOperationCompleted(object arg) {
+            if ((this.GetRosterInquiry_RosterCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetRosterInquiry_RosterCompleted(this, new GetRosterInquiry_RosterCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetRosterInquiry_Security", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void GetRosterInquiry_Security(bool allInfo, int[] firstEIDs) {
+            this.Invoke("GetRosterInquiry_Security", new object[] {
+                        allInfo,
+                        firstEIDs});
+        }
+        
+        /// <remarks/>
+        public void GetRosterInquiry_SecurityAsync(bool allInfo, int[] firstEIDs) {
+            this.GetRosterInquiry_SecurityAsync(allInfo, firstEIDs, null);
+        }
+        
+        /// <remarks/>
+        public void GetRosterInquiry_SecurityAsync(bool allInfo, int[] firstEIDs, object userState) {
+            if ((this.GetRosterInquiry_SecurityOperationCompleted == null)) {
+                this.GetRosterInquiry_SecurityOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRosterInquiry_SecurityOperationCompleted);
+            }
+            this.InvokeAsync("GetRosterInquiry_Security", new object[] {
+                        allInfo,
+                        firstEIDs}, this.GetRosterInquiry_SecurityOperationCompleted, userState);
+        }
+        
+        private void OnGetRosterInquiry_SecurityOperationCompleted(object arg) {
+            if ((this.GetRosterInquiry_SecurityCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetRosterInquiry_SecurityCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetPosition", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public PositionInfo[] GetPosition() {
+            object[] results = this.Invoke("GetPosition", new object[0]);
+            return ((PositionInfo[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetPositionAsync() {
+            this.GetPositionAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetPositionAsync(object userState) {
+            if ((this.GetPositionOperationCompleted == null)) {
+                this.GetPositionOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPositionOperationCompleted);
+            }
+            this.InvokeAsync("GetPosition", new object[0], this.GetPositionOperationCompleted, userState);
+        }
+        
+        private void OnGetPositionOperationCompleted(object arg) {
+            if ((this.GetPositionCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetPositionCompleted(this, new GetPositionCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTaskSequence", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public int[] GetTaskSequence(WorkflowTypeID WorkflowTypeID, int ApprovalGroupID) {
             object[] results = this.Invoke("GetTaskSequence", new object[] {
@@ -3708,6 +3859,837 @@ namespace WebServiceLayer.WebReference_leave {
             }
             set {
                 this.infoEmployidField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class PositionInfo {
+        
+        private int idField;
+        
+        private string codeField;
+        
+        private string descriptionField;
+        
+        private int statusField;
+        
+        private int rankIDField;
+        
+        private int internalRankIDField;
+        
+        private double maxOTHourPerMonthField;
+        
+        private string mainPositionField;
+        
+        private string remark1Field;
+        
+        private string remark2Field;
+        
+        private string remark3Field;
+        
+        private int sponsorRequirementYearOfServiceField;
+        
+        private double maxSponsorTrainingFeeField;
+        
+        private int maxSponsorNoOfTimesField;
+        
+        private double maxSponsorAmountPerTimesField;
+        
+        private bool isSponsorFeeResetAnnuallyField;
+        
+        private int rankLevelField;
+        
+        private bool isALExcludeSATField;
+        
+        private bool isALExcludeSUNField;
+        
+        private bool isALExcludeHolidayField;
+        
+        private int payScaleTypeField;
+        
+        private int payScaleEntryPointField;
+        
+        private int payScaleMidPointField;
+        
+        private int payScaleMaxPointField;
+        
+        private bool isAllowHalfDayLeaveField;
+        
+        private bool isAllowHourlyLeaveField;
+        
+        private bool isAllow3SectionLeaveField;
+        
+        private int jobTypeField;
+        
+        private int leaveCutOffTypeField;
+        
+        private string pointListField;
+        
+        private int sortSeqField;
+        
+        private bool sL168Field;
+        
+        private string appraisalField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RankID {
+            get {
+                return this.rankIDField;
+            }
+            set {
+                this.rankIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int InternalRankID {
+            get {
+                return this.internalRankIDField;
+            }
+            set {
+                this.internalRankIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double MaxOTHourPerMonth {
+            get {
+                return this.maxOTHourPerMonthField;
+            }
+            set {
+                this.maxOTHourPerMonthField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string MainPosition {
+            get {
+                return this.mainPositionField;
+            }
+            set {
+                this.mainPositionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Remark1 {
+            get {
+                return this.remark1Field;
+            }
+            set {
+                this.remark1Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Remark2 {
+            get {
+                return this.remark2Field;
+            }
+            set {
+                this.remark2Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Remark3 {
+            get {
+                return this.remark3Field;
+            }
+            set {
+                this.remark3Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int SponsorRequirementYearOfService {
+            get {
+                return this.sponsorRequirementYearOfServiceField;
+            }
+            set {
+                this.sponsorRequirementYearOfServiceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double MaxSponsorTrainingFee {
+            get {
+                return this.maxSponsorTrainingFeeField;
+            }
+            set {
+                this.maxSponsorTrainingFeeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int MaxSponsorNoOfTimes {
+            get {
+                return this.maxSponsorNoOfTimesField;
+            }
+            set {
+                this.maxSponsorNoOfTimesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double MaxSponsorAmountPerTimes {
+            get {
+                return this.maxSponsorAmountPerTimesField;
+            }
+            set {
+                this.maxSponsorAmountPerTimesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsSponsorFeeResetAnnually {
+            get {
+                return this.isSponsorFeeResetAnnuallyField;
+            }
+            set {
+                this.isSponsorFeeResetAnnuallyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RankLevel {
+            get {
+                return this.rankLevelField;
+            }
+            set {
+                this.rankLevelField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsALExcludeSAT {
+            get {
+                return this.isALExcludeSATField;
+            }
+            set {
+                this.isALExcludeSATField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsALExcludeSUN {
+            get {
+                return this.isALExcludeSUNField;
+            }
+            set {
+                this.isALExcludeSUNField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsALExcludeHoliday {
+            get {
+                return this.isALExcludeHolidayField;
+            }
+            set {
+                this.isALExcludeHolidayField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int PayScaleType {
+            get {
+                return this.payScaleTypeField;
+            }
+            set {
+                this.payScaleTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int PayScaleEntryPoint {
+            get {
+                return this.payScaleEntryPointField;
+            }
+            set {
+                this.payScaleEntryPointField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int PayScaleMidPoint {
+            get {
+                return this.payScaleMidPointField;
+            }
+            set {
+                this.payScaleMidPointField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int PayScaleMaxPoint {
+            get {
+                return this.payScaleMaxPointField;
+            }
+            set {
+                this.payScaleMaxPointField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsAllowHalfDayLeave {
+            get {
+                return this.isAllowHalfDayLeaveField;
+            }
+            set {
+                this.isAllowHalfDayLeaveField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsAllowHourlyLeave {
+            get {
+                return this.isAllowHourlyLeaveField;
+            }
+            set {
+                this.isAllowHourlyLeaveField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsAllow3SectionLeave {
+            get {
+                return this.isAllow3SectionLeaveField;
+            }
+            set {
+                this.isAllow3SectionLeaveField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int JobType {
+            get {
+                return this.jobTypeField;
+            }
+            set {
+                this.jobTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int LeaveCutOffType {
+            get {
+                return this.leaveCutOffTypeField;
+            }
+            set {
+                this.leaveCutOffTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PointList {
+            get {
+                return this.pointListField;
+            }
+            set {
+                this.pointListField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int SortSeq {
+            get {
+                return this.sortSeqField;
+            }
+            set {
+                this.sortSeqField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool SL168 {
+            get {
+                return this.sL168Field;
+            }
+            set {
+                this.sL168Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Appraisal {
+            get {
+                return this.appraisalField;
+            }
+            set {
+                this.appraisalField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class v_System_iLeave_Roster_List {
+        
+        private int employmentIDField;
+        
+        private string english_NameField;
+        
+        private string chinese_NameField;
+        
+        private string nicknameField;
+        
+        private string search_NameField;
+        
+        private string position_CodeField;
+        
+        private string zone_CodeField;
+        
+        private int contractIDField;
+        
+        private string leaveField;
+        
+        private System.DateTime dateField;
+        
+        private string yYYY_MM_DDField;
+        
+        private string mM_DDField;
+        
+        private string shift_InField;
+        
+        private string shift_OutField;
+        
+        private string attend_InField;
+        
+        private string attend_OutField;
+        
+        private string remarkField;
+        
+        /// <remarks/>
+        public int EmploymentID {
+            get {
+                return this.employmentIDField;
+            }
+            set {
+                this.employmentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string English_Name {
+            get {
+                return this.english_NameField;
+            }
+            set {
+                this.english_NameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Chinese_Name {
+            get {
+                return this.chinese_NameField;
+            }
+            set {
+                this.chinese_NameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Nickname {
+            get {
+                return this.nicknameField;
+            }
+            set {
+                this.nicknameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Search_Name {
+            get {
+                return this.search_NameField;
+            }
+            set {
+                this.search_NameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Position_Code {
+            get {
+                return this.position_CodeField;
+            }
+            set {
+                this.position_CodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Zone_Code {
+            get {
+                return this.zone_CodeField;
+            }
+            set {
+                this.zone_CodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ContractID {
+            get {
+                return this.contractIDField;
+            }
+            set {
+                this.contractIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Leave {
+            get {
+                return this.leaveField;
+            }
+            set {
+                this.leaveField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime Date {
+            get {
+                return this.dateField;
+            }
+            set {
+                this.dateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string YYYY_MM_DD {
+            get {
+                return this.yYYY_MM_DDField;
+            }
+            set {
+                this.yYYY_MM_DDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string MM_DD {
+            get {
+                return this.mM_DDField;
+            }
+            set {
+                this.mM_DDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Shift_In {
+            get {
+                return this.shift_InField;
+            }
+            set {
+                this.shift_InField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Shift_Out {
+            get {
+                return this.shift_OutField;
+            }
+            set {
+                this.shift_OutField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Attend_In {
+            get {
+                return this.attend_InField;
+            }
+            set {
+                this.attend_InField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Attend_Out {
+            get {
+                return this.attend_OutField;
+            }
+            set {
+                this.attend_OutField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Remark {
+            get {
+                return this.remarkField;
+            }
+            set {
+                this.remarkField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class v_System_iLeave_Leave_List {
+        
+        private int employmentIDField;
+        
+        private string english_NameField;
+        
+        private string chinese_NameField;
+        
+        private string nicknameField;
+        
+        private string search_NameField;
+        
+        private string position_CodeField;
+        
+        private string zone_CodeField;
+        
+        private int contractIDField;
+        
+        private string leaveField;
+        
+        private System.DateTime dateField;
+        
+        private string yYYY_MM_DDField;
+        
+        private string mM_DDField;
+        
+        private string shift_InField;
+        
+        private string shift_OutField;
+        
+        private string attend_InField;
+        
+        private string attend_OutField;
+        
+        private string remarkField;
+        
+        /// <remarks/>
+        public int EmploymentID {
+            get {
+                return this.employmentIDField;
+            }
+            set {
+                this.employmentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string English_Name {
+            get {
+                return this.english_NameField;
+            }
+            set {
+                this.english_NameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Chinese_Name {
+            get {
+                return this.chinese_NameField;
+            }
+            set {
+                this.chinese_NameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Nickname {
+            get {
+                return this.nicknameField;
+            }
+            set {
+                this.nicknameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Search_Name {
+            get {
+                return this.search_NameField;
+            }
+            set {
+                this.search_NameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Position_Code {
+            get {
+                return this.position_CodeField;
+            }
+            set {
+                this.position_CodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Zone_Code {
+            get {
+                return this.zone_CodeField;
+            }
+            set {
+                this.zone_CodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ContractID {
+            get {
+                return this.contractIDField;
+            }
+            set {
+                this.contractIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Leave {
+            get {
+                return this.leaveField;
+            }
+            set {
+                this.leaveField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime Date {
+            get {
+                return this.dateField;
+            }
+            set {
+                this.dateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string YYYY_MM_DD {
+            get {
+                return this.yYYY_MM_DDField;
+            }
+            set {
+                this.yYYY_MM_DDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string MM_DD {
+            get {
+                return this.mM_DDField;
+            }
+            set {
+                this.mM_DDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Shift_In {
+            get {
+                return this.shift_InField;
+            }
+            set {
+                this.shift_InField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Shift_Out {
+            get {
+                return this.shift_OutField;
+            }
+            set {
+                this.shift_OutField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Attend_In {
+            get {
+                return this.attend_InField;
+            }
+            set {
+                this.attend_InField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Attend_Out {
+            get {
+                return this.attend_OutField;
+            }
+            set {
+                this.attend_OutField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Remark {
+            get {
+                return this.remarkField;
+            }
+            set {
+                this.remarkField = value;
             }
         }
     }
@@ -6869,6 +7851,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         EXPENSE_CLAIM,
+        
+        /// <remarks/>
+        CANCEL_CLOT_APPLICATION,
     }
     
     /// <remarks/>
@@ -8361,6 +9346,88 @@ namespace WebServiceLayer.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((ILeaveIGuard)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetRosterInquiry_leaveCompletedEventHandler(object sender, GetRosterInquiry_leaveCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetRosterInquiry_leaveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetRosterInquiry_leaveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public v_System_iLeave_Leave_List[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((v_System_iLeave_Leave_List[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetRosterInquiry_RosterCompletedEventHandler(object sender, GetRosterInquiry_RosterCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetRosterInquiry_RosterCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetRosterInquiry_RosterCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public v_System_iLeave_Roster_List[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((v_System_iLeave_Roster_List[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetRosterInquiry_SecurityCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetPositionCompletedEventHandler(object sender, GetPositionCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetPositionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetPositionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public PositionInfo[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((PositionInfo[])(this.results[0]));
             }
         }
     }
