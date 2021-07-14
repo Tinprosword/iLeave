@@ -25,7 +25,7 @@
                         <asp:DropDownList ID="DropDownList1" runat="server" Width="100%"  OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                     </td>
                     <td><asp:Literal ID="lt_position" runat="server" Text="Position"/></td>
-                    <td><asp:DropDownList ID="DropDownList2" runat="server" Width="100%"></asp:DropDownList>
+                    <td><asp:DropDownList ID="DropDownList2" runat="server" Width="100%" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged"  AutoPostBack="true"></asp:DropDownList>
                     </td>
                 </tr>
             </table>

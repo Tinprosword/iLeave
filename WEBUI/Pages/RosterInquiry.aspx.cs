@@ -54,16 +54,18 @@ namespace WEBUI.Pages
             string value2 = ((WEBUI.Controls.leave)this.Master).GetMyPostBackArgumentByTargetname("tabroster");
             if (value1 != null)
             {
-                string url = "~/pages/RosterInquiry.aspx?action=0&from={0}&to={1}";
-                url = string.Format(url, this.tb_dateFrom.Text, tb_dateTo.Text);
+                string url = "~/pages/RosterInquiry.aspx?action=0&from={0}&to={1}&name={2}";
+                url = string.Format(url, this.tb_dateFrom.Text, tb_dateTo.Text,this.tb_name.Text);
                 Response.Redirect(url);
             }
             else if (value2 != null)
             {
-                string url = "~/pages/RosterInquiry.aspx?action=1&from={0}&to={1}";
-                url = string.Format(url, this.tb_dateFrom.Text, tb_dateTo.Text);
+                string url = "~/pages/RosterInquiry.aspx?action=1&from={0}&to={1}&name={2}";
+                url = string.Format(url, this.tb_dateFrom.Text, tb_dateTo.Text, this.tb_name.Text);
                 Response.Redirect(url);
             }
+
+            this.Form.DefaultButton = this.btn_search.UniqueID;
         }
 
 
@@ -139,7 +141,7 @@ namespace WEBUI.Pages
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, BLL.MultiLanguageHelper.GetLanguagePacket().main_rosterInqury, "~/pages/main.aspx", true);
             SetupTab();
-            this.tb_name.Text = loginer.userInfo.surname + " " + loginer.userInfo.firstname;
+            SetupUserName();
             SetupFromTo();
             SetupZone(mV_System_ILeave_Securities);
             SetupPosition(this.DropDownList1.SelectedValue.Trim(), mV_System_ILeave_Securities);
@@ -150,6 +152,19 @@ namespace WEBUI.Pages
                 this.tb_name.Enabled = false;
                 this.DropDownList1.Enabled = false;
                 this.DropDownList2.Enabled = false;
+            }
+
+        }
+
+        private void SetupUserName()
+        {
+            if ((Request.QueryString["name"])==null)
+            {
+                this.tb_name.Text = loginer.userInfo.surname + " " + loginer.userInfo.firstname;
+            }
+            else
+            {
+                this.tb_name.Text = Request.QueryString["name"];
             }
         }
 
@@ -318,6 +333,11 @@ namespace WEBUI.Pages
             string zoneCode = this.DropDownList1.SelectedValue.Trim();
             SetupPosition(zoneCode, mV_System_ILeave_Securities);
 
+            this.tb_name.Text = "";
+        }
+
+        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
             this.tb_name.Text = "";
         }
     }

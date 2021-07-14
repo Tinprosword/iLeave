@@ -6,7 +6,23 @@
 //}
 
 
-//todo 0 zone positon .是和loginer 固定相关。 zone->positon            ok.
+//todo 0 1.dedault button 2.position ->empty name 3. save name.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//zone positon .是和loginer 固定相关。 zone->positon            ok.
 //3.datetime 默认当月。                                                ok.
 //修改ddl .晴空textbox.                                                ok.
 
