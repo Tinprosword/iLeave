@@ -182,6 +182,11 @@ namespace WEBUI.Pages
             {
                 tempData = tempData.Where(x => x.ZoneCode == zoneCode).ToArray();
             }
+            else
+            {
+                string[] loginerZone = data.Where(x => x.StaffID == loginer.userInfo.staffid).Select(x => x.ZoneCode).Distinct().ToArray();
+                tempData = tempData.Where(x => loginerZone.Contains(x.ZoneCode)).ToArray();
+            }
 
             var tempResult = tempData.Select(x => new { PositionCode = x.PostionCode }).Distinct().ToArray();
 
