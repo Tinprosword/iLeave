@@ -9,8 +9,15 @@ namespace WEBUI.Pages
 {
     public partial class CLOTHistory:BLL.CustomLoginTemplate
     {
+        private int action = 0;
+
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
+            if (!string.IsNullOrEmpty(Request.QueryString["action"]))
+            {
+                string strAction = Request.QueryString["action"];
+                int.TryParse(strAction, out action);
+            }
         }
 
         protected override void InitPage_OnFirstLoad2()
@@ -38,7 +45,10 @@ namespace WEBUI.Pages
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, BLL.MultiLanguageHelper.GetLanguagePacket().main_CLOTHistory, "~/pages/main.aspx", true);
             CLOTTab.SetupControls();
+            int index = action == 0 ? 1 : 2;
+            CLOTTab.showTabActive(index);
         }
+
 
         private void MulLanguage()
         {

@@ -47,5 +47,25 @@ namespace WEBUI.Controls
                 Response.Redirect(url);
             }
         }
+
+        public void showTabActive(int index)
+        {
+            this.myTabapply_new.Attributes.Remove("class");
+            this.myTabapply_pending.Attributes.Remove("class");
+            this.myTabapply_history.Attributes.Remove("class");
+
+            if (index == 0)
+            {
+                this.myTabapply_new.Attributes.Add("class", "active");
+            }
+            else if (index == 1)
+            {
+                this.myTabapply_pending.Attributes.Add("class", "active");
+            }
+            else if(index==2)
+            {
+                this.myTabapply_history.Attributes.Add("class", "active");
+            }
+        }
     }
 }

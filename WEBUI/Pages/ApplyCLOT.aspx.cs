@@ -46,6 +46,7 @@ namespace WEBUI.Pages
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, BLL.MultiLanguageHelper.GetLanguagePacket().main_applyCLOT, "~/pages/main.aspx", true);
             CLOTTab.SetupControls();
+            CLOTTab.showTabActive(0);
         }
     }
 }
