@@ -360,3 +360,9 @@ input,button,a {outline:0 none;}
 	line-height:26px;
 	color:white;
 }
+
+.menucss
+{
+    width:315px;
+    height:71px;
+}

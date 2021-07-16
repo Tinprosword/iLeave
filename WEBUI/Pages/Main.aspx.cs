@@ -73,6 +73,7 @@ namespace WEBUI.Pages
             this.lt_setting.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_setting;
             this.lt_check.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_check;
             this.lt_RosterInquiry.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_rosterInqury;
+            this.lt_clot.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_applyCLOT;
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
@@ -118,5 +119,9 @@ namespace WEBUI.Pages
             Response.Redirect("~/pages/RosterInquiry.aspx?action=0");
         }
 
+        protected void clot_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/pages/applyCLOT.aspx",true);
+        }
     }
 }

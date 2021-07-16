@@ -68,9 +68,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Controls\CLOTTab.ascx" />
     <Content Include="Pages\ajax_historydetail2.aspx" />
+    <Content Include="Pages\ApplyCLOT.aspx" />
     <Content Include="Pages\approval_wait.aspx" />
     <Content Include="Pages\Check.aspx" />
+    <Content Include="Pages\CLOTHistory.aspx" />
     <Content Include="Pages\ErrorPage.aspx" />
     <Content Include="Pages\RosterInquiry.aspx" />
     <Content Include="Res\App\applywait.js" />
@@ -122,12 +125,26 @@
     <Compile Include="Controls\ajax.Master.designer.cs">
       <DependentUpon>ajax.Master</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CLOTTab.ascx.cs">
+      <DependentUpon>CLOTTab.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\CLOTTab.ascx.designer.cs">
+      <DependentUpon>CLOTTab.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ajax_historydetail2.aspx.cs">
       <DependentUpon>ajax_historydetail2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\ajax_historydetail2.aspx.designer.cs">
       <DependentUpon>ajax_historydetail2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ApplyCLOT.aspx.cs">
+      <DependentUpon>ApplyCLOT.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ApplyCLOT.aspx.designer.cs">
+      <DependentUpon>ApplyCLOT.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\approval_wait.aspx.cs">
       <DependentUpon>approval_wait.aspx</DependentUpon>
@@ -142,6 +159,13 @@
     </Compile>
     <Compile Include="Pages\Check.aspx.designer.cs">
       <DependentUpon>Check.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CLOTHistory.aspx.cs">
+      <DependentUpon>CLOTHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CLOTHistory.aspx.designer.cs">
+      <DependentUpon>CLOTHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\getHeight.aspx.cs">
       <DependentUpon>getHeight.aspx</DependentUpon>
