@@ -39,7 +39,7 @@ namespace WEBUI.Pages
 
         private void MulLanguage()
         {
-            
+
         }
 
         private void LoadUI()

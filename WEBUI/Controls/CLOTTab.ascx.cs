@@ -67,5 +67,10 @@ namespace WEBUI.Controls
                 this.myTabapply_history.Attributes.Add("class", "active");
             }
         }
+
+        public void MultipLanguage()
+        {
+            lt_new.Text= BLL.MultiLanguageHelper.GetLanguagePacket().apply_name;
+        }
     }
 }
