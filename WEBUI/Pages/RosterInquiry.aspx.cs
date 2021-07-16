@@ -146,7 +146,7 @@ namespace WEBUI.Pages
             SetupZone(mV_System_ILeave_Securities);
             SetupPosition(this.DropDownList1.SelectedValue.Trim(), mV_System_ILeave_Securities);
 
-            if (mLoginerOtherInfo.MobileUserLevel == 1)
+            if (mLoginerOtherInfo!=null && mLoginerOtherInfo.MobileUserLevel == 1)
             {
                 this.tb_name.ReadOnly = true;
                 this.tb_name.Enabled = false;
