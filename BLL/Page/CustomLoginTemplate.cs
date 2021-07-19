@@ -57,9 +57,12 @@ namespace BLL
             {
                 page.Form.Style.Add("width", "364px");
                 page.Form.Style.Add("margin-left", "40%");
-                page.Form.Style.Add("border", "2px solid #808080");
+                
                 page.Form.Style.Add("min-height", "640px");
                 page.Form.Style.Add("margin-top", "40px");
+
+                page.Form.Style.Add("border", "1px solid #808080");
+                page.Form.Style.Add("overflow-y", "auto");
             }
         }
 

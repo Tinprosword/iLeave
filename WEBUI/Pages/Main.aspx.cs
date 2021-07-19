@@ -62,6 +62,14 @@ namespace WEBUI.Pages
                 {
                     this.menu6.Visible = false;
                 }
+                if (v.Contains("7"))
+                {
+                    this.menu_payslip.Visible = false;
+                }
+                if (v.Contains("8"))
+                {
+                    this.menu_Taxation.Visible = false;
+                }
             }
         }
 
@@ -74,6 +82,8 @@ namespace WEBUI.Pages
             this.lt_check.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_check;
             this.lt_RosterInquiry.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_rosterInqury;
             this.lt_clot.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_applyCLOT;
+            this.lt_payslip.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_Payslip;
+            this.lt_taxation.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_Taxation;
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
@@ -122,6 +132,16 @@ namespace WEBUI.Pages
         protected void clot_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/pages/applyCLOT.aspx",true);
+        }
+
+        protected void Payslip_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/pages/Payslip.aspx", true);
+        }
+
+        protected void taxation_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/pages/taxation.aspx", true);
         }
     }
 }

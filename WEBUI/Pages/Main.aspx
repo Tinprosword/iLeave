@@ -27,6 +27,14 @@
             <asp:ImageButton ID="Check" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_E.png" CssClass="menucss" OnClick="Check_Click"/>
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_check" runat="server" OnClick="Check_Click" CssClass="fixLink"></asp:LinkButton></div>
         </div>
+        <div class="col-xs-12 lsf-center" style="margin-top:6px;" id="menu_payslip" runat="server">
+            <asp:ImageButton ID="Payslip" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_E.png" CssClass="menucss" OnClick="Payslip_Click"/>
+            <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_payslip" runat="server" CssClass="fixLink" OnClick="Payslip_Click"></asp:LinkButton></div>
+        </div>
+        <div class="col-xs-12 lsf-center" style="margin-top:6px;" id="menu_Taxation" runat="server">
+            <asp:ImageButton ID="taxation" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_E.png" CssClass="menucss"  OnClick="taxation_Click"/>
+            <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_taxation" runat="server"  CssClass="fixLink" OnClick="taxation_Click"></asp:LinkButton></div>
+        </div>
         <div class="col-xs-12 lsf-center" style="margin-top:6px;" id="menu5" runat="server">
             <asp:ImageButton ID="Setting" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_F.png" CssClass="menucss" OnClick="Setting_Click"/>
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_setting" runat="server" OnClick="Setting_Click" CssClass="fixLink"></asp:LinkButton></div>
