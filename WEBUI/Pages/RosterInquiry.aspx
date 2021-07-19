@@ -2,8 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <ul id="myTabRoster" fixname="mytab"   class="nav nav-tabs lsf-clearPadding" runat="server">
+            <li id="myTabRoster_roster" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" id="tab_roster" runat="server"><asp:Literal ID="lt_tabroster" runat="server" Text="Roster"/></a></li>
 	        <li id="myTabRoster_leawve" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" id="tab_leave" runat="server"><asp:Literal ID="lt_tableave" runat="server" Text="Leave"></asp:Literal></a></li>
-	        <li id="myTabRoster_roster" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" id="tab_roster" runat="server"><asp:Literal ID="lt_tabroster" runat="server" Text="Roster"/></a></li>
         </ul>
     </div>
     <div class="row" id="divSearch" runat="server">

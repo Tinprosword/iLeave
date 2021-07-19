@@ -20,7 +20,6 @@ namespace WEBUI.temp
             {
                 int b = 5;
             }
-                
         }
 
         protected void Button1_Click(object sender, EventArgs e)

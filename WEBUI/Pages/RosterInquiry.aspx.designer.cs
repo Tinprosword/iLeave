@@ -22,33 +22,6 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl myTabRoster;
         
         /// <summary>
-        /// myTabRoster_leawve 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl myTabRoster_leawve;
-        
-        /// <summary>
-        /// tab_leave 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor tab_leave;
-        
-        /// <summary>
-        /// lt_tableave 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_tableave;
-        
-        /// <summary>
         /// myTabRoster_roster 控件。
         /// </summary>
         /// <remarks>
@@ -74,6 +47,33 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lt_tabroster;
+        
+        /// <summary>
+        /// myTabRoster_leawve 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl myTabRoster_leawve;
+        
+        /// <summary>
+        /// tab_leave 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor tab_leave;
+        
+        /// <summary>
+        /// lt_tableave 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_tableave;
         
         /// <summary>
         /// divSearch 控件。

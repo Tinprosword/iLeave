@@ -54,13 +54,13 @@ namespace WEBUI.Pages
             string value2 = ((WEBUI.Controls.leave)this.Master).GetMyPostBackArgumentByTargetname("tabroster");
             if (value1 != null)
             {
-                string url = "~/pages/RosterInquiry.aspx?action=0&from={0}&to={1}&name={2}";
+                string url = "~/pages/RosterInquiry.aspx?action=1&from={0}&to={1}&name={2}";
                 url = string.Format(url, this.tb_dateFrom.Text, tb_dateTo.Text,this.tb_name.Text);
                 Response.Redirect(url);
             }
             else if (value2 != null)
             {
-                string url = "~/pages/RosterInquiry.aspx?action=1&from={0}&to={1}&name={2}";
+                string url = "~/pages/RosterInquiry.aspx?action=0&from={0}&to={1}&name={2}";
                 url = string.Format(url, this.tb_dateFrom.Text, tb_dateTo.Text, this.tb_name.Text);
                 Response.Redirect(url);
             }
@@ -103,7 +103,7 @@ namespace WEBUI.Pages
         private void SetupTab()
         {
             //tab
-            if (mActionType == 1)
+            if (mActionType == 0)
             {
                 this.myTabRoster_leawve.Attributes.Remove("class");
                 this.myTabRoster_roster.Attributes.Remove("class");
@@ -278,13 +278,13 @@ namespace WEBUI.Pages
 
             
 
-            if (mActionType == 0)
+            if (mActionType == 1)
             {
                 var data = BLL.Other.GetRoster_leavelist(name,zoneArray,PositionArray,startDate,endDate);
                 this.rp_leave.DataSource = data;
                 this.rp_leave.DataBind();
             }
-            else if(mActionType == 1)
+            else if(mActionType == 0)
             {
                 var data = BLL.Other.GetRoster_Rosterlist(name, zoneArray, PositionArray, startDate, endDate);
                 this.rp_roster.DataSource = data;
