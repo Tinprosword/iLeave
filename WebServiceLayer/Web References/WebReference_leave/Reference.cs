@@ -159,6 +159,10 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetPositionOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetPayslipBySidOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetTaxationBySidOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetTaskSequenceOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetWorkflowTaskExtendByUidOperationCompleted;
@@ -417,6 +421,12 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event GetPositionCompletedEventHandler GetPositionCompleted;
+        
+        /// <remarks/>
+        public event GetPayslipBySidCompletedEventHandler GetPayslipBySidCompleted;
+        
+        /// <remarks/>
+        public event GetTaxationBySidCompletedEventHandler GetTaxationBySidCompleted;
         
         /// <remarks/>
         public event GetTaskSequenceCompletedEventHandler GetTaskSequenceCompleted;
@@ -2400,6 +2410,64 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetPayslipBySid", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public v_System_iLeave_Payslip[] GetPayslipBySid(int sid) {
+            object[] results = this.Invoke("GetPayslipBySid", new object[] {
+                        sid});
+            return ((v_System_iLeave_Payslip[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetPayslipBySidAsync(int sid) {
+            this.GetPayslipBySidAsync(sid, null);
+        }
+        
+        /// <remarks/>
+        public void GetPayslipBySidAsync(int sid, object userState) {
+            if ((this.GetPayslipBySidOperationCompleted == null)) {
+                this.GetPayslipBySidOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPayslipBySidOperationCompleted);
+            }
+            this.InvokeAsync("GetPayslipBySid", new object[] {
+                        sid}, this.GetPayslipBySidOperationCompleted, userState);
+        }
+        
+        private void OnGetPayslipBySidOperationCompleted(object arg) {
+            if ((this.GetPayslipBySidCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetPayslipBySidCompleted(this, new GetPayslipBySidCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTaxationBySid", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public v_System_iLeave_Taxtion[] GetTaxationBySid(int sid) {
+            object[] results = this.Invoke("GetTaxationBySid", new object[] {
+                        sid});
+            return ((v_System_iLeave_Taxtion[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetTaxationBySidAsync(int sid) {
+            this.GetTaxationBySidAsync(sid, null);
+        }
+        
+        /// <remarks/>
+        public void GetTaxationBySidAsync(int sid, object userState) {
+            if ((this.GetTaxationBySidOperationCompleted == null)) {
+                this.GetTaxationBySidOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTaxationBySidOperationCompleted);
+            }
+            this.InvokeAsync("GetTaxationBySid", new object[] {
+                        sid}, this.GetTaxationBySidOperationCompleted, userState);
+        }
+        
+        private void OnGetTaxationBySidOperationCompleted(object arg) {
+            if ((this.GetTaxationBySidCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetTaxationBySidCompleted(this, new GetTaxationBySidCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTaskSequence", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public int[] GetTaskSequence(WorkflowTypeID WorkflowTypeID, int ApprovalGroupID) {
             object[] results = this.Invoke("GetTaskSequence", new object[] {
@@ -3894,6 +3962,204 @@ namespace WebServiceLayer.WebReference_leave {
             }
             set {
                 this.infoEmployidField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class v_System_iLeave_Taxtion {
+        
+        private string taxYearField;
+        
+        private string year_RangeField;
+        
+        private int staffidField;
+        
+        private int employmentIDField;
+        
+        private bool isReleaseField;
+        
+        private int companyIDField;
+        
+        private string nameField;
+        
+        /// <remarks/>
+        public string TaxYear {
+            get {
+                return this.taxYearField;
+            }
+            set {
+                this.taxYearField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Year_Range {
+            get {
+                return this.year_RangeField;
+            }
+            set {
+                this.year_RangeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Staffid {
+            get {
+                return this.staffidField;
+            }
+            set {
+                this.staffidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int EmploymentID {
+            get {
+                return this.employmentIDField;
+            }
+            set {
+                this.employmentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsRelease {
+            get {
+                return this.isReleaseField;
+            }
+            set {
+                this.isReleaseField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CompanyID {
+            get {
+                return this.companyIDField;
+            }
+            set {
+                this.companyIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class v_System_iLeave_Payslip {
+        
+        private string payrollTrailMonthField;
+        
+        private int staffidField;
+        
+        private int employmentIDField;
+        
+        private bool isLockField;
+        
+        private bool isReleasePayslipField;
+        
+        private string statusField;
+        
+        private int companyIDField;
+        
+        private string companyNameField;
+        
+        /// <remarks/>
+        public string PayrollTrailMonth {
+            get {
+                return this.payrollTrailMonthField;
+            }
+            set {
+                this.payrollTrailMonthField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Staffid {
+            get {
+                return this.staffidField;
+            }
+            set {
+                this.staffidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int EmploymentID {
+            get {
+                return this.employmentIDField;
+            }
+            set {
+                this.employmentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsLock {
+            get {
+                return this.isLockField;
+            }
+            set {
+                this.isLockField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsReleasePayslip {
+            get {
+                return this.isReleasePayslipField;
+            }
+            set {
+                this.isReleasePayslipField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CompanyID {
+            get {
+                return this.companyIDField;
+            }
+            set {
+                this.companyIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CompanyName {
+            get {
+                return this.companyNameField;
+            }
+            set {
+                this.companyNameField = value;
             }
         }
     }
@@ -10021,6 +10287,58 @@ namespace WebServiceLayer.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((PositionInfo[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetPayslipBySidCompletedEventHandler(object sender, GetPayslipBySidCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetPayslipBySidCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetPayslipBySidCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public v_System_iLeave_Payslip[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((v_System_iLeave_Payslip[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetTaxationBySidCompletedEventHandler(object sender, GetTaxationBySidCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetTaxationBySidCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetTaxationBySidCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public v_System_iLeave_Taxtion[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((v_System_iLeave_Taxtion[])(this.results[0]));
             }
         }
     }

@@ -397,7 +397,7 @@ namespace BLL
         public static List<LSLibrary.WebAPP.ValueText<int>> ConvertLeaveInfo2DropDownList(List<WebServiceLayer.WebReference_leave.t_Leave> source)
         {
             List<LSLibrary.WebAPP.ValueText<int>> result = new List<LSLibrary.WebAPP.ValueText<int>>();
-            result.Add(new LSLibrary.WebAPP.ValueText<int>(leave_leaveid_nullSelect, BLL.MultiLanguageHelper.GetLanguagePacket().PleaseSelect));
+            result.Add(new LSLibrary.WebAPP.ValueText<int>(leave_leaveid_nullSelect, BLL.MultiLanguageHelper.GetLanguagePacket().CommonPleaseSelect));
             for (int i = 0; i < source.Count(); i++)
             {
                 LSLibrary.WebAPP.ValueText<int> item = new LSLibrary.WebAPP.ValueText<int>(source[i].ID,source[i].Description);
@@ -424,7 +424,7 @@ namespace BLL
         public static List<LSLibrary.WebAPP.ValueText<int>> GetDDLSectionsData(int leaveid, int employid)
         {
             List<LSLibrary.WebAPP.ValueText<int>> ddlSource = GetDDLSectionsDataNoSelect(leaveid, employid);
-            ddlSource.Insert(0,new LSLibrary.WebAPP.ValueText<int>(leave_sections_nullSelect, BLL.MultiLanguageHelper.GetLanguagePacket().PleaseSelect));
+            ddlSource.Insert(0,new LSLibrary.WebAPP.ValueText<int>(leave_sections_nullSelect, BLL.MultiLanguageHelper.GetLanguagePacket().CommonPleaseSelect));
             return ddlSource;
         }
 

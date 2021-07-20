@@ -30,7 +30,7 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetPosition();
         }
 
-        public static WebServiceLayer.WebReference_leave.v_System_iLeave_Security[] GetSecurity(bool all,int sid)
+        public static WebServiceLayer.WebReference_leave.v_System_iLeave_Security[] GetSecurity(bool all, int sid)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetRosterInquiry_Security(all, sid);
         }
@@ -48,6 +48,79 @@ namespace BLL
         public static WebServiceLayer.WebReference_leave.UserInfo GetUser(int pid)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetUserinfo(pid);
+        }
+
+        public static void GetPaylistBaseInfo(WebServiceLayer.WebReference_leave.v_System_iLeave_Payslip[] data,out string company,out int cid,out List<LSLibrary.WebAPP.ValueText<int>> date)
+        {
+            company = "";
+            cid = 0;
+            date = new List<LSLibrary.WebAPP.ValueText<int>>();
+
+            if (data != null && data.Count() > 0)
+            {
+                company = data[0].CompanyName;
+                cid = data[0].CompanyID;
+
+                var strDates = data.Select(x => x.PayrollTrailMonth).ToArray();
+                if (strDates != null && strDates.Count() > 0)
+                {
+                    int tempDate = 0;
+                    string tempStrDate = "";
+                    foreach (string item in strDates)
+                    {
+                        if (int.TryParse(item, out tempDate))
+                        {
+                            if (tempDate.ToString().Length == 6)
+                            {
+                                tempStrDate = tempDate.ToString().Substring(0, 4) + "-" + tempDate.ToString().Substring(4, 2);
+                                date.Add(new LSLibrary.WebAPP.ValueText<int>(tempDate, tempStrDate));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+        public static void GetTaxationBaseInfo(WebServiceLayer.WebReference_leave.v_System_iLeave_Taxtion[] data, out string company, out int cid, out List<LSLibrary.WebAPP.ValueText<int>> date)
+        {
+            company = "";
+            cid = 0;
+            date = new List<LSLibrary.WebAPP.ValueText<int>>();
+
+            if (data != null && data.Count() > 0)
+            {
+                company = data[0].Name;
+                cid = data[0].CompanyID;
+
+                var strDates = data.Select(x => new { value = x.TaxYear ,text=x.Year_Range }).ToArray();
+                if (strDates != null && strDates.Count() > 0)
+                {
+                    int tempDate = 0;
+                    foreach (var item in strDates)
+                    {
+                        if (int.TryParse(item.value, out tempDate))
+                        {
+                            if (tempDate.ToString().Length == 4)
+                            {
+                                date.Add(new LSLibrary.WebAPP.ValueText<int>(tempDate, item.text));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        public static WebServiceLayer.WebReference_leave.v_System_iLeave_Payslip[] GetPayslipBysid(int sid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetPayslipBySid(sid);
+        }
+
+        public static WebServiceLayer.WebReference_leave.v_System_iLeave_Taxtion[] GetTaxationBysid(int sid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetTaxationBySid(sid);
         }
 
         public static WebServiceLayer.WebReference_leave.AttendanceRawData GenerateModel(DateTime logdate,int uid,string _Type,string _ExternalRef,int _AttendanceInterfaceCenterID,

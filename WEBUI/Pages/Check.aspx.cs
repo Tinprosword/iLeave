@@ -27,7 +27,7 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, BLL.MultiLanguageHelper.GetLanguagePacket().main_check, "~/pages/main.aspx", true);
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().main_check, "~/pages/main.aspx", true);
             OnMobileLoadUrl();
 
             SetupmultipleLanguage();
@@ -113,8 +113,8 @@ namespace WEBUI.Pages
 
         private void SetupmultipleLanguage()
         {
-            this.label_checkin.InnerText = BLL.MultiLanguageHelper.GetLanguagePacket().checkin;
-            this.label_checkout.InnerText = BLL.MultiLanguageHelper.GetLanguagePacket().checkout;
+            this.label_checkin.InnerText = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin;
+            this.label_checkout.InnerText = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckout;
             this.label_title_date.Text = BLL.MultiLanguageHelper.GetLanguagePacket().check_date;
             this.label_title_inout.Text = BLL.MultiLanguageHelper.GetLanguagePacket().check_inout;
             this.label_title_location.Text = BLL.MultiLanguageHelper.GetLanguagePacket().check_location;

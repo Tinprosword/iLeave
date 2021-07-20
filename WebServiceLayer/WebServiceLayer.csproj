@@ -179,10 +179,16 @@
     <None Include="Web References\WebReference_leave\v_System_iLeave_Leave_List.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\WebReference_leave\v_System_iLeave_Payslip.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\WebReference_leave\v_System_iLeave_Roster_List.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebReference_leave\v_System_iLeave_Security.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebReference_leave\v_System_iLeave_Taxtion.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebReference_leave\WorkflowTaskExtend.datasource">

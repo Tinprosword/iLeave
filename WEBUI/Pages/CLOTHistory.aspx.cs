@@ -43,7 +43,7 @@ namespace WEBUI.Pages
 
         private void LoadUI()
         {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, BLL.MultiLanguageHelper.GetLanguagePacket().main_CLOTHistory, "~/pages/main.aspx", true);
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().main_CLOTHistory, "~/pages/main.aspx", true);
             CLOTTab.SetupControls();
             int index = action == 0 ? 1 : 2;
             CLOTTab.showTabActive(index);

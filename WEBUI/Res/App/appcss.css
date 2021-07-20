@@ -366,3 +366,15 @@ input,button,a {outline:0 none;}
     width:315px;
     height:71px;
 }
+
+
+.CommonBlueButton
+{
+    /*BackColor="#2573a4" ForeColor="White" BorderWidth="0" Height="34px" Font-Size="16px" style="border-radius:5px 5px 5px 5px"*/
+    background-color:#2573a4;
+    color:white;
+    border-width:0px;
+    height:34px;
+    font-size:16px;
+    border-radius:5px 5px 5px 5px;
+}

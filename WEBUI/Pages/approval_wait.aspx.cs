@@ -93,7 +93,7 @@ namespace WEBUI.Pages
                 CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().main_applicationsTitle;
             }
             string backurl = "~/pages/main.aspx";
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, CurrentTitle, backurl, true);
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, CurrentTitle, backurl, true);
         }
 
 
@@ -224,7 +224,7 @@ namespace WEBUI.Pages
             }
             else
             {
-                string waitDiv = LSLibrary.WebAPP.httpHelper.WaitDiv_show(BLL.MultiLanguageHelper.GetLanguagePacket().submit_success);
+                string waitDiv = LSLibrary.WebAPP.httpHelper.WaitDiv_show(BLL.MultiLanguageHelper.GetLanguagePacket().Commonsubmit_success);
                 Response.Write(waitDiv);
                 Response.Flush();
 

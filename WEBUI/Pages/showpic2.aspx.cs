@@ -42,7 +42,7 @@ namespace WEBUI.Pages
             }
             this.Image1.ImageUrl = picpath;
 
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(false, BLL.MultiLanguageHelper.GetLanguagePacket().Back, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx", true,null,true);
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(false, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx", true,null,true);
         }
     }
 }

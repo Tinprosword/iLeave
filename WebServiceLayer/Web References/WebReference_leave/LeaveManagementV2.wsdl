@@ -1506,6 +1506,67 @@
           <s:element minOccurs="0" maxOccurs="1" name="Appraisal" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetPayslipBySid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPayslipBySidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPayslipBySidResult" type="tns:ArrayOfV_System_iLeave_Payslip" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfV_System_iLeave_Payslip">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_iLeave_Payslip" nillable="true" type="tns:v_System_iLeave_Payslip" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="v_System_iLeave_Payslip">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PayrollTrailMonth" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Staffid" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsLock" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReleasePayslip" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTaxationBySid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaxationBySidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTaxationBySidResult" type="tns:ArrayOfV_System_iLeave_Taxtion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfV_System_iLeave_Taxtion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_iLeave_Taxtion" nillable="true" type="tns:v_System_iLeave_Taxtion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="v_System_iLeave_Taxtion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TaxYear" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Year_Range" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Staffid" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsRelease" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetTaskSequence">
         <s:complexType>
           <s:sequence>
@@ -1796,6 +1857,8 @@
       <s:element name="ArrayOfV_System_iLeave_Security" nillable="true" type="tns:ArrayOfV_System_iLeave_Security" />
       <s:element name="UserInfo" nillable="true" type="tns:UserInfo" />
       <s:element name="ArrayOfPositionInfo" nillable="true" type="tns:ArrayOfPositionInfo" />
+      <s:element name="ArrayOfV_System_iLeave_Payslip" nillable="true" type="tns:ArrayOfV_System_iLeave_Payslip" />
+      <s:element name="ArrayOfV_System_iLeave_Taxtion" nillable="true" type="tns:ArrayOfV_System_iLeave_Taxtion" />
       <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
       <s:element name="ArrayOfWorkflowTaskExtend" nillable="true" type="tns:ArrayOfWorkflowTaskExtend" />
       <s:element name="ArrayOfLeaveHistory" nillable="true" type="tns:ArrayOfLeaveHistory" />
@@ -2204,6 +2267,18 @@
   <wsdl:message name="GetPositionSoapOut">
     <wsdl:part name="parameters" element="tns:GetPositionResponse" />
   </wsdl:message>
+  <wsdl:message name="GetPayslipBySidSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPayslipBySid" />
+  </wsdl:message>
+  <wsdl:message name="GetPayslipBySidSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPayslipBySidResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTaxationBySidSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTaxationBySid" />
+  </wsdl:message>
+  <wsdl:message name="GetTaxationBySidSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTaxationBySidResponse" />
+  </wsdl:message>
   <wsdl:message name="GetTaskSequenceSoapIn">
     <wsdl:part name="parameters" element="tns:GetTaskSequence" />
   </wsdl:message>
@@ -2537,6 +2612,18 @@
   <wsdl:message name="GetPositionHttpPostIn" />
   <wsdl:message name="GetPositionHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfPositionInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetPayslipBySidHttpPostIn">
+    <wsdl:part name="sid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPayslipBySidHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfV_System_iLeave_Payslip" />
+  </wsdl:message>
+  <wsdl:message name="GetTaxationBySidHttpPostIn">
+    <wsdl:part name="sid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTaxationBySidHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfV_System_iLeave_Taxtion" />
   </wsdl:message>
   <wsdl:message name="GetTaskSequenceHttpPostIn">
     <wsdl:part name="WorkflowTypeID" type="s:string" />
@@ -2874,6 +2961,14 @@
       <wsdl:input message="tns:GetPositionSoapIn" />
       <wsdl:output message="tns:GetPositionSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetPayslipBySid">
+      <wsdl:input message="tns:GetPayslipBySidSoapIn" />
+      <wsdl:output message="tns:GetPayslipBySidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTaxationBySid">
+      <wsdl:input message="tns:GetTaxationBySidSoapIn" />
+      <wsdl:output message="tns:GetTaxationBySidSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetTaskSequence">
       <wsdl:input message="tns:GetTaskSequenceSoapIn" />
       <wsdl:output message="tns:GetTaskSequenceSoapOut" />
@@ -3091,6 +3186,14 @@
     <wsdl:operation name="GetPosition">
       <wsdl:input message="tns:GetPositionHttpPostIn" />
       <wsdl:output message="tns:GetPositionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPayslipBySid">
+      <wsdl:input message="tns:GetPayslipBySidHttpPostIn" />
+      <wsdl:output message="tns:GetPayslipBySidHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTaxationBySid">
+      <wsdl:input message="tns:GetTaxationBySidHttpPostIn" />
+      <wsdl:output message="tns:GetTaxationBySidHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetTaskSequence">
       <wsdl:input message="tns:GetTaskSequenceHttpPostIn" />
@@ -3721,6 +3824,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetPosition">
       <soap:operation soapAction="http://tempuri.org/GetPosition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPayslipBySid">
+      <soap:operation soapAction="http://tempuri.org/GetPayslipBySid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaxationBySid">
+      <soap:operation soapAction="http://tempuri.org/GetTaxationBySid" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -4433,6 +4554,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetPayslipBySid">
+      <soap12:operation soapAction="http://tempuri.org/GetPayslipBySid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaxationBySid">
+      <soap12:operation soapAction="http://tempuri.org/GetTaxationBySid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetTaskSequence">
       <soap12:operation soapAction="http://tempuri.org/GetTaskSequence" style="document" />
       <wsdl:input>
@@ -4911,6 +5050,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetPosition">
       <http:operation location="/GetPosition" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPayslipBySid">
+      <http:operation location="/GetPayslipBySid" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaxationBySid">
+      <http:operation location="/GetTaxationBySid" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

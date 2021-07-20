@@ -139,7 +139,7 @@ namespace WEBUI.Pages
 
         private void LoadUI()
         {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().Back, BLL.MultiLanguageHelper.GetLanguagePacket().main_rosterInqury, "~/pages/main.aspx", true);
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().main_rosterInqury, "~/pages/main.aspx", true);
             SetupTab();
             SetupUserName();
             SetupFromTo();
