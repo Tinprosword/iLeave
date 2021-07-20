@@ -163,6 +163,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetTaxationBySidOperationCompleted;
         
+        private System.Threading.SendOrPostCallback LoadPaySlipReportOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetTaskSequenceOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetWorkflowTaskExtendByUidOperationCompleted;
@@ -427,6 +429,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event GetTaxationBySidCompletedEventHandler GetTaxationBySidCompleted;
+        
+        /// <remarks/>
+        public event LoadPaySlipReportCompletedEventHandler LoadPaySlipReportCompleted;
         
         /// <remarks/>
         public event GetTaskSequenceCompletedEventHandler GetTaskSequenceCompleted;
@@ -2468,6 +2473,37 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/LoadPaySlipReport", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public PaySlipReportObject LoadPaySlipReport(int CompanyID, int StaffID) {
+            object[] results = this.Invoke("LoadPaySlipReport", new object[] {
+                        CompanyID,
+                        StaffID});
+            return ((PaySlipReportObject)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LoadPaySlipReportAsync(int CompanyID, int StaffID) {
+            this.LoadPaySlipReportAsync(CompanyID, StaffID, null);
+        }
+        
+        /// <remarks/>
+        public void LoadPaySlipReportAsync(int CompanyID, int StaffID, object userState) {
+            if ((this.LoadPaySlipReportOperationCompleted == null)) {
+                this.LoadPaySlipReportOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoadPaySlipReportOperationCompleted);
+            }
+            this.InvokeAsync("LoadPaySlipReport", new object[] {
+                        CompanyID,
+                        StaffID}, this.LoadPaySlipReportOperationCompleted, userState);
+        }
+        
+        private void OnLoadPaySlipReportOperationCompleted(object arg) {
+            if ((this.LoadPaySlipReportCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LoadPaySlipReportCompleted(this, new LoadPaySlipReportCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTaskSequence", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public int[] GetTaskSequence(WorkflowTypeID WorkflowTypeID, int ApprovalGroupID) {
             object[] results = this.Invoke("GetTaskSequence", new object[] {
@@ -3962,6 +3998,172 @@ namespace WebServiceLayer.WebReference_leave {
             }
             set {
                 this.infoEmployidField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class PaySlipReportObject {
+        
+        private byte[] reportDocumentArrayField;
+        
+        private int recordCountField;
+        
+        private string payrollSlipForField;
+        
+        private System.DateTime payrollPeriodFromField;
+        
+        private System.DateTime payrollPeriodToField;
+        
+        private string sT_LeaveField;
+        
+        private string companyNameField;
+        
+        private string queryMessageEngField;
+        
+        private string queryMessageChiField;
+        
+        private string companyGroupField;
+        
+        private int totalRecordField;
+        
+        private string payrollPeriodCodeField;
+        
+        private System.DateTime mPFContributionField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")]
+        public byte[] ReportDocumentArray {
+            get {
+                return this.reportDocumentArrayField;
+            }
+            set {
+                this.reportDocumentArrayField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RecordCount {
+            get {
+                return this.recordCountField;
+            }
+            set {
+                this.recordCountField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PayrollSlipFor {
+            get {
+                return this.payrollSlipForField;
+            }
+            set {
+                this.payrollSlipForField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime PayrollPeriodFrom {
+            get {
+                return this.payrollPeriodFromField;
+            }
+            set {
+                this.payrollPeriodFromField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime PayrollPeriodTo {
+            get {
+                return this.payrollPeriodToField;
+            }
+            set {
+                this.payrollPeriodToField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ST_Leave {
+            get {
+                return this.sT_LeaveField;
+            }
+            set {
+                this.sT_LeaveField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CompanyName {
+            get {
+                return this.companyNameField;
+            }
+            set {
+                this.companyNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string QueryMessageEng {
+            get {
+                return this.queryMessageEngField;
+            }
+            set {
+                this.queryMessageEngField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string QueryMessageChi {
+            get {
+                return this.queryMessageChiField;
+            }
+            set {
+                this.queryMessageChiField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CompanyGroup {
+            get {
+                return this.companyGroupField;
+            }
+            set {
+                this.companyGroupField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int TotalRecord {
+            get {
+                return this.totalRecordField;
+            }
+            set {
+                this.totalRecordField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PayrollPeriodCode {
+            get {
+                return this.payrollPeriodCodeField;
+            }
+            set {
+                this.payrollPeriodCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime MPFContribution {
+            get {
+                return this.mPFContributionField;
+            }
+            set {
+                this.mPFContributionField = value;
             }
         }
     }
@@ -10339,6 +10541,32 @@ namespace WebServiceLayer.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((v_System_iLeave_Taxtion[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void LoadPaySlipReportCompletedEventHandler(object sender, LoadPaySlipReportCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LoadPaySlipReportCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LoadPaySlipReportCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public PaySlipReportObject Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((PaySlipReportObject)(this.results[0]));
             }
         }
     }

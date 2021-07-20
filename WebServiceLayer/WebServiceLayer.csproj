@@ -151,6 +151,9 @@
     <None Include="Web References\WebReference_leave\LeaveRequestMaster.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\WebReference_leave\PaySlipReportObject.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\WebReference_leave\PositionInfo.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>

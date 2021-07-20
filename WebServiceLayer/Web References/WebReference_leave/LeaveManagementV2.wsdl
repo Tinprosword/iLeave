@@ -1567,6 +1567,38 @@
           <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="LoadPaySlipReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadPaySlipReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadPaySlipReportResult" type="tns:PaySlipReportObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PaySlipReportObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ReportDocumentArray" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="RecordCount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayrollSlipFor" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayrollPeriodFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayrollPeriodTo" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ST_Leave" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QueryMessageEng" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QueryMessageChi" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyGroup" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalRecord" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayrollPeriodCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MPFContribution" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetTaskSequence">
         <s:complexType>
           <s:sequence>
@@ -1859,6 +1891,7 @@
       <s:element name="ArrayOfPositionInfo" nillable="true" type="tns:ArrayOfPositionInfo" />
       <s:element name="ArrayOfV_System_iLeave_Payslip" nillable="true" type="tns:ArrayOfV_System_iLeave_Payslip" />
       <s:element name="ArrayOfV_System_iLeave_Taxtion" nillable="true" type="tns:ArrayOfV_System_iLeave_Taxtion" />
+      <s:element name="PaySlipReportObject" nillable="true" type="tns:PaySlipReportObject" />
       <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
       <s:element name="ArrayOfWorkflowTaskExtend" nillable="true" type="tns:ArrayOfWorkflowTaskExtend" />
       <s:element name="ArrayOfLeaveHistory" nillable="true" type="tns:ArrayOfLeaveHistory" />
@@ -2279,6 +2312,12 @@
   <wsdl:message name="GetTaxationBySidSoapOut">
     <wsdl:part name="parameters" element="tns:GetTaxationBySidResponse" />
   </wsdl:message>
+  <wsdl:message name="LoadPaySlipReportSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadPaySlipReport" />
+  </wsdl:message>
+  <wsdl:message name="LoadPaySlipReportSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadPaySlipReportResponse" />
+  </wsdl:message>
   <wsdl:message name="GetTaskSequenceSoapIn">
     <wsdl:part name="parameters" element="tns:GetTaskSequence" />
   </wsdl:message>
@@ -2625,6 +2664,13 @@
   <wsdl:message name="GetTaxationBySidHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfV_System_iLeave_Taxtion" />
   </wsdl:message>
+  <wsdl:message name="LoadPaySlipReportHttpPostIn">
+    <wsdl:part name="CompanyID" type="s:string" />
+    <wsdl:part name="StaffID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoadPaySlipReportHttpPostOut">
+    <wsdl:part name="Body" element="tns:PaySlipReportObject" />
+  </wsdl:message>
   <wsdl:message name="GetTaskSequenceHttpPostIn">
     <wsdl:part name="WorkflowTypeID" type="s:string" />
     <wsdl:part name="ApprovalGroupID" type="s:string" />
@@ -2969,6 +3015,10 @@
       <wsdl:input message="tns:GetTaxationBySidSoapIn" />
       <wsdl:output message="tns:GetTaxationBySidSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="LoadPaySlipReport">
+      <wsdl:input message="tns:LoadPaySlipReportSoapIn" />
+      <wsdl:output message="tns:LoadPaySlipReportSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetTaskSequence">
       <wsdl:input message="tns:GetTaskSequenceSoapIn" />
       <wsdl:output message="tns:GetTaskSequenceSoapOut" />
@@ -3194,6 +3244,10 @@
     <wsdl:operation name="GetTaxationBySid">
       <wsdl:input message="tns:GetTaxationBySidHttpPostIn" />
       <wsdl:output message="tns:GetTaxationBySidHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadPaySlipReport">
+      <wsdl:input message="tns:LoadPaySlipReportHttpPostIn" />
+      <wsdl:output message="tns:LoadPaySlipReportHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetTaskSequence">
       <wsdl:input message="tns:GetTaskSequenceHttpPostIn" />
@@ -3842,6 +3896,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetTaxationBySid">
       <soap:operation soapAction="http://tempuri.org/GetTaxationBySid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadPaySlipReport">
+      <soap:operation soapAction="http://tempuri.org/LoadPaySlipReport" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -4572,6 +4635,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LoadPaySlipReport">
+      <soap12:operation soapAction="http://tempuri.org/LoadPaySlipReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetTaskSequence">
       <soap12:operation soapAction="http://tempuri.org/GetTaskSequence" style="document" />
       <wsdl:input>
@@ -5068,6 +5140,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetTaxationBySid">
       <http:operation location="/GetTaxationBySid" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadPaySlipReport">
+      <http:operation location="/LoadPaySlipReport" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

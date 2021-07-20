@@ -84,22 +84,41 @@ namespace WEBUI.Pages
                 var theItem= mMyPayslip.Where(x => x.Staffid == loginer.userInfo.staffid && x.PayrollTrailMonth == date.ToString()).FirstOrDefault();
                 if (theItem != null)
                 {
-                    this.lb_status.Text = theItem.Status;
+                    this.lb_status.Text = theItem.IsLock==true? BLL.MultiLanguageHelper.GetLanguagePacket().Paylist_label_download: BLL.MultiLanguageHelper.GetLanguagePacket().Paylist_lable_pending;
                 }
             }
         }
 
         protected void btn_search_Click(object sender, EventArgs e)
         {
-            ////1.get file   2.downloadit. 3.delete file
-            //string filename = DateTime.Now.ToString("yyyyMMddhhmmss")+".pdf";
-            //string filePath = Server.MapPath("~/res/" + filename);
+            bool realDownload = false;
+            if (!realDownload)
+            {
+                string filePath = Server.MapPath("~/res/payslip.pdf");
+                LSLibrary.HttpHelper.DownloadFile(filePath, "payslip.pdf", Server, Response);
+            }
+            else
+            {
+                //1.get file   2.download it. 3.delete file
+                //1.1 get file's bin 1.2 convert to pdf
+                string filename = DateTime.Now.ToString("yyyyMMddhhmmss") + ".pdf";
+                string filePath = Server.MapPath("~/res/" + filename);
 
-            //LSLibrary.HttpHelper.DownloadFile(filePath, filePath, Server, Response);
-            ////todo 0 delete yesterterday file.
-            ///
-            string filePath = Server.MapPath("~/res/payslip.pdf");
-            LSLibrary.HttpHelper.DownloadFile(filePath, "payslip.pdf", Server, Response);
+                int companyid = 0;
+                var employee= BLL.User_wsref.GetPersonBaseInfoByUid(loginer.userInfo.id).FirstOrDefault();
+                if (employee != null)
+                {
+                    companyid=employee.s_CompanyID??0;
+                }
+                int selectedYear = int.Parse(this.DropDownList1.SelectedValue.Substring(0,4));
+                int selectMonth= int.Parse(this.DropDownList1.SelectedValue.Substring(4, 2));
+                var data= BLL.Other.GetPayslipReportData(companyid, loginer.userInfo.staffid??0, selectedYear, selectMonth);
+
+                
+
+                LSLibrary.HttpHelper.DownloadFile(filePath, filePath, Server, Response);
+                //todo 0 delete yesterterday file.
+            }
         }
     }
 }

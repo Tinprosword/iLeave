@@ -79,6 +79,7 @@ namespace BLL
                     }
                 }
             }
+            date = date.OrderByDescending(x => x.mvalue).ToList();
         }
 
 
@@ -110,6 +111,7 @@ namespace BLL
                     }
                 }
             }
+            date = date.OrderByDescending(x => x.mvalue).ToList();
         }
 
 
@@ -121,6 +123,11 @@ namespace BLL
         public static WebServiceLayer.WebReference_leave.v_System_iLeave_Taxtion[] GetTaxationBysid(int sid)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetTaxationBySid(sid);
+        }
+
+        public static WebServiceLayer.WebReference_leave.PaySlipReportObject GetPayslipReportData(int companyid,int staffid,int year,int month)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.LoadPaySlipReport(companyid, staffid);
         }
 
         public static WebServiceLayer.WebReference_leave.AttendanceRawData GenerateModel(DateTime logdate,int uid,string _Type,string _ExternalRef,int _AttendanceInterfaceCenterID,
