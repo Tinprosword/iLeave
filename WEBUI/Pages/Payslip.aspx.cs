@@ -91,8 +91,15 @@ namespace WEBUI.Pages
 
         protected void btn_search_Click(object sender, EventArgs e)
         {
-            string filePath = Server.MapPath("~/res/abc.pdf");
-            LSLibrary.HttpHelper.DownloadFile(filePath, "aaa.pdf", Server, Response);
+            ////1.get file   2.downloadit. 3.delete file
+            //string filename = DateTime.Now.ToString("yyyyMMddhhmmss")+".pdf";
+            //string filePath = Server.MapPath("~/res/" + filename);
+
+            //LSLibrary.HttpHelper.DownloadFile(filePath, filePath, Server, Response);
+            ////todo 0 delete yesterterday file.
+            ///
+            string filePath = Server.MapPath("~/res/payslip.pdf");
+            LSLibrary.HttpHelper.DownloadFile(filePath, "payslip.pdf", Server, Response);
         }
     }
 }

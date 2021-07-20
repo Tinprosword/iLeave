@@ -64,9 +64,13 @@ namespace WEBUI.Pages
                 }
                 if (v.Contains("7"))
                 {
-                    this.menu_payslip.Visible = false;
+                    this.menu7.Visible = false;
                 }
                 if (v.Contains("8"))
+                {
+                    this.menu_payslip.Visible = false;
+                }
+                if (v.Contains("9"))
                 {
                     this.menu_Taxation.Visible = false;
                 }

@@ -242,3 +242,48 @@ Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse
    在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
    在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
 ********************************************************************************************
+ip:::1
+DataTime：2021/7/20 14:25:48
+Url：http://localhost/WEBUI/pages/Payslip.aspx
+Message：未能找到文件“C:\Users\Administrator\source\repos\WebIleave\WEBUI\res\payslip.pdf”。
+Source：mscorlib
+Type：System.IO.FileNotFoundException
+Function：Void WinIOError(Int32, System.String)
+Trace：   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileInfo.get_Length()
+   在 LSLibrary.HttpHelper.DownloadFile(String absolutePath, String newName, HttpServerUtility Server, HttpResponse Response) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\Network\HttpHelper.cs:行号 531
+   在 WEBUI.Pages.Payslip.btn_search_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Payslip.aspx.cs:行号 102
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/7/20 14:26:09
+Url：http://localhost/WEBUI/pages/taxation.aspx
+Message：未能找到文件“C:\Users\Administrator\source\repos\WebIleave\WEBUI\res\taxation.pdf”。
+Source：mscorlib
+Type：System.IO.FileNotFoundException
+Function：Void WinIOError(Int32, System.String)
+Trace：   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileInfo.get_Length()
+   在 LSLibrary.HttpHelper.DownloadFile(String absolutePath, String newName, HttpServerUtility Server, HttpResponse Response) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\Network\HttpHelper.cs:行号 531
+   在 WEBUI.Pages.Taxation.btn_search_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Taxation.aspx.cs:行号 95
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2021/7/20 14:42:52
+Url：http://192.168.19.210/WEBUI/pages/Payslip.aspx
+Message：未能找到文件“C:\Users\Administrator\source\repos\WebIleave\WEBUI\res\payslip.pdf”。
+Source：mscorlib
+Type：System.IO.FileNotFoundException
+Function：Void WinIOError(Int32, System.String)
+Trace：   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileInfo.get_Length()
+   在 LSLibrary.HttpHelper.DownloadFile(String absolutePath, String newName, HttpServerUtility Server, HttpResponse Response) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\Network\HttpHelper.cs:行号 531
+   在 WEBUI.Pages.Payslip.btn_search_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Payslip.aspx.cs:行号 102
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
