@@ -1570,8 +1570,10 @@
       <s:element name="LoadPaySlipReport">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="uid_operater" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="month" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -2665,8 +2667,10 @@
     <wsdl:part name="Body" element="tns:ArrayOfV_System_iLeave_Taxtion" />
   </wsdl:message>
   <wsdl:message name="LoadPaySlipReportHttpPostIn">
-    <wsdl:part name="CompanyID" type="s:string" />
     <wsdl:part name="StaffID" type="s:string" />
+    <wsdl:part name="uid_operater" type="s:string" />
+    <wsdl:part name="year" type="s:string" />
+    <wsdl:part name="month" type="s:string" />
   </wsdl:message>
   <wsdl:message name="LoadPaySlipReportHttpPostOut">
     <wsdl:part name="Body" element="tns:PaySlipReportObject" />

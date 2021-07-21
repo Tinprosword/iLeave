@@ -125,9 +125,9 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetTaxationBySid(sid);
         }
 
-        public static WebServiceLayer.WebReference_leave.PaySlipReportObject GetPayslipReportData(int companyid,int staffid,int year,int month)
+        public static WebServiceLayer.WebReference_leave.PaySlipReportObject GetPayslipReportData(int staffid,int year,int month,int uid_operater)
         {
-            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.LoadPaySlipReport(companyid, staffid);
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.LoadPaySlipReport(staffid, uid_operater, year, month);
         }
 
         public static WebServiceLayer.WebReference_leave.AttendanceRawData GenerateModel(DateTime logdate,int uid,string _Type,string _ExternalRef,int _AttendanceInterfaceCenterID,

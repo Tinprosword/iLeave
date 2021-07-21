@@ -76,6 +76,7 @@ namespace WEBUI.Pages
             showPayslispStatus(int.Parse(this.DropDownList1.SelectedValue));
         }
 
+
         private void showPayslispStatus(int date)
         {
             this.lb_status.Text = "";
@@ -91,7 +92,7 @@ namespace WEBUI.Pages
 
         protected void btn_search_Click(object sender, EventArgs e)
         {
-            bool realDownload = false;
+            bool realDownload = true;
             if (!realDownload)
             {
                 string filePath = Server.MapPath("../res/payslip.pdf");
@@ -99,10 +100,7 @@ namespace WEBUI.Pages
             }
             else
             {
-                //1.get file   2.download it. 3.delete file
-                //1.1 get file's bin 1.2 convert to pdf
-                string filename = DateTime.Now.ToString("yyyyMMddhhmmss") + ".pdf";
-                string filePath = Server.MapPath("~/res/" + filename);
+                string filename = "Payslip.pdf";
 
                 int companyid = 0;
                 var employee= BLL.User_wsref.GetPersonBaseInfoByUid(loginer.userInfo.id).FirstOrDefault();
@@ -112,11 +110,11 @@ namespace WEBUI.Pages
                 }
                 int selectedYear = int.Parse(this.DropDownList1.SelectedValue.Substring(0,4));
                 int selectMonth= int.Parse(this.DropDownList1.SelectedValue.Substring(4, 2));
-                var data= BLL.Other.GetPayslipReportData(companyid, loginer.userInfo.staffid??0, selectedYear, selectMonth);
-
-                
-                LSLibrary.HttpHelper.DownloadFile(filePath, filePath, Server, Response);
-                //todo 0 delete yesterterday file.
+                var data= BLL.Other.GetPayslipReportData(loginer.userInfo.staffid??0, selectedYear, selectMonth,loginer.userInfo.id);
+                if (data != null && data.ReportDocumentArray != null && data.ReportDocumentArray.Length > 0)
+                {
+                    LSLibrary.HttpHelper.DownloadFile(data.ReportDocumentArray, filename, Server, Response);
+                }
             }
         }
     }

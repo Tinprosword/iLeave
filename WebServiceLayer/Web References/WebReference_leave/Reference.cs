@@ -2474,26 +2474,30 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/LoadPaySlipReport", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public PaySlipReportObject LoadPaySlipReport(int CompanyID, int StaffID) {
+        public PaySlipReportObject LoadPaySlipReport(int StaffID, int uid_operater, int year, int month) {
             object[] results = this.Invoke("LoadPaySlipReport", new object[] {
-                        CompanyID,
-                        StaffID});
+                        StaffID,
+                        uid_operater,
+                        year,
+                        month});
             return ((PaySlipReportObject)(results[0]));
         }
         
         /// <remarks/>
-        public void LoadPaySlipReportAsync(int CompanyID, int StaffID) {
-            this.LoadPaySlipReportAsync(CompanyID, StaffID, null);
+        public void LoadPaySlipReportAsync(int StaffID, int uid_operater, int year, int month) {
+            this.LoadPaySlipReportAsync(StaffID, uid_operater, year, month, null);
         }
         
         /// <remarks/>
-        public void LoadPaySlipReportAsync(int CompanyID, int StaffID, object userState) {
+        public void LoadPaySlipReportAsync(int StaffID, int uid_operater, int year, int month, object userState) {
             if ((this.LoadPaySlipReportOperationCompleted == null)) {
                 this.LoadPaySlipReportOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoadPaySlipReportOperationCompleted);
             }
             this.InvokeAsync("LoadPaySlipReport", new object[] {
-                        CompanyID,
-                        StaffID}, this.LoadPaySlipReportOperationCompleted, userState);
+                        StaffID,
+                        uid_operater,
+                        year,
+                        month}, this.LoadPaySlipReportOperationCompleted, userState);
         }
         
         private void OnLoadPaySlipReportOperationCompleted(object arg) {

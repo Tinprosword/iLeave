@@ -15,3 +15,25 @@ Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse
    在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
    在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
 ********************************************************************************************
+ip:::1
+DataTime：2021/7/21 10:38:22
+Url：http://localhost/WEBUI/pages/Payslip.aspx
+Message：远程主机强迫关闭了一个现有的连接。
+Source：System
+Type：System.Net.Sockets.SocketException
+Function：Int32 Receive(Byte[], Int32, Int32, System.Net.Sockets.SocketFlags)
+Trace：   在 System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   在 System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+********************************************************************************************
+ip:::1
+DataTime：2021/7/21 15:49:48
+Url：http://localhost/WEBUI/pages/Payslip.aspx
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void btn_search_Click(System.Object, System.EventArgs)
+Trace：   在 WEBUI.Pages.Payslip.btn_search_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Payslip.aspx.cs:行号 115
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
