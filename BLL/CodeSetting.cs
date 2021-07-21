@@ -21,6 +21,11 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_codesetting.GetSystemParameter(name);
         }
 
+        /// <summary>
+        /// 1 eng 6or other ch.
+        /// </summary>
+        /// <param name="language"></param>
+        /// <returns></returns>
         public static int GetNameType(LSLibrary.WebAPP.LanguageType language)
         {
             if (language == LSLibrary.WebAPP.LanguageType.english)

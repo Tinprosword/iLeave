@@ -535,5 +535,18 @@ namespace WEBUI.Pages
             return result;
         }
 
+        public string ShowName_Roster(WebServiceLayer.WebReference_leave.v_System_Calendar data)
+        {
+            var language = BLL.MultiLanguageHelper.GetChoose();
+            if (language == LSLibrary.WebAPP.LanguageType.english)
+            {
+                return data.EnglishName;
+            }
+            else
+            {
+                return data.Chinese;
+            }
+        }
+
     }
 }
