@@ -44,11 +44,11 @@
                 <asp:Repeater ID="rp_leave" runat="server" EnableViewState="true">
                     <ItemTemplate>
                         <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>">
-                            <td rowspan="2"  style=" vertical-align:top"><%# GetNameByLanguage((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem) %></td>
+                            <td rowspan="2"  style=" vertical-align:top; padding-top:4px;"><%# GetNameByLanguage((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem) %></td>
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).MM_DD %></td>
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).Shift_In %></td>
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).Attend_In %></td>
-                            <td rowspan="2"   style=" vertical-align:top"><%#getRemark( ((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).Remark)%></td>
+                            <td rowspan="2"  style=" vertical-align:top; padding-top:4px;"><%#getRemark( ((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).Remark)%></td>
                         </tr>
                         <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>">
                             <td></td>
@@ -74,11 +74,11 @@
                 <asp:Repeater ID="rp_roster" runat="server" EnableViewState="true">
                     <ItemTemplate>
                         <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>">
-                            <td rowspan="2" style=" vertical-align:top"><%# GetNameByLanguage((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem) %></td>
+                            <td rowspan="2" style="vertical-align:top; padding-top:4px;"><%# GetNameByLanguage((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem) %></td>
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).MM_DD %></td>
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).Shift_In %></td>
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).Attend_In %></td>
-                            <td rowspan="2"   style=" vertical-align:top"><%#getRemark( ((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).Remark)%></td>
+                            <td rowspan="2" style="vertical-align:top; padding-top:4px;"><%#getRemark( ((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).Remark)%></td>
                         </tr>
                         <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>">
                             <td></td>

@@ -94,7 +94,7 @@ namespace WEBUI.Pages
             bool realDownload = false;
             if (!realDownload)
             {
-                string filePath = Server.MapPath("~/res/payslip.pdf");
+                string filePath = Server.MapPath("../res/payslip.pdf");
                 LSLibrary.HttpHelper.DownloadFile(filePath, "payslip.pdf", Server, Response);
             }
             else
@@ -115,7 +115,6 @@ namespace WEBUI.Pages
                 var data= BLL.Other.GetPayslipReportData(companyid, loginer.userInfo.staffid??0, selectedYear, selectMonth);
 
                 
-
                 LSLibrary.HttpHelper.DownloadFile(filePath, filePath, Server, Response);
                 //todo 0 delete yesterterday file.
             }

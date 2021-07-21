@@ -37,11 +37,11 @@
                     </tr>
                     <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
                         <ItemTemplate>
-                            <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>">
-                                <td><%# ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).displayname %></td>
-                                <td style='display:<%=LSLibrary.WebAPP.HtmlCssHelper.CSS_DisplayValue(!bHiddenLeaveCode)%>'><%# BLL.GlobalVariate.GetSectionMultLanguage(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section) %></td>
-                                <td style='display:<%=LSLibrary.WebAPP.HtmlCssHelper.CSS_DisplayValue(bHiddenLeaveCode)%>'><%# ShowRP_LeaveCode( ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveID,((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section)%></td>
-                                <td><%# BLL.Leave.GetLeaveStatusDesc(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).WorkflowTypeID,((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).masterStatus) %></td>
+                            <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>;">
+                                <td style="vertical-align:top; padding-top:3px;"><%# ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).displayname %></td>
+                                <td style='vertical-align:top; padding-top:3px;display:<%=LSLibrary.WebAPP.HtmlCssHelper.CSS_DisplayValue(!bHiddenLeaveCode)%>'><%# BLL.GlobalVariate.GetSectionMultLanguage(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section) %></td>
+                                <td style='vertical-align:top; padding-top:3px;display:<%=LSLibrary.WebAPP.HtmlCssHelper.CSS_DisplayValue(bHiddenLeaveCode)%>'><%# ShowRP_LeaveCode( ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveID,((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section)%></td>
+                                <td style='vertical-align:top; padding-top:3px;'><%# BLL.Leave.GetLeaveStatusDesc(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).WorkflowTypeID,((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).masterStatus) %></td>
                             </tr>
                         </ItemTemplate>
                     </asp:Repeater>
@@ -58,10 +58,10 @@
                     </tr>
                     <asp:Repeater ID="rp_roster" runat="server" EnableViewState="true">
                         <ItemTemplate>
-                            <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>">
-                                <td class="col-xs-3"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).DispayName %></td>
-                                <td class="col-xs-6"><label style="width:65px; font-weight:normal; font-size:15px" id="code"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).ShiftCode %></label><label id="time" style="font-weight:normal; font-size:15px"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).Time %></label></td>
-                                <td class="col-xs-3"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).Remark %></td>
+                            <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>;">
+                                <td class="col-xs-3" style="vertical-align:top; padding-top:3px;"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).DispayName %></td>
+                                <td class="col-xs-6" style="vertical-align:top; padding-top:3px;"><label style="width:65px; font-weight:normal; font-size:15px" id="code"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).ShiftCode %></label><label id="time" style="font-weight:normal; font-size:15px"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).Time %></label></td>
+                                <td class="col-xs-3" style="vertical-align:top; padding-top:3px;"><%# ((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).Remark %></td>
                             </tr>
                         </ItemTemplate>
                     </asp:Repeater>

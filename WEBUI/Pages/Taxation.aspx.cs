@@ -91,7 +91,7 @@ namespace WEBUI.Pages
 
         protected void btn_search_Click(object sender, EventArgs e)
         {
-            string filePath = Server.MapPath("~/res/taxation.pdf");
+            string filePath = Server.MapPath("../res/taxation.pdf");
             LSLibrary.HttpHelper.DownloadFile(filePath, "taxation.pdf", Server, Response);
         }
     }
