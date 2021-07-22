@@ -14,7 +14,7 @@ namespace WEBUI.Pages
         #region
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
-            mMyPayslip = BLL.Other.GetTaxationBysid(loginer.userInfo.staffid ?? 0);
+            mMyPayslip = BLL.Other.GetTaxationBysid(loginer.userInfo.staffid ?? 0).Where(x => x.EmploymentID == loginer.userInfo.employID).ToArray(); ;
         }
 
         protected override void InitPage_OnFirstLoad2()
@@ -98,6 +98,8 @@ namespace WEBUI.Pages
             if (selectedYear != 0)
             {
                 var data = BLL.Other.GetTextationReportData(selectedYear,loginer.userInfo.employID??0, loginer.userInfo.id);
+
+
                 if (data != null && data.reportData != null && data.reportData.Length > 0 && data.msgtype == 1)
                 {
                     LSLibrary.HttpHelper.DownloadFile(data.reportData, "taxation.pdf", Server, Response);
