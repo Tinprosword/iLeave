@@ -161,6 +161,9 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Web References\WebReference_leave\ReportCommonData.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\WebReference_leave\t_Leave.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>

@@ -165,6 +165,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback LoadPaySlipReportOperationCompleted;
         
+        private System.Threading.SendOrPostCallback LoadTaxationReportOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetTaskSequenceOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetWorkflowTaskExtendByUidOperationCompleted;
@@ -432,6 +434,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event LoadPaySlipReportCompletedEventHandler LoadPaySlipReportCompleted;
+        
+        /// <remarks/>
+        public event LoadTaxationReportCompletedEventHandler LoadTaxationReportCompleted;
         
         /// <remarks/>
         public event GetTaskSequenceCompletedEventHandler GetTaskSequenceCompleted;
@@ -2508,6 +2513,39 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/LoadTaxationReport", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public ReportCommonData LoadTaxationReport(int year, int employid, int uid_operater) {
+            object[] results = this.Invoke("LoadTaxationReport", new object[] {
+                        year,
+                        employid,
+                        uid_operater});
+            return ((ReportCommonData)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LoadTaxationReportAsync(int year, int employid, int uid_operater) {
+            this.LoadTaxationReportAsync(year, employid, uid_operater, null);
+        }
+        
+        /// <remarks/>
+        public void LoadTaxationReportAsync(int year, int employid, int uid_operater, object userState) {
+            if ((this.LoadTaxationReportOperationCompleted == null)) {
+                this.LoadTaxationReportOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLoadTaxationReportOperationCompleted);
+            }
+            this.InvokeAsync("LoadTaxationReport", new object[] {
+                        year,
+                        employid,
+                        uid_operater}, this.LoadTaxationReportOperationCompleted, userState);
+        }
+        
+        private void OnLoadTaxationReportOperationCompleted(object arg) {
+            if ((this.LoadTaxationReportCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LoadTaxationReportCompleted(this, new LoadTaxationReportCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTaskSequence", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public int[] GetTaskSequence(WorkflowTypeID WorkflowTypeID, int ApprovalGroupID) {
             object[] results = this.Invoke("GetTaskSequence", new object[] {
@@ -4002,6 +4040,52 @@ namespace WebServiceLayer.WebReference_leave {
             }
             set {
                 this.infoEmployidField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ReportCommonData {
+        
+        private byte[] reportDataField;
+        
+        private int msgtypeField;
+        
+        private string msgField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")]
+        public byte[] reportData {
+            get {
+                return this.reportDataField;
+            }
+            set {
+                this.reportDataField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int msgtype {
+            get {
+                return this.msgtypeField;
+            }
+            set {
+                this.msgtypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string msg {
+            get {
+                return this.msgField;
+            }
+            set {
+                this.msgField = value;
             }
         }
     }
@@ -10571,6 +10655,32 @@ namespace WebServiceLayer.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((PaySlipReportObject)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void LoadTaxationReportCompletedEventHandler(object sender, LoadTaxationReportCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LoadTaxationReportCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LoadTaxationReportCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ReportCommonData Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ReportCommonData)(this.results[0]));
             }
         }
     }

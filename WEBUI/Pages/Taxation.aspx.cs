@@ -23,6 +23,7 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
+            this.lb_msg.Text = "";
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
@@ -91,8 +92,21 @@ namespace WEBUI.Pages
 
         protected void btn_search_Click(object sender, EventArgs e)
         {
-            string filePath = Server.MapPath("../res/taxation.pdf");
-            LSLibrary.HttpHelper.DownloadFile(filePath, "taxation.pdf", Server, Response);
+            int selectedYear = 0;
+            int.TryParse(this.DropDownList1.SelectedValue, out selectedYear);
+
+            if (selectedYear != 0)
+            {
+                var data = BLL.Other.GetTextationReportData(selectedYear,loginer.userInfo.employID??0, loginer.userInfo.id);
+                if (data != null && data.reportData != null && data.reportData.Length > 0 && data.msgtype == 1)
+                {
+                    LSLibrary.HttpHelper.DownloadFile(data.reportData, "taxation.pdf", Server, Response);
+                }
+                else
+                {
+                    this.lb_msg.Text = "Error:" + data.msgtype;
+                }
+            }
         }
     }
 }

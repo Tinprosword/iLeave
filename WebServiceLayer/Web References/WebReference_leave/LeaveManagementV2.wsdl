@@ -1601,6 +1601,29 @@
           <s:element minOccurs="1" maxOccurs="1" name="MPFContribution" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
+      <s:element name="LoadTaxationReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="employid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="uid_operater" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadTaxationReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadTaxationReportResult" type="tns:ReportCommonData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ReportCommonData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="reportData" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="msgtype" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetTaskSequence">
         <s:complexType>
           <s:sequence>
@@ -1894,6 +1917,7 @@
       <s:element name="ArrayOfV_System_iLeave_Payslip" nillable="true" type="tns:ArrayOfV_System_iLeave_Payslip" />
       <s:element name="ArrayOfV_System_iLeave_Taxtion" nillable="true" type="tns:ArrayOfV_System_iLeave_Taxtion" />
       <s:element name="PaySlipReportObject" nillable="true" type="tns:PaySlipReportObject" />
+      <s:element name="ReportCommonData" nillable="true" type="tns:ReportCommonData" />
       <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
       <s:element name="ArrayOfWorkflowTaskExtend" nillable="true" type="tns:ArrayOfWorkflowTaskExtend" />
       <s:element name="ArrayOfLeaveHistory" nillable="true" type="tns:ArrayOfLeaveHistory" />
@@ -2320,6 +2344,12 @@
   <wsdl:message name="LoadPaySlipReportSoapOut">
     <wsdl:part name="parameters" element="tns:LoadPaySlipReportResponse" />
   </wsdl:message>
+  <wsdl:message name="LoadTaxationReportSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadTaxationReport" />
+  </wsdl:message>
+  <wsdl:message name="LoadTaxationReportSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadTaxationReportResponse" />
+  </wsdl:message>
   <wsdl:message name="GetTaskSequenceSoapIn">
     <wsdl:part name="parameters" element="tns:GetTaskSequence" />
   </wsdl:message>
@@ -2675,6 +2705,14 @@
   <wsdl:message name="LoadPaySlipReportHttpPostOut">
     <wsdl:part name="Body" element="tns:PaySlipReportObject" />
   </wsdl:message>
+  <wsdl:message name="LoadTaxationReportHttpPostIn">
+    <wsdl:part name="year" type="s:string" />
+    <wsdl:part name="employid" type="s:string" />
+    <wsdl:part name="uid_operater" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoadTaxationReportHttpPostOut">
+    <wsdl:part name="Body" element="tns:ReportCommonData" />
+  </wsdl:message>
   <wsdl:message name="GetTaskSequenceHttpPostIn">
     <wsdl:part name="WorkflowTypeID" type="s:string" />
     <wsdl:part name="ApprovalGroupID" type="s:string" />
@@ -3023,6 +3061,10 @@
       <wsdl:input message="tns:LoadPaySlipReportSoapIn" />
       <wsdl:output message="tns:LoadPaySlipReportSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="LoadTaxationReport">
+      <wsdl:input message="tns:LoadTaxationReportSoapIn" />
+      <wsdl:output message="tns:LoadTaxationReportSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetTaskSequence">
       <wsdl:input message="tns:GetTaskSequenceSoapIn" />
       <wsdl:output message="tns:GetTaskSequenceSoapOut" />
@@ -3252,6 +3294,10 @@
     <wsdl:operation name="LoadPaySlipReport">
       <wsdl:input message="tns:LoadPaySlipReportHttpPostIn" />
       <wsdl:output message="tns:LoadPaySlipReportHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadTaxationReport">
+      <wsdl:input message="tns:LoadTaxationReportHttpPostIn" />
+      <wsdl:output message="tns:LoadTaxationReportHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetTaskSequence">
       <wsdl:input message="tns:GetTaskSequenceHttpPostIn" />
@@ -3909,6 +3955,15 @@
     </wsdl:operation>
     <wsdl:operation name="LoadPaySlipReport">
       <soap:operation soapAction="http://tempuri.org/LoadPaySlipReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadTaxationReport">
+      <soap:operation soapAction="http://tempuri.org/LoadTaxationReport" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -4648,6 +4703,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LoadTaxationReport">
+      <soap12:operation soapAction="http://tempuri.org/LoadTaxationReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetTaskSequence">
       <soap12:operation soapAction="http://tempuri.org/GetTaskSequence" style="document" />
       <wsdl:input>
@@ -5153,6 +5217,15 @@
     </wsdl:operation>
     <wsdl:operation name="LoadPaySlipReport">
       <http:operation location="/LoadPaySlipReport" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadTaxationReport">
+      <http:operation location="/LoadTaxationReport" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
