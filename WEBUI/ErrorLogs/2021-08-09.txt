@@ -1,0 +1,20 @@
+ip:::1
+DataTime：2021/8/9 12:06:30
+Url：http://localhost/WEBUI/pages/applyCLOT.aspx
+Message：DataBinding:“LSLibrary.EnumHelper+Enum_valueTextDesc”不包含名为“text”的属性。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Object GetPropertyValue(System.Object, System.String)
+Trace：   在 System.Web.UI.DataBinder.GetPropertyValue(Object container, String propName)
+   在 System.Web.UI.DataBinder.GetPropertyValue(Object container, String propName, String format)
+   在 System.Web.UI.WebControls.ListControl.PerformDataBinding(IEnumerable dataSource)
+   在 System.Web.UI.WebControls.ListControl.OnDataBinding(EventArgs e)
+   在 System.Web.UI.WebControls.ListControl.PerformSelect()
+   在 WEBUI.Pages.ApplyCLOT.LoadUI() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ApplyCLOT.aspx.cs:行号 79
+   在 WEBUI.Pages.ApplyCLOT.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ApplyCLOT.aspx.cs:行号 31
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

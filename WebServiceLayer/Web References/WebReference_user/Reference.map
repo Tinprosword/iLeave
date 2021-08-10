@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://192.168.19.200:81/ServicesWithSession/UserManagementV2.asmx?disco" filename="UserManagementV2.disco" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://192.168.19.200:81/ServicesWithSession/UserManagementV2.asmx?wsdl" filename="UserManagementV2.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://192.168.19.200:8888/dw-ihr/bll/ServicesWithSession/UserManagementV2.asmx?wsdl" filename="UserManagementV2.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://192.168.19.200:8888/dw-ihr/bll/ServicesWithSession/UserManagementV2.asmx?disco" filename="UserManagementV2.disco" />
   </Results>
 </DiscoveryClientResultsFile>

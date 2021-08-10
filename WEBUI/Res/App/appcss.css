@@ -9,9 +9,9 @@
 .lsu-table-xs tr {height: 30px}
 .lsu-table-xs td {padding-left: 2px !important;padding-right: 2px !important;}*/
 
-.lsu-table-xs {font-size: 15px;}
+.lsu-table-xs {font-size: 15px; }
 .lsu-table-xs tr {height: 30px}
-.lsu-table-xs td {padding-left: 2px !important;padding-right: 2px !important;}
+.lsu-table-xs td {padding-left: 2px !important;padding-right: 2px !important;border:1px solid aliceblue}
 
 .lsu-table-xs4padding {font-size: 15px;}
 .lsu-table-xs4padding tr {height: 30px}

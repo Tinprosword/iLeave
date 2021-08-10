@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="calendar.cs" />
+    <Compile Include="CLOT.cs" />
     <Compile Include="Leave.cs" />
     <Compile Include="CodeSetting.cs" />
     <Compile Include="Other.cs" />

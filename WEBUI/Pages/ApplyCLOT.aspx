@@ -15,9 +15,7 @@
             <tr>
                 <td><asp:Literal ID="lt_leave" runat="server">Leave</asp:Literal></td>
                 <td colspan="2">
-                    <asp:DropDownList style="height:24px" ID="ddl_leavetype" runat="server" Width="90%">
-                        <asp:ListItem Text="CL" Value="0"></asp:ListItem>
-                        <asp:ListItem Text="OT" Value="1"></asp:ListItem>
+                    <asp:DropDownList style="height:24px" ID="ddl_leavetype" runat="server" Width="90%" AutoPostBack="true" OnSelectedIndexChanged="ddl_leavetype_SelectedIndexChanged">
                     </asp:DropDownList>
                 </td>
             </tr>
@@ -42,27 +40,23 @@
                 <td><asp:Literal ID="lt_time" runat="server">Time</asp:Literal></td>
                 <td>
                     <asp:DropDownList ID="DropDownList1" runat="server">
-                        <asp:ListItem Text="00" Value="0"></asp:ListItem>
                     </asp:DropDownList>:
                     <asp:DropDownList ID="DropDownList2" runat="server">
-                        <asp:ListItem Text="00" Value="00"></asp:ListItem>
                     </asp:DropDownList>
                     &nbsp;&nbsp;
                     <asp:DropDownList ID="DropDownList3" runat="server">
-                        <asp:ListItem Text="00" Value="0"></asp:ListItem>
                     </asp:DropDownList>:
                     <asp:DropDownList ID="DropDownList4" runat="server">
-                        <asp:ListItem Text="00" Value="00"></asp:ListItem>
                     </asp:DropDownList>
                     </td>
-                    <td style="width:80px; vertical-align:bottom;padding-bottom:12px;"><asp:Button ID="btn_add" runat="server" Text="Add"  BackColor="#2573a4" ForeColor="White" BorderWidth="0" Height="34px" Font-Size="16px" style="border-radius:5px 5px 5px 5px"/></td>
+                    <td style="width:80px; vertical-align:bottom;padding-bottom:12px;"><asp:Button ID="btn_add" runat="server" Text="Add"  BackColor="#2573a4" ForeColor="White" BorderWidth="0" Height="34px" Font-Size="16px" Width="68px" style="border-radius:5px 5px 5px 5px" OnClick="btn_add_Click"/></td>
             </tr>
             <tr>
                 <td><asp:Literal ID="lt_remarks" runat="server">Remarks</asp:Literal></td>
                 <td style="vertical-align:bottom">
                     <asp:TextBox ID="tb_remarks" runat="server" Height="50px" Width="100%" TextMode="MultiLine" style="padding-bottom:0px;"></asp:TextBox>
                 </td>
-                <td style="width:80px; vertical-align:bottom;padding-bottom:12px;"><asp:Button ID="btn_apply" runat="server" Text="Submit" BackColor="#2573a4" ForeColor="White" BorderWidth="0" Height="34px" Font-Size="16px" style="border-radius:5px 5px 5px 5px"/></td>
+                <td style="width:80px; vertical-align:bottom;padding-bottom:12px;"><asp:Button ID="btn_apply" runat="server" Text="Submit" BackColor="#2573a4" ForeColor="White" BorderWidth="0" Height="34px" Font-Size="16px" Width="68px" style="border-radius:5px 5px 5px 5px" OnClick="btn_apply_Click"/></td>
             </tr>
         </table>
         <div class=" col-xs-12" style="height:16px; color:red;padding-left:15px;"><asp:Literal ID="literal_errormsga" runat="server" Visible="false"></asp:Literal></div>
@@ -70,13 +64,21 @@
         <div class="col-xs-12 lsf-clearPadding" style="height:260px; overflow-y:scroll;">
             <table class="col-xs-12 lsu-table-xs">
                 <tr class="lss-bgcolor-blue" style="color:white">
-                    <td class="col-xs-3" style="width:18%"><asp:Literal ID="ltlistdate" runat="server"></asp:Literal></td>
-                    <td class="col-xs-4" style="width:44%"><asp:Literal ID="ltlisttype" runat="server"></asp:Literal></td>
-                    <td class="col-xs-4" style="width:70px"><asp:Literal ID="lt_listsection" runat="server"></asp:Literal></td>
-                    <td class="col-xs-1" style="width:30px">&nbsp;</td>
+                    <td class="col-xs-3" ><asp:Literal ID="ltlistdate" runat="server">Date</asp:Literal></td>
+                    <td class="col-xs-2" ><asp:Literal ID="ltlisttype" runat="server">Type</asp:Literal></td>
+                    <td class="col-xs-4" ><asp:Literal ID="ltlistfromto" runat="server">Time</asp:Literal></td>
+                    <td class="col-xs-2" ><asp:Literal ID="ltlisthours" runat="server">Hour(s)</asp:Literal></td>
+                    <td class="col-xs-1" ></td>
                 </tr>
-                <asp:Repeater ID="repeater_leave" runat="server" EnableViewState="true">
+                <asp:Repeater ID="repeater_clot" runat="server" EnableViewState="true">
                     <ItemTemplate>
+                        <tr>
+                        <td class="col-xs-3" ><asp:Literal ID="ltlistdate" runat="server" Text='<%#((MODEL.CLOT.CLOTItem)Container.DataItem).date.ToString("yyyy-MM-dd") %>'></asp:Literal></td>
+                        <td class="col-xs-2" ><asp:Literal ID="ltlisttype" runat="server" Text='<%#((MODEL.CLOT.CLOTItem)Container.DataItem).type.ToString() %>'></asp:Literal></td>
+                        <td class="col-xs-4" ><asp:Literal ID="ltlistfromto" runat="server" Text='<%#((MODEL.CLOT.CLOTItem)Container.DataItem).GetTimeRangeDesc() %>'></asp:Literal></td>
+                        <td class="col-xs-2" ><asp:Literal ID="ltlisthours" runat="server" Text='<%#((MODEL.CLOT.CLOTItem)Container.DataItem).GetHours()%>'></asp:Literal></td>
+                        <td style="text-align:right"><asp:ImageButton ID="delete" Width="30px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="30px" ImageUrl="~/Res/images/close.png" runat="server" OnClick="delete_Click" /></td>
+                    </tr>
                     </ItemTemplate>
                 </asp:Repeater>
             </table>
@@ -84,4 +86,5 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
+    <asp:Literal ID="js_waitdiv" runat="server"/>
 </asp:Content>

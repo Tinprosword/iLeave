@@ -13,16 +13,23 @@ namespace WEBUI.Controls
         private const string ConstString_EventName2 = "tabpending";
         private const string ConstString_EventName3 = "tabhistory";
 
+        private bool isManage = false;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        public  void SetupControls()
+        public  void SetupControls(bool PisManage)
         {
+            isManage = PisManage;
             this.a_new.Attributes.Add("onclick", "MyPostBack('" + ConstString_EventName1 + "','')");
             this.a_pending.Attributes.Add("onclick", "MyPostBack('" + ConstString_EventName2 + "','')");
             this.a_history.Attributes.Add("onclick", "MyPostBack('" + ConstString_EventName3 + "','')");
+            if (isManage)
+            {
+                this.a_new.Visible = false;
+            }
         }
 
         public void SetEvent(WEBUI.Controls.leave masterpage)
@@ -30,6 +37,7 @@ namespace WEBUI.Controls
             string value1 = ((WEBUI.Controls.leave)masterpage).GetMyPostBackArgumentByTargetname(ConstString_EventName1);
             string value2 = ((WEBUI.Controls.leave)masterpage).GetMyPostBackArgumentByTargetname(ConstString_EventName2);
             string value3 = ((WEBUI.Controls.leave)masterpage).GetMyPostBackArgumentByTargetname(ConstString_EventName3);
+            string datatype = isManage == true ? "0" : "1";
             if (value1 != null)
             {
                 string url = "~/pages/ApplyCLOT.aspx";
@@ -37,13 +45,13 @@ namespace WEBUI.Controls
             }
             else if (value2 != null)
             {
-                string url = "~/pages/CLOTHistory.aspx?action=0";
+                string url = "~/pages/CLOTHistory.aspx?datatype="+ datatype + "&dataRange=0";
                 Response.Redirect(url);
             }
 
             else if (value3 != null)
             {
-                string url = "~/pages/CLOTHistory.aspx?action=1";
+                string url = "~/pages/CLOTHistory.aspx?datatype=" + datatype + "&dataRange=1";
                 Response.Redirect(url);
             }
         }
@@ -70,7 +78,9 @@ namespace WEBUI.Controls
 
         public void MultipLanguage()
         {
-            lt_new.Text= BLL.MultiLanguageHelper.GetLanguagePacket().apply_name;
+            lt_new.Text= BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_new;
+            lt_mypending.Text = BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_pending;
+            lt_myhistory.Text = BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_processed;
         }
     }
 }

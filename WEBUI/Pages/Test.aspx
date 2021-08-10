@@ -77,6 +77,7 @@ function HiddenDivByfixname(windowname)
 }
 
 </script>
+    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     </form>
 </body>
 </html>

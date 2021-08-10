@@ -16,11 +16,22 @@ namespace WEBUI.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.Label1.Text = GetHours(3, 1, 1, 1).ToString();
+            int a = 4;
         }
 
         private bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
         {
             return true;
+        }
+
+
+        public float GetHours(int tohour,int fromhour,int tominute,int frommin)
+        {
+            int h = tohour - fromhour;
+            int m = tominute - frommin + 1;
+            int totalmin = h * 60 + m;
+            return (float)(Math.Round((double)((double)totalmin / 60), 2));
         }
 
     }

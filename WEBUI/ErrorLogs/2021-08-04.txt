@@ -1,0 +1,34 @@
+ip:::1
+DataTime：2021/8/4 11:33:44
+Url：http://localhost/WEBUI/pages/applyCLOT.aspx
+Message：字符串参数“key”不能为 null 或为空。
+参数名: key
+Source：System.Web
+Type：System.ArgumentException
+Function：System.Web.UI.StateItem Add(System.String, System.Object)
+Trace：   在 System.Web.UI.StateBag.Add(String key, Object value)
+   在 LSLibrary.WebAPP.ViewStateHelper.SetValue(String name, Object obj, StateBag viewState) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\ViewStateHelper.cs:行号 13
+   在 WEBUI.Pages.ApplyCLOT.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ApplyCLOT.aspx.cs:行号 29
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/8/4 11:40:04
+Url：http://localhost/WEBUI/pages/applyCLOT.aspx
+Message：字符串参数“key”不能为 null 或为空。
+参数名: key
+Source：System.Web
+Type：System.ArgumentException
+Function：System.Web.UI.StateItem Add(System.String, System.Object)
+Trace：   在 System.Web.UI.StateBag.Add(String key, Object value)
+   在 LSLibrary.WebAPP.ViewStateHelper.SetValue(String name, Object obj, StateBag viewState) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\ViewStateHelper.cs:行号 13
+   在 WEBUI.Pages.ApplyCLOT.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ApplyCLOT.aspx.cs:行号 29
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

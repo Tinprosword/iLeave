@@ -28,122 +28,438 @@
       <s:element name="RejectRequest_ClotResponse">
         <s:complexType />
       </s:element>
-      <s:element name="Base_Insertt_Leave">
+      <s:element name="GetAttendanceByExternRef">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="newObject" type="tns:t_Leave" />
+            <s:element minOccurs="0" maxOccurs="1" name="refs" type="tns:ArrayOfString" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="t_Leave">
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAttendanceByExternRefResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAttendanceByExternRefResult" type="tns:ArrayOfAttendanceRawData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAttendanceRawData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AttendanceRawData" nillable="true" type="tns:AttendanceRawData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AttendanceRawData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LogDateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExternalRef" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="InterfaceID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AttendanceInterfaceCenterID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RemoteIdent" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="StaffName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StaffNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Department" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OTMinute" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LateMinute" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EarlyLeaveMinute" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PairNo" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ImportID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GpsLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GpsLocationName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PositionID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sequence" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentAmount" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDelete" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeaveDocumentPath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeaveDocument2Path" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertAttendance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data" type="tns:ArrayOfAttendanceRawData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertAttendanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertAttendanceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIGuard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="interfaceCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIGuardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetIGuardResult" type="tns:ILeaveIGuard" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ILeaveIGuard">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="InterfaceID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AttendanceInterfaceCenterID" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRosterInquiry_leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zoneCode" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="positionCode" type="tns:ArrayOfString" />
+            <s:element minOccurs="1" maxOccurs="1" name="datefrom" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateto" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRosterInquiry_leaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRosterInquiry_leaveResult" type="tns:ArrayOfV_System_iLeave_Leave_List" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfV_System_iLeave_Leave_List">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_iLeave_Leave_List" nillable="true" type="tns:v_System_iLeave_Leave_List" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="v_System_iLeave_Leave_List">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="English_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Chinese_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nickname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Search_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Position_Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zone_Code" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContractID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Leave" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="YYYY_MM_DD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MM_DD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shift_In" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shift_Out" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attend_In" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attend_Out" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRosterInquiry_Roster">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zoneCode" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="positionCode" type="tns:ArrayOfString" />
+            <s:element minOccurs="1" maxOccurs="1" name="datefrom" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateto" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRosterInquiry_RosterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRosterInquiry_RosterResult" type="tns:ArrayOfV_System_iLeave_Roster_List" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfV_System_iLeave_Roster_List">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_iLeave_Roster_List" nillable="true" type="tns:v_System_iLeave_Roster_List" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="v_System_iLeave_Roster_List">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="English_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Chinese_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nickname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Search_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Position_Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zone_Code" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContractID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Leave" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="YYYY_MM_DD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MM_DD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shift_In" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shift_Out" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attend_In" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attend_Out" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRosterInquiry_Security">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="allInfo" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRosterInquiry_SecurityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRosterInquiry_SecurityResult" type="tns:ArrayOfV_System_iLeave_Security" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfV_System_iLeave_Security">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_iLeave_Security" nillable="true" type="tns:v_System_iLeave_Security" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="v_System_iLeave_Security">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EmploymentNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FirstEmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContractID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="StationCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZoneCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostionCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PositionID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CommenceDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="TerminateDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserinfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserinfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserinfoResult" type="tns:UserInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserInfo">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="PayRatio" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsAverageDailyRate" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PassWordHash" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FullName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserGroupID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusDescription" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="PortalStatus" type="s:unsignedByte" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsAccumulableLeave" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsEnforceAttachment" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsInclude713" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsAdjustInNextMonth" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="AccountCodeLeave" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="PaySlipReportGroupID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="LeaveNotes" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="EntitleEffectiveDate" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsIncludeGratuity" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="AccumulableLeaveType" type="s:short" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsEnableAdvanceLeaveOnPortal" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="ApplyRequirement" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EntitledBy" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="LeaveAllowApplyBeforeValue" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="LeaveAllowApplyBeforeUnit" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="LeaveExpiryAfterValue" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="LeaveExpiryAfterUnit" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="CommonLeaveYear" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsCompareEOLeave" nillable="true" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CarryForwardBy" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="GrantEntitlementMethod" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EntitleExpiryWays" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EntitleExpiryByAfterCarryForwardDateInMonth" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EntitleExpiryByAfterCarryForwardDateInDay" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="EntitleExpiryBySpecificDate" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="MaxEntitlementFrequency" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="BackpayPayitemTypeID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="CancelInPortal" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserGroupCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserGroupDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PersonID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SpecialRight" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LanguageCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DomainUser" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FailAttempt" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastLoginDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpiryDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsLock" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsLockDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReceiveEmail" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="TokenKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FullNameWithNickname" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MobileUserLevel" type="s:int" />
         </s:sequence>
       </s:complexType>
-      <s:element name="Base_Insertt_LeaveResponse">
+      <s:element name="GetPosition">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPositionResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Base_Insertt_LeaveResult" type="tns:t_Leave" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetPositionResult" type="tns:ArrayOfPositionInfo" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="Base_Updatet_Leave">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="UpdateObject" type="tns:t_Leave" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Updatet_LeaveResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="Base_Updatet_LeaveResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Deletet_Leave">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="DeleteObject" type="tns:t_Leave" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Deletet_LeaveResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="Base_Deletet_LeaveResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Gett_Leave">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetObject" type="tns:t_Leave" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Gett_LeaveResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Base_Gett_LeaveResult" type="tns:t_Leave" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_GetListt_Leave">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="whereSql" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_GetListt_LeaveResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Base_GetListt_LeaveResult" type="tns:ArrayOfT_Leave" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfT_Leave">
+      <s:complexType name="ArrayOfPositionInfo">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="t_Leave" nillable="true" type="tns:t_Leave" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PositionInfo" nillable="true" type="tns:PositionInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PositionInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RankID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InternalRankID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxOTHourPerMonth" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="MainPosition" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark3" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SponsorRequirementYearOfService" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxSponsorTrainingFee" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxSponsorNoOfTimes" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxSponsorAmountPerTimes" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSponsorFeeResetAnnually" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RankLevel" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsALExcludeSAT" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsALExcludeSUN" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsALExcludeHoliday" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayScaleType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayScaleEntryPoint" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayScaleMidPoint" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayScaleMaxPoint" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAllowHalfDayLeave" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAllowHourlyLeave" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAllow3SectionLeave" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="JobType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveCutOffType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PointList" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SortSeq" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SL168" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Appraisal" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPayslipBySid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPayslipBySidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPayslipBySidResult" type="tns:ArrayOfV_System_iLeave_Payslip" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfV_System_iLeave_Payslip">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_iLeave_Payslip" nillable="true" type="tns:v_System_iLeave_Payslip" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="v_System_iLeave_Payslip">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PayrollTrailMonth" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Staffid" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsLock" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReleasePayslip" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTaxationBySid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaxationBySidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTaxationBySidResult" type="tns:ArrayOfV_System_iLeave_Taxtion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfV_System_iLeave_Taxtion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_iLeave_Taxtion" nillable="true" type="tns:v_System_iLeave_Taxtion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="v_System_iLeave_Taxtion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TaxYear" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Year_Range" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Staffid" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsRelease" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LoadPaySlipReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="uid_operater" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="month" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadPaySlipReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadPaySlipReportResult" type="tns:PaySlipReportObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PaySlipReportObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ReportDocumentArray" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="RecordCount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayrollSlipFor" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayrollPeriodFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayrollPeriodTo" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ST_Leave" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QueryMessageEng" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QueryMessageChi" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyGroup" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalRecord" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PayrollPeriodCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MPFContribution" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LoadTaxationReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="employid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="uid_operater" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadTaxationReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadTaxationReportResult" type="tns:ReportCommonData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ReportCommonData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="reportData" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="msgtype" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetContractByEmployids">
@@ -222,190 +538,6 @@
           <s:element minOccurs="0" maxOccurs="1" name="Program" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:element name="Base_Insertt_WorkflowInfo">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="newObject" type="tns:t_WorkflowInfo" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="t_WorkflowInfo">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="WorkflowTypeID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:unsignedByte" />
-          <s:element minOccurs="1" maxOccurs="1" name="ServeOfNotice" nillable="true" type="s:dateTime" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="Base_Insertt_WorkflowInfoResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Base_Insertt_WorkflowInfoResult" type="tns:t_WorkflowInfo" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Updatet_WorkflowInfo">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="UpdateObject" type="tns:t_WorkflowInfo" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Updatet_WorkflowInfoResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="Base_Updatet_WorkflowInfoResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Deletet_WorkflowInfo">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="DeleteObject" type="tns:t_WorkflowInfo" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Deletet_WorkflowInfoResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="Base_Deletet_WorkflowInfoResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Gett_WorkflowInfo">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetObject" type="tns:t_WorkflowInfo" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Gett_WorkflowInfoResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Base_Gett_WorkflowInfoResult" type="tns:t_WorkflowInfo" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_GetListt_WorkflowInfo">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="whereSql" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_GetListt_WorkflowInfoResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Base_GetListt_WorkflowInfoResult" type="tns:ArrayOfT_WorkflowInfo" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfT_WorkflowInfo">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="t_WorkflowInfo" nillable="true" type="tns:t_WorkflowInfo" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="Base_Insertt_WorkflowTask">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="newObject" type="tns:t_WorkflowTask" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="t_WorkflowTask">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="InOutTypeID" type="s:unsignedByte" />
-          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="WorkflowInfoID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="CurrentStep" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="FormulatedURL" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsRead" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="Base_Insertt_WorkflowTaskResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Base_Insertt_WorkflowTaskResult" type="tns:t_WorkflowTask" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Updatet_WorkflowTask">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="UpdateObject" type="tns:t_WorkflowTask" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Updatet_WorkflowTaskResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="Base_Updatet_WorkflowTaskResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Deletet_WorkflowTask">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="DeleteObject" type="tns:t_WorkflowTask" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Deletet_WorkflowTaskResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="Base_Deletet_WorkflowTaskResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Gett_WorkflowTask">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetObject" type="tns:t_WorkflowTask" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_Gett_WorkflowTaskResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Base_Gett_WorkflowTaskResult" type="tns:t_WorkflowTask" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_GetListt_WorkflowTask">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="whereSql" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Base_GetListt_WorkflowTaskResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Base_GetListt_WorkflowTaskResult" type="tns:ArrayOfT_WorkflowTask" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfT_WorkflowTask">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="t_WorkflowTask" nillable="true" type="tns:t_WorkflowTask" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="GetFirstRequestInfo">
         <s:complexType>
           <s:sequence>
@@ -453,6 +585,54 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfT_Leave">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="t_Leave" nillable="true" type="tns:t_Leave" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="t_Leave">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayRatio" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAverageDailyRate" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PortalStatus" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAccumulableLeave" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEnforceAttachment" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsInclude713" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAdjustInNextMonth" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountCodeLeave" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaySlipReportGroupID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeaveNotes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntitleEffectiveDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsIncludeGratuity" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AccumulableLeaveType" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEnableAdvanceLeaveOnPortal" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplyRequirement" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntitledBy" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveAllowApplyBeforeValue" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveAllowApplyBeforeUnit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveExpiryAfterValue" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveExpiryAfterUnit" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CommonLeaveYear" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCompareEOLeave" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CarryForwardBy" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GrantEntitlementMethod" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntitleExpiryWays" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntitleExpiryByAfterCarryForwardDateInMonth" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntitleExpiryByAfterCarryForwardDateInDay" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntitleExpiryBySpecificDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxEntitlementFrequency" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="BackpayPayitemTypeID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CancelInPortal" type="s:int" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="InsertRequest">
         <s:complexType>
           <s:sequence>
@@ -1190,438 +1370,310 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetAttendanceByExternRef">
+      <s:element name="InsertCLOTRequest">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="refs" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="pStaffLeaveRequest" type="tns:StaffCLOTRequest" />
+            <s:element minOccurs="1" maxOccurs="1" name="pcreaterUID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="pSource" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfString">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetAttendanceByExternRefResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAttendanceByExternRefResult" type="tns:ArrayOfAttendanceRawData" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfAttendanceRawData">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="AttendanceRawData" nillable="true" type="tns:AttendanceRawData" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="AttendanceRawData">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="LogDateTime" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ExternalRef" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="InterfaceID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="AttendanceInterfaceCenterID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RemoteIdent" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="StaffName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="StaffNumber" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="DeviceID" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="DeviceName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Zone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Department" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="OTMinute" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="LateMinute" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EarlyLeaveMinute" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="PairNo" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ImportID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="GpsLocation" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="GpsLocationName" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="PositionID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Sequence" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="PaymentAmount" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsDelete" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="LeaveDocumentPath" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="LeaveDocument2Path" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="InsertAttendance">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="data" type="tns:ArrayOfAttendanceRawData" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="InsertAttendanceResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="InsertAttendanceResult" type="s:boolean" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetIGuard">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="interfaceCode" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetIGuardResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetIGuardResult" type="tns:ILeaveIGuard" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ILeaveIGuard">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="InterfaceID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="DeviceID" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="AttendanceInterfaceCenterID" nillable="true" type="s:int" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetRosterInquiry_leave">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="zoneCode" type="tns:ArrayOfString" />
-            <s:element minOccurs="0" maxOccurs="1" name="positionCode" type="tns:ArrayOfString" />
-            <s:element minOccurs="1" maxOccurs="1" name="datefrom" type="s:dateTime" />
-            <s:element minOccurs="1" maxOccurs="1" name="dateto" type="s:dateTime" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetRosterInquiry_leaveResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetRosterInquiry_leaveResult" type="tns:ArrayOfV_System_iLeave_Leave_List" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfV_System_iLeave_Leave_List">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_iLeave_Leave_List" nillable="true" type="tns:v_System_iLeave_Leave_List" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="v_System_iLeave_Leave_List">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="English_Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Chinese_Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Nickname" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Search_Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Position_Code" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Zone_Code" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="ContractID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Leave" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="YYYY_MM_DD" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="MM_DD" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Shift_In" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Shift_Out" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Attend_In" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Attend_Out" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetRosterInquiry_Roster">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="zoneCode" type="tns:ArrayOfString" />
-            <s:element minOccurs="0" maxOccurs="1" name="positionCode" type="tns:ArrayOfString" />
-            <s:element minOccurs="1" maxOccurs="1" name="datefrom" type="s:dateTime" />
-            <s:element minOccurs="1" maxOccurs="1" name="dateto" type="s:dateTime" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetRosterInquiry_RosterResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetRosterInquiry_RosterResult" type="tns:ArrayOfV_System_iLeave_Roster_List" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfV_System_iLeave_Roster_List">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_iLeave_Roster_List" nillable="true" type="tns:v_System_iLeave_Roster_List" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="v_System_iLeave_Roster_List">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="English_Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Chinese_Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Nickname" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Search_Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Position_Code" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Zone_Code" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="ContractID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Leave" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="YYYY_MM_DD" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="MM_DD" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Shift_In" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Shift_Out" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Attend_In" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Attend_Out" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetRosterInquiry_Security">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="allInfo" type="s:boolean" />
-            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetRosterInquiry_SecurityResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetRosterInquiry_SecurityResult" type="tns:ArrayOfV_System_iLeave_Security" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfV_System_iLeave_Security">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_iLeave_Security" nillable="true" type="tns:v_System_iLeave_Security" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="v_System_iLeave_Security">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="EmploymentNumber" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="FirstEmploymentID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ContractID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="StationCode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="ZoneCode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="PostionCode" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="PositionID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="CommenceDate" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="TerminateDate" type="s:dateTime" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetUserinfo">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="pid" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetUserinfoResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetUserinfoResult" type="tns:UserInfo" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="UserInfo">
+      <s:complexType name="StaffCLOTRequest">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="PassWordHash" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="FullName" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="UserGroupID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hour" type="s:double" />
           <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeleteKey" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayrollPeriodID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmploymentNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NameCH" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FirstEmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeaveEntitlementAdjustID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CLDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpiryDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayItemID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActualID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeFrom" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeTo" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExcludedHour" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CL_TimeFrom" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CL_TimeTo" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CL_Hour" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CL_ExcludedHour" nillable="true" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InputSource" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsClaimPayment" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertCLOTRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertCLOTRequestResult" type="tns:ErrorMessageInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Insertt_Leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="newObject" type="tns:t_Leave" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Insertt_LeaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Base_Insertt_LeaveResult" type="tns:t_Leave" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Updatet_Leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateObject" type="tns:t_Leave" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Updatet_LeaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Base_Updatet_LeaveResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Deletet_Leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteObject" type="tns:t_Leave" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Deletet_LeaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Base_Deletet_LeaveResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Gett_Leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetObject" type="tns:t_Leave" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Gett_LeaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Base_Gett_LeaveResult" type="tns:t_Leave" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_GetListt_Leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="whereSql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_GetListt_LeaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Base_GetListt_LeaveResult" type="tns:ArrayOfT_Leave" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Insertt_WorkflowInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="newObject" type="tns:t_WorkflowInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="t_WorkflowInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkflowTypeID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:unsignedByte" />
-          <s:element minOccurs="0" maxOccurs="1" name="StatusDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServeOfNotice" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Base_Insertt_WorkflowInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Base_Insertt_WorkflowInfoResult" type="tns:t_WorkflowInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Updatet_WorkflowInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateObject" type="tns:t_WorkflowInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Updatet_WorkflowInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Base_Updatet_WorkflowInfoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Deletet_WorkflowInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteObject" type="tns:t_WorkflowInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Deletet_WorkflowInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Base_Deletet_WorkflowInfoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Gett_WorkflowInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetObject" type="tns:t_WorkflowInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Gett_WorkflowInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Base_Gett_WorkflowInfoResult" type="tns:t_WorkflowInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_GetListt_WorkflowInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="whereSql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_GetListt_WorkflowInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Base_GetListt_WorkflowInfoResult" type="tns:ArrayOfT_WorkflowInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfT_WorkflowInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="t_WorkflowInfo" nillable="true" type="tns:t_WorkflowInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Base_Insertt_WorkflowTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="newObject" type="tns:t_WorkflowTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="t_WorkflowTask">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InOutTypeID" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkflowInfoID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentStep" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FormulatedURL" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="UserGroupCode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="UserGroupDescription" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="PersonID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="SpecialRight" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="LanguageCode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="DomainUser" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="FailAttempt" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="LastLoginDate" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="ExpiryDate" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsLock" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="IsLockDescription" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsReceiveEmail" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="TokenKey" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="FullNameWithNickname" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="MobileUserLevel" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsRead" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetPosition">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetPositionResponse">
+      <s:element name="Base_Insertt_WorkflowTaskResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetPositionResult" type="tns:ArrayOfPositionInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="Base_Insertt_WorkflowTaskResult" type="tns:t_WorkflowTask" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfPositionInfo">
+      <s:element name="Base_Updatet_WorkflowTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateObject" type="tns:t_WorkflowTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Updatet_WorkflowTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Base_Updatet_WorkflowTaskResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Deletet_WorkflowTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteObject" type="tns:t_WorkflowTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Deletet_WorkflowTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Base_Deletet_WorkflowTaskResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Gett_WorkflowTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetObject" type="tns:t_WorkflowTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_Gett_WorkflowTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Base_Gett_WorkflowTaskResult" type="tns:t_WorkflowTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_GetListt_WorkflowTask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="whereSql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Base_GetListt_WorkflowTaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Base_GetListt_WorkflowTaskResult" type="tns:ArrayOfT_WorkflowTask" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfT_WorkflowTask">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="PositionInfo" nillable="true" type="tns:PositionInfo" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="PositionInfo">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RankID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="InternalRankID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="MaxOTHourPerMonth" type="s:double" />
-          <s:element minOccurs="0" maxOccurs="1" name="MainPosition" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Remark1" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Remark2" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Remark3" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="SponsorRequirementYearOfService" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="MaxSponsorTrainingFee" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="MaxSponsorNoOfTimes" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="MaxSponsorAmountPerTimes" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsSponsorFeeResetAnnually" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="RankLevel" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsALExcludeSAT" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsALExcludeSUN" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsALExcludeHoliday" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="PayScaleType" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="PayScaleEntryPoint" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="PayScaleMidPoint" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="PayScaleMaxPoint" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsAllowHalfDayLeave" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsAllowHourlyLeave" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsAllow3SectionLeave" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="JobType" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="LeaveCutOffType" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="PointList" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="SortSeq" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="SL168" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="Appraisal" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetPayslipBySid">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="sid" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetPayslipBySidResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetPayslipBySidResult" type="tns:ArrayOfV_System_iLeave_Payslip" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfV_System_iLeave_Payslip">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_iLeave_Payslip" nillable="true" type="tns:v_System_iLeave_Payslip" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="v_System_iLeave_Payslip">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="PayrollTrailMonth" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Staffid" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsLock" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsReleasePayslip" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetTaxationBySid">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="sid" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetTaxationBySidResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetTaxationBySidResult" type="tns:ArrayOfV_System_iLeave_Taxtion" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfV_System_iLeave_Taxtion">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="v_System_iLeave_Taxtion" nillable="true" type="tns:v_System_iLeave_Taxtion" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="v_System_iLeave_Taxtion">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="TaxYear" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Year_Range" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Staffid" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsRelease" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="CompanyID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="LoadPaySlipReport">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="uid_operater" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="month" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="LoadPaySlipReportResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="LoadPaySlipReportResult" type="tns:PaySlipReportObject" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="PaySlipReportObject">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="ReportDocumentArray" type="s:base64Binary" />
-          <s:element minOccurs="1" maxOccurs="1" name="RecordCount" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="PayrollSlipFor" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="PayrollPeriodFrom" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="PayrollPeriodTo" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="ST_Leave" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="QueryMessageEng" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="QueryMessageChi" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CompanyGroup" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="TotalRecord" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="PayrollPeriodCode" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="MPFContribution" type="s:dateTime" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="LoadTaxationReport">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="employid" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="uid_operater" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="LoadTaxationReportResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="LoadTaxationReportResult" type="tns:ReportCommonData" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ReportCommonData">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="reportData" type="s:base64Binary" />
-          <s:element minOccurs="1" maxOccurs="1" name="msgtype" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="t_WorkflowTask" nillable="true" type="tns:t_WorkflowTask" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetTaskSequence">
@@ -1893,20 +1945,24 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="ArrayOfT_Leave" nillable="true" type="tns:ArrayOfT_Leave" />
-      <s:element name="ArrayOfT_WorkflowInfo" nillable="true" type="tns:ArrayOfT_WorkflowInfo" />
-      <s:element name="ArrayOfT_WorkflowTask" nillable="true" type="tns:ArrayOfT_WorkflowTask" />
-      <s:element name="FirstRequestInfo" nillable="true" type="tns:FirstRequestInfo" />
-      <s:element name="string" nillable="true" type="s:string" />
-      <s:element name="ArrayOfAttachmentInfo" nillable="true" type="tns:ArrayOfAttachmentInfo" />
-      <s:element name="ArrayOfLeaveRequestMaster" nillable="true" type="tns:ArrayOfLeaveRequestMaster" />
-      <s:element name="LeaveRequestMaster" nillable="true" type="tns:LeaveRequestMaster" />
-      <s:element name="ArrayOfLeaveCLTODetail" nillable="true" type="tns:ArrayOfLeaveCLTODetail" />
-      <s:element name="ArrayOfT_StaffLeaveRequestDetail" nillable="true" type="tns:ArrayOfT_StaffLeaveRequestDetail" />
-      <s:element name="ArrayOfLeaveRequestDetail" nillable="true" type="tns:ArrayOfLeaveRequestDetail" />
-      <s:element name="LeaveBalanceType" type="tns:LeaveBalanceType" />
-      <s:element name="double" type="s:double" />
-      <s:element name="ArrayOfDouble" nillable="true" type="tns:ArrayOfDouble" />
+      <s:element name="CreateNewWorkflow_colt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="tns:WorkflowTypeID" />
+            <s:element minOccurs="1" maxOccurs="1" name="createrUID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="applyerEid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateNewWorkflow_coltResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateNewWorkflow_coltResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ArrayOfAttendanceRawData" nillable="true" type="tns:ArrayOfAttendanceRawData" />
       <s:element name="ILeaveIGuard" nillable="true" type="tns:ILeaveIGuard" />
       <s:element name="ArrayOfV_System_iLeave_Leave_List" nillable="true" type="tns:ArrayOfV_System_iLeave_Leave_List" />
@@ -1918,6 +1974,20 @@
       <s:element name="ArrayOfV_System_iLeave_Taxtion" nillable="true" type="tns:ArrayOfV_System_iLeave_Taxtion" />
       <s:element name="PaySlipReportObject" nillable="true" type="tns:PaySlipReportObject" />
       <s:element name="ReportCommonData" nillable="true" type="tns:ReportCommonData" />
+      <s:element name="FirstRequestInfo" nillable="true" type="tns:FirstRequestInfo" />
+      <s:element name="ArrayOfT_Leave" nillable="true" type="tns:ArrayOfT_Leave" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="ArrayOfAttachmentInfo" nillable="true" type="tns:ArrayOfAttachmentInfo" />
+      <s:element name="ArrayOfLeaveRequestMaster" nillable="true" type="tns:ArrayOfLeaveRequestMaster" />
+      <s:element name="LeaveRequestMaster" nillable="true" type="tns:LeaveRequestMaster" />
+      <s:element name="ArrayOfLeaveCLTODetail" nillable="true" type="tns:ArrayOfLeaveCLTODetail" />
+      <s:element name="ArrayOfT_StaffLeaveRequestDetail" nillable="true" type="tns:ArrayOfT_StaffLeaveRequestDetail" />
+      <s:element name="ArrayOfLeaveRequestDetail" nillable="true" type="tns:ArrayOfLeaveRequestDetail" />
+      <s:element name="LeaveBalanceType" type="tns:LeaveBalanceType" />
+      <s:element name="double" type="s:double" />
+      <s:element name="ArrayOfDouble" nillable="true" type="tns:ArrayOfDouble" />
+      <s:element name="ArrayOfT_WorkflowInfo" nillable="true" type="tns:ArrayOfT_WorkflowInfo" />
+      <s:element name="ArrayOfT_WorkflowTask" nillable="true" type="tns:ArrayOfT_WorkflowTask" />
       <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
       <s:element name="ArrayOfWorkflowTaskExtend" nillable="true" type="tns:ArrayOfWorkflowTaskExtend" />
       <s:element name="ArrayOfLeaveHistory" nillable="true" type="tns:ArrayOfLeaveHistory" />
@@ -1948,35 +2018,77 @@
   <wsdl:message name="RejectRequest_ClotSoapOut">
     <wsdl:part name="parameters" element="tns:RejectRequest_ClotResponse" />
   </wsdl:message>
-  <wsdl:message name="Base_Insertt_LeaveSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_Insertt_Leave" />
+  <wsdl:message name="GetAttendanceByExternRefSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAttendanceByExternRef" />
   </wsdl:message>
-  <wsdl:message name="Base_Insertt_LeaveSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_Insertt_LeaveResponse" />
+  <wsdl:message name="GetAttendanceByExternRefSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAttendanceByExternRefResponse" />
   </wsdl:message>
-  <wsdl:message name="Base_Updatet_LeaveSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_Updatet_Leave" />
+  <wsdl:message name="InsertAttendanceSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertAttendance" />
   </wsdl:message>
-  <wsdl:message name="Base_Updatet_LeaveSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_Updatet_LeaveResponse" />
+  <wsdl:message name="InsertAttendanceSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertAttendanceResponse" />
   </wsdl:message>
-  <wsdl:message name="Base_Deletet_LeaveSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_Deletet_Leave" />
+  <wsdl:message name="GetIGuardSoapIn">
+    <wsdl:part name="parameters" element="tns:GetIGuard" />
   </wsdl:message>
-  <wsdl:message name="Base_Deletet_LeaveSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_Deletet_LeaveResponse" />
+  <wsdl:message name="GetIGuardSoapOut">
+    <wsdl:part name="parameters" element="tns:GetIGuardResponse" />
   </wsdl:message>
-  <wsdl:message name="Base_Gett_LeaveSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_Gett_Leave" />
+  <wsdl:message name="GetRosterInquiry_leaveSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRosterInquiry_leave" />
   </wsdl:message>
-  <wsdl:message name="Base_Gett_LeaveSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_Gett_LeaveResponse" />
+  <wsdl:message name="GetRosterInquiry_leaveSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRosterInquiry_leaveResponse" />
   </wsdl:message>
-  <wsdl:message name="Base_GetListt_LeaveSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_GetListt_Leave" />
+  <wsdl:message name="GetRosterInquiry_RosterSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRosterInquiry_Roster" />
   </wsdl:message>
-  <wsdl:message name="Base_GetListt_LeaveSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_GetListt_LeaveResponse" />
+  <wsdl:message name="GetRosterInquiry_RosterSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRosterInquiry_RosterResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_SecuritySoapIn">
+    <wsdl:part name="parameters" element="tns:GetRosterInquiry_Security" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_SecuritySoapOut">
+    <wsdl:part name="parameters" element="tns:GetRosterInquiry_SecurityResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserinfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserinfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUserinfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserinfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPositionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPosition" />
+  </wsdl:message>
+  <wsdl:message name="GetPositionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPositionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPayslipBySidSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPayslipBySid" />
+  </wsdl:message>
+  <wsdl:message name="GetPayslipBySidSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPayslipBySidResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTaxationBySidSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTaxationBySid" />
+  </wsdl:message>
+  <wsdl:message name="GetTaxationBySidSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTaxationBySidResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadPaySlipReportSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadPaySlipReport" />
+  </wsdl:message>
+  <wsdl:message name="LoadPaySlipReportSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadPaySlipReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadTaxationReportSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadTaxationReport" />
+  </wsdl:message>
+  <wsdl:message name="LoadTaxationReportSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadTaxationReportResponse" />
   </wsdl:message>
   <wsdl:message name="GetContractByEmployidsSoapIn">
     <wsdl:part name="parameters" element="tns:GetContractByEmployids" />
@@ -1989,66 +2101,6 @@
   </wsdl:message>
   <wsdl:message name="GetRosterSoapOut">
     <wsdl:part name="parameters" element="tns:GetRosterResponse" />
-  </wsdl:message>
-  <wsdl:message name="Base_Insertt_WorkflowInfoSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_Insertt_WorkflowInfo" />
-  </wsdl:message>
-  <wsdl:message name="Base_Insertt_WorkflowInfoSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_Insertt_WorkflowInfoResponse" />
-  </wsdl:message>
-  <wsdl:message name="Base_Updatet_WorkflowInfoSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_Updatet_WorkflowInfo" />
-  </wsdl:message>
-  <wsdl:message name="Base_Updatet_WorkflowInfoSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_Updatet_WorkflowInfoResponse" />
-  </wsdl:message>
-  <wsdl:message name="Base_Deletet_WorkflowInfoSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_Deletet_WorkflowInfo" />
-  </wsdl:message>
-  <wsdl:message name="Base_Deletet_WorkflowInfoSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_Deletet_WorkflowInfoResponse" />
-  </wsdl:message>
-  <wsdl:message name="Base_Gett_WorkflowInfoSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_Gett_WorkflowInfo" />
-  </wsdl:message>
-  <wsdl:message name="Base_Gett_WorkflowInfoSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_Gett_WorkflowInfoResponse" />
-  </wsdl:message>
-  <wsdl:message name="Base_GetListt_WorkflowInfoSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_GetListt_WorkflowInfo" />
-  </wsdl:message>
-  <wsdl:message name="Base_GetListt_WorkflowInfoSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_GetListt_WorkflowInfoResponse" />
-  </wsdl:message>
-  <wsdl:message name="Base_Insertt_WorkflowTaskSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_Insertt_WorkflowTask" />
-  </wsdl:message>
-  <wsdl:message name="Base_Insertt_WorkflowTaskSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_Insertt_WorkflowTaskResponse" />
-  </wsdl:message>
-  <wsdl:message name="Base_Updatet_WorkflowTaskSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_Updatet_WorkflowTask" />
-  </wsdl:message>
-  <wsdl:message name="Base_Updatet_WorkflowTaskSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_Updatet_WorkflowTaskResponse" />
-  </wsdl:message>
-  <wsdl:message name="Base_Deletet_WorkflowTaskSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_Deletet_WorkflowTask" />
-  </wsdl:message>
-  <wsdl:message name="Base_Deletet_WorkflowTaskSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_Deletet_WorkflowTaskResponse" />
-  </wsdl:message>
-  <wsdl:message name="Base_Gett_WorkflowTaskSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_Gett_WorkflowTask" />
-  </wsdl:message>
-  <wsdl:message name="Base_Gett_WorkflowTaskSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_Gett_WorkflowTaskResponse" />
-  </wsdl:message>
-  <wsdl:message name="Base_GetListt_WorkflowTaskSoapIn">
-    <wsdl:part name="parameters" element="tns:Base_GetListt_WorkflowTask" />
-  </wsdl:message>
-  <wsdl:message name="Base_GetListt_WorkflowTaskSoapOut">
-    <wsdl:part name="parameters" element="tns:Base_GetListt_WorkflowTaskResponse" />
   </wsdl:message>
   <wsdl:message name="GetFirstRequestInfoSoapIn">
     <wsdl:part name="parameters" element="tns:GetFirstRequestInfo" />
@@ -2278,77 +2330,101 @@
   <wsdl:message name="GetWaitingSoapOut">
     <wsdl:part name="parameters" element="tns:GetWaitingResponse" />
   </wsdl:message>
-  <wsdl:message name="GetAttendanceByExternRefSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAttendanceByExternRef" />
+  <wsdl:message name="InsertCLOTRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertCLOTRequest" />
   </wsdl:message>
-  <wsdl:message name="GetAttendanceByExternRefSoapOut">
-    <wsdl:part name="parameters" element="tns:GetAttendanceByExternRefResponse" />
+  <wsdl:message name="InsertCLOTRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertCLOTRequestResponse" />
   </wsdl:message>
-  <wsdl:message name="InsertAttendanceSoapIn">
-    <wsdl:part name="parameters" element="tns:InsertAttendance" />
+  <wsdl:message name="Base_Insertt_LeaveSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_Insertt_Leave" />
   </wsdl:message>
-  <wsdl:message name="InsertAttendanceSoapOut">
-    <wsdl:part name="parameters" element="tns:InsertAttendanceResponse" />
+  <wsdl:message name="Base_Insertt_LeaveSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_Insertt_LeaveResponse" />
   </wsdl:message>
-  <wsdl:message name="GetIGuardSoapIn">
-    <wsdl:part name="parameters" element="tns:GetIGuard" />
+  <wsdl:message name="Base_Updatet_LeaveSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_Updatet_Leave" />
   </wsdl:message>
-  <wsdl:message name="GetIGuardSoapOut">
-    <wsdl:part name="parameters" element="tns:GetIGuardResponse" />
+  <wsdl:message name="Base_Updatet_LeaveSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_Updatet_LeaveResponse" />
   </wsdl:message>
-  <wsdl:message name="GetRosterInquiry_leaveSoapIn">
-    <wsdl:part name="parameters" element="tns:GetRosterInquiry_leave" />
+  <wsdl:message name="Base_Deletet_LeaveSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_Deletet_Leave" />
   </wsdl:message>
-  <wsdl:message name="GetRosterInquiry_leaveSoapOut">
-    <wsdl:part name="parameters" element="tns:GetRosterInquiry_leaveResponse" />
+  <wsdl:message name="Base_Deletet_LeaveSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_Deletet_LeaveResponse" />
   </wsdl:message>
-  <wsdl:message name="GetRosterInquiry_RosterSoapIn">
-    <wsdl:part name="parameters" element="tns:GetRosterInquiry_Roster" />
+  <wsdl:message name="Base_Gett_LeaveSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_Gett_Leave" />
   </wsdl:message>
-  <wsdl:message name="GetRosterInquiry_RosterSoapOut">
-    <wsdl:part name="parameters" element="tns:GetRosterInquiry_RosterResponse" />
+  <wsdl:message name="Base_Gett_LeaveSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_Gett_LeaveResponse" />
   </wsdl:message>
-  <wsdl:message name="GetRosterInquiry_SecuritySoapIn">
-    <wsdl:part name="parameters" element="tns:GetRosterInquiry_Security" />
+  <wsdl:message name="Base_GetListt_LeaveSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_GetListt_Leave" />
   </wsdl:message>
-  <wsdl:message name="GetRosterInquiry_SecuritySoapOut">
-    <wsdl:part name="parameters" element="tns:GetRosterInquiry_SecurityResponse" />
+  <wsdl:message name="Base_GetListt_LeaveSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_GetListt_LeaveResponse" />
   </wsdl:message>
-  <wsdl:message name="GetUserinfoSoapIn">
-    <wsdl:part name="parameters" element="tns:GetUserinfo" />
+  <wsdl:message name="Base_Insertt_WorkflowInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_Insertt_WorkflowInfo" />
   </wsdl:message>
-  <wsdl:message name="GetUserinfoSoapOut">
-    <wsdl:part name="parameters" element="tns:GetUserinfoResponse" />
+  <wsdl:message name="Base_Insertt_WorkflowInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_Insertt_WorkflowInfoResponse" />
   </wsdl:message>
-  <wsdl:message name="GetPositionSoapIn">
-    <wsdl:part name="parameters" element="tns:GetPosition" />
+  <wsdl:message name="Base_Updatet_WorkflowInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_Updatet_WorkflowInfo" />
   </wsdl:message>
-  <wsdl:message name="GetPositionSoapOut">
-    <wsdl:part name="parameters" element="tns:GetPositionResponse" />
+  <wsdl:message name="Base_Updatet_WorkflowInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_Updatet_WorkflowInfoResponse" />
   </wsdl:message>
-  <wsdl:message name="GetPayslipBySidSoapIn">
-    <wsdl:part name="parameters" element="tns:GetPayslipBySid" />
+  <wsdl:message name="Base_Deletet_WorkflowInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_Deletet_WorkflowInfo" />
   </wsdl:message>
-  <wsdl:message name="GetPayslipBySidSoapOut">
-    <wsdl:part name="parameters" element="tns:GetPayslipBySidResponse" />
+  <wsdl:message name="Base_Deletet_WorkflowInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_Deletet_WorkflowInfoResponse" />
   </wsdl:message>
-  <wsdl:message name="GetTaxationBySidSoapIn">
-    <wsdl:part name="parameters" element="tns:GetTaxationBySid" />
+  <wsdl:message name="Base_Gett_WorkflowInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_Gett_WorkflowInfo" />
   </wsdl:message>
-  <wsdl:message name="GetTaxationBySidSoapOut">
-    <wsdl:part name="parameters" element="tns:GetTaxationBySidResponse" />
+  <wsdl:message name="Base_Gett_WorkflowInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_Gett_WorkflowInfoResponse" />
   </wsdl:message>
-  <wsdl:message name="LoadPaySlipReportSoapIn">
-    <wsdl:part name="parameters" element="tns:LoadPaySlipReport" />
+  <wsdl:message name="Base_GetListt_WorkflowInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_GetListt_WorkflowInfo" />
   </wsdl:message>
-  <wsdl:message name="LoadPaySlipReportSoapOut">
-    <wsdl:part name="parameters" element="tns:LoadPaySlipReportResponse" />
+  <wsdl:message name="Base_GetListt_WorkflowInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_GetListt_WorkflowInfoResponse" />
   </wsdl:message>
-  <wsdl:message name="LoadTaxationReportSoapIn">
-    <wsdl:part name="parameters" element="tns:LoadTaxationReport" />
+  <wsdl:message name="Base_Insertt_WorkflowTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_Insertt_WorkflowTask" />
   </wsdl:message>
-  <wsdl:message name="LoadTaxationReportSoapOut">
-    <wsdl:part name="parameters" element="tns:LoadTaxationReportResponse" />
+  <wsdl:message name="Base_Insertt_WorkflowTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_Insertt_WorkflowTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="Base_Updatet_WorkflowTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_Updatet_WorkflowTask" />
+  </wsdl:message>
+  <wsdl:message name="Base_Updatet_WorkflowTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_Updatet_WorkflowTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="Base_Deletet_WorkflowTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_Deletet_WorkflowTask" />
+  </wsdl:message>
+  <wsdl:message name="Base_Deletet_WorkflowTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_Deletet_WorkflowTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="Base_Gett_WorkflowTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_Gett_WorkflowTask" />
+  </wsdl:message>
+  <wsdl:message name="Base_Gett_WorkflowTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_Gett_WorkflowTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="Base_GetListt_WorkflowTaskSoapIn">
+    <wsdl:part name="parameters" element="tns:Base_GetListt_WorkflowTask" />
+  </wsdl:message>
+  <wsdl:message name="Base_GetListt_WorkflowTaskSoapOut">
+    <wsdl:part name="parameters" element="tns:Base_GetListt_WorkflowTaskResponse" />
   </wsdl:message>
   <wsdl:message name="GetTaskSequenceSoapIn">
     <wsdl:part name="parameters" element="tns:GetTaskSequence" />
@@ -2428,6 +2504,12 @@
   <wsdl:message name="CancelRequest_leaveSoapOut">
     <wsdl:part name="parameters" element="tns:CancelRequest_leaveResponse" />
   </wsdl:message>
+  <wsdl:message name="CreateNewWorkflow_coltSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateNewWorkflow_colt" />
+  </wsdl:message>
+  <wsdl:message name="CreateNewWorkflow_coltSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateNewWorkflow_coltResponse" />
+  </wsdl:message>
   <wsdl:message name="ApproveRequest_ClotHttpPostIn">
     <wsdl:part name="quickOperate" type="s:string" />
     <wsdl:part name="requestid" type="s:string" />
@@ -2442,23 +2524,83 @@
     <wsdl:part name="remark" type="s:string" />
   </wsdl:message>
   <wsdl:message name="RejectRequest_ClotHttpPostOut" />
-  <wsdl:message name="Base_GetListt_LeaveHttpPostIn">
-    <wsdl:part name="whereSql" type="s:string" />
+  <wsdl:message name="GetAttendanceByExternRefHttpPostIn">
+    <wsdl:part name="refs" type="s1:StringArray" />
   </wsdl:message>
-  <wsdl:message name="Base_GetListt_LeaveHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfT_Leave" />
+  <wsdl:message name="GetAttendanceByExternRefHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAttendanceRawData" />
   </wsdl:message>
-  <wsdl:message name="Base_GetListt_WorkflowInfoHttpPostIn">
-    <wsdl:part name="whereSql" type="s:string" />
+  <wsdl:message name="GetIGuardHttpPostIn">
+    <wsdl:part name="interfaceCode" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="Base_GetListt_WorkflowInfoHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfT_WorkflowInfo" />
+  <wsdl:message name="GetIGuardHttpPostOut">
+    <wsdl:part name="Body" element="tns:ILeaveIGuard" />
   </wsdl:message>
-  <wsdl:message name="Base_GetListt_WorkflowTaskHttpPostIn">
-    <wsdl:part name="whereSql" type="s:string" />
+  <wsdl:message name="GetRosterInquiry_leaveHttpPostIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="zoneCode" type="s1:StringArray" />
+    <wsdl:part name="positionCode" type="s1:StringArray" />
+    <wsdl:part name="datefrom" type="s:string" />
+    <wsdl:part name="dateto" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="Base_GetListt_WorkflowTaskHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfT_WorkflowTask" />
+  <wsdl:message name="GetRosterInquiry_leaveHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfV_System_iLeave_Leave_List" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_RosterHttpPostIn">
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="zoneCode" type="s1:StringArray" />
+    <wsdl:part name="positionCode" type="s1:StringArray" />
+    <wsdl:part name="datefrom" type="s:string" />
+    <wsdl:part name="dateto" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_RosterHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfV_System_iLeave_Roster_List" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_SecurityHttpPostIn">
+    <wsdl:part name="allInfo" type="s:string" />
+    <wsdl:part name="staffid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRosterInquiry_SecurityHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfV_System_iLeave_Security" />
+  </wsdl:message>
+  <wsdl:message name="GetUserinfoHttpPostIn">
+    <wsdl:part name="pid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserinfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:UserInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetPositionHttpPostIn" />
+  <wsdl:message name="GetPositionHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPositionInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetPayslipBySidHttpPostIn">
+    <wsdl:part name="sid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPayslipBySidHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfV_System_iLeave_Payslip" />
+  </wsdl:message>
+  <wsdl:message name="GetTaxationBySidHttpPostIn">
+    <wsdl:part name="sid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTaxationBySidHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfV_System_iLeave_Taxtion" />
+  </wsdl:message>
+  <wsdl:message name="LoadPaySlipReportHttpPostIn">
+    <wsdl:part name="StaffID" type="s:string" />
+    <wsdl:part name="uid_operater" type="s:string" />
+    <wsdl:part name="year" type="s:string" />
+    <wsdl:part name="month" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoadPaySlipReportHttpPostOut">
+    <wsdl:part name="Body" element="tns:PaySlipReportObject" />
+  </wsdl:message>
+  <wsdl:message name="LoadTaxationReportHttpPostIn">
+    <wsdl:part name="year" type="s:string" />
+    <wsdl:part name="employid" type="s:string" />
+    <wsdl:part name="uid_operater" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LoadTaxationReportHttpPostOut">
+    <wsdl:part name="Body" element="tns:ReportCommonData" />
   </wsdl:message>
   <wsdl:message name="GetFirstRequestInfoHttpPostIn">
     <wsdl:part name="requestID" type="s:string" />
@@ -2635,83 +2777,23 @@
   <wsdl:message name="GetWaitingHttpPostOut">
     <wsdl:part name="Body" element="tns:double" />
   </wsdl:message>
-  <wsdl:message name="GetAttendanceByExternRefHttpPostIn">
-    <wsdl:part name="refs" type="s1:StringArray" />
+  <wsdl:message name="Base_GetListt_LeaveHttpPostIn">
+    <wsdl:part name="whereSql" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetAttendanceByExternRefHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfAttendanceRawData" />
+  <wsdl:message name="Base_GetListt_LeaveHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfT_Leave" />
   </wsdl:message>
-  <wsdl:message name="GetIGuardHttpPostIn">
-    <wsdl:part name="interfaceCode" type="s:string" />
+  <wsdl:message name="Base_GetListt_WorkflowInfoHttpPostIn">
+    <wsdl:part name="whereSql" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetIGuardHttpPostOut">
-    <wsdl:part name="Body" element="tns:ILeaveIGuard" />
+  <wsdl:message name="Base_GetListt_WorkflowInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfT_WorkflowInfo" />
   </wsdl:message>
-  <wsdl:message name="GetRosterInquiry_leaveHttpPostIn">
-    <wsdl:part name="name" type="s:string" />
-    <wsdl:part name="zoneCode" type="s1:StringArray" />
-    <wsdl:part name="positionCode" type="s1:StringArray" />
-    <wsdl:part name="datefrom" type="s:string" />
-    <wsdl:part name="dateto" type="s:string" />
+  <wsdl:message name="Base_GetListt_WorkflowTaskHttpPostIn">
+    <wsdl:part name="whereSql" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetRosterInquiry_leaveHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfV_System_iLeave_Leave_List" />
-  </wsdl:message>
-  <wsdl:message name="GetRosterInquiry_RosterHttpPostIn">
-    <wsdl:part name="name" type="s:string" />
-    <wsdl:part name="zoneCode" type="s1:StringArray" />
-    <wsdl:part name="positionCode" type="s1:StringArray" />
-    <wsdl:part name="datefrom" type="s:string" />
-    <wsdl:part name="dateto" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetRosterInquiry_RosterHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfV_System_iLeave_Roster_List" />
-  </wsdl:message>
-  <wsdl:message name="GetRosterInquiry_SecurityHttpPostIn">
-    <wsdl:part name="allInfo" type="s:string" />
-    <wsdl:part name="staffid" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetRosterInquiry_SecurityHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfV_System_iLeave_Security" />
-  </wsdl:message>
-  <wsdl:message name="GetUserinfoHttpPostIn">
-    <wsdl:part name="pid" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetUserinfoHttpPostOut">
-    <wsdl:part name="Body" element="tns:UserInfo" />
-  </wsdl:message>
-  <wsdl:message name="GetPositionHttpPostIn" />
-  <wsdl:message name="GetPositionHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfPositionInfo" />
-  </wsdl:message>
-  <wsdl:message name="GetPayslipBySidHttpPostIn">
-    <wsdl:part name="sid" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetPayslipBySidHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfV_System_iLeave_Payslip" />
-  </wsdl:message>
-  <wsdl:message name="GetTaxationBySidHttpPostIn">
-    <wsdl:part name="sid" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetTaxationBySidHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfV_System_iLeave_Taxtion" />
-  </wsdl:message>
-  <wsdl:message name="LoadPaySlipReportHttpPostIn">
-    <wsdl:part name="StaffID" type="s:string" />
-    <wsdl:part name="uid_operater" type="s:string" />
-    <wsdl:part name="year" type="s:string" />
-    <wsdl:part name="month" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="LoadPaySlipReportHttpPostOut">
-    <wsdl:part name="Body" element="tns:PaySlipReportObject" />
-  </wsdl:message>
-  <wsdl:message name="LoadTaxationReportHttpPostIn">
-    <wsdl:part name="year" type="s:string" />
-    <wsdl:part name="employid" type="s:string" />
-    <wsdl:part name="uid_operater" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="LoadTaxationReportHttpPostOut">
-    <wsdl:part name="Body" element="tns:ReportCommonData" />
+  <wsdl:message name="Base_GetListt_WorkflowTaskHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfT_WorkflowTask" />
   </wsdl:message>
   <wsdl:message name="GetTaskSequenceHttpPostIn">
     <wsdl:part name="WorkflowTypeID" type="s:string" />
@@ -2788,6 +2870,16 @@
   <wsdl:message name="CancelRequest_leaveHttpPostOut">
     <wsdl:part name="Body" element="tns:int" />
   </wsdl:message>
+  <wsdl:message name="CreateNewWorkflow_coltHttpPostIn">
+    <wsdl:part name="type" type="s:string" />
+    <wsdl:part name="createrUID" type="s:string" />
+    <wsdl:part name="remark" type="s:string" />
+    <wsdl:part name="RequestID" type="s:string" />
+    <wsdl:part name="applyerEid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateNewWorkflow_coltHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
   <wsdl:portType name="LeaveManagementV2Soap">
     <wsdl:operation name="ApproveRequest_Clot">
       <wsdl:input message="tns:ApproveRequest_ClotSoapIn" />
@@ -2797,25 +2889,53 @@
       <wsdl:input message="tns:RejectRequest_ClotSoapIn" />
       <wsdl:output message="tns:RejectRequest_ClotSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="Base_Insertt_Leave">
-      <wsdl:input message="tns:Base_Insertt_LeaveSoapIn" />
-      <wsdl:output message="tns:Base_Insertt_LeaveSoapOut" />
+    <wsdl:operation name="GetAttendanceByExternRef">
+      <wsdl:input message="tns:GetAttendanceByExternRefSoapIn" />
+      <wsdl:output message="tns:GetAttendanceByExternRefSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="Base_Updatet_Leave">
-      <wsdl:input message="tns:Base_Updatet_LeaveSoapIn" />
-      <wsdl:output message="tns:Base_Updatet_LeaveSoapOut" />
+    <wsdl:operation name="InsertAttendance">
+      <wsdl:input message="tns:InsertAttendanceSoapIn" />
+      <wsdl:output message="tns:InsertAttendanceSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="Base_Deletet_Leave">
-      <wsdl:input message="tns:Base_Deletet_LeaveSoapIn" />
-      <wsdl:output message="tns:Base_Deletet_LeaveSoapOut" />
+    <wsdl:operation name="GetIGuard">
+      <wsdl:input message="tns:GetIGuardSoapIn" />
+      <wsdl:output message="tns:GetIGuardSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="Base_Gett_Leave">
-      <wsdl:input message="tns:Base_Gett_LeaveSoapIn" />
-      <wsdl:output message="tns:Base_Gett_LeaveSoapOut" />
+    <wsdl:operation name="GetRosterInquiry_leave">
+      <wsdl:input message="tns:GetRosterInquiry_leaveSoapIn" />
+      <wsdl:output message="tns:GetRosterInquiry_leaveSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_Leave">
-      <wsdl:input message="tns:Base_GetListt_LeaveSoapIn" />
-      <wsdl:output message="tns:Base_GetListt_LeaveSoapOut" />
+    <wsdl:operation name="GetRosterInquiry_Roster">
+      <wsdl:input message="tns:GetRosterInquiry_RosterSoapIn" />
+      <wsdl:output message="tns:GetRosterInquiry_RosterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_Security">
+      <wsdl:input message="tns:GetRosterInquiry_SecuritySoapIn" />
+      <wsdl:output message="tns:GetRosterInquiry_SecuritySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserinfo">
+      <wsdl:input message="tns:GetUserinfoSoapIn" />
+      <wsdl:output message="tns:GetUserinfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPosition">
+      <wsdl:input message="tns:GetPositionSoapIn" />
+      <wsdl:output message="tns:GetPositionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPayslipBySid">
+      <wsdl:input message="tns:GetPayslipBySidSoapIn" />
+      <wsdl:output message="tns:GetPayslipBySidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTaxationBySid">
+      <wsdl:input message="tns:GetTaxationBySidSoapIn" />
+      <wsdl:output message="tns:GetTaxationBySidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadPaySlipReport">
+      <wsdl:input message="tns:LoadPaySlipReportSoapIn" />
+      <wsdl:output message="tns:LoadPaySlipReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadTaxationReport">
+      <wsdl:input message="tns:LoadTaxationReportSoapIn" />
+      <wsdl:output message="tns:LoadTaxationReportSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetContractByEmployids">
       <wsdl:input message="tns:GetContractByEmployidsSoapIn" />
@@ -2824,46 +2944,6 @@
     <wsdl:operation name="GetRoster">
       <wsdl:input message="tns:GetRosterSoapIn" />
       <wsdl:output message="tns:GetRosterSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Base_Insertt_WorkflowInfo">
-      <wsdl:input message="tns:Base_Insertt_WorkflowInfoSoapIn" />
-      <wsdl:output message="tns:Base_Insertt_WorkflowInfoSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Base_Updatet_WorkflowInfo">
-      <wsdl:input message="tns:Base_Updatet_WorkflowInfoSoapIn" />
-      <wsdl:output message="tns:Base_Updatet_WorkflowInfoSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Base_Deletet_WorkflowInfo">
-      <wsdl:input message="tns:Base_Deletet_WorkflowInfoSoapIn" />
-      <wsdl:output message="tns:Base_Deletet_WorkflowInfoSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Base_Gett_WorkflowInfo">
-      <wsdl:input message="tns:Base_Gett_WorkflowInfoSoapIn" />
-      <wsdl:output message="tns:Base_Gett_WorkflowInfoSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_WorkflowInfo">
-      <wsdl:input message="tns:Base_GetListt_WorkflowInfoSoapIn" />
-      <wsdl:output message="tns:Base_GetListt_WorkflowInfoSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Base_Insertt_WorkflowTask">
-      <wsdl:input message="tns:Base_Insertt_WorkflowTaskSoapIn" />
-      <wsdl:output message="tns:Base_Insertt_WorkflowTaskSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Base_Updatet_WorkflowTask">
-      <wsdl:input message="tns:Base_Updatet_WorkflowTaskSoapIn" />
-      <wsdl:output message="tns:Base_Updatet_WorkflowTaskSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Base_Deletet_WorkflowTask">
-      <wsdl:input message="tns:Base_Deletet_WorkflowTaskSoapIn" />
-      <wsdl:output message="tns:Base_Deletet_WorkflowTaskSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Base_Gett_WorkflowTask">
-      <wsdl:input message="tns:Base_Gett_WorkflowTaskSoapIn" />
-      <wsdl:output message="tns:Base_Gett_WorkflowTaskSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_WorkflowTask">
-      <wsdl:input message="tns:Base_GetListt_WorkflowTaskSoapIn" />
-      <wsdl:output message="tns:Base_GetListt_WorkflowTaskSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetFirstRequestInfo">
       <wsdl:input message="tns:GetFirstRequestInfoSoapIn" />
@@ -3017,53 +3097,69 @@
       <wsdl:input message="tns:GetWaitingSoapIn" />
       <wsdl:output message="tns:GetWaitingSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetAttendanceByExternRef">
-      <wsdl:input message="tns:GetAttendanceByExternRefSoapIn" />
-      <wsdl:output message="tns:GetAttendanceByExternRefSoapOut" />
+    <wsdl:operation name="InsertCLOTRequest">
+      <wsdl:input message="tns:InsertCLOTRequestSoapIn" />
+      <wsdl:output message="tns:InsertCLOTRequestSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="InsertAttendance">
-      <wsdl:input message="tns:InsertAttendanceSoapIn" />
-      <wsdl:output message="tns:InsertAttendanceSoapOut" />
+    <wsdl:operation name="Base_Insertt_Leave">
+      <wsdl:input message="tns:Base_Insertt_LeaveSoapIn" />
+      <wsdl:output message="tns:Base_Insertt_LeaveSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetIGuard">
-      <wsdl:input message="tns:GetIGuardSoapIn" />
-      <wsdl:output message="tns:GetIGuardSoapOut" />
+    <wsdl:operation name="Base_Updatet_Leave">
+      <wsdl:input message="tns:Base_Updatet_LeaveSoapIn" />
+      <wsdl:output message="tns:Base_Updatet_LeaveSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetRosterInquiry_leave">
-      <wsdl:input message="tns:GetRosterInquiry_leaveSoapIn" />
-      <wsdl:output message="tns:GetRosterInquiry_leaveSoapOut" />
+    <wsdl:operation name="Base_Deletet_Leave">
+      <wsdl:input message="tns:Base_Deletet_LeaveSoapIn" />
+      <wsdl:output message="tns:Base_Deletet_LeaveSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetRosterInquiry_Roster">
-      <wsdl:input message="tns:GetRosterInquiry_RosterSoapIn" />
-      <wsdl:output message="tns:GetRosterInquiry_RosterSoapOut" />
+    <wsdl:operation name="Base_Gett_Leave">
+      <wsdl:input message="tns:Base_Gett_LeaveSoapIn" />
+      <wsdl:output message="tns:Base_Gett_LeaveSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetRosterInquiry_Security">
-      <wsdl:input message="tns:GetRosterInquiry_SecuritySoapIn" />
-      <wsdl:output message="tns:GetRosterInquiry_SecuritySoapOut" />
+    <wsdl:operation name="Base_GetListt_Leave">
+      <wsdl:input message="tns:Base_GetListt_LeaveSoapIn" />
+      <wsdl:output message="tns:Base_GetListt_LeaveSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetUserinfo">
-      <wsdl:input message="tns:GetUserinfoSoapIn" />
-      <wsdl:output message="tns:GetUserinfoSoapOut" />
+    <wsdl:operation name="Base_Insertt_WorkflowInfo">
+      <wsdl:input message="tns:Base_Insertt_WorkflowInfoSoapIn" />
+      <wsdl:output message="tns:Base_Insertt_WorkflowInfoSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetPosition">
-      <wsdl:input message="tns:GetPositionSoapIn" />
-      <wsdl:output message="tns:GetPositionSoapOut" />
+    <wsdl:operation name="Base_Updatet_WorkflowInfo">
+      <wsdl:input message="tns:Base_Updatet_WorkflowInfoSoapIn" />
+      <wsdl:output message="tns:Base_Updatet_WorkflowInfoSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetPayslipBySid">
-      <wsdl:input message="tns:GetPayslipBySidSoapIn" />
-      <wsdl:output message="tns:GetPayslipBySidSoapOut" />
+    <wsdl:operation name="Base_Deletet_WorkflowInfo">
+      <wsdl:input message="tns:Base_Deletet_WorkflowInfoSoapIn" />
+      <wsdl:output message="tns:Base_Deletet_WorkflowInfoSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetTaxationBySid">
-      <wsdl:input message="tns:GetTaxationBySidSoapIn" />
-      <wsdl:output message="tns:GetTaxationBySidSoapOut" />
+    <wsdl:operation name="Base_Gett_WorkflowInfo">
+      <wsdl:input message="tns:Base_Gett_WorkflowInfoSoapIn" />
+      <wsdl:output message="tns:Base_Gett_WorkflowInfoSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="LoadPaySlipReport">
-      <wsdl:input message="tns:LoadPaySlipReportSoapIn" />
-      <wsdl:output message="tns:LoadPaySlipReportSoapOut" />
+    <wsdl:operation name="Base_GetListt_WorkflowInfo">
+      <wsdl:input message="tns:Base_GetListt_WorkflowInfoSoapIn" />
+      <wsdl:output message="tns:Base_GetListt_WorkflowInfoSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="LoadTaxationReport">
-      <wsdl:input message="tns:LoadTaxationReportSoapIn" />
-      <wsdl:output message="tns:LoadTaxationReportSoapOut" />
+    <wsdl:operation name="Base_Insertt_WorkflowTask">
+      <wsdl:input message="tns:Base_Insertt_WorkflowTaskSoapIn" />
+      <wsdl:output message="tns:Base_Insertt_WorkflowTaskSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Base_Updatet_WorkflowTask">
+      <wsdl:input message="tns:Base_Updatet_WorkflowTaskSoapIn" />
+      <wsdl:output message="tns:Base_Updatet_WorkflowTaskSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Base_Deletet_WorkflowTask">
+      <wsdl:input message="tns:Base_Deletet_WorkflowTaskSoapIn" />
+      <wsdl:output message="tns:Base_Deletet_WorkflowTaskSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Base_Gett_WorkflowTask">
+      <wsdl:input message="tns:Base_Gett_WorkflowTaskSoapIn" />
+      <wsdl:output message="tns:Base_Gett_WorkflowTaskSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Base_GetListt_WorkflowTask">
+      <wsdl:input message="tns:Base_GetListt_WorkflowTaskSoapIn" />
+      <wsdl:output message="tns:Base_GetListt_WorkflowTaskSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetTaskSequence">
       <wsdl:input message="tns:GetTaskSequenceSoapIn" />
@@ -3117,6 +3213,10 @@
       <wsdl:input message="tns:CancelRequest_leaveSoapIn" />
       <wsdl:output message="tns:CancelRequest_leaveSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="CreateNewWorkflow_colt">
+      <wsdl:input message="tns:CreateNewWorkflow_coltSoapIn" />
+      <wsdl:output message="tns:CreateNewWorkflow_coltSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LeaveManagementV2HttpPost">
     <wsdl:operation name="ApproveRequest_Clot">
@@ -3127,17 +3227,49 @@
       <wsdl:input message="tns:RejectRequest_ClotHttpPostIn" />
       <wsdl:output message="tns:RejectRequest_ClotHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_Leave">
-      <wsdl:input message="tns:Base_GetListt_LeaveHttpPostIn" />
-      <wsdl:output message="tns:Base_GetListt_LeaveHttpPostOut" />
+    <wsdl:operation name="GetAttendanceByExternRef">
+      <wsdl:input message="tns:GetAttendanceByExternRefHttpPostIn" />
+      <wsdl:output message="tns:GetAttendanceByExternRefHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_WorkflowInfo">
-      <wsdl:input message="tns:Base_GetListt_WorkflowInfoHttpPostIn" />
-      <wsdl:output message="tns:Base_GetListt_WorkflowInfoHttpPostOut" />
+    <wsdl:operation name="GetIGuard">
+      <wsdl:input message="tns:GetIGuardHttpPostIn" />
+      <wsdl:output message="tns:GetIGuardHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_WorkflowTask">
-      <wsdl:input message="tns:Base_GetListt_WorkflowTaskHttpPostIn" />
-      <wsdl:output message="tns:Base_GetListt_WorkflowTaskHttpPostOut" />
+    <wsdl:operation name="GetRosterInquiry_leave">
+      <wsdl:input message="tns:GetRosterInquiry_leaveHttpPostIn" />
+      <wsdl:output message="tns:GetRosterInquiry_leaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_Roster">
+      <wsdl:input message="tns:GetRosterInquiry_RosterHttpPostIn" />
+      <wsdl:output message="tns:GetRosterInquiry_RosterHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_Security">
+      <wsdl:input message="tns:GetRosterInquiry_SecurityHttpPostIn" />
+      <wsdl:output message="tns:GetRosterInquiry_SecurityHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserinfo">
+      <wsdl:input message="tns:GetUserinfoHttpPostIn" />
+      <wsdl:output message="tns:GetUserinfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPosition">
+      <wsdl:input message="tns:GetPositionHttpPostIn" />
+      <wsdl:output message="tns:GetPositionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPayslipBySid">
+      <wsdl:input message="tns:GetPayslipBySidHttpPostIn" />
+      <wsdl:output message="tns:GetPayslipBySidHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTaxationBySid">
+      <wsdl:input message="tns:GetTaxationBySidHttpPostIn" />
+      <wsdl:output message="tns:GetTaxationBySidHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadPaySlipReport">
+      <wsdl:input message="tns:LoadPaySlipReportHttpPostIn" />
+      <wsdl:output message="tns:LoadPaySlipReportHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadTaxationReport">
+      <wsdl:input message="tns:LoadTaxationReportHttpPostIn" />
+      <wsdl:output message="tns:LoadTaxationReportHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetFirstRequestInfo">
       <wsdl:input message="tns:GetFirstRequestInfoHttpPostIn" />
@@ -3255,49 +3387,17 @@
       <wsdl:input message="tns:GetWaitingHttpPostIn" />
       <wsdl:output message="tns:GetWaitingHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetAttendanceByExternRef">
-      <wsdl:input message="tns:GetAttendanceByExternRefHttpPostIn" />
-      <wsdl:output message="tns:GetAttendanceByExternRefHttpPostOut" />
+    <wsdl:operation name="Base_GetListt_Leave">
+      <wsdl:input message="tns:Base_GetListt_LeaveHttpPostIn" />
+      <wsdl:output message="tns:Base_GetListt_LeaveHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetIGuard">
-      <wsdl:input message="tns:GetIGuardHttpPostIn" />
-      <wsdl:output message="tns:GetIGuardHttpPostOut" />
+    <wsdl:operation name="Base_GetListt_WorkflowInfo">
+      <wsdl:input message="tns:Base_GetListt_WorkflowInfoHttpPostIn" />
+      <wsdl:output message="tns:Base_GetListt_WorkflowInfoHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetRosterInquiry_leave">
-      <wsdl:input message="tns:GetRosterInquiry_leaveHttpPostIn" />
-      <wsdl:output message="tns:GetRosterInquiry_leaveHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetRosterInquiry_Roster">
-      <wsdl:input message="tns:GetRosterInquiry_RosterHttpPostIn" />
-      <wsdl:output message="tns:GetRosterInquiry_RosterHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetRosterInquiry_Security">
-      <wsdl:input message="tns:GetRosterInquiry_SecurityHttpPostIn" />
-      <wsdl:output message="tns:GetRosterInquiry_SecurityHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUserinfo">
-      <wsdl:input message="tns:GetUserinfoHttpPostIn" />
-      <wsdl:output message="tns:GetUserinfoHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetPosition">
-      <wsdl:input message="tns:GetPositionHttpPostIn" />
-      <wsdl:output message="tns:GetPositionHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetPayslipBySid">
-      <wsdl:input message="tns:GetPayslipBySidHttpPostIn" />
-      <wsdl:output message="tns:GetPayslipBySidHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetTaxationBySid">
-      <wsdl:input message="tns:GetTaxationBySidHttpPostIn" />
-      <wsdl:output message="tns:GetTaxationBySidHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="LoadPaySlipReport">
-      <wsdl:input message="tns:LoadPaySlipReportHttpPostIn" />
-      <wsdl:output message="tns:LoadPaySlipReportHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="LoadTaxationReport">
-      <wsdl:input message="tns:LoadTaxationReportHttpPostIn" />
-      <wsdl:output message="tns:LoadTaxationReportHttpPostOut" />
+    <wsdl:operation name="Base_GetListt_WorkflowTask">
+      <wsdl:input message="tns:Base_GetListt_WorkflowTaskHttpPostIn" />
+      <wsdl:output message="tns:Base_GetListt_WorkflowTaskHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetTaskSequence">
       <wsdl:input message="tns:GetTaskSequenceHttpPostIn" />
@@ -3347,6 +3447,10 @@
       <wsdl:input message="tns:CancelRequest_leaveHttpPostIn" />
       <wsdl:output message="tns:CancelRequest_leaveHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="CreateNewWorkflow_colt">
+      <wsdl:input message="tns:CreateNewWorkflow_coltHttpPostIn" />
+      <wsdl:output message="tns:CreateNewWorkflow_coltHttpPostOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LeaveManagementV2Soap" type="tns:LeaveManagementV2Soap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -3368,8 +3472,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Base_Insertt_Leave">
-      <soap:operation soapAction="http://tempuri.org/Base_Insertt_Leave" style="document" />
+    <wsdl:operation name="GetAttendanceByExternRef">
+      <soap:operation soapAction="http://tempuri.org/GetAttendanceByExternRef" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3377,8 +3481,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Base_Updatet_Leave">
-      <soap:operation soapAction="http://tempuri.org/Base_Updatet_Leave" style="document" />
+    <wsdl:operation name="InsertAttendance">
+      <soap:operation soapAction="http://tempuri.org/InsertAttendance" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3386,8 +3490,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Base_Deletet_Leave">
-      <soap:operation soapAction="http://tempuri.org/Base_Deletet_Leave" style="document" />
+    <wsdl:operation name="GetIGuard">
+      <soap:operation soapAction="http://tempuri.org/GetIGuard" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3395,8 +3499,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Base_Gett_Leave">
-      <soap:operation soapAction="http://tempuri.org/Base_Gett_Leave" style="document" />
+    <wsdl:operation name="GetRosterInquiry_leave">
+      <soap:operation soapAction="http://tempuri.org/GetRosterInquiry_leave" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3404,8 +3508,71 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_Leave">
-      <soap:operation soapAction="http://tempuri.org/Base_GetListt_Leave" style="document" />
+    <wsdl:operation name="GetRosterInquiry_Roster">
+      <soap:operation soapAction="http://tempuri.org/GetRosterInquiry_Roster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_Security">
+      <soap:operation soapAction="http://tempuri.org/GetRosterInquiry_Security" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserinfo">
+      <soap:operation soapAction="http://tempuri.org/GetUserinfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPosition">
+      <soap:operation soapAction="http://tempuri.org/GetPosition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPayslipBySid">
+      <soap:operation soapAction="http://tempuri.org/GetPayslipBySid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaxationBySid">
+      <soap:operation soapAction="http://tempuri.org/GetTaxationBySid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadPaySlipReport">
+      <soap:operation soapAction="http://tempuri.org/LoadPaySlipReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadTaxationReport">
+      <soap:operation soapAction="http://tempuri.org/LoadTaxationReport" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3424,96 +3591,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetRoster">
       <soap:operation soapAction="http://tempuri.org/GetRoster" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Insertt_WorkflowInfo">
-      <soap:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowInfo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Updatet_WorkflowInfo">
-      <soap:operation soapAction="http://tempuri.org/Base_Updatet_WorkflowInfo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Deletet_WorkflowInfo">
-      <soap:operation soapAction="http://tempuri.org/Base_Deletet_WorkflowInfo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Gett_WorkflowInfo">
-      <soap:operation soapAction="http://tempuri.org/Base_Gett_WorkflowInfo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_WorkflowInfo">
-      <soap:operation soapAction="http://tempuri.org/Base_GetListt_WorkflowInfo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Insertt_WorkflowTask">
-      <soap:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Updatet_WorkflowTask">
-      <soap:operation soapAction="http://tempuri.org/Base_Updatet_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Deletet_WorkflowTask">
-      <soap:operation soapAction="http://tempuri.org/Base_Deletet_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Gett_WorkflowTask">
-      <soap:operation soapAction="http://tempuri.org/Base_Gett_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_WorkflowTask">
-      <soap:operation soapAction="http://tempuri.org/Base_GetListt_WorkflowTask" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3863,8 +3940,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAttendanceByExternRef">
-      <soap:operation soapAction="http://tempuri.org/GetAttendanceByExternRef" style="document" />
+    <wsdl:operation name="InsertCLOTRequest">
+      <soap:operation soapAction="http://tempuri.org/InsertCLOTRequest" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3872,8 +3949,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="InsertAttendance">
-      <soap:operation soapAction="http://tempuri.org/InsertAttendance" style="document" />
+    <wsdl:operation name="Base_Insertt_Leave">
+      <soap:operation soapAction="http://tempuri.org/Base_Insertt_Leave" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3881,8 +3958,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetIGuard">
-      <soap:operation soapAction="http://tempuri.org/GetIGuard" style="document" />
+    <wsdl:operation name="Base_Updatet_Leave">
+      <soap:operation soapAction="http://tempuri.org/Base_Updatet_Leave" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3890,8 +3967,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetRosterInquiry_leave">
-      <soap:operation soapAction="http://tempuri.org/GetRosterInquiry_leave" style="document" />
+    <wsdl:operation name="Base_Deletet_Leave">
+      <soap:operation soapAction="http://tempuri.org/Base_Deletet_Leave" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3899,8 +3976,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetRosterInquiry_Roster">
-      <soap:operation soapAction="http://tempuri.org/GetRosterInquiry_Roster" style="document" />
+    <wsdl:operation name="Base_Gett_Leave">
+      <soap:operation soapAction="http://tempuri.org/Base_Gett_Leave" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3908,8 +3985,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetRosterInquiry_Security">
-      <soap:operation soapAction="http://tempuri.org/GetRosterInquiry_Security" style="document" />
+    <wsdl:operation name="Base_GetListt_Leave">
+      <soap:operation soapAction="http://tempuri.org/Base_GetListt_Leave" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3917,8 +3994,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetUserinfo">
-      <soap:operation soapAction="http://tempuri.org/GetUserinfo" style="document" />
+    <wsdl:operation name="Base_Insertt_WorkflowInfo">
+      <soap:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowInfo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3926,8 +4003,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPosition">
-      <soap:operation soapAction="http://tempuri.org/GetPosition" style="document" />
+    <wsdl:operation name="Base_Updatet_WorkflowInfo">
+      <soap:operation soapAction="http://tempuri.org/Base_Updatet_WorkflowInfo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3935,8 +4012,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPayslipBySid">
-      <soap:operation soapAction="http://tempuri.org/GetPayslipBySid" style="document" />
+    <wsdl:operation name="Base_Deletet_WorkflowInfo">
+      <soap:operation soapAction="http://tempuri.org/Base_Deletet_WorkflowInfo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3944,8 +4021,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetTaxationBySid">
-      <soap:operation soapAction="http://tempuri.org/GetTaxationBySid" style="document" />
+    <wsdl:operation name="Base_Gett_WorkflowInfo">
+      <soap:operation soapAction="http://tempuri.org/Base_Gett_WorkflowInfo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3953,8 +4030,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="LoadPaySlipReport">
-      <soap:operation soapAction="http://tempuri.org/LoadPaySlipReport" style="document" />
+    <wsdl:operation name="Base_GetListt_WorkflowInfo">
+      <soap:operation soapAction="http://tempuri.org/Base_GetListt_WorkflowInfo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3962,8 +4039,44 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="LoadTaxationReport">
-      <soap:operation soapAction="http://tempuri.org/LoadTaxationReport" style="document" />
+    <wsdl:operation name="Base_Insertt_WorkflowTask">
+      <soap:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Base_Updatet_WorkflowTask">
+      <soap:operation soapAction="http://tempuri.org/Base_Updatet_WorkflowTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Base_Deletet_WorkflowTask">
+      <soap:operation soapAction="http://tempuri.org/Base_Deletet_WorkflowTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Base_Gett_WorkflowTask">
+      <soap:operation soapAction="http://tempuri.org/Base_Gett_WorkflowTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Base_GetListt_WorkflowTask">
+      <soap:operation soapAction="http://tempuri.org/Base_GetListt_WorkflowTask" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -4088,6 +4201,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CreateNewWorkflow_colt">
+      <soap:operation soapAction="http://tempuri.org/CreateNewWorkflow_colt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LeaveManagementV2Soap12" type="tns:LeaveManagementV2Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -4109,8 +4231,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Base_Insertt_Leave">
-      <soap12:operation soapAction="http://tempuri.org/Base_Insertt_Leave" style="document" />
+    <wsdl:operation name="GetAttendanceByExternRef">
+      <soap12:operation soapAction="http://tempuri.org/GetAttendanceByExternRef" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4118,8 +4240,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Base_Updatet_Leave">
-      <soap12:operation soapAction="http://tempuri.org/Base_Updatet_Leave" style="document" />
+    <wsdl:operation name="InsertAttendance">
+      <soap12:operation soapAction="http://tempuri.org/InsertAttendance" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4127,8 +4249,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Base_Deletet_Leave">
-      <soap12:operation soapAction="http://tempuri.org/Base_Deletet_Leave" style="document" />
+    <wsdl:operation name="GetIGuard">
+      <soap12:operation soapAction="http://tempuri.org/GetIGuard" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4136,8 +4258,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Base_Gett_Leave">
-      <soap12:operation soapAction="http://tempuri.org/Base_Gett_Leave" style="document" />
+    <wsdl:operation name="GetRosterInquiry_leave">
+      <soap12:operation soapAction="http://tempuri.org/GetRosterInquiry_leave" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4145,8 +4267,71 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_Leave">
-      <soap12:operation soapAction="http://tempuri.org/Base_GetListt_Leave" style="document" />
+    <wsdl:operation name="GetRosterInquiry_Roster">
+      <soap12:operation soapAction="http://tempuri.org/GetRosterInquiry_Roster" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_Security">
+      <soap12:operation soapAction="http://tempuri.org/GetRosterInquiry_Security" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserinfo">
+      <soap12:operation soapAction="http://tempuri.org/GetUserinfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPosition">
+      <soap12:operation soapAction="http://tempuri.org/GetPosition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPayslipBySid">
+      <soap12:operation soapAction="http://tempuri.org/GetPayslipBySid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaxationBySid">
+      <soap12:operation soapAction="http://tempuri.org/GetTaxationBySid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadPaySlipReport">
+      <soap12:operation soapAction="http://tempuri.org/LoadPaySlipReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadTaxationReport">
+      <soap12:operation soapAction="http://tempuri.org/LoadTaxationReport" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4165,96 +4350,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetRoster">
       <soap12:operation soapAction="http://tempuri.org/GetRoster" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Insertt_WorkflowInfo">
-      <soap12:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowInfo" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Updatet_WorkflowInfo">
-      <soap12:operation soapAction="http://tempuri.org/Base_Updatet_WorkflowInfo" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Deletet_WorkflowInfo">
-      <soap12:operation soapAction="http://tempuri.org/Base_Deletet_WorkflowInfo" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Gett_WorkflowInfo">
-      <soap12:operation soapAction="http://tempuri.org/Base_Gett_WorkflowInfo" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_WorkflowInfo">
-      <soap12:operation soapAction="http://tempuri.org/Base_GetListt_WorkflowInfo" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Insertt_WorkflowTask">
-      <soap12:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Updatet_WorkflowTask">
-      <soap12:operation soapAction="http://tempuri.org/Base_Updatet_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Deletet_WorkflowTask">
-      <soap12:operation soapAction="http://tempuri.org/Base_Deletet_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_Gett_WorkflowTask">
-      <soap12:operation soapAction="http://tempuri.org/Base_Gett_WorkflowTask" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_WorkflowTask">
-      <soap12:operation soapAction="http://tempuri.org/Base_GetListt_WorkflowTask" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4604,8 +4699,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAttendanceByExternRef">
-      <soap12:operation soapAction="http://tempuri.org/GetAttendanceByExternRef" style="document" />
+    <wsdl:operation name="InsertCLOTRequest">
+      <soap12:operation soapAction="http://tempuri.org/InsertCLOTRequest" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4613,8 +4708,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="InsertAttendance">
-      <soap12:operation soapAction="http://tempuri.org/InsertAttendance" style="document" />
+    <wsdl:operation name="Base_Insertt_Leave">
+      <soap12:operation soapAction="http://tempuri.org/Base_Insertt_Leave" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4622,8 +4717,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetIGuard">
-      <soap12:operation soapAction="http://tempuri.org/GetIGuard" style="document" />
+    <wsdl:operation name="Base_Updatet_Leave">
+      <soap12:operation soapAction="http://tempuri.org/Base_Updatet_Leave" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4631,8 +4726,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetRosterInquiry_leave">
-      <soap12:operation soapAction="http://tempuri.org/GetRosterInquiry_leave" style="document" />
+    <wsdl:operation name="Base_Deletet_Leave">
+      <soap12:operation soapAction="http://tempuri.org/Base_Deletet_Leave" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4640,8 +4735,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetRosterInquiry_Roster">
-      <soap12:operation soapAction="http://tempuri.org/GetRosterInquiry_Roster" style="document" />
+    <wsdl:operation name="Base_Gett_Leave">
+      <soap12:operation soapAction="http://tempuri.org/Base_Gett_Leave" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4649,8 +4744,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetRosterInquiry_Security">
-      <soap12:operation soapAction="http://tempuri.org/GetRosterInquiry_Security" style="document" />
+    <wsdl:operation name="Base_GetListt_Leave">
+      <soap12:operation soapAction="http://tempuri.org/Base_GetListt_Leave" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4658,8 +4753,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetUserinfo">
-      <soap12:operation soapAction="http://tempuri.org/GetUserinfo" style="document" />
+    <wsdl:operation name="Base_Insertt_WorkflowInfo">
+      <soap12:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowInfo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4667,8 +4762,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPosition">
-      <soap12:operation soapAction="http://tempuri.org/GetPosition" style="document" />
+    <wsdl:operation name="Base_Updatet_WorkflowInfo">
+      <soap12:operation soapAction="http://tempuri.org/Base_Updatet_WorkflowInfo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4676,8 +4771,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPayslipBySid">
-      <soap12:operation soapAction="http://tempuri.org/GetPayslipBySid" style="document" />
+    <wsdl:operation name="Base_Deletet_WorkflowInfo">
+      <soap12:operation soapAction="http://tempuri.org/Base_Deletet_WorkflowInfo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4685,8 +4780,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetTaxationBySid">
-      <soap12:operation soapAction="http://tempuri.org/GetTaxationBySid" style="document" />
+    <wsdl:operation name="Base_Gett_WorkflowInfo">
+      <soap12:operation soapAction="http://tempuri.org/Base_Gett_WorkflowInfo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4694,8 +4789,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="LoadPaySlipReport">
-      <soap12:operation soapAction="http://tempuri.org/LoadPaySlipReport" style="document" />
+    <wsdl:operation name="Base_GetListt_WorkflowInfo">
+      <soap12:operation soapAction="http://tempuri.org/Base_GetListt_WorkflowInfo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4703,8 +4798,44 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="LoadTaxationReport">
-      <soap12:operation soapAction="http://tempuri.org/LoadTaxationReport" style="document" />
+    <wsdl:operation name="Base_Insertt_WorkflowTask">
+      <soap12:operation soapAction="http://tempuri.org/Base_Insertt_WorkflowTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Base_Updatet_WorkflowTask">
+      <soap12:operation soapAction="http://tempuri.org/Base_Updatet_WorkflowTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Base_Deletet_WorkflowTask">
+      <soap12:operation soapAction="http://tempuri.org/Base_Deletet_WorkflowTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Base_Gett_WorkflowTask">
+      <soap12:operation soapAction="http://tempuri.org/Base_Gett_WorkflowTask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Base_GetListt_WorkflowTask">
+      <soap12:operation soapAction="http://tempuri.org/Base_GetListt_WorkflowTask" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -4829,6 +4960,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CreateNewWorkflow_colt">
+      <soap12:operation soapAction="http://tempuri.org/CreateNewWorkflow_colt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LeaveManagementV2HttpPost" type="tns:LeaveManagementV2HttpPost">
     <http:binding verb="POST" />
@@ -4846,8 +4986,8 @@
       </wsdl:input>
       <wsdl:output />
     </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_Leave">
-      <http:operation location="/Base_GetListt_Leave" />
+    <wsdl:operation name="GetAttendanceByExternRef">
+      <http:operation location="/GetAttendanceByExternRef" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -4855,8 +4995,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_WorkflowInfo">
-      <http:operation location="/Base_GetListt_WorkflowInfo" />
+    <wsdl:operation name="GetIGuard">
+      <http:operation location="/GetIGuard" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -4864,8 +5004,80 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Base_GetListt_WorkflowTask">
-      <http:operation location="/Base_GetListt_WorkflowTask" />
+    <wsdl:operation name="GetRosterInquiry_leave">
+      <http:operation location="/GetRosterInquiry_leave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_Roster">
+      <http:operation location="/GetRosterInquiry_Roster" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRosterInquiry_Security">
+      <http:operation location="/GetRosterInquiry_Security" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserinfo">
+      <http:operation location="/GetUserinfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPosition">
+      <http:operation location="/GetPosition" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPayslipBySid">
+      <http:operation location="/GetPayslipBySid" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTaxationBySid">
+      <http:operation location="/GetTaxationBySid" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadPaySlipReport">
+      <http:operation location="/LoadPaySlipReport" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadTaxationReport">
+      <http:operation location="/LoadTaxationReport" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -5134,8 +5346,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAttendanceByExternRef">
-      <http:operation location="/GetAttendanceByExternRef" />
+    <wsdl:operation name="Base_GetListt_Leave">
+      <http:operation location="/Base_GetListt_Leave" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -5143,8 +5355,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetIGuard">
-      <http:operation location="/GetIGuard" />
+    <wsdl:operation name="Base_GetListt_WorkflowInfo">
+      <http:operation location="/Base_GetListt_WorkflowInfo" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -5152,80 +5364,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetRosterInquiry_leave">
-      <http:operation location="/GetRosterInquiry_leave" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetRosterInquiry_Roster">
-      <http:operation location="/GetRosterInquiry_Roster" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetRosterInquiry_Security">
-      <http:operation location="/GetRosterInquiry_Security" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetUserinfo">
-      <http:operation location="/GetUserinfo" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetPosition">
-      <http:operation location="/GetPosition" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetPayslipBySid">
-      <http:operation location="/GetPayslipBySid" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetTaxationBySid">
-      <http:operation location="/GetTaxationBySid" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LoadPaySlipReport">
-      <http:operation location="/LoadPaySlipReport" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LoadTaxationReport">
-      <http:operation location="/LoadTaxationReport" />
+    <wsdl:operation name="Base_GetListt_WorkflowTask">
+      <http:operation location="/Base_GetListt_WorkflowTask" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -5331,16 +5471,25 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CreateNewWorkflow_colt">
+      <http:operation location="/CreateNewWorkflow_colt" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="LeaveManagementV2">
     <wsdl:port name="LeaveManagementV2Soap" binding="tns:LeaveManagementV2Soap">
-      <soap:address location="http://192.168.19.200:81/ServicesWithSession/LeaveManagementV2.asmx" />
+      <soap:address location="http://192.168.19.200:8888/dw-ihr/bll/ServicesWithSession/LeaveManagementV2.asmx" />
     </wsdl:port>
     <wsdl:port name="LeaveManagementV2Soap12" binding="tns:LeaveManagementV2Soap12">
-      <soap12:address location="http://192.168.19.200:81/ServicesWithSession/LeaveManagementV2.asmx" />
+      <soap12:address location="http://192.168.19.200:8888/dw-ihr/bll/ServicesWithSession/LeaveManagementV2.asmx" />
     </wsdl:port>
     <wsdl:port name="LeaveManagementV2HttpPost" binding="tns:LeaveManagementV2HttpPost">
-      <http:address location="http://192.168.19.200:81/ServicesWithSession/LeaveManagementV2.asmx" />
+      <http:address location="http://192.168.19.200:8888/dw-ihr/bll/ServicesWithSession/LeaveManagementV2.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

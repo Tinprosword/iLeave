@@ -229,21 +229,39 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Literal ltlisttype;
         
         /// <summary>
-        /// lt_listsection 控件。
+        /// ltlistfromto 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_listsection;
+        protected global::System.Web.UI.WebControls.Literal ltlistfromto;
         
         /// <summary>
-        /// repeater_leave 控件。
+        /// ltlisthours 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeater_leave;
+        protected global::System.Web.UI.WebControls.Literal ltlisthours;
+        
+        /// <summary>
+        /// repeater_clot 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repeater_clot;
+        
+        /// <summary>
+        /// js_waitdiv 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal js_waitdiv;
     }
 }

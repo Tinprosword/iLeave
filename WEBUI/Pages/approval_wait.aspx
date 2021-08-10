@@ -43,7 +43,7 @@
                 <div class="col-xs-12 " style="margin-bottom:4px;">
                     <%--<div class="col-xs-4 lsf-clearPadding" style="width:40px;">--%><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applyRemark %>:<%--</div>--%><%--<div class="col-xs-8 lsf-clearPadding">--%><%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetApprovalRemark()%><%--</div>--%></div>
                 <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_attachment %>:<%# GetAttachmentHtml(   ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID  )%></div>
-                <asp:Panel ID="panel_admin_waitingApprove" runat="server" Visible="<%#BShow_WaitApplyPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,actionType) %>">
+                <asp:Panel ID="panel_admin_waitingApprove" runat="server" Visible="<%#BShow_WaitApplyPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,dataType_myselfOrMyManage) %>">
                     <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_approverRemark %>:</div>
                     <div class="col-xs-12">
                         <asp:TextBox ID="tb_waitapproveRemark" runat="server" TextMode="MultiLine" Width="98%" Height="40px"></asp:TextBox>
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                 </asp:Panel>
-                <asp:Panel ID="panel_admin_waitingCancel" runat="server" Visible="<%#BShow_WaitCancelPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,actionType) %>">
+                <asp:Panel ID="panel_admin_waitingCancel" runat="server" Visible="<%#BShow_WaitCancelPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,dataType_myselfOrMyManage) %>">
                     <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_approverRemark %>:</div>
                     <div class="col-xs-12">
                         <asp:TextBox ID="tb_waitcancelRemark" runat="server" TextMode="MultiLine" Width="98%" Height="40px"></asp:TextBox>
@@ -71,12 +71,12 @@
                         </div>
                     </div>
                 </asp:Panel>
-                <asp:Panel ID="panel_user_waiting" runat="server" Visible="<%#BShow_UserWaitingPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,actionType) %>">
+                <asp:Panel ID="panel_user_waiting" runat="server" Visible="<%#BShow_UserWaitingPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,dataType_myselfOrMyManage) %>">
                     <div class="col-xs-5" style="float:left; padding-left:15px;">
                         <asp:Button ID="Button2" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_withdraw %>" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClick="btn_Click" CommandArgument=<%#"5|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>/>
                     </div>
                 </asp:Panel>
-                <asp:Panel ID="panel_user_approved" runat="server" Visible="<%#BShow_UserApprovedPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,actionType) %>">
+                <asp:Panel ID="panel_user_approved" runat="server" Visible="<%#BShow_UserApprovedPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,dataType_myselfOrMyManage) %>">
                     <div class="col-xs-5" style="float:left; padding-left:15px;">
                         <asp:Button ID="Button1" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_cancel %>" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClick="btn_Click" CommandArgument=<%#"6|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>/>
                     </div>

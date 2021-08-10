@@ -14,12 +14,12 @@ namespace WEBUI.Pages
     //accumulate 的处理验证.
     public partial class approval_wait : BLL.CustomLoginTemplate
     {
-        public static string qs_bigRange = "applicationType";
-        public static string qs_action = "action";
+        public static string qs_bigRange = "applicationType";//penging history.
+        public static string qs_action = "action";//0.my mange data  1.mydata 
         private readonly string tip = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_serchTip;
         private int nametype = 1;
 
-        protected int actionType = 0;
+        protected int dataType_myselfOrMyManage = 0;
         protected GlobalVariate.LeaveBigRangeStatus bigRange = 0;
 
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
@@ -27,7 +27,7 @@ namespace WEBUI.Pages
             if (!string.IsNullOrEmpty(Request.QueryString[qs_action]) && !string.IsNullOrEmpty(Request.QueryString[qs_bigRange]))
             {
                 string strAction = Request.QueryString[qs_action];
-                int.TryParse(strAction, out actionType);
+                int.TryParse(strAction, out dataType_myselfOrMyManage);
                 int intbig = 0;
                 int.TryParse(Request.QueryString[qs_bigRange], out intbig);
                 bigRange=(GlobalVariate.LeaveBigRangeStatus)intbig;
@@ -88,7 +88,7 @@ namespace WEBUI.Pages
         private void SetupNavinigation()
         {
             string CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().main_approvalTitle;
-            if (actionType ==1)
+            if (dataType_myselfOrMyManage ==1)
             {
                 CurrentTitle = BLL.MultiLanguageHelper.GetLanguagePacket().main_applicationsTitle;
             }
@@ -104,7 +104,7 @@ namespace WEBUI.Pages
             GlobalVariate.LeaveBigRangeStatus currentBigRange = GetBigRange();
 
             List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> ds = null;
-            if (actionType == 0)
+            if (dataType_myselfOrMyManage == 0)
             {
                 ds = BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, currentBigRange, year, name);
             }
@@ -121,7 +121,7 @@ namespace WEBUI.Pages
         private void SetupSearchAndTab()
         {
             //tab
-            if (actionType == 0)
+            if (dataType_myselfOrMyManage == 0)
             {
                 this.myTabApproval.Visible = true;
                 this.myTabApply.Visible = false;
@@ -158,8 +158,8 @@ namespace WEBUI.Pages
             }
             //staff
             this.tb_staff.SetTip(tip);
-            this.tb_staff.Visible = actionType == 0;
-            this.ib_search.Visible = actionType == 0;
+            this.tb_staff.Visible = dataType_myselfOrMyManage == 0;
+            this.ib_search.Visible = dataType_myselfOrMyManage == 0;
         }
 
         public bool BShow_WaitApplyPanel(GlobalVariate.LeaveBigRangeStatus myBigRange, byte states,int action)
