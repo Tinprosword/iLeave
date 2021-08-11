@@ -16,21 +16,26 @@ namespace WEBUI.Pages
     {
         public static string qs_bigRange = "applicationType";//penging history.
         public static string qs_action = "action";//0.my mange data  1.mydata 
+        public static string qs_from = "from";//0leave 1clot 3.no need goback from
+
         private readonly string tip = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_serchTip;
         private int nametype = 1;
 
         protected int dataType_myselfOrMyManage = 0;
         protected GlobalVariate.LeaveBigRangeStatus bigRange = 0;
+        protected int from = 0;
 
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
-            if (!string.IsNullOrEmpty(Request.QueryString[qs_action]) && !string.IsNullOrEmpty(Request.QueryString[qs_bigRange]))
+            if (!string.IsNullOrEmpty(Request.QueryString[qs_action]) && !string.IsNullOrEmpty(Request.QueryString[qs_bigRange]) && !string.IsNullOrEmpty(Request.QueryString[qs_from]))
             {
                 string strAction = Request.QueryString[qs_action];
                 int.TryParse(strAction, out dataType_myselfOrMyManage);
                 int intbig = 0;
                 int.TryParse(Request.QueryString[qs_bigRange], out intbig);
                 bigRange=(GlobalVariate.LeaveBigRangeStatus)intbig;
+                string strfrom = Request.QueryString[qs_from];
+                int.TryParse(strfrom, out from);
 
                 nametype = BLL.CodeSetting.GetNameType(BLL.MultiLanguageHelper.GetChoose());
             }
@@ -344,6 +349,18 @@ namespace WEBUI.Pages
         public string GetLeaveStatus(WebServiceLayer.WebReference_leave.LeaveRequestMaster leaveRequestMaster)
         {
             return BLL.Leave.GetLeaveStatusDesc(leaveRequestMaster.WorkflowTypeID,leaveRequestMaster.Status);
+        }
+
+        public string showNewLink()
+        {
+            if (from==0)
+            {
+                return "window.location.href='apply.aspx'";
+            }
+            else
+            {
+                return "window.location.href='applyclot.aspx'";
+            }
         }
     }
 }

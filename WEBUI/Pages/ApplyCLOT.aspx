@@ -1,8 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="ApplyCLOT.aspx.cs" Inherits="WEBUI.Pages.ApplyCLOT" %>
-<%@ Register Src="~/Controls/CLOTTab.ascx" TagPrefix="uc1" TagName="CLOTTab" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <uc1:CLOTTab runat="server" ID="CLOTTab" />
+    
+    <div class="row">
+        <ul id="myTabApply" fixname="mytab"   class="nav nav-tabs lsf-clearPadding" runat="server">
+	            <li id="myTabapply_new" runat="server" class="active"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab"><asp:Literal ID="lt_new" runat="server" Text="New"></asp:Literal></a></li>
+	            <li id="myTabapply_pending" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="<%=showPendEvent()%>"><asp:Literal ID="lt_mypending" runat="server" Text="Pending"/></a></li>
+                <li id="myTabapply_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="<%=showhisEvent()%>"><asp:Literal ID="lt_myhistory" runat="server" Text="History"/></a></li>
+        </ul>
+    </div>
+
     <div class="row" id="mainpage">
         <div class ="col-xs-12" style="height:2px; padding:0px">&nbsp</div>
         <table class="col-xs-12 lsu-tablem1">
@@ -86,5 +94,6 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
+    <script src="../Res/App/apply.js?lastmodify=<%=BLL.GlobalVariate.applyjsLastmodify %>"></script>
     <asp:Literal ID="js_waitdiv" runat="server"/>
 </asp:Content>

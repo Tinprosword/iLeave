@@ -34,7 +34,7 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {
-            CLOTTab.SetEvent((WEBUI.Controls.leave)Master);
+            //CLOTTab.SetEvent((WEBUI.Controls.leave)Master);
         }
         #endregion
 
@@ -46,7 +46,9 @@ namespace WEBUI.Pages
 
         private void MulLanguage()
         {
-            this.CLOTTab.MultipLanguage();
+            this.lt_new.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_new;
+            this.lt_mypending.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_pending;
+            this.lt_myhistory.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed;
 
             this.lt_name.Text = BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_name;
             this.lt_leave.Text = BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_type;
@@ -66,8 +68,7 @@ namespace WEBUI.Pages
         private void LoadUI()
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().main_applyCLOT, "~/pages/main.aspx", true);
-            CLOTTab.showTabActive(0);
-            CLOTTab.SetupControls(false);
+
 
             int intNameType = BLL.CodeSetting.GetNameType(BLL.MultiLanguageHelper.GetChoose());
             MODEL.UserName tempUserName = new MODEL.UserName(loginer.userInfo.surname, loginer.userInfo.firstname, loginer.userInfo.nickname, loginer.userInfo.namech);
@@ -228,6 +229,32 @@ namespace WEBUI.Pages
         protected void ddl_leavetype_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.tb_remarks.Text= GetDefaultRemark();
+        }
+
+        //js传递apply sum 标签的值 ,如果为空表示没有做任何处理 . 否则有数据,那么传递不同的参数向js function.
+        //checkNewTab: alter message ,action(ismanage),bigrange(pengding,histroy),from (0:leave 1 colot)
+        public string showPendEvent()
+        {
+            if (!IsPostBack)
+            {
+                return "return checkNewTab('',1,0,1)";
+            }
+            else
+            {
+                return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,0,1)";
+            }
+        }
+
+        public string showhisEvent()
+        {
+            if (!IsPostBack)
+            {
+                return "return checkNewTab('',1,3,0)";
+            }
+            else
+            {
+                return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,3,1)";
+            }
         }
     }
 }

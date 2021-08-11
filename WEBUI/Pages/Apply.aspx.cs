@@ -368,15 +368,16 @@ namespace WEBUI.Pages
 
 
         //js传递apply sum 标签的值 ,如果为空表示没有做任何处理 . 否则有数据,那么传递不同的参数向js function.
+        //checkNewTab: alter message ,action(ismanage),bigrange(pengding,histroy),from (0:leave 1 colot)
         public string showPendEvent()
         {
             if (!IsPostBack)
             {
-                return "return checkNewTab('',1,0)";
+                return "return checkNewTab('',1,0,0)";
             }
             else
             {
-                return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,0)";
+                return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,0,0)";
             }
         }
 
@@ -384,11 +385,11 @@ namespace WEBUI.Pages
         {
             if (!IsPostBack)
             {
-                return "return checkNewTab('',1,3)";
+                return "return checkNewTab('',1,3,0)";
             }
             else
             {
-                return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,3)";
+                return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,3,0)";
             }
         }
 

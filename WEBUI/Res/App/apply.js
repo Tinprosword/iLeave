@@ -1,10 +1,10 @@
-﻿function checkNewTab(msg,act,type)
+﻿function checkNewTab(msg,act,type,from)
 {
     if (msg != "")
     {
         if (confirm(msg)) {
             event.preventDefault();
-            window.location.href = 'approval_wait.aspx?action=' + act + '&applicationtype=' + type;
+            window.location.href = 'approval_wait.aspx?action=' + act + '&applicationtype=' + type + '&from=' + from;
         }
         else {
             var target = $("ul[fixname='mytab'] li:eq(0)");
@@ -48,6 +48,6 @@
 
     }
     else {
-        window.location.href = 'approval_wait.aspx?action=' + act + '&applicationtype=' + type;
+        window.location.href = 'approval_wait.aspx?action=' + act + '&applicationtype=' + type + '&from=' + from;
     }
 }

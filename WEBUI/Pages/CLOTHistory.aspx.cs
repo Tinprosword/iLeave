@@ -42,7 +42,7 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {
-            CLOTTab.SetEvent((WEBUI.Controls.leave)Master);
+            //CLOTTab.SetEvent((WEBUI.Controls.leave)Master);
         }
 
 
@@ -51,7 +51,7 @@ namespace WEBUI.Pages
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().main_CLOTHistory, "~/pages/main.aspx", true);
             bool ismanage = dataType == 0 ? true : false;
-            CLOTTab.SetupControls(ismanage);
+            //CLOTTab.SetupControls(ismanage);
             int index = dataRange == 0 ? 1 : 2;
             CLOTTab.showTabActive(index);
         }

@@ -13,13 +13,67 @@ namespace WEBUI.Pages {
     public partial class ApplyCLOT {
         
         /// <summary>
-        /// CLOTTab 控件。
+        /// myTabApply 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::WEBUI.Controls.CLOTTab CLOTTab;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl myTabApply;
+        
+        /// <summary>
+        /// myTabapply_new 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl myTabapply_new;
+        
+        /// <summary>
+        /// lt_new 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_new;
+        
+        /// <summary>
+        /// myTabapply_pending 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl myTabapply_pending;
+        
+        /// <summary>
+        /// lt_mypending 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_mypending;
+        
+        /// <summary>
+        /// myTabapply_history 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl myTabapply_history;
+        
+        /// <summary>
+        /// lt_myhistory 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_myhistory;
         
         /// <summary>
         /// lt_name 控件。

@@ -2,13 +2,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <ul id="myTabApproval" class="nav nav-tabs lsf-clearPadding" runat="server">
-	        <li id="myTabApproval_pending" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" runat="server" id="Approvalpending" onclick="window.location.href='approval_wait.aspx?action=0&applicationtype=0'"><asp:Literal ID="lt_pending" runat="server" Text="Pending"/></a></li>
-	        <li id="myTabApproval_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" runat="server" id="ApprovalHistory" onclick="window.location.href='approval_wait.aspx?action=0&applicationtype=3'"><asp:Literal ID="lt_processed" runat="server" Text="History"/></a></li>
+	        <li id="myTabApproval_pending" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" runat="server" id="Approvalpending" onclick="window.location.href='approval_wait.aspx?action=0&applicationtype=0&from=3'"><asp:Literal ID="lt_pending" runat="server" Text="Pending"/></a></li>
+	        <li id="myTabApproval_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" runat="server" id="ApprovalHistory" onclick="window.location.href='approval_wait.aspx?action=0&applicationtype=3&from=3'"><asp:Literal ID="lt_processed" runat="server" Text="History"/></a></li>
         </ul>
         <ul id="myTabApply" class="nav nav-tabs lsf-clearPadding" runat="server">
-	        <li id="myTabapply_new" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" onclick="window.location.href='apply.aspx'"><asp:Literal ID="lt_new" runat="server" Text="New"></asp:Literal></a></li>
-	        <li id="myTabapply_pending" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?action=1&applicationtype=0'"><asp:Literal ID="lt_mypending" runat="server" Text="Pending"/></a></li>
-            <li id="myTabapply_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?action=1&applicationtype=3'"><asp:Literal ID="lt_myhistory" runat="server" Text="History"/></a></li>
+	        <li id="myTabapply_new" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" onclick="<%=showNewLink() %>"><asp:Literal ID="lt_new" runat="server" Text="New"></asp:Literal></a></li>
+	        <li id="myTabapply_pending" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?action=1&applicationtype=0&from=<%=from%>'"><asp:Literal ID="lt_mypending" runat="server" Text="Pending"/></a></li>
+            <li id="myTabapply_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?action=1&applicationtype=3&from=<%=from%>'"><asp:Literal ID="lt_myhistory" runat="server" Text="History"/></a></li>
         </ul>
     </div>
     <div id="ajaxContainer" class="col-xs-12 lsf-clearPadding"></div>
