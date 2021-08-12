@@ -60,7 +60,7 @@ namespace BLL
 
 
         //>0 ok:request id. -1 check error -2.insert error
-        public static int InsertLeave(List<MODEL.Apply.apply_LeaveData> originDetail, int userid, int employmentid, int? staffid, string remarks, ref string errorMsg)
+        public static int InsertLeave(List<MODEL.Apply.apply_LeaveData> originDetail, int userid, int employmentid, int? staffid, string remarks, ref string errorMsg,int fid)
         {
 
             errorMsg = "";
@@ -70,7 +70,7 @@ namespace BLL
             {
                 WebServiceLayer.WebReference_leave.StaffLeaveRequest[] details;
                 WebServiceLayer.WebReference_leave.ErrorMessageInfo messageInfo;
-                int insertResult = InsertLeaveData(originDetail, userid, employmentid, staffid, remarks, out details, out messageInfo);
+                int insertResult = InsertLeaveData(originDetail, userid, employmentid, staffid, remarks,fid, out details, out messageInfo);
                 if (insertResult >= 0)
                 {
                     int processID = messageInfo.ProcessID;
@@ -93,11 +93,11 @@ namespace BLL
         }
 
 
-        private static int InsertLeaveData(List<MODEL.Apply.apply_LeaveData> originDetail, int userid, int employmentid, int? staffid, string remarks, out WebServiceLayer.WebReference_leave.StaffLeaveRequest[] details, out WebServiceLayer.WebReference_leave.ErrorMessageInfo messageInfo)
+        private static int InsertLeaveData(List<MODEL.Apply.apply_LeaveData> originDetail, int userid, int employmentid, int? staffid, string remarks,int fid, out WebServiceLayer.WebReference_leave.StaffLeaveRequest[] details, out WebServiceLayer.WebReference_leave.ErrorMessageInfo messageInfo)
         {
             int result = -1;//默认为一般错误
             WebServiceLayer.MyWebService.WebServicesHelper webServicesHelper = WebServiceLayer.MyWebService.WebServicesHelper.GetInstance();
-            List<WebServiceLayer.WebReference_leave.StaffLeaveRequest> detail = GenerateLeaveRequest(originDetail, userid, employmentid,remarks);
+            List<WebServiceLayer.WebReference_leave.StaffLeaveRequest> detail = GenerateLeaveRequest(originDetail, userid, employmentid,remarks,fid);
 
             messageInfo = new WebServiceLayer.WebReference_leave.ErrorMessageInfo();
             try
@@ -114,7 +114,7 @@ namespace BLL
         }
 
 
-        private static List<WebServiceLayer.WebReference_leave.StaffLeaveRequest> GenerateLeaveRequest(List<MODEL.Apply.apply_LeaveData> originDetail, int uid, int employmentID,string remark)
+        private static List<WebServiceLayer.WebReference_leave.StaffLeaveRequest> GenerateLeaveRequest(List<MODEL.Apply.apply_LeaveData> originDetail, int uid, int employmentID,string remark,int firsteid)
         {
             List<WebServiceLayer.WebReference_leave.StaffLeaveRequest> result = new List<WebServiceLayer.WebReference_leave.StaffLeaveRequest>();
 
@@ -130,7 +130,7 @@ namespace BLL
                     newItem.Description = null;
                     newItem.EmploymentID = employmentID;
                     newItem.EmploymentNumber = null;
-                    newItem.FirstEmploymentID = 0;//todo 0 fix it.
+                    newItem.FirstEmploymentID = firsteid;
                     newItem.FirstEmploymentNumber = null;
                     newItem.HolidayCode = "";
                     newItem.ID = 0;
