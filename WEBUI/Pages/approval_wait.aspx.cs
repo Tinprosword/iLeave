@@ -18,6 +18,8 @@ namespace WEBUI.Pages
         public static string qs_action = "action";//0.my mange data  1.mydata 
         public static string qs_from = "from";//0leave 1clot 3.no need goback from
 
+        public static string sessionname_rdl = "rdl";
+
         private readonly string tip = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_serchTip;
         private int nametype = 1;
 
@@ -25,8 +27,25 @@ namespace WEBUI.Pages
         protected GlobalVariate.LeaveBigRangeStatus bigRange = 0;
         protected int from = 0;
 
+
+        public static int getrdlvalue(System.Web.SessionState.HttpSessionState ss)
+        {
+            int result = 0;
+            if (ss[sessionname_rdl] != null)
+            {
+                result =(int) ss[sessionname_rdl];
+            }
+            return result;
+        }
+        public static void setrdlvalue(System.Web.SessionState.HttpSessionState ss,int value)
+        {
+            ss[sessionname_rdl] = value;
+        }
+
+
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
+   
             if (!string.IsNullOrEmpty(Request.QueryString[qs_action]) && !string.IsNullOrEmpty(Request.QueryString[qs_bigRange]) && !string.IsNullOrEmpty(Request.QueryString[qs_from]))
             {
                 string strAction = Request.QueryString[qs_action];
@@ -104,22 +123,62 @@ namespace WEBUI.Pages
 
         private void SetupRepeater()
         {
+            int sourceType = 0;
+            if (from == 0)
+            {
+                sourceType = 0;
+            }
+            else if (from == 1)
+            {
+                sourceType = 1;
+            }
+            else if (from == 3)
+            {
+                sourceType = int.Parse( this.rbl_sourceType.SelectedValue);
+            }
+            
+            this.rp_clot.Visible = false;
+            this.rp_list.Visible = false;
+
+            GlobalVariate.LeaveBigRangeStatus currentBigRange = GetBigRange();
             int year = int.Parse(this.ddl_year.SelectedValue);
             string name = this.tb_staff.Text.Trim() == tip ? "" : this.tb_staff.Text.Trim();
-            GlobalVariate.LeaveBigRangeStatus currentBigRange = GetBigRange();
 
-            List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> ds = null;
-            if (dataType_myselfOrMyManage == 0)
+            if (sourceType == 0)//LEAVE
             {
-                ds = BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, currentBigRange, year, name);
-            }
-            else
-            {
-                ds = BLL.Leave.GetMyLeaveMaster(loginer.userInfo.personid, currentBigRange, year);
-            }
+                this.rp_list.Visible = true;
+                
+                List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> ds = null;
+                if (dataType_myselfOrMyManage == 0)
+                {
+                    ds = BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, currentBigRange, year, name);
+                }
+                else
+                {
+                    ds = BLL.Leave.GetMyLeaveMaster(loginer.userInfo.personid, currentBigRange, year);
+                }
 
-            this.rp_list.DataSource = ds;
-            this.rp_list.DataBind();
+                this.rp_list.DataSource = ds;
+                this.rp_list.DataBind();
+            }
+            else//CLOT: 1.ME OR MANAGE 2.PENGDING OR History.
+            {
+                this.rp_clot.Visible = true;
+
+                List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> ds = new List<WebServiceLayer.WebReference_leave.StaffCLOTRequest>();
+
+                if (dataType_myselfOrMyManage == 1)
+                {
+                    ds = BLL.CLOT.GetMyCLOT(loginer.userInfo.firsteid ?? 0, currentBigRange, year);
+                }
+                else if (dataType_myselfOrMyManage == 0)
+                {
+                    ds = BLL.CLOT.GetMyManageClOT(loginer.userInfo.id, currentBigRange, year, name);
+                }
+
+                this.rp_clot.DataSource = ds;
+                this.rp_clot.DataBind();
+            }
         }
 
 
@@ -165,8 +224,21 @@ namespace WEBUI.Pages
             this.tb_staff.SetTip(tip);
             this.tb_staff.Visible = dataType_myselfOrMyManage == 0;
             this.ib_search.Visible = dataType_myselfOrMyManage == 0;
+
+            //radioOption
+            if (from == 0 || from == 1)
+            {
+                this.rbl_sourceType.Visible = false;
+            }
+            else
+            {
+                this.rbl_sourceType.Visible = true;
+
+                this.rbl_sourceType.SelectedValue= getrdlvalue(Session).ToString();
+            }
         }
 
+        #region leave panel
         public bool BShow_WaitApplyPanel(GlobalVariate.LeaveBigRangeStatus myBigRange, byte states,int action)
         {
             bool result = false;
@@ -206,6 +278,49 @@ namespace WEBUI.Pages
             }
             return result;
         }
+        #endregion
+
+        #region clot panel
+        public bool BShow_WaitApplyPanel_clot(GlobalVariate.LeaveBigRangeStatus myBigRange, int states, int action)
+        {
+            bool result = false;
+            if (myBigRange == GlobalVariate.LeaveBigRangeStatus.waitapproval && states == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && action == 0)
+            {
+                result = true;
+            }
+            return result;
+        }
+
+        public bool BShow_WaitCancelPanel_clot(GlobalVariate.LeaveBigRangeStatus myBigRange, int states, int action)
+        {
+            bool result = false;
+            if (myBigRange == GlobalVariate.LeaveBigRangeStatus.waitapproval && states == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL && action == 0)
+            {
+                result = true;
+            }
+            return result;
+        }
+
+        public bool BShow_UserWaitingPanel_clot(GlobalVariate.LeaveBigRangeStatus myBigRange, int states, int action)
+        {
+            bool result = false;
+            if (myBigRange == GlobalVariate.LeaveBigRangeStatus.waitapproval && states == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && action == 1)
+            {
+                result = true;
+            }
+            return result;
+        }
+
+        public bool BShow_UserApprovedPanel_clot(GlobalVariate.LeaveBigRangeStatus myBigRange, int states, int action)
+        {
+            bool result = false;
+            if (myBigRange == GlobalVariate.LeaveBigRangeStatus.beyongdWait && states == (int)BLL.GlobalVariate.ApprovalRequestStatus.APPROVE && action == 1)
+            {
+                result = true;
+            }
+            return result;
+        }
+        #endregion
 
 
         protected void btn_Click(object sender, EventArgs e)
@@ -295,6 +410,83 @@ namespace WEBUI.Pages
         }
 
 
+        protected void btn_Click_clot(object sender, EventArgs e)
+        {
+            string errormsg = "";
+            bool callResult = true;
+            string[] pas = ((Button)sender).CommandArgument.Split(new char[] { '|' });
+
+            int btntype = int.Parse(pas[0]);
+            int itemIndex = int.Parse(pas[1]);
+            int requestId = int.Parse(pas[2]);
+
+            string remarks1 = ((TextBox)this.rp_clot.Items[itemIndex].FindControl("panel_admin_waitingApprove").FindControl("tb_waitapproveRemark")).Text;
+            string remarks2 = ((TextBox)this.rp_clot.Items[itemIndex].FindControl("panel_admin_waitingCancel").FindControl("tb_waitcancelRemark")).Text;
+
+
+            if ((btntype == 2 && string.IsNullOrEmpty(remarks1)) || btntype == 4 && string.IsNullOrEmpty(remarks2))
+            {
+                this.lb_errormsg.Visible = true;
+                this.lb_errormsg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_needRemark;
+            }
+            else
+            {
+                string waitDiv = LSLibrary.WebAPP.httpHelper.WaitDiv_show(BLL.MultiLanguageHelper.GetLanguagePacket().Commonsubmit_success);
+                Response.Write(waitDiv);
+                Response.Flush();
+
+                string successMsg = "";
+                if (btntype == 1)//approve apply
+                {
+                    callResult = BLL.workflow.ApproveRequest_leave_clot(requestId, loginer.userInfo.id, remarks1, out errormsg);
+                    successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproveok);
+                }
+                else if (btntype == 2)//reject apply
+                {
+                    callResult = BLL.workflow.RejectRequest_leave_clot(requestId, loginer.userInfo.id, remarks1, out errormsg);
+                    successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproverej);
+                }
+                else if (btntype == 3)//approve cancel
+                {
+                    callResult = BLL.workflow.ApprovalCancelRequest_leave_clot(requestId, loginer.userInfo.id, remarks2, out errormsg);
+                    successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproveok);
+                }
+                else if (btntype == 4)//reject cancel
+                {
+                    callResult = BLL.workflow.RejectCancelRequest_leave_clot(requestId, loginer.userInfo.id, remarks2, out errormsg);
+                    successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproverej);
+                }
+
+                else if (btntype == 5)//withdraw
+                {
+                    callResult = BLL.workflow.WithDrawRequest_leave_clot(requestId, loginer.userInfo.id, "", out errormsg);
+                    successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgwithdraw);
+                }
+                else if (btntype == 6)//cancel
+                {
+                    callResult = BLL.workflow.CancelRequest_leave_clot(requestId, loginer.userInfo.id, "", out errormsg);
+                    successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgcancel);
+                }
+                SetupRepeater();
+
+                if (callResult)
+                {
+                    Response.Write(successMsg + ".");
+                }
+                else
+                {
+                    Response.Write(errormsg);
+                }
+                Response.Flush();
+                System.Threading.Thread.Sleep(50);//休眠2秒,获得较好显示体验
+
+                this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
+
+                this.lt_jsscrolltop.Text = "<script>var vv=getCookie('st'); $('#maindata').scrollTop(vv);</script>";
+            }
+        }
+
+
         public string GetAttachmentHtml(int requestid)
         {
             List<MODEL.Apply.App_AttachmentInfo> result= BLL.Leave.getAttendanceModel(loginer.userInfo.loginName, requestid, Server);
@@ -346,9 +538,26 @@ namespace WEBUI.Pages
             return tempUser.GetDisplayName(nametype);
         }
 
+        public string GetStaffName(WebServiceLayer.WebReference_leave.StaffCLOTRequest staffclot)
+        {
+            if (nametype == 1)
+            {
+                return staffclot.Name;
+            }
+            else
+            {
+                return staffclot.NameCH;
+            }
+        }
+
         public string GetLeaveStatus(WebServiceLayer.WebReference_leave.LeaveRequestMaster leaveRequestMaster)
         {
             return BLL.Leave.GetLeaveStatusDesc(leaveRequestMaster.WorkflowTypeID,leaveRequestMaster.Status);
+        }
+
+        public string ShowClotStatus(WebServiceLayer.WebReference_leave.StaffCLOTRequest cLOTRequest)
+        {
+            return BLL.Leave.GetClotStatusDesc(cLOTRequest.Status);
         }
 
         public string showNewLink()
@@ -362,5 +571,20 @@ namespace WEBUI.Pages
                 return "window.location.href='applyclot.aspx'";
             }
         }
+
+        public string showCLOTTime(WebServiceLayer.WebReference_leave.StaffCLOTRequest clot)
+        {
+            string strdate = clot.Date.ToString("yyyy-MM-dd");
+            string time = MODEL.CLOT.CLOTItem.GetTimeRangeDesc(clot.TimeFrom.Value.Hour, clot.TimeTo.Value.Hour, clot.TimeFrom.Value.Minute, clot.TimeTo.Value.Minute);
+            return strdate + " " + time;
+        }
+
+        protected void rbl_sourceType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            setrdlvalue(Session, int.Parse(this.rbl_sourceType.SelectedValue));
+            SetupRepeater();
+        }
+
+
     }
 }

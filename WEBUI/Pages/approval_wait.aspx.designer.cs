@@ -148,6 +148,15 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.DropDownList ddl_year;
         
         /// <summary>
+        /// rbl_sourceType 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rbl_sourceType;
+        
+        /// <summary>
         /// tb_staff 控件。
         /// </summary>
         /// <remarks>
@@ -191,6 +200,15 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rp_list;
+        
+        /// <summary>
+        /// rp_clot 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rp_clot;
         
         /// <summary>
         /// js_waitdiv 控件。

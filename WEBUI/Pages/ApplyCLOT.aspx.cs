@@ -202,7 +202,7 @@ namespace WEBUI.Pages
         {
             ApplyCLOT page = (ApplyCLOT)sender;
             page.Response.Clear();
-            page.Response.Write(LSLibrary.WebAPP.MyJSHelper.Goto("CLOTHistory.aspx?dataType=0&dataRange=0"));
+            page.Response.Write(LSLibrary.WebAPP.MyJSHelper.Goto("approval_wait.aspx?action=1&applicationtype=0&from=2"));
             page.Response.End();
         }
 

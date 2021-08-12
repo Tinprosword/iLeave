@@ -298,6 +298,7 @@ namespace BLL
             return GetMyLeaveMaster(pid, status, from,to);
         }
 
+
         public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyManageLeaveMaster(int uid, GlobalVariate.LeaveBigRangeStatus status, int year, string name)
         {
             DateTime from = new DateTime(year, 1, 1);
@@ -305,6 +306,12 @@ namespace BLL
             DateTime? to = new DateTime(year,12, dayCount);
             return GetMyManageLeaveMaster(uid, status, from, name, to);
         }
+
+
+
+
+        
+
 
 
         public static WebServiceLayer.WebReference_leave.LeaveRequestMaster GetRequestMasterByRequestID(int requestid)
@@ -559,8 +566,40 @@ namespace BLL
             return result;
         }
 
+        public static string GetClotStatusDesc(int masterStatus)
+        {
+            string result = "";
+           
+            if (masterStatus == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE)
+            {
+                result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_WaitForApproval;
+            }
+            else if (masterStatus == (byte)GlobalVariate.ApprovalRequestStatus.CANCEL)
+            {
+                result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_Cancelled;
+            }
+            else if (masterStatus == (byte)GlobalVariate.ApprovalRequestStatus.APPROVE)
+            {
+                result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_Approved;
+            }
+            else if (masterStatus == (byte)GlobalVariate.ApprovalRequestStatus.REJECT)
+            {
+                result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_Rejected;
+            }
+            else if (masterStatus == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL)
+            {
+                result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_WaitForCancel;
+            }
+            else
+            {
+                result = "Other";
+            }
+            
+            return result;
+        }
+
         #endregion
 
-        
+
     }
 }

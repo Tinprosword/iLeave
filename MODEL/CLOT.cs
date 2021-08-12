@@ -41,12 +41,16 @@ namespace MODEL
             public int tominute;
             public string remark;
 
-
             public string GetTimeRangeDesc()
+            {
+                return GetTimeRangeDesc(fromhour, tohour, frommin, tominute);
+            }
+
+            public static string GetTimeRangeDesc(int fh,int th,int fm,int tm)
             {
                 //2:20-22:30
                 string format_string = "{0}:{1}-{2}:{3}";
-                return string.Format(format_string, fromhour.ToString("00"), frommin.ToString("00"), tohour.ToString("00"), tominute.ToString("00"));
+                return string.Format(format_string, fh.ToString("00"), fm.ToString("00"), th.ToString("00"), tm.ToString("00"));
             }
 
             public float GetHours()

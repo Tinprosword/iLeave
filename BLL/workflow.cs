@@ -185,5 +185,140 @@ namespace BLL
             return type==null?"": names[(int)type];
         }
         #endregion
+
+
+        #region update clot
+        public static bool ApproveRequest_leave_clot(int requestid, int HandlerUID, string remark, out string errorMsg)
+        {
+            bool result = false;
+            errorMsg = "";
+            int check = Check_ApproveRequest_leave_clot();
+            if (check > 0)
+            {
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_clotv2(requestid, HandlerUID, remark);
+                result = true;
+            }
+            else
+            {
+                result = false;
+                errorMsg = "";
+            }
+            return result;
+        }
+
+        public static bool RejectRequest_leave_clot(int requestid, int HandlerUID, string remarks, out string errorMsg)
+        {
+            bool result = false;
+            errorMsg = "";
+            int check = Check_RejectRequest_leave_clot();
+            if (check > 0)
+            {
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_clotv2(requestid, HandlerUID, remarks);
+                result = true;
+            }
+            else
+            {
+                result = false;
+                errorMsg = "";
+            }
+            return result;
+        }
+
+        public static bool WithDrawRequest_leave_clot(int requestid, int HandlerUID, string remark, out string errorMsg)
+        {
+            bool result = false;
+            errorMsg = "";
+            int check = Check_WithDrawRequest_leave_clot();
+            if (check > 0)
+            {
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.WithDrawRequest_clot(requestid, HandlerUID, remark);
+                result = true;
+            }
+            else
+            {
+                result = false;
+                errorMsg = "";
+            }
+            return result;
+        }
+
+        public static bool CancelRequest_leave_clot(int requestid, int HandlerUID, string remark, out string errorMsg)
+        {
+            bool result = false;
+            errorMsg = "";
+            int check = Check_WithDrawRequest_leave_clot();
+            if (check > 0)
+            {
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CancelCLOT(requestid, remark, HandlerUID);
+                result = true;
+            }
+            else
+            {
+                result = false;
+                errorMsg = "";
+            }
+            return result;
+        }
+
+        public static bool ApprovalCancelRequest_leave_clot(int requestid, int HandlerUID, string remark, out string errorMsg)
+        {
+            bool result = false;
+            errorMsg = "";
+            int check = Check_ApprovalCancelRequeste_clot();
+            if (check > 0)
+            {
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_Cancelclot(requestid, HandlerUID, remark);
+                result = true;
+            }
+            else
+            {
+                result = false;
+                errorMsg = "";
+            }
+            return result;
+        }
+
+
+        public static bool RejectCancelRequest_leave_clot(int requestid, int HandlerUID, string remark, out string errorMsg)
+        {
+            bool result = false;
+            errorMsg = "";
+            int check = Check_RejectCancelRequest_clot();
+            if (check > 0)
+            {
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_Cancelclot(requestid, HandlerUID, remark);
+                result = true;
+            }
+            else
+            {
+                result = false;
+                errorMsg = "";
+            }
+            return result;
+        }
+
+        private static int Check_RejectCancelRequest_clot()
+        {
+            return 1;
+        }
+
+        private static int Check_ApprovalCancelRequeste_clot()
+        {
+            return 1;
+        }
+
+        private static int Check_ApproveRequest_leave_clot()
+        {
+            return 1;
+        }
+        private static int Check_RejectRequest_leave_clot()
+        {
+            return 1;
+        }
+        private static int Check_WithDrawRequest_leave_clot()
+        {
+            return 1;
+        }
+        #endregion
     }
 }
