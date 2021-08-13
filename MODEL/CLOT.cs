@@ -55,10 +55,16 @@ namespace MODEL
 
             public float GetHours()
             {
+                return GetHours(fromhour, tohour, frommin, tominute);
+            }
+
+            public static float GetHours(int fromhour, int tohour, int frommin, int tominute)
+            {
                 int h = tohour - fromhour;
-                int m = tominute - frommin+1;
+                int m = tominute - frommin;
                 int totalmin = h * 60 + m;
-                return (float)(Math.Round((double)((double)totalmin / 60),2));
+                float result = (float)(Math.Round((double)((double)totalmin / 60), 2));
+                return result;
             }
         }
     }

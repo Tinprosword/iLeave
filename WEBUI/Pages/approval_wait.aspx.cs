@@ -97,9 +97,11 @@ namespace WEBUI.Pages
             this.lt_new.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_new;
             this.lt_mypending.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_pending;
             this.lt_myhistory.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed;
+            this.lt_estimation.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_estimation;
 
             this.lt_pending.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_pending;
             this.lt_processed.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed;
+
         }
 
         protected void ddl_year_SelectedIndexChanged(object sender, EventArgs e)
@@ -218,6 +220,14 @@ namespace WEBUI.Pages
                 else
                 {
                     this.myTabapply_history.Attributes.Add("class", "active");
+                }
+                if (from == 0)
+                {
+                    this.myTabapply_es.Visible = true;
+                }
+                else
+                {
+                    this.myTabapply_es.Visible = false;
                 }
             }
             //staff
@@ -576,7 +586,8 @@ namespace WEBUI.Pages
         {
             string strdate = clot.Date.ToString("yyyy-MM-dd");
             string time = MODEL.CLOT.CLOTItem.GetTimeRangeDesc(clot.TimeFrom.Value.Hour, clot.TimeTo.Value.Hour, clot.TimeFrom.Value.Minute, clot.TimeTo.Value.Minute);
-            return strdate + " " + time;
+            string hours = MODEL.CLOT.CLOTItem.GetHours(clot.TimeFrom.Value.Hour, clot.TimeTo.Value.Hour, clot.TimeFrom.Value.Minute, clot.TimeTo.Value.Minute).ToString();
+            return strdate + " " + time + " (" + hours + " " + BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours + ")";
         }
 
         protected void rbl_sourceType_SelectedIndexChanged(object sender, EventArgs e)

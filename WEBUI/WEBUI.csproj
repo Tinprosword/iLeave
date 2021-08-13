@@ -75,6 +75,7 @@
     <Content Include="Pages\Check.aspx" />
     <Content Include="Pages\CLOTHistory.aspx" />
     <Content Include="Pages\ErrorPage.aspx" />
+    <Content Include="Pages\estimation.aspx" />
     <Content Include="Pages\Payslip.aspx" />
     <Content Include="Pages\RosterInquiry.aspx" />
     <Content Include="Pages\Taxation.aspx" />
@@ -168,6 +169,13 @@
     </Compile>
     <Compile Include="Pages\CLOTHistory.aspx.designer.cs">
       <DependentUpon>CLOTHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\estimation.aspx.cs">
+      <DependentUpon>estimation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\estimation.aspx.designer.cs">
+      <DependentUpon>estimation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\getHeight.aspx.cs">
       <DependentUpon>getHeight.aspx</DependentUpon>

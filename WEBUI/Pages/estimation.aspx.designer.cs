@@ -10,70 +10,7 @@
 namespace WEBUI.Pages {
     
     
-    public partial class approval_wait {
-        
-        /// <summary>
-        /// myTabApproval 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl myTabApproval;
-        
-        /// <summary>
-        /// myTabApproval_pending 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl myTabApproval_pending;
-        
-        /// <summary>
-        /// Approvalpending 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor Approvalpending;
-        
-        /// <summary>
-        /// lt_pending 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_pending;
-        
-        /// <summary>
-        /// myTabApproval_history 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl myTabApproval_history;
-        
-        /// <summary>
-        /// ApprovalHistory 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor ApprovalHistory;
-        
-        /// <summary>
-        /// lt_processed 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_processed;
+    public partial class estimation {
         
         /// <summary>
         /// myTabApply 控件。
@@ -157,93 +94,57 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Literal lt_estimation;
         
         /// <summary>
-        /// ddl_year 控件。
+        /// lt_type 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_year;
+        protected global::System.Web.UI.WebControls.Literal lt_type;
         
         /// <summary>
-        /// rbl_sourceType 控件。
+        /// DropDownList1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbl_sourceType;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
         
         /// <summary>
-        /// tb_staff 控件。
+        /// lt_date 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_staff;
+        protected global::System.Web.UI.WebControls.Literal lt_date;
         
         /// <summary>
-        /// ib_search 控件。
+        /// tb_date 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ib_search;
+        protected global::System.Web.UI.WebControls.TextBox tb_date;
         
         /// <summary>
-        /// div_error 控件。
+        /// bt_estimation 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_error;
+        protected global::System.Web.UI.WebControls.Button bt_estimation;
         
         /// <summary>
-        /// lb_errormsg 控件。
+        /// lb_msg 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_errormsg;
-        
-        /// <summary>
-        /// rp_list 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rp_list;
-        
-        /// <summary>
-        /// rp_clot 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rp_clot;
-        
-        /// <summary>
-        /// js_waitdiv 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal js_waitdiv;
-        
-        /// <summary>
-        /// lt_jsscrolltop 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_jsscrolltop;
+        protected global::System.Web.UI.WebControls.Label lb_msg;
     }
 }

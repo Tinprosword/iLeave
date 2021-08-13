@@ -23,6 +23,8 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
+            literal_errormsga.Visible = false;
+            literal_errormsga.Text = "";
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
@@ -82,11 +84,15 @@ namespace WEBUI.Pages
 
             this.lt_applydays.Text = "--";
             this.lt_balancedays.Text = "--";
+            double cleanValue = BLL.Leave.GetCleanValue(-9, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
+            this.lt_balancedays.Text = cleanValue.ToString("0.##") + " " + BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours2;
+            RefleshApplyBalance();
+
             this.tb_date.Text = System.DateTime.Now.ToString("yyyy-MM-dd");
 
             DropDownList1.Items.Clear();
             DropDownList3.Items.Clear();
-            for (int i = 0; i <= 24; i++)
+            for (int i = 0; i < 24; i++)
             {
                 this.DropDownList1.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
                 this.DropDownList3.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
@@ -94,7 +100,7 @@ namespace WEBUI.Pages
 
             DropDownList2.Items.Clear();
             DropDownList4.Items.Clear();
-            for (int i = 0; i <= 60; i++)
+            for (int i = 0; i < 60; i++)
             {
                 this.DropDownList2.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
                 this.DropDownList4.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
@@ -102,6 +108,7 @@ namespace WEBUI.Pages
 
 
             this.tb_remarks.Text=GetDefaultRemark();
+
 
 
             SetupReport();
@@ -128,7 +135,7 @@ namespace WEBUI.Pages
 
 
 
-            bool validData = false;
+            int validData = -1;
             DateTime theday = System.DateTime.Now;
             int fromh =int.Parse( this.DropDownList1.SelectedValue);
             int fromm = int.Parse(this.DropDownList2.SelectedValue);
@@ -138,24 +145,42 @@ namespace WEBUI.Pages
             int type = int.Parse(ddl_leavetype.SelectedValue);
             string remark = this.tb_remarks.Text.Trim();
 
-            validData = true;
-            if (validData && bvalidday)
+            MODEL.CLOT.CLOTItem tempItem = new MODEL.CLOT.CLOTItem();
+            tempItem.date = theday;
+            tempItem.fromhour = fromh;
+            tempItem.tohour = toh;
+            tempItem.frommin = fromm;
+            tempItem.tominute = tom;
+            tempItem.type = (MODEL.CLOT.enum_clotType)type;
+            tempItem.remark = remark;
+
+            validData = CheckValid(tempItem);
+            if (validData > 0 && bvalidday)
             {
                 var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
-                MODEL.CLOT.CLOTItem tempItem = new MODEL.CLOT.CLOTItem();
-                tempItem.date = theday;
-                tempItem.fromhour = fromh;
-                tempItem.tohour = toh;
-                tempItem.frommin = fromm;
-                tempItem.tominute = tom;
-                tempItem.type = (MODEL.CLOT.enum_clotType)type;
-                tempItem.remark = remark;
+
                 dataview.items.Add(tempItem);
 
                 LSLibrary.WebAPP.ViewStateHelper.SetValue(NAME_OF_PAGE_VIEW, dataview, this.ViewState);
             }
+            else if (validData == -1)
+            {
+                literal_errormsga.Visible = true;
+                literal_errormsga.Text = "Time must be more than zero.";
+            }
 
             SetupReport();
+            RefleshApplyBalance();
+        }
+
+        private int CheckValid(MODEL.CLOT.CLOTItem tempItem)
+        {
+            int result = 1;
+            if (tempItem.GetHours() <= 0)
+            {
+                result = -1;
+            }
+            return result;
         }
 
         protected void delete_Click(object sender, ImageClickEventArgs e)
@@ -254,6 +279,25 @@ namespace WEBUI.Pages
             else
             {
                 return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,3,1)";
+            }
+        }
+
+
+        private void RefleshApplyBalance()
+        {
+            var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
+            if (dataview != null && dataview.items != null)
+            {
+                float totalHour = 0;
+                foreach (var item in dataview.items)
+                {
+                    totalHour += item.GetHours();
+                }
+                this.lt_applydays.Text = totalHour.ToString()+" "+ BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours2;
+            }
+            else
+            {
+                this.lt_applydays.Text = "--";
             }
         }
     }

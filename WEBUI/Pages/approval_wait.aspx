@@ -9,6 +9,7 @@
 	        <li id="myTabapply_new" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" onclick="<%=showNewLink() %>"><asp:Literal ID="lt_new" runat="server" Text="New"></asp:Literal></a></li>
 	        <li id="myTabapply_pending" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?action=1&applicationtype=0&from=<%=from%>'"><asp:Literal ID="lt_mypending" runat="server" Text="Pending"/></a></li>
             <li id="myTabapply_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?action=1&applicationtype=3&from=<%=from%>'"><asp:Literal ID="lt_myhistory" runat="server" Text="History"/></a></li>
+        <li id="myTabapply_es" runat="server" style="padding-left:0px;margin-left:0px;"><a style="padding-top:4px; padding-left:10px; padding-right:10px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='estimation.aspx'"><asp:Literal ID="lt_estimation" runat="server" Text="Estimation"/></a></li>
         </ul>
     </div>
     <div id="ajaxContainer" class="col-xs-12 lsf-clearPadding"></div>
@@ -22,13 +23,13 @@
                 <asp:ListItem Value="2021" Selected="True">2021</asp:ListItem>
             </asp:DropDownList>
         </div>
-        <div class="col-xs-4" style="width:140px; padding-right:1px">
-            <asp:RadioButtonList ID="rbl_sourceType" runat="server" RepeatDirection="Horizontal" Width="98%" AutoPostBack="true" OnSelectedIndexChanged="rbl_sourceType_SelectedIndexChanged">
+        <div class="col-xs-4" style="width:120px; padding-right:1px; padding-left:2px; font-size:unset; font-weight:normal">
+            <asp:RadioButtonList ID="rbl_sourceType" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" Width="99%" Font-Bold="false" AutoPostBack="true" OnSelectedIndexChanged="rbl_sourceType_SelectedIndexChanged">
                 <asp:ListItem Text="Leave" Value="0" Selected="True"></asp:ListItem>
                 <asp:ListItem Text="CL/OT" Value="1"></asp:ListItem>
             </asp:RadioButtonList>
         </div>
-        <div class="col-xs-3" style="width:60px; padding-right:1px">
+        <div class="col-xs-3" style=" padding-right:1px;padding-left:2px;">
             <asp:TextBox ID="tb_staff" Width="100%"  runat="server"></asp:TextBox>
         </div>
         <div class="col-xs-1 lsf-clearPadding" style="width:30px;"><asp:ImageButton ID="ib_search" OnClick="ib_search_Click"  ImageUrl="~/Res/images/search.png" runat="server" Width="28px" Height="26px" /></div>

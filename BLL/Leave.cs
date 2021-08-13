@@ -478,6 +478,11 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetGross(staffid, employid, leaveid);
         }
 
+        public static double GetEstimation(int firsteid,DateTime asofdate)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.EstimationAnnualLeave(firsteid, asofdate);
+        }
+
 
         public static double GetWaitValue(int leaveid, int staffid,int employid)
         {

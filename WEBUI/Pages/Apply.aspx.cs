@@ -328,6 +328,8 @@ namespace WEBUI.Pages
             this.lt_mypending.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_pending;
             this.lt_myhistory.Text= BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed;
             this.btn_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_button;
+
+            this.lt_estimation.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_estimation;
         }
 
         private void SavePageDataToViewState(bool owlist, bool owtype, bool owpics, List<MODEL.Apply.apply_LeaveData> leavelist, List<LSLibrary.WebAPP.ValueText<int>> leavetype, List<MODEL.Apply.App_AttachmentInfo> uploadPics)
@@ -393,6 +395,10 @@ namespace WEBUI.Pages
             }
         }
 
+        public string showesEvent()
+        {
+            return "window.location.href='estimation.aspx'";
+        }
 
 
         #endregion
