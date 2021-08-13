@@ -1,15 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="approval_wait.aspx.cs" Inherits="WEBUI.Pages.approval_wait" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <ul id="myTabApproval" class="nav nav-tabs lsf-clearPadding" runat="server">
-	        <li id="myTabApproval_pending" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" runat="server" id="Approvalpending" onclick="window.location.href='approval_wait.aspx?action=0&applicationtype=0&from=3'"><asp:Literal ID="lt_pending" runat="server" Text="Pending"/></a></li>
-	        <li id="myTabApproval_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" runat="server" id="ApprovalHistory" onclick="window.location.href='approval_wait.aspx?action=0&applicationtype=3&from=3'"><asp:Literal ID="lt_processed" runat="server" Text="History"/></a></li>
+        <ul id="myTabApproval" class="nav nav-tabs lsf-clearPadding modifyTab" runat="server">
+	        <li id="myTabApproval_pending" runat="server"><a style="padding-top:5px; padding-bottom:3px;padding-left:10px; padding-right:10px; " data-toggle="tab" runat="server" id="Approvalpending" onclick="window.location.href='approval_wait.aspx?action=0&applicationtype=0&from=3'"><asp:Literal ID="lt_pending" runat="server" Text="Pending"/></a></li>
+	        <li id="myTabApproval_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;padding-left:10px; padding-right:10px; " data-toggle="tab" runat="server" id="ApprovalHistory" onclick="window.location.href='approval_wait.aspx?action=0&applicationtype=3&from=3'"><asp:Literal ID="lt_processed" runat="server" Text="History"/></a></li>
         </ul>
-        <ul id="myTabApply" class="nav nav-tabs lsf-clearPadding" runat="server">
-	        <li id="myTabapply_new" runat="server"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab" onclick="<%=showNewLink() %>"><asp:Literal ID="lt_new" runat="server" Text="New"></asp:Literal></a></li>
-	        <li id="myTabapply_pending" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?action=1&applicationtype=0&from=<%=from%>'"><asp:Literal ID="lt_mypending" runat="server" Text="Pending"/></a></li>
-            <li id="myTabapply_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='approval_wait.aspx?action=1&applicationtype=3&from=<%=from%>'"><asp:Literal ID="lt_myhistory" runat="server" Text="History"/></a></li>
-        <li id="myTabapply_es" runat="server" style="padding-left:0px;margin-left:0px;"><a style="padding-top:4px; padding-left:10px; padding-right:10px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='estimation.aspx'"><asp:Literal ID="lt_estimation" runat="server" Text="Estimation"/></a></li>
+        <ul id="myTabApply" class="nav nav-tabs lsf-clearPadding modifyTab" runat="server">
+	        <li id="myTabapply_new" runat="server"><a style="padding-top:5px; padding-bottom:3px;padding-left:10px; padding-right:10px; " data-toggle="tab" onclick="<%=showNewLink() %>"><asp:Literal ID="lt_new" runat="server" Text="New"></asp:Literal></a></li>
+	        <li id="myTabapply_pending" runat="server"><a style="padding-top:4px; padding-bottom:4px;padding-left:10px; padding-right:10px; " data-toggle="tab" onclick="window.location.href='approval_wait.aspx?action=1&applicationtype=0&from=<%=from%>'"><asp:Literal ID="lt_mypending" runat="server" Text="Pending"/></a></li>
+            <li id="myTabapply_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;padding-left:10px; padding-right:10px; " data-toggle="tab" onclick="window.location.href='approval_wait.aspx?action=1&applicationtype=3&from=<%=from%>'"><asp:Literal ID="lt_myhistory" runat="server" Text="History"/></a></li>
+            <li id="myTabapply_es" runat="server" style="padding-left:0px;margin-left:0px;"><a style="padding-top:4px; padding-left:10px; padding-right:10px; padding-bottom:4px;" data-toggle="tab" onclick="window.location.href='estimation.aspx'"><asp:Literal ID="lt_estimation" runat="server" Text="Estimation"/></a></li>
         </ul>
     </div>
     <div id="ajaxContainer" class="col-xs-12 lsf-clearPadding"></div>
@@ -97,7 +97,7 @@
                 <div class="col-xs-12" style=" line-height:8px;text-align:center;padding:0px;  margin:0px; padding-top:1px; padding-bottom:4px">
                     <label class="lsf-clearPadding" style="padding:0px;  margin:0px;height:1px;background-color:dimgray; width:90%; padding-left:3px; padding-right:3px;"></label>
                 </div>
-                <div class="col-xs-12 divheighter"><asp:Label ID="lb_name" runat="server"><%# GetStaffName((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem) %><%# ((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).ID %></asp:Label>
+                <div class="col-xs-12 divheighter"><asp:Label ID="lb_name" runat="server"><%# GetStaffName((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem) %></asp:Label>
                     <div style="float:right">
                         <%#ShowClotStatus((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem)%>
                     </div>

@@ -378,3 +378,9 @@ input,button,a {outline:0 none;}
     font-size:16px;
     border-radius:5px 5px 5px 5px;
 }
+
+.modifyTab a
+{
+    padding-left:10px; padding-right:10px;
+
+}

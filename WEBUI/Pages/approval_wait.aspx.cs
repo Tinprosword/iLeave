@@ -102,6 +102,11 @@ namespace WEBUI.Pages
             this.lt_pending.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_pending;
             this.lt_processed.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed;
 
+            if (this.rbl_sourceType.Items.Count >= 2)
+            {
+                this.rbl_sourceType.Items[0].Text= BLL.MultiLanguageHelper.GetLanguagePacket().apply_op_leave;
+                this.rbl_sourceType.Items[1].Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_op_CLOT;
+            }
         }
 
         protected void ddl_year_SelectedIndexChanged(object sender, EventArgs e)

@@ -69,8 +69,12 @@ namespace WEBUI.Pages
             DateTime.TryParse(this.tb_date.Text, out asofdate);
             if (leaveType == "0")
             {
-                double albalance = BLL.Leave.GetEstimation(loginer.userInfo.firsteid??0, asofdate);
-                this.lb_msg.Text = albalance.ToString() +" Day(s)";
+                double albalance = BLL.Leave.GetEstimation(loginer.userInfo.firsteid ?? 0, asofdate);
+                this.lb_msg.Text = albalance.ToString() + " Day(s)";
+            }
+            else
+            {
+                this.lb_msg.Text = "--";
             }
         }
     }

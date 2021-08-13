@@ -65,6 +65,9 @@ namespace WEBUI.Pages
             this.ltlisttype.Text = BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_type;
             this.ltlistfromto.Text = BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_TimeRange;
             this.ltlisthours.Text = BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours;
+
+            this.btn_add.Text = BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_ADD;
+            this.btn_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_Submit;
         }
 
         private void LoadUI()
@@ -227,7 +230,7 @@ namespace WEBUI.Pages
         {
             ApplyCLOT page = (ApplyCLOT)sender;
             page.Response.Clear();
-            page.Response.Write(LSLibrary.WebAPP.MyJSHelper.Goto("approval_wait.aspx?action=1&applicationtype=0&from=2"));
+            page.Response.Write(LSLibrary.WebAPP.MyJSHelper.Goto("approval_wait.aspx?action=1&applicationtype=0&from=1"));
             page.Response.End();
         }
 
@@ -274,7 +277,7 @@ namespace WEBUI.Pages
         {
             if (!IsPostBack)
             {
-                return "return checkNewTab('',1,3,0)";
+                return "return checkNewTab('',1,3,1)";
             }
             else
             {

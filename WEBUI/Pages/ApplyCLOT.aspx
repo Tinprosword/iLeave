@@ -5,9 +5,9 @@
     
     <div class="row">
         <ul id="myTabApply" fixname="mytab"   class="nav nav-tabs lsf-clearPadding" runat="server">
-	            <li id="myTabapply_new" runat="server" class="active"><a style="padding-top:5px; padding-bottom:3px;" data-toggle="tab"><asp:Literal ID="lt_new" runat="server" Text="New"></asp:Literal></a></li>
-	            <li id="myTabapply_pending" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="<%=showPendEvent()%>"><asp:Literal ID="lt_mypending" runat="server" Text="Pending"/></a></li>
-                <li id="myTabapply_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;" data-toggle="tab" onclick="<%=showhisEvent()%>"><asp:Literal ID="lt_myhistory" runat="server" Text="History"/></a></li>
+	            <li id="myTabapply_new" runat="server" class="active"><a style="padding-top:5px; padding-bottom:3px;padding-left:10px; padding-right:10px; " data-toggle="tab"><asp:Literal ID="lt_new" runat="server" Text="New"></asp:Literal></a></li>
+	            <li id="myTabapply_pending" runat="server"><a style="padding-top:4px; padding-bottom:4px;padding-left:10px; padding-right:10px; " data-toggle="tab" onclick="<%=showPendEvent()%>"><asp:Literal ID="lt_mypending" runat="server" Text="Pending"/></a></li>
+                <li id="myTabapply_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;padding-left:10px; padding-right:10px; " data-toggle="tab" onclick="<%=showhisEvent()%>"><asp:Literal ID="lt_myhistory" runat="server" Text="History"/></a></li>
         </ul>
     </div>
 
@@ -41,21 +41,20 @@
                     <asp:Literal ID="lt_date" runat="server">Date</asp:Literal>
                 </td>
                 <td colspan="2">
-                    <asp:TextBox ID="tb_date" runat="server" Width="90%"></asp:TextBox>
+                    <asp:TextBox ID="tb_date" runat="server" Width="90%" CssClass="datepicker1"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td><asp:Literal ID="lt_time" runat="server">Time</asp:Literal></td>
                 <td>
-                    <asp:DropDownList Width="50px" ID="DropDownList1" runat="server">
+                    <asp:DropDownList Width="80px" ID="DropDownList1" runat="server">
                     </asp:DropDownList> &nbsp;&nbsp;: &nbsp;&nbsp;
-                    <asp:DropDownList Width="50px" ID="DropDownList2" runat="server">
+                    <asp:DropDownList Width="80px" ID="DropDownList2" runat="server">
                     </asp:DropDownList>
-                    &nbsp;&nbsp;<br>
-                    <div style="height:5px;"></div>
-                    <asp:DropDownList Width="50px" ID="DropDownList3" runat="server">
+                    <div style="height:10px;"></div>
+                    <asp:DropDownList Width="80px" ID="DropDownList3" runat="server">
                     </asp:DropDownList> &nbsp;&nbsp;: &nbsp;&nbsp;
-                    <asp:DropDownList Width="50px" ID="DropDownList4" runat="server">
+                    <asp:DropDownList Width="80px" ID="DropDownList4" runat="server">
                     </asp:DropDownList>
                     <div style="height:5px;"></div>
                     </td>
@@ -66,7 +65,7 @@
                 <td style="vertical-align:bottom">
                     <asp:TextBox ID="tb_remarks" runat="server" Height="50px" Width="100%" TextMode="MultiLine" style="padding-bottom:0px;"></asp:TextBox>
                 </td>
-                <td style="width:80px; vertical-align:bottom;padding-bottom:12px;"><asp:Button ID="btn_apply" runat="server" Text="Submit" BackColor="#2573a4" ForeColor="White" BorderWidth="0" Height="34px" Font-Size="16px" Width="68px" style="border-radius:5px 5px 5px 5px" OnClick="btn_apply_Click"/></td>
+                <td style="width:80px; vertical-align:bottom;padding-bottom:12px;"><asp:Button ID="btn_apply" runat="server" Text="Submit" BackColor="#2573a4" ForeColor="White" BorderWidth="0" Height="34px" Font-Size="16px" Width="68px" style="border-radius:5px 5px 5px 5px; padding:0px;" OnClick="btn_apply_Click"/></td>
             </tr>
         </table>
         <div class=" col-xs-12" style="height:16px; color:red;padding-left:15px;"><asp:Literal ID="literal_errormsga" runat="server" Visible="false"></asp:Literal></div>
@@ -98,4 +97,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
     <script src="../Res/App/apply.js?lastmodify=<%=BLL.GlobalVariate.applyjsLastmodify %>"></script>
     <asp:Literal ID="js_waitdiv" runat="server"/>
+
+    <script type="text/javascript">
+        
+        $(".datepicker1").datepicker({
+            language: 'zh-CN', //语言
+            autoclose: true, //选择后自动关闭
+            clearBtn: true,//清除按钮
+            format: "yyyy-mm-dd"//日期格式
+        });
+                </script>
+
 </asp:Content>
