@@ -43,6 +43,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="EstimationSickLeave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="firsteid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="asoffdate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EstimationSickLeaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EstimationSickLeaveResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetAttendanceByExternRef">
         <s:complexType>
           <s:sequence>
@@ -2214,6 +2229,12 @@
   <wsdl:message name="EstimationAnnualLeaveSoapOut">
     <wsdl:part name="parameters" element="tns:EstimationAnnualLeaveResponse" />
   </wsdl:message>
+  <wsdl:message name="EstimationSickLeaveSoapIn">
+    <wsdl:part name="parameters" element="tns:EstimationSickLeave" />
+  </wsdl:message>
+  <wsdl:message name="EstimationSickLeaveSoapOut">
+    <wsdl:part name="parameters" element="tns:EstimationSickLeaveResponse" />
+  </wsdl:message>
   <wsdl:message name="GetAttendanceByExternRefSoapIn">
     <wsdl:part name="parameters" element="tns:GetAttendanceByExternRef" />
   </wsdl:message>
@@ -2799,6 +2820,13 @@
   <wsdl:message name="EstimationAnnualLeaveHttpPostOut">
     <wsdl:part name="Body" element="tns:double" />
   </wsdl:message>
+  <wsdl:message name="EstimationSickLeaveHttpPostIn">
+    <wsdl:part name="firsteid" type="s:string" />
+    <wsdl:part name="asoffdate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EstimationSickLeaveHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
   <wsdl:message name="GetAttendanceByExternRefHttpPostIn">
     <wsdl:part name="refs" type="s1:StringArray" />
   </wsdl:message>
@@ -3246,6 +3274,10 @@
       <wsdl:input message="tns:EstimationAnnualLeaveSoapIn" />
       <wsdl:output message="tns:EstimationAnnualLeaveSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="EstimationSickLeave">
+      <wsdl:input message="tns:EstimationSickLeaveSoapIn" />
+      <wsdl:output message="tns:EstimationSickLeaveSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetAttendanceByExternRef">
       <wsdl:input message="tns:GetAttendanceByExternRefSoapIn" />
       <wsdl:output message="tns:GetAttendanceByExternRefSoapOut" />
@@ -3636,6 +3668,10 @@
       <wsdl:input message="tns:EstimationAnnualLeaveHttpPostIn" />
       <wsdl:output message="tns:EstimationAnnualLeaveHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="EstimationSickLeave">
+      <wsdl:input message="tns:EstimationSickLeaveHttpPostIn" />
+      <wsdl:output message="tns:EstimationSickLeaveHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetAttendanceByExternRef">
       <wsdl:input message="tns:GetAttendanceByExternRefHttpPostIn" />
       <wsdl:output message="tns:GetAttendanceByExternRefHttpPostOut" />
@@ -3931,6 +3967,15 @@
     </wsdl:operation>
     <wsdl:operation name="EstimationAnnualLeave">
       <soap:operation soapAction="http://tempuri.org/EstimationAnnualLeave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstimationSickLeave">
+      <soap:operation soapAction="http://tempuri.org/EstimationSickLeave" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -4814,6 +4859,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="EstimationSickLeave">
+      <soap12:operation soapAction="http://tempuri.org/EstimationSickLeave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAttendanceByExternRef">
       <soap12:operation soapAction="http://tempuri.org/GetAttendanceByExternRef" style="document" />
       <wsdl:input>
@@ -5679,6 +5733,15 @@
     </wsdl:operation>
     <wsdl:operation name="EstimationAnnualLeave">
       <http:operation location="/EstimationAnnualLeave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstimationSickLeave">
+      <http:operation location="/EstimationSickLeave" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

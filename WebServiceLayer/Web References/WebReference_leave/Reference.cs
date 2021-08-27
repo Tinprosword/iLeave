@@ -35,6 +35,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback EstimationAnnualLeaveOperationCompleted;
         
+        private System.Threading.SendOrPostCallback EstimationSickLeaveOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetAttendanceByExternRefOperationCompleted;
         
         private System.Threading.SendOrPostCallback InsertAttendanceOperationCompleted;
@@ -269,6 +271,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event EstimationAnnualLeaveCompletedEventHandler EstimationAnnualLeaveCompleted;
+        
+        /// <remarks/>
+        public event EstimationSickLeaveCompletedEventHandler EstimationSickLeaveCompleted;
         
         /// <remarks/>
         public event GetAttendanceByExternRefCompletedEventHandler GetAttendanceByExternRefCompleted;
@@ -648,6 +653,37 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.EstimationAnnualLeaveCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.EstimationAnnualLeaveCompleted(this, new EstimationAnnualLeaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/EstimationSickLeave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double EstimationSickLeave(int firsteid, System.DateTime asoffdate) {
+            object[] results = this.Invoke("EstimationSickLeave", new object[] {
+                        firsteid,
+                        asoffdate});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void EstimationSickLeaveAsync(int firsteid, System.DateTime asoffdate) {
+            this.EstimationSickLeaveAsync(firsteid, asoffdate, null);
+        }
+        
+        /// <remarks/>
+        public void EstimationSickLeaveAsync(int firsteid, System.DateTime asoffdate, object userState) {
+            if ((this.EstimationSickLeaveOperationCompleted == null)) {
+                this.EstimationSickLeaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnEstimationSickLeaveOperationCompleted);
+            }
+            this.InvokeAsync("EstimationSickLeave", new object[] {
+                        firsteid,
+                        asoffdate}, this.EstimationSickLeaveOperationCompleted, userState);
+        }
+        
+        private void OnEstimationSickLeaveOperationCompleted(object arg) {
+            if ((this.EstimationSickLeaveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.EstimationSickLeaveCompleted(this, new EstimationSickLeaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -9925,6 +9961,32 @@ namespace WebServiceLayer.WebReference_leave {
         private object[] results;
         
         internal EstimationAnnualLeaveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void EstimationSickLeaveCompletedEventHandler(object sender, EstimationSickLeaveCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class EstimationSickLeaveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal EstimationSickLeaveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

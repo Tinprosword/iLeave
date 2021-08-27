@@ -74,7 +74,8 @@ namespace WEBUI.Pages
             }
             else
             {
-                this.lb_msg.Text = "--";
+                double slbalance = BLL.Leave.GetSLEstimation(loginer.userInfo.firsteid ?? 0, asofdate);
+                this.lb_msg.Text = slbalance.ToString() + " Day(s)";
             }
         }
     }
