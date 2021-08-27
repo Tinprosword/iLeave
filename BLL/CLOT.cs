@@ -65,8 +65,7 @@ namespace BLL
 
             if (!string.IsNullOrEmpty(name))
             {
-                //todo 0 finish it.
-                //result = result.Where(x => x..ToUpper().Contains(name.ToUpper())).ToList();
+                result = result.Where(x => MODEL.UserName.IsNameLike(x.Name,x.NameCH,name )==true).ToList();
             }
 
             return result;

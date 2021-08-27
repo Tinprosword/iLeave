@@ -77,6 +77,18 @@ namespace MODEL
             this.namech = namech;
         }
 
+
+        public static bool IsNameLike(string engname, string cnname, string searchName)
+        {
+            bool result = false;
+
+            if (engname.ToUpper().Contains(searchName.ToUpper()) || cnname.ToUpper().Contains(searchName.ToUpper()))
+            {
+                result = true;
+            }
+            return result;
+        }
+
         //1. Surname + Othername                Leung Shun
         //2. Surname + Othername or Nick name    Leung Linson
         //3. Nick Mame + Surname Linson Leung
