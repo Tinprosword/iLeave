@@ -288,13 +288,23 @@ namespace WEBUI.Pages
 
         private void RefleshApplyBalance()
         {
+            double waitingValue = BLL.Leave.GetWaitValue(-9, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
+
             var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
             if (dataview != null && dataview.items != null)
             {
-                float totalHour = 0;
+                float totalHour = (float)waitingValue;
                 foreach (var item in dataview.items)
                 {
-                    totalHour += item.GetHours();
+                    if (item.type == MODEL.CLOT.enum_clotType.CL)
+                    {
+                        totalHour -= item.GetHours();
+                    }
+                    else
+                    {
+                        totalHour += item.GetHours();
+                    }
+                    
                 }
                 this.lt_applydays.Text = totalHour.ToString()+" "+ BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours2;
             }
