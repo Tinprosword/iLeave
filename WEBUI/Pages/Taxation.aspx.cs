@@ -43,7 +43,7 @@ namespace WEBUI.Pages
 
         private void LoadUI()
         {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().main_Payslip, "~/pages/main.aspx", true);
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().main_Taxation, "~/pages/main.aspx", true);
 
             string companyName; int companyid; List<LSLibrary.WebAPP.ValueText<int>> dates;
 
