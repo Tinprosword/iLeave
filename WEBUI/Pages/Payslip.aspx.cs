@@ -58,7 +58,7 @@ namespace WEBUI.Pages
 
             if (!string.IsNullOrEmpty(this.DropDownList1.SelectedValue))
             {
-                showPayslispStatus(int.Parse(this.DropDownList1.SelectedValue));
+                showPayslispStatusAndHiddenBtn(int.Parse(this.DropDownList1.SelectedValue));
             }
         }
 
@@ -73,18 +73,20 @@ namespace WEBUI.Pages
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            showPayslispStatus(int.Parse(this.DropDownList1.SelectedValue));
+            showPayslispStatusAndHiddenBtn(int.Parse(this.DropDownList1.SelectedValue));
         }
 
 
-        private void showPayslispStatus(int date)
+        private void showPayslispStatusAndHiddenBtn(int date)
         {
+            this.btn_search.Visible = true;
             this.lb_status.Text = "";
             if (mMyPayslip != null && mMyPayslip.Count() > 0)
             {
                 var theItem= mMyPayslip.Where(x => x.Staffid == loginer.userInfo.staffid && x.PayrollTrailMonth == date.ToString()).FirstOrDefault();
                 if (theItem != null)
                 {
+                    this.btn_search.Visible = theItem.IsLock == true ? true : false;
                     this.lb_status.Text = theItem.IsLock==true? BLL.MultiLanguageHelper.GetLanguagePacket().Paylist_label_download: BLL.MultiLanguageHelper.GetLanguagePacket().Paylist_lable_pending;
                 }
             }

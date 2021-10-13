@@ -14,7 +14,7 @@ namespace WEBUI.Pages
         #region
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
-            mMyPayslip = BLL.Other.GetTaxationBysid(loginer.userInfo.staffid ?? 0).Where(x => x.EmploymentID == loginer.userInfo.employID).ToArray(); ;
+            mMyPayslip = BLL.Other.GetTaxationBysid(loginer.userInfo.staffid ?? 0).ToArray(); ;
         }
 
         protected override void InitPage_OnFirstLoad2()
@@ -97,16 +97,25 @@ namespace WEBUI.Pages
 
             if (selectedYear != 0)
             {
-                var data = BLL.Other.GetTextationReportData(selectedYear,loginer.userInfo.employID??0, loginer.userInfo.id);
+                var pEmployment = mMyPayslip.Where(x => x.TaxYear == selectedYear.ToString()).FirstOrDefault();
 
-
-                if (data != null && data.reportData != null && data.reportData.Length > 0 && data.msgtype == 1)
+                if (pEmployment != null)
                 {
-                    LSLibrary.HttpHelper.DownloadFile(data.reportData, "taxation.pdf", Server, Response);
+                    int pEmploymentID = pEmployment.EmploymentID;
+                    var data = BLL.Other.GetTextationReportData(selectedYear, pEmploymentID, loginer.userInfo.id);
+
+                    if (data != null && data.reportData != null && data.reportData.Length > 0 && data.msgtype == 1)
+                    {
+                        LSLibrary.HttpHelper.DownloadFile(data.reportData, "taxation.pdf", Server, Response);
+                    }
+                    else
+                    {
+                        this.lb_msg.Text = "Error:" + data.msgtype;
+                    }
                 }
                 else
                 {
-                    this.lb_msg.Text = "Error:" + data.msgtype;
+                    this.lb_msg.Text = "Error:no possible. year is not match.";
                 }
             }
         }

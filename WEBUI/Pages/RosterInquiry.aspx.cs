@@ -311,7 +311,14 @@ namespace WEBUI.Pages
             }
             else
             {
-                return data.Chinese_Name;
+                if (string.IsNullOrEmpty(data.Chinese_Name))
+                {
+                    return data.English_Name;
+                }
+                else
+                {
+                    return data.Chinese_Name;
+                }
             }
         }
 
@@ -324,7 +331,14 @@ namespace WEBUI.Pages
             }
             else
             {
-                return data.Chinese_Name;
+                if (string.IsNullOrEmpty(data.Chinese_Name))
+                {
+                    return data.English_Name;
+                }
+                else
+                {
+                    return data.Chinese_Name;
+                }
             }
         }
 

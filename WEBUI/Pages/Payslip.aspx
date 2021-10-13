@@ -13,7 +13,7 @@
                     <asp:DropDownList ID="DropDownList1" runat="server" Width="100px" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"></asp:DropDownList>
                 </td>
             </tr>
-            <tr style=" display:none">
+            <tr>
                 <td><asp:Literal ID="lt_status" runat="server"/></td>
                 <td><asp:Label ID="lb_status" runat="server"></asp:Label></td>
             </tr>
