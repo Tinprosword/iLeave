@@ -110,6 +110,7 @@ namespace WEBUI.Pages
                     }
                     else
                     {
+                        string errorMsg = data.msgtype.ToString();
                         this.lb_msg.Text = "Error:" + data.msgtype;
                     }
                 }

@@ -38,7 +38,7 @@ namespace BLL
             int check = Check_ApproveRequest_leave();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_leave(requestid, HandlerUID,remark);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_leave(requestid, HandlerUID,remark, BLL.common.baseUrl);
                 result = true;
             }
             else
@@ -56,7 +56,7 @@ namespace BLL
             int check = Check_RejectRequest_leave();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_leave(requestid, HandlerUID,remarks);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_leave(requestid, HandlerUID, remarks, BLL.common.baseUrl);
                 result = true;
             }
             else
@@ -110,7 +110,7 @@ namespace BLL
             int check = Check_ApprovalCancelRequeste();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveCancelRequest_leave(requestid, HandlerUID,remark);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveCancelRequest_leave(requestid, HandlerUID, remark, BLL.common.baseUrl);
                 result = true;
             }
             else
@@ -129,7 +129,7 @@ namespace BLL
             int check = Check_RejectCancelRequest();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectCancelRequest_leave(requestid, HandlerUID,remark);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectCancelRequest_leave(requestid, HandlerUID,remark, BLL.common.baseUrl);
                 result = true;
             }
             else

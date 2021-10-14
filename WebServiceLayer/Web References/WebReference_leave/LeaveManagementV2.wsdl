@@ -9,6 +9,7 @@
             <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="ApproverUid" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -22,6 +23,7 @@
             <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="OperateUID" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -372,6 +374,11 @@
           <s:element minOccurs="1" maxOccurs="1" name="SortSeq" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="SL168" type="s:boolean" />
           <s:element minOccurs="0" maxOccurs="1" name="Appraisal" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="minOTType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="minOTHour" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="minOTInvevalHour" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="minCLType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="minCLHour" nillable="true" type="s:double" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetPayslipBySid">
@@ -397,7 +404,6 @@
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="PayrollTrailMonth" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="Staffid" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="EmploymentID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="IsLock" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="IsReleasePayslip" type="s:boolean" />
           <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
@@ -1400,6 +1406,38 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetLeaveBalanceFromViewByEmployid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeaveBalanceFromViewByEmployidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveBalanceFromViewByEmployidResult" type="tns:ArrayOfVSystemLeaveBalance" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVSystemLeaveBalance">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="vSystemLeaveBalance" nillable="true" type="tns:vSystemLeaveBalance" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="vSystemLeaveBalance">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="StaffID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FirstEmploymentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxEmploymentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaxEmploymentNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeaveCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RealBalance" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Balance" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="WaitBal" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="BalanceDate" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="Base_Insertt_Leave">
         <s:complexType>
           <s:sequence>
@@ -2096,6 +2134,7 @@
             <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="ApproverUid" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -2108,6 +2147,7 @@
             <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -2120,6 +2160,7 @@
             <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -2132,6 +2173,7 @@
             <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -2189,6 +2231,7 @@
       <s:element name="ArrayOfLeaveRequestDetail" nillable="true" type="tns:ArrayOfLeaveRequestDetail" />
       <s:element name="LeaveBalanceType" type="tns:LeaveBalanceType" />
       <s:element name="ArrayOfDouble" nillable="true" type="tns:ArrayOfDouble" />
+      <s:element name="ArrayOfVSystemLeaveBalance" nillable="true" type="tns:ArrayOfVSystemLeaveBalance" />
       <s:element name="ArrayOfT_WorkflowInfo" nillable="true" type="tns:ArrayOfT_WorkflowInfo" />
       <s:element name="ArrayOfStaffCLOTRequest" nillable="true" type="tns:ArrayOfStaffCLOTRequest" />
       <s:element name="int" type="s:int" />
@@ -2547,6 +2590,12 @@
   <wsdl:message name="GetWaitingSoapOut">
     <wsdl:part name="parameters" element="tns:GetWaitingResponse" />
   </wsdl:message>
+  <wsdl:message name="GetLeaveBalanceFromViewByEmployidSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLeaveBalanceFromViewByEmployid" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveBalanceFromViewByEmployidSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLeaveBalanceFromViewByEmployidResponse" />
+  </wsdl:message>
   <wsdl:message name="Base_Insertt_LeaveSoapIn">
     <wsdl:part name="parameters" element="tns:Base_Insertt_Leave" />
   </wsdl:message>
@@ -2804,6 +2853,7 @@
     <wsdl:part name="requestid" type="s:string" />
     <wsdl:part name="ApproverUid" type="s:string" />
     <wsdl:part name="remark" type="s:string" />
+    <wsdl:part name="url" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ApproveRequest_ClotHttpPostOut" />
   <wsdl:message name="RejectRequest_ClotHttpPostIn">
@@ -2811,6 +2861,7 @@
     <wsdl:part name="requestid" type="s:string" />
     <wsdl:part name="OperateUID" type="s:string" />
     <wsdl:part name="remark" type="s:string" />
+    <wsdl:part name="url" type="s:string" />
   </wsdl:message>
   <wsdl:message name="RejectRequest_ClotHttpPostOut" />
   <wsdl:message name="EstimationAnnualLeaveHttpPostIn">
@@ -3080,6 +3131,12 @@
   <wsdl:message name="GetWaitingHttpPostOut">
     <wsdl:part name="Body" element="tns:double" />
   </wsdl:message>
+  <wsdl:message name="GetLeaveBalanceFromViewByEmployidHttpPostIn">
+    <wsdl:part name="eid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveBalanceFromViewByEmployidHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVSystemLeaveBalance" />
+  </wsdl:message>
   <wsdl:message name="Base_GetListt_LeaveHttpPostIn">
     <wsdl:part name="whereSql" type="s:string" />
   </wsdl:message>
@@ -3227,24 +3284,28 @@
     <wsdl:part name="requestid" type="s:string" />
     <wsdl:part name="ApproverUid" type="s:string" />
     <wsdl:part name="remark" type="s:string" />
+    <wsdl:part name="url" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ApproveRequest_leaveHttpPostOut" />
   <wsdl:message name="RejectRequest_leaveHttpPostIn">
     <wsdl:part name="requestid" type="s:string" />
     <wsdl:part name="UserID" type="s:string" />
     <wsdl:part name="remark" type="s:string" />
+    <wsdl:part name="url" type="s:string" />
   </wsdl:message>
   <wsdl:message name="RejectRequest_leaveHttpPostOut" />
   <wsdl:message name="ApproveCancelRequest_leaveHttpPostIn">
     <wsdl:part name="requestid" type="s:string" />
     <wsdl:part name="UserID" type="s:string" />
     <wsdl:part name="remark" type="s:string" />
+    <wsdl:part name="url" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ApproveCancelRequest_leaveHttpPostOut" />
   <wsdl:message name="RejectCancelRequest_leaveHttpPostIn">
     <wsdl:part name="requestid" type="s:string" />
     <wsdl:part name="UserID" type="s:string" />
     <wsdl:part name="remark" type="s:string" />
+    <wsdl:part name="url" type="s:string" />
   </wsdl:message>
   <wsdl:message name="RejectCancelRequest_leaveHttpPostOut" />
   <wsdl:message name="WithDrawRequest_leaveHttpPostIn">
@@ -3485,6 +3546,10 @@
     <wsdl:operation name="GetWaiting">
       <wsdl:input message="tns:GetWaitingSoapIn" />
       <wsdl:output message="tns:GetWaitingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveBalanceFromViewByEmployid">
+      <wsdl:input message="tns:GetLeaveBalanceFromViewByEmployidSoapIn" />
+      <wsdl:output message="tns:GetLeaveBalanceFromViewByEmployidSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Base_Insertt_Leave">
       <wsdl:input message="tns:Base_Insertt_LeaveSoapIn" />
@@ -3831,6 +3896,10 @@
     <wsdl:operation name="GetWaiting">
       <wsdl:input message="tns:GetWaitingHttpPostIn" />
       <wsdl:output message="tns:GetWaitingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveBalanceFromViewByEmployid">
+      <wsdl:input message="tns:GetLeaveBalanceFromViewByEmployidHttpPostIn" />
+      <wsdl:output message="tns:GetLeaveBalanceFromViewByEmployidHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="Base_GetListt_Leave">
       <wsdl:input message="tns:Base_GetListt_LeaveHttpPostIn" />
@@ -4444,6 +4513,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetWaiting">
       <soap:operation soapAction="http://tempuri.org/GetWaiting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveBalanceFromViewByEmployid">
+      <soap:operation soapAction="http://tempuri.org/GetLeaveBalanceFromViewByEmployid" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -5336,6 +5414,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetLeaveBalanceFromViewByEmployid">
+      <soap12:operation soapAction="http://tempuri.org/GetLeaveBalanceFromViewByEmployid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Base_Insertt_Leave">
       <soap12:operation soapAction="http://tempuri.org/Base_Insertt_Leave" style="document" />
       <wsdl:input>
@@ -6102,6 +6189,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetWaiting">
       <http:operation location="/GetWaiting" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveBalanceFromViewByEmployid">
+      <http:operation location="/GetLeaveBalanceFromViewByEmployid" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

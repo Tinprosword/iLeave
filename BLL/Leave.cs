@@ -488,6 +488,10 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.EstimationSickLeave(firstEid, asodate);
         }
 
+        public static vSystemLeaveBalance[] GetBalanceFromView(int eid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveBalanceFromViewByEmployid(eid);
+        }
 
         public static double GetWaitValue(int leaveid, int staffid,int employid)
         {

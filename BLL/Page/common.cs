@@ -9,6 +9,8 @@ namespace BLL
 {
     public class common
     {
+        public static string baseUrl="";
+
         private static bool isdbug = false;
         private static int devMode = 1100;//1fix ;0,cofing dec 1 nofig;  3:nouse   4 nouse.
 

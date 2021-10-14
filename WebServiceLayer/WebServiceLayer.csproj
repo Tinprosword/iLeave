@@ -182,6 +182,9 @@
     <None Include="Web References\WebReference_leave\UserInfo.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\WebReference_leave\vSystemLeaveBalance.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\WebReference_leave\v_System_Calendar.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
