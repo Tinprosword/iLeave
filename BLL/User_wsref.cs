@@ -204,6 +204,19 @@ namespace BLL
             LSLibrary.WebAPP.LoginManager.SetLoginer(loginer);
         }
 
+        public static string GetDisplayName(int uid, int nametype)
+        {
+            string result = "";
+            var users =GetPersonBaseInfoByUid(uid).ToList();
+            if (users != null && users.Count() > 0)
+            {
+                MODEL.UserName tempUserName = new MODEL.UserName(users[0].p_Surname, users[0].p_Othername, users[0].p_Nickname, users[0].p_NameCH);
+                result = tempUserName.GetDisplayName(nametype);
+            }
+
+            return result;
+        }
+
         #region auto
         public static WebServiceLayer.WebReference_user.t_Employment getEmploymentByid(int id)
         {

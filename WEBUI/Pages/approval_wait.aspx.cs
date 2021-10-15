@@ -587,29 +587,7 @@ namespace WEBUI.Pages
             }
         }
 
-        public string showCLOTTime(WebServiceLayer.WebReference_leave.StaffCLOTRequest clot)
-        {
-            string strdate = clot.Date.ToString("yyyy-MM-dd");
-            string time = "";
-            if (clot.TimeFrom == null || clot.TimeTo == null)
-            {
-                time = MODEL.CLOT.CLOTItem.GetTimeRangeDesc(0,0, 0, 0);
-            }
-            else
-            {
-                time = MODEL.CLOT.CLOTItem.GetTimeRangeDesc(clot.TimeFrom.Value.Hour, clot.TimeTo.Value.Hour, clot.TimeFrom.Value.Minute, clot.TimeTo.Value.Minute);
-            }
-            string hours = "";
-            if (clot.TimeFrom == null || clot.TimeTo == null)
-            {
-                hours = "";
-            }
-            else
-            {
-                hours = MODEL.CLOT.CLOTItem.GetHours(clot.TimeFrom.Value.Hour, clot.TimeTo.Value.Hour, clot.TimeFrom.Value.Minute, clot.TimeTo.Value.Minute).ToString();
-            }
-            return strdate + " " + time + " (" + hours + " " + BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours + ")";
-        }
+        
 
 
         protected void rbl_sourceType_SelectedIndexChanged(object sender, EventArgs e)

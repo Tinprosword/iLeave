@@ -19,16 +19,40 @@ namespace WEBUI.webservices
         [WebMethod]
         public string GetLeaveDetail_html(int requestID, int leaveid, int staff, int employmentNo,int lan)
         {
-            //http://localhost:8099/webservices/leave.asmx/GetLeaveDetail_html
-            var baseUri = HttpContext.Current.Request.Url.OriginalString.Replace("webservices/leave.asmx/GetLeaveDetail_html", "");
-
-            //var baseUri = HttpContext.Current.Request.ApplicationPath;
+            var baseUri = GetWSBaseURI(HttpContext.Current.Request.Url.OriginalString);
 
             var url = baseUri + "pages/ajax_historydetail2.aspx";
             string postdata = "requestID=" + requestID + "&leaveid=" + leaveid + "&staff=" + staff + "&employmentNo=" + employmentNo+"&lan="+lan;
             string rr = LSLibrary.HttpWebRequestHelper.HttpPost(url, postdata, "");
             return rr;
         }
+
+
+        [WebMethod]
+        public string GetCLOTDetail_html(int requestID, int leaveid, int staff, int employmentNo, int lan)
+        {
+            var baseUri = GetWSBaseURI(HttpContext.Current.Request.Url.OriginalString);
+
+
+            var url = baseUri + "pages/ajax_historydetailCLOT.aspx";
+            string postdata = "requestID=" + requestID + "&leaveid=" + leaveid + "&staff=" + staff + "&employmentNo=" + employmentNo + "&lan=" + lan;
+            string rr = LSLibrary.HttpWebRequestHelper.HttpPost(url, postdata, "");
+            return rr;
+        }
+
+        private string GetWSBaseURI(string url)
+        {
+            string result = url;
+
+            int index = url.IndexOf("webservices");
+            if (index > 0)
+            {
+                result = url.Substring(0, index);
+            }
+
+            return result;
+        }
+
 
     }
 }

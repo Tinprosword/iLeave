@@ -11,17 +11,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 //zone positon .是和loginer 固定相关。 zone->positon            ok.
 //3.datetime 默认当月。                                                ok.
 //修改ddl .晴空textbox.                                                ok.

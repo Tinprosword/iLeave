@@ -1,0 +1,172 @@
+ip:::1
+DataTime：2021/10/15 10:16:49
+Url：http://localhost/WEBUI/pages/approval_wait.aspx?action=1&applicationtype=0&from=1
+Message：无法将类型为“WebServiceLayer.WebReference_leave.StaffCLOTRequest”的对象强制转换为类型“WebServiceLayer.WebReference_leave.LeaveRequestMaster”。
+Source：App_Web_pmk1uhtf
+Type：System.InvalidCastException
+Function：Void __DataBind__control65(System.Object, System.EventArgs)
+Trace：   在 ASP.pages_approval_wait_aspx.__DataBind__control65(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\pages\approval_wait.aspx:行号 108
+   在 System.Web.UI.Control.OnDataBinding(EventArgs e)
+   在 System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   在 System.Web.UI.Control.DataBindChildren()
+   在 System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   在 System.Web.UI.WebControls.Repeater.CreateItem(Int32 itemIndex, ListItemType itemType, Boolean dataBind, Object dataItem)
+   在 System.Web.UI.WebControls.Repeater.AddDataItemsIntoItemsArray(IEnumerable dataSource, Boolean useDataSource)
+   在 System.Web.UI.WebControls.Repeater.PostGetDataAction(IEnumerable dataSource)
+   在 System.Web.UI.WebControls.Repeater.OnDataBinding(EventArgs e)
+   在 WEBUI.Pages.approval_wait.SetupRepeater() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 187
+   在 WEBUI.Pages.approval_wait.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 84
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/10/15 11:09:52
+Url：http://localhost/WEBUI/webservices/leave.asmx/GetCLOTDetail_htmlpages/ajax_historydetailCLOT.aspx
+Message：文件“/WEBUI/webservices/leave.asmx/GetCLOTDetail_htmlpages/ajax_historydetailCLOT.aspx”不存在。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void CheckVirtualFileExists(System.Web.VirtualPath)
+Trace：   在 System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************
+ip:::1
+DataTime：2021/10/15 11:11:34
+Url：http://localhost/WEBUI/webservices/leave.asmx/GetCLOTDetail_htmlpages/ajax_historydetailCLOT.aspx
+Message：文件“/WEBUI/webservices/leave.asmx/GetCLOTDetail_htmlpages/ajax_historydetailCLOT.aspx”不存在。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void CheckVirtualFileExists(System.Web.VirtualPath)
+Trace：   在 System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************
+ip:::1
+DataTime：2021/10/15 14:10:32
+Url：http://localhost/WEBUI/pages/ajax_historydetailCLOT.aspx
+Message：无法将类型为“System.Int32”的对象强制转换为类型“WebServiceLayer.WebReference_leave.LeaveHistory”。
+Source：App_Web_vqwe4s0l
+Type：System.InvalidCastException
+Function：Void __DataBind__control3(System.Object, System.EventArgs)
+Trace：   在 ASP.pages_ajax_historydetailclot_aspx.__DataBind__control3(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ajax_historydetailclot.aspx:行号 33
+   在 System.Web.UI.Control.OnDataBinding(EventArgs e)
+   在 System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   在 System.Web.UI.Control.DataBindChildren()
+   在 System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   在 System.Web.UI.WebControls.Repeater.CreateItem(Int32 itemIndex, ListItemType itemType, Boolean dataBind, Object dataItem)
+   在 System.Web.UI.WebControls.Repeater.AddDataItemsIntoItemsArray(IEnumerable dataSource, Boolean useDataSource)
+   在 System.Web.UI.WebControls.Repeater.PostGetDataAction(IEnumerable dataSource)
+   在 System.Web.UI.WebControls.Repeater.OnDataBinding(EventArgs e)
+   在 WEBUI.Pages.ajax_historydetailclot.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ajax_historydetailclot.aspx.cs:行号 24
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/10/15 14:11:59
+Url：http://localhost/WEBUI/pages/ajax_historydetailCLOT.aspx
+Message：无法将类型为“System.Int32”的对象强制转换为类型“WebServiceLayer.WebReference_leave.LeaveHistory”。
+Source：App_Web_vqwe4s0l
+Type：System.InvalidCastException
+Function：Void __DataBind__control3(System.Object, System.EventArgs)
+Trace：   在 ASP.pages_ajax_historydetailclot_aspx.__DataBind__control3(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ajax_historydetailclot.aspx:行号 33
+   在 System.Web.UI.Control.OnDataBinding(EventArgs e)
+   在 System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   在 System.Web.UI.Control.DataBindChildren()
+   在 System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   在 System.Web.UI.WebControls.Repeater.CreateItem(Int32 itemIndex, ListItemType itemType, Boolean dataBind, Object dataItem)
+   在 System.Web.UI.WebControls.Repeater.AddDataItemsIntoItemsArray(IEnumerable dataSource, Boolean useDataSource)
+   在 System.Web.UI.WebControls.Repeater.PostGetDataAction(IEnumerable dataSource)
+   在 System.Web.UI.WebControls.Repeater.OnDataBinding(EventArgs e)
+   在 WEBUI.Pages.ajax_historydetailclot.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ajax_historydetailclot.aspx.cs:行号 24
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/10/15 15:01:20
+Url：http://localhost/WEBUI/pages/ajax_historydetailCLOT.aspx
+Message：值不能为 null。
+参数名: String
+Source：mscorlib
+Type：System.ArgumentNullException
+Function：Void StringToNumber(System.String, System.Globalization.NumberStyles, NumberBuffer ByRef, System.Globalization.NumberFormatInfo, Boolean)
+Trace：   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 WEBUI.Pages.ajax_historydetailclot.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ajax_historydetailclot.aspx.cs:行号 28
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/10/15 15:04:13
+Url：http://localhost/WEBUI/pages/ajax_historydetailCLOT.aspx
+Message：值不能为 null。
+参数名: String
+Source：mscorlib
+Type：System.ArgumentNullException
+Function：Void StringToNumber(System.String, System.Globalization.NumberStyles, NumberBuffer ByRef, System.Globalization.NumberFormatInfo, Boolean)
+Trace：   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 WEBUI.Pages.ajax_historydetailclot.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ajax_historydetailclot.aspx.cs:行号 28
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/10/15 15:29:13
+Url：http://localhost/WEBUI/pages/ajax_historydetailCLOT.aspx
+Message：Unable to cast object of type 'WebServiceLayer.WebReference_leave.StaffCLOTRequest' to type 'WebServiceLayer.WebReference_leave.LeaveRequestDetail'.
+Source：App_Web_4srm4oou
+Type：System.InvalidCastException
+Function：Void __DataBind__control9(System.Object, System.EventArgs)
+Trace：   在 ASP.pages_ajax_historydetailclot_aspx.__DataBind__control9(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ajax_historydetailclot.aspx:行号 74
+   在 System.Web.UI.Control.OnDataBinding(EventArgs e)
+   在 System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   在 System.Web.UI.Control.DataBindChildren()
+   在 System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   在 System.Web.UI.WebControls.Repeater.CreateItem(Int32 itemIndex, ListItemType itemType, Boolean dataBind, Object dataItem)
+   在 System.Web.UI.WebControls.Repeater.AddDataItemsIntoItemsArray(IEnumerable dataSource, Boolean useDataSource)
+   在 System.Web.UI.WebControls.Repeater.PostGetDataAction(IEnumerable dataSource)
+   在 System.Web.UI.WebControls.Repeater.OnDataBinding(EventArgs e)
+   在 WEBUI.Pages.ajax_historydetailclot.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ajax_historydetailclot.aspx.cs:行号 62
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/10/15 15:30:25
+Url：http://localhost/WEBUI/pages/ajax_historydetailCLOT.aspx
+Message：Unable to cast object of type 'WebServiceLayer.WebReference_leave.StaffCLOTRequest' to type 'WebServiceLayer.WebReference_leave.LeaveRequestDetail'.
+Source：App_Web_4srm4oou
+Type：System.InvalidCastException
+Function：Void __DataBind__control9(System.Object, System.EventArgs)
+Trace：   在 ASP.pages_ajax_historydetailclot_aspx.__DataBind__control9(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ajax_historydetailclot.aspx:行号 74
+   在 System.Web.UI.Control.OnDataBinding(EventArgs e)
+   在 System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   在 System.Web.UI.Control.DataBindChildren()
+   在 System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   在 System.Web.UI.WebControls.Repeater.CreateItem(Int32 itemIndex, ListItemType itemType, Boolean dataBind, Object dataItem)
+   在 System.Web.UI.WebControls.Repeater.AddDataItemsIntoItemsArray(IEnumerable dataSource, Boolean useDataSource)
+   在 System.Web.UI.WebControls.Repeater.PostGetDataAction(IEnumerable dataSource)
+   在 System.Web.UI.WebControls.Repeater.OnDataBinding(EventArgs e)
+   在 WEBUI.Pages.ajax_historydetailclot.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ajax_historydetailclot.aspx.cs:行号 62
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

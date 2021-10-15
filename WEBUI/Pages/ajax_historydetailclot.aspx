@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/ajax.Master" AutoEventWireup="true" CodeBehind="ajax_historydetail2.aspx.cs" Inherits="WEBUI.Pages.ajax_historydetail2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/ajax.Master" AutoEventWireup="true" CodeBehind="ajax_historydetailclot.aspx.cs" Inherits="WEBUI.Pages.ajax_historydetailclot" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div id="showdiv" class="col-xs-12 lsf-clearPadding" style="height:<%=totalHeight%>px">
+    <div id="showdiv" class="col-xs-12 lsf-clearPadding" style="height:<%=totalHeight%>px">
         <%--title1--%>
 	    <table class="col-xs-12 lsu-table-xs4padding lsf-clearPadding" style="height:30px;">
 		    <tbody>
@@ -8,8 +8,8 @@
 	        </tbody>
 	    </table>
         <div class="col-xs-8" style="height:6px">&nbsp;</div>
+
         <%--balance--%>
-        
 		<table class="col-xs-12 lsf-clearPadding" style="margin-bottom:9px; height:40px;">
 			<tbody>
                 <tr><td class="col-xs-4 lsf-clearPadding;" style="padding-left:4px;padding-right:1px"><asp:Literal ID="lt_bancetitle" runat="server">lt</asp:Literal></td><td style="text-align:right;width:40px;"><div id="lbbalance"><asp:Literal ID="lt_balance" runat="server">3.81</asp:Literal></div></td><td>&nbsp;&nbsp;&nbsp;<asp:Literal ID="lt_days" runat="server">Day(s)</asp:Literal></td></tr>
@@ -45,6 +45,7 @@
         </table>
             </div>
         </asp:Panel>
+
         <%--list--%>             
 		<table class="col-xs-12 lsu-table-xs lsf-clearPadding">
 			<tbody>
@@ -52,10 +53,9 @@
                     <td>
                         <table class="col-xs-12 lsu-table-xs4padding lsf-clearPadding">
                             <tbody><tr>
-				                <td class="col-xs-4" style="width:120px"><asp:Literal ID="lt_col1" runat="server">lt</asp:Literal><asp:literal id="Literal1" runat="server"></asp:literal></td>
-				                <td class="col-xs-4" style="width:120px"><asp:Literal ID="lt_col2" runat="server">lt</asp:Literal><asp:literal id="Literal2" runat="server"></asp:literal></td>
-				                <td class="col-xs-2" style="width:60px;text-align:right;"><asp:Literal ID="lt_col3" runat="server">lt</asp:Literal><asp:literal id="Literal3" runat="server"></asp:literal></td>
-				                <td class="col-xs-3">&nbsp;</td>
+				                <td class="col-xs-4"><asp:Literal ID="lt_col1" runat="server">lt</asp:Literal><asp:literal id="Literal1" runat="server"></asp:literal></td>
+				                <td class="col-xs-2"><asp:Literal ID="lt_col2" runat="server">lt</asp:Literal><asp:literal id="Literal2" runat="server"></asp:literal></td>
+				                <td class="col-xs-6"><asp:Literal ID="lt_col3" runat="server">lt</asp:Literal><asp:literal id="Literal3" runat="server"></asp:literal></td>
                             </tr></tbody>
                         </table>
                     </td>
@@ -69,16 +69,16 @@
                 <tbody>
                     <asp:Repeater ID="rp_list" runat="server">
                         <ItemTemplate>
-                            <tr style="">
-                                <td class="col-xs-4" style="width:120px"><%#((DateTime)((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveFrom).ToString("yyyy-MM-dd")%></td>
-					            <td class="col-xs-4" style="width:120px"><%#BLL.GlobalVariate.GetSectionMultLanguage(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section,lan) %></td>
-					            <td class="col-xs-2" style="width:60px;text-align:right;"><%#BLL.GlobalVariate.sectionsUnit[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %>&nbsp;</td>
-					            <td class="col-xs-3"></td>
+                            <tr>
+                                <td class="col-xs-4"><%#((DateTime)((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Date).ToString("yyyy-MM-dd")%></td>
+					            <td class="col-xs-2"><%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Type==0?"OT":"CL" %></td>
+					            <td class="col-xs-6"><%# BLL.CLOT.showCLOTTimev2((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem) %></td>
                             </tr>
                         </ItemTemplate>
                     </asp:Repeater>
 			    </tbody>
 			</table>
 		</div>
+
     </div>
 </asp:Content>

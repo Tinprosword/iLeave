@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+//todo 0  申请一个，好像 waitBalance 不会加上去??
 namespace WEBUI.Pages
 {
     public partial class ApplyCLOT : BLL.CustomLoginTemplate
@@ -88,7 +89,8 @@ namespace WEBUI.Pages
             this.lt_applydays.Text = "--";
             this.lt_balancedays.Text = "--";
             double cleanValue = BLL.Leave.GetCleanValue(-9, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
-            this.lt_balancedays.Text = cleanValue.ToString("0.##") + " " + BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours2;
+            double waitValue= BLL.Leave.GetWaitValue(-9, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
+            this.lt_balancedays.Text = (cleanValue- waitValue).ToString("0.##") + " " + BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours2;
             RefleshApplyBalance();
 
             this.tb_date.Text = System.DateTime.Now.ToString("yyyy-MM-dd");
@@ -288,12 +290,12 @@ namespace WEBUI.Pages
 
         private void RefleshApplyBalance()
         {
-            double waitingValue = BLL.Leave.GetWaitValue(-9, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
+            //double waitingValue = BLL.Leave.GetWaitValue(-9, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
 
             var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
             if (dataview != null && dataview.items != null)
             {
-                float totalHour = (float)waitingValue;
+                float totalHour = 0; //(float)waitingValue;
                 foreach (var item in dataview.items)
                 {
                     if (item.type == MODEL.CLOT.enum_clotType.CL)

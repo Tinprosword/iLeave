@@ -10,6 +10,18 @@ namespace BLL
     public class CLOT
     {
         #region getclot
+        public static List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> GetCLOTDetail(int requestID)
+        {
+            List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> result = new List<StaffCLOTRequest>();
+
+            var tempResult= WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetCLOTDetail(new int[] { requestID }).ToList();
+            if (tempResult != null && tempResult.Count() > 0)
+            {
+                result = tempResult;
+            }
+            return result;
+        }
+
         public static List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> GetMyCLOT(int firsteid, GlobalVariate.LeaveBigRangeStatus status, int year)
         {
             DateTime from = new DateTime(year, 1, 1);
@@ -124,5 +136,44 @@ namespace BLL
             return result;
         }
 
+
+        #region other function
+        public static string showCLOTTime(WebServiceLayer.WebReference_leave.StaffCLOTRequest clot)
+        {
+            string strdate = clot.Date.ToString("yyyy-MM-dd");
+            string time = "";
+            if (clot.TimeFrom == null || clot.TimeTo == null)
+            {
+                time = MODEL.CLOT.CLOTItem.GetTimeRangeDesc(0, 0, 0, 0);
+            }
+            else
+            {
+                time = MODEL.CLOT.CLOTItem.GetTimeRangeDesc(clot.TimeFrom.Value.Hour, clot.TimeTo.Value.Hour, clot.TimeFrom.Value.Minute, clot.TimeTo.Value.Minute);
+            }
+            string hours = "";
+           
+            hours = clot.Hour.ToString();
+
+            return strdate + " " + time + " (" + hours + " " + BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours + ")";
+        }
+
+        public static string showCLOTTimev2(WebServiceLayer.WebReference_leave.StaffCLOTRequest clot)
+        {
+            string time = "";
+            if (clot.TimeFrom == null || clot.TimeTo == null)
+            {
+                time = MODEL.CLOT.CLOTItem.GetTimeRangeDesc(0, 0, 0, 0);
+            }
+            else
+            {
+                time = MODEL.CLOT.CLOTItem.GetTimeRangeDesc(clot.TimeFrom.Value.Hour, clot.TimeTo.Value.Hour, clot.TimeFrom.Value.Minute, clot.TimeTo.Value.Minute);
+            }
+            string hours = "";
+
+            hours = clot.Hour.ToString();
+
+            return   time + " (" + hours + " h)";
+        }
+        #endregion
     }
 }

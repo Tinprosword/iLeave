@@ -14,14 +14,37 @@ namespace WEBUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            leavebase leavebase = new leavebase();
+            //leavebase leavebase = new leavebase();
 
-            this.Label1.Text = leavebase.add(1, 3).ToString();
+            //this.Label1.Text = leavebase.add(1, 3).ToString();
+            getbaseinfo();
         }
-        
+
+
+        private void getbaseinfo()
+        {
+            string url = "http://localhost:80/WEBUI/webservices/leave.asmx/GetCLOTDetail_html";
+
+            int index= url.IndexOf("webservices");
+            if (index > 0)
+            {
+                url = url.Substring(0, index);
+            }
+
+            if (url == "http://localhost:80/WEBUI/")
+            {
+                this.Label1.Text = "ok" + url;
+            }
+            else
+            {
+                this.Label1.Text = "error" + url;
+            }
+        }
 
 
     }
+
+
 
     public class leavebase
     {
