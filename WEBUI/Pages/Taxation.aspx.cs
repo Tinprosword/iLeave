@@ -111,7 +111,11 @@ namespace WEBUI.Pages
                     else
                     {
                         string errorMsg = data.msgtype.ToString();
-                        this.lb_msg.Text = "Error:" + data.msgtype;
+                        if (errorMsg == "-4")
+                        {
+                            errorMsg += "No Record Found";
+                        }
+                        this.lb_msg.Text = "Error:" + errorMsg;
                     }
                 }
                 else
