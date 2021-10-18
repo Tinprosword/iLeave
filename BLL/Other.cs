@@ -156,6 +156,27 @@ namespace BLL
 
             return result;
         }
+
+
+        public static string GetWebSiteRootUrl(System.Web.HttpRequest Request)
+        {
+            string result = "";
+            string sysUrl= BLL.CodeSetting.GetSystemParameter(BLL.CodeSetting.SystemParameter_baseurl);
+            if (string.IsNullOrEmpty(sysUrl))
+            {
+                string theUrl = Request.Url.ToString();
+                int p_intStart = theUrl.ToUpper().IndexOf("/ILEAVE/");
+                if (p_intStart > -1)
+                {
+                    result = theUrl.Substring(0, p_intStart) + "/UI/";
+                }
+            }
+            else
+            {
+                result = sysUrl;
+            }
+            return result;
+        }
     }
 
 }

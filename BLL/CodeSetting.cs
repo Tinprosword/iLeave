@@ -10,6 +10,7 @@ namespace BLL
     public class CodeSetting
     {
         public static string SystemParameter_showleaveCode = "HIDE_LEAVECODE_IN_LEAVE_CALENDAR";
+        public static string SystemParameter_baseurl = "ILEAVE_HRBASEURL";
 
         public static List<int> GetSections(int position, int leave)
         {
