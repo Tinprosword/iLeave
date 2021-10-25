@@ -47,18 +47,24 @@
             <tr>
                 <td><asp:Literal ID="lt_time" runat="server">Time</asp:Literal></td>
                 <td>
-                    <asp:DropDownList Width="80px" ID="DropDownList1" runat="server">
+                    <asp:DropDownList Width="80px" ID="DropDownList1" runat="server" OnTextChanged="DropDownList1_TextChanged" AutoPostBack="true">
                     </asp:DropDownList> &nbsp;&nbsp;: &nbsp;&nbsp;
-                    <asp:DropDownList Width="80px" ID="DropDownList2" runat="server">
+                    <asp:DropDownList Width="80px" ID="DropDownList2" runat="server" OnTextChanged="DropDownList1_TextChanged" AutoPostBack="true">
                     </asp:DropDownList>
                     <div style="height:10px;"></div>
-                    <asp:DropDownList Width="80px" ID="DropDownList3" runat="server">
+                    <asp:DropDownList Width="80px" ID="DropDownList3" runat="server" OnTextChanged="DropDownList1_TextChanged" AutoPostBack="true">
                     </asp:DropDownList> &nbsp;&nbsp;: &nbsp;&nbsp;
-                    <asp:DropDownList Width="80px" ID="DropDownList4" runat="server">
+                    <asp:DropDownList Width="80px" ID="DropDownList4" runat="server" OnTextChanged="DropDownList1_TextChanged" AutoPostBack="true">
                     </asp:DropDownList>
                     <div style="height:5px;"></div>
                     </td>
                     <td style="width:80px; vertical-align:bottom;padding-bottom:12px;"><asp:Button ID="btn_add" runat="server" Text="Add"  BackColor="#2573a4" ForeColor="White" BorderWidth="0" Height="34px" Font-Size="16px" Width="68px" style="border-radius:5px 5px 5px 5px" OnClick="btn_add_Click"/></td>
+            </tr>
+            <tr>
+                <td><asp:Literal ID="lt_hours" runat="server" Text="Number of Hours"></asp:Literal></td>
+                <td colspan="2">
+                    <asp:TextBox ID="tb_hours" runat="server" Width="90%" Text="0" ></asp:TextBox>
+                </td>
             </tr>
             <tr>
                 <td><asp:Literal ID="lt_remarks" runat="server">Remarks</asp:Literal></td>
@@ -85,7 +91,7 @@
                         <td class="col-xs-3" ><asp:Literal ID="ltlistdate" runat="server" Text='<%#((MODEL.CLOT.CLOTItem)Container.DataItem).date.ToString("yyyy-MM-dd") %>'></asp:Literal></td>
                         <td class="col-xs-2" ><asp:Literal ID="ltlisttype" runat="server" Text='<%#((MODEL.CLOT.CLOTItem)Container.DataItem).type.ToString() %>'></asp:Literal></td>
                         <td class="col-xs-4" ><asp:Literal ID="ltlistfromto" runat="server" Text='<%#((MODEL.CLOT.CLOTItem)Container.DataItem).GetTimeRangeDesc() %>'></asp:Literal></td>
-                        <td class="col-xs-2" ><asp:Literal ID="ltlisthours" runat="server" Text='<%#((MODEL.CLOT.CLOTItem)Container.DataItem).GetHours()%>'></asp:Literal></td>
+                        <td class="col-xs-2" ><asp:Literal ID="ltlisthours" runat="server" Text='<%#((MODEL.CLOT.CLOTItem)Container.DataItem).GetHoursFromTextBox()%>'></asp:Literal></td>
                         <td style="text-align:right"><asp:ImageButton ID="delete" Width="30px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="30px" ImageUrl="~/Res/images/close.png" runat="server" OnClick="delete_Click" /></td>
                     </tr>
                     </ItemTemplate>

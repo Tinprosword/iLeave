@@ -106,7 +106,7 @@ namespace BLL
                 tempData.Type = (int)item.type;
                 tempData.EmploymentID = applyerEID;
                 tempData.Remarks = item.remark;
-                tempData.Hour = item.GetHours();
+                tempData.Hour = item.GetHoursFromTextBox();
 
 
                 var requestid= InsertCLOTRequest(tempData, createrUid, applyerEID);
@@ -173,6 +173,20 @@ namespace BLL
             hours = clot.Hour.ToString();
 
             return   time + " (" + hours + " h)";
+        }
+
+        public static float CalculateNumberofHours(int fromhour, int tohour, int frommin, int tominute,DateTime day)
+        {
+            int h = tohour - fromhour;
+            int m = tominute - frommin;
+            int totalmin = h * 60 + m;
+            float result = (float)(Math.Round((double)((double)totalmin / 60), 2));
+            return result;
+        }
+
+        public static int checkIsOverlap(int eid, DateTime from, DateTime to)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.clot_CheckCLOTIsOverlap(eid, from, to);
         }
         #endregion
     }

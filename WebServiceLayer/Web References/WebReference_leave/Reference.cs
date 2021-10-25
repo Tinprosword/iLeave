@@ -143,6 +143,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetLeaveBalanceFromViewByEmployidOperationCompleted;
         
+        private System.Threading.SendOrPostCallback clot_CheckCLOTIsOverlapOperationCompleted;
+        
         private System.Threading.SendOrPostCallback Base_Insertt_LeaveOperationCompleted;
         
         private System.Threading.SendOrPostCallback Base_Updatet_LeaveOperationCompleted;
@@ -435,6 +437,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event GetLeaveBalanceFromViewByEmployidCompletedEventHandler GetLeaveBalanceFromViewByEmployidCompleted;
+        
+        /// <remarks/>
+        public event clot_CheckCLOTIsOverlapCompletedEventHandler clot_CheckCLOTIsOverlapCompleted;
         
         /// <remarks/>
         public event Base_Insertt_LeaveCompletedEventHandler Base_Insertt_LeaveCompleted;
@@ -2291,6 +2296,39 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/clot_CheckCLOTIsOverlap", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int clot_CheckCLOTIsOverlap(int eid, System.DateTime from, System.DateTime to) {
+            object[] results = this.Invoke("clot_CheckCLOTIsOverlap", new object[] {
+                        eid,
+                        from,
+                        to});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void clot_CheckCLOTIsOverlapAsync(int eid, System.DateTime from, System.DateTime to) {
+            this.clot_CheckCLOTIsOverlapAsync(eid, from, to, null);
+        }
+        
+        /// <remarks/>
+        public void clot_CheckCLOTIsOverlapAsync(int eid, System.DateTime from, System.DateTime to, object userState) {
+            if ((this.clot_CheckCLOTIsOverlapOperationCompleted == null)) {
+                this.clot_CheckCLOTIsOverlapOperationCompleted = new System.Threading.SendOrPostCallback(this.Onclot_CheckCLOTIsOverlapOperationCompleted);
+            }
+            this.InvokeAsync("clot_CheckCLOTIsOverlap", new object[] {
+                        eid,
+                        from,
+                        to}, this.clot_CheckCLOTIsOverlapOperationCompleted, userState);
+        }
+        
+        private void Onclot_CheckCLOTIsOverlapOperationCompleted(object arg) {
+            if ((this.clot_CheckCLOTIsOverlapCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.clot_CheckCLOTIsOverlapCompleted(this, new clot_CheckCLOTIsOverlapCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Base_Insertt_Leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public t_Leave Base_Insertt_Leave(t_Leave newObject) {
             object[] results = this.Invoke("Base_Insertt_Leave", new object[] {
@@ -2936,27 +2974,29 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RejectRequest_Cancelclot", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void RejectRequest_Cancelclot(int requestid, int ApproverUid, string remark) {
+        public void RejectRequest_Cancelclot(int requestid, int ApproverUid, string remark, string baseUrl) {
             this.Invoke("RejectRequest_Cancelclot", new object[] {
                         requestid,
                         ApproverUid,
-                        remark});
+                        remark,
+                        baseUrl});
         }
         
         /// <remarks/>
-        public void RejectRequest_CancelclotAsync(int requestid, int ApproverUid, string remark) {
-            this.RejectRequest_CancelclotAsync(requestid, ApproverUid, remark, null);
+        public void RejectRequest_CancelclotAsync(int requestid, int ApproverUid, string remark, string baseUrl) {
+            this.RejectRequest_CancelclotAsync(requestid, ApproverUid, remark, baseUrl, null);
         }
         
         /// <remarks/>
-        public void RejectRequest_CancelclotAsync(int requestid, int ApproverUid, string remark, object userState) {
+        public void RejectRequest_CancelclotAsync(int requestid, int ApproverUid, string remark, string baseUrl, object userState) {
             if ((this.RejectRequest_CancelclotOperationCompleted == null)) {
                 this.RejectRequest_CancelclotOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRejectRequest_CancelclotOperationCompleted);
             }
             this.InvokeAsync("RejectRequest_Cancelclot", new object[] {
                         requestid,
                         ApproverUid,
-                        remark}, this.RejectRequest_CancelclotOperationCompleted, userState);
+                        remark,
+                        baseUrl}, this.RejectRequest_CancelclotOperationCompleted, userState);
         }
         
         private void OnRejectRequest_CancelclotOperationCompleted(object arg) {
@@ -11579,6 +11619,32 @@ namespace WebServiceLayer.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((vSystemLeaveBalance[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void clot_CheckCLOTIsOverlapCompletedEventHandler(object sender, clot_CheckCLOTIsOverlapCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class clot_CheckCLOTIsOverlapCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal clot_CheckCLOTIsOverlapCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

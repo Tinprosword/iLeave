@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 //todo 0  申请一个，好像 waitBalance 不会加上去??
+//todo 1.calculate hours.2. add->check from and to and override and check number of hours is number.
 namespace WEBUI.Pages
 {
     public partial class ApplyCLOT : BLL.CustomLoginTemplate
@@ -137,9 +138,6 @@ namespace WEBUI.Pages
         {
             //1check :day , from to, 2. add items to viewstate.  3.reload repeater.
             
-
-
-
             int validData = -1;
             DateTime theday = System.DateTime.Now;
             int fromh =int.Parse( this.DropDownList1.SelectedValue);
@@ -158,6 +156,8 @@ namespace WEBUI.Pages
             tempItem.tominute = tom;
             tempItem.type = (MODEL.CLOT.enum_clotType)type;
             tempItem.remark = remark;
+            tempItem.numberofHours = this.tb_hours.Text;
+            
 
             validData = CheckValid(tempItem);
             if (validData > 0 && bvalidday)
@@ -171,19 +171,69 @@ namespace WEBUI.Pages
             else if (validData == -1)
             {
                 literal_errormsga.Visible = true;
-                literal_errormsga.Text = "Time must be more than zero.";
+                literal_errormsga.Text = "Number of hours must be more than zero.";
+            }
+            else if (validData == -2)
+            {
+                literal_errormsga.Visible = true;
+                literal_errormsga.Text = "Number of hours must be  numeric type.";
+            }
+            else if (validData == -3)
+            {
+                literal_errormsga.Visible = true;
+                literal_errormsga.Text = "Time is overlap.";
+            }
+            else if (validData == -4)
+            {
+                literal_errormsga.Visible = true;
+                literal_errormsga.Text = "Time is overlap with current applying items.";
             }
 
             SetupReport();
             RefleshApplyBalance();
         }
 
+        private bool CheckOverlapInReapter_OnInsert(MODEL.CLOT.CLOTItem currentItem)
+        {
+            bool result = false;
+            var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
+            var applyitmes = dataview.items;
+            if (applyitmes != null && applyitmes.Count() > 0)
+            {
+                foreach (var item in applyitmes)
+                {
+                    if (LSLibrary.ValidateUtil.checkIsOverlap(currentItem.GetFrom(), currentItem.GetTo(), item.GetFrom(), item.GetTo()))
+                    {
+                        result = true;
+                        break;
+                    }
+                }
+            }
+            return result;
+        }
+
+        //-1 hours is small zero   -2. valid number of hours. -3 over pre date. -4 override in Repeater.
         private int CheckValid(MODEL.CLOT.CLOTItem tempItem)
         {
+            bool checkInRepeater = CheckOverlapInReapter_OnInsert(tempItem);
+
             int result = 1;
-            if (tempItem.GetHours() <= 0)
+            if (checkInRepeater == true)
+            {
+                result = -4;
+            }
+
+            else if (tempItem.GetHoursFromTextBox() <= 0)
             {
                 result = -1;
+            }
+            else if (tempItem.checkHoursValid() == false)
+            {
+                result = -2;
+            }
+            else if (BLL.CLOT.checkIsOverlap(loginer.userInfo.employID??0, tempItem.GetFrom(), tempItem.GetTo()) == 1)
+            {
+                result = -3;
             }
             return result;
         }
@@ -301,11 +351,11 @@ namespace WEBUI.Pages
                 {
                     if (item.type == MODEL.CLOT.enum_clotType.CL)
                     {
-                        totalHour -= item.GetHours();
+                        totalHour -= item.GetHoursFromTextBox();
                     }
                     else
                     {
-                        totalHour += item.GetHours();
+                        totalHour += item.GetHoursFromTextBox();
                     }
                     
                 }
@@ -317,6 +367,24 @@ namespace WEBUI.Pages
             else
             {
                 this.lt_applydays.Text = "--";
+            }
+        }
+
+        //RE-Calculate number of hours.
+        protected void DropDownList1_TextChanged(object sender, EventArgs e)
+        {
+            int fromh = int.Parse(this.DropDownList1.SelectedValue);
+            int fromm = int.Parse(this.DropDownList2.SelectedValue);
+            int toh = int.Parse(this.DropDownList3.SelectedValue);
+            int tom = int.Parse(this.DropDownList4.SelectedValue);
+
+
+            DateTime theday = System.DateTime.Now;
+            bool bvalidday = DateTime.TryParse(this.tb_date.Text, out theday);
+            if (bvalidday)
+            {
+                float hours = BLL.CLOT.CalculateNumberofHours(fromh, toh, fromm, tom, theday);
+                this.tb_hours.Text = hours.ToString();
             }
         }
     }

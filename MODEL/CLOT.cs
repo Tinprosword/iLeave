@@ -40,6 +40,7 @@ namespace MODEL
             public int tohour;
             public int tominute;
             public string remark;
+            public string numberofHours;
 
             public string GetTimeRangeDesc()
             {
@@ -53,17 +54,40 @@ namespace MODEL
                 return string.Format(format_string, fh.ToString("00"), fm.ToString("00"), th.ToString("00"), tm.ToString("00"));
             }
 
-            public float GetHours()
+            public DateTime GetFrom()
             {
-                return GetHours(fromhour, tohour, frommin, tominute);
+                return new DateTime(date.Year, date.Month, date.Day, fromhour,frommin,00);
             }
 
-            public static float GetHours(int fromhour, int tohour, int frommin, int tominute)
+            public DateTime GetTo()
             {
-                int h = tohour - fromhour;
-                int m = tominute - frommin;
-                int totalmin = h * 60 + m;
-                float result = (float)(Math.Round((double)((double)totalmin / 60), 2));
+                return new DateTime(date.Year, date.Month, date.Day, tohour, tominute,00);
+            }
+
+            public float GetHoursFromTextBox()
+            {
+                float result = 0;
+                bool tempCheck = checkHoursValid();
+                if (tempCheck)
+                {
+                    result = float.Parse(numberofHours);
+                }
+                return result;
+            }
+
+            public bool checkHoursValid()
+            {
+                bool result = false;
+                if (!string.IsNullOrEmpty(numberofHours))
+                {
+                    bool tempHoursCheck = LSLibrary.ValidateUtil.IsDecimal(numberofHours);
+                    bool tempHoursCheck2 = LSLibrary.ValidateUtil.IsNumber(numberofHours);
+                    if (tempHoursCheck == true || tempHoursCheck2 == true)
+                    {
+                        result = true;
+                    }
+                }
+
                 return result;
             }
         }

@@ -1438,6 +1438,22 @@
           <s:element minOccurs="1" maxOccurs="1" name="BalanceDate" nillable="true" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
+      <s:element name="clot_CheckCLOTIsOverlap">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="from" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="to" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="clot_CheckCLOTIsOverlapResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clot_CheckCLOTIsOverlapResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="Base_Insertt_Leave">
         <s:complexType>
           <s:sequence>
@@ -1830,6 +1846,7 @@
             <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="ApproverUid" type="s:int" />
             <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="baseUrl" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -2238,9 +2255,9 @@
       <s:element name="LeaveBalanceType" type="tns:LeaveBalanceType" />
       <s:element name="ArrayOfDouble" nillable="true" type="tns:ArrayOfDouble" />
       <s:element name="ArrayOfVSystemLeaveBalance" nillable="true" type="tns:ArrayOfVSystemLeaveBalance" />
+      <s:element name="int" type="s:int" />
       <s:element name="ArrayOfT_WorkflowInfo" nillable="true" type="tns:ArrayOfT_WorkflowInfo" />
       <s:element name="ArrayOfStaffCLOTRequest" nillable="true" type="tns:ArrayOfStaffCLOTRequest" />
-      <s:element name="int" type="s:int" />
       <s:element name="ErrorMessageInfo" nillable="true" type="tns:ErrorMessageInfo" />
       <s:element name="ArrayOfT_WorkflowTask" nillable="true" type="tns:ArrayOfT_WorkflowTask" />
       <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
@@ -2601,6 +2618,12 @@
   </wsdl:message>
   <wsdl:message name="GetLeaveBalanceFromViewByEmployidSoapOut">
     <wsdl:part name="parameters" element="tns:GetLeaveBalanceFromViewByEmployidResponse" />
+  </wsdl:message>
+  <wsdl:message name="clot_CheckCLOTIsOverlapSoapIn">
+    <wsdl:part name="parameters" element="tns:clot_CheckCLOTIsOverlap" />
+  </wsdl:message>
+  <wsdl:message name="clot_CheckCLOTIsOverlapSoapOut">
+    <wsdl:part name="parameters" element="tns:clot_CheckCLOTIsOverlapResponse" />
   </wsdl:message>
   <wsdl:message name="Base_Insertt_LeaveSoapIn">
     <wsdl:part name="parameters" element="tns:Base_Insertt_Leave" />
@@ -3143,6 +3166,14 @@
   <wsdl:message name="GetLeaveBalanceFromViewByEmployidHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfVSystemLeaveBalance" />
   </wsdl:message>
+  <wsdl:message name="clot_CheckCLOTIsOverlapHttpPostIn">
+    <wsdl:part name="eid" type="s:string" />
+    <wsdl:part name="from" type="s:string" />
+    <wsdl:part name="to" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="clot_CheckCLOTIsOverlapHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
   <wsdl:message name="Base_GetListt_LeaveHttpPostIn">
     <wsdl:part name="whereSql" type="s:string" />
   </wsdl:message>
@@ -3233,6 +3264,7 @@
     <wsdl:part name="requestid" type="s:string" />
     <wsdl:part name="ApproverUid" type="s:string" />
     <wsdl:part name="remark" type="s:string" />
+    <wsdl:part name="baseUrl" type="s:string" />
   </wsdl:message>
   <wsdl:message name="RejectRequest_CancelclotHttpPostOut" />
   <wsdl:message name="ApproveRequest_CancelclotHttpPostIn">
@@ -3562,6 +3594,10 @@
     <wsdl:operation name="GetLeaveBalanceFromViewByEmployid">
       <wsdl:input message="tns:GetLeaveBalanceFromViewByEmployidSoapIn" />
       <wsdl:output message="tns:GetLeaveBalanceFromViewByEmployidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="clot_CheckCLOTIsOverlap">
+      <wsdl:input message="tns:clot_CheckCLOTIsOverlapSoapIn" />
+      <wsdl:output message="tns:clot_CheckCLOTIsOverlapSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Base_Insertt_Leave">
       <wsdl:input message="tns:Base_Insertt_LeaveSoapIn" />
@@ -3912,6 +3948,10 @@
     <wsdl:operation name="GetLeaveBalanceFromViewByEmployid">
       <wsdl:input message="tns:GetLeaveBalanceFromViewByEmployidHttpPostIn" />
       <wsdl:output message="tns:GetLeaveBalanceFromViewByEmployidHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="clot_CheckCLOTIsOverlap">
+      <wsdl:input message="tns:clot_CheckCLOTIsOverlapHttpPostIn" />
+      <wsdl:output message="tns:clot_CheckCLOTIsOverlapHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="Base_GetListt_Leave">
       <wsdl:input message="tns:Base_GetListt_LeaveHttpPostIn" />
@@ -4534,6 +4574,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetLeaveBalanceFromViewByEmployid">
       <soap:operation soapAction="http://tempuri.org/GetLeaveBalanceFromViewByEmployid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="clot_CheckCLOTIsOverlap">
+      <soap:operation soapAction="http://tempuri.org/clot_CheckCLOTIsOverlap" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -5435,6 +5484,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="clot_CheckCLOTIsOverlap">
+      <soap12:operation soapAction="http://tempuri.org/clot_CheckCLOTIsOverlap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Base_Insertt_Leave">
       <soap12:operation soapAction="http://tempuri.org/Base_Insertt_Leave" style="document" />
       <wsdl:input>
@@ -6210,6 +6268,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetLeaveBalanceFromViewByEmployid">
       <http:operation location="/GetLeaveBalanceFromViewByEmployid" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="clot_CheckCLOTIsOverlap">
+      <http:operation location="/clot_CheckCLOTIsOverlap" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

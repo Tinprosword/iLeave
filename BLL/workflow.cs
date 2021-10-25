@@ -288,7 +288,7 @@ namespace BLL
             int check = Check_RejectCancelRequest_clot();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_Cancelclot(requestid, HandlerUID, remark);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_Cancelclot(requestid, HandlerUID, remark,common.baseUrl);
                 result = true;
             }
             else
