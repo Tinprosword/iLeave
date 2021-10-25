@@ -91,7 +91,8 @@ namespace WEBUI.Pages
             this.lt_balancedays.Text = "--";
             double cleanValue = BLL.Leave.GetCleanValue(-9, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
             double waitValue= BLL.Leave.GetWaitValue(-9, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
-            this.lt_balancedays.Text = (cleanValue- waitValue).ToString("0.##") + " " + BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours2;
+            double balanceValue = cleanValue - waitValue;
+            this.lt_balancedays.Text = (balanceValue).ToString("0.##") + " " + BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours2;
             RefleshApplyBalance();
 
             this.tb_date.Text = System.DateTime.Now.ToString("yyyy-MM-dd");
@@ -357,10 +358,9 @@ namespace WEBUI.Pages
                     {
                         totalHour += item.GetHoursFromTextBox();
                     }
-                    
                 }
 
-                totalHour += (float)waitingValue;
+                totalHour -= (float)waitingValue;
 
                 this.lt_applydays.Text = totalHour.ToString()+" "+ BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours2;
             }

@@ -472,7 +472,13 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveBalanceType(leaveid);
         }
 
-
+        /// <summary>
+        /// 已經減去了wait 的數量。
+        /// </summary>
+        /// <param name="leaveid"></param>
+        /// <param name="staffid"></param>
+        /// <param name="employid"></param>
+        /// <returns></returns>
         public static double GetCleanValue(int leaveid,int staffid,int employid)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetGross(staffid, employid, leaveid);
