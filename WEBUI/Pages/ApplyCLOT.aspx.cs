@@ -291,7 +291,7 @@ namespace WEBUI.Pages
 
         private void RefleshApplyBalance()
         {
-            //double waitingValue = BLL.Leave.GetWaitValue(-9, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
+            double waitingValue = BLL.Leave.GetWaitValue(-9, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
 
             var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
             if (dataview != null && dataview.items != null)
@@ -309,6 +309,9 @@ namespace WEBUI.Pages
                     }
                     
                 }
+
+                totalHour += (float)waitingValue;
+
                 this.lt_applydays.Text = totalHour.ToString()+" "+ BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours2;
             }
             else
