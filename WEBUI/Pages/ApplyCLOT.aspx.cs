@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 //todo 0  申请一个，好像 waitBalance 不会加上去??
-//todo 1.calculate hours.2. add->check from and to and override and check number of hours is number.
+//todo 0 .calculate real clot hours
 namespace WEBUI.Pages
 {
     public partial class ApplyCLOT : BLL.CustomLoginTemplate
