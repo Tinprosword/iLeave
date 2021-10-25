@@ -553,19 +553,26 @@ namespace WEBUI.Pages
         public string GetStaffName(WebServiceLayer.WebReference_leave.LeaveRequestMaster leaveRequestMaster)
         {
             MODEL.UserName tempUser = new MODEL.UserName(leaveRequestMaster.p_Surname, leaveRequestMaster.p_Othername, leaveRequestMaster.p_Nickname, leaveRequestMaster.p_NameCH);
-            return tempUser.GetDisplayName(nametype);
+            string tt= tempUser.GetDisplayName(nametype);
+            return LSLibrary.StringUtil.SubstringSP(tt, 17, "...");
         }
 
         public string GetStaffName(WebServiceLayer.WebReference_leave.StaffCLOTRequest staffclot)
         {
-            if (nametype == 1)
+            string surname = "";
+            string nextName = "";
+            string[] splitname = staffclot.Name.Split(new char[] { ' ' });
+            if(splitname!=null && splitname.Count()>=2)
             {
-                return staffclot.Name;
+                surname = splitname[0];
+                for (int i = 1; i < splitname.Count(); i++)
+                {
+                    nextName += splitname[i] + " ";
+                }
             }
-            else
-            {
-                return staffclot.NameCH;
-            }
+            MODEL.UserName tempUser = new MODEL.UserName(surname, nextName, "", staffclot.NameCH);
+            string tt= tempUser.GetDisplayName(nametype);
+            return LSLibrary.StringUtil.SubstringSP(tt, 17, "...");
         }
 
         public string GetLeaveStatus(WebServiceLayer.WebReference_leave.LeaveRequestMaster leaveRequestMaster)
