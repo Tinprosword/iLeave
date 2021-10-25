@@ -25,7 +25,9 @@ namespace BLL
         public static int InsertWorkflow(WebServiceLayer.WebReference_leave.StaffLeaveRequest[] details, int uid, int requestLeaveID, int employMentID)
         {
             int result = 0;
-            result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CreateNewWorkflow(null, WebServiceLayer.WebReference_leave.WorkflowTypeID.LEAVE_APPLICATION, details, uid, "", "",BLL.Other.GetWebSiteRootUrl(System.Web.HttpContext.Current.Request)  , "", requestLeaveID, employMentID);
+            string baseUrl = BLL.Other.GetWebSiteRootUrl(System.Web.HttpContext.Current.Request);
+            common.WriteLog("getrooturl:"+baseUrl);
+            result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CreateNewWorkflow(null, WebServiceLayer.WebReference_leave.WorkflowTypeID.LEAVE_APPLICATION, details, uid, "", "",baseUrl  , "", requestLeaveID, employMentID);
             return result;
         }
         #endregion
@@ -92,7 +94,7 @@ namespace BLL
             int check = Check_WithDrawRequest_leave();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CancelRequest_leave(requestid, HandlerUID,remark);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CancelRequest_leave(requestid, HandlerUID, remark,common.baseUrl);
                 result = true;
             }
             else
@@ -195,7 +197,7 @@ namespace BLL
             int check = Check_ApproveRequest_leave_clot();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_clotv2(requestid, HandlerUID, remark);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_clotv2(requestid, HandlerUID, remark, common.baseUrl);
                 result = true;
             }
             else
@@ -213,7 +215,7 @@ namespace BLL
             int check = Check_RejectRequest_leave_clot();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_clotv2(requestid, HandlerUID, remarks);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_clotv2(requestid, HandlerUID, remarks,common.baseUrl);
                 result = true;
             }
             else
@@ -249,7 +251,7 @@ namespace BLL
             int check = Check_WithDrawRequest_leave_clot();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CancelCLOT(requestid, remark, HandlerUID);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CancelCLOT(requestid, remark, HandlerUID, common.baseUrl);
                 result = true;
             }
             else
@@ -267,7 +269,7 @@ namespace BLL
             int check = Check_ApprovalCancelRequeste_clot();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_Cancelclot(requestid, HandlerUID, remark);
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_Cancelclot(requestid, HandlerUID, remark, common.baseUrl);
                 result = true;
             }
             else

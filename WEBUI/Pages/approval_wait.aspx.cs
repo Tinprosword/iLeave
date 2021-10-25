@@ -174,6 +174,8 @@ namespace WEBUI.Pages
 
                 List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> ds = new List<WebServiceLayer.WebReference_leave.StaffCLOTRequest>();
 
+                
+
                 if (dataType_myselfOrMyManage == 1)
                 {
                     ds = BLL.CLOT.GetMyCLOT(loginer.userInfo.firsteid ?? 0, currentBigRange, year);
@@ -183,6 +185,7 @@ namespace WEBUI.Pages
                     ds = BLL.CLOT.GetMyManageClOT(loginer.userInfo.id, currentBigRange, year, name);
                 }
 
+                ds = ds.OrderByDescending(x => x.Date).ThenByDescending(x => x.TimeFrom==null?0:x.TimeFrom.Value.Hour).ToList();
                 this.rp_clot.DataSource = ds;
                 this.rp_clot.DataBind();
             }

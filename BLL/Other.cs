@@ -170,6 +170,14 @@ namespace BLL
                 {
                     result = theUrl.Substring(0, p_intStart) + "/UI/";
                 }
+                else
+                {
+                    int intstart2 = theUrl.ToUpper().IndexOf("/DW-ILeave/");
+                    if (intstart2 > -1)
+                    {
+                        result = theUrl.Substring(0, intstart2) + "/UI/";
+                    }
+                }
             }
             else
             {
@@ -177,6 +185,8 @@ namespace BLL
             }
             return result;
         }
+
+
     }
 
 }

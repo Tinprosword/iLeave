@@ -200,6 +200,7 @@ namespace WEBUI.Pages
             LSLibrary.WebAPP.ViewStateHelper.SetValue(NAME_OF_PAGE_VIEW, dataview, this.ViewState);
 
             SetupReport();
+            RefleshApplyBalance();
         }
 
         protected void btn_apply_Click(object sender, EventArgs e)

@@ -2727,23 +2727,24 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CreateNewWorkflow_colt", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int CreateNewWorkflow_colt(WorkflowTypeID type, int createrUID, string remark, int RequestID, int applyerEid) {
+        public int CreateNewWorkflow_colt(WorkflowTypeID type, int createrUID, string remark, int RequestID, int applyerEid, string baseurl) {
             object[] results = this.Invoke("CreateNewWorkflow_colt", new object[] {
                         type,
                         createrUID,
                         remark,
                         RequestID,
-                        applyerEid});
+                        applyerEid,
+                        baseurl});
             return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void CreateNewWorkflow_coltAsync(WorkflowTypeID type, int createrUID, string remark, int RequestID, int applyerEid) {
-            this.CreateNewWorkflow_coltAsync(type, createrUID, remark, RequestID, applyerEid, null);
+        public void CreateNewWorkflow_coltAsync(WorkflowTypeID type, int createrUID, string remark, int RequestID, int applyerEid, string baseurl) {
+            this.CreateNewWorkflow_coltAsync(type, createrUID, remark, RequestID, applyerEid, baseurl, null);
         }
         
         /// <remarks/>
-        public void CreateNewWorkflow_coltAsync(WorkflowTypeID type, int createrUID, string remark, int RequestID, int applyerEid, object userState) {
+        public void CreateNewWorkflow_coltAsync(WorkflowTypeID type, int createrUID, string remark, int RequestID, int applyerEid, string baseurl, object userState) {
             if ((this.CreateNewWorkflow_coltOperationCompleted == null)) {
                 this.CreateNewWorkflow_coltOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateNewWorkflow_coltOperationCompleted);
             }
@@ -2752,7 +2753,8 @@ namespace WebServiceLayer.WebReference_leave {
                         createrUID,
                         remark,
                         RequestID,
-                        applyerEid}, this.CreateNewWorkflow_coltOperationCompleted, userState);
+                        applyerEid,
+                        baseurl}, this.CreateNewWorkflow_coltOperationCompleted, userState);
         }
         
         private void OnCreateNewWorkflow_coltOperationCompleted(object arg) {
@@ -2830,28 +2832,30 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RejectRequest_clotv2", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int RejectRequest_clotv2(int requestid, int UserID, string remark) {
+        public int RejectRequest_clotv2(int requestid, int UserID, string remark, string baseUrl) {
             object[] results = this.Invoke("RejectRequest_clotv2", new object[] {
                         requestid,
                         UserID,
-                        remark});
+                        remark,
+                        baseUrl});
             return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void RejectRequest_clotv2Async(int requestid, int UserID, string remark) {
-            this.RejectRequest_clotv2Async(requestid, UserID, remark, null);
+        public void RejectRequest_clotv2Async(int requestid, int UserID, string remark, string baseUrl) {
+            this.RejectRequest_clotv2Async(requestid, UserID, remark, baseUrl, null);
         }
         
         /// <remarks/>
-        public void RejectRequest_clotv2Async(int requestid, int UserID, string remark, object userState) {
+        public void RejectRequest_clotv2Async(int requestid, int UserID, string remark, string baseUrl, object userState) {
             if ((this.RejectRequest_clotv2OperationCompleted == null)) {
                 this.RejectRequest_clotv2OperationCompleted = new System.Threading.SendOrPostCallback(this.OnRejectRequest_clotv2OperationCompleted);
             }
             this.InvokeAsync("RejectRequest_clotv2", new object[] {
                         requestid,
                         UserID,
-                        remark}, this.RejectRequest_clotv2OperationCompleted, userState);
+                        remark,
+                        baseUrl}, this.RejectRequest_clotv2OperationCompleted, userState);
         }
         
         private void OnRejectRequest_clotv2OperationCompleted(object arg) {
@@ -2863,27 +2867,29 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ApproveRequest_clotv2", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void ApproveRequest_clotv2(int requestid, int ApproverUid, string remark) {
+        public void ApproveRequest_clotv2(int requestid, int ApproverUid, string remark, string baseUrl) {
             this.Invoke("ApproveRequest_clotv2", new object[] {
                         requestid,
                         ApproverUid,
-                        remark});
+                        remark,
+                        baseUrl});
         }
         
         /// <remarks/>
-        public void ApproveRequest_clotv2Async(int requestid, int ApproverUid, string remark) {
-            this.ApproveRequest_clotv2Async(requestid, ApproverUid, remark, null);
+        public void ApproveRequest_clotv2Async(int requestid, int ApproverUid, string remark, string baseUrl) {
+            this.ApproveRequest_clotv2Async(requestid, ApproverUid, remark, baseUrl, null);
         }
         
         /// <remarks/>
-        public void ApproveRequest_clotv2Async(int requestid, int ApproverUid, string remark, object userState) {
+        public void ApproveRequest_clotv2Async(int requestid, int ApproverUid, string remark, string baseUrl, object userState) {
             if ((this.ApproveRequest_clotv2OperationCompleted == null)) {
                 this.ApproveRequest_clotv2OperationCompleted = new System.Threading.SendOrPostCallback(this.OnApproveRequest_clotv2OperationCompleted);
             }
             this.InvokeAsync("ApproveRequest_clotv2", new object[] {
                         requestid,
                         ApproverUid,
-                        remark}, this.ApproveRequest_clotv2OperationCompleted, userState);
+                        remark,
+                        baseUrl}, this.ApproveRequest_clotv2OperationCompleted, userState);
         }
         
         private void OnApproveRequest_clotv2OperationCompleted(object arg) {
@@ -2895,28 +2901,30 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CancelCLOT", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ErrorMessageInfo CancelCLOT(int requestid, string remark, int createrUid) {
+        public ErrorMessageInfo CancelCLOT(int requestid, string remark, int createrUid, string baseUrl) {
             object[] results = this.Invoke("CancelCLOT", new object[] {
                         requestid,
                         remark,
-                        createrUid});
+                        createrUid,
+                        baseUrl});
             return ((ErrorMessageInfo)(results[0]));
         }
         
         /// <remarks/>
-        public void CancelCLOTAsync(int requestid, string remark, int createrUid) {
-            this.CancelCLOTAsync(requestid, remark, createrUid, null);
+        public void CancelCLOTAsync(int requestid, string remark, int createrUid, string baseUrl) {
+            this.CancelCLOTAsync(requestid, remark, createrUid, baseUrl, null);
         }
         
         /// <remarks/>
-        public void CancelCLOTAsync(int requestid, string remark, int createrUid, object userState) {
+        public void CancelCLOTAsync(int requestid, string remark, int createrUid, string baseUrl, object userState) {
             if ((this.CancelCLOTOperationCompleted == null)) {
                 this.CancelCLOTOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCancelCLOTOperationCompleted);
             }
             this.InvokeAsync("CancelCLOT", new object[] {
                         requestid,
                         remark,
-                        createrUid}, this.CancelCLOTOperationCompleted, userState);
+                        createrUid,
+                        baseUrl}, this.CancelCLOTOperationCompleted, userState);
         }
         
         private void OnCancelCLOTOperationCompleted(object arg) {
@@ -2960,27 +2968,29 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ApproveRequest_Cancelclot", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void ApproveRequest_Cancelclot(int requestid, int ApproverUid, string remark) {
+        public void ApproveRequest_Cancelclot(int requestid, int ApproverUid, string remark, string baseUrl) {
             this.Invoke("ApproveRequest_Cancelclot", new object[] {
                         requestid,
                         ApproverUid,
-                        remark});
+                        remark,
+                        baseUrl});
         }
         
         /// <remarks/>
-        public void ApproveRequest_CancelclotAsync(int requestid, int ApproverUid, string remark) {
-            this.ApproveRequest_CancelclotAsync(requestid, ApproverUid, remark, null);
+        public void ApproveRequest_CancelclotAsync(int requestid, int ApproverUid, string remark, string baseUrl) {
+            this.ApproveRequest_CancelclotAsync(requestid, ApproverUid, remark, baseUrl, null);
         }
         
         /// <remarks/>
-        public void ApproveRequest_CancelclotAsync(int requestid, int ApproverUid, string remark, object userState) {
+        public void ApproveRequest_CancelclotAsync(int requestid, int ApproverUid, string remark, string baseUrl, object userState) {
             if ((this.ApproveRequest_CancelclotOperationCompleted == null)) {
                 this.ApproveRequest_CancelclotOperationCompleted = new System.Threading.SendOrPostCallback(this.OnApproveRequest_CancelclotOperationCompleted);
             }
             this.InvokeAsync("ApproveRequest_Cancelclot", new object[] {
                         requestid,
                         ApproverUid,
-                        remark}, this.ApproveRequest_CancelclotOperationCompleted, userState);
+                        remark,
+                        baseUrl}, this.ApproveRequest_CancelclotOperationCompleted, userState);
         }
         
         private void OnApproveRequest_CancelclotOperationCompleted(object arg) {
@@ -3557,28 +3567,30 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CancelRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int CancelRequest_leave(int requestid, int UserID, string remark) {
+        public int CancelRequest_leave(int requestid, int UserID, string remark, string baseUrl) {
             object[] results = this.Invoke("CancelRequest_leave", new object[] {
                         requestid,
                         UserID,
-                        remark});
+                        remark,
+                        baseUrl});
             return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void CancelRequest_leaveAsync(int requestid, int UserID, string remark) {
-            this.CancelRequest_leaveAsync(requestid, UserID, remark, null);
+        public void CancelRequest_leaveAsync(int requestid, int UserID, string remark, string baseUrl) {
+            this.CancelRequest_leaveAsync(requestid, UserID, remark, baseUrl, null);
         }
         
         /// <remarks/>
-        public void CancelRequest_leaveAsync(int requestid, int UserID, string remark, object userState) {
+        public void CancelRequest_leaveAsync(int requestid, int UserID, string remark, string baseUrl, object userState) {
             if ((this.CancelRequest_leaveOperationCompleted == null)) {
                 this.CancelRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCancelRequest_leaveOperationCompleted);
             }
             this.InvokeAsync("CancelRequest_leave", new object[] {
                         requestid,
                         UserID,
-                        remark}, this.CancelRequest_leaveOperationCompleted, userState);
+                        remark,
+                        baseUrl}, this.CancelRequest_leaveOperationCompleted, userState);
         }
         
         private void OnCancelRequest_leaveOperationCompleted(object arg) {

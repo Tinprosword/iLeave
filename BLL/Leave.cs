@@ -515,7 +515,7 @@ namespace BLL
             List<WebServiceLayer.WebReference_leave.LeaveHistory> result= WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveHistory(requestid).ToList();
             if (result != null && result.Count() > 0)
             {
-                result.RemoveAt(result.Count - 1);
+                result.RemoveAt(0);
             }
             return result;
         }
