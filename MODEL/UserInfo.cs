@@ -133,7 +133,14 @@ namespace MODEL
             }
             else if (type == 6)
             {
-                return namech;
+                if (!string.IsNullOrEmpty(namech))
+                {
+                    return namech;
+                }
+                else
+                {
+                    return surname + " " + firstname;
+                }
             }
             else
             {

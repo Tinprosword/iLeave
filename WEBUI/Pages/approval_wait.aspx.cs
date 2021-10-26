@@ -557,6 +557,18 @@ namespace WEBUI.Pages
             return LSLibrary.StringUtil.SubstringSP(tt, 17, "...");
         }
 
+        public int GetStaffid(WebServiceLayer.WebReference_leave.LeaveRequestMaster leaveRequestMaster)
+        {
+            int result = 0;
+            string extent = leaveRequestMaster.extend;
+            string sid= LSLibrary.StringUtil.SplitExtentString(extent, ',', 9);
+            if (string.IsNullOrEmpty(sid))
+            {
+                int.TryParse(sid, out result);
+            }
+            return result;
+        }
+
         public string GetStaffName(WebServiceLayer.WebReference_leave.StaffCLOTRequest staffclot)
         {
             string surname = "";

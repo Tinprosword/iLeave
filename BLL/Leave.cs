@@ -283,7 +283,7 @@ namespace BLL
                 }
                 if (!string.IsNullOrEmpty(name))
                 {
-                    result = result.Where(x => x.uname.ToUpper().Contains(name.ToUpper())).ToList();
+                    result = result.Where(x => MODEL.UserName.IsNameLike(x.p_Surname + " " + x.p_Othername, x.p_NameCH, name) == true).ToList();
                 }
                 result = result.OrderByDescending(x => x.leavefrom).ThenByDescending(x=>x.createDate).ToList();
             }
