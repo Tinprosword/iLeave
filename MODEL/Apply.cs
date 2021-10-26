@@ -35,9 +35,13 @@ namespace MODEL
 
             public static double getDayfromSections(int sectionsValue)
             {
-                if (sectionsValue == 0 || sectionsValue == 3)
+                if (sectionsValue == 0)
                 {
                     return 1;
+                }
+                else if (sectionsValue == 3)
+                {
+                    return 1.5;
                 }
                 else if (sectionsValue == 1 || sectionsValue == 2)
                 {

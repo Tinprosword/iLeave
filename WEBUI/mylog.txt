@@ -14,3 +14,26 @@ Apply.aspx.cs. line:14 . 10-26 04:23:59:293 : select:-1
 Apply.aspx.cs. line:14 . 10-26 04:24:13:521 : select:0
 10-26 04:24:28:367 : getrooturl:http://localhost:8090/UI/
 Apply.aspx.cs. line:14 . 10-26 04:25:08:406 : select:-1
+Apply.aspx.cs. line:14 . 10-26 04:43:58:742 : select:-1
+Apply.aspx.cs. line:14 . 10-26 04:44:04:618 : select:0
+Apply.aspx.cs. line:14 . 10-26 04:52:53:818 : select:-1
+Apply.aspx.cs. line:14 . 10-26 04:53:03:206 : select:3
+Apply.aspx.cs. line:14 . 10-26 04:54:36:222 : select:-1
+Apply.aspx.cs. line:14 . 10-26 04:54:38:844 : select:-1
+Apply.aspx.cs. line:14 . 10-26 04:58:42:945 : select:-1
+Apply.aspx.cs. line:14 . 10-26 04:58:47:955 : select:3
+10-26 04:58:57:487 : getrooturl:http://localhost:8090/UI/
+Apply.aspx.cs. line:14 . 10-26 04:59:00:375 : select:-1
+Apply.aspx.cs. line:14 . 10-26 04:59:28:496 : select:-1
+Apply.aspx.cs. line:14 . 10-26 04:59:33:802 : select:3
+10-26 04:59:44:308 : getrooturl:http://localhost:8090/UI/
+Apply.aspx.cs. line:14 . 10-26 04:59:47:038 : select:-1
+Apply.aspx.cs. line:14 . 10-26 05:01:52:048 : select:-1
+Apply.aspx.cs. line:14 . 10-26 05:02:45:971 : select:-1
+Apply.aspx.cs. line:14 . 10-26 05:03:12:274 : select:-1
+Apply.aspx.cs. line:14 . 10-26 05:03:25:572 : select:3
+10-26 05:05:31:022 : getrooturl:http://localhost:8090/UI/
+Apply.aspx.cs. line:14 . 10-26 05:06:03:492 : select:-1
+Apply.aspx.cs. line:14 . 10-26 05:06:10:406 : select:3
+10-26 05:06:19:238 : getrooturl:http://localhost:8090/UI/
+Apply.aspx.cs. line:14 . 10-26 05:06:22:300 : select:-1

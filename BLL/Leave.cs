@@ -49,7 +49,7 @@ namespace BLL
                         if (originDetail[i].sectionid == (int)GlobalVariate.sectionType.full || sameDayAndSameSection.Count()>0)
                         {
                             result = -2;
-                            message += originDetail[i].LeaveDate.ToString("MM-dd") + " already applied!\r\n";
+                            message += string.Format(BLL.MultiLanguageHelper.GetLanguagePacket().common_msg_alappliend, originDetail[i].LeaveDate.ToString("MM-dd"))+ "\r\n";
                             break;
                         }
                     }
@@ -167,8 +167,8 @@ namespace BLL
                     }
                     else if (newItem.Section == 3)
                     {
-                        newItem.Unit = 1;
-                        newItem.DisplayUnit = "1 D";
+                        newItem.Unit = 1.5;
+                        newItem.DisplayUnit = "1.5 D";
                         newItem.IsHalfDay = false;
                         newItem.DisplaySection = newItem.Section;
                     }

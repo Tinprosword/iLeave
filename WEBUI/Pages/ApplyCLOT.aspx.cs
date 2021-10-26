@@ -174,22 +174,22 @@ namespace WEBUI.Pages
             else if (validData == -1)
             {
                 literal_errormsga.Visible = true;
-                literal_errormsga.Text = "Number of hours must be more than zero.";
+                literal_errormsga.Text = BLL.MultiLanguageHelper.GetLanguagePacket().common_msg_bigzero;
             }
             else if (validData == -2)
             {
                 literal_errormsga.Visible = true;
-                literal_errormsga.Text = "Number of hours must be  numeric type.";
+                literal_errormsga.Text = BLL.MultiLanguageHelper.GetLanguagePacket().common_msg_numbertyp;
             }
             else if (validData == -3)
             {
                 literal_errormsga.Visible = true;
-                literal_errormsga.Text = "Time is overlap.";
+                literal_errormsga.Text = BLL.MultiLanguageHelper.GetLanguagePacket().common_msg_overlap;
             }
             else if (validData == -4)
             {
                 literal_errormsga.Visible = true;
-                literal_errormsga.Text = "Time is overlap with current applying items.";
+                literal_errormsga.Text = BLL.MultiLanguageHelper.GetLanguagePacket().common_msg_overlapCurrentapplying;
             }
 
             SetupReport();
