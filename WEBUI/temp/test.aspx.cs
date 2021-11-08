@@ -17,7 +17,8 @@ namespace WEBUI
             //leavebase leavebase = new leavebase();
 
             //this.Label1.Text = leavebase.add(1, 3).ToString();
-            getbaseinfo();
+            //getbaseinfo();
+
         }
 
 

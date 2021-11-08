@@ -71,7 +71,7 @@ namespace WEBUI.Pages
             this.btn_add.Text = BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_ADD;
             this.btn_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_Submit;
 
-            this.lt_hours.Text= BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_Submit;
+            this.lt_hours.Text= BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_NOOFHours;
         }
 
         private void LoadUI()
