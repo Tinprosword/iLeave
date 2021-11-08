@@ -210,6 +210,11 @@ namespace BLL
         #endregion
 
         #region search application
+        public static void UpdateTodayLeaveBalanceToTable(int eid)
+        {
+            WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.UpdateTodayLeaveBalanceToTable(eid);
+        }
+
         public static FirstRequestInfo GetFirstRequestinfoa(int requestid)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetFirstRequestInfo(requestid);

@@ -29,6 +29,8 @@ namespace WebServiceLayer.WebReference_leave {
     [System.Web.Services.WebServiceBindingAttribute(Name="LeaveManagementV2Soap", Namespace="http://tempuri.org/")]
     public partial class LeaveManagementV2 : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback CancelRequest_leaveOperationCompleted;
+        
         private System.Threading.SendOrPostCallback ApproveRequest_ClotOperationCompleted;
         
         private System.Threading.SendOrPostCallback RejectRequest_ClotOperationCompleted;
@@ -74,6 +76,8 @@ namespace WebServiceLayer.WebReference_leave {
         private System.Threading.SendOrPostCallback InsertAttachmentInfoOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetUploadPathOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateTodayLeaveBalanceToTableOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetAttachmentInfoByRequestID_LeaveOperationCompleted;
         
@@ -227,8 +231,6 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback WithDrawRequest_leaveOperationCompleted;
         
-        private System.Threading.SendOrPostCallback CancelRequest_leaveOperationCompleted;
-        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -266,6 +268,9 @@ namespace WebServiceLayer.WebReference_leave {
                 this.useDefaultCredentialsSetExplicitly = true;
             }
         }
+        
+        /// <remarks/>
+        public event CancelRequest_leaveCompletedEventHandler CancelRequest_leaveCompleted;
         
         /// <remarks/>
         public event ApproveRequest_ClotCompletedEventHandler ApproveRequest_ClotCompleted;
@@ -335,6 +340,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event GetUploadPathCompletedEventHandler GetUploadPathCompleted;
+        
+        /// <remarks/>
+        public event UpdateTodayLeaveBalanceToTableCompletedEventHandler UpdateTodayLeaveBalanceToTableCompleted;
         
         /// <remarks/>
         public event GetAttachmentInfoByRequestID_LeaveCompletedEventHandler GetAttachmentInfoByRequestID_LeaveCompleted;
@@ -565,7 +573,39 @@ namespace WebServiceLayer.WebReference_leave {
         public event WithDrawRequest_leaveCompletedEventHandler WithDrawRequest_leaveCompleted;
         
         /// <remarks/>
-        public event CancelRequest_leaveCompletedEventHandler CancelRequest_leaveCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CancelRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int CancelRequest_leave(int requestid, int UserID, string remark, string baseUrl) {
+            object[] results = this.Invoke("CancelRequest_leave", new object[] {
+                        requestid,
+                        UserID,
+                        remark,
+                        baseUrl});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CancelRequest_leaveAsync(int requestid, int UserID, string remark, string baseUrl) {
+            this.CancelRequest_leaveAsync(requestid, UserID, remark, baseUrl, null);
+        }
+        
+        /// <remarks/>
+        public void CancelRequest_leaveAsync(int requestid, int UserID, string remark, string baseUrl, object userState) {
+            if ((this.CancelRequest_leaveOperationCompleted == null)) {
+                this.CancelRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCancelRequest_leaveOperationCompleted);
+            }
+            this.InvokeAsync("CancelRequest_leave", new object[] {
+                        requestid,
+                        UserID,
+                        remark,
+                        baseUrl}, this.CancelRequest_leaveOperationCompleted, userState);
+        }
+        
+        private void OnCancelRequest_leaveOperationCompleted(object arg) {
+            if ((this.CancelRequest_leaveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CancelRequest_leaveCompleted(this, new CancelRequest_leaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ApproveRequest_Clot", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1282,6 +1322,34 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.GetUploadPathCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetUploadPathCompleted(this, new GetUploadPathCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateTodayLeaveBalanceToTable", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void UpdateTodayLeaveBalanceToTable(int eid) {
+            this.Invoke("UpdateTodayLeaveBalanceToTable", new object[] {
+                        eid});
+        }
+        
+        /// <remarks/>
+        public void UpdateTodayLeaveBalanceToTableAsync(int eid) {
+            this.UpdateTodayLeaveBalanceToTableAsync(eid, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateTodayLeaveBalanceToTableAsync(int eid, object userState) {
+            if ((this.UpdateTodayLeaveBalanceToTableOperationCompleted == null)) {
+                this.UpdateTodayLeaveBalanceToTableOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateTodayLeaveBalanceToTableOperationCompleted);
+            }
+            this.InvokeAsync("UpdateTodayLeaveBalanceToTable", new object[] {
+                        eid}, this.UpdateTodayLeaveBalanceToTableOperationCompleted, userState);
+        }
+        
+        private void OnUpdateTodayLeaveBalanceToTableOperationCompleted(object arg) {
+            if ((this.UpdateTodayLeaveBalanceToTableCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateTodayLeaveBalanceToTableCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3602,41 +3670,6 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.WithDrawRequest_leaveCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.WithDrawRequest_leaveCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CancelRequest_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int CancelRequest_leave(int requestid, int UserID, string remark, string baseUrl) {
-            object[] results = this.Invoke("CancelRequest_leave", new object[] {
-                        requestid,
-                        UserID,
-                        remark,
-                        baseUrl});
-            return ((int)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void CancelRequest_leaveAsync(int requestid, int UserID, string remark, string baseUrl) {
-            this.CancelRequest_leaveAsync(requestid, UserID, remark, baseUrl, null);
-        }
-        
-        /// <remarks/>
-        public void CancelRequest_leaveAsync(int requestid, int UserID, string remark, string baseUrl, object userState) {
-            if ((this.CancelRequest_leaveOperationCompleted == null)) {
-                this.CancelRequest_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCancelRequest_leaveOperationCompleted);
-            }
-            this.InvokeAsync("CancelRequest_leave", new object[] {
-                        requestid,
-                        UserID,
-                        remark,
-                        baseUrl}, this.CancelRequest_leaveOperationCompleted, userState);
-        }
-        
-        private void OnCancelRequest_leaveOperationCompleted(object arg) {
-            if ((this.CancelRequest_leaveCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.CancelRequest_leaveCompleted(this, new CancelRequest_leaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -10209,6 +10242,32 @@ namespace WebServiceLayer.WebReference_leave {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void CancelRequest_leaveCompletedEventHandler(object sender, CancelRequest_leaveCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CancelRequest_leaveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CancelRequest_leaveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void ApproveRequest_ClotCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
@@ -10738,6 +10797,10 @@ namespace WebServiceLayer.WebReference_leave {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void UpdateTodayLeaveBalanceToTableCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
@@ -12538,32 +12601,6 @@ namespace WebServiceLayer.WebReference_leave {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void WithDrawRequest_leaveCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void CancelRequest_leaveCompletedEventHandler(object sender, CancelRequest_leaveCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class CancelRequest_leaveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal CancelRequest_leaveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public int Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((int)(this.results[0]));
-            }
-        }
-    }
 }
 
 #pragma warning restore 1591

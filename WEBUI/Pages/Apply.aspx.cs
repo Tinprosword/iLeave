@@ -229,6 +229,9 @@ namespace WEBUI.Pages
                 MODEL.Apply.ViewState_page pagedate = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
 
                 double applying = pagedate.getApplying();
+
+                BLL.Leave.UpdateTodayLeaveBalanceToTable(loginer.userInfo.employID??0);
+
                 double cleanValue = BLL.Leave.GetCleanValue(leaveid, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
 
                 this.lt_balancedays.Text = cleanValue==-99999?"--":cleanValue.ToString("0.##") + " D";

@@ -15,9 +15,9 @@
                 </tr>
                 <tr>
                     <td style="width:45px"><asp:Literal ID="lt_dateFrom" runat="server" Text="From" /></td>
-                    <td style="width:135px"><asp:TextBox ID="tb_dateFrom" runat="server"  Width="100%"></asp:TextBox></td>
+                    <td style="width:135px"><asp:TextBox ID="tb_dateFrom" runat="server"  Width="100%" CssClass="inputDate"></asp:TextBox></td>
                     <td style="width:45px"><asp:Literal ID="lt_dateTo" runat="server" Text="To"/></td>
-                    <td style="width:135px"><asp:TextBox ID="tb_dateTo" runat="server" Width="100%"></asp:TextBox></td>
+                    <td style="width:135px"><asp:TextBox ID="tb_dateTo" runat="server" Width="100%" CssClass="inputDate"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td><asp:Literal ID="lt_zone" runat="server" Text="Zone"/></td>
@@ -92,4 +92,5 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
+    <script type="text/javascript">showCalendar("inputDate");</script>
 </asp:Content>

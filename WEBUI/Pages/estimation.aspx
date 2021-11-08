@@ -37,12 +37,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
     <script type="text/javascript">
-        
-        $(".inputDate").datepicker({
-            language: 'zh-CN', //语言
-            autoclose: true, //选择后自动关闭
-            clearBtn: true,//清除按钮
-            format: "yyyy-mm-dd"//日期格式
-        });
-                </script>
+        showCalendar("inputDate");
+    </script>
 </asp:Content>
