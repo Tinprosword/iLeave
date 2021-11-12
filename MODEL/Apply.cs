@@ -16,7 +16,7 @@ namespace MODEL
         }
 
         [Serializable]
-        public class ViewState_page: IAttachment
+        public class ViewState_page: IPage_Attachment
         {
             public string LeaveTypeSelectValue;
             public string ddlsectionSelectvalue;

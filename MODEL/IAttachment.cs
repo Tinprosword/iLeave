@@ -40,7 +40,7 @@ namespace MODEL
 
 
 
-    public interface IAttachment
+    public interface IPage_Attachment
     {
         List<App_AttachmentInfo> GetAttachment();
         void SetAttachment(List<App_AttachmentInfo> data);

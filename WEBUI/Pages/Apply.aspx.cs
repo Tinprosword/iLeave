@@ -166,7 +166,10 @@ namespace WEBUI.Pages
             //save viewstate' other data
             SavePageDataToViewState(false, false, false, null, null, null);
             LSLibrary.WebAPP.PageSessionHelper.SetValue(this.ViewState[ViewState_PageName], BLL.GlobalVariate.Session_ApplyToUpload);
-            Response.Redirect("~/Pages/Apply_Upload.aspx",true);
+            string url = "~/Pages/Apply_Upload.aspx?{0}={1}&{2}={3}&{4}={5}";
+            string backurl = System.Web.HttpUtility.UrlEncode("~/pages/Apply.aspx?action=back");
+            url = string.Format(url, Apply_Upload.url_GetsessionName, BLL.GlobalVariate.Session_ApplyToUpload,Apply_Upload.url_BacksessionName,BLL.GlobalVariate.Session_UploadToApply,Apply_Upload.url_backUrlname, backurl);
+            Response.Redirect(url,true);
         }
         #endregion
 

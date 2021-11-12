@@ -13,8 +13,11 @@ namespace BLL
         public static HttpServerUtility pageServer;
         public static string Session_ApplyToCanlendar = "Session_ApplyToCanlendar";
         public static string Session_CanlendarToApply = "Session_CanlendarToApply";
+
         public static string Session_ApplyToUpload = "Session_ApplyToUpload";
         public static string Session_UploadToApply = "Session_UploadToApply";
+
+
         public static bool testvalue = true;
         
         #endregion

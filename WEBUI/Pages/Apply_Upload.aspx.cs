@@ -12,29 +12,48 @@ namespace WEBUI.Pages
     public partial class Apply_Upload : BLL.CustomLoginTemplate
     {
         private static string ViewState_PageName="mypagviewname";
+
+        public static string url_GetsessionName = "urlpsessionname";
+        public static string url_BacksessionName = "urlpbacksessionname";
+        public static string url_backUrlname = "urlpBackUrl";
+
+        private string GetSessionName = "";
+        private string TakeBackSessionName = "";
+        private string BackUrl = "";//~/pages/Apply.aspx?action=back
+
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
-        {}
+        {
+            GetSessionName = Request.QueryString[url_GetsessionName];
+            BackUrl = Request.QueryString[url_backUrlname];
+            TakeBackSessionName = Request.QueryString[url_BacksessionName];
+
+            if (string.IsNullOrEmpty(GetSessionName) || string.IsNullOrEmpty(BackUrl) || string.IsNullOrEmpty(TakeBackSessionName))
+            {
+                Response.Redirect("~/pages/main.aspx", true);
+            }
+        }
 
         protected override void InitPage_OnFirstLoad2()
         {}
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
+
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
-            object PreViewstate = LSLibrary.WebAPP.PageSessionHelper.GetValueAndCleanSoon(BLL.GlobalVariate.Session_ApplyToUpload);
+            object PreViewstate = LSLibrary.WebAPP.PageSessionHelper.GetValueAndCleanSoon(GetSessionName);
             if (PreViewstate != null)
             {
                 LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, PreViewstate, ViewState);
             }
             else
             {
-                Response.Redirect("~/pages/apply.aspx", true);
+                Response.Redirect("~/pages/main.aspx", true);
             }
 
-            MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
+            MODEL.IPage_Attachment applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
             this.repeater_attandance.DataSource = applyPage.GetAttachment();
             this.repeater_attandance.DataBind();
         }
@@ -48,8 +67,8 @@ namespace WEBUI.Pages
         private void BackEvent(object sender, ImageClickEventArgs e)
         {
             object myViewState = LSLibrary.WebAPP.ViewStateHelper.GetValue(ViewState_PageName, this.ViewState);
-            LSLibrary.WebAPP.PageSessionHelper.SetValue(myViewState, BLL.GlobalVariate.Session_UploadToApply);
-            Response.Redirect("~/pages/Apply.aspx?action=back", true);
+            LSLibrary.WebAPP.PageSessionHelper.SetValue(myViewState, TakeBackSessionName);
+            Response.Redirect(System.Web.HttpUtility.UrlDecode(BackUrl), true);
         }
 
         protected void Upload_Click(object sender, ImageClickEventArgs e)
@@ -60,7 +79,7 @@ namespace WEBUI.Pages
             string errmsg;
             List<string> uploadBigFiles = uploadAttachmentAndReduce(bigAbsolutionPath, out errmsg);
 
-            MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
+            MODEL.IPage_Attachment applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.IPage_Attachment>(ViewState_PageName, ViewState);
 
             for (int i = 0; i < uploadBigFiles.Count; i++)
             {
@@ -113,7 +132,8 @@ namespace WEBUI.Pages
 
         private void onf5()
         {
-            Response.Redirect("~/pages/apply_upload.aspx");
+            //Response.Redirect("~/pages/apply_upload.aspx");
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void button_apply_Click1(object sender, EventArgs e)
