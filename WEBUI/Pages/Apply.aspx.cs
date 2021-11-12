@@ -18,7 +18,7 @@ namespace WEBUI.Pages
 
     public partial class Apply : BLL.CustomLoginTemplate
     {
-        public static string ViewState_PageName = "PageView";
+        private static string ViewState_PageName = "PageView";
         public List<LSLibrary.WebAPP.ValueText<int>> RPITEM_LeaveListSections;
 
 

@@ -14,6 +14,8 @@ namespace WEBUI.Pages
     //3 附加一个请假页面过来，加载viewstate. 点击单元格保存数据。 在calendar rendar事件时,显示所有选择日期。
     public partial class calendar : BLL.CustomLoginTemplate
     {
+        private static string ViewState_PageName = "aaa";
+
         private readonly string searchTip = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_serchTip;
         private readonly string css_select = "btnBox btnBlueBoxSelect";
         private readonly string css_unselect = "btnBox btnBlueBoxUnSelect";
@@ -233,7 +235,7 @@ namespace WEBUI.Pages
 
         private void BackEvent(object sender, EventArgs e)
         {
-            object myViewState = LSLibrary.WebAPP.ViewStateHelper.GetValue(WEBUI.Pages.Apply.ViewState_PageName, this.ViewState);
+            object myViewState = LSLibrary.WebAPP.ViewStateHelper.GetValue(ViewState_PageName, this.ViewState);
             LSLibrary.WebAPP.PageSessionHelper.SetValue(myViewState, BLL.GlobalVariate.Session_CanlendarToApply);
             Response.Redirect("~/pages/Apply.aspx?action=backCalendar", true);
         }
@@ -264,7 +266,7 @@ namespace WEBUI.Pages
                 object PreViewstate = LSLibrary.WebAPP.PageSessionHelper.GetValueAndCleanSoon(BLL.GlobalVariate.Session_ApplyToCanlendar);
                 if (PreViewstate != null)
                 {
-                    LSLibrary.WebAPP.ViewStateHelper.SetValue( Apply.ViewState_PageName, PreViewstate, ViewState);
+                    LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, PreViewstate, ViewState);
                 }
                 else
                 {
@@ -443,7 +445,7 @@ namespace WEBUI.Pages
         private List<DateTime> GetChooseFromViewState()
         {
             List<DateTime> res = new List<DateTime>();
-            MODEL.Apply.ViewState_page data = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, ViewState);
+            MODEL.Apply.ViewState_page data = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
 
             if (data != null)
             {
@@ -458,7 +460,7 @@ namespace WEBUI.Pages
         //todo 0这里应该有,是否跳过,周末和假期的设定.并且考虑把是否和与请假的日期对比功能放到这里来.虽然需要远程检测,但是流程上更统一,简洁.
         private void SaveChooseToViewState(DateTime dateTime)
         {
-            MODEL.Apply.ViewState_page data = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, ViewState);
+            MODEL.Apply.ViewState_page data = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
 
             if (data != null)
             {

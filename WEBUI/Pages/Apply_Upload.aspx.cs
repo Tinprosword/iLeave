@@ -8,8 +8,10 @@ using System.Web.UI.WebControls;
 namespace WEBUI.Pages
 {
     //主要用到了session .把数据传递给原来页面。
+    //
     public partial class Apply_Upload : BLL.CustomLoginTemplate
     {
+        private static string ViewState_PageName="mypagviewname";
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {}
 
@@ -25,14 +27,14 @@ namespace WEBUI.Pages
             object PreViewstate = LSLibrary.WebAPP.PageSessionHelper.GetValueAndCleanSoon(BLL.GlobalVariate.Session_ApplyToUpload);
             if (PreViewstate != null)
             {
-                LSLibrary.WebAPP.ViewStateHelper.SetValue( Apply.ViewState_PageName, PreViewstate, ViewState);
+                LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, PreViewstate, ViewState);
             }
             else
             {
                 Response.Redirect("~/pages/apply.aspx", true);
             }
 
-            MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, ViewState);
+            MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
             this.repeater_attandance.DataSource = applyPage.GetAttachment();
             this.repeater_attandance.DataBind();
         }
@@ -45,7 +47,7 @@ namespace WEBUI.Pages
 
         private void BackEvent(object sender, ImageClickEventArgs e)
         {
-            object myViewState = LSLibrary.WebAPP.ViewStateHelper.GetValue(WEBUI.Pages.Apply.ViewState_PageName,this.ViewState);
+            object myViewState = LSLibrary.WebAPP.ViewStateHelper.GetValue(ViewState_PageName, this.ViewState);
             LSLibrary.WebAPP.PageSessionHelper.SetValue(myViewState, BLL.GlobalVariate.Session_UploadToApply);
             Response.Redirect("~/pages/Apply.aspx?action=back", true);
         }
@@ -58,7 +60,7 @@ namespace WEBUI.Pages
             string errmsg;
             List<string> uploadBigFiles = uploadAttachmentAndReduce(bigAbsolutionPath, out errmsg);
 
-            MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, ViewState);
+            MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
 
             for (int i = 0; i < uploadBigFiles.Count; i++)
             {
@@ -67,7 +69,7 @@ namespace WEBUI.Pages
                 tempatt.Add(temppic);
                 applyPage.SetAttachment(tempatt);
             }
-            LSLibrary.WebAPP.ViewStateHelper.SetValue(Apply.ViewState_PageName, applyPage, ViewState);
+            LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, applyPage, ViewState);
 
             this.repeater_attandance.DataSource = applyPage.GetAttachment();
             this.repeater_attandance.DataBind();
@@ -90,7 +92,7 @@ namespace WEBUI.Pages
             ImageButton imageButton_close = (ImageButton)sender;
             string commandArgument = imageButton_close.CommandArgument;
 
-            MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, ViewState);
+            MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
 
             var tempAttach = applyPage.GetAttachment();
 
@@ -106,7 +108,7 @@ namespace WEBUI.Pages
             this.repeater_attandance.DataBind();
 
             applyPage.SetAttachment(tempAttach);
-            LSLibrary.WebAPP.ViewStateHelper.SetValue(Apply.ViewState_PageName, applyPage, ViewState);
+            LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, applyPage, ViewState);
         }
 
         private void onf5()
