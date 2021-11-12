@@ -16,13 +16,13 @@ namespace MODEL
         }
 
         [Serializable]
-        public class ViewState_page
+        public class ViewState_page: IAttachment
         {
             public string LeaveTypeSelectValue;
             public string ddlsectionSelectvalue;
             public string remarks;
 
-            public List<App_AttachmentInfo> uploadpic;
+            private List<App_AttachmentInfo> uploadpic;
             public List<apply_LeaveData> LeaveList;
             public List<LSLibrary.WebAPP.ValueText<int>> leavetype;
 
@@ -66,6 +66,16 @@ namespace MODEL
                     }
                 }
                 return result;
+            }
+
+            public List<App_AttachmentInfo> GetAttachment()
+            {
+                return uploadpic;
+            }
+
+            public void SetAttachment(List<App_AttachmentInfo> data)
+            {
+                uploadpic = data;
             }
         }
 

@@ -42,6 +42,7 @@ namespace MODEL
 
     public interface IAttachment
     {
-        List<App_AttachmentInfo> aa();
+        List<App_AttachmentInfo> GetAttachment();
+        void SetAttachment(List<App_AttachmentInfo> data);
     }
 }

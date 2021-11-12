@@ -33,7 +33,7 @@ namespace WEBUI.Pages
             }
 
             MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, ViewState);
-            this.repeater_attandance.DataSource = applyPage.uploadpic;
+            this.repeater_attandance.DataSource = applyPage.GetAttachment();
             this.repeater_attandance.DataBind();
         }
 
@@ -63,11 +63,13 @@ namespace WEBUI.Pages
             for (int i = 0; i < uploadBigFiles.Count; i++)
             {
                 MODEL.App_AttachmentInfo temppic = BLL.Leave.GenerateAttachmentModel(uploadBigFiles[i], Server);
-                applyPage.uploadpic.Add(temppic);
+                var tempatt=applyPage.GetAttachment();
+                tempatt.Add(temppic);
+                applyPage.SetAttachment(tempatt);
             }
             LSLibrary.WebAPP.ViewStateHelper.SetValue(Apply.ViewState_PageName, applyPage, ViewState);
 
-            this.repeater_attandance.DataSource = applyPage.uploadpic;
+            this.repeater_attandance.DataSource = applyPage.GetAttachment();
             this.repeater_attandance.DataBind();
         }
 
@@ -90,17 +92,20 @@ namespace WEBUI.Pages
 
             MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(Apply.ViewState_PageName, ViewState);
 
-            for (int i = 0; i < applyPage.uploadpic.Count; i++)
+            var tempAttach = applyPage.GetAttachment();
+
+            for (int i = 0; i < tempAttach.Count; i++)
             {
-                if (applyPage.uploadpic[i].tempID == commandArgument)
+                if (tempAttach[i].tempID == commandArgument)
                 {
-                    applyPage.uploadpic.RemoveAt(i);
+                    tempAttach.RemoveAt(i);
                 }
             }
 
-            this.repeater_attandance.DataSource = applyPage.uploadpic;
+            this.repeater_attandance.DataSource = tempAttach;
             this.repeater_attandance.DataBind();
 
+            applyPage.SetAttachment(tempAttach);
             LSLibrary.WebAPP.ViewStateHelper.SetValue(Apply.ViewState_PageName, applyPage, ViewState);
         }
 

@@ -17,3 +17,21 @@ Trace：   在 System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(B
    在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
    在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 ********************************************************************************************
+ip:::1
+DataTime：2021/11/12 11:52:25
+Url：http://localhost/WEBUI/Pages/Apply_Upload.aspx
+Message：未能映射路径“/WEBUI/uploadPic/reduce/fix_20211112.”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.String MapPathCaching(System.String, System.Web.VirtualPath)
+Trace：   在 System.Web.Configuration.ProcessHostMapPath.MapPathCaching(String siteID, VirtualPath path)
+   在 System.Web.Configuration.ProcessHostMapPath.System.Web.Configuration.IConfigMapPath2.MapPath(String siteID, VirtualPath path)
+   在 System.Web.Hosting.HostingEnvironment.MapPathActual(VirtualPath virtualPath, Boolean permitNull)
+   在 System.Web.HttpRequest.MapPath(VirtualPath virtualPath, VirtualPath baseVirtualDir, Boolean allowCrossAppMapping)
+   在 System.Web.HttpServerUtility.MapPath(String path)
+   在 BLL.Leave.GenerateAttachmentModel(String filename, HttpServerUtility server) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Leave.cs:行号 393
+   在 WEBUI.Pages.Apply_Upload.Upload_Click(Object sender, ImageClickEventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply_Upload.aspx.cs:行号 65
+   在 System.Web.UI.WebControls.ImageButton.OnClick(ImageClickEventArgs e)
+   在 System.Web.UI.WebControls.ImageButton.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
