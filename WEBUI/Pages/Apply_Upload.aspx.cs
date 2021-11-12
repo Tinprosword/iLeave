@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace WEBUI.Pages
 {
+    //主要用到了session .把数据传递给原来页面。
     public partial class Apply_Upload : BLL.CustomLoginTemplate
     {
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()

@@ -160,6 +160,7 @@ namespace WEBUI.Pages
         #endregion
 
         #region [module] on click upload pic
+        //1.放整页的数据到session.2.
         protected void Upload_Click(object sender, ImageClickEventArgs e)
         {
             //save viewstate' other data
