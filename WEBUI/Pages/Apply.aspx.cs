@@ -273,7 +273,7 @@ namespace WEBUI.Pages
 
             //1,获得数据   2,调用ws,进行插入.  3.并把图片放置到制定目录，并插入到数据库
             List<MODEL.Apply.apply_LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).LeaveList;
-            List<MODEL.Apply.App_AttachmentInfo> pics = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).uploadpic;
+            List<MODEL.App_AttachmentInfo> pics = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).uploadpic;
             string errorMsg = "";
             int reslut = BLL.Leave.InsertLeave(LeaveList, loginer.userInfo.id, (int)loginer.userInfo.employID, null, this.tb_remarks.Text.Trim(), ref errorMsg,loginer.userInfo.firsteid??0);
             if (reslut >= 0)
@@ -336,7 +336,7 @@ namespace WEBUI.Pages
             this.lt_estimation.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_estimation;
         }
 
-        private void SavePageDataToViewState(bool owlist, bool owtype, bool owpics, List<MODEL.Apply.apply_LeaveData> leavelist, List<LSLibrary.WebAPP.ValueText<int>> leavetype, List<MODEL.Apply.App_AttachmentInfo> uploadPics)
+        private void SavePageDataToViewState(bool owlist, bool owtype, bool owpics, List<MODEL.Apply.apply_LeaveData> leavelist, List<LSLibrary.WebAPP.ValueText<int>> leavetype, List<MODEL.App_AttachmentInfo> uploadPics)
         {
             MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
             applyPage.LeaveTypeSelectValue = this.ddl_leavetype.SelectedValue;

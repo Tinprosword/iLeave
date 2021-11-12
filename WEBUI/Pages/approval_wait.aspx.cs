@@ -507,7 +507,7 @@ namespace WEBUI.Pages
 
         public string GetAttachmentHtml(int requestid)
         {
-            List<MODEL.Apply.App_AttachmentInfo> result= BLL.Leave.getAttendanceModel(loginer.userInfo.loginName, requestid, Server);
+            List<MODEL.App_AttachmentInfo> result= BLL.Leave.getAttendanceModel(loginer.userInfo.loginName, requestid, Server);
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < result.Count; i++)
             {

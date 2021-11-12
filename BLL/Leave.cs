@@ -185,7 +185,7 @@ namespace BLL
         }
 
 
-        public static void InsertAttachment(List<MODEL.Apply.App_AttachmentInfo> pics,int UploaderUid,int personid,int requestID)
+        public static void InsertAttachment(List<MODEL.App_AttachmentInfo> pics,int UploaderUid,int personid,int requestID)
         {
             for (int i = 0; i < pics.Count(); i++)
             {
@@ -351,11 +351,11 @@ namespace BLL
         }
 
 
-        public static List<MODEL.Apply.App_AttachmentInfo> getAttendanceModel(string uid, int requestID,HttpServerUtility server)
+        public static List<MODEL.App_AttachmentInfo> getAttendanceModel(string uid, int requestID,HttpServerUtility server)
         {
             List<WebServiceLayer.WebReference_leave.AttachmentInfo> attachments = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetAttachmentInfoByRequestID_Leave(requestID).ToList();
 
-            List<MODEL.Apply.App_AttachmentInfo> data = new List<MODEL.Apply.App_AttachmentInfo>();
+            List<MODEL.App_AttachmentInfo> data = new List<MODEL.App_AttachmentInfo>();
             for (int i = 0; i < attachments.Count; i++)
             {
                 string dbpath = attachments[i].Path;
@@ -364,9 +364,9 @@ namespace BLL
             return data;
         }
 
-        public static MODEL.Apply.App_AttachmentInfo CopyHr2leaveAndGenearteModel(string absolutePath,HttpServerUtility server)
+        public static MODEL.App_AttachmentInfo CopyHr2leaveAndGenearteModel(string absolutePath,HttpServerUtility server)
         {
-            MODEL.Apply.App_AttachmentInfo tempItem = null;
+            MODEL.App_AttachmentInfo tempItem = null;
 
             string filename = LSLibrary.FileUtil.GetFileName(absolutePath);
 
@@ -386,7 +386,7 @@ namespace BLL
         }
 
 
-        public static MODEL.Apply.App_AttachmentInfo GenerateAttachmentModel(string filename,System.Web.HttpServerUtility server)
+        public static MODEL.App_AttachmentInfo GenerateAttachmentModel(string filename,System.Web.HttpServerUtility server)
         {
             string bigFile = "~/" + BLL.Leave.picPath + "/" + filename;
             string reduceFile = "~/" + BLL.Leave.picPath + "/" + BLL.Leave.reducePath + "/" + filename;
@@ -397,7 +397,7 @@ namespace BLL
                 reduceFile = BLL.Leave.defaultPic;
             }
 
-            MODEL.Apply.App_AttachmentInfo temppic = new MODEL.Apply.App_AttachmentInfo(bigFile, reduceFile, BLL.Leave.GetAttachmentAbsolutePath() + filename);
+            MODEL.App_AttachmentInfo temppic = new MODEL.App_AttachmentInfo(bigFile, reduceFile, BLL.Leave.GetAttachmentAbsolutePath() + filename);
             return temppic;
         }
 

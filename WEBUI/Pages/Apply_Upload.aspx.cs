@@ -62,7 +62,7 @@ namespace WEBUI.Pages
 
             for (int i = 0; i < uploadBigFiles.Count; i++)
             {
-                MODEL.Apply.App_AttachmentInfo temppic = BLL.Leave.GenerateAttachmentModel(uploadBigFiles[i], Server);
+                MODEL.App_AttachmentInfo temppic = BLL.Leave.GenerateAttachmentModel(uploadBigFiles[i], Server);
                 applyPage.uploadpic.Add(temppic);
             }
             LSLibrary.WebAPP.ViewStateHelper.SetValue(Apply.ViewState_PageName, applyPage, ViewState);
