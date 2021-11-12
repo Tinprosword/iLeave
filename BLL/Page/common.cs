@@ -11,7 +11,7 @@ namespace BLL
     {
         public static string baseUrl = BLL.Other.GetWebSiteRootUrl(HttpContext.Current.Request);
 
-        private static bool isdbug = true;
+        private static bool isdbug = false;
         private static int devMode = 1100;//1fix ;0,cofing dec 1 nofig;  3:nouse   4 nouse.
 
         private static LSLibrary.LogUtil logUtil = new LSLibrary.LogUtil( GlobalVariate.pageServer.MapPath("mylog.txt"));

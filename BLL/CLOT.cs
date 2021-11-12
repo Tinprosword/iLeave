@@ -137,6 +137,16 @@ namespace BLL
         }
 
 
+        public static string CheckData(List<MODEL.CLOT.CLOTItem> data, float balance)
+        {
+            string result = "";
+            if (data == null || data.Count() == 0)
+            {
+                result = BLL.MultiLanguageHelper.GetLanguagePacket().Common_msg_CannotEmptyData;
+            }
+            return result;
+        }
+
         #region other function
         public static string showCLOTTime(WebServiceLayer.WebReference_leave.StaffCLOTRequest clot)
         {

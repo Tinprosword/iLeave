@@ -1,0 +1,96 @@
+ip:192.168.19.45
+DataTime：2021/11/10 11:22:22
+Url：http://192.168.19.210/WEBUI/pages/login.aspx
+Message：文件“/WEBUI/pages/login.aspx”不存在。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void CheckVirtualFileExists(System.Web.VirtualPath)
+Trace：   在 System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************
+ip:::1
+DataTime：2021/11/10 21:02:32
+Url：http://localhost/WEBUI/Login.aspx
+Message：由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.19.202:8888
+Source：System
+Type：System.Net.Sockets.SocketException
+Function：Void DoConnect(System.Net.EndPoint, System.Net.SocketAddress)
+Trace：   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+********************************************************************************************
+ip:::1
+DataTime：2021/11/10 21:04:11
+Url：http://localhost/WEBUI/Login.aspx
+Message：由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.19.202:8888
+Source：System
+Type：System.Net.Sockets.SocketException
+Function：Void DoConnect(System.Net.EndPoint, System.Net.SocketAddress)
+Trace：   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+********************************************************************************************
+ip:::1
+DataTime：2021/11/10 21:41:13
+Url：http://localhost/WEBUI/pages/approval_wait.aspx?action=0&applicationtype=0&from=3
+Message：服务器无法处理请求。 ---> 值不能为空。
+参数名: parameters
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetMyManageWaitingCLOT(Int32 uid) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 2779
+   在 BLL.CLOT.GetMyManageClOT(Int32 uid, LeaveBigRangeStatus status, Nullable`1 from, Nullable`1 to, String name) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 62
+   在 BLL.CLOT.GetMyManageClOT(Int32 uid, LeaveBigRangeStatus status, Int32 year, String name) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 91
+   在 WEBUI.Pages.approval_wait.SetupRepeater() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 185
+   在 WEBUI.Pages.approval_wait.rbl_sourceType_SelectedIndexChanged(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 618
+   在 System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/11/10 21:42:24
+Url：http://localhost/WEBUI/pages/approval_wait.aspx?action=0&applicationtype=0&from=3
+Message：服务器无法处理请求。 ---> 方法“Int32 get_Item(Int32)”不支持转换为 SQL。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetMyManageWaitingCLOT(Int32 uid) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 2779
+   在 BLL.CLOT.GetMyManageClOT(Int32 uid, LeaveBigRangeStatus status, Nullable`1 from, Nullable`1 to, String name) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 62
+   在 BLL.CLOT.GetMyManageClOT(Int32 uid, LeaveBigRangeStatus status, Int32 year, String name) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 91
+   在 WEBUI.Pages.approval_wait.SetupRepeater() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 185
+   在 WEBUI.Pages.approval_wait.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 84
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/11/10 21:42:34
+Url：http://localhost/WEBUI/pages/approval_wait.aspx?action=0&applicationtype=0&from=3
+Message：服务器无法处理请求。 ---> 方法“Int32 get_Item(Int32)”不支持转换为 SQL。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetMyManageWaitingCLOT(Int32 uid) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 2779
+   在 BLL.CLOT.GetMyManageClOT(Int32 uid, LeaveBigRangeStatus status, Nullable`1 from, Nullable`1 to, String name) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 62
+   在 BLL.CLOT.GetMyManageClOT(Int32 uid, LeaveBigRangeStatus status, Int32 year, String name) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 91
+   在 WEBUI.Pages.approval_wait.SetupRepeater() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 185
+   在 WEBUI.Pages.approval_wait.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 84
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

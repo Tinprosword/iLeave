@@ -265,13 +265,11 @@ namespace WEBUI.Pages
 
 
             var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
-            bool validData = CheckData(dataview.items, mBalance);
-
+            string errorMsg  =BLL.CLOT.CheckData(dataview.items, mBalance);
+            bool validData = string.IsNullOrEmpty(errorMsg);
             if (validData)
             {
-                List<int> requestidArray= BLL.CLOT.InsertCLOTRequests(dataview.items, loginer.userInfo.id, loginer.userInfo.employID??0);
-
-
+                List<int> requestidArray = BLL.CLOT.InsertCLOTRequests(dataview.items, loginer.userInfo.id, loginer.userInfo.employID ?? 0);
                 string successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().apply_msgapplyok);
                 Response.Write(successMsg + ".");
                 Response.Flush();
@@ -279,6 +277,12 @@ namespace WEBUI.Pages
 
                 this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
                 this.PreRenderComplete += Apply_PreRenderComplete;
+            }
+            else
+            {
+                this.literal_errormsga.Visible = true;
+                this.literal_errormsga.Text = errorMsg;
+                this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
             }
         }
 
@@ -288,11 +292,6 @@ namespace WEBUI.Pages
             page.Response.Clear();
             page.Response.Write(LSLibrary.WebAPP.MyJSHelper.Goto("approval_wait.aspx?action=1&applicationtype=0&from=1"));
             page.Response.End();
-        }
-
-        private static bool CheckData(List<MODEL.CLOT.CLOTItem> data, float balance)
-        {
-            return true;
         }
 
         private string GetDefaultRemark()

@@ -1,0 +1,56 @@
+ip:192.168.19.45
+DataTime：2021/11/11 10:02:54
+Url：http://192.168.19.210/WEBUI/pages/approval_wait.aspx?action=0&applicationtype=0&from=3
+Message：服务器无法处理请求。 ---> “InOutTypeID”附近有语法错误。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetMyManageWaitingCLOT(Int32 uid) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 2779
+   在 BLL.CLOT.GetMyManageClOT(Int32 uid, LeaveBigRangeStatus status, Nullable`1 from, Nullable`1 to, String name) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 62
+   在 BLL.CLOT.GetMyManageClOT(Int32 uid, LeaveBigRangeStatus status, Int32 year, String name) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 91
+   在 WEBUI.Pages.approval_wait.SetupRepeater() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 185
+   在 WEBUI.Pages.approval_wait.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 84
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.45
+DataTime：2021/11/11 10:02:55
+Url：http://192.168.19.210/WEBUI/pages/approval_wait.aspx?action=0&applicationtype=3&from=3
+Message：服务器无法处理请求。 ---> “InOutTypeID”附近有语法错误。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetMyManageBeyondWaitingCLOT(Int32 uid) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 2808
+   在 BLL.CLOT.GetMyManageClOT(Int32 uid, LeaveBigRangeStatus status, Nullable`1 from, Nullable`1 to, String name) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 66
+   在 BLL.CLOT.GetMyManageClOT(Int32 uid, LeaveBigRangeStatus status, Int32 year, String name) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 91
+   在 WEBUI.Pages.approval_wait.SetupRepeater() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 185
+   在 WEBUI.Pages.approval_wait.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 84
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/11/11 11:15:31
+Url：http://localhost/WEBUI/pages/approval_wait.aspx?action=1&applicationtype=3&from=1
+Message：操作超时
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.CancelCLOT(Int32 requestid, String remark, Int32 createrUid, String baseUrl) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 3011
+   在 BLL.workflow.CancelRequest_leave_clot(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\workflow.cs:行号 254
+   在 WEBUI.Pages.approval_wait.btn_Click_clot(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 485
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
