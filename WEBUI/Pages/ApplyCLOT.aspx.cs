@@ -27,11 +27,28 @@ namespace WEBUI.Pages
         {
             literal_errormsga.Visible = false;
             literal_errormsga.Text = "";
+            this.lt_js_prg.Text = "";
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
             LSLibrary.WebAPP.ViewStateHelper.SetValue(NAME_OF_PAGE_VIEW, new MODEL.CLOT.ViewState_page(), this.ViewState);
+
+            if (Request.QueryString["action"] != null && (Request.QueryString["action"] == "back"))
+            {
+                //1.get prepage's viewstate 2.set viewstate 3.loadUi.
+                object preViewState = null;
+                if (Request.QueryString["action"] == "back")
+                {
+                    preViewState = LSLibrary.WebAPP.PageSessionHelper.GetValueAndCleanSoon(BLL.GlobalVariate.Session_uploadtoclot);
+                }
+                
+                LSLibrary.WebAPP.ViewStateHelper.SetValue(NAME_OF_PAGE_VIEW, preViewState, ViewState);
+                
+                this.lt_js_prg.Text = LSLibrary.WebAPP.MyJSHelper.CustomPost("", "");//避免有害刷新，所以手动post,引导无害刷新。
+            }
+
+
             MulLanguage();
             LoadUI();
         }
@@ -78,6 +95,7 @@ namespace WEBUI.Pages
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().main_applyCLOT, "~/pages/main.aspx", true);
 
+            var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
 
             int intNameType = BLL.CodeSetting.GetNameType(BLL.MultiLanguageHelper.GetChoose());
             MODEL.UserName tempUserName = new MODEL.UserName(loginer.userInfo.surname, loginer.userInfo.firstname, loginer.userInfo.nickname, loginer.userInfo.namech);
@@ -118,7 +136,11 @@ namespace WEBUI.Pages
 
             this.tb_remarks.Text=GetDefaultRemark();
 
-
+            
+            int numberofAttachment = dataview.GetAttachment().Count() ;
+            string numberPath = BLL.common.GetAttachmentNumberPath(numberofAttachment);
+            this.ib_counta.ImageUrl = numberPath;
+            this.ib_counta.Visible = !string.IsNullOrEmpty(numberPath);
 
             SetupReport();
         }
@@ -387,6 +409,15 @@ namespace WEBUI.Pages
                 float hours = BLL.CLOT.CalculateNumberofHours(fromh, toh, fromm, tom, theday);
                 this.tb_hours.Text = hours.ToString();
             }
+        }
+
+        protected void image_btn_Click(object sender, ImageClickEventArgs e)
+        {
+            LSLibrary.WebAPP.PageSessionHelper.SetValue(this.ViewState[NAME_OF_PAGE_VIEW], BLL.GlobalVariate.Session_clottoupload);
+            string url = "~/Pages/Apply_Upload.aspx?{0}={1}&{2}={3}&{4}={5}";
+            string backurl = System.Web.HttpUtility.UrlEncode("~/pages/Applyclot.aspx?action=back");
+            url = string.Format(url, Apply_Upload.url_GetsessionName, BLL.GlobalVariate.Session_clottoupload, Apply_Upload.url_BacksessionName, BLL.GlobalVariate.Session_uploadtoclot, Apply_Upload.url_backUrlname, backurl);
+            Response.Redirect(url, true);
         }
     }
 }

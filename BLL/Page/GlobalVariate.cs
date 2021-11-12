@@ -17,6 +17,8 @@ namespace BLL
         public static string Session_ApplyToUpload = "Session_ApplyToUpload";
         public static string Session_UploadToApply = "Session_UploadToApply";
 
+        public static string Session_clottoupload = "sessionclottoupload";
+        public static string Session_uploadtoclot = "sessionuploadtoclot";
 
         public static bool testvalue = true;
         

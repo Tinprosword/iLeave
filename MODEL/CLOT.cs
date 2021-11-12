@@ -9,13 +9,25 @@ namespace MODEL
     public class CLOT
     {
         [Serializable]
-        public class ViewState_page
+        public class ViewState_page:IPage_Attachment
         {
             public List<CLOTItem> items;
+            private List<MODEL.App_AttachmentInfo> attachments;
 
             public ViewState_page()
             {
                 items = new List<CLOTItem>();
+                attachments = new List<App_AttachmentInfo>();
+            }
+
+            public List<App_AttachmentInfo> GetAttachment()
+            {
+                return attachments;
+            }
+
+            public void SetAttachment(List<App_AttachmentInfo> data)
+            {
+                attachments = data;
             }
         }
 

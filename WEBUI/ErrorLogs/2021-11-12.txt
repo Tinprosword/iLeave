@@ -35,3 +35,63 @@ Trace：   在 System.Web.Configuration.ProcessHostMapPath.MapPathCaching(String
    在 System.Web.UI.WebControls.ImageButton.RaisePostBackEvent(String eventArgument)
    在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
 ********************************************************************************************
+ip:::1
+DataTime：2021/11/12 14:32:32
+Url：http://localhost/WEBUI/Pages/Apply_Upload.aspx?urlpsessionname=sessionclottoupload&urlpbacksessionname=sessionuploadtoclot&urlpBackUrl=~%2fpages%2fApplyclot.aspx%3faction%3dback
+Message：[A]ViewState_page cannot be cast to [B]ViewState_page. Type A originates from 'MODEL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' in the context 'Default' at location 'C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\webui\2a6879c1\15a21e6d\assembly\dl3\a4498a94\417f6ad2_7ad7d701\MODEL.dll'. Type B originates from 'MODEL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' in the context 'Default' at location 'C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\webui\2a6879c1\15a21e6d\assembly\dl3\a4498a94\417f6ad2_7ad7d701\MODEL.dll'.
+Source：LSLibrary
+Type：System.InvalidCastException
+Function：T GetValue[T](System.String, System.Web.UI.StateBag)
+Trace：   在 LSLibrary.WebAPP.ViewStateHelper.GetValue[T](String name, StateBag viewState) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\ViewStateHelper.cs:行号 26
+   在 WEBUI.Pages.Apply_Upload.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply_Upload.aspx.cs:行号 56
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/11/12 14:34:04
+Url：http://localhost/WEBUI/Pages/Apply_Upload.aspx?urlpsessionname=sessionclottoupload&urlpbacksessionname=sessionuploadtoclot&urlpBackUrl=~%2fpages%2fApplyclot.aspx%3faction%3dback
+Message：[A]ViewState_page cannot be cast to [B]ViewState_page. Type A originates from 'MODEL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' in the context 'Default' at location 'C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\webui\2a6879c1\15a21e6d\assembly\dl3\a4498a94\417f6ad2_7ad7d701\MODEL.dll'. Type B originates from 'MODEL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' in the context 'Default' at location 'C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\webui\2a6879c1\15a21e6d\assembly\dl3\a4498a94\417f6ad2_7ad7d701\MODEL.dll'.
+Source：LSLibrary
+Type：System.InvalidCastException
+Function：T GetValue[T](System.String, System.Web.UI.StateBag)
+Trace：   在 LSLibrary.WebAPP.ViewStateHelper.GetValue[T](String name, StateBag viewState) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\ViewStateHelper.cs:行号 26
+   在 WEBUI.Pages.Apply_Upload.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply_Upload.aspx.cs:行号 56
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/11/12 14:35:44
+Url：http://localhost/WEBUI/Pages/Apply_Upload.aspx?urlpsessionname=sessionclottoupload&urlpbacksessionname=sessionuploadtoclot&urlpBackUrl=~%2fpages%2fApplyclot.aspx%3faction%3dback
+Message：[A]ViewState_page cannot be cast to [B]ViewState_page. Type A originates from 'MODEL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' in the context 'Default' at location 'C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\webui\2a6879c1\15a21e6d\assembly\dl3\a4498a94\be5b7e7d_8fd7d701\MODEL.dll'. Type B originates from 'MODEL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' in the context 'Default' at location 'C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\webui\2a6879c1\15a21e6d\assembly\dl3\a4498a94\be5b7e7d_8fd7d701\MODEL.dll'.
+Source：LSLibrary
+Type：System.InvalidCastException
+Function：T GetValue[T](System.String, System.Web.UI.StateBag)
+Trace：   在 LSLibrary.WebAPP.ViewStateHelper.GetValue[T](String name, StateBag viewState) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\ViewStateHelper.cs:行号 26
+   在 WEBUI.Pages.Apply_Upload.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply_Upload.aspx.cs:行号 56
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/11/12 14:37:01
+Url：http://localhost/WEBUI/Pages/Apply_Upload.aspx?urlpsessionname=sessionclottoupload&urlpbacksessionname=sessionuploadtoclot&urlpBackUrl=~%2fpages%2fApplyclot.aspx%3faction%3dback
+Message：[A]ViewState_page cannot be cast to [B]ViewState_page. Type A originates from 'MODEL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' in the context 'Default' at location 'C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\webui\2a6879c1\15a21e6d\assembly\dl3\a4498a94\be5b7e7d_8fd7d701\MODEL.dll'. Type B originates from 'MODEL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' in the context 'Default' at location 'C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Temporary ASP.NET Files\webui\2a6879c1\15a21e6d\assembly\dl3\a4498a94\be5b7e7d_8fd7d701\MODEL.dll'.
+Source：LSLibrary
+Type：System.InvalidCastException
+Function：T GetValue[T](System.String, System.Web.UI.StateBag)
+Trace：   在 LSLibrary.WebAPP.ViewStateHelper.GetValue[T](String name, StateBag viewState) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\ViewStateHelper.cs:行号 26
+   在 WEBUI.Pages.Apply_Upload.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply_Upload.aspx.cs:行号 56
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

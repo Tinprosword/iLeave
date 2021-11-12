@@ -62,8 +62,19 @@
             </tr>
             <tr>
                 <td><asp:Literal ID="lt_hours" runat="server" Text="Number of Hours"></asp:Literal></td>
-                <td colspan="2">
-                    <asp:TextBox ID="tb_hours" runat="server" Width="90%" Text="0" ></asp:TextBox>
+                <td>
+                    <div style="float:left;">
+                        <asp:TextBox ID="tb_hours" runat="server" Width="100%" Text="0" ></asp:TextBox>
+                    </div>
+                </td>
+                <td>
+                    <div style="float:left; padding-right:0px;width:41px">
+                        <asp:ImageButton ID="image_btn" runat="server" ImageUrl="~/Res/images/comIcon_addattence.png" Width="40px" Height="40px" OnClick="image_btn_Click"/>
+                    </div>
+                    <div style="float:left;color:red;position:relative;top:1px;left:-12px">
+                        <asp:image ID="ib_counta" runat="server"  ImageUrl="~/Res/images/redcicle.png" Width="20px" Height="20px" Visible="false"/>
+                    </div>
+
                 </td>
             </tr>
             <tr>
@@ -103,7 +114,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
     <script src="../Res/App/apply.js?lastmodify=<%=BLL.GlobalVariate.applyjsLastmodify %>"></script>
     <asp:Literal ID="js_waitdiv" runat="server"/>
-
+    <asp:Literal ID="lt_js_prg" runat="server"/>
     <script type="text/javascript">
         
         $(".datepicker1").datepicker({

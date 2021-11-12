@@ -53,7 +53,7 @@ namespace WEBUI.Pages
                 Response.Redirect("~/pages/main.aspx", true);
             }
 
-            MODEL.IPage_Attachment applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
+            MODEL.IPage_Attachment applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.IPage_Attachment>(ViewState_PageName, ViewState);
             this.repeater_attandance.DataSource = applyPage.GetAttachment();
             this.repeater_attandance.DataBind();
         }
@@ -111,7 +111,7 @@ namespace WEBUI.Pages
             ImageButton imageButton_close = (ImageButton)sender;
             string commandArgument = imageButton_close.CommandArgument;
 
-            MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
+            MODEL.IPage_Attachment applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.IPage_Attachment>(ViewState_PageName, ViewState);
 
             var tempAttach = applyPage.GetAttachment();
 

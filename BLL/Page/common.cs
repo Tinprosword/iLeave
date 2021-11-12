@@ -16,6 +16,23 @@ namespace BLL
 
         private static LSLibrary.LogUtil logUtil = new LSLibrary.LogUtil( GlobalVariate.pageServer.MapPath("mylog.txt"));
 
+        public static string GetAttachmentNumberPath(int number)
+        {
+            string result = "";
+
+            if (number > 0 && number < 10)
+            {
+                result = "~/res/images/c" + number.ToString() + ".png";
+            }
+            else if (number >= 10)
+            {
+                result = "~/res/images/c9m.png";
+            }
+
+            return result;
+        }
+
+
         public static bool canReduceImage(string image)
         {
             return LSLibrary.FileUtil.IsImagge(image);

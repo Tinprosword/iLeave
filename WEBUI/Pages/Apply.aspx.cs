@@ -99,7 +99,7 @@ namespace WEBUI.Pages
 
             this.dropdl_section.SelectedValue = ddlSectionSelected;
 
-            string numberPath= GetAttachmentNumberPath(numberofAttachment);
+            string numberPath= BLL.common.GetAttachmentNumberPath(numberofAttachment);
             this.ib_counta.ImageUrl = numberPath;
             this.ib_counta.Visible = !string.IsNullOrEmpty(numberPath);
 
@@ -111,21 +111,7 @@ namespace WEBUI.Pages
             //this.button_apply.OnClientClick = "return ShowMessage('" + BLL.MultiLanguageHelper.GetLanguagePacket().submit_success + "','aa')";//OnClientClick='return ShowMessage(<%=BLL.GlobalVariate.submit_success%>,"aa")'
         }
 
-        private string GetAttachmentNumberPath(int number)
-        {
-            string result = "";
-
-            if (number > 0 && number < 10)
-            {
-                result = "~/res/images/c" + number.ToString() + ".png";
-            }
-            else if (number >= 10)
-            {
-                result = "~/res/images/c9m.png";
-            }
-
-            return result;
-        }
+        
 
 
 
