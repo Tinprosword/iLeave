@@ -16,6 +16,36 @@ namespace BLL
 
         private static LSLibrary.LogUtil logUtil = new LSLibrary.LogUtil( GlobalVariate.pageServer.MapPath("mylog.txt"));
 
+        //loginer.userInfo.loginName
+        public static string GetAttachmentHtml(int requestid,HttpServerUtility server,string loginname, GlobalVariate.AttachType attachtype)
+        {
+            List<MODEL.App_AttachmentInfo> result = BLL.Leave.getAttendanceModel(loginname, requestid, server,  attachtype);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < result.Count; i++)
+            {
+                string filename = LSLibrary.FileUtil.GetFileName(result[i].originAttendance_RelatePath);
+                if (LSLibrary.FileUtil.IsImagge(filename))
+                {
+                    sb.Append("<a href='showpic2.aspx?path=" + result[i].originAttendance_RelatePath + "'>" + result[i].GetFileName(10) + "</a>&nbsp;");
+                }
+                else
+                {
+                    sb.Append("<a href=" + result[i].Get_originAttendance_RealRelatePath() + ">" + result[i].GetFileName(10) + "</a>&nbsp;");
+                }
+            }
+            return sb.ToString();
+        }
+
+
+
+
+        public static void copyFileTo(string filePath, string descPath,HttpServerUtility server)
+        {
+            string absfilepath = server.MapPath(filePath);
+            System.IO.Directory.CreateDirectory(System.IO.Directory.GetParent(descPath).ToString());
+            LSLibrary.FileUtil.Copy(absfilepath, descPath);
+        }
+
         public static string GetAttachmentNumberPath(int number)
         {
             string result = "";

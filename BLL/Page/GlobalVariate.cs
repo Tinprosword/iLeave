@@ -21,10 +21,64 @@ namespace BLL
         public static string Session_uploadtoclot = "sessionuploadtoclot";
 
         public static bool testvalue = true;
-        
+
         #endregion
 
         #region common enum 使用端的生成的enum居然默然从0开始.全然不管webservices的设定....只能采用会有隐患的复制的方法
+
+        public enum AttachmentUploadType
+        {
+            [System.ComponentModel.Description("AttachmentUndefined")]
+            UNDEFINED = -1,
+            [System.ComponentModel.Description("AttachmentHKID")]
+            HKID = 0,
+            [System.ComponentModel.Description("Common_WorkingExperience")]
+            WORK_EXPERIENCE = 2,
+            [System.ComponentModel.Description("Common_DrivingLicense")]
+            DRIVE_LICENSE = 3,
+            [System.ComponentModel.Description("AttachmentTrainingRecord")]
+            TRAINING = 4,
+            [System.ComponentModel.Description("AttachmentOthers")]
+            OTHERS = 5,
+            [System.ComponentModel.Description("Common_MPFWithdrawal")]
+            MPF_WITHDRAWAL = 6,
+            [System.ComponentModel.Description("AttachmentALPurchase")]
+            AL_PURCHASE = 7,
+            [System.ComponentModel.Description("AttachmentSkill")]
+            SKILL = 8,
+            [System.ComponentModel.Description("AttachmentAcademicAttainment")]
+            ACADEMIC_ATTAINMENT = 9,
+            [System.ComponentModel.Description("AddressProof")]
+            ADDRESS_PROOF = 10,
+            [System.ComponentModel.Description("BankAccountDocument")]
+            BANK_ACCOUNT_DOCUMENT = 11,
+            [System.ComponentModel.Description("Common_Announcement")]
+            ANNOUNCEMENT = 12,
+            [System.ComponentModel.Description("Common_DisciplinaryRecord")]
+            DISCIPLINARY_RECORD = 13,
+            [System.ComponentModel.Description("TaxationIR56G")]
+            TAXATION_IR56G = 14,
+            [System.ComponentModel.Description("Common_Insurance")]
+            INSURANCE = 15,
+            [System.ComponentModel.Description("Common_Roster")]
+            ROSTER = 16,
+            [System.ComponentModel.Description("EmploymentContract")]
+            EMPLOYMENT_CONTRACT = 17,
+            [System.ComponentModel.Description("ConfidentialityAgreement")]
+            CONFIDENTIALITY_AGREEMENT = 18,
+            [System.ComponentModel.Description("AttachmentPersonalQualification")]
+            QUALIFICATION = 51,//6, Original is 6 , after merge to 51
+            [System.ComponentModel.Description("AttachmentDoctorReceipt")]
+            DOCTOR_RECEIPT = 52,//clot
+            [System.ComponentModel.Description("AttachmentLeaveCertificate")]
+            LEAVE_CERTIFICATE = 53,//8, Original is 8 , after merge to 53
+            [System.ComponentModel.Description("AttachmentAppraisal")]
+            APPRAISAL = 54,//9, Original is 9 , after merge to 54
+            [System.ComponentModel.Description("Safety")]
+            SAFETY = 55,
+        }
+
+
         public enum sectionType
         {
             pleaseselect=-1,
@@ -91,6 +145,12 @@ namespace BLL
             IN = 0,
             [System.ComponentModel.Description("OUT")]
             OUT = 1,
+        }
+
+        public enum AttachType
+        {
+            leave=0,
+            clot=1,
         }
 
 

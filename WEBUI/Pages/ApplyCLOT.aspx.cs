@@ -292,6 +292,18 @@ namespace WEBUI.Pages
             if (validData)
             {
                 List<int> requestidArray = BLL.CLOT.InsertCLOTRequests(dataview.items, loginer.userInfo.id, loginer.userInfo.employID ?? 0);
+
+                //insert attachment
+                List<MODEL.App_AttachmentInfo> pics = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.IPage_Attachment>(NAME_OF_PAGE_VIEW, ViewState).GetAttachment();
+                for (int i = 0; i < pics.Count; i++)
+                {
+                    BLL.common.copyFileTo(pics[i].originAttendance_RelatePath, pics[i].originAttendance_HRDBPath, Server);
+                }
+                for (int i = 0; i < requestidArray.Count; i++)
+                {
+                    BLL.Leave.InsertAttachment(pics, loginer.userInfo.id, loginer.userInfo.personid, requestidArray[i], BLL.GlobalVariate.AttachmentUploadType.LEAVE_CERTIFICATE, BLL.GlobalVariate.WorkflowTypeID.CLOT_APPLICATION);
+                }
+
                 string successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().apply_msgapplyok);
                 Response.Write(successMsg + ".");
                 Response.Flush();

@@ -505,24 +505,7 @@ namespace WEBUI.Pages
         }
 
 
-        public string GetAttachmentHtml(int requestid)
-        {
-            List<MODEL.App_AttachmentInfo> result= BLL.Leave.getAttendanceModel(loginer.userInfo.loginName, requestid, Server);
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < result.Count; i++)
-            {
-                string filename = LSLibrary.FileUtil.GetFileName(result[i].originAttendance_RelatePath);
-                if (LSLibrary.FileUtil.IsImagge(filename))
-                {
-                    sb.Append("<a href='showpic2.aspx?path=" + result[i].originAttendance_RelatePath + "'>" + result[i].GetFileName(10) + "</a>&nbsp;");
-                }
-                else
-                {
-                    sb.Append("<a href=" + result[i].Get_originAttendance_RealRelatePath() + ">" + result[i].GetFileName(10) + "</a>&nbsp;");
-                }
-            }
-            return sb.ToString();
-        }
+        
 
         protected void DropDownList1_TextChanged(object sender, EventArgs e)
         {

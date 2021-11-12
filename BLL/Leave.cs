@@ -185,12 +185,12 @@ namespace BLL
         }
 
 
-        public static void InsertAttachment(List<MODEL.App_AttachmentInfo> pics,int UploaderUid,int personid,int requestID)
+        public static void InsertAttachment(List<MODEL.App_AttachmentInfo> pics,int UploaderUid,int personid,int requestID,BLL.GlobalVariate.AttachmentUploadType UploadType, BLL.GlobalVariate.WorkflowTypeID workflowID)
         {
             for (int i = 0; i < pics.Count(); i++)
             {
                 AttachmentInfo info = new AttachmentInfo();
-                info.TypeID = 53;
+                info.TypeID =(int)UploadType;
                 info.RelatedPartyID = personid;
                 info.FunctionID = 0;
                 info.Path = pics[i].originAttendance_HRDBPath;
@@ -200,7 +200,7 @@ namespace BLL
                 info.PayrollPeriodID = -1;
                 info.Status = 2;
                 info.RelatedRequestID = requestID;
-                info.WorkFlowTypeID = 0;
+                info.WorkFlowTypeID = (int)workflowID;
                 info.Remarks = "";
            
                 WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.InsertAttachmentInfo(info, UploaderUid);
@@ -351,9 +351,17 @@ namespace BLL
         }
 
 
-        public static List<MODEL.App_AttachmentInfo> getAttendanceModel(string uid, int requestID,HttpServerUtility server)
+        public static List<MODEL.App_AttachmentInfo> getAttendanceModel(string uid, int requestID, HttpServerUtility server, GlobalVariate.AttachType attachtype)
         {
-            List<WebServiceLayer.WebReference_leave.AttachmentInfo> attachments = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetAttachmentInfoByRequestID_Leave(requestID).ToList();
+            List<WebServiceLayer.WebReference_leave.AttachmentInfo> attachments = new List<AttachmentInfo>();
+            if (attachtype == GlobalVariate.AttachType.leave)
+            {
+                attachments = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetAttachmentInfoByRequestID_Leave(requestID).ToList();
+            }
+            else
+            {
+                attachments = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetAttachmentInfoByRequestID_clot(requestID).ToList();
+            }
 
             List<MODEL.App_AttachmentInfo> data = new List<MODEL.App_AttachmentInfo>();
             for (int i = 0; i < attachments.Count; i++)

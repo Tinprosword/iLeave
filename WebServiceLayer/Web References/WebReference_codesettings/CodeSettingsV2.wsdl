@@ -150,13 +150,13 @@
   </wsdl:binding>
   <wsdl:service name="CodeSettingsV2">
     <wsdl:port name="CodeSettingsV2Soap" binding="tns:CodeSettingsV2Soap">
-      <soap:address location="http://192.168.19.200:8888/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx" />
+      <soap:address location="http://192.168.19.202:8888/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx" />
     </wsdl:port>
     <wsdl:port name="CodeSettingsV2Soap12" binding="tns:CodeSettingsV2Soap12">
-      <soap12:address location="http://192.168.19.200:8888/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx" />
+      <soap12:address location="http://192.168.19.202:8888/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx" />
     </wsdl:port>
     <wsdl:port name="CodeSettingsV2HttpPost" binding="tns:CodeSettingsV2HttpPost">
-      <http:address location="http://192.168.19.200:8888/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx" />
+      <http:address location="http://192.168.19.202:8888/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -54,7 +54,7 @@
                 <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applydate %>:<%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetApplydate()%></div>
                 <div class="col-xs-12 " style="margin-bottom:4px;">
                     <%--<div class="col-xs-4 lsf-clearPadding" style="width:40px;">--%><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applyRemark %>:<%--</div>--%><%--<div class="col-xs-8 lsf-clearPadding">--%><%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetApprovalRemark()%><%--</div>--%></div>
-                <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_attachment %>:<%# GetAttachmentHtml(   ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID  )%></div>
+                <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_attachment %>:<%# BLL.common.GetAttachmentHtml(   ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID,Server,loginer.userInfo.loginName,BLL.GlobalVariate.AttachType.leave  )%></div>
                 <asp:Panel ID="panel_admin_waitingApprove" runat="server" Visible="<%#BShow_WaitApplyPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,dataType_myselfOrMyManage) %>">
                     <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_approverRemark %>:</div>
                     <div class="col-xs-12">
@@ -112,8 +112,7 @@
                 <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().clot_Type%>:<%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Type==0?"OT":"CL" %></div>
                 <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applydate %>:<%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).CreateDate.ToString("yyyy-MM-dd") %></div>
                 <div class="col-xs-12 " style="margin-bottom:4px;"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applyRemark %>:<%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Remarks %></div>
-                <%--<div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_attachment %>:<%# GetAttachmentHtml(   ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID  )%></div>>--%>
-                
+                <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_attachment %>:<%# BLL.common.GetAttachmentHtml(   ((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).ID,Server,loginer.userInfo.loginName,BLL.GlobalVariate.AttachType.clot  )%></div>
                 <asp:Panel ID="panel_admin_waitingApprove" runat="server" Visible="<%#BShow_WaitApplyPanel_clot(GetBigRange(),((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Status,dataType_myselfOrMyManage) %>">
                     <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_approverRemark %>:</div>
                     <div class="col-xs-12">

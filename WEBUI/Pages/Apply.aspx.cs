@@ -269,9 +269,9 @@ namespace WEBUI.Pages
             {
                 for (int i = 0; i < pics.Count; i++)
                 {
-                    copyFileTo(pics[i].originAttendance_RelatePath, pics[i].originAttendance_HRDBPath);
+                    BLL.common.copyFileTo(pics[i].originAttendance_RelatePath, pics[i].originAttendance_HRDBPath,Server);
                 }
-                BLL.Leave.InsertAttachment(pics, loginer.userInfo.id, loginer.userInfo.personid, reslut);
+                BLL.Leave.InsertAttachment(pics, loginer.userInfo.id, loginer.userInfo.personid, reslut,BLL.GlobalVariate.AttachmentUploadType.LEAVE_CERTIFICATE,BLL.GlobalVariate.WorkflowTypeID.LEAVE_APPLICATION);
 
                 string successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().apply_msgapplyok);
                 Response.Write(successMsg+".");
@@ -297,12 +297,7 @@ namespace WEBUI.Pages
             page.Response.End();
         }
 
-        private void copyFileTo(string filePath,string descPath)
-        {
-            string absfilepath = Server.MapPath(filePath);
-            System.IO.Directory.CreateDirectory(System.IO.Directory.GetParent(descPath).ToString());
-            LSLibrary.FileUtil.Copy(absfilepath, descPath);
-        }
+       
         #endregion
 
         #region [common function]
