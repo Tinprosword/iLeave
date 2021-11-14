@@ -165,17 +165,15 @@ namespace BLL
             if (string.IsNullOrEmpty(sysUrl))
             {
                 string theUrl = Request.Url.ToString();
-                int p_intStart = theUrl.ToUpper().IndexOf("/ILEAVE/");
-                if (p_intStart > -1)
+
+                string[] ileavesitename = { "ILEAVE", "DW-ILEAVE","TEMP", "LEAVE", "IHR-ILEAVE", "HR-ILEAVE" };
+                foreach (string sitename in ileavesitename)
                 {
-                    result = theUrl.Substring(0, p_intStart) + "/UI/";
-                }
-                else
-                {
-                    int intstart2 = theUrl.ToUpper().IndexOf("/DW-ILeave/");
-                    if (intstart2 > -1)
+                    int p_intStart = theUrl.ToUpper().IndexOf("/"+sitename+"/");
+                    if (p_intStart > -1)
                     {
-                        result = theUrl.Substring(0, intstart2) + "/UI/";
+                        result = theUrl.Substring(0, p_intStart) + "/UI/";
+                        break;
                     }
                 }
             }

@@ -18,9 +18,13 @@ namespace WEBUI
 
             //this.Label1.Text = leavebase.add(1, 3).ToString();
             //getbaseinfo();
-
+            showsite();
         }
 
+        private void showsite()
+        {
+            this.Label1.Text = BLL.Other.GetWebSiteRootUrl(Request);
+        }
 
         private void getbaseinfo()
         {

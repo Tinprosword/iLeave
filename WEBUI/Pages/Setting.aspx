@@ -41,7 +41,11 @@
                             <asp:ImageButton ID="btn_changeserver" runat="server" ImageUrl="~/Res/images/changeserver.png"  Width="30px" OnClick="btn_changeserver_Click"/>
                         </td>
                     </tr>
+                        
                     </asp:Panel>
+                    <tr>
+                            <td><asp:Label ID="logineruser" runat="server"  style="color:white"></asp:Label></td>
+                        </tr>
                 </table>
             </div>
 </asp:Content>

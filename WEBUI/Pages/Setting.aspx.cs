@@ -33,7 +33,7 @@ namespace WEBUI.Pages
             this.lb_serveraddress.Text = myCookie.serverAddress;
             int intLanguagae = (int)myCookie.language;
             this.cb_languagea.SelectedValue = intLanguagae.ToString();
-
+            this.logineruser.Text = loginer.loginName;
 
             if (myCookie.isAppLogin =="1")
             {
