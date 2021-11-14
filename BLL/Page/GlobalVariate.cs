@@ -26,6 +26,12 @@ namespace BLL
 
         #region common enum 使用端的生成的enum居然默然从0开始.全然不管webservices的设定....只能采用会有隐患的复制的方法
 
+        public enum spFunctionid
+        {
+            leave_ADD_Portal=7,
+            clot_add_portal=15
+        }
+
         public enum AttachmentUploadType
         {
             [System.ComponentModel.Description("AttachmentUndefined")]

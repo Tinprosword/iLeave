@@ -1516,6 +1516,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="ExecuteFunctionStoreProc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="p_FunctionID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isBefore" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_Parameter" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ExecuteFunctionStoreProcResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExecuteFunctionStoreProcResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="EstimationAnnualLeave">
         <s:complexType>
           <s:sequence>
@@ -1553,11 +1574,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfString">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="GetAttendanceByExternRefResponse">
         <s:complexType>
           <s:sequence>
@@ -2746,6 +2762,12 @@
   <wsdl:message name="clot_CheckCLOTIsOverlapSoapOut">
     <wsdl:part name="parameters" element="tns:clot_CheckCLOTIsOverlapResponse" />
   </wsdl:message>
+  <wsdl:message name="ExecuteFunctionStoreProcSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecuteFunctionStoreProc" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteFunctionStoreProcSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecuteFunctionStoreProcResponse" />
+  </wsdl:message>
   <wsdl:message name="EstimationAnnualLeaveSoapIn">
     <wsdl:part name="parameters" element="tns:EstimationAnnualLeave" />
   </wsdl:message>
@@ -3235,6 +3257,14 @@
   <wsdl:message name="clot_CheckCLOTIsOverlapHttpPostOut">
     <wsdl:part name="Body" element="tns:int" />
   </wsdl:message>
+  <wsdl:message name="ExecuteFunctionStoreProcHttpPostIn">
+    <wsdl:part name="p_FunctionID" type="s:string" />
+    <wsdl:part name="isBefore" type="s:string" />
+    <wsdl:part name="p_Parameter" type="s1:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteFunctionStoreProcHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="EstimationAnnualLeaveHttpPostIn">
     <wsdl:part name="firsteid" type="s:string" />
     <wsdl:part name="asofdate" type="s:string" />
@@ -3710,6 +3740,10 @@
       <wsdl:input message="tns:clot_CheckCLOTIsOverlapSoapIn" />
       <wsdl:output message="tns:clot_CheckCLOTIsOverlapSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ExecuteFunctionStoreProc">
+      <wsdl:input message="tns:ExecuteFunctionStoreProcSoapIn" />
+      <wsdl:output message="tns:ExecuteFunctionStoreProcSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="EstimationAnnualLeave">
       <wsdl:input message="tns:EstimationAnnualLeaveSoapIn" />
       <wsdl:output message="tns:EstimationAnnualLeaveSoapOut" />
@@ -4023,6 +4057,10 @@
     <wsdl:operation name="clot_CheckCLOTIsOverlap">
       <wsdl:input message="tns:clot_CheckCLOTIsOverlapHttpPostIn" />
       <wsdl:output message="tns:clot_CheckCLOTIsOverlapHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteFunctionStoreProc">
+      <wsdl:input message="tns:ExecuteFunctionStoreProcHttpPostIn" />
+      <wsdl:output message="tns:ExecuteFunctionStoreProcHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="EstimationAnnualLeave">
       <wsdl:input message="tns:EstimationAnnualLeaveHttpPostIn" />
@@ -4790,6 +4828,15 @@
     </wsdl:operation>
     <wsdl:operation name="clot_CheckCLOTIsOverlap">
       <soap:operation soapAction="http://tempuri.org/clot_CheckCLOTIsOverlap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteFunctionStoreProc">
+      <soap:operation soapAction="http://tempuri.org/ExecuteFunctionStoreProc" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -5718,6 +5765,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ExecuteFunctionStoreProc">
+      <soap12:operation soapAction="http://tempuri.org/ExecuteFunctionStoreProc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="EstimationAnnualLeave">
       <soap12:operation soapAction="http://tempuri.org/EstimationAnnualLeave" style="document" />
       <wsdl:input>
@@ -6404,6 +6460,15 @@
     </wsdl:operation>
     <wsdl:operation name="clot_CheckCLOTIsOverlap">
       <http:operation location="/clot_CheckCLOTIsOverlap" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteFunctionStoreProc">
+      <http:operation location="/ExecuteFunctionStoreProc" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

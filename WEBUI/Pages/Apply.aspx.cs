@@ -293,7 +293,7 @@ namespace WEBUI.Pages
         {
             Apply page = (Apply)sender;
             page.Response.Clear();
-            page.Response.Write(LSLibrary.WebAPP.MyJSHelper.Goto("approval_wait.aspx?action=1&applicationtype=0"));
+            page.Response.Write(LSLibrary.WebAPP.MyJSHelper.Goto("approval_wait.aspx?action=1&applicationtype=0&from=0"));
             page.Response.End();
         }
 

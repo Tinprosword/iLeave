@@ -26,7 +26,7 @@ namespace BLL
             return  path+ "\\mobil\\";
         }
 
-        //-1:empty .-2 same apply day or section
+        //-1:empty .-2 same apply day or section,-3 sp error
         private static int CheckBeforeApply(List<MODEL.Apply.apply_LeaveData> originDetail,ref string message,int eid)
         {
             int result = 0;
@@ -37,20 +37,41 @@ namespace BLL
             }
             else
             {
-                List<LeaveRequestDetail> requestDetails = getWaitingApproveAndApprovedByEIDS(new List<int> { eid });
+                //sp check
                 for (int i = 0; i < originDetail.Count; i++)
                 {
-                    var theSamedays = requestDetails.Where(x => (DateTime)x.LeaveFrom == originDetail[i].LeaveDate).ToList();
-                    
-                    if (theSamedays.Count > 0)
-                    {
-                        var sameDayAndSameSection = theSamedays.Where(x => x.Section == originDetail[i].sectionid).ToList();
+                    string uid = "0";
+                    string lang = "en";
+                    string unit = originDetail[i].GetUnit().ToString();
+                    string[] spPs = new string[] { eid.ToString(), originDetail[i].leavetypeid.ToString(), originDetail[i].LeaveDate.ToString("yyyy-MM-dd"), unit, lang, uid };
+                    string spCheckResult = BLL.Other.ExeStropFun((int)BLL.GlobalVariate.spFunctionid.leave_ADD_Portal, true, spPs);
 
-                        if (originDetail[i].sectionid == (int)GlobalVariate.sectionType.full || sameDayAndSameSection.Count()>0)
+                    if (!string.IsNullOrEmpty(spCheckResult))
+                    {
+                        result = -3;
+                        message = spCheckResult;
+                        break;
+                    }
+                }
+
+                //other check
+                if(result!=-3)
+                {
+                    List<LeaveRequestDetail> requestDetails = getWaitingApproveAndApprovedByEIDS(new List<int> { eid });
+                    for (int i = 0; i < originDetail.Count; i++)
+                    {
+                        var theSamedays = requestDetails.Where(x => (DateTime)x.LeaveFrom == originDetail[i].LeaveDate).ToList();
+
+                        if (theSamedays.Count > 0)
                         {
-                            result = -2;
-                            message += string.Format(BLL.MultiLanguageHelper.GetLanguagePacket().common_msg_alappliend, originDetail[i].LeaveDate.ToString("MM-dd"))+ "\r\n";
-                            break;
+                            var sameDayAndSameSection = theSamedays.Where(x => x.Section == originDetail[i].sectionid).ToList();
+
+                            if (originDetail[i].sectionid == (int)GlobalVariate.sectionType.full || sameDayAndSameSection.Count() > 0)
+                            {
+                                result = -2;
+                                message += string.Format(BLL.MultiLanguageHelper.GetLanguagePacket().common_msg_alappliend, originDetail[i].LeaveDate.ToString("MM-dd")) + "\r\n";
+                                break;
+                            }
                         }
                     }
                 }

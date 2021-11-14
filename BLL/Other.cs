@@ -185,6 +185,12 @@ namespace BLL
         }
 
 
+        public static string ExeStropFun(int functionid, bool isbefore,string[] para)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ExecuteFunctionStoreProc(functionid, isbefore, para);
+        }
+
+
     }
 
 }

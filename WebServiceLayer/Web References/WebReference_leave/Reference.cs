@@ -177,6 +177,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback clot_CheckCLOTIsOverlapOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ExecuteFunctionStoreProcOperationCompleted;
+        
         private System.Threading.SendOrPostCallback EstimationAnnualLeaveOperationCompleted;
         
         private System.Threading.SendOrPostCallback EstimationSickLeaveOperationCompleted;
@@ -492,6 +494,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event clot_CheckCLOTIsOverlapCompletedEventHandler clot_CheckCLOTIsOverlapCompleted;
+        
+        /// <remarks/>
+        public event ExecuteFunctionStoreProcCompletedEventHandler ExecuteFunctionStoreProcCompleted;
         
         /// <remarks/>
         public event EstimationAnnualLeaveCompletedEventHandler EstimationAnnualLeaveCompleted;
@@ -2813,6 +2818,39 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.clot_CheckCLOTIsOverlapCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.clot_CheckCLOTIsOverlapCompleted(this, new clot_CheckCLOTIsOverlapCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ExecuteFunctionStoreProc", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string ExecuteFunctionStoreProc(int p_FunctionID, bool isBefore, string[] p_Parameter) {
+            object[] results = this.Invoke("ExecuteFunctionStoreProc", new object[] {
+                        p_FunctionID,
+                        isBefore,
+                        p_Parameter});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ExecuteFunctionStoreProcAsync(int p_FunctionID, bool isBefore, string[] p_Parameter) {
+            this.ExecuteFunctionStoreProcAsync(p_FunctionID, isBefore, p_Parameter, null);
+        }
+        
+        /// <remarks/>
+        public void ExecuteFunctionStoreProcAsync(int p_FunctionID, bool isBefore, string[] p_Parameter, object userState) {
+            if ((this.ExecuteFunctionStoreProcOperationCompleted == null)) {
+                this.ExecuteFunctionStoreProcOperationCompleted = new System.Threading.SendOrPostCallback(this.OnExecuteFunctionStoreProcOperationCompleted);
+            }
+            this.InvokeAsync("ExecuteFunctionStoreProc", new object[] {
+                        p_FunctionID,
+                        isBefore,
+                        p_Parameter}, this.ExecuteFunctionStoreProcOperationCompleted, userState);
+        }
+        
+        private void OnExecuteFunctionStoreProcOperationCompleted(object arg) {
+            if ((this.ExecuteFunctionStoreProcCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ExecuteFunctionStoreProcCompleted(this, new ExecuteFunctionStoreProcCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -12053,6 +12091,32 @@ namespace WebServiceLayer.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void ExecuteFunctionStoreProcCompletedEventHandler(object sender, ExecuteFunctionStoreProcCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ExecuteFunctionStoreProcCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ExecuteFunctionStoreProcCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }

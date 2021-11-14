@@ -97,6 +97,13 @@ namespace MODEL
                 this.leavetypeDescription = leavetypeDescription;
                 LeaveDate = leaveDate;
             }
+
+            public double GetUnit()
+            {
+                double result = 0;
+                result=ViewState_page.getDayfromSections(sectionid);
+                return result;
+            }
         }
 
         
