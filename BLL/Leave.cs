@@ -479,7 +479,7 @@ namespace BLL
             List<LSLibrary.WebAPP.ValueText<int>> result = new List<LSLibrary.WebAPP.ValueText<int>>();
             for (int i = 0; i < source.Count(); i++)
             {
-                if (true)
+                if (source[i]<=3)//
                 {
                     LSLibrary.WebAPP.ValueText<int> item = new LSLibrary.WebAPP.ValueText<int>(source[i], BLL.GlobalVariate.GetSectionMultLanguage(source[i]));
                     result.Add(item);

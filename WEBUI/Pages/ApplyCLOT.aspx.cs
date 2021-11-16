@@ -34,6 +34,8 @@ namespace WEBUI.Pages
         {
             LSLibrary.WebAPP.ViewStateHelper.SetValue(NAME_OF_PAGE_VIEW, new MODEL.CLOT.ViewState_page(), this.ViewState);
 
+            MulLanguage();
+
             if (Request.QueryString["action"] != null && (Request.QueryString["action"] == "back"))
             {
                 //1.get prepage's viewstate 2.set viewstate 3.loadUi.
@@ -42,15 +44,21 @@ namespace WEBUI.Pages
                 {
                     preViewState = LSLibrary.WebAPP.PageSessionHelper.GetValueAndCleanSoon(BLL.GlobalVariate.Session_uploadtoclot);
                 }
-                
+
                 LSLibrary.WebAPP.ViewStateHelper.SetValue(NAME_OF_PAGE_VIEW, preViewState, ViewState);
-                
+
+                LoadUI();
+                LoadUIFromViewState_WhenBackFromOtherPage();
                 this.lt_js_prg.Text = LSLibrary.WebAPP.MyJSHelper.CustomPost("", "");//避免有害刷新，所以手动post,引导无害刷新。
+                
+            }
+            else
+            {
+                LoadUI();
             }
 
 
-            MulLanguage();
-            LoadUI();
+            
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
@@ -425,11 +433,43 @@ namespace WEBUI.Pages
 
         protected void image_btn_Click(object sender, ImageClickEventArgs e)
         {
+            SaveViewStateFromUI_WhenGotoOtherPage();
             LSLibrary.WebAPP.PageSessionHelper.SetValue(this.ViewState[NAME_OF_PAGE_VIEW], BLL.GlobalVariate.Session_clottoupload);
             string url = "~/Pages/Apply_Upload.aspx?{0}={1}&{2}={3}&{4}={5}";
             string backurl = System.Web.HttpUtility.UrlEncode("~/pages/Applyclot.aspx?action=back");
             url = string.Format(url, Apply_Upload.url_GetsessionName, BLL.GlobalVariate.Session_clottoupload, Apply_Upload.url_BacksessionName, BLL.GlobalVariate.Session_uploadtoclot, Apply_Upload.url_backUrlname, backurl);
             Response.Redirect(url, true);
+        }
+
+        private void SaveViewStateFromUI_WhenGotoOtherPage()
+        {
+            var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
+
+            dataview.ddl_typeSelected = this.ddl_leavetype.SelectedValue;
+            dataview.inputdate = this.tb_date.Text;
+            dataview.ddlfromh = this.DropDownList1.SelectedValue;
+            dataview.ddlfromto = this.DropDownList2.SelectedValue;
+            dataview.ddltoh = this.DropDownList3.SelectedValue;
+            dataview.ddltom = this.DropDownList4.SelectedValue;
+            dataview.numberofhour = this.tb_hours.Text;
+            dataview.remark = this.tb_remarks.Text;
+
+            LSLibrary.WebAPP.ViewStateHelper.SetValue(NAME_OF_PAGE_VIEW, dataview, this.ViewState);
+        }
+
+
+        private void LoadUIFromViewState_WhenBackFromOtherPage()
+        {
+            var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
+
+            this.ddl_leavetype.SelectedValue = dataview.ddl_typeSelected;
+            this.tb_date.Text = dataview.inputdate;
+            this.DropDownList1.SelectedValue = dataview.ddlfromh;
+            this.DropDownList2.SelectedValue = dataview.ddlfromto;
+            this.DropDownList3.SelectedValue = dataview.ddltoh;
+            this.DropDownList4.SelectedValue = dataview.ddltom;
+            this.tb_hours.Text = dataview.numberofhour;
+            this.tb_remarks.Text = dataview.remark;
         }
     }
 }

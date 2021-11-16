@@ -13,6 +13,15 @@ namespace MODEL
         {
             public List<CLOTItem> items;
             private List<MODEL.App_AttachmentInfo> attachments;
+            public string ddl_typeSelected;
+            public string inputdate;
+            public string ddlfromh;
+            public string ddlfromto;
+            public string ddltoh;
+            public string ddltom;
+            public string numberofhour;
+            public string remark;
+
 
             public ViewState_page()
             {
