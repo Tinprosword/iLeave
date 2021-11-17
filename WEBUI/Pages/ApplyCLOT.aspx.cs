@@ -295,7 +295,7 @@ namespace WEBUI.Pages
 
 
             var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
-            string errorMsg  =BLL.CLOT.CheckData(dataview.items, mBalance);
+            string errorMsg = BLL.CLOT.CheckData(dataview.items, mBalance, loginer.userInfo.employID ?? 0);
             bool validData = string.IsNullOrEmpty(errorMsg);
             if (validData)
             {

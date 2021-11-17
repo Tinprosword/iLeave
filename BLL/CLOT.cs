@@ -137,12 +137,29 @@ namespace BLL
         }
 
 
-        public static string CheckData(List<MODEL.CLOT.CLOTItem> data, float balance)
+        public static string CheckData(List<MODEL.CLOT.CLOTItem> data, float balance,int eid)
         {
             string result = "";
             if (data == null || data.Count() == 0)
             {
                 result = BLL.MultiLanguageHelper.GetLanguagePacket().Common_msg_CannotEmptyData;
+            }
+            else
+            {
+                //sp chec @ParaEmploymentID varchar(6), @ParaType int, @ParaDateFrom datetime,@ParaDateTo datetime,@ParaRangeHours float= 0
+                for (int i = 0; i < data.Count; i++)
+                {
+                    DateTime from = new DateTime(data[i].date.Year, data[i].date.Month, data[i].date.Day, data[i].fromhour, data[i].frommin, 0);
+                    DateTime to = new DateTime(data[i].date.Year, data[i].date.Month, data[i].date.Day, data[i].tohour, data[i].tominute, 0);
+                    string[] spPs = new string[] { eid.ToString(), ((int)data[i].type).ToString(), from.ToString("yyyy-MM-dd HH:mm:ss"), to.ToString("yyyy-MM-dd HH:mm:ss"),data[i].numberofHours.ToString() };
+                    string spCheckResult = BLL.Other.ExeStropFun((int)BLL.GlobalVariate.spFunctionid.clot_add_portal, true, spPs);
+
+                    if (!string.IsNullOrEmpty(spCheckResult))
+                    {
+                        result = spCheckResult;
+                        break;
+                    }
+                }
             }
             return result;
         }

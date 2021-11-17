@@ -29,7 +29,7 @@ namespace BLL
         public enum spFunctionid
         {
             leave_ADD_Portal=7,
-            clot_add_portal=15
+            clot_add_portal=13
         }
 
         public enum AttachmentUploadType
