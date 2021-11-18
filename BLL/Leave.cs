@@ -533,6 +533,30 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveBalanceFromViewByEmployid(eid);
         }
 
+        public static double GetBalanceView_CLOT_balance(int eid)
+        {
+            double result = 0;
+            var data= WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveBalanceFromViewByEmployid(eid);
+            var theItem = data.Where(x => x.LeaveCode.ToUpper() == "OT").FirstOrDefault();
+            if (theItem != null)
+            {
+                result = theItem.Balance;
+            }
+            return result;
+        }
+
+        public static double GetBalanceView_CLOT_Wait(int eid)
+        {
+            double result = 0;
+            var data = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveBalanceFromViewByEmployid(eid);
+            var theItem = data.Where(x => x.LeaveCode.ToUpper() == "OT").FirstOrDefault();
+            if (theItem != null)
+            {
+                result = theItem.WaitBal;
+            }
+            return result;
+        }
+
         public static double GetWaitValue(int leaveid, int staffid,int employid)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetWaiting(staffid, employid, leaveid);

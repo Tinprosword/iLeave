@@ -117,9 +117,8 @@ namespace WEBUI.Pages
 
             this.lt_applydays.Text = "--";
             this.lt_balancedays.Text = "--";
-            double cleanValue = BLL.Leave.GetCleanValue(-9, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
-            double waitValue= BLL.Leave.GetWaitValue(-9, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
-            double balanceValue = cleanValue - waitValue;
+
+            double balanceValue = BLL.Leave.GetBalanceView_CLOT_balance(loginer.userInfo.employID??0);
             this.lt_balancedays.Text = (balanceValue).ToString("0.##") + " " + BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours2;
             RefleshApplyBalance();
 
@@ -385,12 +384,12 @@ namespace WEBUI.Pages
 
         private void RefleshApplyBalance()
         {
-            double waitingValue = BLL.Leave.GetWaitValue(-9, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
+            double waitingValue = BLL.Leave.GetBalanceView_CLOT_Wait(loginer.userInfo.employID??0);
 
             var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
             if (dataview != null && dataview.items != null)
             {
-                float totalHour = 0; //(float)waitingValue;
+                double totalHour = 0; //(float)waitingValue;
                 foreach (var item in dataview.items)
                 {
                     if (item.type == MODEL.CLOT.enum_clotType.CL)
@@ -403,7 +402,9 @@ namespace WEBUI.Pages
                     }
                 }
 
-                totalHour -= (float)waitingValue;
+                //totalHour -= (float)waitingValue;
+
+                totalHour = waitingValue + totalHour;
 
                 this.lt_applydays.Text = totalHour.ToString()+" "+ BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours2;
             }
