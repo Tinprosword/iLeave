@@ -434,7 +434,62 @@ namespace BLL
 
 
         #region unity
-        
+
+        private static List<int> GetLeaveAndClotYearRange()
+        {
+            List<int> result = new List<int>();
+            try
+            {
+                result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveAndCLOTYearRange().ToList();
+            }
+            catch
+            {
+                result.Clear();
+                int defaultYear = DateTime.Now.Year;
+
+                result.Add(defaultYear - 8);
+                result.Add(defaultYear +1);
+
+                result.Add(defaultYear - 8);
+                result.Add(defaultYear + 1);
+            }
+
+            return result;
+        }
+
+        public static List<int> GetLeaveYearRange()
+        {
+            List<int> result = new List<int>();
+            List<int> result2 = GetLeaveAndClotYearRange();
+
+            result.Add(result2[0]);
+            result.Add(result2[1]);
+
+            return result;
+        }
+
+        public static List<int> GetClotYearRange()
+        {
+            List<int> result = new List<int>();
+            List<int> result2 = GetLeaveAndClotYearRange();
+
+            result.Add(result2[2]);
+            result.Add(result2[3]);
+
+            return result;
+        }
+
+        public static List<int> GetDefaultYearRange()
+        {
+            List<int> result = new List<int>();
+            List<int> result2 = GetLeaveAndClotYearRange();
+
+            result.Add(result2.Min());
+            result.Add(result2.Max());
+
+            return result;
+        }
+
         public static List<LSLibrary.WebAPP.ValueText<int>> ConvertLeaveInfo2DropDownList(List<WebServiceLayer.WebReference_leave.t_Leave> source)
         {
             List<LSLibrary.WebAPP.ValueText<int>> result = new List<LSLibrary.WebAPP.ValueText<int>>();

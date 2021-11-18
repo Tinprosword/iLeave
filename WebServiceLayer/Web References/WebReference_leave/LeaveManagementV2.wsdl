@@ -741,6 +741,16 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetLeaveAndCLOTYearRange">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLeaveAndCLOTYearRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveAndCLOTYearRangeResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="InsertRequest">
         <s:complexType>
           <s:sequence>
@@ -2279,6 +2289,7 @@
       <s:element name="ArrayOfT_Leave" nillable="true" type="tns:ArrayOfT_Leave" />
       <s:element name="ArrayOfT_WorkflowTask" nillable="true" type="tns:ArrayOfT_WorkflowTask" />
       <s:element name="FirstRequestInfo" nillable="true" type="tns:FirstRequestInfo" />
+      <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
       <s:element name="string" nillable="true" type="s:string" />
       <s:element name="ArrayOfAttachmentInfo" nillable="true" type="tns:ArrayOfAttachmentInfo" />
       <s:element name="ArrayOfLeaveRequestMaster" nillable="true" type="tns:ArrayOfLeaveRequestMaster" />
@@ -2301,7 +2312,6 @@
       <s:element name="ArrayOfV_System_iLeave_Taxtion" nillable="true" type="tns:ArrayOfV_System_iLeave_Taxtion" />
       <s:element name="PaySlipReportObject" nillable="true" type="tns:PaySlipReportObject" />
       <s:element name="ReportCommonData" nillable="true" type="tns:ReportCommonData" />
-      <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
       <s:element name="ArrayOfWorkflowTaskExtend" nillable="true" type="tns:ArrayOfWorkflowTaskExtend" />
       <s:element name="ArrayOfLeaveHistory" nillable="true" type="tns:ArrayOfLeaveHistory" />
     </s:schema>
@@ -2521,6 +2531,12 @@
   </wsdl:message>
   <wsdl:message name="GetAllLeaveTypeByStaffIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllLeaveTypeByStaffIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveAndCLOTYearRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLeaveAndCLOTYearRange" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveAndCLOTYearRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLeaveAndCLOTYearRangeResponse" />
   </wsdl:message>
   <wsdl:message name="InsertRequestSoapIn">
     <wsdl:part name="parameters" element="tns:InsertRequest" />
@@ -3070,6 +3086,10 @@
   <wsdl:message name="GetAllLeaveTypeByStaffIDHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfT_Leave" />
   </wsdl:message>
+  <wsdl:message name="GetLeaveAndCLOTYearRangeHttpPostIn" />
+  <wsdl:message name="GetLeaveAndCLOTYearRangeHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfInt" />
+  </wsdl:message>
   <wsdl:message name="GetUploadPathHttpPostIn" />
   <wsdl:message name="GetUploadPathHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
@@ -3580,6 +3600,10 @@
       <wsdl:input message="tns:GetAllLeaveTypeByStaffIDSoapIn" />
       <wsdl:output message="tns:GetAllLeaveTypeByStaffIDSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetLeaveAndCLOTYearRange">
+      <wsdl:input message="tns:GetLeaveAndCLOTYearRangeSoapIn" />
+      <wsdl:output message="tns:GetLeaveAndCLOTYearRangeSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="InsertRequest">
       <wsdl:input message="tns:InsertRequestSoapIn" />
       <wsdl:output message="tns:InsertRequestSoapOut" />
@@ -3933,6 +3957,10 @@
     <wsdl:operation name="GetAllLeaveTypeByStaffID">
       <wsdl:input message="tns:GetAllLeaveTypeByStaffIDHttpPostIn" />
       <wsdl:output message="tns:GetAllLeaveTypeByStaffIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveAndCLOTYearRange">
+      <wsdl:input message="tns:GetLeaveAndCLOTYearRangeHttpPostIn" />
+      <wsdl:output message="tns:GetLeaveAndCLOTYearRangeHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetUploadPath">
       <wsdl:input message="tns:GetUploadPathHttpPostIn" />
@@ -4468,6 +4496,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllLeaveTypeByStaffID">
       <soap:operation soapAction="http://tempuri.org/GetAllLeaveTypeByStaffID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveAndCLOTYearRange">
+      <soap:operation soapAction="http://tempuri.org/GetLeaveAndCLOTYearRange" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -5405,6 +5442,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetLeaveAndCLOTYearRange">
+      <soap12:operation soapAction="http://tempuri.org/GetLeaveAndCLOTYearRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="InsertRequest">
       <soap12:operation soapAction="http://tempuri.org/InsertRequest" style="document" />
       <wsdl:input>
@@ -6183,6 +6229,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllLeaveTypeByStaffID">
       <http:operation location="/GetAllLeaveTypeByStaffID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveAndCLOTYearRange">
+      <http:operation location="/GetLeaveAndCLOTYearRange" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

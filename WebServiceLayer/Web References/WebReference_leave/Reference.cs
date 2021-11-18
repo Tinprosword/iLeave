@@ -97,6 +97,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetAllLeaveTypeByStaffIDOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetLeaveAndCLOTYearRangeOperationCompleted;
+        
         private System.Threading.SendOrPostCallback InsertRequestOperationCompleted;
         
         private System.Threading.SendOrPostCallback InsertAttachmentInfoOperationCompleted;
@@ -374,6 +376,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event GetAllLeaveTypeByStaffIDCompletedEventHandler GetAllLeaveTypeByStaffIDCompleted;
+        
+        /// <remarks/>
+        public event GetLeaveAndCLOTYearRangeCompletedEventHandler GetLeaveAndCLOTYearRangeCompleted;
         
         /// <remarks/>
         public event InsertRequestCompletedEventHandler InsertRequestCompleted;
@@ -1626,6 +1631,33 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.GetAllLeaveTypeByStaffIDCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetAllLeaveTypeByStaffIDCompleted(this, new GetAllLeaveTypeByStaffIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLeaveAndCLOTYearRange", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int[] GetLeaveAndCLOTYearRange() {
+            object[] results = this.Invoke("GetLeaveAndCLOTYearRange", new object[0]);
+            return ((int[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetLeaveAndCLOTYearRangeAsync() {
+            this.GetLeaveAndCLOTYearRangeAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetLeaveAndCLOTYearRangeAsync(object userState) {
+            if ((this.GetLeaveAndCLOTYearRangeOperationCompleted == null)) {
+                this.GetLeaveAndCLOTYearRangeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLeaveAndCLOTYearRangeOperationCompleted);
+            }
+            this.InvokeAsync("GetLeaveAndCLOTYearRange", new object[0], this.GetLeaveAndCLOTYearRangeOperationCompleted, userState);
+        }
+        
+        private void OnGetLeaveAndCLOTYearRangeOperationCompleted(object arg) {
+            if ((this.GetLeaveAndCLOTYearRangeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetLeaveAndCLOTYearRangeCompleted(this, new GetLeaveAndCLOTYearRangeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -11095,6 +11127,32 @@ namespace WebServiceLayer.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((t_Leave[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetLeaveAndCLOTYearRangeCompletedEventHandler(object sender, GetLeaveAndCLOTYearRangeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetLeaveAndCLOTYearRangeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetLeaveAndCLOTYearRangeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int[])(this.results[0]));
             }
         }
     }

@@ -194,6 +194,14 @@ namespace WEBUI.Pages
 
         private void SetupSearchAndTab()
         {
+            //year
+            List<int> yearRange = BLL.Leave.GetDefaultYearRange();
+            for (int i = yearRange[0]; i <= yearRange[1]; i++)
+            {
+                this.ddl_year.Items.Add(new ListItem(i.ToString(),i.ToString()));
+            }
+            this.ddl_year.SelectedValue = DateTime.Now.Year.ToString();
+
             //tab
             if (dataType_myselfOrMyManage == 0)
             {
