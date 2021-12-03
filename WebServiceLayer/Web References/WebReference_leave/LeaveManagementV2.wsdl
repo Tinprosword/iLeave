@@ -1017,17 +1017,31 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetLeaveMasterByApprovarUID">
+      <s:element name="GetLeaveMaster_MyManageWaitingByApprovarUID">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="uid" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetLeaveMasterByApprovarUIDResponse">
+      <s:element name="GetLeaveMaster_MyManageWaitingByApprovarUIDResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveMasterByApprovarUIDResult" type="tns:ArrayOfLeaveRequestMaster" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveMaster_MyManageWaitingByApprovarUIDResult" type="tns:ArrayOfLeaveRequestMaster" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDResult" type="tns:ArrayOfLeaveRequestMaster" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -2604,11 +2618,17 @@
   <wsdl:message name="GetLeaveMasterByPIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetLeaveMasterByPIDResponse" />
   </wsdl:message>
-  <wsdl:message name="GetLeaveMasterByApprovarUIDSoapIn">
-    <wsdl:part name="parameters" element="tns:GetLeaveMasterByApprovarUID" />
+  <wsdl:message name="GetLeaveMaster_MyManageWaitingByApprovarUIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLeaveMaster_MyManageWaitingByApprovarUID" />
   </wsdl:message>
-  <wsdl:message name="GetLeaveMasterByApprovarUIDSoapOut">
-    <wsdl:part name="parameters" element="tns:GetLeaveMasterByApprovarUIDResponse" />
+  <wsdl:message name="GetLeaveMaster_MyManageWaitingByApprovarUIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUID" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDResponse" />
   </wsdl:message>
   <wsdl:message name="GetLeaveMasterByReuestIDSoapIn">
     <wsdl:part name="parameters" element="tns:GetLeaveMasterByReuestID" />
@@ -3136,10 +3156,16 @@
   <wsdl:message name="GetLeaveMasterByPIDHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfLeaveRequestMaster" />
   </wsdl:message>
-  <wsdl:message name="GetLeaveMasterByApprovarUIDHttpPostIn">
+  <wsdl:message name="GetLeaveMaster_MyManageWaitingByApprovarUIDHttpPostIn">
     <wsdl:part name="uid" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetLeaveMasterByApprovarUIDHttpPostOut">
+  <wsdl:message name="GetLeaveMaster_MyManageWaitingByApprovarUIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfLeaveRequestMaster" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDHttpPostIn">
+    <wsdl:part name="uid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfLeaveRequestMaster" />
   </wsdl:message>
   <wsdl:message name="GetLeaveMasterByReuestIDHttpPostIn">
@@ -3648,9 +3674,13 @@
       <wsdl:input message="tns:GetLeaveMasterByPIDSoapIn" />
       <wsdl:output message="tns:GetLeaveMasterByPIDSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetLeaveMasterByApprovarUID">
-      <wsdl:input message="tns:GetLeaveMasterByApprovarUIDSoapIn" />
-      <wsdl:output message="tns:GetLeaveMasterByApprovarUIDSoapOut" />
+    <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
+      <wsdl:input message="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDSoapIn" />
+      <wsdl:output message="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUID">
+      <wsdl:input message="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDSoapIn" />
+      <wsdl:output message="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetLeaveMasterByReuestID">
       <wsdl:input message="tns:GetLeaveMasterByReuestIDSoapIn" />
@@ -3998,9 +4028,13 @@
       <wsdl:input message="tns:GetLeaveMasterByPIDHttpPostIn" />
       <wsdl:output message="tns:GetLeaveMasterByPIDHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetLeaveMasterByApprovarUID">
-      <wsdl:input message="tns:GetLeaveMasterByApprovarUIDHttpPostIn" />
-      <wsdl:output message="tns:GetLeaveMasterByApprovarUIDHttpPostOut" />
+    <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
+      <wsdl:input message="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDHttpPostIn" />
+      <wsdl:output message="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUID">
+      <wsdl:input message="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDHttpPostIn" />
+      <wsdl:output message="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetLeaveMasterByReuestID">
       <wsdl:input message="tns:GetLeaveMasterByReuestIDHttpPostIn" />
@@ -4611,8 +4645,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetLeaveMasterByApprovarUID">
-      <soap:operation soapAction="http://tempuri.org/GetLeaveMasterByApprovarUID" style="document" />
+    <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
+      <soap:operation soapAction="http://tempuri.org/GetLeaveMaster_MyManageWaitingByApprovarUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUID">
+      <soap:operation soapAction="http://tempuri.org/GetLeaveMaster_MyManageBeyondWaitingByApprovarUID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -5550,8 +5593,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetLeaveMasterByApprovarUID">
-      <soap12:operation soapAction="http://tempuri.org/GetLeaveMasterByApprovarUID" style="document" />
+    <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
+      <soap12:operation soapAction="http://tempuri.org/GetLeaveMaster_MyManageWaitingByApprovarUID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUID">
+      <soap12:operation soapAction="http://tempuri.org/GetLeaveMaster_MyManageBeyondWaitingByApprovarUID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -6324,8 +6376,17 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetLeaveMasterByApprovarUID">
-      <http:operation location="/GetLeaveMasterByApprovarUID" />
+    <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
+      <http:operation location="/GetLeaveMaster_MyManageWaitingByApprovarUID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUID">
+      <http:operation location="/GetLeaveMaster_MyManageBeyondWaitingByApprovarUID" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

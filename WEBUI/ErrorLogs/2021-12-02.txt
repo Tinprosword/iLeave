@@ -1,0 +1,65 @@
+ip:192.168.19.45
+DataTime：2021/12/2 9:45:24
+Url：http://192.168.19.210/WEBUI/pages/approval_wait.aspx?action=0&applicationtype=0&from=3
+Message：操作超时
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_clotv2(Int32 requestid, Int32 ApproverUid, String remark, String baseUrl) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 1155
+   在 BLL.workflow.ApproveRequest_leave_clot(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\workflow.cs:行号 200
+   在 WEBUI.Pages.approval_wait.btn_Click_clot(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 467
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.45
+DataTime：2021/12/2 11:05:53
+Url：http://192.168.19.210/WEBUI/pages/approval_wait.aspx?action=0&applicationtype=0&from=3
+Message：操作超时
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_clotv2(Int32 requestid, Int32 ApproverUid, String remark, String baseUrl) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 1155
+   在 BLL.workflow.ApproveRequest_leave_clot(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\workflow.cs:行号 200
+   在 WEBUI.Pages.approval_wait.btn_Click_clot(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 467
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.45
+DataTime：2021/12/2 11:08:49
+Url：http://192.168.19.210/WEBUI/pages/approval_wait.aspx?action=0&applicationtype=0&from=3
+Message：操作超时
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.ApproveRequest_Cancelclot(Int32 requestid, Int32 ApproverUid, String remark, String baseUrl) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 1258
+   在 BLL.workflow.ApprovalCancelRequest_leave_clot(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\workflow.cs:行号 272
+   在 WEBUI.Pages.approval_wait.btn_Click_clot(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 477
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.202
+DataTime：2021/12/2 14:12:15
+Url：http://192.168.19.210/WEBUI/ui/Login02.aspx?tk=218358146D79842FC9988B419368DF2CBCED18CD905A398416315BB68CBDC9DC4C0F4F3679DF2B7E8DE630F7D59D6BF379C57B370E175D38792FA82F50BC3A11FBF248A2B"
+Message：文件“/WEBUI/ui/Login02.aspx”不存在。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void CheckVirtualFileExists(System.Web.VirtualPath)
+Trace：   在 System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************

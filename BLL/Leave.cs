@@ -261,7 +261,18 @@ namespace BLL
             //}
             else if (status == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
             {
-                result = result.Where(x => x.Status != (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && x.WorkflowTypeID == 0).ToList();
+                var tempresult = result.Where(x => x.Status != (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && x.WorkflowTypeID == 0).ToList();
+
+                foreach (var tempItem in tempresult)
+                {
+                    var hasCancelItem = result.Where(x => x.WorkflowTypeID == 10 && x.employmentID == tempItem.employmentID && x.leavefrom == tempItem.leavefrom && x.leaveto == tempItem.leaveto).FirstOrDefault();
+                    if (hasCancelItem != null)
+                    {
+                        tempItem.WorkflowTypeID = 10;
+                        tempItem.Status = hasCancelItem.Status;
+                    }
+                }
+                result = tempresult;
             }
 
             if (from != null)
@@ -278,41 +289,33 @@ namespace BLL
 
 
 
-        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyManageLeaveMaster(int uid, GlobalVariate.LeaveBigRangeStatus status, DateTime? from, string name,DateTime? to)
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyManageLeaveMaster(int uid, GlobalVariate.LeaveBigRangeStatus status, DateTime? from, string name, DateTime? to)
         {
-            List<LeaveRequestMaster> result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMasterByApprovarUID(uid).ToList();
-            if (result.Count() > 0)
+            List<LeaveRequestMaster> result = new List<LeaveRequestMaster>();
+
+            if (status == GlobalVariate.LeaveBigRangeStatus.waitapproval)
             {
-                if (status == GlobalVariate.LeaveBigRangeStatus.waitapproval)
-                {
-                    result = result.Where(x => (x.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && x.WorkflowTypeID == 0) || (x.WorkflowTypeID == 10 && x.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL)).ToList();
-                }
-                //else if (status == GlobalVariate.LeaveBigRangeStatus.approvaled)
-                //{
-                //    result = result.Where(x => (x.WorkflowTypeID == 0 && x.Status == (byte)GlobalVariate.ApprovalRequestStatus.APPROVE) || (x.WorkflowTypeID == 10 && x.Status == (byte)GlobalVariate.ApprovalRequestStatus.CONFIRM_CANCEL)).ToList();
-                //}
-                //else if (status == GlobalVariate.LeaveBigRangeStatus.withdraw)
-                //{
-                //    result = result.Where(x => (x.WorkflowTypeID == 0 && x.Status == (byte)GlobalVariate.ApprovalRequestStatus.REJECT) || (x.WorkflowTypeID == 10 && x.Status == (byte)GlobalVariate.ApprovalRequestStatus.REJECT)).ToList();
-                //}
-                else if (status == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
-                {
-                    result= result.Where(x => x.Status != (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && x.WorkflowTypeID == 0).ToList();
-                }
-                if (from != null)
-                {
-                    result = result.Where(x => x.leavefrom >= from).ToList();
-                }
-                if (to != null)
-                {
-                    result = result.Where(x => x.leaveto <= to).ToList();
-                }
-                if (!string.IsNullOrEmpty(name))
-                {
-                    result = result.Where(x => MODEL.UserName.IsNameLike(x.p_Surname + " " + x.p_Othername, x.p_NameCH, name) == true).ToList();
-                }
-                result = result.OrderByDescending(x => x.leavefrom).ThenByDescending(x=>x.createDate).ToList();
+                result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMaster_MyManageWaitingByApprovarUID(uid).ToList();
             }
+
+            else if (status == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
+            {
+                result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMaster_MyManageBeyondWaitingByApprovarUID(uid).ToList();
+            }
+            if (from != null)
+            {
+                result = result.Where(x => x.leavefrom >= from).ToList();
+            }
+            if (to != null)
+            {
+                result = result.Where(x => x.leaveto <= to).ToList();
+            }
+            if (!string.IsNullOrEmpty(name))
+            {
+                result = result.Where(x => MODEL.UserName.IsNameLike(x.p_Surname + " " + x.p_Othername, x.p_NameCH, name) == true).ToList();
+            }
+            result = result.OrderByDescending(x => x.leavefrom).ThenByDescending(x => x.createDate).ToList();
+
             return result;
         }
 

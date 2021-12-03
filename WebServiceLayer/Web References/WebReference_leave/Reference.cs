@@ -121,7 +121,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetLeaveMasterByPIDOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetLeaveMasterByApprovarUIDOperationCompleted;
+        private System.Threading.SendOrPostCallback GetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetLeaveMasterByReuestIDOperationCompleted;
         
@@ -414,7 +416,10 @@ namespace WebServiceLayer.WebReference_leave {
         public event GetLeaveMasterByPIDCompletedEventHandler GetLeaveMasterByPIDCompleted;
         
         /// <remarks/>
-        public event GetLeaveMasterByApprovarUIDCompletedEventHandler GetLeaveMasterByApprovarUIDCompleted;
+        public event GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventHandler GetLeaveMaster_MyManageWaitingByApprovarUIDCompleted;
+        
+        /// <remarks/>
+        public event GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDCompletedEventHandler GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDCompleted;
         
         /// <remarks/>
         public event GetLeaveMasterByReuestIDCompletedEventHandler GetLeaveMasterByReuestIDCompleted;
@@ -1981,31 +1986,60 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLeaveMasterByApprovarUID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public LeaveRequestMaster[] GetLeaveMasterByApprovarUID(int uid) {
-            object[] results = this.Invoke("GetLeaveMasterByApprovarUID", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLeaveMaster_MyManageWaitingByApprovarUID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public LeaveRequestMaster[] GetLeaveMaster_MyManageWaitingByApprovarUID(int uid) {
+            object[] results = this.Invoke("GetLeaveMaster_MyManageWaitingByApprovarUID", new object[] {
                         uid});
             return ((LeaveRequestMaster[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetLeaveMasterByApprovarUIDAsync(int uid) {
-            this.GetLeaveMasterByApprovarUIDAsync(uid, null);
+        public void GetLeaveMaster_MyManageWaitingByApprovarUIDAsync(int uid) {
+            this.GetLeaveMaster_MyManageWaitingByApprovarUIDAsync(uid, null);
         }
         
         /// <remarks/>
-        public void GetLeaveMasterByApprovarUIDAsync(int uid, object userState) {
-            if ((this.GetLeaveMasterByApprovarUIDOperationCompleted == null)) {
-                this.GetLeaveMasterByApprovarUIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLeaveMasterByApprovarUIDOperationCompleted);
+        public void GetLeaveMaster_MyManageWaitingByApprovarUIDAsync(int uid, object userState) {
+            if ((this.GetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted == null)) {
+                this.GetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted);
             }
-            this.InvokeAsync("GetLeaveMasterByApprovarUID", new object[] {
-                        uid}, this.GetLeaveMasterByApprovarUIDOperationCompleted, userState);
+            this.InvokeAsync("GetLeaveMaster_MyManageWaitingByApprovarUID", new object[] {
+                        uid}, this.GetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted, userState);
         }
         
-        private void OnGetLeaveMasterByApprovarUIDOperationCompleted(object arg) {
-            if ((this.GetLeaveMasterByApprovarUIDCompleted != null)) {
+        private void OnGetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted(object arg) {
+            if ((this.GetLeaveMaster_MyManageWaitingByApprovarUIDCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetLeaveMasterByApprovarUIDCompleted(this, new GetLeaveMasterByApprovarUIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetLeaveMaster_MyManageWaitingByApprovarUIDCompleted(this, new GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLeaveMaster_MyManageBeyondWaitingByApprovarUID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public LeaveRequestMaster[] GetLeaveMaster_MyManageBeyondWaitingByApprovarUID(int uid) {
+            object[] results = this.Invoke("GetLeaveMaster_MyManageBeyondWaitingByApprovarUID", new object[] {
+                        uid});
+            return ((LeaveRequestMaster[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDAsync(int uid) {
+            this.GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDAsync(uid, null);
+        }
+        
+        /// <remarks/>
+        public void GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDAsync(int uid, object userState) {
+            if ((this.GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDOperationCompleted == null)) {
+                this.GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLeaveMaster_MyManageBeyondWaitingByApprovarUIDOperationCompleted);
+            }
+            this.InvokeAsync("GetLeaveMaster_MyManageBeyondWaitingByApprovarUID", new object[] {
+                        uid}, this.GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDOperationCompleted, userState);
+        }
+        
+        private void OnGetLeaveMaster_MyManageBeyondWaitingByApprovarUIDOperationCompleted(object arg) {
+            if ((this.GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDCompleted(this, new GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -11401,17 +11435,43 @@ namespace WebServiceLayer.WebReference_leave {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetLeaveMasterByApprovarUIDCompletedEventHandler(object sender, GetLeaveMasterByApprovarUIDCompletedEventArgs e);
+    public delegate void GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventHandler(object sender, GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetLeaveMasterByApprovarUIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetLeaveMasterByApprovarUIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public LeaveRequestMaster[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((LeaveRequestMaster[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDCompletedEventHandler(object sender, GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
