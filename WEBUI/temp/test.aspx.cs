@@ -18,7 +18,10 @@ namespace WEBUI
 
             //this.Label1.Text = leavebase.add(1, 3).ToString();
             //getbaseinfo();
-            showsite();
+            //showsite();
+
+            DateTime dt = new DateTime(2021, 12, 31).AddMonths(-1);
+            int a = 4;
         }
 
         private void showsite()
