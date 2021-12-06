@@ -109,9 +109,9 @@ namespace WEBUI.Pages
             MODEL.UserName tempUserName = new MODEL.UserName(loginer.userInfo.surname, loginer.userInfo.firstname, loginer.userInfo.nickname, loginer.userInfo.namech);
             this.literal_applier.Text = tempUserName.GetDisplayName(intNameType);
 
-            var ddldata = LSLibrary.EnumHelper.GetValueText(typeof(MODEL.CLOT.enum_clotType));
+            var ddldata = LSLibrary.EnumHelper.GetValueText_multipLanguage(typeof(MODEL.CLOT.enum_clotType),BLL.MultiLanguageHelper.GetChoose());
             this.ddl_leavetype.DataSource = ddldata;
-            this.ddl_leavetype.DataTextField = LSLibrary.EnumHelper.NAME_Enum_valueTextDesc_DESC;
+            this.ddl_leavetype.DataTextField = LSLibrary.EnumHelper.NAME_Enum_valueTextDesc_TEXT;
             this.ddl_leavetype.DataValueField = LSLibrary.EnumHelper.NAME_Enum_valueTextDesc_VALUE;
             this.ddl_leavetype.DataBind();
 

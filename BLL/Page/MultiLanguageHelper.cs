@@ -21,5 +21,15 @@ namespace BLL
         {
             return LSLibrary.WebAPP.MulitiLanguageFactory.GetLanguagePacket(type);
         }
+
+        public static string GetLanguageByEn(string en)
+        {
+            string result = en;
+
+            LSLibrary.WebAPP.LanguageType ltype = GetChoose();
+            result = LSLibrary.WebAPP.FixMulLanguage.GetLanguageByEn(en, ltype);
+
+            return result;
+        }
     }
 }

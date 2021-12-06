@@ -107,6 +107,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback UpdateTodayLeaveBalanceToTableOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetDefaultYearEndDateOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetAttachmentInfoByRequestID_LeaveOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetAttachmentInfoByRequestID_clotOperationCompleted;
@@ -393,6 +395,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event UpdateTodayLeaveBalanceToTableCompletedEventHandler UpdateTodayLeaveBalanceToTableCompleted;
+        
+        /// <remarks/>
+        public event GetDefaultYearEndDateCompletedEventHandler GetDefaultYearEndDateCompleted;
         
         /// <remarks/>
         public event GetAttachmentInfoByRequestID_LeaveCompletedEventHandler GetAttachmentInfoByRequestID_LeaveCompleted;
@@ -1783,6 +1788,35 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.UpdateTodayLeaveBalanceToTableCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.UpdateTodayLeaveBalanceToTableCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetDefaultYearEndDate", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.DateTime GetDefaultYearEndDate(int eid) {
+            object[] results = this.Invoke("GetDefaultYearEndDate", new object[] {
+                        eid});
+            return ((System.DateTime)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetDefaultYearEndDateAsync(int eid) {
+            this.GetDefaultYearEndDateAsync(eid, null);
+        }
+        
+        /// <remarks/>
+        public void GetDefaultYearEndDateAsync(int eid, object userState) {
+            if ((this.GetDefaultYearEndDateOperationCompleted == null)) {
+                this.GetDefaultYearEndDateOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDefaultYearEndDateOperationCompleted);
+            }
+            this.InvokeAsync("GetDefaultYearEndDate", new object[] {
+                        eid}, this.GetDefaultYearEndDateOperationCompleted, userState);
+        }
+        
+        private void OnGetDefaultYearEndDateOperationCompleted(object arg) {
+            if ((this.GetDefaultYearEndDateCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetDefaultYearEndDateCompleted(this, new GetDefaultYearEndDateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -11250,6 +11284,32 @@ namespace WebServiceLayer.WebReference_leave {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void UpdateTodayLeaveBalanceToTableCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetDefaultYearEndDateCompletedEventHandler(object sender, GetDefaultYearEndDateCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetDefaultYearEndDateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetDefaultYearEndDateCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.DateTime Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.DateTime)(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]

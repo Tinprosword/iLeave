@@ -861,6 +861,20 @@
       <s:element name="UpdateTodayLeaveBalanceToTableResponse">
         <s:complexType />
       </s:element>
+      <s:element name="GetDefaultYearEndDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDefaultYearEndDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetDefaultYearEndDateResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetAttachmentInfoByRequestID_Leave">
         <s:complexType>
           <s:sequence>
@@ -2305,6 +2319,7 @@
       <s:element name="FirstRequestInfo" nillable="true" type="tns:FirstRequestInfo" />
       <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
       <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="dateTime" type="s:dateTime" />
       <s:element name="ArrayOfAttachmentInfo" nillable="true" type="tns:ArrayOfAttachmentInfo" />
       <s:element name="ArrayOfLeaveRequestMaster" nillable="true" type="tns:ArrayOfLeaveRequestMaster" />
       <s:element name="LeaveRequestMaster" nillable="true" type="tns:LeaveRequestMaster" />
@@ -2575,6 +2590,12 @@
   </wsdl:message>
   <wsdl:message name="UpdateTodayLeaveBalanceToTableSoapOut">
     <wsdl:part name="parameters" element="tns:UpdateTodayLeaveBalanceToTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDefaultYearEndDateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDefaultYearEndDate" />
+  </wsdl:message>
+  <wsdl:message name="GetDefaultYearEndDateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDefaultYearEndDateResponse" />
   </wsdl:message>
   <wsdl:message name="GetAttachmentInfoByRequestID_LeaveSoapIn">
     <wsdl:part name="parameters" element="tns:GetAttachmentInfoByRequestID_Leave" />
@@ -3118,6 +3139,12 @@
     <wsdl:part name="eid" type="s:string" />
   </wsdl:message>
   <wsdl:message name="UpdateTodayLeaveBalanceToTableHttpPostOut" />
+  <wsdl:message name="GetDefaultYearEndDateHttpPostIn">
+    <wsdl:part name="eid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDefaultYearEndDateHttpPostOut">
+    <wsdl:part name="Body" element="tns:dateTime" />
+  </wsdl:message>
   <wsdl:message name="GetAttachmentInfoByRequestID_LeaveHttpPostIn">
     <wsdl:part name="requestID" type="s:string" />
   </wsdl:message>
@@ -3646,6 +3673,10 @@
       <wsdl:input message="tns:UpdateTodayLeaveBalanceToTableSoapIn" />
       <wsdl:output message="tns:UpdateTodayLeaveBalanceToTableSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetDefaultYearEndDate">
+      <wsdl:input message="tns:GetDefaultYearEndDateSoapIn" />
+      <wsdl:output message="tns:GetDefaultYearEndDateSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetAttachmentInfoByRequestID_Leave">
       <wsdl:input message="tns:GetAttachmentInfoByRequestID_LeaveSoapIn" />
       <wsdl:output message="tns:GetAttachmentInfoByRequestID_LeaveSoapOut" />
@@ -3999,6 +4030,10 @@
     <wsdl:operation name="UpdateTodayLeaveBalanceToTable">
       <wsdl:input message="tns:UpdateTodayLeaveBalanceToTableHttpPostIn" />
       <wsdl:output message="tns:UpdateTodayLeaveBalanceToTableHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultYearEndDate">
+      <wsdl:input message="tns:GetDefaultYearEndDateHttpPostIn" />
+      <wsdl:output message="tns:GetDefaultYearEndDateHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetAttachmentInfoByRequestID_Leave">
       <wsdl:input message="tns:GetAttachmentInfoByRequestID_LeaveHttpPostIn" />
@@ -4575,6 +4610,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateTodayLeaveBalanceToTable">
       <soap:operation soapAction="http://tempuri.org/UpdateTodayLeaveBalanceToTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultYearEndDate">
+      <soap:operation soapAction="http://tempuri.org/GetDefaultYearEndDate" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -5530,6 +5574,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetDefaultYearEndDate">
+      <soap12:operation soapAction="http://tempuri.org/GetDefaultYearEndDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAttachmentInfoByRequestID_Leave">
       <soap12:operation soapAction="http://tempuri.org/GetAttachmentInfoByRequestID_Leave" style="document" />
       <wsdl:input>
@@ -6312,6 +6365,15 @@
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
       <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultYearEndDate">
+      <http:operation location="/GetDefaultYearEndDate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetAttachmentInfoByRequestID_Leave">
       <http:operation location="/GetAttachmentInfoByRequestID_Leave" />

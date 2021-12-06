@@ -45,8 +45,8 @@ namespace WEBUI.Pages
         private void SetupUI()
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().apply_estimation, "~/pages/main.aspx", true);
-
-            this.tb_date.Text = System.DateTime.Now.ToString("yyyy-MM-dd");
+            DateTime esDate = BLL.Other.GetEstimateDate(loginer.userInfo.employID??0);
+            this.tb_date.Text = esDate.ToString("yyyy-MM-dd");
         }
 
         private void SetupMultiLanguage()

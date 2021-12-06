@@ -19,6 +19,11 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetIGuard("ileave");
         }
 
+        public static DateTime GetEstimateDate(int eid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetDefaultYearEndDate(eid);
+        }
+
 
         public static bool InsertAttendanceRawData(WebServiceLayer.WebReference_leave.AttendanceRawData[] data)
         {
