@@ -134,10 +134,23 @@ namespace WEBUI.Pages
 
             DropDownList2.Items.Clear();
             DropDownList4.Items.Clear();
-            for (int i = 0; i < 60; i++)
+            bool onlyHalfHour = BLL.SystemParameters.mCLOTOnlyHalfHours();
+            
+            if (onlyHalfHour)
             {
-                this.DropDownList2.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
-                this.DropDownList4.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
+                this.DropDownList2.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));
+                this.DropDownList2.Items.Add(new ListItem(30.ToString("00"), 30.ToString()));
+
+                this.DropDownList4.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));
+                this.DropDownList4.Items.Add(new ListItem(30.ToString("00"), 30.ToString()));
+            }
+            else
+            {
+                for (int i = 0; i < 60; i++)
+                {
+                    this.DropDownList2.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
+                    this.DropDownList4.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
+                }
             }
 
 
