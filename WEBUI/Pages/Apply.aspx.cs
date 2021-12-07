@@ -199,12 +199,67 @@ namespace WEBUI.Pages
         protected void ddl_leavetype_SelectedIndexChanged(object sender, EventArgs e)
         {
             int leaveid = int.Parse(this.ddl_leavetype.SelectedValue);
-            List<LSLibrary.WebAPP.ValueText<int>> ddlSource = BLL.Leave.GetDDLSectionsData(leaveid, (int)loginer.userInfo.employID);
-            LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.dropdl_section, ddlSource);
-
+            LoadLeaveSectionAndTime(leaveid);
             RefleshApplyBalance(leaveid);
         }
 
+        private void LoadTime()
+        {
+            DropDownList1.Items.Clear();
+            DropDownList3.Items.Clear();
+            for (int i = 0; i < 24; i++)
+            {
+                this.DropDownList1.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
+                this.DropDownList3.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
+            }
+
+            DropDownList2.Items.Clear();
+            DropDownList4.Items.Clear();
+            bool onlyHalfHour = BLL.SystemParameters.mCLOTOnlyHalfHours();
+
+            if (onlyHalfHour)
+            {
+                this.DropDownList2.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));
+                this.DropDownList2.Items.Add(new ListItem(30.ToString("00"), 30.ToString()));
+
+                this.DropDownList4.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));
+                this.DropDownList4.Items.Add(new ListItem(30.ToString("00"), 30.ToString()));
+            }
+            else
+            {
+                for (int i = 0; i < 60; i++)
+                {
+                    this.DropDownList2.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
+                    this.DropDownList4.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
+                }
+            }
+        }
+
+        private void LoadLeaveSectionAndTime(int leaveID)
+        {
+            //1.radio. 2 setion 3 time.
+            List<LSLibrary.WebAPP.ValueText<int>> ddlSource = BLL.Leave.GetDDLSectionsData(leaveID, (int)loginer.userInfo.employID);
+            LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.dropdl_section, ddlSource);
+            LoadTime();
+
+
+            bool AllowHour = BLL.Leave.AllowHour(leaveID, loginer.userInfo.personid);
+            if (leaveID == 0 || AllowHour==false)
+            {
+                //hiden radio. hiden time
+                tr_radio.Visible = false;
+                tr_section.Visible = true;
+                tr_time.Visible = false;
+            }
+            else
+            {
+                //show radio. default show setcion
+                tr_radio.Visible = true;
+                tr_section.Visible = true;
+                tr_time.Visible = false;
+            }
+
+        }
 
         private void RefleshApplyBalance(int leaveid)
         {
@@ -403,5 +458,34 @@ namespace WEBUI.Pages
 
         #endregion
 
+        protected void radio_ishour_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int hourOrDay = this.radio_ishour.SelectedIndex;
+            if (hourOrDay == 0)
+            {
+                this.tr_section.Visible = true;
+                this.tr_time.Visible = false;
+            }
+            else
+            {
+                this.tr_section.Visible = false;
+                this.tr_time.Visible = true;
+            }
+        }
+
+        protected void DropDownList1_TextChanged(object sender, EventArgs e)
+        {
+            int fromh = int.Parse(this.DropDownList1.SelectedValue);
+            int fromm = int.Parse(this.DropDownList2.SelectedValue);
+            int toh = int.Parse(this.DropDownList3.SelectedValue);
+            int tom = int.Parse(this.DropDownList4.SelectedValue);
+
+
+            DateTime theday = System.DateTime.Now;
+
+            float hours = BLL.CLOT.CalculateNumberofHours(fromh, toh, fromm, tom, theday);
+            this.tb_total.Text = hours.ToString();
+            
+        }
     }
 }

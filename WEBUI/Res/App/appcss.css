@@ -210,6 +210,11 @@ input,button,a {outline:0 none;}
     font-weight:normal;
 }
 
+.overlableSize16 label{
+    font-size:16px;
+    font-weight:normal;
+}
+
 
     
 .Flostalert-success {

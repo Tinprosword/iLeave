@@ -36,11 +36,36 @@
                     <asp:label ID="lt_balancedays" runat="server"> </asp:label>&nbsp;<asp:label Font-Size="14px" ID="lt_balancedetail" runat="server"></asp:label>
                 </td>
             </tr>
-            <tr>
+            <tr id="tr_radio" runat="server">
+                <td><asp:Literal ID="Literal1" runat="server"></asp:Literal></td>
+                <td colspan="2">
+                    <asp:RadioButtonList ID="radio_ishour" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow"  Font-Bold="false" CssClass="overlableSize16" CellSpacing="15" AutoPostBack="true" OnSelectedIndexChanged="radio_ishour_SelectedIndexChanged">
+                        <asp:ListItem Text="By Day　　　" Value="0" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="By Hour" Value="1"></asp:ListItem>
+                    </asp:RadioButtonList>
+                </td>
+            </tr>
+            <tr id="tr_section" runat="server">
                 <td><asp:Literal ID="lt_section" runat="server">Section</asp:Literal></td>
                 <td colspan="2">
                     <asp:DropDownList ID="dropdl_section" runat="server" Width="90%" style="height:24px">
                     </asp:DropDownList>
+                </td>
+            </tr>
+            <tr id="tr_time" runat="server">
+                <td><asp:Literal ID="lt_time" runat="server">Time</asp:Literal></td>
+                <td>
+                    <asp:DropDownList Width="80px" ID="DropDownList1" runat="server" OnTextChanged="DropDownList1_TextChanged" AutoPostBack="true">
+                    </asp:DropDownList> &nbsp;&nbsp;: &nbsp;&nbsp;
+                    <asp:DropDownList Width="80px" ID="DropDownList2" runat="server" OnTextChanged="DropDownList1_TextChanged" AutoPostBack="true">
+                    </asp:DropDownList>
+                    <div style="height:10px;"></div>
+                    <asp:DropDownList Width="80px" ID="DropDownList3" runat="server" OnTextChanged="DropDownList1_TextChanged" AutoPostBack="true">
+                    </asp:DropDownList> &nbsp;&nbsp;: &nbsp;&nbsp;
+                    <asp:DropDownList Width="80px" ID="DropDownList4" runat="server" OnTextChanged="DropDownList1_TextChanged" AutoPostBack="true">
+                    </asp:DropDownList>
+                    <div style="height:5px;"></div>
+                    <asp:TextBox ID="tb_total" runat="server" Text="0"></asp:TextBox>
                 </td>
             </tr>
             <tr>

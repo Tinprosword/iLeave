@@ -15,3 +15,97 @@ Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(We
    在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
    在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
 ********************************************************************************************
+ip:::1
+DataTime：2021/12/7 11:44:19
+Url：http://localhost/WEBUI/pages/apply.aspx
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void SavePageDataToViewState(Boolean, Boolean, Boolean, System.Collections.Generic.List`1[MODEL.Apply+apply_LeaveData], System.Collections.Generic.List`1[LSLibrary.WebAPP.ValueText`1[System.Int32]], System.Collections.Generic.List`1[MODEL.App_AttachmentInfo])
+Trace：   在 WEBUI.Pages.Apply.SavePageDataToViewState(Boolean owlist, Boolean owtype, Boolean owpics, List`1 leavelist, List`1 leavetype, List`1 uploadPics) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 326
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 77
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/12/7 12:18:10
+Url：http://localhost/WEBUI/pages/apply.aspx
+Message：C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx(70): error CS1061: 'pages_apply_aspx' does not contain a definition for 'btn_add_Click' and no extension method 'btn_add_Click' accepting a first argument of type 'pages_apply_aspx' could be found (are you missing a using directive or an assembly reference?)
+Source：System.Web
+Type：System.Web.HttpCompileException
+Function：System.Web.Compilation.BuildResult PostProcessFoundBuildResult(System.Web.Compilation.BuildResult, Boolean, System.Web.VirtualPath)
+Trace：   在 System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************
+ip:::1
+DataTime：2021/12/7 14:27:28
+Url：http://localhost/WEBUI/pages/apply.aspx
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void SavePageDataToViewState(Boolean, Boolean, Boolean, System.Collections.Generic.List`1[MODEL.Apply+apply_LeaveData], System.Collections.Generic.List`1[LSLibrary.WebAPP.ValueText`1[System.Int32]], System.Collections.Generic.List`1[MODEL.App_AttachmentInfo])
+Trace：   在 WEBUI.Pages.Apply.SavePageDataToViewState(Boolean owlist, Boolean owtype, Boolean owpics, List`1 leavelist, List`1 leavetype, List`1 uploadPics) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 381
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 77
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/12/7 14:27:29
+Url：http://localhost/WEBUI/pages/apply.aspx
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void SavePageDataToViewState(Boolean, Boolean, Boolean, System.Collections.Generic.List`1[MODEL.Apply+apply_LeaveData], System.Collections.Generic.List`1[LSLibrary.WebAPP.ValueText`1[System.Int32]], System.Collections.Generic.List`1[MODEL.App_AttachmentInfo])
+Trace：   在 WEBUI.Pages.Apply.SavePageDataToViewState(Boolean owlist, Boolean owtype, Boolean owpics, List`1 leavelist, List`1 leavetype, List`1 uploadPics) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 381
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 77
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/12/7 14:27:29
+Url：http://localhost/WEBUI/pages/apply.aspx
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void SavePageDataToViewState(Boolean, Boolean, Boolean, System.Collections.Generic.List`1[MODEL.Apply+apply_LeaveData], System.Collections.Generic.List`1[LSLibrary.WebAPP.ValueText`1[System.Int32]], System.Collections.Generic.List`1[MODEL.App_AttachmentInfo])
+Trace：   在 WEBUI.Pages.Apply.SavePageDataToViewState(Boolean owlist, Boolean owtype, Boolean owpics, List`1 leavelist, List`1 leavetype, List`1 uploadPics) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 381
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 77
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/12/7 14:27:30
+Url：http://localhost/WEBUI/pages/apply.aspx
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void SavePageDataToViewState(Boolean, Boolean, Boolean, System.Collections.Generic.List`1[MODEL.Apply+apply_LeaveData], System.Collections.Generic.List`1[LSLibrary.WebAPP.ValueText`1[System.Int32]], System.Collections.Generic.List`1[MODEL.App_AttachmentInfo])
+Trace：   在 WEBUI.Pages.Apply.SavePageDataToViewState(Boolean owlist, Boolean owtype, Boolean owpics, List`1 leavelist, List`1 leavetype, List`1 uploadPics) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 381
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 77
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
