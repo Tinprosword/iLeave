@@ -97,7 +97,7 @@ namespace WEBUI.Pages
             this.ddl_leavetype.SelectedValue = leaveTypeSelectedValue;
 
 
-            LoadLeaveSectionAndTime(int.Parse(this.ddl_leavetype.SelectedValue),0,null,null,0);
+            LoadLeaveSectionAndTime(int.Parse(this.ddl_leavetype.SelectedValue),bydayorbyhout,f,t,totalH);
             RefleshApplyBalance(int.Parse(this.ddl_leavetype.SelectedValue));
 
             string numberPath= BLL.common.GetAttachmentNumberPath(numberofAttachment);
@@ -120,27 +120,43 @@ namespace WEBUI.Pages
         {
             //1.clean and bind data DDL. 2. rp ddl 因为数据源不是固定的.所以
             RepeaterItem item = e.Item;
-            DropDownList ddl = (DropDownList)item.FindControl("rp_dropdl_section");
-            ddl.Items.Clear();
-
-            int leaveid = int.Parse(this.ddl_leavetype.SelectedValue);
-            if (RPITEM_LeaveListSections == null)
-            {
-                RPITEM_LeaveListSections = BLL.Leave.GetDDLSectionsDataNoSelect(leaveid, (int)loginer.userInfo.employID);
-            }
-            LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(ddl, RPITEM_LeaveListSections);
-
             MODEL.Apply.apply_LeaveData itemdata = (MODEL.Apply.apply_LeaveData)item.DataItem;
-            for (int i = 0; i < ddl.Items.Count; i++)
+
+            DropDownList ddl = (DropDownList)item.FindControl("rp_dropdl_section");
+            Label lb = (Label)item.FindControl("rp_lb_byhour");
+
+            if (itemdata.byDaybyHour == 0)
             {
-                if (itemdata.sectionid.ToString() == ddl.Items[i].Value)
+                ddl.Visible = true;
+                lb.Visible = false;
+
+                ddl.Items.Clear();
+
+                int leaveid = int.Parse(this.ddl_leavetype.SelectedValue);
+                if (RPITEM_LeaveListSections == null)
                 {
-                    ddl.Items[i].Selected = true;
+                    RPITEM_LeaveListSections = BLL.Leave.GetDDLSectionsDataNoSelect(leaveid, (int)loginer.userInfo.employID);
                 }
-                else
+                LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(ddl, RPITEM_LeaveListSections);
+
+
+                for (int i = 0; i < ddl.Items.Count; i++)
                 {
-                    ddl.Items[i].Selected = false;
+                    if (itemdata.sectionid.ToString() == ddl.Items[i].Value)
+                    {
+                        ddl.Items[i].Selected = true;
+                    }
+                    else
+                    {
+                        ddl.Items[i].Selected = false;
+                    }
                 }
+            }
+            else
+            {
+                ddl.Visible = false;
+                lb.Visible = true;
+                lb.Text = MODEL.CLOT.CLOTItem.GetTimeRangeDesc(itemdata.LeaveHourFrom.Value.Hour, itemdata.LeaveHourTo.Value.Hour, itemdata.LeaveHourFrom.Value.Minute, itemdata.LeaveHourTo.Value.Minute);
             }
         }
 
@@ -226,7 +242,7 @@ namespace WEBUI.Pages
             RefleshApplyBalance(leaveid);
         }
 
-        private void LoadTime()
+        private void LoadTime_init()
         {
             DropDownList1.Items.Clear();
             DropDownList3.Items.Clear();
@@ -263,7 +279,7 @@ namespace WEBUI.Pages
             //1.leaveid=0==>init  2.
             List<LSLibrary.WebAPP.ValueText<int>> ddlSource = BLL.Leave.GetDDLSectionsData(leaveID, (int)loginer.userInfo.employID);
             LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.dropdl_section, ddlSource);
-            LoadTime();
+            LoadTime_init();
 
 
             bool AllowHour = BLL.Leave.AllowHour(leaveID, loginer.userInfo.personid);
@@ -286,12 +302,22 @@ namespace WEBUI.Pages
             if (AllowHour)
             {
                 this.radio_ishour.SelectedValue = byDayByhour.ToString();
-                if (this.radio_ishour.SelectedValue == "1" && from!=null && to!=null)
+                if (this.radio_ishour.SelectedValue == "1" && from != null && to != null)
                 {
-                    this.DropDownList1.SelectedValue = from.Value.Hour.ToString("00");
-                    this.DropDownList2.SelectedValue = from.Value.Minute.ToString("00");
-                    this.DropDownList3.SelectedValue = to.Value.Hour.ToString("00");
-                    this.DropDownList4.SelectedValue = to.Value.Minute.ToString("00");
+                    this.tr_time.Visible = true;
+                    this.tr_section.Visible = false;
+
+                    this.DropDownList1.SelectedValue = from.Value.Hour.ToString();
+                    this.DropDownList2.SelectedValue = from.Value.Minute.ToString();
+                    this.DropDownList3.SelectedValue = to.Value.Hour.ToString();
+                    this.DropDownList4.SelectedValue = to.Value.Minute.ToString();
+
+                    this.tb_total.Text = total.ToString();
+                }
+                else
+                {
+                    this.tr_time.Visible = false;
+                    this.tr_section.Visible = true;
                 }
             }
         }
@@ -422,6 +448,10 @@ namespace WEBUI.Pages
             if (byhourOrDAY == 0)
             {
                 applyPage.ddlsectionSelectvalue = this.dropdl_section.SelectedValue;
+                applyPage.bydayorHour = 0;
+                applyPage.from = null;
+                applyPage.to = null;
+                applyPage.totalHours = 0;
             }
             else
             {

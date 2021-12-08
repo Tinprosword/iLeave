@@ -41,7 +41,7 @@ namespace WEBUI.Pages
                 double appSum = 0;
                 for (int i = 0; i < detail.Count; i++)
                 {
-                    appSum += BLL.GlobalVariate.sectionsUnit[detail[i].Section];
+                    appSum += detail[i].Unit;
                 }
                 this.lt_apply.Text=appSum.ToString("0.###");
 

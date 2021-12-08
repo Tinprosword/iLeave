@@ -177,28 +177,69 @@ namespace BLL
 
         #region common dictionary full day 2 ampm 3 3secton 4 houre
 
-        public static string GetSectionMultLanguage(int index, int lange=-1)
+        public static string GetUnit(WebServiceLayer.WebReference_leave.LeaveRequestDetail detail)
         {
-            LSLibrary.WebAPP.BaseLanguage baseLanguage = null;
-            if (lange == -1)
+            string result = "";
+
+            result= detail.Unit.ToString();
+
+            return result;
+        }
+
+        public static string GetSectionMultLanguage(int sectionid, int lange = -1)
+        {
+            if (sectionid == 0)
             {
-                baseLanguage = BLL.MultiLanguageHelper.GetLanguagePacket();
+                return BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_fullday;
+            }
+            else if (sectionid == 1)
+            {
+                return BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_am;
+            }
+            else if (sectionid == 2)
+            {
+                return BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_pm;
+            }
+            else if (sectionid == 3)
+            {
+                return BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_3section;
             }
             else
             {
-                baseLanguage = BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lange);
+                return BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_ByHour;
             }
 
-            Dictionary<int, string> temp = new Dictionary<int, string>();
-            temp.Add(0, baseLanguage.apply_ddlsetion_fullday);
-            temp.Add(1, baseLanguage.apply_ddlsetion_am);
-            temp.Add(2, baseLanguage.apply_ddlsetion_pm);
-            temp.Add(3, baseLanguage.apply_ddlsetion_3section);
-            //temp.Add( 4,"Hours");
-            temp.Add(4, "Other");
-            temp.Add(5, "Other");
-            temp.Add(6, "Other");
-            return temp[index];
+        }
+
+        public static string GetSectionMultLanguage(WebServiceLayer.WebReference_leave.LeaveRequestDetail detail, int lange = -1)
+        {
+            string result = "";
+
+            if (detail.LeaveHours != 0)
+            {
+                return MODEL.CLOT.CLOTItem.GetTimeRangeDesc(detail.LeaveFrom.Value.Hour, detail.LeaveTo.Value.Hour, detail.LeaveFrom.Value.Minute, detail.LeaveTo.Value.Minute);
+            }
+            else
+            {
+                if (detail.Section == 0)
+                {
+                    return BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_fullday;
+                }
+                else if (detail.Section == 1)
+                {
+                    return BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_am;
+                }
+                else if (detail.Section == 2)
+                {
+                    return BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_pm;
+                }
+                else if (detail.Section == 3)
+                {
+                    return BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_3section;
+                }
+            }
+
+            return result;
         }
 
         public static Dictionary<int, double> sectionsUnit

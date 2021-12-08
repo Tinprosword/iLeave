@@ -473,9 +473,20 @@ namespace WEBUI.Pages
                         int leaveId = int.Parse(data.LeaveTypeSelectValue);
                         int sectiontype =int.Parse(data.ddlsectionSelectvalue);
                         string leavename = LSLibrary.WebAPP.ValueText<int>.GetText(data.leavetype, int.Parse(data.LeaveTypeSelectValue));
-
-                        var newitem = new MODEL.Apply.apply_LeaveData(leaveId, leavename, leavename, sectiontype, dateTime);
-                        data.LeaveList.Add(newitem);
+                        MODEL.Apply.apply_LeaveData newItem = null;
+                        if (data.bydayorHour == 0)
+                        {
+                            newItem = new MODEL.Apply.apply_LeaveData(leaveId, leavename, leavename, sectiontype, dateTime);
+                        }
+                        else if (data.bydayorHour == 1 && data.from != null && data.to != null)
+                        {
+                            newItem = new MODEL.Apply.apply_LeaveData(leaveId, leavename, leavename, dateTime, data.from.Value, data.to.Value, data.totalHours);
+                        }
+                        else
+                        {
+                            newItem = new MODEL.Apply.apply_LeaveData(leaveId, leavename, leavename, 0, dateTime);
+                        }
+                        data.LeaveList.Add(newItem);
                         data.LeaveList = data.LeaveList.OrderBy(x => x.LeaveDate).ToList();
                     }
                     else
@@ -517,11 +528,11 @@ namespace WEBUI.Pages
            
         }
 
-        public string ShowRP_LeaveCode(int leaveCode,int section)
+        public string ShowRP_LeaveCode(int leaveCode,WebServiceLayer.WebReference_leave.LeaveRequestDetail detail)
         {
             string result = "";
 
-            string sectionMuplay = BLL.GlobalVariate.GetSectionMultLanguage(section);
+            string sectionMuplay = BLL.GlobalVariate.GetSectionMultLanguage(detail);
             if (sectionMuplay == new LSLibrary.WebAPP.BaseLanguage().apply_ddlsetion_fullday)
             {
                 sectionMuplay = "1Day";

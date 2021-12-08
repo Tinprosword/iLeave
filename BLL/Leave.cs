@@ -42,7 +42,7 @@ namespace BLL
                 {
                     string uid = "0";
                     string lang = "en";
-                    string unit = originDetail[i].GetUnit().ToString();
+                    string unit = originDetail[i].GetUnitByDay().ToString();
                     string[] spPs = new string[] { eid.ToString(), originDetail[i].leavetypeid.ToString(), originDetail[i].LeaveDate.ToString("yyyy-MM-dd"), unit, lang, uid };
                     string spCheckResult = BLL.Other.ExeStropFun((int)BLL.GlobalVariate.spFunctionid.leave_ADD_Portal, true, spPs);
 
@@ -143,6 +143,8 @@ namespace BLL
             {
                 if (employmentID > 0)
                 {
+                    double TotalWorkHour = GetEmployHours(employmentID);
+
                     WebServiceLayer.WebReference_leave.StaffLeaveRequest newItem = new WebServiceLayer.WebReference_leave.StaffLeaveRequest();
                     newItem.CompareKey = null;
                     newItem.CreateDate = System.DateTime.Now;
@@ -159,40 +161,61 @@ namespace BLL
                     newItem.LeaveCalculationTypeID = -1;
                     newItem.LeaveCalculationTypeDesc = "N/A";
                     newItem.LeaveDate = originDetail[i].LeaveDate;
-                    newItem.LeaveHours = 0;
-                    newItem.LeaveHoursFrom = originDetail[i].LeaveDate;
-                    newItem.LeaveHoursTo = originDetail[i].LeaveDate;
                     newItem.LeaveID = originDetail[i].leavetypeid;
                     newItem.LeaveTypeName = originDetail[i].leavetypeDescription;
                     newItem.Name = null;
                     newItem.NameCH = null;
                     newItem.Remarks = remark;
                     newItem.RequestID = 0;
-                    newItem.Section = originDetail[i].sectionid;
+                    
                     newItem.Status = 0;
-                    newItem.TotalWorkHours = GetEmployHours(employmentID);
+                    newItem.TotalWorkHours = TotalWorkHour;
 
-                    if (newItem.Section == 0)
+                    if (originDetail[i].sectionid == 0)
                     {
-                        newItem.Unit = 1;
-                        newItem.DisplayUnit = "1 D";
+                        newItem.Section = originDetail[i].sectionid;
+                        newItem.Unit = originDetail[i].GetUnitByDay();
                         newItem.IsHalfDay = false;
                         newItem.DisplaySection = newItem.Section;
+                        newItem.LeaveHours = 0;
+                        newItem.LeaveHoursFrom = originDetail[i].LeaveDate;
+                        newItem.LeaveHoursTo = originDetail[i].LeaveDate;
                     }
-                    else if (newItem.Section == 1 || newItem.Section == 2)
+                    else if (originDetail[i].sectionid == 1 || originDetail[i].sectionid == 2)
                     {
-                        newItem.Unit = 0.5;
-                        newItem.DisplayUnit = "0.5 D";
+                        newItem.Section = originDetail[i].sectionid;
+                        newItem.Unit = originDetail[i].GetUnitByDay();
                         newItem.IsHalfDay = true;
                         newItem.DisplaySection = newItem.Section;
+                        newItem.LeaveHours = 0;
+                        newItem.LeaveHoursFrom = originDetail[i].LeaveDate;
+                        newItem.LeaveHoursTo = originDetail[i].LeaveDate;
                     }
-                    else if (newItem.Section == 3)
+                    else if (originDetail[i].sectionid == 3)
                     {
-                        newItem.Unit = 1.5;
-                        newItem.DisplayUnit = "1.5 D";
+                        newItem.Section = originDetail[i].sectionid;
+                        newItem.Unit = originDetail[i].GetUnitByDay();
                         newItem.IsHalfDay = false;
                         newItem.DisplaySection = newItem.Section;
+                        newItem.LeaveHours = 0;
+                        newItem.LeaveHoursFrom = originDetail[i].LeaveDate;
+                        newItem.LeaveHoursTo = originDetail[i].LeaveDate;
                     }
+                    else if (originDetail[i].sectionid == 4)
+                    {
+                        newItem.Section = 0;//hr put 0.so ileave put 0 also.
+                        newItem.Unit = Math.Round((float)((float)originDetail[i].totalHours / (float)TotalWorkHour), 2);
+
+                        newItem.IsHalfDay = false;
+                        newItem.DisplaySection = 0;
+                        newItem.LeaveHours = originDetail[i].totalHours;
+                        newItem.LeaveHoursFrom = originDetail[i].LeaveHourFrom.Value;
+                        newItem.LeaveHoursTo = originDetail[i].LeaveHourTo.Value;
+                    }
+
+                    newItem.DisplayUnit = newItem.Unit.ToString() + " D";
+
+
                     result.Add(newItem);
                 }
             }
@@ -202,6 +225,7 @@ namespace BLL
         private static double GetEmployHours(int employid)
         {
             double result = WebServiceLayer.MyWebService.GlobalWebServices.ws_user.GetTotalWorkHours(employid);
+            result = 8;//todo 0 check it.
             return result;
         }
 

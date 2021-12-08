@@ -38,7 +38,7 @@ namespace MODEL
                 leavetype = new List<LSLibrary.WebAPP.ValueText<int>>();
             }
 
-            public static double getDayfromSections(int sectionsValue)
+            public static double getDayfromSectionsByDay(int sectionsValue)
             {
                 if (sectionsValue == 0)
                 {
@@ -67,7 +67,7 @@ namespace MODEL
                 {
                     for (int i = 0; i < LeaveList.Count(); i++)
                     {
-                        result += getDayfromSections(LeaveList[i].sectionid);
+                        result += getDayfromSectionsByDay(LeaveList[i].sectionid);
                     }
                 }
                 return result;
@@ -96,6 +96,7 @@ namespace MODEL
             public DateTime? LeaveHourFrom;
             public DateTime? LeaveHourTo;
             public double totalHours;
+            public int byDaybyHour;
 
             //byday
             public apply_LeaveData(int leavetypeid, string leavetypeCode, string leavetypeDescription, int sectionid,  DateTime leaveDate)
@@ -105,6 +106,7 @@ namespace MODEL
                 this.leavetypeCode = leavetypeCode;
                 this.leavetypeDescription = leavetypeDescription;
                 LeaveDate = leaveDate;
+                byDaybyHour = 0;
                 LeaveHourFrom = null;
                 LeaveHourTo = null;
                 totalHours = 0;
@@ -118,15 +120,18 @@ namespace MODEL
                 this.leavetypeCode = leavetypeCode;
                 this.leavetypeDescription = leavetypeDescription;
                 LeaveDate = leaveDate;
-                LeaveHourFrom = f;
-                LeaveHourTo = t;
+                byDaybyHour = 1;
+                LeaveHourFrom = new DateTime(leaveDate.Year, leaveDate.Month, leaveDate.Day, f.Hour, f.Minute, 0);
+                LeaveHourTo = new DateTime(leaveDate.Year, leaveDate.Month, leaveDate.Day, t.Hour, t.Minute, 0);
                 totalHours = total;
             }
 
-            public double GetUnit()
+            public double GetUnitByDay()
             {
                 double result = 0;
-                result=ViewState_page.getDayfromSections(sectionid);
+
+                result = ViewState_page.getDayfromSectionsByDay(sectionid);
+
                 return result;
             }
         }

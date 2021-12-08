@@ -71,8 +71,8 @@
                         <ItemTemplate>
                             <tr style="">
                                 <td class="col-xs-4" style="width:120px"><%#((DateTime)((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveFrom).ToString("yyyy-MM-dd")%></td>
-					            <td class="col-xs-4" style="width:120px"><%#BLL.GlobalVariate.GetSectionMultLanguage(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section,lan) %></td>
-					            <td class="col-xs-2" style="width:60px;text-align:right;"><%#BLL.GlobalVariate.sectionsUnit[((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section] %>&nbsp;</td>
+					            <td class="col-xs-4" style="width:120px"><%#BLL.GlobalVariate.GetSectionMultLanguage(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem),lan) %></td>
+					            <td class="col-xs-2" style="width:60px;text-align:right;"><%#BLL.GlobalVariate.GetUnit((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem) %>&nbsp;</td>
 					            <td class="col-xs-3"></td>
                             </tr>
                         </ItemTemplate>

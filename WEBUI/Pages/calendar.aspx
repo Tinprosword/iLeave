@@ -40,7 +40,7 @@
                             <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>;">
                                 <td style="vertical-align:top; padding-top:3px;"><%# ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).displayname %></td>
                                 <td style='vertical-align:top; padding-top:3px;display:<%=LSLibrary.WebAPP.HtmlCssHelper.CSS_DisplayValue(!bHiddenLeaveCode)%>'><%# BLL.GlobalVariate.GetSectionMultLanguage(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section) %></td>
-                                <td style='vertical-align:top; padding-top:3px;display:<%=LSLibrary.WebAPP.HtmlCssHelper.CSS_DisplayValue(bHiddenLeaveCode)%>'><%# ShowRP_LeaveCode( ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveID,((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).Section)%></td>
+                                <td style='vertical-align:top; padding-top:3px;display:<%=LSLibrary.WebAPP.HtmlCssHelper.CSS_DisplayValue(bHiddenLeaveCode)%>'><%# ShowRP_LeaveCode( ((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveID,((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem))%></td>
                                 <td style='vertical-align:top; padding-top:3px;'><%# BLL.Leave.GetLeaveStatusDesc(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).WorkflowTypeID,((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).masterStatus) %></td>
                             </tr>
                         </ItemTemplate>

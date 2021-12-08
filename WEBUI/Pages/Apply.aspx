@@ -112,6 +112,7 @@
                                     <asp:ListItem Text="PM" Value="2"/>
                                     <asp:ListItem Text="3 Sections" Value="3"/>
                                 </asp:DropDownList>
+                                <asp:Label ID="rp_lb_byhour" runat="server"></asp:Label>
                             </td>
                             <td style="text-align:right"><asp:ImageButton ID="delete" Width="30px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="30px" ImageUrl="~/Res/images/close.png" runat="server" OnClick="delete_Click" /><asp:HiddenField ID="testhidden" runat="server" Value="<%#((MODEL.Apply.apply_LeaveData)Container.DataItem).leavetypeid %>" /></td>
                         </tr>
