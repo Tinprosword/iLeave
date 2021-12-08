@@ -64,7 +64,7 @@ namespace WEBUI.Pages
                 LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, preViewState, ViewState);
                 MODEL.Apply.ViewState_page applypage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, this.ViewState);
                 applypage.LeaveList = applypage.LeaveList.ToList();
-                LoadUI(applypage.leavetype, applypage.LeaveTypeSelectValue,  applypage.ddlsectionSelectvalue, applypage.remarks, applypage.LeaveList,applypage.GetAttachment().Count());
+                LoadUI(applypage.leavetype, applypage.LeaveTypeSelectValue,  applypage.ddlsectionSelectvalue, applypage.remarks, applypage.LeaveList,applypage.GetAttachment().Count(),applypage.hasHour,applypage.bydayorHour,applypage.from,applypage.to,applypage.totalHours);
                 IsLeaveTypeEnable();
                 this.lt_js_prg.Text = LSLibrary.WebAPP.MyJSHelper.CustomPost("", "");//避免有害刷新，所以手动post,引导无害刷新。
             }
@@ -72,7 +72,7 @@ namespace WEBUI.Pages
             {
                 List<WebServiceLayer.WebReference_leave.t_Leave> res = BLL.Leave.GetLeavesByStaffID((int)loginer.userInfo.staffid);
                 List<LSLibrary.WebAPP.ValueText<int>> typedata = BLL.Leave.ConvertLeaveInfo2DropDownList(res);
-                LoadUI(typedata, "0", "-1", "", new List<MODEL.Apply.apply_LeaveData>(),0);
+                LoadUI(typedata, "0", "-1", "", new List<MODEL.Apply.apply_LeaveData>(), 0, false, 0, null, null, 0);
                 //set viewstate
                 SavePageDataToViewState(false, true, false, null, typedata, null);
             }
@@ -84,7 +84,7 @@ namespace WEBUI.Pages
         {
         }
 
-        private void LoadUI(List<LSLibrary.WebAPP.ValueText<int>> leveTypeData,string leaveTypeSelectedValue,string ddlSectionSelected,string remarks,List<MODEL.Apply.apply_LeaveData> leaveDays,int numberofAttachment)
+        private void LoadUI(List<LSLibrary.WebAPP.ValueText<int>> leveTypeData,string leaveTypeSelectedValue,string ddlSectionSelected,string remarks,List<MODEL.Apply.apply_LeaveData> leaveDays,int numberofAttachment,bool hashour,int bydayorbyhout,DateTime? f,DateTime? t,double totalH)
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current,"~/pages/main.aspx", true);
 
@@ -95,9 +95,10 @@ namespace WEBUI.Pages
 
             LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.ddl_leavetype, leveTypeData);
             this.ddl_leavetype.SelectedValue = leaveTypeSelectedValue;
-            ddl_leavetype_SelectedIndexChanged(this.ddl_leavetype, new EventArgs());
 
-            this.dropdl_section.SelectedValue = ddlSectionSelected;
+
+            LoadLeaveSectionAndTime(int.Parse(this.ddl_leavetype.SelectedValue),0,null,null,0);
+            RefleshApplyBalance(int.Parse(this.ddl_leavetype.SelectedValue));
 
             string numberPath= BLL.common.GetAttachmentNumberPath(numberofAttachment);
             this.ib_counta.ImageUrl = numberPath;
@@ -159,10 +160,32 @@ namespace WEBUI.Pages
         }
         #endregion
 
+        //0day 1.hour
+        private int GetByDayOrHourFromUI()
+        {
+            int result = 0;
+            if (tr_radio.Visible == false)
+            {
+                result = 0;
+            }
+            else
+            {
+                int radioSelecte = int.Parse(this.radio_ishour.SelectedValue);
+                result = radioSelecte == 0 ? 0 : 1;
+            }
+
+            return result;
+        }
+
         #region [module] leave
         protected void Canlendar_Click(object sender, ImageClickEventArgs e)
         {
-            if (ddl_leavetype.SelectedValue=="0" || dropdl_section.SelectedValue=="-1")
+            int dayOrHour = GetByDayOrHourFromUI();
+
+            bool dayisNotOK = (dayOrHour == 0 && (ddl_leavetype.SelectedValue == "0" || dropdl_section.SelectedValue == "-1"));
+            bool hourIsNotOK = (dayOrHour == 1 && (ddl_leavetype.SelectedValue == "0" || this.tb_total.Text == "" || this.tb_total.Text == "0"));
+
+            if (dayisNotOK || hourIsNotOK)
             {
                 this.literal_errormsga.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_msgselect;
                 this.literal_errormsga.Visible = true;
@@ -199,7 +222,7 @@ namespace WEBUI.Pages
         protected void ddl_leavetype_SelectedIndexChanged(object sender, EventArgs e)
         {
             int leaveid = int.Parse(this.ddl_leavetype.SelectedValue);
-            LoadLeaveSectionAndTime(leaveid);
+            LoadLeaveSectionAndTime(leaveid,0,null,null,0);
             RefleshApplyBalance(leaveid);
         }
 
@@ -235,9 +258,9 @@ namespace WEBUI.Pages
             }
         }
 
-        private void LoadLeaveSectionAndTime(int leaveID)
+        private void LoadLeaveSectionAndTime(int leaveID,int byDayByhour, DateTime? from,DateTime? to,double total)
         {
-            //1.radio. 2 setion 3 time.
+            //1.leaveid=0==>init  2.
             List<LSLibrary.WebAPP.ValueText<int>> ddlSource = BLL.Leave.GetDDLSectionsData(leaveID, (int)loginer.userInfo.employID);
             LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.dropdl_section, ddlSource);
             LoadTime();
@@ -259,6 +282,18 @@ namespace WEBUI.Pages
                 tr_time.Visible = false;
             }
 
+            //fill data
+            if (AllowHour)
+            {
+                this.radio_ishour.SelectedValue = byDayByhour.ToString();
+                if (this.radio_ishour.SelectedValue == "1" && from!=null && to!=null)
+                {
+                    this.DropDownList1.SelectedValue = from.Value.Hour.ToString("00");
+                    this.DropDownList2.SelectedValue = from.Value.Minute.ToString("00");
+                    this.DropDownList3.SelectedValue = to.Value.Hour.ToString("00");
+                    this.DropDownList4.SelectedValue = to.Value.Minute.ToString("00");
+                }
+            }
         }
 
         private void RefleshApplyBalance(int leaveid)
@@ -377,11 +412,25 @@ namespace WEBUI.Pages
 
         private void SavePageDataToViewState(bool owlist, bool owtype, bool owpics, List<MODEL.Apply.apply_LeaveData> leavelist, List<LSLibrary.WebAPP.ValueText<int>> leavetype, List<MODEL.App_AttachmentInfo> uploadPics)
         {
+            //1.get viewstate 2.save 
             MODEL.Apply.ViewState_page applyPage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
+
             applyPage.LeaveTypeSelectValue = this.ddl_leavetype.SelectedValue;
 
-            applyPage.ddlsectionSelectvalue = this.dropdl_section.SelectedValue;
-            BLL.common.WriteLog(this.getStackFrame(), "select:" + applyPage.ddlsectionSelectvalue);
+            applyPage.hasHour = this.tr_radio.Visible;
+            int byhourOrDAY = GetByDayOrHourFromUI();
+            if (byhourOrDAY == 0)
+            {
+                applyPage.ddlsectionSelectvalue = this.dropdl_section.SelectedValue;
+            }
+            else
+            {
+                applyPage.ddlsectionSelectvalue = "0";
+                applyPage.bydayorHour = byhourOrDAY;
+                applyPage.from = new DateTime(1900, 1, 1, int.Parse(this.DropDownList1.SelectedValue), int.Parse(DropDownList2.SelectedValue), 0);
+                applyPage.to= new DateTime(1900, 1, 1, int.Parse(this.DropDownList3.SelectedValue), int.Parse(DropDownList4.SelectedValue), 0);
+                applyPage.totalHours = double.Parse(this.tb_total.Text);
+            }
             applyPage.remarks = this.tb_remarks.Text;
             if (owlist)
             {
@@ -395,6 +444,8 @@ namespace WEBUI.Pages
             {
                 applyPage.SetAttachment(uploadPics);
             }
+
+
 
             LSLibrary.WebAPP.ViewStateHelper.SetValue( ViewState_PageName, applyPage, ViewState);
         }
@@ -460,7 +511,7 @@ namespace WEBUI.Pages
 
         protected void radio_ishour_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int hourOrDay = this.radio_ishour.SelectedIndex;
+            int hourOrDay = int.Parse(this.radio_ishour.SelectedValue);
             if (hourOrDay == 0)
             {
                 this.tr_section.Visible = true;

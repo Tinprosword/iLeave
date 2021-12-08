@@ -20,7 +20,12 @@ namespace MODEL
         {
             public string LeaveTypeSelectValue;
             public string ddlsectionSelectvalue;
+            public bool hasHour;
+            public int bydayorHour;
             public string remarks;
+            public DateTime? from;
+            public DateTime? to;
+            public double totalHours;
 
             private List<App_AttachmentInfo> uploadpic;
             public List<apply_LeaveData> LeaveList;
@@ -83,12 +88,16 @@ namespace MODEL
         [Serializable]
         public class apply_LeaveData
         {
-            public int sectionid;
             public int leavetypeid;
             public string leavetypeCode;
             public string leavetypeDescription;
             public DateTime LeaveDate;
+            public int sectionid;
+            public DateTime? LeaveHourFrom;
+            public DateTime? LeaveHourTo;
+            public double totalHours;
 
+            //byday
             public apply_LeaveData(int leavetypeid, string leavetypeCode, string leavetypeDescription, int sectionid,  DateTime leaveDate)
             {
                 this.sectionid = sectionid;
@@ -96,6 +105,22 @@ namespace MODEL
                 this.leavetypeCode = leavetypeCode;
                 this.leavetypeDescription = leavetypeDescription;
                 LeaveDate = leaveDate;
+                LeaveHourFrom = null;
+                LeaveHourTo = null;
+                totalHours = 0;
+            }
+
+            //byhour
+            public apply_LeaveData(int leavetypeid, string leavetypeCode, string leavetypeDescription, DateTime leaveDate,DateTime f,DateTime t,double total)
+            {
+                this.sectionid = 4;//hour
+                this.leavetypeid = leavetypeid;
+                this.leavetypeCode = leavetypeCode;
+                this.leavetypeDescription = leavetypeDescription;
+                LeaveDate = leaveDate;
+                LeaveHourFrom = f;
+                LeaveHourTo = t;
+                totalHours = total;
             }
 
             public double GetUnit()
