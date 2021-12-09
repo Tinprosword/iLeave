@@ -440,7 +440,7 @@ namespace WEBUI.Pages
             bool bvalidday = DateTime.TryParse(this.tb_date.Text, out theday);
             if (bvalidday)
             {
-                float hours = BLL.CLOT.CalculateNumberofHours(fromh, toh, fromm, tom, theday);
+                double hours = BLL.Leave.GetRealTotalHours(fromh, toh, fromm, tom, loginer.userInfo.employID??0);
                 this.tb_hours.Text = hours.ToString();
             }
         }

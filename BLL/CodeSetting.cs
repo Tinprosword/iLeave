@@ -46,5 +46,15 @@ namespace BLL
             return result;
         }
 
+        public static WebServiceLayer.WebReference_codesettings.Shift GetShiftbyid(int id)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_codesetting.GetShiftInfoByID(id);
+        }
+
+        public static double GetRealTotal(DateTime startDate1, DateTime endDate1, DateTime startDate2, DateTime endDate2)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_codesetting.GetRealTotal(startDate1, endDate1, startDate2, endDate2);
+        }
+
     }
 }

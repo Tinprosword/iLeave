@@ -27,9 +27,16 @@ namespace WebServiceLayer.WebReference_codesettings {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="CodeSettingsV2Soap", Namespace="http://tempuri.org/")]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BasicShift))]
     public partial class CodeSettingsV2 : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback GetSystemParameterOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetShiftInfoByIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DeleteOverlapRangeFromDate1OperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetRealTotalOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetLeaveSectionsOperationCompleted;
         
@@ -75,6 +82,15 @@ namespace WebServiceLayer.WebReference_codesettings {
         public event GetSystemParameterCompletedEventHandler GetSystemParameterCompleted;
         
         /// <remarks/>
+        public event GetShiftInfoByIDCompletedEventHandler GetShiftInfoByIDCompleted;
+        
+        /// <remarks/>
+        public event DeleteOverlapRangeFromDate1CompletedEventHandler DeleteOverlapRangeFromDate1Completed;
+        
+        /// <remarks/>
+        public event GetRealTotalCompletedEventHandler GetRealTotalCompleted;
+        
+        /// <remarks/>
         public event GetLeaveSectionsCompletedEventHandler GetLeaveSectionsCompleted;
         
         /// <remarks/>
@@ -103,6 +119,109 @@ namespace WebServiceLayer.WebReference_codesettings {
             if ((this.GetSystemParameterCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetSystemParameterCompleted(this, new GetSystemParameterCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetShiftInfoByID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Shift GetShiftInfoByID(int shiftid) {
+            object[] results = this.Invoke("GetShiftInfoByID", new object[] {
+                        shiftid});
+            return ((Shift)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetShiftInfoByIDAsync(int shiftid) {
+            this.GetShiftInfoByIDAsync(shiftid, null);
+        }
+        
+        /// <remarks/>
+        public void GetShiftInfoByIDAsync(int shiftid, object userState) {
+            if ((this.GetShiftInfoByIDOperationCompleted == null)) {
+                this.GetShiftInfoByIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetShiftInfoByIDOperationCompleted);
+            }
+            this.InvokeAsync("GetShiftInfoByID", new object[] {
+                        shiftid}, this.GetShiftInfoByIDOperationCompleted, userState);
+        }
+        
+        private void OnGetShiftInfoByIDOperationCompleted(object arg) {
+            if ((this.GetShiftInfoByIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetShiftInfoByIDCompleted(this, new GetShiftInfoByIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DeleteOverlapRangeFromDate1", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("newStart1", IsNullable=true)]
+        public System.Nullable<System.DateTime> DeleteOverlapRangeFromDate1(System.DateTime startDate1, System.DateTime endDate1, System.DateTime startDate2, System.DateTime endDate2, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] out System.Nullable<System.DateTime> newEnd1, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] out System.Nullable<System.DateTime> newStart2, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] out System.Nullable<System.DateTime> newEnd2) {
+            object[] results = this.Invoke("DeleteOverlapRangeFromDate1", new object[] {
+                        startDate1,
+                        endDate1,
+                        startDate2,
+                        endDate2});
+            newEnd1 = ((System.Nullable<System.DateTime>)(results[1]));
+            newStart2 = ((System.Nullable<System.DateTime>)(results[2]));
+            newEnd2 = ((System.Nullable<System.DateTime>)(results[3]));
+            return ((System.Nullable<System.DateTime>)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DeleteOverlapRangeFromDate1Async(System.DateTime startDate1, System.DateTime endDate1, System.DateTime startDate2, System.DateTime endDate2) {
+            this.DeleteOverlapRangeFromDate1Async(startDate1, endDate1, startDate2, endDate2, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteOverlapRangeFromDate1Async(System.DateTime startDate1, System.DateTime endDate1, System.DateTime startDate2, System.DateTime endDate2, object userState) {
+            if ((this.DeleteOverlapRangeFromDate1OperationCompleted == null)) {
+                this.DeleteOverlapRangeFromDate1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteOverlapRangeFromDate1OperationCompleted);
+            }
+            this.InvokeAsync("DeleteOverlapRangeFromDate1", new object[] {
+                        startDate1,
+                        endDate1,
+                        startDate2,
+                        endDate2}, this.DeleteOverlapRangeFromDate1OperationCompleted, userState);
+        }
+        
+        private void OnDeleteOverlapRangeFromDate1OperationCompleted(object arg) {
+            if ((this.DeleteOverlapRangeFromDate1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteOverlapRangeFromDate1Completed(this, new DeleteOverlapRangeFromDate1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetRealTotal", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double GetRealTotal(System.DateTime startDate1, System.DateTime endDate1, System.DateTime startDate2, System.DateTime endDate2) {
+            object[] results = this.Invoke("GetRealTotal", new object[] {
+                        startDate1,
+                        endDate1,
+                        startDate2,
+                        endDate2});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetRealTotalAsync(System.DateTime startDate1, System.DateTime endDate1, System.DateTime startDate2, System.DateTime endDate2) {
+            this.GetRealTotalAsync(startDate1, endDate1, startDate2, endDate2, null);
+        }
+        
+        /// <remarks/>
+        public void GetRealTotalAsync(System.DateTime startDate1, System.DateTime endDate1, System.DateTime startDate2, System.DateTime endDate2, object userState) {
+            if ((this.GetRealTotalOperationCompleted == null)) {
+                this.GetRealTotalOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRealTotalOperationCompleted);
+            }
+            this.InvokeAsync("GetRealTotal", new object[] {
+                        startDate1,
+                        endDate1,
+                        startDate2,
+                        endDate2}, this.GetRealTotalOperationCompleted, userState);
+        }
+        
+        private void OnGetRealTotalOperationCompleted(object arg) {
+            if ((this.GetRealTotalCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetRealTotalCompleted(this, new GetRealTotalCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -157,6 +276,599 @@ namespace WebServiceLayer.WebReference_codesettings {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Shift : BasicShift {
+        
+        private System.DateTime lunchInField;
+        
+        private System.DateTime lunchOutField;
+        
+        private int statusField;
+        
+        private bool isExcludeLunchHourField;
+        
+        private int excludeLunchHourField;
+        
+        private bool isSpecialShiftField;
+        
+        private double specialShiftRatioField;
+        
+        private System.DateTime modifiedDateField;
+        
+        private int modifiedUserField;
+        
+        private System.DateTime createDateField;
+        
+        private int createUserField;
+        
+        private int counterField;
+        
+        private bool isExcludeMealBreakInTopupField;
+        
+        private int totalNightShiftField;
+        
+        private bool isSpecialTimePeriodField;
+        
+        private System.DateTime specialTimePeriodFromField;
+        
+        private System.DateTime specialTimePeriodToField;
+        
+        private double specialTimePeriodHourlyRateField;
+        
+        private double totalSpecialTimePeriodHourField;
+        
+        private double hourlyRateField;
+        
+        private double lunchHourField;
+        
+        private double aMWorkingHourField;
+        
+        private double pMWorkingHourField;
+        
+        private int dayToConvertField;
+        
+        private int swapToLeaveField;
+        
+        private int swapToLeaveMissingInOrOutField;
+        
+        private System.Nullable<int> lookUpShiftTypeField;
+        
+        private double dailyRateField;
+        
+        private bool isOverNightField;
+        
+        private int dutyLocationIDField;
+        
+        private t_CustomProp[] cpListField;
+        
+        private int sectionField;
+        
+        /// <remarks/>
+        public System.DateTime LunchIn {
+            get {
+                return this.lunchInField;
+            }
+            set {
+                this.lunchInField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime LunchOut {
+            get {
+                return this.lunchOutField;
+            }
+            set {
+                this.lunchOutField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsExcludeLunchHour {
+            get {
+                return this.isExcludeLunchHourField;
+            }
+            set {
+                this.isExcludeLunchHourField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ExcludeLunchHour {
+            get {
+                return this.excludeLunchHourField;
+            }
+            set {
+                this.excludeLunchHourField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsSpecialShift {
+            get {
+                return this.isSpecialShiftField;
+            }
+            set {
+                this.isSpecialShiftField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double SpecialShiftRatio {
+            get {
+                return this.specialShiftRatioField;
+            }
+            set {
+                this.specialShiftRatioField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ModifiedDate {
+            get {
+                return this.modifiedDateField;
+            }
+            set {
+                this.modifiedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ModifiedUser {
+            get {
+                return this.modifiedUserField;
+            }
+            set {
+                this.modifiedUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CreateUser {
+            get {
+                return this.createUserField;
+            }
+            set {
+                this.createUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Counter {
+            get {
+                return this.counterField;
+            }
+            set {
+                this.counterField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsExcludeMealBreakInTopup {
+            get {
+                return this.isExcludeMealBreakInTopupField;
+            }
+            set {
+                this.isExcludeMealBreakInTopupField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int TotalNightShift {
+            get {
+                return this.totalNightShiftField;
+            }
+            set {
+                this.totalNightShiftField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsSpecialTimePeriod {
+            get {
+                return this.isSpecialTimePeriodField;
+            }
+            set {
+                this.isSpecialTimePeriodField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime SpecialTimePeriodFrom {
+            get {
+                return this.specialTimePeriodFromField;
+            }
+            set {
+                this.specialTimePeriodFromField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime SpecialTimePeriodTo {
+            get {
+                return this.specialTimePeriodToField;
+            }
+            set {
+                this.specialTimePeriodToField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double SpecialTimePeriodHourlyRate {
+            get {
+                return this.specialTimePeriodHourlyRateField;
+            }
+            set {
+                this.specialTimePeriodHourlyRateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double TotalSpecialTimePeriodHour {
+            get {
+                return this.totalSpecialTimePeriodHourField;
+            }
+            set {
+                this.totalSpecialTimePeriodHourField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double HourlyRate {
+            get {
+                return this.hourlyRateField;
+            }
+            set {
+                this.hourlyRateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double LunchHour {
+            get {
+                return this.lunchHourField;
+            }
+            set {
+                this.lunchHourField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double AMWorkingHour {
+            get {
+                return this.aMWorkingHourField;
+            }
+            set {
+                this.aMWorkingHourField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double PMWorkingHour {
+            get {
+                return this.pMWorkingHourField;
+            }
+            set {
+                this.pMWorkingHourField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int DayToConvert {
+            get {
+                return this.dayToConvertField;
+            }
+            set {
+                this.dayToConvertField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int SwapToLeave {
+            get {
+                return this.swapToLeaveField;
+            }
+            set {
+                this.swapToLeaveField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int SwapToLeaveMissingInOrOut {
+            get {
+                return this.swapToLeaveMissingInOrOutField;
+            }
+            set {
+                this.swapToLeaveMissingInOrOutField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> LookUpShiftType {
+            get {
+                return this.lookUpShiftTypeField;
+            }
+            set {
+                this.lookUpShiftTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double DailyRate {
+            get {
+                return this.dailyRateField;
+            }
+            set {
+                this.dailyRateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsOverNight {
+            get {
+                return this.isOverNightField;
+            }
+            set {
+                this.isOverNightField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int DutyLocationID {
+            get {
+                return this.dutyLocationIDField;
+            }
+            set {
+                this.dutyLocationIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public t_CustomProp[] cpList {
+            get {
+                return this.cpListField;
+            }
+            set {
+                this.cpListField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Section {
+            get {
+                return this.sectionField;
+            }
+            set {
+                this.sectionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class t_CustomProp {
+        
+        private int propCfgIDField;
+        
+        private int relatedIDField;
+        
+        private string valueField;
+        
+        private System.DateTime createDateField;
+        
+        private int createUserField;
+        
+        private System.DateTime modifiedDateField;
+        
+        private int modifiedUserField;
+        
+        /// <remarks/>
+        public int PropCfgID {
+            get {
+                return this.propCfgIDField;
+            }
+            set {
+                this.propCfgIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RelatedID {
+            get {
+                return this.relatedIDField;
+            }
+            set {
+                this.relatedIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CreateUser {
+            get {
+                return this.createUserField;
+            }
+            set {
+                this.createUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ModifiedDate {
+            get {
+                return this.modifiedDateField;
+            }
+            set {
+                this.modifiedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ModifiedUser {
+            get {
+                return this.modifiedUserField;
+            }
+            set {
+                this.modifiedUserField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Shift))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class BasicShift {
+        
+        private int idField;
+        
+        private string codeField;
+        
+        private string descriptionField;
+        
+        private System.DateTime bankOnTimeField;
+        
+        private System.DateTime bankOffTimeField;
+        
+        private double totalWorkHourField;
+        
+        private string mainShiftField;
+        
+        private byte shiftTypeField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime BankOnTime {
+            get {
+                return this.bankOnTimeField;
+            }
+            set {
+                this.bankOnTimeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime BankOffTime {
+            get {
+                return this.bankOffTimeField;
+            }
+            set {
+                this.bankOffTimeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double TotalWorkHour {
+            get {
+                return this.totalWorkHourField;
+            }
+            set {
+                this.totalWorkHourField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string MainShift {
+            get {
+                return this.mainShiftField;
+            }
+            set {
+                this.mainShiftField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public byte ShiftType {
+            get {
+                return this.shiftTypeField;
+            }
+            set {
+                this.shiftTypeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void GetSystemParameterCompletedEventHandler(object sender, GetSystemParameterCompletedEventArgs e);
     
@@ -178,6 +890,108 @@ namespace WebServiceLayer.WebReference_codesettings {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetShiftInfoByIDCompletedEventHandler(object sender, GetShiftInfoByIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetShiftInfoByIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetShiftInfoByIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Shift Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Shift)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void DeleteOverlapRangeFromDate1CompletedEventHandler(object sender, DeleteOverlapRangeFromDate1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DeleteOverlapRangeFromDate1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DeleteOverlapRangeFromDate1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Nullable<System.DateTime> Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Nullable<System.DateTime>)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public System.Nullable<System.DateTime> newEnd1 {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Nullable<System.DateTime>)(this.results[1]));
+            }
+        }
+        
+        /// <remarks/>
+        public System.Nullable<System.DateTime> newStart2 {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Nullable<System.DateTime>)(this.results[2]));
+            }
+        }
+        
+        /// <remarks/>
+        public System.Nullable<System.DateTime> newEnd2 {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Nullable<System.DateTime>)(this.results[3]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetRealTotalCompletedEventHandler(object sender, GetRealTotalCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetRealTotalCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetRealTotalCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
             }
         }
     }

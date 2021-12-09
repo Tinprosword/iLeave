@@ -254,25 +254,18 @@ namespace WEBUI.Pages
 
             DropDownList2.Items.Clear();
             DropDownList4.Items.Clear();
-            bool onlyHalfHour = BLL.SystemParameters.mCLOTOnlyHalfHours();
 
-            if (onlyHalfHour)
-            {
-                this.DropDownList2.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));
-                this.DropDownList2.Items.Add(new ListItem(30.ToString("00"), 30.ToString()));
+            this.DropDownList2.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));
+            this.DropDownList2.Items.Add(new ListItem(15.ToString("00"), 15.ToString()));
+            this.DropDownList2.Items.Add(new ListItem(30.ToString("00"), 30.ToString()));
+            this.DropDownList2.Items.Add(new ListItem(45.ToString("00"), 45.ToString()));
 
-                this.DropDownList4.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));
-                this.DropDownList4.Items.Add(new ListItem(30.ToString("00"), 30.ToString()));
-            }
-            else
-            {
-                for (int i = 0; i < 60; i++)
-                {
-                    this.DropDownList2.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
-                    this.DropDownList4.Items.Add(new ListItem(i.ToString("00"), i.ToString()));
-                }
-            }
+            this.DropDownList4.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));
+            this.DropDownList4.Items.Add(new ListItem(15.ToString("00"), 15.ToString()));
+            this.DropDownList4.Items.Add(new ListItem(30.ToString("00"), 30.ToString()));
+            this.DropDownList4.Items.Add(new ListItem(45.ToString("00"), 45.ToString()));
         }
+
 
         private void LoadLeaveSectionAndTime(int leaveID,int byDayByhour, DateTime? from,DateTime? to,double total)
         {
@@ -562,11 +555,9 @@ namespace WEBUI.Pages
             int tom = int.Parse(this.DropDownList4.SelectedValue);
 
 
-            DateTime theday = System.DateTime.Now;
+            double totalHours = BLL.Leave.GetRealTotalHours(fromh, toh, fromm, tom, loginer.userInfo.employID??0);
 
-            float hours = BLL.CLOT.CalculateNumberofHours(fromh, toh, fromm, tom, theday);
-            this.tb_total.Text = hours.ToString();
-            
+            this.tb_total.Text = totalHours.ToString();
         }
     }
 }

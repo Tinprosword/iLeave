@@ -16,6 +16,125 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetShiftInfoByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="shiftid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetShiftInfoByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetShiftInfoByIDResult" type="tns:Shift" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Shift">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BasicShift">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="LunchIn" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="LunchOut" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsExcludeLunchHour" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="ExcludeLunchHour" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsSpecialShift" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="SpecialShiftRatio" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Counter" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsExcludeMealBreakInTopup" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="TotalNightShift" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsSpecialTimePeriod" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="SpecialTimePeriodFrom" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="SpecialTimePeriodTo" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="SpecialTimePeriodHourlyRate" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="TotalSpecialTimePeriodHour" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="HourlyRate" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="LunchHour" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="AMWorkingHour" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="PMWorkingHour" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="DayToConvert" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="SwapToLeave" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="SwapToLeaveMissingInOrOut" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="LookUpShiftType" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="DailyRate" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsOverNight" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="DutyLocationID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="cpList" type="tns:ArrayOfT_CustomProp" />
+              <s:element minOccurs="1" maxOccurs="1" name="Section" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BasicShift">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BankOnTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="BankOffTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalWorkHour" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="MainShift" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShiftType" type="s:unsignedByte" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfT_CustomProp">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="t_CustomProp" nillable="true" type="tns:t_CustomProp" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="t_CustomProp">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PropCfgID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RelatedID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteOverlapRangeFromDate1">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startDate1" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate1" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate2" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate2" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteOverlapRangeFromDate1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="newStart1" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="newEnd1" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="newStart2" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="newEnd2" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRealTotal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startDate1" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate1" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate2" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate2" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRealTotalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetRealTotalResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetLeaveSections">
         <s:complexType>
           <s:sequence>
@@ -37,6 +156,8 @@
         </s:sequence>
       </s:complexType>
       <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="Shift" nillable="true" type="tns:Shift" />
+      <s:element name="double" type="s:double" />
       <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
     </s:schema>
   </wsdl:types>
@@ -45,6 +166,24 @@
   </wsdl:message>
   <wsdl:message name="GetSystemParameterSoapOut">
     <wsdl:part name="parameters" element="tns:GetSystemParameterResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetShiftInfoByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetShiftInfoByID" />
+  </wsdl:message>
+  <wsdl:message name="GetShiftInfoByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetShiftInfoByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteOverlapRangeFromDate1SoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteOverlapRangeFromDate1" />
+  </wsdl:message>
+  <wsdl:message name="DeleteOverlapRangeFromDate1SoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteOverlapRangeFromDate1Response" />
+  </wsdl:message>
+  <wsdl:message name="GetRealTotalSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRealTotal" />
+  </wsdl:message>
+  <wsdl:message name="GetRealTotalSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRealTotalResponse" />
   </wsdl:message>
   <wsdl:message name="GetLeaveSectionsSoapIn">
     <wsdl:part name="parameters" element="tns:GetLeaveSections" />
@@ -58,6 +197,21 @@
   <wsdl:message name="GetSystemParameterHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="GetShiftInfoByIDHttpPostIn">
+    <wsdl:part name="shiftid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetShiftInfoByIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:Shift" />
+  </wsdl:message>
+  <wsdl:message name="GetRealTotalHttpPostIn">
+    <wsdl:part name="startDate1" type="s:string" />
+    <wsdl:part name="endDate1" type="s:string" />
+    <wsdl:part name="startDate2" type="s:string" />
+    <wsdl:part name="endDate2" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRealTotalHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
   <wsdl:message name="GetLeaveSectionsHttpPostIn">
     <wsdl:part name="leaveClass" type="s:string" />
     <wsdl:part name="position" type="s:string" />
@@ -70,6 +224,18 @@
       <wsdl:input message="tns:GetSystemParameterSoapIn" />
       <wsdl:output message="tns:GetSystemParameterSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetShiftInfoByID">
+      <wsdl:input message="tns:GetShiftInfoByIDSoapIn" />
+      <wsdl:output message="tns:GetShiftInfoByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOverlapRangeFromDate1">
+      <wsdl:input message="tns:DeleteOverlapRangeFromDate1SoapIn" />
+      <wsdl:output message="tns:DeleteOverlapRangeFromDate1SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRealTotal">
+      <wsdl:input message="tns:GetRealTotalSoapIn" />
+      <wsdl:output message="tns:GetRealTotalSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetLeaveSections">
       <wsdl:input message="tns:GetLeaveSectionsSoapIn" />
       <wsdl:output message="tns:GetLeaveSectionsSoapOut" />
@@ -80,6 +246,14 @@
       <wsdl:input message="tns:GetSystemParameterHttpPostIn" />
       <wsdl:output message="tns:GetSystemParameterHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetShiftInfoByID">
+      <wsdl:input message="tns:GetShiftInfoByIDHttpPostIn" />
+      <wsdl:output message="tns:GetShiftInfoByIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRealTotal">
+      <wsdl:input message="tns:GetRealTotalHttpPostIn" />
+      <wsdl:output message="tns:GetRealTotalHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetLeaveSections">
       <wsdl:input message="tns:GetLeaveSectionsHttpPostIn" />
       <wsdl:output message="tns:GetLeaveSectionsHttpPostOut" />
@@ -89,6 +263,33 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetSystemParameter">
       <soap:operation soapAction="http://tempuri.org/GetSystemParameter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShiftInfoByID">
+      <soap:operation soapAction="http://tempuri.org/GetShiftInfoByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOverlapRangeFromDate1">
+      <soap:operation soapAction="http://tempuri.org/DeleteOverlapRangeFromDate1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRealTotal">
+      <soap:operation soapAction="http://tempuri.org/GetRealTotal" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -117,6 +318,33 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetShiftInfoByID">
+      <soap12:operation soapAction="http://tempuri.org/GetShiftInfoByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOverlapRangeFromDate1">
+      <soap12:operation soapAction="http://tempuri.org/DeleteOverlapRangeFromDate1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRealTotal">
+      <soap12:operation soapAction="http://tempuri.org/GetRealTotal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetLeaveSections">
       <soap12:operation soapAction="http://tempuri.org/GetLeaveSections" style="document" />
       <wsdl:input>
@@ -131,6 +359,24 @@
     <http:binding verb="POST" />
     <wsdl:operation name="GetSystemParameter">
       <http:operation location="/GetSystemParameter" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShiftInfoByID">
+      <http:operation location="/GetShiftInfoByID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRealTotal">
+      <http:operation location="/GetRealTotal" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
