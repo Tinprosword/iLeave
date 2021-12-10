@@ -188,6 +188,7 @@ namespace BLL
 
         public static string GetSectionMultLanguage(int sectionid, int lange = -1)
         {
+
             if (sectionid == 0)
             {
                 return BLL.MultiLanguageHelper.GetLanguagePacket().apply_ddlsetion_fullday;
