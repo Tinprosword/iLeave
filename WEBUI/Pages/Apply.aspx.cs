@@ -194,14 +194,32 @@ namespace WEBUI.Pages
         }
 
         #region [module] leave
+        private bool CheckUIOnCalendar()
+        {
+            bool result = false;
+            int dayOrHour = GetByDayOrHourFromUI();
+            bool dayisNotOK = (dayOrHour == 0 && (ddl_leavetype.SelectedValue == "0" || dropdl_section.SelectedValue == "-1"));
+            bool totalisok = LSLibrary.CString.isDouble(this.tb_total.Text);
+            bool hourIsNotOK = (dayOrHour == 1 && (ddl_leavetype.SelectedValue == "0" || this.tb_total.Text == "" || this.tb_total.Text == "0" || totalisok==false));
+
+            if (dayisNotOK || hourIsNotOK)
+            {
+                result = false;
+            }
+            else
+            {
+                result = true;
+            }
+            return result;
+        }
+
         protected void Canlendar_Click(object sender, ImageClickEventArgs e)
         {
             int dayOrHour = GetByDayOrHourFromUI();
 
-            bool dayisNotOK = (dayOrHour == 0 && (ddl_leavetype.SelectedValue == "0" || dropdl_section.SelectedValue == "-1"));
-            bool hourIsNotOK = (dayOrHour == 1 && (ddl_leavetype.SelectedValue == "0" || this.tb_total.Text == "" || this.tb_total.Text == "0"));
+            bool checkUIInput = CheckUIOnCalendar();
 
-            if (dayisNotOK || hourIsNotOK)
+            if (checkUIInput==false)
             {
                 this.literal_errormsga.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_msgselect;
                 this.literal_errormsga.Visible = true;
