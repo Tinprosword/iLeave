@@ -97,7 +97,7 @@ namespace WEBUI.Pages
             this.ddl_leavetype.SelectedValue = leaveTypeSelectedValue;
 
 
-            LoadLeaveSectionAndTime(int.Parse(this.ddl_leavetype.SelectedValue),bydayorbyhout,f,t,totalH);
+            LoadLeaveSectionAndTime(int.Parse(this.ddl_leavetype.SelectedValue),bydayorbyhout,f,t,totalH,ddlSectionSelected);
             RefleshApplyBalance(int.Parse(this.ddl_leavetype.SelectedValue));
 
             string numberPath= BLL.common.GetAttachmentNumberPath(numberofAttachment);
@@ -238,7 +238,7 @@ namespace WEBUI.Pages
         protected void ddl_leavetype_SelectedIndexChanged(object sender, EventArgs e)
         {
             int leaveid = int.Parse(this.ddl_leavetype.SelectedValue);
-            LoadLeaveSectionAndTime(leaveid,0,null,null,0);
+            LoadLeaveSectionAndTime(leaveid,0,null,null,0,"0");
             RefleshApplyBalance(leaveid);
         }
 
@@ -267,7 +267,7 @@ namespace WEBUI.Pages
         }
 
 
-        private void LoadLeaveSectionAndTime(int leaveID,int byDayByhour, DateTime? from,DateTime? to,double total)
+        private void LoadLeaveSectionAndTime(int leaveID,int byDayByhour, DateTime? from,DateTime? to,double total,string Selectsection)
         {
             //1.leaveid=0==>init  2.
             List<LSLibrary.WebAPP.ValueText<int>> ddlSource = BLL.Leave.GetDDLSectionsData(leaveID, (int)loginer.userInfo.employID);
@@ -290,6 +290,8 @@ namespace WEBUI.Pages
                 tr_section.Visible = true;
                 tr_time.Visible = false;
             }
+
+            this.dropdl_section.SelectedValue = Selectsection;
 
             //fill data
             if (AllowHour)

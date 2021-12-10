@@ -1,0 +1,37 @@
+ip:192.168.19.45
+DataTime：2021/12/10 14:12:03
+Url：http://192.168.19.210/WEBUI/pages/approval_wait.aspx?action=0&applicationtype=3&from=3
+Message：操作超时
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetMyManageBeyondWaitingCLOT(Int32 uid) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 996
+   在 BLL.CLOT.GetMyManageClOT(Int32 uid, LeaveBigRangeStatus status, Nullable`1 from, Nullable`1 to, String name) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 66
+   在 BLL.CLOT.GetMyManageClOT(Int32 uid, LeaveBigRangeStatus status, Int32 year, String name) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 91
+   在 WEBUI.Pages.approval_wait.SetupRepeater() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 185
+   在 WEBUI.Pages.approval_wait.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 84
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.202
+DataTime：2021/12/10 17:06:22
+Url：http://192.168.19.210/WEBUI/pages/calendar.aspx
+Message：服务器无法处理请求。 ---> 对象名 'v_System_iLeave_Calendar' 无效。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetRoster(DateTime date, Int32[] employmentID) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 704
+   在 BLL.calendar.GetRoster(DateTime date, List`1 employmentID) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\calendar.cs:行号 18
+   在 WEBUI.Pages.calendar.SetupRepeater() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\calendar.aspx.cs:行号 140
+   在 WEBUI.Pages.calendar.cb_holiday_CheckedChanged(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\calendar.aspx.cs:行号 433
+   在 System.Web.UI.WebControls.CheckBox.OnCheckedChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
