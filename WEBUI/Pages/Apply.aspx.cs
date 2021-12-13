@@ -292,8 +292,14 @@ namespace WEBUI.Pages
             LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.dropdl_section, ddlSource);
             LoadTime_init();
 
+            bool AllowHour = false;
+            var tempaaa= BLL.User_wsref.GetPersonBaseInfoByPid(loginer.userInfo.personid);
+            if (tempaaa != null && tempaaa.Count() > 0)
+            {
+                AllowHour = BLL.Leave.AllowHour(leaveID, tempaaa[0].s_PositionID??0);
+            }
 
-            bool AllowHour = BLL.Leave.AllowHour(leaveID, loginer.userInfo.personid);
+             
             if (leaveID == 0 || AllowHour==false)
             {
                 //hiden radio. hiden time

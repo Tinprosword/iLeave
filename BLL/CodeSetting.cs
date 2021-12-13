@@ -22,6 +22,25 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_codesetting.GetSystemParameter(name);
         }
 
+        public static bool AllowHourly(int leaveid, int position)
+        {
+            bool result = false;
+
+            List<int> sections = BLL.CodeSetting.GetSections(position, leaveid);
+            if (sections != null && sections.Count() > 0)
+            {
+                if (sections.Contains(4))
+                {
+                    result= true;
+                }
+            }
+
+
+            return result;
+                
+        }
+
+
         /// <summary>
         /// 1 eng 6or other ch.
         /// </summary>

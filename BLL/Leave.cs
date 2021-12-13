@@ -479,17 +479,7 @@ namespace BLL
         #region unity
         public static bool AllowHour(int leaveID, int PositionID)
         {
-            bool result = false;
-            if (leaveID == 14)
-            {
-                result = true;
-            }
-            else
-            {
-                result = false;
-            }
-
-            return result;
+            return BLL.CodeSetting.AllowHourly(leaveID, PositionID);
         }
 
 

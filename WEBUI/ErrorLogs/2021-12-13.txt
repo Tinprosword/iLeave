@@ -1,0 +1,30 @@
+ip:::1
+DataTime：2021/12/13 14:05:01
+Url：http://localhost/WEBUI/pages/apply.aspx
+Message：“dropdl_section”有一个无效 SelectedValue，因为它不在项目列表中。
+参数名: value
+Source：System.Web
+Type：System.ArgumentOutOfRangeException
+Function：Void set_SelectedValue(System.String)
+Trace：   在 System.Web.UI.WebControls.ListControl.set_SelectedValue(String value)
+   在 WEBUI.Pages.Apply.LoadLeaveSectionAndTime(Int32 leaveID, Int32 byDayByhour, Nullable`1 from, Nullable`1 to, Double total, String Selectsection) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 312
+   在 WEBUI.Pages.Apply.ddl_leavetype_SelectedIndexChanged(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 259
+   在 System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/12/13 14:06:01
+Url：http://localhost/WEBUI/pages/apply.aspx
+Message：“dropdl_section”有一个无效 SelectedValue，因为它不在项目列表中。
+参数名: value
+Source：System.Web
+Type：System.ArgumentOutOfRangeException
+Function：Void set_SelectedValue(System.String)
+Trace：   在 System.Web.UI.WebControls.ListControl.set_SelectedValue(String value)
+   在 WEBUI.Pages.Apply.LoadLeaveSectionAndTime(Int32 leaveID, Int32 byDayByhour, Nullable`1 from, Nullable`1 to, Double total, String Selectsection) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 312
+   在 WEBUI.Pages.Apply.ddl_leavetype_SelectedIndexChanged(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 259
+   在 System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
