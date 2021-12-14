@@ -572,6 +572,14 @@ namespace BLL
             return ddlSource;
         }
 
+        public static List<LSLibrary.WebAPP.ValueText<int>> GetRadioData()
+        {
+            List<LSLibrary.WebAPP.ValueText<int>> ddlSource = new List<LSLibrary.WebAPP.ValueText<int>>();
+            ddlSource.Insert(0, new LSLibrary.WebAPP.ValueText<int>(0, BLL.MultiLanguageHelper.GetLanguagePacket().apply_byday+"　　　　"));
+            ddlSource.Insert(1, new LSLibrary.WebAPP.ValueText<int>(1, BLL.MultiLanguageHelper.GetLanguagePacket().apply_byhour));
+            return ddlSource;
+        }
+
         public static List<WebServiceLayer.WebReference_leave.t_Leave> GetLeavesByStaffID(int sid)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetAllLeaveTypeByStaffID(sid).ToList();

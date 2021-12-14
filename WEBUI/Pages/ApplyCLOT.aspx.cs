@@ -355,11 +355,11 @@ namespace WEBUI.Pages
             int.TryParse(str, out type);
             if (type == (int)MODEL.CLOT.enum_clotType.CL)
             {
-                return "Apply for CL";
+                return BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_REMARK_CL;
             }
             else
             {
-                return "Apply for OT";
+                return BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_REMARK_OT;
             }
         }
 

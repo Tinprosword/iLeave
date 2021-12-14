@@ -290,6 +290,10 @@ namespace WEBUI.Pages
             //1.leaveid=0==>init  2.
             List<LSLibrary.WebAPP.ValueText<int>> ddlSource = BLL.Leave.GetDDLSectionsData(leaveID, (int)loginer.userInfo.employID);
             LSLibrary.WebAPP.ValueTextHelper.BindDropdownlist<int>(this.dropdl_section, ddlSource);
+
+            LSLibrary.WebAPP.ValueTextHelper.BindRadiolist<int>(this.radio_ishour, BLL.Leave.GetRadioData());
+
+
             LoadTime_init();
 
             bool AllowHour = false;
@@ -453,6 +457,9 @@ namespace WEBUI.Pages
             this.btn_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_button;
 
             this.lt_estimation.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_estimation;
+            this.lt_time.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_time;
+
+
         }
 
         private void SavePageDataToViewState(bool owlist, bool owtype, bool owpics, List<MODEL.Apply.apply_LeaveData> leavelist, List<LSLibrary.WebAPP.ValueText<int>> leavetype, List<MODEL.App_AttachmentInfo> uploadPics)
