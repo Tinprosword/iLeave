@@ -884,6 +884,19 @@ namespace BLL
             return result;
         }
 
+        public static int mLeaveHourUnit()
+        {
+            int result = -1;
+            string str = WebServiceLayer.MyWebService.GlobalWebServices.ws_codesetting.GetSystemParameter(SystemParameters.HOURLY_LEAVE_MINUTES_UNIT);
+            if (!string.IsNullOrEmpty(str))
+            {
+                int.TryParse(str, out result);
+            }
+            return result;
+        }
+
+        
+
         //從hr copy 過來。需要那個就挑代碼出來，寫個懶加載方法吧。
         ////设置参数默认值
         //public bool mIsBatch = false;

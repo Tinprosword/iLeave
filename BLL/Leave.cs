@@ -301,7 +301,7 @@ namespace BLL
             }
             else if (status == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
             {
-                var tempresult = result.Where(x => (x.WorkflowTypeID == 0 && x.Status != (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE) || (x.inputSource.ToUpper()== "MANUAL" && x.workinfoID==null) ).ToList();
+                var tempresult = result.Where(x => (x.WorkflowTypeID == 0 && x.Status != (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE) || (x.workinfoID==null) ).ToList();
 
                 foreach (var tempItem in tempresult)
                 {
@@ -375,12 +375,6 @@ namespace BLL
             DateTime? to = new DateTime(year,12, dayCount);
             return GetMyManageLeaveMaster(uid, status, from, name, to);
         }
-
-
-
-
-        
-
 
 
         public static WebServiceLayer.WebReference_leave.LeaveRequestMaster GetRequestMasterByRequestID(int requestid)

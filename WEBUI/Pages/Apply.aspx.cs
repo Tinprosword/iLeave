@@ -273,15 +273,39 @@ namespace WEBUI.Pages
             DropDownList2.Items.Clear();
             DropDownList4.Items.Clear();
 
-            this.DropDownList2.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));
-            this.DropDownList2.Items.Add(new ListItem(15.ToString("00"), 15.ToString()));
-            this.DropDownList2.Items.Add(new ListItem(30.ToString("00"), 30.ToString()));
-            this.DropDownList2.Items.Add(new ListItem(45.ToString("00"), 45.ToString()));
+            int hourUnit = BLL.SystemParameters.mLeaveHourUnit();
+            if (hourUnit == 15)
+            {
+                this.DropDownList2.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));
+                this.DropDownList2.Items.Add(new ListItem(15.ToString("00"), 15.ToString()));
+                this.DropDownList2.Items.Add(new ListItem(30.ToString("00"), 30.ToString()));
+                this.DropDownList2.Items.Add(new ListItem(45.ToString("00"), 45.ToString()));
 
-            this.DropDownList4.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));
-            this.DropDownList4.Items.Add(new ListItem(15.ToString("00"), 15.ToString()));
-            this.DropDownList4.Items.Add(new ListItem(30.ToString("00"), 30.ToString()));
-            this.DropDownList4.Items.Add(new ListItem(45.ToString("00"), 45.ToString()));
+                this.DropDownList4.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));
+                this.DropDownList4.Items.Add(new ListItem(15.ToString("00"), 15.ToString()));
+                this.DropDownList4.Items.Add(new ListItem(30.ToString("00"), 30.ToString()));
+                this.DropDownList4.Items.Add(new ListItem(45.ToString("00"), 45.ToString()));
+            }
+            else if (hourUnit == 30)
+            {
+                this.DropDownList2.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));
+                this.DropDownList2.Items.Add(new ListItem(30.ToString("00"), 30.ToString()));
+
+                this.DropDownList4.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));
+                this.DropDownList4.Items.Add(new ListItem(30.ToString("00"), 30.ToString()));
+            }
+            else
+            {
+                this.DropDownList2.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));
+                this.DropDownList2.Items.Add(new ListItem(15.ToString("00"), 15.ToString()));
+                this.DropDownList2.Items.Add(new ListItem(30.ToString("00"), 30.ToString()));
+                this.DropDownList2.Items.Add(new ListItem(45.ToString("00"), 45.ToString()));
+
+                this.DropDownList4.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));
+                this.DropDownList4.Items.Add(new ListItem(15.ToString("00"), 15.ToString()));
+                this.DropDownList4.Items.Add(new ListItem(30.ToString("00"), 30.ToString()));
+                this.DropDownList4.Items.Add(new ListItem(45.ToString("00"), 45.ToString()));
+            }
         }
 
 
