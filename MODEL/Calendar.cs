@@ -16,18 +16,5 @@ namespace MODEL
             public int contractID { get; set; }
             public string zoneCode { get; set; }
         }
-
-        [Serializable]
-        public class ViewState_page
-        {
-
-            public List<UserAssoZone> mUserAssoZone { get; set; }
-
-            public ViewState_page()
-            {
-                mUserAssoZone = new List<UserAssoZone>();
-            }
-            
-        }
     }
 }

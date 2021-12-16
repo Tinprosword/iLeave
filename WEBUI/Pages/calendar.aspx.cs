@@ -15,7 +15,6 @@ namespace WEBUI.Pages
     public partial class calendar : BLL.CustomLoginTemplate
     {
         private static string ViewState_preApplyPageName = "preApplyPageName";
-        private static string ViewState_MyPageName = "calendar";
 
         private readonly string searchTip = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_serchTip;
         private readonly string css_select = "btnBox btnBlueBoxSelect";
@@ -95,8 +94,6 @@ namespace WEBUI.Pages
             this.Image2.BackColor = waitcolor;
             this.btn_ok.BackColor = btnokBGColor;
 
-            LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_MyPageName, new MODEL.Calendar.ViewState_page(), this.ViewState);
-
             OnPrePageIsApplyInitViewState();
             LSLibrary.WebAPP.MyJSHelper.SetTextBoxTip(tb_name,searchTip);
             SetupZone(loginer.userInfo.personid);
@@ -112,9 +109,38 @@ namespace WEBUI.Pages
 
 
         #region inner function
+        private List<MODEL.Calendar.UserAssoZone> GetMyAssoZoneFromUi()
+        {
+            List<MODEL.Calendar.UserAssoZone> result = new List<MODEL.Calendar.UserAssoZone>();
+            var items = this.ddlzone.Items;
+            if (items != null && items.Count > 0)
+            {
+                foreach (ListItem oneItem in items)
+                {
+
+                        string tempStr = oneItem.Value;
+                        var zoneArray = tempStr.Split(new char[] { '|' });
+                        string contarctID = zoneArray[0];
+                        string zoneCode = zoneArray[1];
+                        int intContractId = int.Parse(contarctID);
+
+                    if (intContractId != 0)
+                    {
+                        var ttt = new MODEL.Calendar.UserAssoZone();
+                        ttt.contractID = intContractId;
+                        ttt.zoneCode = zoneCode;
+                        result.Add(ttt);
+                    }
+
+                }
+            }
+            return result;
+        }
+
         private void SetupRepeater()
         {
-            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue,this.tb_name.Text.Trim());
+            var allASoZone = GetMyAssoZoneFromUi();
+            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue,this.tb_name.Text.Trim(), allASoZone);
 
             
             if (this.cb_leave.Checked)
@@ -184,7 +210,8 @@ namespace WEBUI.Pages
             if (ViewState[viewstate_statisc] == null)
             {
                 bool isme = GetIsMeOrTeam();
-                List<int> eid = GetEmployIDs(isme, this.ddlzone.SelectedValue, this.tb_name.Text.Trim());
+                var myAsoZone = GetMyAssoZoneFromUi();
+                List<int> eid = GetEmployIDs(isme, this.ddlzone.SelectedValue, this.tb_name.Text.Trim(), myAsoZone);
                 if (this.Calendar1.VisibleDate.Year > 1)
                 {
                     FillStatistic(eid, this.Calendar1.VisibleDate.Year, this.Calendar1.VisibleDate.Month);
@@ -197,7 +224,7 @@ namespace WEBUI.Pages
             }
         }
 
-        private List<int> GetEmployIDs(bool isme,string contractinfo,string name)
+        private List<int> GetEmployIDs(bool isme,string contractinfo,string name,List<MODEL.Calendar.UserAssoZone> allMyAssozone)
         {
             //1.me or team 2.zone 3 get employment ids.
             name = name == searchTip ? "" : name;
@@ -206,7 +233,16 @@ namespace WEBUI.Pages
             string zoneCode = zoneArray[1];
             int intContractId = int.Parse(contarctID);
             List<int> eid = new List<int>();
-            var Employment = BLL.User_wsref.getEmploymentByZone(intContractId, zoneCode);
+
+            WebServiceLayer.WebReference_user.t_Employment[] Employment = new WebServiceLayer.WebReference_user.t_Employment[0];
+            if (intContractId == 0)
+            {
+                Employment = BLL.User_wsref.getEmploymentByZone(allMyAssozone);
+            }
+            else
+            {
+                Employment = BLL.User_wsref.getEmploymentByZone(intContractId, zoneCode);
+            }
             if (isme)
             {
                 var sids = BLL.User_wsref.GetStaffsByUid(loginer.userInfo.personid);
@@ -218,6 +254,9 @@ namespace WEBUI.Pages
                 if (!string.IsNullOrEmpty(this.tb_name.Text))
                 {
                     var likenamesids = BLL.User_wsref.GetPersonBaseInfoByLikeName(name).Select(x => x.e_id).ToList();
+                    var likeStaffids = BLL.User_wsref.GetPersonBaseInfoByLikeStaffNo(name).Select(x => x.e_id).ToList();
+                    likenamesids.AddRange(likeStaffids);
+
                     eid = eid.Where(x => likenamesids.Contains(x)).ToList();
                 }
             }
@@ -260,10 +299,9 @@ namespace WEBUI.Pages
 
 
             List<ListItem> data = new List<ListItem>();
-            if (assoZone != null && assoZone.Count() == 0)// no record when choose all.
-            {
-                data.Add(new ListItem("All Zone", "0|"));
-            }
+            
+            data.Add(new ListItem("All Zone", "0|"));//all zone means : all my assositate zone.
+            
             for (int i = 0; i < contracts.Count; i++)
             {
                 data.Add(new ListItem(contracts[i].Code +":"+ contracts[i].zonecode+ " - " + contracts[i].zonedescription , contracts[i].contractid + "|" + contracts[i].zonecode));

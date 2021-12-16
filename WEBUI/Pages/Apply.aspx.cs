@@ -256,7 +256,14 @@ namespace WEBUI.Pages
         protected void ddl_leavetype_SelectedIndexChanged(object sender, EventArgs e)
         {
             int leaveid = int.Parse(this.ddl_leavetype.SelectedValue);
-            LoadLeaveSectionAndTime(leaveid,0,null,null,0,"0");
+            if (leaveid == 0)
+            {
+                LoadLeaveSectionAndTime(leaveid, 0, null, null, 0, "-1");
+            }
+            else
+            {
+                LoadLeaveSectionAndTime(leaveid, 0, null, null, 0, "0");
+            }
             RefleshApplyBalance(leaveid);
         }
 

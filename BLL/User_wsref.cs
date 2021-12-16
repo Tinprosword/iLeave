@@ -89,6 +89,11 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfo("p_Nickname like '%" + Containname + "%' or p_Surname like '%" + Containname + "%' or p_othername like '%" + Containname + "%' or p_namech like '%" + Containname + "%' or (p_Surname+' '+p_Othername) like '%"+Containname+"%'");
         }
 
+        public static WebServiceLayer.WebReference_user.PersonBaseinfo[] GetPersonBaseInfoByLikeStaffNo(string staffno)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfo("s_StaffNumber like '%" + staffno + "%'");
+        }
+
 
         public static WebServiceLayer.WebReference_user.PersonBaseinfo[] GetPersonBaseInfoByPid(int pid)
         {
@@ -224,15 +229,15 @@ namespace BLL
         }
 
 
-        public static WebServiceLayer.WebReference_user.t_Employment[] getEmploymentByZone(List<int> contractids,List<string> zones)
+        public static WebServiceLayer.WebReference_user.t_Employment[] getEmploymentByZone(List<MODEL.Calendar.UserAssoZone> userAssos)
         {
             List<WebServiceLayer.WebReference_user.t_Employment> result = new List<WebServiceLayer.WebReference_user.t_Employment>();
 
-            if (contractids != null && zones != null && contractids.Count() == zones.Count())
-            {
-                for (int i = 0; i < contractids.Count(); i++)
+            if (userAssos != null && userAssos.Count>0)
+            { 
+                for (int i = 0; i < userAssos.Count(); i++)
                 {
-                    WebServiceLayer.WebReference_user.t_Employment[] tempResult = getEmploymentByZone(contractids[i], zones[i]);
+                    WebServiceLayer.WebReference_user.t_Employment[] tempResult = getEmploymentByZone(userAssos[i].contractID, userAssos[i].zoneCode);
                     result.AddRange(tempResult);
                 }
             }
