@@ -223,6 +223,23 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.Base_Gett_Employment(new WebServiceLayer.WebReference_user.t_Employment() { ID = id });
         }
 
+
+        public static WebServiceLayer.WebReference_user.t_Employment[] getEmploymentByZone(List<int> contractids,List<string> zones)
+        {
+            List<WebServiceLayer.WebReference_user.t_Employment> result = new List<WebServiceLayer.WebReference_user.t_Employment>();
+
+            if (contractids != null && zones != null && contractids.Count() == zones.Count())
+            {
+                for (int i = 0; i < contractids.Count(); i++)
+                {
+                    WebServiceLayer.WebReference_user.t_Employment[] tempResult = getEmploymentByZone(contractids[i], zones[i]);
+                    result.AddRange(tempResult);
+                }
+            }
+
+            return result.ToArray();
+        }
+
         public static WebServiceLayer.WebReference_user.t_Employment[] getEmploymentByZone(int contractid, string zone)
         {
             WebServiceLayer.WebReference_user.t_Employment[] result = new WebServiceLayer.WebReference_user.t_Employment[0];

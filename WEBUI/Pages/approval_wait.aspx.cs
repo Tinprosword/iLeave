@@ -365,6 +365,7 @@ namespace WEBUI.Pages
 
             if ((btntype==2 && string.IsNullOrEmpty(remarks1)) || btntype==4 && string.IsNullOrEmpty(remarks2))
             {
+                this.div_error.Visible = true;
                 this.lb_errormsg.Visible = true;
                 this.lb_errormsg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_needRemark;
             }
@@ -452,6 +453,7 @@ namespace WEBUI.Pages
 
             if ((btntype == 2 && string.IsNullOrEmpty(remarks1)) || btntype == 4 && string.IsNullOrEmpty(remarks2))
             {
+                this.div_error.Visible = true;
                 this.lb_errormsg.Visible = true;
                 this.lb_errormsg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approval_needRemark;
             }
