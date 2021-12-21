@@ -12,6 +12,11 @@ namespace BLL
         public static string SystemParameter_showleaveCode = "HIDE_LEAVECODE_IN_LEAVE_CALENDAR";
         public static string SystemParameter_baseurl = "ILEAVE_HRBASEURL";
 
+        public static List<string> GetCompanyDeployCode()
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_codesetting.GetCompanyCode().ToList();
+        }
+
         public static List<int> GetSections(int position, int leave)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_codesetting.GetLeaveSections(leave, position).ToList();

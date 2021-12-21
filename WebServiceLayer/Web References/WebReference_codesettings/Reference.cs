@@ -38,6 +38,8 @@ namespace WebServiceLayer.WebReference_codesettings {
         
         private System.Threading.SendOrPostCallback GetRealTotalOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetCompanyCodeOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetLeaveSectionsOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
@@ -89,6 +91,9 @@ namespace WebServiceLayer.WebReference_codesettings {
         
         /// <remarks/>
         public event GetRealTotalCompletedEventHandler GetRealTotalCompleted;
+        
+        /// <remarks/>
+        public event GetCompanyCodeCompletedEventHandler GetCompanyCodeCompleted;
         
         /// <remarks/>
         public event GetLeaveSectionsCompletedEventHandler GetLeaveSectionsCompleted;
@@ -222,6 +227,33 @@ namespace WebServiceLayer.WebReference_codesettings {
             if ((this.GetRealTotalCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetRealTotalCompleted(this, new GetRealTotalCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetCompanyCode", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] GetCompanyCode() {
+            object[] results = this.Invoke("GetCompanyCode", new object[0]);
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetCompanyCodeAsync() {
+            this.GetCompanyCodeAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetCompanyCodeAsync(object userState) {
+            if ((this.GetCompanyCodeOperationCompleted == null)) {
+                this.GetCompanyCodeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCompanyCodeOperationCompleted);
+            }
+            this.InvokeAsync("GetCompanyCode", new object[0], this.GetCompanyCodeOperationCompleted, userState);
+        }
+        
+        private void OnGetCompanyCodeOperationCompleted(object arg) {
+            if ((this.GetCompanyCodeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetCompanyCodeCompleted(this, new GetCompanyCodeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -992,6 +1024,32 @@ namespace WebServiceLayer.WebReference_codesettings {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetCompanyCodeCompletedEventHandler(object sender, GetCompanyCodeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetCompanyCodeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetCompanyCodeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
             }
         }
     }

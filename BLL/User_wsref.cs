@@ -162,23 +162,29 @@ namespace BLL
                 List<int> eids;
                 List<string> enumbers;
                 personEmplyment = BLL.User_wsref.GetDefaultLoginEmploymentAndEids(person.ID,out eids,out enumbers);
-                userInfo = SaveInfoToSession(personEmplyment, loginResult.SessionID,eids,enumbers);
+                var ccodelist=BLL.CodeSetting.GetCompanyDeployCode();
+                string ccode = "";
+                if (ccodelist != null && ccodelist.Count()>0)
+                {
+                    ccode = ccodelist[0];
+                }
+                userInfo = SaveInfoToSession(personEmplyment, loginResult.SessionID,eids,enumbers,ccode);
             }
             return userInfo;
         }
 
-        public static MODEL.UserInfo SaveInfoToSession(WebServiceLayer.WebReference_user.PersonBaseinfo personBaseinfo,string sessinonID,List<int> eids,List<string> enos)
+        public static MODEL.UserInfo SaveInfoToSession(WebServiceLayer.WebReference_user.PersonBaseinfo personBaseinfo,string sessinonID,List<int> eids,List<string> enos,string ccode)
         {
             MODEL.UserInfo userInfo = null;
             if (personBaseinfo != null && personBaseinfo.e_id!=null)
             {
                 
-                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, personBaseinfo.e_id, personBaseinfo.e_EmploymentNumber, personBaseinfo.s_id, personBaseinfo.s_StaffNumber, personBaseinfo.p_id, personBaseinfo.p_Surname, personBaseinfo.p_Othername,personBaseinfo.p_NameCH,0,0,false,eids,enos,personBaseinfo.e_FirstEmploymentID);
+                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, personBaseinfo.e_id, personBaseinfo.e_EmploymentNumber, personBaseinfo.s_id, personBaseinfo.s_StaffNumber, personBaseinfo.p_id, personBaseinfo.p_Surname, personBaseinfo.p_Othername,personBaseinfo.p_NameCH,0,0,false,eids,enos,personBaseinfo.e_FirstEmploymentID,personBaseinfo.s_CompanyID,ccode);
                 LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(personBaseinfo.u_Username, userInfo));
             }
             else if(personBaseinfo != null && personBaseinfo.e_id == null)
             {
-                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, null, null, null, null, personBaseinfo.p_id, "", "",personBaseinfo.p_NameCH,0,0,false,eids,enos,null);
+                userInfo = new MODEL.UserInfo((int)personBaseinfo.u_id, personBaseinfo.u_Username, personBaseinfo.p_Nickname, sessinonID, null, null, null, null, personBaseinfo.p_id, "", "",personBaseinfo.p_NameCH,0,0,false,eids,enos,null,null,null);
                 LSLibrary.WebAPP.LoginManager.SetLoginer(new LSLibrary.WebAPP.LoginUser<MODEL.UserInfo>(personBaseinfo.u_Username, userInfo));
             }
             return userInfo;

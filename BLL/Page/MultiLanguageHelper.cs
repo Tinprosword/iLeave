@@ -15,11 +15,23 @@ namespace BLL
 
         public static LSLibrary.WebAPP.BaseLanguage GetLanguagePacket()
         {
-            return LSLibrary.WebAPP.MulitiLanguageFactory.GetLanguagePacket(GetChoose());
+            string comDeployCode = "";
+            var loginer= BLL.User_wsref.GetLoginer();
+            if (loginer != null)
+            {
+                 comDeployCode = loginer.userInfo.companyDeployCode;
+            }
+            return LSLibrary.WebAPP.MulitiLanguageFactory.GetLanguagePacket(GetChoose(),comDeployCode);
         }
         public static LSLibrary.WebAPP.BaseLanguage GetLanguagePacket(LSLibrary.WebAPP.LanguageType type)
         {
-            return LSLibrary.WebAPP.MulitiLanguageFactory.GetLanguagePacket(type);
+            string comDeployCode = "";
+            var loginer = BLL.User_wsref.GetLoginer();
+            if (loginer != null)
+            {
+                comDeployCode = loginer.userInfo.companyDeployCode;
+            }
+            return LSLibrary.WebAPP.MulitiLanguageFactory.GetLanguagePacket(type,comDeployCode);
         }
 
         public static string GetLanguageByEn(string en)

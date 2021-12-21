@@ -135,6 +135,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetCompanyCode">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCompanyCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompanyCodeResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetLeaveSections">
         <s:complexType>
           <s:sequence>
@@ -158,6 +173,7 @@
       <s:element name="string" nillable="true" type="s:string" />
       <s:element name="Shift" nillable="true" type="tns:Shift" />
       <s:element name="double" type="s:double" />
+      <s:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
       <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
     </s:schema>
   </wsdl:types>
@@ -184,6 +200,12 @@
   </wsdl:message>
   <wsdl:message name="GetRealTotalSoapOut">
     <wsdl:part name="parameters" element="tns:GetRealTotalResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCompanyCode" />
+  </wsdl:message>
+  <wsdl:message name="GetCompanyCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCompanyCodeResponse" />
   </wsdl:message>
   <wsdl:message name="GetLeaveSectionsSoapIn">
     <wsdl:part name="parameters" element="tns:GetLeaveSections" />
@@ -212,6 +234,10 @@
   <wsdl:message name="GetRealTotalHttpPostOut">
     <wsdl:part name="Body" element="tns:double" />
   </wsdl:message>
+  <wsdl:message name="GetCompanyCodeHttpPostIn" />
+  <wsdl:message name="GetCompanyCodeHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
   <wsdl:message name="GetLeaveSectionsHttpPostIn">
     <wsdl:part name="leaveClass" type="s:string" />
     <wsdl:part name="position" type="s:string" />
@@ -236,6 +262,10 @@
       <wsdl:input message="tns:GetRealTotalSoapIn" />
       <wsdl:output message="tns:GetRealTotalSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetCompanyCode">
+      <wsdl:input message="tns:GetCompanyCodeSoapIn" />
+      <wsdl:output message="tns:GetCompanyCodeSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetLeaveSections">
       <wsdl:input message="tns:GetLeaveSectionsSoapIn" />
       <wsdl:output message="tns:GetLeaveSectionsSoapOut" />
@@ -253,6 +283,10 @@
     <wsdl:operation name="GetRealTotal">
       <wsdl:input message="tns:GetRealTotalHttpPostIn" />
       <wsdl:output message="tns:GetRealTotalHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyCode">
+      <wsdl:input message="tns:GetCompanyCodeHttpPostIn" />
+      <wsdl:output message="tns:GetCompanyCodeHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetLeaveSections">
       <wsdl:input message="tns:GetLeaveSectionsHttpPostIn" />
@@ -290,6 +324,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetRealTotal">
       <soap:operation soapAction="http://tempuri.org/GetRealTotal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyCode">
+      <soap:operation soapAction="http://tempuri.org/GetCompanyCode" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -345,6 +388,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetCompanyCode">
+      <soap12:operation soapAction="http://tempuri.org/GetCompanyCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetLeaveSections">
       <soap12:operation soapAction="http://tempuri.org/GetLeaveSections" style="document" />
       <wsdl:input>
@@ -377,6 +429,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetRealTotal">
       <http:operation location="/GetRealTotal" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyCode">
+      <http:operation location="/GetCompanyCode" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
