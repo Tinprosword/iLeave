@@ -61,6 +61,8 @@ namespace WebServiceLayer.WebReference_user {
         
         private System.Threading.SendOrPostCallback AuthenticateUserOperationCompleted;
         
+        private System.Threading.SendOrPostCallback AuthenticateUserADOperationCompleted;
+        
         private System.Threading.SendOrPostCallback IsLoginOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetPersonBaseInfoOperationCompleted;
@@ -176,6 +178,9 @@ namespace WebServiceLayer.WebReference_user {
         
         /// <remarks/>
         public event AuthenticateUserCompletedEventHandler AuthenticateUserCompleted;
+        
+        /// <remarks/>
+        public event AuthenticateUserADCompletedEventHandler AuthenticateUserADCompleted;
         
         /// <remarks/>
         public event IsLoginCompletedEventHandler IsLoginCompleted;
@@ -685,6 +690,37 @@ namespace WebServiceLayer.WebReference_user {
             if ((this.AuthenticateUserCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.AuthenticateUserCompleted(this, new AuthenticateUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AuthenticateUserAD", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public LoginResult AuthenticateUserAD(string UserName, string PasswordHash) {
+            object[] results = this.Invoke("AuthenticateUserAD", new object[] {
+                        UserName,
+                        PasswordHash});
+            return ((LoginResult)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AuthenticateUserADAsync(string UserName, string PasswordHash) {
+            this.AuthenticateUserADAsync(UserName, PasswordHash, null);
+        }
+        
+        /// <remarks/>
+        public void AuthenticateUserADAsync(string UserName, string PasswordHash, object userState) {
+            if ((this.AuthenticateUserADOperationCompleted == null)) {
+                this.AuthenticateUserADOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAuthenticateUserADOperationCompleted);
+            }
+            this.InvokeAsync("AuthenticateUserAD", new object[] {
+                        UserName,
+                        PasswordHash}, this.AuthenticateUserADOperationCompleted, userState);
+        }
+        
+        private void OnAuthenticateUserADOperationCompleted(object arg) {
+            if ((this.AuthenticateUserADCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AuthenticateUserADCompleted(this, new AuthenticateUserADCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -5028,6 +5064,32 @@ namespace WebServiceLayer.WebReference_user {
         private object[] results;
         
         internal AuthenticateUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public LoginResult Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((LoginResult)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void AuthenticateUserADCompletedEventHandler(object sender, AuthenticateUserADCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AuthenticateUserADCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AuthenticateUserADCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

@@ -389,6 +389,7 @@
     <Content Include="temp\test2.aspx" />
     <Content Include="temp\testabc.aspx" />
     <Content Include="temp\testPost.aspx" />
+    <Content Include="temp\testRQ.aspx" />
     <Content Include="temp\testWait.aspx" />
     <Content Include="temp\testws.asmx" />
     <Content Include="Web.config">
@@ -574,6 +575,13 @@
     </Compile>
     <Compile Include="temp\testPost.aspx.designer.cs">
       <DependentUpon>testPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="temp\testRQ.aspx.cs">
+      <DependentUpon>testRQ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="temp\testRQ.aspx.designer.cs">
+      <DependentUpon>testRQ.aspx</DependentUpon>
     </Compile>
     <Compile Include="temp\testWait.aspx.cs">
       <DependentUpon>testWait.aspx</DependentUpon>

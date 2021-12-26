@@ -14,7 +14,23 @@ namespace BLL
 
         public static WebServiceLayer.WebReference_user.LoginResult CheckLogin(string uid, string password)
         {
-            return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.AuthenticateUser(uid, LSLibrary.MD5Util.GetMD5_32(password).ToUpper());
+            WebServiceLayer.WebReference_user.LoginResult result = new WebServiceLayer.WebReference_user.LoginResult();
+            result.Result = 0;
+            result.SessionID = "";
+            bool LDAP = LSLibrary.WebAPP.WebConfig.getValue("EnableSSO") == "0" ? false : true;
+            if (LDAP)
+            {
+                result = WebServiceLayer.MyWebService.GlobalWebServices.ws_user.AuthenticateUserAD(uid, password);
+                if (result.Result < 1)
+                {
+                    result = WebServiceLayer.MyWebService.GlobalWebServices.ws_user.AuthenticateUser(uid, LSLibrary.MD5Util.GetMD5_32(password).ToUpper());
+                }
+            }
+            else
+            {
+                result= WebServiceLayer.MyWebService.GlobalWebServices.ws_user.AuthenticateUser(uid, LSLibrary.MD5Util.GetMD5_32(password).ToUpper());
+            }
+            return result;
         }
 
 

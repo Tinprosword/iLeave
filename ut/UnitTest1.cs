@@ -27,6 +27,34 @@ namespace ut
         }
     }
 
+    public class User
+    {
+        public int userid { get; set; }
+        public int empolyid { get; set; }
+        public int staffid { get; set; }
+        public int firsteid { get; set; }
+
+        public int addLeave(List<MODEL.Apply.apply_LeaveData> originDetail)
+        {
+            int result = 0;
+            string errorMsg = "";
+            result = BLL.Leave.InsertLeave(originDetail, userid, empolyid, staffid, "", ref errorMsg, firsteid);
+            return result;
+        }
+
+    }
+
+
+    [TestClass]
+    public class UT_Workflow
+    {
+        [TestMethod]
+        public void TestMethod1()
+        {
+
+        }
+    }
+
 
     [TestClass]
     public class UnitTest1
