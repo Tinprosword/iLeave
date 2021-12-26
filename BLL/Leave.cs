@@ -98,6 +98,11 @@ namespace BLL
                     int employID = employmentid;
                     int workFlowResult = BLL.workflow.InsertWorkflow(details, userid, messageInfo.ProcessID, employID);
                     result = insertResult;
+
+                    if (result == -8)
+                    {
+                        errorMsg = "No Apply Group";
+                    }
                 }
                 else
                 {
