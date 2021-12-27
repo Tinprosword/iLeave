@@ -26,7 +26,13 @@ namespace BLL
             return  path+ "\\mobil\\";
         }
 
-        //-1:empty .-2 same apply day or section,-3 sp error
+        /// <summary>
+        /// 0:ok -1:empty .-2 same apply day or section,-3 sp error
+        /// </summary>
+        /// <param name="originDetail"></param>
+        /// <param name="message"></param>
+        /// <param name="eid"></param>
+        /// <returns> 0:ok -1:empty .-2 same apply day or section,-3 sp error</returns>
         private static int CheckBeforeApply(List<MODEL.Apply.apply_LeaveData> originDetail,ref string message,int eid)
         {
             int result = 0;
