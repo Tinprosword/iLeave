@@ -91,15 +91,19 @@ namespace MODEL
             public int leavetypeid;
             public string leavetypeCode;
             public string leavetypeDescription;
+            public int byDaybyHour;
+            public double workHours;
+
             public DateTime LeaveDate;
             public int sectionid;
+
             public DateTime? LeaveHourFrom;
             public DateTime? LeaveHourTo;
             public double totalHours;
-            public int byDaybyHour;
+            
 
             //byday
-            public apply_LeaveData(int leavetypeid, string leavetypeCode, string leavetypeDescription, int sectionid,  DateTime leaveDate)
+            public apply_LeaveData(int leavetypeid, string leavetypeCode, string leavetypeDescription, int sectionid,  DateTime leaveDate, double _workHours)
             {
                 this.sectionid = sectionid;
                 this.leavetypeid = leavetypeid;
@@ -110,10 +114,11 @@ namespace MODEL
                 LeaveHourFrom = null;
                 LeaveHourTo = null;
                 totalHours = 0;
+                workHours = _workHours;
             }
 
             //byhour
-            public apply_LeaveData(int leavetypeid, string leavetypeCode, string leavetypeDescription, DateTime leaveDate,DateTime f,DateTime t,double total)
+            public apply_LeaveData(int leavetypeid, string leavetypeCode, string leavetypeDescription, DateTime leaveDate,DateTime f,DateTime t,double total, double _workHours)
             {
                 this.sectionid = 4;//hour
                 this.leavetypeid = leavetypeid;
@@ -124,6 +129,7 @@ namespace MODEL
                 LeaveHourFrom = new DateTime(leaveDate.Year, leaveDate.Month, leaveDate.Day, f.Hour, f.Minute, 0);
                 LeaveHourTo = new DateTime(leaveDate.Year, leaveDate.Month, leaveDate.Day, t.Hour, t.Minute, 0);
                 totalHours = total;
+                workHours = _workHours;
             }
 
             public double GetUnitByDay()
@@ -132,6 +138,13 @@ namespace MODEL
 
                 result = ViewState_page.getDayfromSectionsByDay(sectionid);
 
+                return result;
+            }
+
+            public double GetUnitByHour()
+            {
+                double result = 0;
+                result=Math.Round((float)((float)totalHours / (float)workHours), 2);
                 return result;
             }
         }

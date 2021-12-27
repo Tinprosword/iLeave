@@ -148,8 +148,6 @@ namespace BLL
             {
                 if (employmentID > 0)
                 {
-                    double TotalWorkHour = GetEmployHours(employmentID);
-
                     WebServiceLayer.WebReference_leave.StaffLeaveRequest newItem = new WebServiceLayer.WebReference_leave.StaffLeaveRequest();
                     newItem.CompareKey = null;
                     newItem.CreateDate = System.DateTime.Now;
@@ -174,7 +172,7 @@ namespace BLL
                     newItem.RequestID = 0;
                     
                     newItem.Status = 0;
-                    newItem.TotalWorkHours = TotalWorkHour;
+                    newItem.TotalWorkHours = originDetail[i].workHours;
 
                     if (originDetail[i].sectionid == 0)
                     {
@@ -209,7 +207,7 @@ namespace BLL
                     else if (originDetail[i].sectionid == 4)
                     {
                         newItem.Section = 0;//hr put 0.so ileave put 0 also.
-                        newItem.Unit = Math.Round((float)((float)originDetail[i].totalHours / (float)TotalWorkHour), 2);
+                        newItem.Unit = originDetail[i].GetUnitByHour();
 
                         newItem.IsHalfDay = false;
                         newItem.DisplaySection = 0;
@@ -252,7 +250,7 @@ namespace BLL
         }
 
 
-        private static double GetEmployHours(int employid)
+        public static double GetEmployHours(int employid)
         {
             double result = WebServiceLayer.MyWebService.GlobalWebServices.ws_user.GetTotalWorkHours(employid);
             return result;
