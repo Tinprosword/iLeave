@@ -5,12 +5,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace BLL
 {
     public class CodeSetting
     {
         public static string SystemParameter_showleaveCode = "HIDE_LEAVECODE_IN_LEAVE_CALENDAR";
         public static string SystemParameter_baseurl = "ILEAVE_HRBASEURL";
+
+        public static WebServiceLayer.WebReference_codesettings.LeaveInfo[] GetAllLeaveInfo()
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_codesetting.GetAllLeaveInfo();
+        }
+
 
         public static List<string> GetCompanyDeployCode()
         {

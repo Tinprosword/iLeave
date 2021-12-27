@@ -19,6 +19,7 @@ namespace WEBUI.Pages
     public partial class Apply : BLL.CustomLoginTemplate
     {
         private static string ViewState_PageName = "PageView";
+        //repeater 中的leave section.因為不固定，所以，，，不記得為什麼要作為一個全局變量了。謹慎添加單獨的頁面全局變量，盡可能放入到ViewState_PageName中。保持程序簡潔性!!!!!!!
         public List<LSLibrary.WebAPP.ValueText<int>> RPITEM_LeaveListSections;
 
 

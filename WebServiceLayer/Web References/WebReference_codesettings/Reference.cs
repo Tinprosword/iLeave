@@ -30,6 +30,8 @@ namespace WebServiceLayer.WebReference_codesettings {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(BasicShift))]
     public partial class CodeSettingsV2 : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback GetAllLeaveInfoOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetSystemParameterOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetShiftInfoByIDOperationCompleted;
@@ -81,6 +83,9 @@ namespace WebServiceLayer.WebReference_codesettings {
         }
         
         /// <remarks/>
+        public event GetAllLeaveInfoCompletedEventHandler GetAllLeaveInfoCompleted;
+        
+        /// <remarks/>
         public event GetSystemParameterCompletedEventHandler GetSystemParameterCompleted;
         
         /// <remarks/>
@@ -97,6 +102,33 @@ namespace WebServiceLayer.WebReference_codesettings {
         
         /// <remarks/>
         public event GetLeaveSectionsCompletedEventHandler GetLeaveSectionsCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllLeaveInfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public LeaveInfo[] GetAllLeaveInfo() {
+            object[] results = this.Invoke("GetAllLeaveInfo", new object[0]);
+            return ((LeaveInfo[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllLeaveInfoAsync() {
+            this.GetAllLeaveInfoAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetAllLeaveInfoAsync(object userState) {
+            if ((this.GetAllLeaveInfoOperationCompleted == null)) {
+                this.GetAllLeaveInfoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllLeaveInfoOperationCompleted);
+            }
+            this.InvokeAsync("GetAllLeaveInfo", new object[0], this.GetAllLeaveInfoOperationCompleted, userState);
+        }
+        
+        private void OnGetAllLeaveInfoOperationCompleted(object arg) {
+            if ((this.GetAllLeaveInfoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllLeaveInfoCompleted(this, new GetAllLeaveInfoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetSystemParameter", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -304,6 +336,685 @@ namespace WebServiceLayer.WebReference_codesettings {
                 return true;
             }
             return false;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LeaveInfo {
+        
+        private int idField;
+        
+        private string codeField;
+        
+        private string descriptionField;
+        
+        private double payRatioField;
+        
+        private bool isAverageDailyRateField;
+        
+        private int statusField;
+        
+        private int portalStatusField;
+        
+        private bool isAccumulableLeaveField;
+        
+        private bool isEnforceAttachmentField;
+        
+        private bool isInclude713Field;
+        
+        private string accountCodeLeaveField;
+        
+        private int paySlipReportGroupField;
+        
+        private bool isAdjustInNextMonthField;
+        
+        private string leaveNotesField;
+        
+        private string entitleEffectiveDateField;
+        
+        private bool isIncludeGratuityField;
+        
+        private int accumulableLeaveTypeField;
+        
+        private int entitledByField;
+        
+        private int applyRequirementField;
+        
+        private decimal leaveExpiryAfterValueField;
+        
+        private decimal leaveAllowApplyBeforeValueField;
+        
+        private int leaveExpiryAfterUnitField;
+        
+        private int leaveAllowApplyBeforeUnitField;
+        
+        private bool isEnableAdvanceLeaveOnPortalField;
+        
+        private double launchConditionField;
+        
+        private double aLRoundUpOptionField;
+        
+        private string commonLeaveYearField;
+        
+        private bool isCompareEOLeaveField;
+        
+        private int carryForwardByField;
+        
+        private int grantEntitlementMethodField;
+        
+        private int entitleExpiryWaysField;
+        
+        private System.Nullable<int> entitleExpiryByAfterCarryForwardDateInMonthField;
+        
+        private System.Nullable<int> entitleExpiryByAfterCarryForwardDateInDayField;
+        
+        private string entitleExpiryBySpecificDateField;
+        
+        private System.Nullable<int> backpayPayitemTypeIDField;
+        
+        private bool isUseTwelveMonthDailyRateInConsecutiveDayField;
+        
+        private int maxEntitlementFrequencyField;
+        
+        private bool isEnableAdvanceLeaveOnYearEndField;
+        
+        private double attachmentToleranceField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double PayRatio {
+            get {
+                return this.payRatioField;
+            }
+            set {
+                this.payRatioField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsAverageDailyRate {
+            get {
+                return this.isAverageDailyRateField;
+            }
+            set {
+                this.isAverageDailyRateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int PortalStatus {
+            get {
+                return this.portalStatusField;
+            }
+            set {
+                this.portalStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsAccumulableLeave {
+            get {
+                return this.isAccumulableLeaveField;
+            }
+            set {
+                this.isAccumulableLeaveField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsEnforceAttachment {
+            get {
+                return this.isEnforceAttachmentField;
+            }
+            set {
+                this.isEnforceAttachmentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsInclude713 {
+            get {
+                return this.isInclude713Field;
+            }
+            set {
+                this.isInclude713Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string AccountCodeLeave {
+            get {
+                return this.accountCodeLeaveField;
+            }
+            set {
+                this.accountCodeLeaveField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int PaySlipReportGroup {
+            get {
+                return this.paySlipReportGroupField;
+            }
+            set {
+                this.paySlipReportGroupField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsAdjustInNextMonth {
+            get {
+                return this.isAdjustInNextMonthField;
+            }
+            set {
+                this.isAdjustInNextMonthField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string LeaveNotes {
+            get {
+                return this.leaveNotesField;
+            }
+            set {
+                this.leaveNotesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string EntitleEffectiveDate {
+            get {
+                return this.entitleEffectiveDateField;
+            }
+            set {
+                this.entitleEffectiveDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsIncludeGratuity {
+            get {
+                return this.isIncludeGratuityField;
+            }
+            set {
+                this.isIncludeGratuityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int AccumulableLeaveType {
+            get {
+                return this.accumulableLeaveTypeField;
+            }
+            set {
+                this.accumulableLeaveTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int EntitledBy {
+            get {
+                return this.entitledByField;
+            }
+            set {
+                this.entitledByField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ApplyRequirement {
+            get {
+                return this.applyRequirementField;
+            }
+            set {
+                this.applyRequirementField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public decimal LeaveExpiryAfterValue {
+            get {
+                return this.leaveExpiryAfterValueField;
+            }
+            set {
+                this.leaveExpiryAfterValueField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public decimal LeaveAllowApplyBeforeValue {
+            get {
+                return this.leaveAllowApplyBeforeValueField;
+            }
+            set {
+                this.leaveAllowApplyBeforeValueField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int LeaveExpiryAfterUnit {
+            get {
+                return this.leaveExpiryAfterUnitField;
+            }
+            set {
+                this.leaveExpiryAfterUnitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int LeaveAllowApplyBeforeUnit {
+            get {
+                return this.leaveAllowApplyBeforeUnitField;
+            }
+            set {
+                this.leaveAllowApplyBeforeUnitField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsEnableAdvanceLeaveOnPortal {
+            get {
+                return this.isEnableAdvanceLeaveOnPortalField;
+            }
+            set {
+                this.isEnableAdvanceLeaveOnPortalField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double LaunchCondition {
+            get {
+                return this.launchConditionField;
+            }
+            set {
+                this.launchConditionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double ALRoundUpOption {
+            get {
+                return this.aLRoundUpOptionField;
+            }
+            set {
+                this.aLRoundUpOptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CommonLeaveYear {
+            get {
+                return this.commonLeaveYearField;
+            }
+            set {
+                this.commonLeaveYearField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsCompareEOLeave {
+            get {
+                return this.isCompareEOLeaveField;
+            }
+            set {
+                this.isCompareEOLeaveField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CarryForwardBy {
+            get {
+                return this.carryForwardByField;
+            }
+            set {
+                this.carryForwardByField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int GrantEntitlementMethod {
+            get {
+                return this.grantEntitlementMethodField;
+            }
+            set {
+                this.grantEntitlementMethodField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int EntitleExpiryWays {
+            get {
+                return this.entitleExpiryWaysField;
+            }
+            set {
+                this.entitleExpiryWaysField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> EntitleExpiryByAfterCarryForwardDateInMonth {
+            get {
+                return this.entitleExpiryByAfterCarryForwardDateInMonthField;
+            }
+            set {
+                this.entitleExpiryByAfterCarryForwardDateInMonthField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> EntitleExpiryByAfterCarryForwardDateInDay {
+            get {
+                return this.entitleExpiryByAfterCarryForwardDateInDayField;
+            }
+            set {
+                this.entitleExpiryByAfterCarryForwardDateInDayField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string EntitleExpiryBySpecificDate {
+            get {
+                return this.entitleExpiryBySpecificDateField;
+            }
+            set {
+                this.entitleExpiryBySpecificDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> BackpayPayitemTypeID {
+            get {
+                return this.backpayPayitemTypeIDField;
+            }
+            set {
+                this.backpayPayitemTypeIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsUseTwelveMonthDailyRateInConsecutiveDay {
+            get {
+                return this.isUseTwelveMonthDailyRateInConsecutiveDayField;
+            }
+            set {
+                this.isUseTwelveMonthDailyRateInConsecutiveDayField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int MaxEntitlementFrequency {
+            get {
+                return this.maxEntitlementFrequencyField;
+            }
+            set {
+                this.maxEntitlementFrequencyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsEnableAdvanceLeaveOnYearEnd {
+            get {
+                return this.isEnableAdvanceLeaveOnYearEndField;
+            }
+            set {
+                this.isEnableAdvanceLeaveOnYearEndField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double AttachmentTolerance {
+            get {
+                return this.attachmentToleranceField;
+            }
+            set {
+                this.attachmentToleranceField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class t_CustomProp {
+        
+        private int propCfgIDField;
+        
+        private int relatedIDField;
+        
+        private string valueField;
+        
+        private System.DateTime createDateField;
+        
+        private int createUserField;
+        
+        private System.DateTime modifiedDateField;
+        
+        private int modifiedUserField;
+        
+        /// <remarks/>
+        public int PropCfgID {
+            get {
+                return this.propCfgIDField;
+            }
+            set {
+                this.propCfgIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RelatedID {
+            get {
+                return this.relatedIDField;
+            }
+            set {
+                this.relatedIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CreateUser {
+            get {
+                return this.createUserField;
+            }
+            set {
+                this.createUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ModifiedDate {
+            get {
+                return this.modifiedDateField;
+            }
+            set {
+                this.modifiedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ModifiedUser {
+            get {
+                return this.modifiedUserField;
+            }
+            set {
+                this.modifiedUserField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Shift))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class BasicShift {
+        
+        private int idField;
+        
+        private string codeField;
+        
+        private string descriptionField;
+        
+        private System.DateTime bankOnTimeField;
+        
+        private System.DateTime bankOffTimeField;
+        
+        private double totalWorkHourField;
+        
+        private string mainShiftField;
+        
+        private byte shiftTypeField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Code {
+            get {
+                return this.codeField;
+            }
+            set {
+                this.codeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime BankOnTime {
+            get {
+                return this.bankOnTimeField;
+            }
+            set {
+                this.bankOnTimeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime BankOffTime {
+            get {
+                return this.bankOffTimeField;
+            }
+            set {
+                this.bankOffTimeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double TotalWorkHour {
+            get {
+                return this.totalWorkHourField;
+            }
+            set {
+                this.totalWorkHourField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string MainShift {
+            get {
+                return this.mainShiftField;
+            }
+            set {
+                this.mainShiftField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public byte ShiftType {
+            get {
+                return this.shiftTypeField;
+            }
+            set {
+                this.shiftTypeField = value;
+            }
         }
     }
     
@@ -702,200 +1413,27 @@ namespace WebServiceLayer.WebReference_codesettings {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class t_CustomProp {
-        
-        private int propCfgIDField;
-        
-        private int relatedIDField;
-        
-        private string valueField;
-        
-        private System.DateTime createDateField;
-        
-        private int createUserField;
-        
-        private System.DateTime modifiedDateField;
-        
-        private int modifiedUserField;
-        
-        /// <remarks/>
-        public int PropCfgID {
-            get {
-                return this.propCfgIDField;
-            }
-            set {
-                this.propCfgIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int RelatedID {
-            get {
-                return this.relatedIDField;
-            }
-            set {
-                this.relatedIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime CreateDate {
-            get {
-                return this.createDateField;
-            }
-            set {
-                this.createDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int CreateUser {
-            get {
-                return this.createUserField;
-            }
-            set {
-                this.createUserField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime ModifiedDate {
-            get {
-                return this.modifiedDateField;
-            }
-            set {
-                this.modifiedDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int ModifiedUser {
-            get {
-                return this.modifiedUserField;
-            }
-            set {
-                this.modifiedUserField = value;
-            }
-        }
-    }
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetAllLeaveInfoCompletedEventHandler(object sender, GetAllLeaveInfoCompletedEventArgs e);
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Shift))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
-    [System.SerializableAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class BasicShift {
+    public partial class GetAllLeaveInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
-        private int idField;
+        private object[] results;
         
-        private string codeField;
-        
-        private string descriptionField;
-        
-        private System.DateTime bankOnTimeField;
-        
-        private System.DateTime bankOffTimeField;
-        
-        private double totalWorkHourField;
-        
-        private string mainShiftField;
-        
-        private byte shiftTypeField;
-        
-        /// <remarks/>
-        public int ID {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
+        internal GetAllLeaveInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
         }
         
         /// <remarks/>
-        public string Code {
+        public LeaveInfo[] Result {
             get {
-                return this.codeField;
-            }
-            set {
-                this.codeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                this.descriptionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime BankOnTime {
-            get {
-                return this.bankOnTimeField;
-            }
-            set {
-                this.bankOnTimeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime BankOffTime {
-            get {
-                return this.bankOffTimeField;
-            }
-            set {
-                this.bankOffTimeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public double TotalWorkHour {
-            get {
-                return this.totalWorkHourField;
-            }
-            set {
-                this.totalWorkHourField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string MainShift {
-            get {
-                return this.mainShiftField;
-            }
-            set {
-                this.mainShiftField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte ShiftType {
-            get {
-                return this.shiftTypeField;
-            }
-            set {
-                this.shiftTypeField = value;
+                this.RaiseExceptionIfNecessary();
+                return ((LeaveInfo[])(this.results[0]));
             }
         }
     }

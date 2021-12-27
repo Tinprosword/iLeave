@@ -30,7 +30,7 @@ namespace WEBUI.Pages
 
         //页面额外属性
         protected bool bHiddenLeaveCode = true;
-        protected List<WebServiceLayer.WebReference_leave.t_Leave> leavesInfo;
+        protected List<WebServiceLayer.WebReference_codesettings.LeaveInfo> leavesInfo;
 
         #region pageevent
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
@@ -46,7 +46,7 @@ namespace WEBUI.Pages
             {
                 bHiddenLeaveCode = value == "1" ? true : false;
             }
-            leavesInfo = BLL.Leave.GetAllLeave();
+            leavesInfo = BLL.CodeSetting.GetAllLeaveInfo().ToList();
 
         }
 

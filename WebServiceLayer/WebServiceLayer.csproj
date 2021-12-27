@@ -113,6 +113,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Web References\WebReference_codesettings\CodeSettingsV2.wsdl" />
+    <None Include="Web References\WebReference_codesettings\LeaveInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\WebReference_codesettings\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
