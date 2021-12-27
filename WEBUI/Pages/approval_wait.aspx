@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 divheighter"><asp:Label ID="lb_date" runat="server"><%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetFromto(BLL.MultiLanguageHelper.GetLanguagePacket().approval_To,BLL.MultiLanguageHelper.GetLanguagePacket().approval_Day)%></asp:Label></div>
-                <div class="col-xs-12 divheighter"><asp:Label ID="lb_leave" runat="server"><%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetBalance()%></asp:Label></div>
+                <div class="col-xs-12 divheighter"><asp:Label ID="lb_leave" runat="server"><%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetLeaveDesc(BLL.MultiLanguageHelper.GetLanguagePacket().Common_lable_cancel)%></asp:Label></div>
                 <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applydate %>:<%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetApplydate()%></div>
                 <div class="col-xs-12 " style="margin-bottom:4px;">
                     <%--<div class="col-xs-4 lsf-clearPadding" style="width:40px;">--%><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applyRemark %>:<%--</div>--%><%--<div class="col-xs-8 lsf-clearPadding">--%><%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetApprovalRemark()%><%--</div>--%></div>
@@ -105,7 +105,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().clot_day %>:<%#BLL.CLOT.showCLOTTime((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem) %></div>
-                <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().clot_Type%>:<%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Type==0?"OT":"CL" %></div>
+                <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().clot_Type%>:<%#ShowClotName(((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Type) %></div>
                 <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applydate %>:<%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).CreateDate.ToString("yyyy-MM-dd") %></div>
                 <div class="col-xs-12 " style="margin-bottom:4px;"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applyRemark %>:<%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Remarks %></div>
                 <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_attachment %>:<%# BLL.common.GetAttachmentHtml(   ((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).ID,Server,loginer.userInfo.loginName,BLL.GlobalVariate.AttachType.clot  )%></div>

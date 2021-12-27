@@ -30,7 +30,7 @@
                     <td colspan="1">
                         <asp:Button ID="bt_estimation" runat="server" Text="Show Balance" BackColor="#2573a4" ForeColor="White" BorderWidth="0" Height="34px" Font-Size="16px" style="border-radius:5px 5px 5px 5px" OnClick="bt_estimation_Click"/>
                     </td>
-                        <td><asp:Label  ID="lb_msg" runat="server" Text="--"></asp:Label></td>
+                        <td><asp:Label  ID="lb_msg" runat="server" Text="--"></asp:Label>&nbsp;<asp:Label  ID="lb_days" runat="server" Text="Day(s)"></asp:Label></td>
                 </tr>
             </table>
     </div>

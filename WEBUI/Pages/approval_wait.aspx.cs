@@ -590,6 +590,18 @@ namespace WEBUI.Pages
             return BLL.Leave.GetClotStatusDesc(cLOTRequest.Status);
         }
 
+        public string ShowClotName(int type)
+        {
+            if (type == 0)
+            {
+                return BLL.MultiLanguageHelper.GetLanguagePacket().Common_label_OT;
+            }
+            else
+            {
+                return BLL.MultiLanguageHelper.GetLanguagePacket().Common_label_CL;
+            }
+        }
+
         public string showNewLink()
         {
             if (from==0)

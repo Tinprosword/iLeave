@@ -21,12 +21,12 @@ namespace WebServiceLayer.MyModel
             return result;
         }
 
-        public string Info_GetBalance()
+        public string Info_GetLeaveDesc(string cancelLabel)
         {
             string result = "";
             if (data.WorkflowTypeID == 10)
             {
-                result = "Cancel " + data.leaveDesc;
+                result = cancelLabel+" " + data.leaveDesc;
             }
             else
             {

@@ -28,11 +28,11 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td colspan="2"><asp:TextBox ID="tb_user" runat="server" Width="90%"/></td>
+                        <td colspan="2"><asp:TextBox ID="tb_user" runat="server" Width="90%" placeholder="User Name/用戶名"/></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td colspan="2"><asp:TextBox ID="tb_password" runat="server" Width="90%" TextMode="Password"/></td>
+                        <td colspan="2"><asp:TextBox ID="tb_password" runat="server" Width="90%" TextMode="Password" placeholder="Password/密碼" /></td>
                     </tr>
 
                     <tr><td colspan="1"></td>

@@ -69,6 +69,8 @@ namespace WEBUI.Pages
         private void MultipleLanguage()
         {
             //multiplayLanguage
+
+
             string language_title = BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lan).approvalWait_CLOT_Title;
             string language_balance = BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lan).approvalWait_CLOT_Balance;
             string language_apply = BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lan).approvalWait_CLOT_applycount;
@@ -78,6 +80,7 @@ namespace WEBUI.Pages
             string language_col1 = BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lan).approval_list_column1;
             string language_col2 = BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lan).clot_Type;
             string language_col3 = BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lan).clot_day;
+
 
             this.lt_leavedetail.Text = language_title;
             this.lt_bancetitle.Text = language_balance;

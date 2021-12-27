@@ -45,6 +45,13 @@ namespace WEBUI.Pages
         private void SetupUI()
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().apply_estimation, "~/pages/main.aspx", true);
+            //ddl bind
+            ListItem[] datasource = new ListItem[2];
+            datasource[0]=(new ListItem(BLL.MultiLanguageHelper.GetLanguagePacket().Common_label_AnnualLeave, "0"));
+            datasource[1]=(new ListItem(BLL.MultiLanguageHelper.GetLanguagePacket().Common_label_SickLeave, "1"));
+            this.DropDownList1.Items.Clear();
+            this.DropDownList1.Items.AddRange(datasource);
+
             DateTime esDate = BLL.Other.GetEstimateDate(loginer.userInfo.employID??0);
             this.tb_date.Text = esDate.ToString("yyyy-MM-dd");
         }
@@ -59,6 +66,7 @@ namespace WEBUI.Pages
             this.lt_type.Text = BLL.MultiLanguageHelper.GetLanguagePacket().type;
             this.lt_date.Text = BLL.MultiLanguageHelper.GetLanguagePacket().date;
             this.bt_estimation.Text = BLL.MultiLanguageHelper.GetLanguagePacket().btn_es;
+            this.lb_days.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Common_label_Days;
         }
         #endregion
 
@@ -70,12 +78,12 @@ namespace WEBUI.Pages
             if (leaveType == "0")
             {
                 double albalance = BLL.Leave.GetEstimation(loginer.userInfo.firsteid ?? 0, asofdate);
-                this.lb_msg.Text = albalance.ToString() + " Day(s)";
+                this.lb_msg.Text = albalance.ToString();
             }
             else
             {
                 double slbalance = BLL.Leave.GetSLEstimation(loginer.userInfo.firsteid ?? 0, asofdate);
-                this.lb_msg.Text = slbalance.ToString() + " Day(s)";
+                this.lb_msg.Text = slbalance.ToString();
             }
         }
     }
