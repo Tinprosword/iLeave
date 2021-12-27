@@ -132,21 +132,50 @@ namespace MODEL
                 workHours = _workHours;
             }
 
-            public double GetUnitByDay()
+            public double GetUnit()
             {
                 double result = 0;
-
-                result = ViewState_page.getDayfromSectionsByDay(sectionid);
-
+                if (byDaybyHour == 0)
+                {
+                    result = ViewState_page.getDayfromSectionsByDay(sectionid);
+                }
+                else
+                {
+                    result = Math.Round((float)((float)totalHours / (float)workHours), 2);
+                }
                 return result;
             }
 
-            public double GetUnitByHour()
+            public bool IsAL()
             {
-                double result = 0;
-                result=Math.Round((float)((float)totalHours / (float)workHours), 2);
+                bool result = false;
+                if (leavetypeCode.ToUpper().StartsWith("AL"))
+                {
+                    result= true;
+                }
                 return result;
             }
+
+            public bool IsSL()
+            {
+                bool result = false;
+                if (leavetypeCode.ToUpper() == "SL")
+                {
+                    result = true;
+                }
+                return result;
+            }
+
+            public static double GetCurrentApplyUnit(List<apply_LeaveData> data)
+            {
+                double result = 0;
+                foreach (var item in data)
+                {
+                    result += item.GetUnit();
+                }
+                return result;
+            }
+
         }
 
         

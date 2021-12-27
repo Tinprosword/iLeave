@@ -532,17 +532,20 @@ namespace WEBUI.Pages
                         string leavename = LSLibrary.WebAPP.ValueText<int>.GetText(data.leavetype, int.Parse(data.LeaveTypeSelectValue));
                         MODEL.Apply.apply_LeaveData newItem = null;
                         double workhours=BLL.Leave.GetEmployHours(loginer.userInfo.employID??0);
+                        var selectLeave = leavesInfo.Where(x => x.ID == leaveId).FirstOrDefault();
+                        string leaveCode = selectLeave == null ? "" : selectLeave.Code;
+                        
                         if (data.bydayorHour == 0)
                         {
-                            newItem = new MODEL.Apply.apply_LeaveData(leaveId, leavename, leavename, sectiontype, dateTime, workhours);
+                            newItem = new MODEL.Apply.apply_LeaveData(leaveId, leaveCode, leavename, sectiontype, dateTime, workhours);
                         }
                         else if (data.bydayorHour == 1 && data.from != null && data.to != null)
                         {
-                            newItem = new MODEL.Apply.apply_LeaveData(leaveId, leavename, leavename, dateTime, data.from.Value, data.to.Value, data.totalHours, workhours);
+                            newItem = new MODEL.Apply.apply_LeaveData(leaveId, leaveCode, leavename, dateTime, data.from.Value, data.to.Value, data.totalHours, workhours);
                         }
                         else
                         {
-                            newItem = new MODEL.Apply.apply_LeaveData(leaveId, leavename, leavename, 0, dateTime, workhours);
+                            newItem = new MODEL.Apply.apply_LeaveData(leaveId, leaveCode, leavename, 0, dateTime, workhours);
                         }
                         data.LeaveList.Add(newItem);
                         data.LeaveList = data.LeaveList.OrderBy(x => x.LeaveDate).ToList();

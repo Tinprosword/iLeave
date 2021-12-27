@@ -27,28 +27,52 @@ namespace BLL
         }
 
         /// <summary>
-        /// 0:ok -1:empty .-2 same apply day or section,-3 sp error
+        /// 0:ok -1:empty .-2 same apply day or section,-3 sp error -4 other error
         /// </summary>
         /// <param name="originDetail"></param>
         /// <param name="message"></param>
         /// <param name="eid"></param>
         /// <returns> 0:ok -1:empty .-2 same apply day or section,-3 sp error</returns>
-        private static int CheckBeforeApply(List<MODEL.Apply.apply_LeaveData> originDetail,ref string message,int eid)
+        private static int CheckBeforeApply(List<MODEL.Apply.apply_LeaveData> originDetail, ref string message, int eid, int? staffid)
         {
+            //check all logic.once fail skip.
             int result = 0;
-            if (originDetail.Count == 0)
+
+            //check data is not empty.
+            if (result == 0)
             {
-                result = -1;
-                message = MultiLanguageHelper.GetLanguagePacket().apply_msg_emptydate;
+                if (originDetail.Count == 0)
+                {
+                    result = -1;
+                    message = MultiLanguageHelper.GetLanguagePacket().apply_msg_emptydate;
+                }
             }
-            else
+
+            //check al/sl balance
+            bool isal = originDetail[0].IsAL();
+            bool isSL = originDetail[0].IsSL();
+            int leaveid = originDetail[0].leavetypeid;
+
+            if (isSL || isal)
             {
-                //sp check
+                double availableBalance = BLL.Leave.GetAailabeValue_substractFutherAndWait(leaveid, staffid ?? 0, eid);
+                double currentApply = MODEL.Apply.apply_LeaveData.GetCurrentApplyUnit(originDetail);
+                if (currentApply > availableBalance)
+                {
+                    result = -4;
+                    message = BLL.MultiLanguageHelper.GetLanguagePacket().Common_limitbalance;
+                }
+            }
+
+
+            //sp check
+            if (result == 0)
+            {
                 for (int i = 0; i < originDetail.Count; i++)
                 {
                     string uid = "0";
                     string lang = "en";
-                    string unit = originDetail[i].GetUnitByDay().ToString();
+                    string unit = originDetail[i].GetUnit().ToString();
                     string[] spPs = new string[] { eid.ToString(), originDetail[i].leavetypeid.ToString(), originDetail[i].LeaveDate.ToString("yyyy-MM-dd"), unit, lang, uid };
                     string spCheckResult = BLL.Other.ExeStropFun((int)BLL.GlobalVariate.spFunctionid.leave_ADD_Portal, true, spPs);
 
@@ -59,29 +83,30 @@ namespace BLL
                         break;
                     }
                 }
+            }
 
-                //other check
-                if(result!=-3)
+            //checked overlap.
+            if (result == 0)
+            {
+                List<LeaveRequestDetail> requestDetails = getWaitingApproveAndApprovedByEIDS(new List<int> { eid });
+                for (int i = 0; i < originDetail.Count; i++)
                 {
-                    List<LeaveRequestDetail> requestDetails = getWaitingApproveAndApprovedByEIDS(new List<int> { eid });
-                    for (int i = 0; i < originDetail.Count; i++)
+                    var theSamedays = requestDetails.Where(x => (DateTime)x.LeaveFrom == originDetail[i].LeaveDate).ToList();
+
+                    if (theSamedays.Count > 0)
                     {
-                        var theSamedays = requestDetails.Where(x => (DateTime)x.LeaveFrom == originDetail[i].LeaveDate).ToList();
+                        var sameDayAndSameSection = theSamedays.Where(x => x.Section == originDetail[i].sectionid).ToList();
 
-                        if (theSamedays.Count > 0)
+                        if (originDetail[i].sectionid == (int)GlobalVariate.sectionType.full || sameDayAndSameSection.Count() > 0)
                         {
-                            var sameDayAndSameSection = theSamedays.Where(x => x.Section == originDetail[i].sectionid).ToList();
-
-                            if (originDetail[i].sectionid == (int)GlobalVariate.sectionType.full || sameDayAndSameSection.Count() > 0)
-                            {
-                                result = -2;
-                                message += string.Format(BLL.MultiLanguageHelper.GetLanguagePacket().common_msg_alappliend, originDetail[i].LeaveDate.ToString("MM-dd")) + "\r\n";
-                                break;
-                            }
+                            result = -2;
+                            message += string.Format(BLL.MultiLanguageHelper.GetLanguagePacket().common_msg_alappliend, originDetail[i].LeaveDate.ToString("MM-dd")) + "\r\n";
+                            break;
                         }
                     }
                 }
             }
+
             return result;
         }
 
@@ -92,7 +117,7 @@ namespace BLL
 
             errorMsg = "";
             int result = -1;
-            int checkResult = CheckBeforeApply(originDetail, ref errorMsg, employmentid);
+            int checkResult = CheckBeforeApply(originDetail, ref errorMsg, employmentid,staffid);
             if (checkResult >= 0)
             {
                 WebServiceLayer.WebReference_leave.StaffLeaveRequest[] details;
@@ -183,7 +208,7 @@ namespace BLL
                     if (originDetail[i].sectionid == 0)
                     {
                         newItem.Section = originDetail[i].sectionid;
-                        newItem.Unit = originDetail[i].GetUnitByDay();
+                        newItem.Unit = originDetail[i].GetUnit();
                         newItem.IsHalfDay = false;
                         newItem.DisplaySection = newItem.Section;
                         newItem.LeaveHours = 0;
@@ -193,7 +218,7 @@ namespace BLL
                     else if (originDetail[i].sectionid == 1 || originDetail[i].sectionid == 2)
                     {
                         newItem.Section = originDetail[i].sectionid;
-                        newItem.Unit = originDetail[i].GetUnitByDay();
+                        newItem.Unit = originDetail[i].GetUnit();
                         newItem.IsHalfDay = true;
                         newItem.DisplaySection = newItem.Section;
                         newItem.LeaveHours = 0;
@@ -203,7 +228,7 @@ namespace BLL
                     else if (originDetail[i].sectionid == 3)
                     {
                         newItem.Section = originDetail[i].sectionid;
-                        newItem.Unit = originDetail[i].GetUnitByDay();
+                        newItem.Unit = originDetail[i].GetUnit();
                         newItem.IsHalfDay = false;
                         newItem.DisplaySection = newItem.Section;
                         newItem.LeaveHours = 0;
@@ -213,7 +238,7 @@ namespace BLL
                     else if (originDetail[i].sectionid == 4)
                     {
                         newItem.Section = 0;//hr put 0.so ileave put 0 also.
-                        newItem.Unit = originDetail[i].GetUnitByHour();
+                        newItem.Unit = originDetail[i].GetUnit();
 
                         newItem.IsHalfDay = false;
                         newItem.DisplaySection = 0;
