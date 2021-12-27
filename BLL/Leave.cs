@@ -33,7 +33,7 @@ namespace BLL
         /// <param name="message"></param>
         /// <param name="eid"></param>
         /// <returns> 0:ok -1:empty .-2 same apply day or section,-3 sp error</returns>
-        private static int CheckBeforeApply(List<MODEL.Apply.apply_LeaveData> originDetail, ref string message, int eid, int? staffid)
+        private static int CheckBeforeApply(List<MODEL.Apply.apply_LeaveData> originDetail, ref string message, int eid, int? staffid,List<WebServiceLayer.WebReference_codesettings.LeaveInfo> allLeaveInfo)
         {
             //check all logic.once fail skip.
             int result = 0;
@@ -48,25 +48,45 @@ namespace BLL
                 }
             }
 
-            //check al/sl balance
+            //common valiable
+            double currentApply = MODEL.Apply.apply_LeaveData.GetCurrentApplyUnit(originDetail);
             bool isal = originDetail[0].IsAL();
             bool isSL = originDetail[0].IsSL();
             int leaveid = originDetail[0].leavetypeid;
 
-            if (isSL || isal)
+            bool enfourceAttachment = false;
+            double attachmentTolerance = 99;
+            WebServiceLayer.WebReference_codesettings.LeaveInfo theLeaveInfo = allLeaveInfo.Where(x => x.ID == leaveid).FirstOrDefault();
+            if (theLeaveInfo != null)
             {
-                double availableBalance = BLL.Leave.GetAailabeValue_substractFutherAndWait(leaveid, staffid ?? 0, eid);
-                double currentApply = MODEL.Apply.apply_LeaveData.GetCurrentApplyUnit(originDetail);
-                if (currentApply > availableBalance)
+                enfourceAttachment = theLeaveInfo.IsEnforceAttachment;
+                attachmentTolerance = theLeaveInfo.AttachmentTolerance;
+            }
+
+            //check al/sl balance
+            if (result == 0)
+            {
+                if (isSL || isal)
                 {
-                    result = -4;
-                    message = BLL.MultiLanguageHelper.GetLanguagePacket().Common_limitbalance;
+                    double availableBalance = BLL.Leave.GetAailabeValue_substractFutherAndWait(leaveid, staffid ?? 0, eid);
+                    if (currentApply > availableBalance)
+                    {
+                        result = -4;
+                        message = BLL.MultiLanguageHelper.GetLanguagePacket().Common_limitbalance;
+                    }
                 }
             }
 
 
             //check attachment.
-
+            if (result == 0)
+            {
+                if (enfourceAttachment && currentApply > attachmentTolerance)
+                {
+                    result = -4;
+                    message = BLL.MultiLanguageHelper.GetLanguagePacket().Common_EnforceAttachment;
+                }
+            }
 
 
             //sp check
@@ -115,13 +135,17 @@ namespace BLL
         }
 
 
+
+
         //>0 ok:request id. -1 check error -2.insert error
         public static int InsertLeave(List<MODEL.Apply.apply_LeaveData> originDetail, int userid, int employmentid, int? staffid, string remarks, ref string errorMsg,int fid)
         {
 
             errorMsg = "";
             int result = -1;
-            int checkResult = CheckBeforeApply(originDetail, ref errorMsg, employmentid,staffid);
+
+            List<WebServiceLayer.WebReference_codesettings.LeaveInfo> allLeaveInfo = BLL.CodeSetting.GetAllLeaveInfo().ToList();
+            int checkResult = CheckBeforeApply(originDetail, ref errorMsg, employmentid,staffid,allLeaveInfo);
             if (checkResult >= 0)
             {
                 WebServiceLayer.WebReference_leave.StaffLeaveRequest[] details;
