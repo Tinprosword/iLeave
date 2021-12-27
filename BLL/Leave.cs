@@ -623,7 +623,7 @@ namespace BLL
         /// <param name="staffid"></param>
         /// <param name="employid"></param>
         /// <returns></returns>
-        public static double GetCleanValue(int leaveid,int staffid,int employid)
+        public static double GetAailabeValue_substractFutherAndWait(int leaveid,int staffid,int employid)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetGross(staffid, employid, leaveid);
         }

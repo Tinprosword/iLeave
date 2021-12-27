@@ -392,7 +392,7 @@ namespace WEBUI.Pages
 
                 BLL.Leave.UpdateTodayLeaveBalanceToTable(loginer.userInfo.employID??0);
 
-                double cleanValue = BLL.Leave.GetCleanValue(leaveid, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
+                double cleanValue = BLL.Leave.GetAailabeValue_substractFutherAndWait(leaveid, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
 
                 this.lt_balancedays.Text = cleanValue==-99999?"--":cleanValue.ToString("0.##") + " D";
                 this.lt_applydays.Text = applying.ToString("0.##") + " D";

@@ -35,7 +35,7 @@ namespace WEBUI.Pages
             List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> detail = BLL.CLOT.GetCLOTDetail(requestID);
 
             //balance
-            double cleanValue = BLL.Leave.GetCleanValue(-9, staff, employmentNo);
+            double cleanValue = BLL.Leave.GetAailabeValue_substractFutherAndWait(-9, staff, employmentNo);
             double waitValue = BLL.Leave.GetWaitValue(-9, staff, employmentNo);
             this.lt_balance.Text = (cleanValue-waitValue).ToString("0.##");
 

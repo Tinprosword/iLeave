@@ -34,7 +34,7 @@ namespace WEBUI.Pages
                 List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> detail = BLL.Leave.GetExtendLeaveDetailsByReuestID(requestID);
 
                 //balance
-                double balance = BLL.Leave.GetCleanValue(leaveid, staff, employmentNo);
+                double balance = BLL.Leave.GetAailabeValue_substractFutherAndWait(leaveid, staff, employmentNo);
                 string strBalance = balance == -99999 ? "--" : balance.ToString("0.###");
                 this.lt_balance.Text = strBalance;
                 //apply
