@@ -88,6 +88,8 @@ namespace WEBUI
             {
                 this.lb_tc.CssClass = "loginSelect";
             }
+            this.tb_user.Attributes.Add("placeholder", BLL.MultiLanguageHelper.GetLanguagePacket(tt).Common_user);
+            this.tb_password.Attributes.Add("placeholder", BLL.MultiLanguageHelper.GetLanguagePacket(tt).Common_password);
         }
 
         private void ProgressLogin(string userid,string password)
