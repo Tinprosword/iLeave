@@ -435,7 +435,12 @@ namespace WEBUI.Pages
             List<MODEL.Apply.apply_LeaveData> LeaveList = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).LeaveList;
             List<MODEL.App_AttachmentInfo> pics = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState).GetAttachment();
             string errorMsg = "";
-            int reslut = BLL.Leave.InsertLeave(LeaveList, loginer.userInfo.id, (int)loginer.userInfo.employID, null, this.tb_remarks.Text.Trim(), ref errorMsg,loginer.userInfo.firsteid??0);
+            bool hasAttachment = false;
+            if (pics != null && pics.Count() > 0)
+            {
+                hasAttachment = true;
+            }
+            int reslut = BLL.Leave.InsertLeave(LeaveList, loginer.userInfo.id, (int)loginer.userInfo.employID, null, this.tb_remarks.Text.Trim(), ref errorMsg,loginer.userInfo.firsteid??0,hasAttachment);
             if (reslut >= 0)
             {
                 for (int i = 0; i < pics.Count; i++)

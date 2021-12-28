@@ -33,7 +33,7 @@ namespace BLL
         /// <param name="message"></param>
         /// <param name="eid"></param>
         /// <returns> 0:ok -1:empty .-2 same apply day or section,-3 sp error</returns>
-        private static int CheckBeforeApply(List<MODEL.Apply.apply_LeaveData> originDetail, ref string message, int eid, int? staffid,List<WebServiceLayer.WebReference_codesettings.LeaveInfo> allLeaveInfo)
+        private static int CheckBeforeApply(List<MODEL.Apply.apply_LeaveData> originDetail, ref string message, int eid, int? staffid,List<WebServiceLayer.WebReference_codesettings.LeaveInfo> allLeaveInfo,bool hasAttachment)
         {
             //check all logic.once fail skip.
             int result = 0;
@@ -81,7 +81,7 @@ namespace BLL
             //check attachment.
             if (result == 0)
             {
-                if (enfourceAttachment && currentApply > attachmentTolerance)
+                if (enfourceAttachment && currentApply > attachmentTolerance && hasAttachment==false)
                 {
                     result = -4;
                     message = BLL.MultiLanguageHelper.GetLanguagePacket().Common_EnforceAttachment;
@@ -138,14 +138,14 @@ namespace BLL
 
 
         //>0 ok:request id. -1 check error -2.insert error
-        public static int InsertLeave(List<MODEL.Apply.apply_LeaveData> originDetail, int userid, int employmentid, int? staffid, string remarks, ref string errorMsg,int fid)
+        public static int InsertLeave(List<MODEL.Apply.apply_LeaveData> originDetail, int userid, int employmentid, int? staffid, string remarks, ref string errorMsg,int fid,bool hasAttachment)
         {
 
             errorMsg = "";
             int result = -1;
 
             List<WebServiceLayer.WebReference_codesettings.LeaveInfo> allLeaveInfo = BLL.CodeSetting.GetAllLeaveInfo().ToList();
-            int checkResult = CheckBeforeApply(originDetail, ref errorMsg, employmentid,staffid,allLeaveInfo);
+            int checkResult = CheckBeforeApply(originDetail, ref errorMsg, employmentid,staffid,allLeaveInfo, hasAttachment);
             if (checkResult >= 0)
             {
                 WebServiceLayer.WebReference_leave.StaffLeaveRequest[] details;
