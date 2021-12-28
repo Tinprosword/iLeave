@@ -1,0 +1,24 @@
+0 stop cal
+0.1  new ok.
+0.2  old ok.
+
+
+
+1. hr 
+1.1 show 0
+    1.1.1 al isok
+	1.1.2 sl ok
+
+1.2 check 
+	1.2.1 al is ok
+	1.2.2 sl is ok.
+	
+	
+2.portal
+2.1 show 0
+   2.1.1 al show ok.
+   2.1.2 sl show ok.
+   
+2.2 check
+	2.2.1 al is ok
+	2.2.1 sl is ok

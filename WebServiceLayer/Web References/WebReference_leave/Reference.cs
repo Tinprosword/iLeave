@@ -47,13 +47,13 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback Base_GetListt_WorkflowInfoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetMyManageWaitingCLOTOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetCLOTDetailOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMyWaitingCLOTOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMyBeyondWaitingCLOTOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetMyManageWaitingCLOTOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMyManageBeyondWaitingCLOTOperationCompleted;
         
@@ -93,6 +93,10 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback Base_GetListt_WorkflowTaskOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback checkALSL_ApplyingISokOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetFirstRequestInfoOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetAllLeaveTypeByStaffIDOperationCompleted;
@@ -122,8 +126,6 @@ namespace WebServiceLayer.WebReference_leave {
         private System.Threading.SendOrPostCallback GetLeaveMasterByEmploymentIDOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetLeaveMasterByPIDOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDOperationCompleted;
         
@@ -307,6 +309,9 @@ namespace WebServiceLayer.WebReference_leave {
         public event Base_GetListt_WorkflowInfoCompletedEventHandler Base_GetListt_WorkflowInfoCompleted;
         
         /// <remarks/>
+        public event GetMyManageWaitingCLOTCompletedEventHandler GetMyManageWaitingCLOTCompleted;
+        
+        /// <remarks/>
         public event GetCLOTDetailCompletedEventHandler GetCLOTDetailCompleted;
         
         /// <remarks/>
@@ -314,9 +319,6 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event GetMyBeyondWaitingCLOTCompletedEventHandler GetMyBeyondWaitingCLOTCompleted;
-        
-        /// <remarks/>
-        public event GetMyManageWaitingCLOTCompletedEventHandler GetMyManageWaitingCLOTCompleted;
         
         /// <remarks/>
         public event GetMyManageBeyondWaitingCLOTCompletedEventHandler GetMyManageBeyondWaitingCLOTCompleted;
@@ -376,6 +378,12 @@ namespace WebServiceLayer.WebReference_leave {
         public event Base_GetListt_WorkflowTaskCompletedEventHandler Base_GetListt_WorkflowTaskCompleted;
         
         /// <remarks/>
+        public event GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventHandler GetLeaveMaster_MyManageWaitingByApprovarUIDCompleted;
+        
+        /// <remarks/>
+        public event checkALSL_ApplyingISokCompletedEventHandler checkALSL_ApplyingISokCompleted;
+        
+        /// <remarks/>
         public event GetFirstRequestInfoCompletedEventHandler GetFirstRequestInfoCompleted;
         
         /// <remarks/>
@@ -419,9 +427,6 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event GetLeaveMasterByPIDCompletedEventHandler GetLeaveMasterByPIDCompleted;
-        
-        /// <remarks/>
-        public event GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventHandler GetLeaveMaster_MyManageWaitingByApprovarUIDCompleted;
         
         /// <remarks/>
         public event GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDCompletedEventHandler GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDCompleted;
@@ -875,6 +880,35 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetMyManageWaitingCLOT", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public StaffCLOTRequest[] GetMyManageWaitingCLOT(int uid) {
+            object[] results = this.Invoke("GetMyManageWaitingCLOT", new object[] {
+                        uid});
+            return ((StaffCLOTRequest[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetMyManageWaitingCLOTAsync(int uid) {
+            this.GetMyManageWaitingCLOTAsync(uid, null);
+        }
+        
+        /// <remarks/>
+        public void GetMyManageWaitingCLOTAsync(int uid, object userState) {
+            if ((this.GetMyManageWaitingCLOTOperationCompleted == null)) {
+                this.GetMyManageWaitingCLOTOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMyManageWaitingCLOTOperationCompleted);
+            }
+            this.InvokeAsync("GetMyManageWaitingCLOT", new object[] {
+                        uid}, this.GetMyManageWaitingCLOTOperationCompleted, userState);
+        }
+        
+        private void OnGetMyManageWaitingCLOTOperationCompleted(object arg) {
+            if ((this.GetMyManageWaitingCLOTCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetMyManageWaitingCLOTCompleted(this, new GetMyManageWaitingCLOTCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetCLOTDetail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public StaffCLOTRequest[] GetCLOTDetail(int[] requestids) {
             object[] results = this.Invoke("GetCLOTDetail", new object[] {
@@ -958,35 +992,6 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.GetMyBeyondWaitingCLOTCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetMyBeyondWaitingCLOTCompleted(this, new GetMyBeyondWaitingCLOTCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetMyManageWaitingCLOT", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public StaffCLOTRequest[] GetMyManageWaitingCLOT(int uid) {
-            object[] results = this.Invoke("GetMyManageWaitingCLOT", new object[] {
-                        uid});
-            return ((StaffCLOTRequest[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetMyManageWaitingCLOTAsync(int uid) {
-            this.GetMyManageWaitingCLOTAsync(uid, null);
-        }
-        
-        /// <remarks/>
-        public void GetMyManageWaitingCLOTAsync(int uid, object userState) {
-            if ((this.GetMyManageWaitingCLOTOperationCompleted == null)) {
-                this.GetMyManageWaitingCLOTOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMyManageWaitingCLOTOperationCompleted);
-            }
-            this.InvokeAsync("GetMyManageWaitingCLOT", new object[] {
-                        uid}, this.GetMyManageWaitingCLOTOperationCompleted, userState);
-        }
-        
-        private void OnGetMyManageWaitingCLOTOperationCompleted(object arg) {
-            if ((this.GetMyManageWaitingCLOTCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetMyManageWaitingCLOTCompleted(this, new GetMyManageWaitingCLOTCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1587,6 +1592,70 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLeaveMaster_MyManageWaitingByApprovarUID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public LeaveRequestMaster[] GetLeaveMaster_MyManageWaitingByApprovarUID(int uid) {
+            object[] results = this.Invoke("GetLeaveMaster_MyManageWaitingByApprovarUID", new object[] {
+                        uid});
+            return ((LeaveRequestMaster[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetLeaveMaster_MyManageWaitingByApprovarUIDAsync(int uid) {
+            this.GetLeaveMaster_MyManageWaitingByApprovarUIDAsync(uid, null);
+        }
+        
+        /// <remarks/>
+        public void GetLeaveMaster_MyManageWaitingByApprovarUIDAsync(int uid, object userState) {
+            if ((this.GetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted == null)) {
+                this.GetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted);
+            }
+            this.InvokeAsync("GetLeaveMaster_MyManageWaitingByApprovarUID", new object[] {
+                        uid}, this.GetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted, userState);
+        }
+        
+        private void OnGetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted(object arg) {
+            if ((this.GetLeaveMaster_MyManageWaitingByApprovarUIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetLeaveMaster_MyManageWaitingByApprovarUIDCompleted(this, new GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/checkALSL_ApplyingISok", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool checkALSL_ApplyingISok(double currentApply, double availabelToday, bool canAndyday, bool canMoreTodayButLessYearEnd) {
+            object[] results = this.Invoke("checkALSL_ApplyingISok", new object[] {
+                        currentApply,
+                        availabelToday,
+                        canAndyday,
+                        canMoreTodayButLessYearEnd});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void checkALSL_ApplyingISokAsync(double currentApply, double availabelToday, bool canAndyday, bool canMoreTodayButLessYearEnd) {
+            this.checkALSL_ApplyingISokAsync(currentApply, availabelToday, canAndyday, canMoreTodayButLessYearEnd, null);
+        }
+        
+        /// <remarks/>
+        public void checkALSL_ApplyingISokAsync(double currentApply, double availabelToday, bool canAndyday, bool canMoreTodayButLessYearEnd, object userState) {
+            if ((this.checkALSL_ApplyingISokOperationCompleted == null)) {
+                this.checkALSL_ApplyingISokOperationCompleted = new System.Threading.SendOrPostCallback(this.OncheckALSL_ApplyingISokOperationCompleted);
+            }
+            this.InvokeAsync("checkALSL_ApplyingISok", new object[] {
+                        currentApply,
+                        availabelToday,
+                        canAndyday,
+                        canMoreTodayButLessYearEnd}, this.checkALSL_ApplyingISokOperationCompleted, userState);
+        }
+        
+        private void OncheckALSL_ApplyingISokOperationCompleted(object arg) {
+            if ((this.checkALSL_ApplyingISokCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.checkALSL_ApplyingISokCompleted(this, new checkALSL_ApplyingISokCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetFirstRequestInfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public FirstRequestInfo GetFirstRequestInfo(int requestID) {
             object[] results = this.Invoke("GetFirstRequestInfo", new object[] {
@@ -2016,35 +2085,6 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.GetLeaveMasterByPIDCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetLeaveMasterByPIDCompleted(this, new GetLeaveMasterByPIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLeaveMaster_MyManageWaitingByApprovarUID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public LeaveRequestMaster[] GetLeaveMaster_MyManageWaitingByApprovarUID(int uid) {
-            object[] results = this.Invoke("GetLeaveMaster_MyManageWaitingByApprovarUID", new object[] {
-                        uid});
-            return ((LeaveRequestMaster[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetLeaveMaster_MyManageWaitingByApprovarUIDAsync(int uid) {
-            this.GetLeaveMaster_MyManageWaitingByApprovarUIDAsync(uid, null);
-        }
-        
-        /// <remarks/>
-        public void GetLeaveMaster_MyManageWaitingByApprovarUIDAsync(int uid, object userState) {
-            if ((this.GetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted == null)) {
-                this.GetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted);
-            }
-            this.InvokeAsync("GetLeaveMaster_MyManageWaitingByApprovarUID", new object[] {
-                        uid}, this.GetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted, userState);
-        }
-        
-        private void OnGetLeaveMaster_MyManageWaitingByApprovarUIDOperationCompleted(object arg) {
-            if ((this.GetLeaveMaster_MyManageWaitingByApprovarUIDCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetLeaveMaster_MyManageWaitingByApprovarUIDCompleted(this, new GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -7659,357 +7699,6 @@ namespace WebServiceLayer.WebReference_leave {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class LeaveRequestMaster {
-        
-        private System.Nullable<int> workflowTypeIDField;
-        
-        private System.Nullable<int> workinfoIDField;
-        
-        private int requestIDField;
-        
-        private int employmentIDField;
-        
-        private int minLeaveIDField;
-        
-        private int maxLeaveIDField;
-        
-        private System.DateTime createDateField;
-        
-        private System.DateTime leavefromField;
-        
-        private System.DateTime leavetoField;
-        
-        private double totaldaysField;
-        
-        private System.Nullable<int> delegationToStaffIDField;
-        
-        private string inputSourceField;
-        
-        private byte statusField;
-        
-        private string remarksField;
-        
-        private string extendField;
-        
-        private string unameField;
-        
-        private string minleaveCodeField;
-        
-        private string maxLeaveCodeField;
-        
-        private string pathsField;
-        
-        private string leaveDescField;
-        
-        private string p_SurnameField;
-        
-        private string p_OthernameField;
-        
-        private string p_NicknameField;
-        
-        private string p_NameCHField;
-        
-        private string u_UsernameField;
-        
-        private System.Nullable<int> fromSectionField;
-        
-        private System.Nullable<int> toSectionField;
-        
-        private System.Nullable<int> p_idField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> WorkflowTypeID {
-            get {
-                return this.workflowTypeIDField;
-            }
-            set {
-                this.workflowTypeIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> workinfoID {
-            get {
-                return this.workinfoIDField;
-            }
-            set {
-                this.workinfoIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int RequestID {
-            get {
-                return this.requestIDField;
-            }
-            set {
-                this.requestIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int employmentID {
-            get {
-                return this.employmentIDField;
-            }
-            set {
-                this.employmentIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int MinLeaveID {
-            get {
-                return this.minLeaveIDField;
-            }
-            set {
-                this.minLeaveIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int MaxLeaveID {
-            get {
-                return this.maxLeaveIDField;
-            }
-            set {
-                this.maxLeaveIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime createDate {
-            get {
-                return this.createDateField;
-            }
-            set {
-                this.createDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime leavefrom {
-            get {
-                return this.leavefromField;
-            }
-            set {
-                this.leavefromField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime leaveto {
-            get {
-                return this.leavetoField;
-            }
-            set {
-                this.leavetoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public double totaldays {
-            get {
-                return this.totaldaysField;
-            }
-            set {
-                this.totaldaysField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> DelegationToStaffID {
-            get {
-                return this.delegationToStaffIDField;
-            }
-            set {
-                this.delegationToStaffIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string inputSource {
-            get {
-                return this.inputSourceField;
-            }
-            set {
-                this.inputSourceField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte Status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string remarks {
-            get {
-                return this.remarksField;
-            }
-            set {
-                this.remarksField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string extend {
-            get {
-                return this.extendField;
-            }
-            set {
-                this.extendField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string uname {
-            get {
-                return this.unameField;
-            }
-            set {
-                this.unameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string minleaveCode {
-            get {
-                return this.minleaveCodeField;
-            }
-            set {
-                this.minleaveCodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string maxLeaveCode {
-            get {
-                return this.maxLeaveCodeField;
-            }
-            set {
-                this.maxLeaveCodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string paths {
-            get {
-                return this.pathsField;
-            }
-            set {
-                this.pathsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string leaveDesc {
-            get {
-                return this.leaveDescField;
-            }
-            set {
-                this.leaveDescField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string p_Surname {
-            get {
-                return this.p_SurnameField;
-            }
-            set {
-                this.p_SurnameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string p_Othername {
-            get {
-                return this.p_OthernameField;
-            }
-            set {
-                this.p_OthernameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string p_Nickname {
-            get {
-                return this.p_NicknameField;
-            }
-            set {
-                this.p_NicknameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string p_NameCH {
-            get {
-                return this.p_NameCHField;
-            }
-            set {
-                this.p_NameCHField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string u_Username {
-            get {
-                return this.u_UsernameField;
-            }
-            set {
-                this.u_UsernameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> fromSection {
-            get {
-                return this.fromSectionField;
-            }
-            set {
-                this.fromSectionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> toSection {
-            get {
-                return this.toSectionField;
-            }
-            set {
-                this.toSectionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> p_id {
-            get {
-                return this.p_idField;
-            }
-            set {
-                this.p_idField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class AttachmentInfo {
         
         private int idField;
@@ -8730,6 +8419,357 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         canceled,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class LeaveRequestMaster {
+        
+        private System.Nullable<int> workflowTypeIDField;
+        
+        private System.Nullable<int> workinfoIDField;
+        
+        private int requestIDField;
+        
+        private int employmentIDField;
+        
+        private int minLeaveIDField;
+        
+        private int maxLeaveIDField;
+        
+        private System.DateTime createDateField;
+        
+        private System.DateTime leavefromField;
+        
+        private System.DateTime leavetoField;
+        
+        private double totaldaysField;
+        
+        private System.Nullable<int> delegationToStaffIDField;
+        
+        private string inputSourceField;
+        
+        private byte statusField;
+        
+        private string remarksField;
+        
+        private string extendField;
+        
+        private string unameField;
+        
+        private string minleaveCodeField;
+        
+        private string maxLeaveCodeField;
+        
+        private string pathsField;
+        
+        private string leaveDescField;
+        
+        private string p_SurnameField;
+        
+        private string p_OthernameField;
+        
+        private string p_NicknameField;
+        
+        private string p_NameCHField;
+        
+        private string u_UsernameField;
+        
+        private System.Nullable<int> fromSectionField;
+        
+        private System.Nullable<int> toSectionField;
+        
+        private System.Nullable<int> p_idField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> WorkflowTypeID {
+            get {
+                return this.workflowTypeIDField;
+            }
+            set {
+                this.workflowTypeIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> workinfoID {
+            get {
+                return this.workinfoIDField;
+            }
+            set {
+                this.workinfoIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RequestID {
+            get {
+                return this.requestIDField;
+            }
+            set {
+                this.requestIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int employmentID {
+            get {
+                return this.employmentIDField;
+            }
+            set {
+                this.employmentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int MinLeaveID {
+            get {
+                return this.minLeaveIDField;
+            }
+            set {
+                this.minLeaveIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int MaxLeaveID {
+            get {
+                return this.maxLeaveIDField;
+            }
+            set {
+                this.maxLeaveIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime createDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime leavefrom {
+            get {
+                return this.leavefromField;
+            }
+            set {
+                this.leavefromField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime leaveto {
+            get {
+                return this.leavetoField;
+            }
+            set {
+                this.leavetoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double totaldays {
+            get {
+                return this.totaldaysField;
+            }
+            set {
+                this.totaldaysField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> DelegationToStaffID {
+            get {
+                return this.delegationToStaffIDField;
+            }
+            set {
+                this.delegationToStaffIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string inputSource {
+            get {
+                return this.inputSourceField;
+            }
+            set {
+                this.inputSourceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public byte Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string remarks {
+            get {
+                return this.remarksField;
+            }
+            set {
+                this.remarksField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string extend {
+            get {
+                return this.extendField;
+            }
+            set {
+                this.extendField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string uname {
+            get {
+                return this.unameField;
+            }
+            set {
+                this.unameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string minleaveCode {
+            get {
+                return this.minleaveCodeField;
+            }
+            set {
+                this.minleaveCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string maxLeaveCode {
+            get {
+                return this.maxLeaveCodeField;
+            }
+            set {
+                this.maxLeaveCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string paths {
+            get {
+                return this.pathsField;
+            }
+            set {
+                this.pathsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string leaveDesc {
+            get {
+                return this.leaveDescField;
+            }
+            set {
+                this.leaveDescField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string p_Surname {
+            get {
+                return this.p_SurnameField;
+            }
+            set {
+                this.p_SurnameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string p_Othername {
+            get {
+                return this.p_OthernameField;
+            }
+            set {
+                this.p_OthernameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string p_Nickname {
+            get {
+                return this.p_NicknameField;
+            }
+            set {
+                this.p_NicknameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string p_NameCH {
+            get {
+                return this.p_NameCHField;
+            }
+            set {
+                this.p_NameCHField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string u_Username {
+            get {
+                return this.u_UsernameField;
+            }
+            set {
+                this.u_UsernameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> fromSection {
+            get {
+                return this.fromSectionField;
+            }
+            set {
+                this.fromSectionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> toSection {
+            get {
+                return this.toSectionField;
+            }
+            set {
+                this.toSectionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> p_id {
+            get {
+                return this.p_idField;
+            }
+            set {
+                this.p_idField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -10617,6 +10657,32 @@ namespace WebServiceLayer.WebReference_leave {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetMyManageWaitingCLOTCompletedEventHandler(object sender, GetMyManageWaitingCLOTCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetMyManageWaitingCLOTCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetMyManageWaitingCLOTCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public StaffCLOTRequest[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((StaffCLOTRequest[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void GetCLOTDetailCompletedEventHandler(object sender, GetCLOTDetailCompletedEventArgs e);
     
     /// <remarks/>
@@ -10680,32 +10746,6 @@ namespace WebServiceLayer.WebReference_leave {
         private object[] results;
         
         internal GetMyBeyondWaitingCLOTCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public StaffCLOTRequest[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((StaffCLOTRequest[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetMyManageWaitingCLOTCompletedEventHandler(object sender, GetMyManageWaitingCLOTCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetMyManageWaitingCLOTCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetMyManageWaitingCLOTCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -11149,6 +11189,58 @@ namespace WebServiceLayer.WebReference_leave {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventHandler(object sender, GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public LeaveRequestMaster[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((LeaveRequestMaster[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void checkALSL_ApplyingISokCompletedEventHandler(object sender, checkALSL_ApplyingISokCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class checkALSL_ApplyingISokCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal checkALSL_ApplyingISokCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void GetFirstRequestInfoCompletedEventHandler(object sender, GetFirstRequestInfoCompletedEventArgs e);
     
     /// <remarks/>
@@ -11480,32 +11572,6 @@ namespace WebServiceLayer.WebReference_leave {
         private object[] results;
         
         internal GetLeaveMasterByPIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public LeaveRequestMaster[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((LeaveRequestMaster[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventHandler(object sender, GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetLeaveMaster_MyManageWaitingByApprovarUIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

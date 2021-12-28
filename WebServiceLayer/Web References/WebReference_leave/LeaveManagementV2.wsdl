@@ -196,17 +196,17 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="t_WorkflowInfo" nillable="true" type="tns:t_WorkflowInfo" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetCLOTDetail">
+      <s:element name="GetMyManageWaitingCLOT">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="requestids" type="tns:ArrayOfInt" />
+            <s:element minOccurs="1" maxOccurs="1" name="uid" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetCLOTDetailResponse">
+      <s:element name="GetMyManageWaitingCLOTResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetCLOTDetailResult" type="tns:ArrayOfStaffCLOTRequest" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetMyManageWaitingCLOTResult" type="tns:ArrayOfStaffCLOTRequest" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -251,6 +251,20 @@
           <s:element minOccurs="1" maxOccurs="1" name="IsClaimPayment" type="s:boolean" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetCLOTDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="requestids" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCLOTDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCLOTDetailResult" type="tns:ArrayOfStaffCLOTRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetMyWaitingCLOT">
         <s:complexType>
           <s:sequence>
@@ -276,20 +290,6 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="GetMyBeyondWaitingCLOTResult" type="tns:ArrayOfStaffCLOTRequest" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetMyManageWaitingCLOT">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="uid" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetMyManageWaitingCLOTResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetMyManageWaitingCLOTResult" type="tns:ArrayOfStaffCLOTRequest" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -694,6 +694,74 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="t_WorkflowTask" nillable="true" type="tns:t_WorkflowTask" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetLeaveMaster_MyManageWaitingByApprovarUID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeaveMaster_MyManageWaitingByApprovarUIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveMaster_MyManageWaitingByApprovarUIDResult" type="tns:ArrayOfLeaveRequestMaster" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLeaveRequestMaster">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LeaveRequestMaster" nillable="true" type="tns:LeaveRequestMaster" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LeaveRequestMaster">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="WorkflowTypeID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="workinfoID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="employmentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MinLeaveID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxLeaveID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="createDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="leavefrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="leaveto" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="totaldays" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="DelegationToStaffID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="inputSource" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="remarks" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="extend" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="uname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="minleaveCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="maxLeaveCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="paths" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="leaveDesc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="p_Surname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="p_Othername" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="p_Nickname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="p_NameCH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="u_Username" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fromSection" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="toSection" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="p_id" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="checkALSL_ApplyingISok">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="currentApply" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="availabelToday" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="canAndyday" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="canMoreTodayButLessYearEnd" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkALSL_ApplyingISokResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="checkALSL_ApplyingISokResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetFirstRequestInfo">
         <s:complexType>
           <s:sequence>
@@ -918,43 +986,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfLeaveRequestMaster">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="LeaveRequestMaster" nillable="true" type="tns:LeaveRequestMaster" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="LeaveRequestMaster">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="WorkflowTypeID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="workinfoID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="RequestID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="employmentID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="MinLeaveID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="MaxLeaveID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="createDate" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="leavefrom" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="leaveto" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="totaldays" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="DelegationToStaffID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="inputSource" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:unsignedByte" />
-          <s:element minOccurs="0" maxOccurs="1" name="remarks" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="extend" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="uname" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="minleaveCode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="maxLeaveCode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="paths" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="leaveDesc" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="p_Surname" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="p_Othername" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="p_Nickname" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="p_NameCH" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="u_Username" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="fromSection" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="toSection" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="p_id" nillable="true" type="s:int" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="GetLeaveMasterByRequestid">
         <s:complexType>
           <s:sequence>
@@ -1028,20 +1059,6 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="GetLeaveMasterByPIDResult" type="tns:ArrayOfLeaveRequestMaster" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetLeaveMaster_MyManageWaitingByApprovarUID">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="uid" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetLeaveMaster_MyManageWaitingByApprovarUIDResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveMaster_MyManageWaitingByApprovarUIDResult" type="tns:ArrayOfLeaveRequestMaster" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -2316,12 +2333,13 @@
       <s:element name="ErrorMessageInfo" nillable="true" type="tns:ErrorMessageInfo" />
       <s:element name="ArrayOfT_Leave" nillable="true" type="tns:ArrayOfT_Leave" />
       <s:element name="ArrayOfT_WorkflowTask" nillable="true" type="tns:ArrayOfT_WorkflowTask" />
+      <s:element name="ArrayOfLeaveRequestMaster" nillable="true" type="tns:ArrayOfLeaveRequestMaster" />
+      <s:element name="boolean" type="s:boolean" />
       <s:element name="FirstRequestInfo" nillable="true" type="tns:FirstRequestInfo" />
       <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
       <s:element name="string" nillable="true" type="s:string" />
       <s:element name="dateTime" type="s:dateTime" />
       <s:element name="ArrayOfAttachmentInfo" nillable="true" type="tns:ArrayOfAttachmentInfo" />
-      <s:element name="ArrayOfLeaveRequestMaster" nillable="true" type="tns:ArrayOfLeaveRequestMaster" />
       <s:element name="LeaveRequestMaster" nillable="true" type="tns:LeaveRequestMaster" />
       <s:element name="ArrayOfLeaveCLTODetail" nillable="true" type="tns:ArrayOfLeaveCLTODetail" />
       <s:element name="ArrayOfT_StaffLeaveRequestDetail" nillable="true" type="tns:ArrayOfT_StaffLeaveRequestDetail" />
@@ -2411,6 +2429,12 @@
   <wsdl:message name="Base_GetListt_WorkflowInfoSoapOut">
     <wsdl:part name="parameters" element="tns:Base_GetListt_WorkflowInfoResponse" />
   </wsdl:message>
+  <wsdl:message name="GetMyManageWaitingCLOTSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMyManageWaitingCLOT" />
+  </wsdl:message>
+  <wsdl:message name="GetMyManageWaitingCLOTSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMyManageWaitingCLOTResponse" />
+  </wsdl:message>
   <wsdl:message name="GetCLOTDetailSoapIn">
     <wsdl:part name="parameters" element="tns:GetCLOTDetail" />
   </wsdl:message>
@@ -2428,12 +2452,6 @@
   </wsdl:message>
   <wsdl:message name="GetMyBeyondWaitingCLOTSoapOut">
     <wsdl:part name="parameters" element="tns:GetMyBeyondWaitingCLOTResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetMyManageWaitingCLOTSoapIn">
-    <wsdl:part name="parameters" element="tns:GetMyManageWaitingCLOT" />
-  </wsdl:message>
-  <wsdl:message name="GetMyManageWaitingCLOTSoapOut">
-    <wsdl:part name="parameters" element="tns:GetMyManageWaitingCLOTResponse" />
   </wsdl:message>
   <wsdl:message name="GetMyManageBeyondWaitingCLOTSoapIn">
     <wsdl:part name="parameters" element="tns:GetMyManageBeyondWaitingCLOT" />
@@ -2549,6 +2567,18 @@
   <wsdl:message name="Base_GetListt_WorkflowTaskSoapOut">
     <wsdl:part name="parameters" element="tns:Base_GetListt_WorkflowTaskResponse" />
   </wsdl:message>
+  <wsdl:message name="GetLeaveMaster_MyManageWaitingByApprovarUIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLeaveMaster_MyManageWaitingByApprovarUID" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveMaster_MyManageWaitingByApprovarUIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkALSL_ApplyingISokSoapIn">
+    <wsdl:part name="parameters" element="tns:checkALSL_ApplyingISok" />
+  </wsdl:message>
+  <wsdl:message name="checkALSL_ApplyingISokSoapOut">
+    <wsdl:part name="parameters" element="tns:checkALSL_ApplyingISokResponse" />
+  </wsdl:message>
   <wsdl:message name="GetFirstRequestInfoSoapIn">
     <wsdl:part name="parameters" element="tns:GetFirstRequestInfo" />
   </wsdl:message>
@@ -2638,12 +2668,6 @@
   </wsdl:message>
   <wsdl:message name="GetLeaveMasterByPIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetLeaveMasterByPIDResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetLeaveMaster_MyManageWaitingByApprovarUIDSoapIn">
-    <wsdl:part name="parameters" element="tns:GetLeaveMaster_MyManageWaitingByApprovarUID" />
-  </wsdl:message>
-  <wsdl:message name="GetLeaveMaster_MyManageWaitingByApprovarUIDSoapOut">
-    <wsdl:part name="parameters" element="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDResponse" />
   </wsdl:message>
   <wsdl:message name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDSoapIn">
     <wsdl:part name="parameters" element="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUID" />
@@ -3015,6 +3039,12 @@
   <wsdl:message name="Base_GetListt_WorkflowInfoHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfT_WorkflowInfo" />
   </wsdl:message>
+  <wsdl:message name="GetMyManageWaitingCLOTHttpPostIn">
+    <wsdl:part name="uid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMyManageWaitingCLOTHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfStaffCLOTRequest" />
+  </wsdl:message>
   <wsdl:message name="GetCLOTDetailHttpPostIn">
     <wsdl:part name="requestids" type="s1:StringArray" />
   </wsdl:message>
@@ -3031,12 +3061,6 @@
     <wsdl:part name="firsteid" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetMyBeyondWaitingCLOTHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfStaffCLOTRequest" />
-  </wsdl:message>
-  <wsdl:message name="GetMyManageWaitingCLOTHttpPostIn">
-    <wsdl:part name="uid" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetMyManageWaitingCLOTHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfStaffCLOTRequest" />
   </wsdl:message>
   <wsdl:message name="GetMyManageBeyondWaitingCLOTHttpPostIn">
@@ -3115,6 +3139,21 @@
   <wsdl:message name="Base_GetListt_WorkflowTaskHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfT_WorkflowTask" />
   </wsdl:message>
+  <wsdl:message name="GetLeaveMaster_MyManageWaitingByApprovarUIDHttpPostIn">
+    <wsdl:part name="uid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveMaster_MyManageWaitingByApprovarUIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfLeaveRequestMaster" />
+  </wsdl:message>
+  <wsdl:message name="checkALSL_ApplyingISokHttpPostIn">
+    <wsdl:part name="currentApply" type="s:string" />
+    <wsdl:part name="availabelToday" type="s:string" />
+    <wsdl:part name="canAndyday" type="s:string" />
+    <wsdl:part name="canMoreTodayButLessYearEnd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="checkALSL_ApplyingISokHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
   <wsdl:message name="GetFirstRequestInfoHttpPostIn">
     <wsdl:part name="requestID" type="s:string" />
   </wsdl:message>
@@ -3181,12 +3220,6 @@
     <wsdl:part name="PID" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetLeaveMasterByPIDHttpPostOut">
-    <wsdl:part name="Body" element="tns:ArrayOfLeaveRequestMaster" />
-  </wsdl:message>
-  <wsdl:message name="GetLeaveMaster_MyManageWaitingByApprovarUIDHttpPostIn">
-    <wsdl:part name="uid" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="GetLeaveMaster_MyManageWaitingByApprovarUIDHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfLeaveRequestMaster" />
   </wsdl:message>
   <wsdl:message name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDHttpPostIn">
@@ -3553,6 +3586,10 @@
       <wsdl:input message="tns:Base_GetListt_WorkflowInfoSoapIn" />
       <wsdl:output message="tns:Base_GetListt_WorkflowInfoSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetMyManageWaitingCLOT">
+      <wsdl:input message="tns:GetMyManageWaitingCLOTSoapIn" />
+      <wsdl:output message="tns:GetMyManageWaitingCLOTSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetCLOTDetail">
       <wsdl:input message="tns:GetCLOTDetailSoapIn" />
       <wsdl:output message="tns:GetCLOTDetailSoapOut" />
@@ -3564,10 +3601,6 @@
     <wsdl:operation name="GetMyBeyondWaitingCLOT">
       <wsdl:input message="tns:GetMyBeyondWaitingCLOTSoapIn" />
       <wsdl:output message="tns:GetMyBeyondWaitingCLOTSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetMyManageWaitingCLOT">
-      <wsdl:input message="tns:GetMyManageWaitingCLOTSoapIn" />
-      <wsdl:output message="tns:GetMyManageWaitingCLOTSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetMyManageBeyondWaitingCLOT">
       <wsdl:input message="tns:GetMyManageBeyondWaitingCLOTSoapIn" />
@@ -3645,6 +3678,14 @@
       <wsdl:input message="tns:Base_GetListt_WorkflowTaskSoapIn" />
       <wsdl:output message="tns:Base_GetListt_WorkflowTaskSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
+      <wsdl:input message="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDSoapIn" />
+      <wsdl:output message="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkALSL_ApplyingISok">
+      <wsdl:input message="tns:checkALSL_ApplyingISokSoapIn" />
+      <wsdl:output message="tns:checkALSL_ApplyingISokSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetFirstRequestInfo">
       <wsdl:input message="tns:GetFirstRequestInfoSoapIn" />
       <wsdl:output message="tns:GetFirstRequestInfoSoapOut" />
@@ -3704,10 +3745,6 @@
     <wsdl:operation name="GetLeaveMasterByPID">
       <wsdl:input message="tns:GetLeaveMasterByPIDSoapIn" />
       <wsdl:output message="tns:GetLeaveMasterByPIDSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
-      <wsdl:input message="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDSoapIn" />
-      <wsdl:output message="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUID">
       <wsdl:input message="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDSoapIn" />
@@ -3955,6 +3992,10 @@
       <wsdl:input message="tns:Base_GetListt_WorkflowInfoHttpPostIn" />
       <wsdl:output message="tns:Base_GetListt_WorkflowInfoHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetMyManageWaitingCLOT">
+      <wsdl:input message="tns:GetMyManageWaitingCLOTHttpPostIn" />
+      <wsdl:output message="tns:GetMyManageWaitingCLOTHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetCLOTDetail">
       <wsdl:input message="tns:GetCLOTDetailHttpPostIn" />
       <wsdl:output message="tns:GetCLOTDetailHttpPostOut" />
@@ -3966,10 +4007,6 @@
     <wsdl:operation name="GetMyBeyondWaitingCLOT">
       <wsdl:input message="tns:GetMyBeyondWaitingCLOTHttpPostIn" />
       <wsdl:output message="tns:GetMyBeyondWaitingCLOTHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetMyManageWaitingCLOT">
-      <wsdl:input message="tns:GetMyManageWaitingCLOTHttpPostIn" />
-      <wsdl:output message="tns:GetMyManageWaitingCLOTHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetMyManageBeyondWaitingCLOT">
       <wsdl:input message="tns:GetMyManageBeyondWaitingCLOTHttpPostIn" />
@@ -4010,6 +4047,14 @@
     <wsdl:operation name="Base_GetListt_WorkflowTask">
       <wsdl:input message="tns:Base_GetListt_WorkflowTaskHttpPostIn" />
       <wsdl:output message="tns:Base_GetListt_WorkflowTaskHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
+      <wsdl:input message="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDHttpPostIn" />
+      <wsdl:output message="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkALSL_ApplyingISok">
+      <wsdl:input message="tns:checkALSL_ApplyingISokHttpPostIn" />
+      <wsdl:output message="tns:checkALSL_ApplyingISokHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetFirstRequestInfo">
       <wsdl:input message="tns:GetFirstRequestInfoHttpPostIn" />
@@ -4062,10 +4107,6 @@
     <wsdl:operation name="GetLeaveMasterByPID">
       <wsdl:input message="tns:GetLeaveMasterByPIDHttpPostIn" />
       <wsdl:output message="tns:GetLeaveMasterByPIDHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
-      <wsdl:input message="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDHttpPostIn" />
-      <wsdl:output message="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUID">
       <wsdl:input message="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDHttpPostIn" />
@@ -4347,6 +4388,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetMyManageWaitingCLOT">
+      <soap:operation soapAction="http://tempuri.org/GetMyManageWaitingCLOT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetCLOTDetail">
       <soap:operation soapAction="http://tempuri.org/GetCLOTDetail" style="document" />
       <wsdl:input>
@@ -4367,15 +4417,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetMyBeyondWaitingCLOT">
       <soap:operation soapAction="http://tempuri.org/GetMyBeyondWaitingCLOT" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetMyManageWaitingCLOT">
-      <soap:operation soapAction="http://tempuri.org/GetMyManageWaitingCLOT" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -4554,6 +4595,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
+      <soap:operation soapAction="http://tempuri.org/GetLeaveMaster_MyManageWaitingByApprovarUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkALSL_ApplyingISok">
+      <soap:operation soapAction="http://tempuri.org/checkALSL_ApplyingISok" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetFirstRequestInfo">
       <soap:operation soapAction="http://tempuri.org/GetFirstRequestInfo" style="document" />
       <wsdl:input>
@@ -4682,15 +4741,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetLeaveMasterByPID">
       <soap:operation soapAction="http://tempuri.org/GetLeaveMasterByPID" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
-      <soap:operation soapAction="http://tempuri.org/GetLeaveMaster_MyManageWaitingByApprovarUID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -5304,6 +5354,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetMyManageWaitingCLOT">
+      <soap12:operation soapAction="http://tempuri.org/GetMyManageWaitingCLOT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetCLOTDetail">
       <soap12:operation soapAction="http://tempuri.org/GetCLOTDetail" style="document" />
       <wsdl:input>
@@ -5324,15 +5383,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetMyBeyondWaitingCLOT">
       <soap12:operation soapAction="http://tempuri.org/GetMyBeyondWaitingCLOT" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetMyManageWaitingCLOT">
-      <soap12:operation soapAction="http://tempuri.org/GetMyManageWaitingCLOT" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -5511,6 +5561,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
+      <soap12:operation soapAction="http://tempuri.org/GetLeaveMaster_MyManageWaitingByApprovarUID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkALSL_ApplyingISok">
+      <soap12:operation soapAction="http://tempuri.org/checkALSL_ApplyingISok" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetFirstRequestInfo">
       <soap12:operation soapAction="http://tempuri.org/GetFirstRequestInfo" style="document" />
       <wsdl:input>
@@ -5639,15 +5707,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetLeaveMasterByPID">
       <soap12:operation soapAction="http://tempuri.org/GetLeaveMasterByPID" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
-      <soap12:operation soapAction="http://tempuri.org/GetLeaveMaster_MyManageWaitingByApprovarUID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -6203,6 +6262,15 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetMyManageWaitingCLOT">
+      <http:operation location="/GetMyManageWaitingCLOT" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetCLOTDetail">
       <http:operation location="/GetCLOTDetail" />
       <wsdl:input>
@@ -6223,15 +6291,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetMyBeyondWaitingCLOT">
       <http:operation location="/GetMyBeyondWaitingCLOT" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetMyManageWaitingCLOT">
-      <http:operation location="/GetMyManageWaitingCLOT" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -6316,6 +6375,24 @@
     </wsdl:operation>
     <wsdl:operation name="Base_GetListt_WorkflowTask">
       <http:operation location="/Base_GetListt_WorkflowTask" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
+      <http:operation location="/GetLeaveMaster_MyManageWaitingByApprovarUID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkALSL_ApplyingISok">
+      <http:operation location="/checkALSL_ApplyingISok" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -6431,15 +6508,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetLeaveMasterByPID">
       <http:operation location="/GetLeaveMasterByPID" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
-      <http:operation location="/GetLeaveMaster_MyManageWaitingByApprovarUID" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

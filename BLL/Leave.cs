@@ -48,7 +48,7 @@ namespace BLL
                 }
             }
 
-            //common valiable
+            // valiable
             double currentApply = MODEL.Apply.apply_LeaveData.GetCurrentApplyUnit(originDetail);
             bool isal = originDetail[0].IsAL();
             bool isSL = originDetail[0].IsSL();
@@ -63,13 +63,16 @@ namespace BLL
                 attachmentTolerance = theLeaveInfo.AttachmentTolerance;
             }
 
-            //check al/sl balance
+            //check al/sl balance 1.adv
             if (result == 0)
             {
                 if (isSL || isal)
                 {
                     double availableBalance = BLL.Leave.GetAailabeValue_substractFutherAndWait(leaveid, staffid ?? 0, eid);
-                    if (currentApply > availableBalance)
+                    bool cananyday = theLeaveInfo.IsEnableAdvanceLeaveOnPortal;
+                    bool canMoreTodayButLessYear = theLeaveInfo.IsEnableAdvanceLeaveOnYearEnd;
+                    bool canapply = CheckALSLBalanceLimit(currentApply, availableBalance, cananyday, canMoreTodayButLessYear);
+                    if (!canapply)
                     {
                         result = -4;
                         message = BLL.MultiLanguageHelper.GetLanguagePacket().Common_limitbalance;
@@ -383,7 +386,7 @@ namespace BLL
             }
             if (to != null)
             {
-                result = result.Where(x => x.leaveto <= to).ToList();
+                result = result.Where(x => x.leavefrom <= to).ToList();
             }
             result =result.OrderByDescending(x => x.leavefrom).ThenByDescending(x=>x.createDate).ToList();
             return result;
@@ -410,7 +413,7 @@ namespace BLL
             }
             if (to != null)
             {
-                result = result.Where(x => x.leaveto <= to).ToList();
+                result = result.Where(x => x.leavefrom <= to).ToList();
             }
             if (!string.IsNullOrEmpty(name))
             {
@@ -533,6 +536,12 @@ namespace BLL
 
 
         #region unity
+        public static bool CheckALSLBalanceLimit(double currentApply, double availabelToday, bool canAndyday, bool canMoreYearEnd)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.checkALSL_ApplyingISok(currentApply, availabelToday, canAndyday, canMoreYearEnd);
+        }
+
+
         public static bool AllowHour(int leaveID, int PositionID)
         {
             return BLL.CodeSetting.AllowHourly(leaveID, PositionID);
