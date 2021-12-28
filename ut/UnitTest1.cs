@@ -38,7 +38,7 @@ namespace ut
         {
             int result = 0;
             string errorMsg = "";
-            result = BLL.Leave.InsertLeave(originDetail, userid, empolyid, staffid, "", ref errorMsg, firsteid);
+            result = BLL.Leave.InsertLeave(originDetail, userid, empolyid, staffid, "", ref errorMsg, firsteid,true);
             return result;
         }
 
