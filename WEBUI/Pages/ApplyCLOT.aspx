@@ -102,7 +102,7 @@
                         <td class="col-xs-3" ><asp:Literal ID="ltlistdate" runat="server" Text='<%#((MODEL.CLOT.CLOTItem)Container.DataItem).date.ToString("yyyy-MM-dd") %>'></asp:Literal></td>
                         <td class="col-xs-2" ><asp:Literal ID="ltlisttype" runat="server" Text='<%#((MODEL.CLOT.CLOTItem)Container.DataItem).type.ToString() %>'></asp:Literal></td>
                         <td class="col-xs-4" ><asp:Literal ID="ltlistfromto" runat="server" Text='<%#((MODEL.CLOT.CLOTItem)Container.DataItem).GetTimeRangeDesc() %>'></asp:Literal></td>
-                        <td class="col-xs-2" ><asp:Literal ID="ltlisthours" runat="server" Text='<%#((MODEL.CLOT.CLOTItem)Container.DataItem).GetHoursFromTextBox()%>'></asp:Literal></td>
+                        <td class="col-xs-2" ><asp:Literal ID="ltlisthours" runat="server" Text='<%#((MODEL.CLOT.CLOTItem)Container.DataItem).GetHoursFromStringMember()%>'></asp:Literal></td>
                         <td style="text-align:right"><asp:ImageButton ID="delete" Width="30px" CommandName="itemindex" CommandArgument="<%#Container.ItemIndex%>" Height="30px" ImageUrl="~/Res/images/close.png" runat="server" OnClick="delete_Click" /></td>
                     </tr>
                     </ItemTemplate>

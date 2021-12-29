@@ -85,13 +85,13 @@ namespace MODEL
                 return new DateTime(date.Year, date.Month, date.Day, tohour, tominute,00);
             }
 
-            public float GetHoursFromTextBox()
+            public double GetHoursFromStringMember()
             {
-                float result = 0;
+                double result = 0;
                 bool tempCheck = checkHoursValid();
                 if (tempCheck)
                 {
-                    result = float.Parse(numberofHours);
+                    result = double.Parse(numberofHours);
                 }
                 return result;
             }
@@ -109,6 +109,23 @@ namespace MODEL
                     }
                 }
 
+                return result;
+            }
+
+            public static double GetTotalUnit(List<CLOTItem> data)
+            {
+                double result = 0;
+                foreach (var item in data)
+                {
+                    if (item.type == MODEL.CLOT.enum_clotType.CL)
+                    {
+                        result -= item.GetHoursFromStringMember();
+                    }
+                    else
+                    {
+                        result += item.GetHoursFromStringMember();
+                    }
+                }
                 return result;
             }
         }

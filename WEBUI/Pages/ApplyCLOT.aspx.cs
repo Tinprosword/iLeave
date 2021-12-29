@@ -7,12 +7,12 @@ using System.Web.UI.WebControls;
 
 //todo 0  申请一个，好像 waitBalance 不会加上去??
 //todo 0 .calculate real clot hours
+//clot 计划结余是：正在申请+wait.   balance:没有today还是future 的概念。都是future.
 namespace WEBUI.Pages
 {
     public partial class ApplyCLOT : BLL.CustomLoginTemplate
     {
         private readonly string NAME_OF_PAGE_VIEW = "NAME_OF_PAGE_VIEW";
-        private float mBalance = 0;
 
         #region page event
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
@@ -202,16 +202,30 @@ namespace WEBUI.Pages
             tempItem.type = (MODEL.CLOT.enum_clotType)type;
             tempItem.remark = remark;
             tempItem.numberofHours = this.tb_hours.Text;
-            
 
-            validData = CheckValid(tempItem);
+            var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
+            validData = BLL.CLOT.CheckOnAddSingleItem(tempItem,dataview,loginer.userInfo.employID??0);
             if (validData > 0 && bvalidday)
             {
-                var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
+                //还需要检测此条加入后的有效性。复用call onclicapply 的验证。从逻辑上来说是可以复用。如果后期出现onClickApply 单独的检测，先判断
+                //是否逻辑不清晰，真有必要，onClickApply 可以用2个方法。复用是必须的。
+                List<MODEL.CLOT.CLOTItem> tempList = new List<MODEL.CLOT.CLOTItem>();
+                tempList.AddRange(dataview.items);
+                tempList.Add(tempItem);
 
-                dataview.items.Add(tempItem);
+                double balanceValue = BLL.Leave.GetBalanceView_CLOT_balance(loginer.userInfo.employID ?? 0);
+                string errormsg= BLL.CLOT.CheckOnApplyList(tempList, balanceValue, loginer.userInfo.employID ?? 0);
+                if (!string.IsNullOrEmpty(errormsg))
+                {
+                    literal_errormsga.Visible = true;
+                    literal_errormsga.Text = errormsg;
+                }
+                else
+                {
+                    dataview.items.Add(tempItem);
 
-                LSLibrary.WebAPP.ViewStateHelper.SetValue(NAME_OF_PAGE_VIEW, dataview, this.ViewState);
+                    LSLibrary.WebAPP.ViewStateHelper.SetValue(NAME_OF_PAGE_VIEW, dataview, this.ViewState);
+                }
             }
             else if (validData == -1)
             {
@@ -238,50 +252,10 @@ namespace WEBUI.Pages
             RefleshApplyBalance();
         }
 
-        private bool CheckOverlapInReapter_OnInsert(MODEL.CLOT.CLOTItem currentItem)
-        {
-            bool result = false;
-            var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
-            var applyitmes = dataview.items;
-            if (applyitmes != null && applyitmes.Count() > 0)
-            {
-                foreach (var item in applyitmes)
-                {
-                    if (LSLibrary.ValidateUtil.checkIsOverlap(currentItem.GetFrom(), currentItem.GetTo(), item.GetFrom(), item.GetTo()))
-                    {
-                        result = true;
-                        break;
-                    }
-                }
-            }
-            return result;
-        }
+        
 
-        //-1 hours is small zero   -2. valid number of hours. -3 over pre date. -4 override in Repeater.
-        private int CheckValid(MODEL.CLOT.CLOTItem tempItem)
-        {
-            bool checkInRepeater = CheckOverlapInReapter_OnInsert(tempItem);
-
-            int result = 1;
-            if (checkInRepeater == true)
-            {
-                result = -4;
-            }
-
-            else if (tempItem.GetHoursFromTextBox() <= 0)
-            {
-                result = -1;
-            }
-            else if (tempItem.checkHoursValid() == false)
-            {
-                result = -2;
-            }
-            else if (BLL.CLOT.checkIsOverlap(loginer.userInfo.employID??0, tempItem.GetFrom(), tempItem.GetTo()) == 1)
-            {
-                result = -3;
-            }
-            return result;
-        }
+        
+        
 
         protected void delete_Click(object sender, ImageClickEventArgs e)
         {
@@ -307,7 +281,8 @@ namespace WEBUI.Pages
 
 
             var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
-            string errorMsg = BLL.CLOT.CheckData(dataview.items, mBalance, loginer.userInfo.employID ?? 0);
+            double balanceValue = BLL.Leave.GetBalanceView_CLOT_balance(loginer.userInfo.employID ?? 0);
+            string errorMsg = BLL.CLOT.CheckOnApplyList(dataview.items, balanceValue, loginer.userInfo.employID ?? 0);
             bool validData = string.IsNullOrEmpty(errorMsg);
             if (validData)
             {
@@ -402,20 +377,7 @@ namespace WEBUI.Pages
             var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
             if (dataview != null && dataview.items != null)
             {
-                double totalHour = 0; //(float)waitingValue;
-                foreach (var item in dataview.items)
-                {
-                    if (item.type == MODEL.CLOT.enum_clotType.CL)
-                    {
-                        totalHour -= item.GetHoursFromTextBox();
-                    }
-                    else
-                    {
-                        totalHour += item.GetHoursFromTextBox();
-                    }
-                }
-
-                //totalHour -= (float)waitingValue;
+                double totalHour = MODEL.CLOT.CLOTItem.GetTotalUnit(dataview.items);
 
                 totalHour = waitingValue + totalHour;
 

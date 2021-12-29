@@ -106,7 +106,7 @@ namespace BLL
                 tempData.Type = (int)item.type;
                 tempData.EmploymentID = applyerEID;
                 tempData.Remarks = item.remark;
-                tempData.Hour = item.GetHoursFromTextBox();
+                tempData.Hour = item.GetHoursFromStringMember();
 
 
                 var requestid= InsertCLOTRequest(tempData, createrUid, applyerEID);
@@ -136,22 +136,47 @@ namespace BLL
             return result;
         }
 
-
-        public static string CheckData(List<MODEL.CLOT.CLOTItem> data, float balance,int eid)
+        public static string CheckOnApplyList(List<MODEL.CLOT.CLOTItem> data, double balance,int eid)
         {
             string result = "";
             if (data == null || data.Count() == 0)
             {
                 result = BLL.MultiLanguageHelper.GetLanguagePacket().Common_msg_CannotEmptyData;
             }
-            else
+
+
+            //check balance
+            if (result == "")
             {
-                //sp chec @ParaEmploymentID varchar(6), @ParaType int, @ParaDateFrom datetime,@ParaDateTo datetime,@ParaRangeHours float= 0
+                double ApplyTotal = MODEL.CLOT.CLOTItem.GetTotalUnit(data);
+                if (ApplyTotal + balance<0)
+                {
+                    result = BLL.MultiLanguageHelper.GetLanguagePacket().Common_limitbalance;
+                }
+            }
+
+
+            //check predate
+            if (result == "")
+            {
+                foreach (var tempItem in data)
+                {
+                    if (BLL.CLOT.checkIsOverlap(eid, tempItem.GetFrom(), tempItem.GetTo()) == 1)
+                    {
+                        result = tempItem.GetTimeRangeDesc() +" "+ BLL.MultiLanguageHelper.GetLanguagePacket().common_msg_overlap;
+                        break;
+                    }
+                }
+            }
+
+            //sp chec @ParaEmploymentID varchar(6), @ParaType int, @ParaDateFrom datetime,@ParaDateTo datetime,@ParaRangeHours float= 0
+            if (result == "")
+          {
                 for (int i = 0; i < data.Count; i++)
                 {
                     DateTime from = new DateTime(data[i].date.Year, data[i].date.Month, data[i].date.Day, data[i].fromhour, data[i].frommin, 0);
                     DateTime to = new DateTime(data[i].date.Year, data[i].date.Month, data[i].date.Day, data[i].tohour, data[i].tominute, 0);
-                    string[] spPs = new string[] { eid.ToString(), ((int)data[i].type).ToString(), from.ToString("yyyy-MM-dd HH:mm:ss"), to.ToString("yyyy-MM-dd HH:mm:ss"),data[i].numberofHours.ToString() };
+                    string[] spPs = new string[] { eid.ToString(), ((int)data[i].type).ToString(), from.ToString("yyyy-MM-dd HH:mm:ss"), to.ToString("yyyy-MM-dd HH:mm:ss"), data[i].numberofHours.ToString() };
                     string spCheckResult = BLL.Other.ExeStropFun((int)BLL.GlobalVariate.spFunctionid.clot_add_portal, true, spPs);
 
                     if (!string.IsNullOrEmpty(spCheckResult))
@@ -161,6 +186,7 @@ namespace BLL
                     }
                 }
             }
+            
             return result;
         }
 
@@ -215,6 +241,50 @@ namespace BLL
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.clot_CheckCLOTIsOverlap(eid, from, to);
         }
+        #endregion
+
+
+        #region check
+        //-1 hours is small zero ,或者不是数字 -4 override in Repeater.
+        public static int CheckOnAddSingleItem(MODEL.CLOT.CLOTItem tempItem, MODEL.CLOT.ViewState_page dataview, int eid)
+        {
+            int result = 1;
+
+            bool checkInRepeater = CheckOverlapInReapter_OnInsert(tempItem, dataview);
+            if (checkInRepeater == true)
+            {
+                result = -4;
+            }
+
+            if (result == 1)
+            {
+                if (tempItem.GetHoursFromStringMember() <= 0)
+                {
+                    result = -1;
+                }
+            }
+
+            return result;
+        }
+
+        public static bool CheckOverlapInReapter_OnInsert(MODEL.CLOT.CLOTItem currentItem, MODEL.CLOT.ViewState_page dataview)
+        {
+            bool result = false;
+            var applyitmes = dataview.items;
+            if (applyitmes != null && applyitmes.Count() > 0)
+            {
+                foreach (var item in applyitmes)
+                {
+                    if (LSLibrary.ValidateUtil.checkIsOverlap(currentItem.GetFrom(), currentItem.GetTo(), item.GetFrom(), item.GetTo()))
+                    {
+                        result = true;
+                        break;
+                    }
+                }
+            }
+            return result;
+        }
+
         #endregion
     }
 }
