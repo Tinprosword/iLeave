@@ -140,7 +140,7 @@ namespace WEBUI.Pages
         private void SetupRepeater()
         {
             var allASoZone = GetMyAssoZoneFromUi();
-            List<int> eid = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue,this.tb_name.Text.Trim(), allASoZone);
+            List<int> eidList = GetEmployIDs(GetIsMeOrTeam(), this.ddlzone.SelectedValue,this.tb_name.Text.Trim(), allASoZone);
 
             
             if (this.cb_leave.Checked)
@@ -148,9 +148,9 @@ namespace WEBUI.Pages
                 //this.divTip.Visible = true;
                 this.leaveDiv.Visible = true;
                 this.rosterDiv.Visible = false;
-                if ((eid != null && eid.Count() > 0))
+                if ((eidList != null && eidList.Count() > 0))
                 {
-                    var repeaterSource = BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(this.Calendar1.SelectedDate, eid);
+                    var repeaterSource = BLL.Leave.getWaitingApproveAndApprovedByEIDS_Date(this.Calendar1.SelectedDate, eidList);
                     this.repeater_leave.DataSource = repeaterSource;
                     this.repeater_leave.DataBind();
                 }
@@ -160,14 +160,14 @@ namespace WEBUI.Pages
                     this.repeater_leave.DataBind();
                 }
             }
-            else if (this.cb_holiday.Checked && (eid != null && eid.Count() > 0))
+            else if (this.cb_holiday.Checked && (eidList != null && eidList.Count() > 0))
             {
                 //this.divTip.Visible = false;
                 this.leaveDiv.Visible = false;
                 this.rosterDiv.Visible = true;
-                if ((eid != null && eid.Count() > 0))
+                if ((eidList != null && eidList.Count() > 0))
                 {
-                    var repeaterSource = BLL.calendar.GetRoster(this.Calendar1.SelectedDate, eid);
+                    var repeaterSource = BLL.calendar.GetRoster(this.Calendar1.SelectedDate, eidList);
                     this.rp_roster.DataSource = repeaterSource;
                     this.rp_roster.DataBind();
                 }
@@ -211,10 +211,10 @@ namespace WEBUI.Pages
             {
                 bool isme = GetIsMeOrTeam();
                 var myAsoZone = GetMyAssoZoneFromUi();
-                List<int> eid = GetEmployIDs(isme, this.ddlzone.SelectedValue, this.tb_name.Text.Trim(), myAsoZone);
+                List<int> eidArray = GetEmployIDs(isme, this.ddlzone.SelectedValue, this.tb_name.Text.Trim(), myAsoZone);
                 if (this.Calendar1.VisibleDate.Year > 1)
                 {
-                    FillStatistic(eid, this.Calendar1.VisibleDate.Year, this.Calendar1.VisibleDate.Month);
+                    FillStatistic(eidArray, this.Calendar1.VisibleDate.Year, this.Calendar1.VisibleDate.Month);
                 }
                 ViewState[viewstate_statisc] = allStatistic;
             }

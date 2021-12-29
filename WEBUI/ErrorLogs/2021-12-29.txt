@@ -15,3 +15,37 @@ Trace：   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath vi
    在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
    在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 ********************************************************************************************
+ip:::1
+DataTime：2021/12/29 14:02:05
+Url：http://localhost/WEBUI/pages/apply.aspx
+Message：索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+Source：mscorlib
+Type：System.ArgumentOutOfRangeException
+Function：Void ThrowArgumentOutOfRangeException(System.ExceptionArgument, System.ExceptionResource)
+Trace：   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.get_Item(Int32 index)
+   在 BLL.Leave.CheckBeforeApply(List`1 originDetail, String& message, Int32 eid, Nullable`1 staffid, List`1 allLeaveInfo, Boolean hasAttachment) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Leave.cs:行号 53
+   在 BLL.Leave.InsertLeave(List`1 originDetail, Int32 userid, Int32 employmentid, Nullable`1 staffid, String remarks, String& errorMsg, Int32 fid, Boolean hasAttachment) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Leave.cs:行号 151
+   在 WEBUI.Pages.Apply.button_apply_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 443
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2021/12/29 14:02:15
+Url：http://localhost/WEBUI/pages/apply.aspx
+Message：索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+Source：mscorlib
+Type：System.ArgumentOutOfRangeException
+Function：Void ThrowArgumentOutOfRangeException(System.ExceptionArgument, System.ExceptionResource)
+Trace：   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.get_Item(Int32 index)
+   在 BLL.Leave.CheckBeforeApply(List`1 originDetail, String& message, Int32 eid, Nullable`1 staffid, List`1 allLeaveInfo, Boolean hasAttachment) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Leave.cs:行号 53
+   在 BLL.Leave.InsertLeave(List`1 originDetail, Int32 userid, Int32 employmentid, Nullable`1 staffid, String remarks, String& errorMsg, Int32 fid, Boolean hasAttachment) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Leave.cs:行号 151
+   在 WEBUI.Pages.Apply.button_apply_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 443
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
