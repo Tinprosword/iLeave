@@ -69,6 +69,8 @@ namespace WEBUI
             //reset isapp=0
             cookie.isAppLogin = "0";
             BLL.Page.MyCookieManage.SetCookie(cookie);
+
+            this.Page.SetFocus(this.Button1);
         }
 
         private void DisplayLanguage(LSLibrary.WebAPP.LanguageType tt)
