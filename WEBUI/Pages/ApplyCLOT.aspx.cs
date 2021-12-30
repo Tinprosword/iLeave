@@ -214,7 +214,7 @@ namespace WEBUI.Pages
                 tempList.Add(tempItem);
 
                 double balanceValue = BLL.Leave.GetBalanceView_CLOT_balance(loginer.userInfo.employID ?? 0);
-                string errormsg= BLL.CLOT.CheckOnApplyList(tempList, balanceValue, loginer.userInfo.employID ?? 0);
+                string errormsg= BLL.CLOT.CheckOnApplyList(tempList, balanceValue, loginer.userInfo.employID ?? 0,BLL.MultiLanguageHelper.GetChoose());
                 if (!string.IsNullOrEmpty(errormsg))
                 {
                     literal_errormsga.Visible = true;
@@ -282,7 +282,7 @@ namespace WEBUI.Pages
 
             var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
             double balanceValue = BLL.Leave.GetBalanceView_CLOT_balance(loginer.userInfo.employID ?? 0);
-            string errorMsg = BLL.CLOT.CheckOnApplyList(dataview.items, balanceValue, loginer.userInfo.employID ?? 0);
+            string errorMsg = BLL.CLOT.CheckOnApplyList(dataview.items, balanceValue, loginer.userInfo.employID ?? 0, BLL.MultiLanguageHelper.GetChoose());
             bool validData = string.IsNullOrEmpty(errorMsg);
             if (validData)
             {

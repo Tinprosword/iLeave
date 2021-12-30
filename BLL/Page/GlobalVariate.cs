@@ -20,11 +20,34 @@ namespace BLL
         public static string Session_clottoupload = "sessionclottoupload";
         public static string Session_uploadtoclot = "sessionuploadtoclot";
 
+        public static string splangcodeus = "us";
+        public static string splangcodecn = "cn";
+        public static string splangcodehk = "hk";
+
+        public static string GetSPLanguageCode(LSLibrary.WebAPP.LanguageType type)
+        {
+            if (type == LSLibrary.WebAPP.LanguageType.tc)
+            {
+                return "hk";
+            }
+            else if (type == LSLibrary.WebAPP.LanguageType.sc)
+            {
+                return "cn";
+            }
+            else
+            {
+                return "us";
+            }
+        }
+
+        //us, cn, hk
+
         public static bool testvalue = true;
 
         #endregion
 
         #region common enum 使用端的生成的enum居然默然从0开始.全然不管webservices的设定....只能采用会有隐患的复制的方法
+
 
         public enum spFunctionid
         {

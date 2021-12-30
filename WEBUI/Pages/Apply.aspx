@@ -31,9 +31,9 @@
             <tr>
                 <td><asp:Literal ID="lt_apply" runat="server">Apply</asp:Literal></td>
                 <td colspan="2">
-                    <asp:label ID="lt_applydays" runat="server" Width="50px"> </asp:label>
+                    <asp:label ID="lt_applydays" runat="server" Width="50px" Text="1 D"> </asp:label>
                     <asp:label ID="lt_balance" runat="server" Width="68px">Banlance</asp:label>
-                    <asp:label ID="lt_balancedays" runat="server"> </asp:label>&nbsp;<asp:label Font-Size="14px" ID="lt_balancedetail" runat="server"></asp:label>
+                    <asp:label ID="lt_balancedays" runat="server" Text="5 D"> </asp:label>
                 </td>
             </tr>
             <tr id="tr_radio" runat="server">

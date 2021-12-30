@@ -383,7 +383,6 @@ namespace WEBUI.Pages
             {
                 this.lt_balancedays.Text = "";
                 this.lt_applydays.Text = "";
-                this.lt_balancedetail.Text = "";
             }
             else
             {
@@ -395,9 +394,8 @@ namespace WEBUI.Pages
 
                 double cleanValue = BLL.Leave.GetAailabeValue_substractFutherAndWait(leaveid, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
 
-                this.lt_balancedays.Text = cleanValue==-99999?"--":cleanValue.ToString("0.##") + " D";
-                this.lt_applydays.Text = applying.ToString("0.##") + " D";
-                this.lt_balancedetail.Text = ""; 
+                this.lt_balancedays.Text = cleanValue == -99999 ? "--" : cleanValue.ToString("0.##") + " " + BLL.MultiLanguageHelper.GetLanguagePacket().Common_D;
+                this.lt_applydays.Text = applying.ToString("0.##") + " " + BLL.MultiLanguageHelper.GetLanguagePacket().Common_D;
             }
         }
 

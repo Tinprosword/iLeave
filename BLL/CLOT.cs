@@ -136,7 +136,7 @@ namespace BLL
             return result;
         }
 
-        public static string CheckOnApplyList(List<MODEL.CLOT.CLOTItem> data, double balance,int eid)
+        public static string CheckOnApplyList(List<MODEL.CLOT.CLOTItem> data, double balance,int eid,LSLibrary.WebAPP.LanguageType languageType)
         {
             string result = "";
             if (data == null || data.Count() == 0)
@@ -176,7 +176,8 @@ namespace BLL
                 {
                     DateTime from = new DateTime(data[i].date.Year, data[i].date.Month, data[i].date.Day, data[i].fromhour, data[i].frommin, 0);
                     DateTime to = new DateTime(data[i].date.Year, data[i].date.Month, data[i].date.Day, data[i].tohour, data[i].tominute, 0);
-                    string[] spPs = new string[] { eid.ToString(), ((int)data[i].type).ToString(), from.ToString("yyyy-MM-dd HH:mm:ss"), to.ToString("yyyy-MM-dd HH:mm:ss"), data[i].numberofHours.ToString() };
+                    string splancode = BLL.GlobalVariate.GetSPLanguageCode(languageType);
+                    string[] spPs = new string[] { eid.ToString(), ((int)data[i].type).ToString(), from.ToString("yyyy-MM-dd HH:mm:ss"), to.ToString("yyyy-MM-dd HH:mm:ss"), data[i].numberofHours.ToString(), splancode };
                     string spCheckResult = BLL.Other.ExeStropFun((int)BLL.GlobalVariate.spFunctionid.clot_add_portal, true, spPs);
 
                     if (!string.IsNullOrEmpty(spCheckResult))
