@@ -1,0 +1,17 @@
+ip:192.168.19.202
+DataTime：2022/1/4 11:38:04
+Url：http://192.168.19.210/WEBUI/pages/apply.aspx
+Message：操作超时
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.UpdateTodayLeaveBalanceToTable(Int32 eid) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 1838
+   在 BLL.Leave.UpdateTodayLeaveBalanceToTable(Int32 eid) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Leave.cs:行号 349
+   在 WEBUI.Pages.Apply.RefleshApplyBalance(Int32 leaveid) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 393
+   在 WEBUI.Pages.Apply.ddl_leavetype_SelectedIndexChanged(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 268
+   在 System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
