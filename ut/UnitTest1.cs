@@ -13,7 +13,7 @@ namespace ut
 {
 
     #region test workflow.
-
+    //todo 0. need add check balance and states.
     public class User
     {
         public int personid { get; set; }
