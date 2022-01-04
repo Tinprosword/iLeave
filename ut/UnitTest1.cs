@@ -11,6 +11,68 @@ using LSLibrary;
 
 namespace ut
 {
+
+    #region test workflow.
+
+    public class User
+    {
+        public int userid { get; set; }
+        public int empolyid { get; set; }
+        public int staffid { get; set; }
+        public int firsteid { get; set; }
+
+        public int addLeave(List<MODEL.Apply.apply_LeaveData> originDetail)
+        {
+            int result = 0;
+            string errorMsg = "";
+            result = BLL.Leave.InsertLeave(originDetail, userid, empolyid, staffid, "", ref errorMsg, firsteid, true);
+            return result;
+        }
+
+    }
+
+
+    [TestClass]
+    public class UT_Workflow
+    {
+        public User applyer_103 = new User();
+        public User approver_102 = new User();
+        public User approver_101 = new User();
+        [TestMethod]
+        public void StartTest()
+        {
+            Waiting();
+        }
+
+
+        public void Waiting()
+        {
+            List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
+
+            MODEL.Apply.apply_LeaveData theLeaveInfo = new MODEL.Apply.apply_LeaveData(0, "AL", "AL", 0, new DateTime(2022, 1, 1), 8);
+            leaveinfos.Add(theLeaveInfo);
+
+            int requestid= applyer_103.addLeave(leaveinfos);
+
+            if (requestid <= 0)
+            {
+                throw new Exception("error on insert");
+            }
+
+        }
+
+
+    }
+
+
+    #endregion
+
+
+
+
+
+
+
     public class mytestClass
     {
         public int getint()
@@ -27,36 +89,7 @@ namespace ut
         }
     }
 
-    public class User
-    {
-        public int userid { get; set; }
-        public int empolyid { get; set; }
-        public int staffid { get; set; }
-        public int firsteid { get; set; }
-
-        public int addLeave(List<MODEL.Apply.apply_LeaveData> originDetail)
-        {
-            int result = 0;
-            string errorMsg = "";
-            result = BLL.Leave.InsertLeave(originDetail, userid, empolyid, staffid, "", ref errorMsg, firsteid,true);
-            return result;
-        }
-
-    }
-
-
-    [TestClass]
-    public class UT_Workflow
-    {
-        [TestMethod]
-        public void TestMethod1()
-        {
-
-        }
-    }
-
-
-
+   
 
 
 
