@@ -407,7 +407,8 @@ namespace WEBUI.Pages
                     var firstinfo = BLL.Leave.GetFirstRequestinfoa(requestId);
                     if (!firstinfo.hasCancel)
                     {
-                        callResult = BLL.workflow.CancelRequest_leave(requestId, loginer.userInfo.id, "", out errormsg);
+                        int rid = BLL.workflow.CancelRequest_leave(requestId, loginer.userInfo.id, "", out errormsg);
+                        callResult = rid <= 0 ? false : true;
                         successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgcancel);
                     }
                     else

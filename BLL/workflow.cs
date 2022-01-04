@@ -28,7 +28,7 @@ namespace BLL
             string baseUrl = "";
             if (System.Web.HttpContext.Current!=null)
             {
-                baseUrl=BLL.Other.GetWebSiteRootUrl(System.Web.HttpContext.Current.Request);
+                baseUrl=BLL.Other.GetWebSiteRootUrl();
 
                 common.WriteLog("getrooturl:" + baseUrl);
             }
@@ -46,7 +46,8 @@ namespace BLL
             int check = Check_ApproveRequest_leave();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_leave(requestid, HandlerUID,remark, BLL.common.baseUrl);
+                string baseurl = BLL.Other.GetWebSiteRootUrl();
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_leave(requestid, HandlerUID,remark, baseurl);
                 result = true;
             }
             else
@@ -64,7 +65,8 @@ namespace BLL
             int check = Check_RejectRequest_leave();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_leave(requestid, HandlerUID, remarks, BLL.common.baseUrl);
+                string baseurl = BLL.Other.GetWebSiteRootUrl();
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_leave(requestid, HandlerUID, remarks, baseurl);
                 result = true;
             }
             else
@@ -93,20 +95,19 @@ namespace BLL
             return result;
         }
 
-        public static bool CancelRequest_leave(int requestid, int HandlerUID,string remark, out string errorMsg)
+        public static int CancelRequest_leave(int requestid, int HandlerUID,string remark, out string errorMsg)
         {
-            bool result = false;
+            int result = 0;
             errorMsg = "";
             int check = Check_WithDrawRequest_leave();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CancelRequest_leave(requestid, HandlerUID, remark,common.baseUrl);
-                result = true;
+                string baseurl = BLL.Other.GetWebSiteRootUrl();
+                result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CancelRequest_leave(requestid, HandlerUID, remark,baseurl);
             }
             else
             {
-                result = false;
-                errorMsg = "";
+                errorMsg = "error";
             }
             return result;
         }
@@ -118,7 +119,8 @@ namespace BLL
             int check = Check_ApprovalCancelRequeste();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveCancelRequest_leave(requestid, HandlerUID, remark, BLL.common.baseUrl);
+                string baseurl = BLL.Other.GetWebSiteRootUrl();
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveCancelRequest_leave(requestid, HandlerUID, remark, baseurl);
                 result = true;
             }
             else
@@ -137,7 +139,8 @@ namespace BLL
             int check = Check_RejectCancelRequest();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectCancelRequest_leave(requestid, HandlerUID,remark, BLL.common.baseUrl);
+                string baseurl = BLL.Other.GetWebSiteRootUrl();
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectCancelRequest_leave(requestid, HandlerUID,remark, baseurl);
                 result = true;
             }
             else
@@ -203,7 +206,8 @@ namespace BLL
             int check = Check_ApproveRequest_leave_clot();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_clotv2(requestid, HandlerUID, remark, common.baseUrl);
+                string baseurl = BLL.Other.GetWebSiteRootUrl();
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_clotv2(requestid, HandlerUID, remark,baseurl);
                 result = true;
             }
             else
@@ -221,7 +225,8 @@ namespace BLL
             int check = Check_RejectRequest_leave_clot();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_clotv2(requestid, HandlerUID, remarks,common.baseUrl);
+                string baseurl = BLL.Other.GetWebSiteRootUrl();
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_clotv2(requestid, HandlerUID, remarks,baseurl);
                 result = true;
             }
             else
@@ -257,7 +262,8 @@ namespace BLL
             int check = Check_WithDrawRequest_leave_clot();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CancelCLOT(requestid, remark, HandlerUID, common.baseUrl);
+                string baseurl = BLL.Other.GetWebSiteRootUrl();
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CancelCLOT(requestid, remark, HandlerUID, baseurl);
                 result = true;
             }
             else
@@ -275,7 +281,8 @@ namespace BLL
             int check = Check_ApprovalCancelRequeste_clot();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_Cancelclot(requestid, HandlerUID, remark, common.baseUrl);
+                string baseurl = BLL.Other.GetWebSiteRootUrl();
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_Cancelclot(requestid, HandlerUID, remark, baseurl);
                 result = true;
             }
             else
@@ -294,7 +301,8 @@ namespace BLL
             int check = Check_RejectCancelRequest_clot();
             if (check > 0)
             {
-                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_Cancelclot(requestid, HandlerUID, remark,common.baseUrl);
+                string baseurl = BLL.Other.GetWebSiteRootUrl();
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_Cancelclot(requestid, HandlerUID, remark,baseurl);
                 result = true;
             }
             else

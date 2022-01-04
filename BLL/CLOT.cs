@@ -127,7 +127,8 @@ namespace BLL
             int requestid = tempResult.ProcessID;
             if (string.IsNullOrWhiteSpace(errorMsg) && requestid>0)
             {
-                int workInfoid= WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CreateNewWorkflow_colt(WebServiceLayer.WebReference_leave.WorkflowTypeID.CLOT_APPLICATION, createUid, request.Remarks, requestid, applyerEID, common.baseUrl);
+                string baseurl = BLL.Other.GetWebSiteRootUrl();
+                int workInfoid= WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CreateNewWorkflow_colt(WebServiceLayer.WebReference_leave.WorkflowTypeID.CLOT_APPLICATION, createUid, request.Remarks, requestid, applyerEID, baseurl);
                 if (workInfoid > 0)
                 {
                     result = requestid;

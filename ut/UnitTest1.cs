@@ -23,8 +23,15 @@ namespace ut
         public int firsteid { get; set; }
         public int alid { get; set; }
         public string alCode { get; set; }
+        public double workh { get; set; }
+        public string name { get; set; }
+        public List<int> mywait { get; set; }
+        public List<int> myHistory { get; set; }
+        public List<int> myManagewait { get; set; }
+        public List<int> myManageHistory { get; set; }
 
-        public User(int uid, int eid, int sid, int feid, int _alid, string _alcode,int _pid)
+
+        public User(int uid, int eid, int sid, int feid, int _alid, string _alcode,int _pid,double wh,string _name)
         {
             userid = uid;
             empolyid = eid;
@@ -33,32 +40,75 @@ namespace ut
             alid = _alid;
             alCode = _alcode;
             personid = _pid;
+            workh = wh;
+            name = _name;
+            mywait = new List<int>();
+            myHistory = new List<int>();
+            myManagewait = new List<int>();
+            myManageHistory = new List<int>();
         }
 
-        public int addLeave(List<MODEL.Apply.apply_LeaveData> originDetail)
+        public int AddLeave(DateTime dt, int section)
         {
             int result = 0;
+
+            List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
+            MODEL.Apply.apply_LeaveData theLeaveInfo = new MODEL.Apply.apply_LeaveData(alid, alCode, alCode, section, dt,workh);
+            leaveinfos.Add(theLeaveInfo);
             string errorMsg = "";
-            result = BLL.Leave.InsertLeave(originDetail, userid, empolyid, staffid, "", ref errorMsg, firsteid, true);
+            result = BLL.Leave.InsertLeave(leaveinfos, userid, empolyid, staffid, "", ref errorMsg, firsteid, true);
+
+            if (result <= 0)
+            {
+                throw new Exception("error on insert");
+            }
+            Console.WriteLine(name+ ":add:" + result.ToString());
+            Console.WriteLine("");
             return result;
         }
 
+        public string ApproveLeave(int requestid,string remark)
+        {
+            string result = "";
+            BLL.workflow.ApproveRequest_leave(requestid, userid, remark, out result);
+            return result;
+        }
+
+        public string RejectLeave(int requestid, string remark)
+        {
+            string result = "";
+            BLL.workflow.RejectRequest_leave(requestid, userid, remark, out result);
+            return result;
+        }
+
+        public string WithDrawLeave(int rid)
+        {
+            string result = "";
+            BLL.workflow.WithDrawRequest_leave(rid, userid, "withdraw", out result);
+            return result;
+        }
+
+
+        public int cancelLeave(int rid)
+        {
+            string msg = "";
+            return BLL.workflow.CancelRequest_leave(rid, userid, "withdraw", out msg);
+        }
     }
 
 
     [TestClass]
     public class UT_Workflow
     {
-        public User applyer_103 = null;
-        public User approver_102 = null;
-        public User approver_101 = null;
-
-        public string message = "";
-
         //25628
         //25628   25627     25626
         //AL12 AL12ALS  AL12CLY
         //14  2110  2109
+
+
+        public User user_103 = null;
+        public User user_102 = null;//approrver1
+        public User user_101 = null;//apporver2
 
         public UT_Workflow()
         {
@@ -76,9 +126,10 @@ namespace ut
             int code2 = allLeaveinfo.Where(x => x.Code == lcode2).FirstOrDefault().ID;
             int code3 = allLeaveinfo.Where(x => x.Code == lcode3).FirstOrDefault().ID;
 
-            applyer_103 = new User(u103[0].u_id??0, u103[0].e_id??0,u103[0].s_id??0, u103[0].e_id ?? 0, code1, lcode1,u103[0].p_id);
-            approver_102 = new User(u102[0].u_id ?? 0, u102[0].e_id ?? 0, u102[0].s_id ?? 0, u102[0].e_id ?? 0, code2, lcode2, u102[0].p_id);
-            approver_101 = new User(u101[0].u_id ?? 0, u101[0].e_id ?? 0, u101[0].s_id ?? 0, u101[0].e_id ?? 0, code3, lcode3, u101[0].p_id);
+            user_103 = new User(u103[0].u_id??0, u103[0].e_id??0,u103[0].s_id??0, u103[0].e_id ?? 0, code1, lcode1,u103[0].p_id,8,"103");
+            user_102 = new User(u102[0].u_id ?? 0, u102[0].e_id ?? 0, u102[0].s_id ?? 0, u102[0].e_id ?? 0, code2, lcode2, u102[0].p_id,8,"102");
+            user_101 = new User(u101[0].u_id ?? 0, u101[0].e_id ?? 0, u101[0].s_id ?? 0, u101[0].e_id ?? 0, code3, lcode3, u101[0].p_id,8,"101");
+
         }
 
         
@@ -86,75 +137,345 @@ namespace ut
         [TestMethod]
         public void StartTest()
         {
-            
             Console.WriteLine("Start Test");
-            List<int> waitlist = new List<int>();
-            List<int> histroyList = new List<int>();
-
-            int waitingRequestid= UT_Waiting(waitlist, histroyList);
+            Scene_waiting();
+            Scene_Approved();
+            Scene_Reject1();
+            Scene_WithDraw();
+            Scene_wc();
+            Scene_wc_approved();
+            Scene_wc_reject();
         }
 
+        
 
-        public int UT_Waiting(List<int> preWait, List<int> preHistory)
+
+
+        public void Scene_waiting()
         {
-            int result = 0;
-            List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
+            int waitingRequestid = user_103.AddLeave(new DateTime(2022, 1, 1), 0);
+            user_103.mywait.Add(waitingRequestid);
+            user_102.myManagewait.Add(waitingRequestid);
 
-            //insert
-            MODEL.Apply.apply_LeaveData theLeaveInfo = new MODEL.Apply.apply_LeaveData(applyer_103.alid, applyer_103.alCode, applyer_103.alCode, 0, new DateTime(2022, 1, 1), 8);
-            leaveinfos.Add(theLeaveInfo);
-
-            result = applyer_103.addLeave(leaveinfos);
-
-            if (result <= 0)
-            {
-                throw new Exception("error on insert");
-            }
-            Console.WriteLine("add:"+result.ToString());
-
-            //applyer check myleave_wait
-            preWait.Add(result);
-            checkMyLeaveMater_wait(applyer_103, preWait);
-
-            //applyer check myleave_history
-            checkMyLeaveMater_history(applyer_103, preHistory);
-
-            return result;
+            checkAllUer();
         }
 
-        public string checkMyLeaveMater_wait(User user,List<int> requestids)
+
+        public void Scene_Approved()
+        {
+            int Requestid = user_103.AddLeave(new DateTime(2022, 1, 2), 0);
+
+            user_103.mywait.Add(Requestid);
+            user_102.myManagewait.Add(Requestid);
+
+            checkAllUer();
+
+            user_102.ApproveLeave(Requestid, "a1");
+
+            user_102.myManagewait.Remove(Requestid);
+            user_102.myManageHistory.Add(Requestid);
+
+            user_101.myManagewait.Add(Requestid);
+
+            checkAllUer();
+
+            user_101.ApproveLeave(Requestid, "a2");
+
+            user_101.myManagewait.Remove(Requestid);
+            user_101.myManageHistory.Add(Requestid);
+
+            user_103.mywait.Remove(Requestid);
+            user_103.myHistory.Add(Requestid);
+
+            checkAllUer();
+        }
+
+
+        public void Scene_Reject1()
+        {
+            int Requestid = user_103.AddLeave(new DateTime(2022, 1, 3), 0);
+
+            user_103.mywait.Add(Requestid);
+            user_102.myManagewait.Add(Requestid);
+
+            checkAllUer();
+
+            user_102.ApproveLeave(Requestid, "a1");
+
+            user_102.myManagewait.Remove(Requestid);
+            user_102.myManageHistory.Add(Requestid);
+
+            user_101.myManagewait.Add(Requestid);
+
+            checkAllUer();
+
+            user_101.RejectLeave(Requestid, "a2");
+
+            user_101.myManagewait.Remove(Requestid);
+            user_101.myManageHistory.Add(Requestid);
+
+            user_103.mywait.Remove(Requestid);
+            user_103.myHistory.Add(Requestid);
+
+            checkAllUer();
+        }
+
+        public void Scene_WithDraw()
+        {
+            int Requestid = user_103.AddLeave(new DateTime(2022, 1, 4), 0);
+
+            user_103.mywait.Add(Requestid);
+            user_102.myManagewait.Add(Requestid);
+
+            checkAllUer();
+
+            user_102.ApproveLeave(Requestid, "a1");
+
+            user_102.myManagewait.Remove(Requestid);
+            user_102.myManageHistory.Add(Requestid);
+
+            user_101.myManagewait.Add(Requestid);
+
+            checkAllUer();
+
+            user_103.WithDrawLeave(Requestid);
+
+            user_101.myManagewait.Remove(Requestid);
+            user_101.myManageHistory.Add(Requestid);
+
+            user_103.mywait.Remove(Requestid);
+            user_103.myHistory.Add(Requestid);
+
+            
+
+            checkAllUer();
+        }
+
+
+
+        public void Scene_wc()
+        {
+            int Requestid = user_103.AddLeave(new DateTime(2022, 1, 5), 0);
+
+            user_103.mywait.Add(Requestid);
+            user_102.myManagewait.Add(Requestid);
+
+            checkAllUer();
+
+            user_102.ApproveLeave(Requestid, "a1");
+
+            user_102.myManagewait.Remove(Requestid);
+            user_102.myManageHistory.Add(Requestid);
+
+            user_101.myManagewait.Add(Requestid);
+
+            checkAllUer();
+
+            user_101.ApproveLeave(Requestid, "a2");
+
+            user_101.myManagewait.Remove(Requestid);
+            user_101.myManageHistory.Add(Requestid);
+
+            user_103.mywait.Remove(Requestid);
+            user_103.myHistory.Add(Requestid);
+
+            checkAllUer();
+
+            int cancelRid=user_103.cancelLeave(Requestid);
+
+            user_103.mywait.Add(cancelRid);
+            //todo 0 ，嚴格來說，不應該有。
+            //user_103.myHistory.Remove(Requestid);
+
+            user_102.myManagewait.Add(cancelRid);
+            user_102.myManageHistory.Remove(Requestid);
+            checkAllUer();
+        }
+
+        public void Scene_wc_approved()
+        {
+            int Requestid = user_103.AddLeave(new DateTime(2022, 1, 6), 0);
+
+            user_103.mywait.Add(Requestid);
+            user_102.myManagewait.Add(Requestid);
+
+            checkAllUer();
+
+            user_102.ApproveLeave(Requestid, "a1");
+
+            user_102.myManagewait.Remove(Requestid);
+            user_102.myManageHistory.Add(Requestid);
+
+            user_101.myManagewait.Add(Requestid);
+
+            checkAllUer();
+
+            user_101.ApproveLeave(Requestid, "a2");
+
+            user_101.myManagewait.Remove(Requestid);
+            user_101.myManageHistory.Add(Requestid);
+
+            user_103.mywait.Remove(Requestid);
+            user_103.myHistory.Add(Requestid);
+
+            checkAllUer();
+
+            int cancelRid = user_103.cancelLeave(Requestid);
+
+            user_103.mywait.Add(cancelRid);
+            //todo 0 ，嚴格來說，不應該有。
+            //user_103.myHistory.Remove(Requestid);
+
+            user_102.myManagewait.Add(cancelRid);
+            user_102.myManageHistory.Remove(Requestid);
+            checkAllUer();
+
+            user_102.ApproveLeave(cancelRid, "wc1");
+
+            user_102.myManagewait.Remove(cancelRid);
+            user_102.myManageHistory.Add(Requestid);
+
+            user_101.myManagewait.Add(cancelRid);
+            user_101.myManageHistory.Remove(Requestid);
+
+            checkAllUer();
+
+            user_101.ApproveLeave(cancelRid, "wc2");
+            user_101.myManagewait.Remove(cancelRid);
+            user_101.myManageHistory.Add(Requestid);
+
+            user_103.mywait.Remove(cancelRid);
+            //todo 0 上面沒有減去首請求，這裡所有還有首請求。不需要再添加。
+            //user_103.myHistory.Add(Requestid);
+
+            checkAllUer();
+        }
+
+        public void Scene_wc_reject()
+        {
+            int Requestid = user_103.AddLeave(new DateTime(2022, 1, 7), 0);
+
+            user_103.mywait.Add(Requestid);
+            user_102.myManagewait.Add(Requestid);
+
+            checkAllUer();
+
+            user_102.ApproveLeave(Requestid, "a1");
+
+            user_102.myManagewait.Remove(Requestid);
+            user_102.myManageHistory.Add(Requestid);
+
+            user_101.myManagewait.Add(Requestid);
+
+            checkAllUer();
+
+            user_101.ApproveLeave(Requestid, "a2");
+
+            user_101.myManagewait.Remove(Requestid);
+            user_101.myManageHistory.Add(Requestid);
+
+            user_103.mywait.Remove(Requestid);
+            user_103.myHistory.Add(Requestid);
+
+            checkAllUer();
+
+            int cancelRid = user_103.cancelLeave(Requestid);
+
+            user_103.mywait.Add(cancelRid);
+            //todo 0 ，嚴格來說，不應該有。
+            //user_103.myHistory.Remove(Requestid);
+
+            user_102.myManagewait.Add(cancelRid);
+            user_102.myManageHistory.Remove(Requestid);
+            checkAllUer();
+
+            user_102.ApproveLeave(cancelRid, "wc1");
+
+            user_102.myManagewait.Remove(cancelRid);
+            user_102.myManageHistory.Add(Requestid);
+
+            user_101.myManagewait.Add(cancelRid);
+            user_101.myManageHistory.Remove(Requestid);
+
+            checkAllUer();
+
+            user_101.RejectLeave(cancelRid, "rej wc2");
+            user_101.myManagewait.Remove(cancelRid);
+            user_101.myManageHistory.Add(Requestid);
+
+            user_103.mywait.Remove(cancelRid);
+            //todo 0 上面沒有減去首請求，這裡所有還有首請求。不需要再添加。
+            //user_103.myHistory.Add(Requestid);
+
+            checkAllUer();
+        }
+
+
+        private void checkAllUer()
+        {
+            checkAll(user_103);
+            checkAll(user_102);
+            checkAll(user_101);
+        }
+
+        private void checkAll(User user)
+        {
+            checkMyLeaveMater_wait(user);
+            checkMyLeaveMater_history(user);
+            checkMyManageLeaveMater_waiting(user);
+            checkMyManageLeaveMater_history(user);
+            Console.WriteLine("");
+        }
+
+        
+
+        public string checkMyLeaveMater_wait(User user)
         {
             string result = "";
-            var mywait = BLL.Leave.GetMyLeaveMaster(applyer_103.personid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, 2022);
+            var mywait = BLL.Leave.GetMyLeaveMaster(user.personid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, 2022);
             var rids=mywait.Select(x => x.RequestID).ToList();
-            if (rids.Count() == requestids.Count())
-            {
-                foreach (int item in requestids)
-                {
-                    if (!rids.Contains(item))
-                    {
-                        throw new Exception("not contain :"+item);
-                    }
-                }
-            }
-            else
-            {
-                throw new Exception("total is not equel");
-            }
-            Console.WriteLine("total is " + rids.Count().ToString());
+            CheckResult(user.mywait, rids);
+            Console.WriteLine(user.name + ":MyLeave_wait:total is " + rids.Count().ToString());
             return result;
         }
 
-        public string checkMyLeaveMater_history(User user, List<int> requestids)
+        public string checkMyLeaveMater_history(User user)
         {
             string result = "";
-            var mywait = BLL.Leave.GetMyLeaveMaster(applyer_103.personid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, 2022);
+            var mywait = BLL.Leave.GetMyLeaveMaster(user.personid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, 2022);
             var rids = mywait.Select(x => x.RequestID).ToList();
-            if (rids.Count() == requestids.Count())
+            CheckResult(user.myHistory, rids);
+            Console.WriteLine(user.name+ ":MyLeave_history:total is " + rids.Count().ToString());
+            return result;
+        }
+
+        public string checkMyManageLeaveMater_waiting(User user)
+        {
+            string result = "";
+            var mywait = BLL.Leave.GetMyManageLeaveMaster(user.userid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, 2022,null);
+            var rids = mywait.Select(x => x.RequestID).ToList();
+            CheckResult(user.myManagewait, rids);
+            Console.WriteLine(user.name + "MyManageLeaveMater_waiting:total is " + rids.Count().ToString());
+            return result;
+        }
+
+        public string checkMyManageLeaveMater_history(User user)
+        {
+            string result = "";
+            var mywait = BLL.Leave.GetMyManageLeaveMaster(user.userid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, 2022, null);
+            var rids = mywait.Select(x => x.RequestID).ToList();
+            CheckResult(user.myManageHistory, rids);
+            Console.WriteLine(user.name + ":MyManageLeaveMater_history:total is " + rids.Count().ToString());
+            return result;
+        }
+
+        private void CheckResult(List<int> wantBe, List<int> data)
+        {
+            if (wantBe.Count() == data.Count())
             {
-                foreach (int item in requestids)
+                foreach (int item in data)
                 {
-                    if (!rids.Contains(item))
+                    if (!wantBe.Contains(item))
                     {
                         throw new Exception("not contain :" + item);
                     }
@@ -164,11 +485,7 @@ namespace ut
             {
                 throw new Exception("total is not equel");
             }
-            Console.WriteLine("total is " + rids.Count().ToString());
-            return result;
         }
-
-
 
     }
 

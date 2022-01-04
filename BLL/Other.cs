@@ -163,11 +163,11 @@ namespace BLL
         }
 
 
-        public static string GetWebSiteRootUrl(System.Web.HttpRequest Request)
+        public static string GetWebSiteRootUrl()
         {
             string result = "";
 
-            if (Request == null)
+            if (System.Web.HttpContext.Current==null ||  System.Web.HttpContext.Current.Request == null)
             {
                 return "";
             }
@@ -175,7 +175,7 @@ namespace BLL
             string sysUrl= BLL.CodeSetting.GetSystemParameter(BLL.CodeSetting.SystemParameter_baseurl);
             if (string.IsNullOrEmpty(sysUrl))
             {
-                string theUrl = Request.Url.ToString();
+                string theUrl = System.Web.HttpContext.Current.Request.Url.ToString();
 
                 string[] ileavesitename = { "ILEAVE", "DW-ILEAVE","TEMP", "LEAVE", "IHR-ILEAVE", "HR-ILEAVE" };
                 foreach (string sitename in ileavesitename)

@@ -215,7 +215,7 @@ namespace WEBUI
 
         private void showsite()
         {
-            this.Label1.Text = BLL.Other.GetWebSiteRootUrl(Request);
+            this.Label1.Text = BLL.Other.GetWebSiteRootUrl();
         }
 
         private void getbaseinfo()
