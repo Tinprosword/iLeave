@@ -166,6 +166,12 @@ namespace BLL
         public static string GetWebSiteRootUrl(System.Web.HttpRequest Request)
         {
             string result = "";
+
+            if (Request == null)
+            {
+                return "";
+            }
+
             string sysUrl= BLL.CodeSetting.GetSystemParameter(BLL.CodeSetting.SystemParameter_baseurl);
             if (string.IsNullOrEmpty(sysUrl))
             {

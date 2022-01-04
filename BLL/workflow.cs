@@ -25,8 +25,14 @@ namespace BLL
         public static int InsertWorkflow(WebServiceLayer.WebReference_leave.StaffLeaveRequest[] details, int uid, int requestLeaveID, int employMentID)
         {
             int result = 0;
-            string baseUrl = BLL.Other.GetWebSiteRootUrl(System.Web.HttpContext.Current.Request);
-            common.WriteLog("getrooturl:"+baseUrl);
+            string baseUrl = "";
+            if (System.Web.HttpContext.Current!=null)
+            {
+                baseUrl=BLL.Other.GetWebSiteRootUrl(System.Web.HttpContext.Current.Request);
+
+                common.WriteLog("getrooturl:" + baseUrl);
+            }
+            
             result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CreateNewWorkflow(null, WebServiceLayer.WebReference_leave.WorkflowTypeID.LEAVE_APPLICATION, details, uid, "", "",baseUrl  , "", requestLeaveID, employMentID);
             return result;
         }
