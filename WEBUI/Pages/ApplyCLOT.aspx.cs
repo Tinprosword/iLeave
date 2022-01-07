@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 //todo 0  申请一个，好像 waitBalance 不会加上去??
-//todo 0 .calculate real clot hours
 //clot 计划结余是：正在申请+wait.   balance:没有today还是future 的概念。都是future.
 namespace WEBUI.Pages
 {

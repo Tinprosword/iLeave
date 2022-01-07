@@ -2,6 +2,23 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s1="http://tempuri.org/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="CancelRequest_leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="baseUrl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelRequest_leaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CancelRequest_leaveResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ApproveRequest_Clot">
         <s:complexType>
           <s:sequence>
@@ -1073,6 +1090,21 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDResult" type="tns:ArrayOfLeaveRequestMaster" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2Result" type="tns:ArrayOfLeaveRequestMaster" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -2310,26 +2342,9 @@
       <s:element name="WithDrawRequest_leaveResponse">
         <s:complexType />
       </s:element>
-      <s:element name="CancelRequest_leave">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="baseUrl" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="CancelRequest_leaveResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="CancelRequest_leaveResult" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
+      <s:element name="int" type="s:int" />
       <s:element name="ArrayOfT_WorkflowInfo" nillable="true" type="tns:ArrayOfT_WorkflowInfo" />
       <s:element name="ArrayOfStaffCLOTRequest" nillable="true" type="tns:ArrayOfStaffCLOTRequest" />
-      <s:element name="int" type="s:int" />
       <s:element name="ErrorMessageInfo" nillable="true" type="tns:ErrorMessageInfo" />
       <s:element name="ArrayOfT_Leave" nillable="true" type="tns:ArrayOfT_Leave" />
       <s:element name="ArrayOfT_WorkflowTask" nillable="true" type="tns:ArrayOfT_WorkflowTask" />
@@ -2375,6 +2390,12 @@
       </s:complexType>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="CancelRequest_leaveSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelRequest_leave" />
+  </wsdl:message>
+  <wsdl:message name="CancelRequest_leaveSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelRequest_leaveResponse" />
+  </wsdl:message>
   <wsdl:message name="ApproveRequest_ClotSoapIn">
     <wsdl:part name="parameters" element="tns:ApproveRequest_Clot" />
   </wsdl:message>
@@ -2674,6 +2695,12 @@
   </wsdl:message>
   <wsdl:message name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2SoapIn">
+    <wsdl:part name="parameters" element="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2SoapOut">
+    <wsdl:part name="parameters" element="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2Response" />
   </wsdl:message>
   <wsdl:message name="GetLeaveMasterByReuestIDSoapIn">
     <wsdl:part name="parameters" element="tns:GetLeaveMasterByReuestID" />
@@ -3011,11 +3038,14 @@
   <wsdl:message name="WithDrawRequest_leaveSoapOut">
     <wsdl:part name="parameters" element="tns:WithDrawRequest_leaveResponse" />
   </wsdl:message>
-  <wsdl:message name="CancelRequest_leaveSoapIn">
-    <wsdl:part name="parameters" element="tns:CancelRequest_leave" />
+  <wsdl:message name="CancelRequest_leaveHttpPostIn">
+    <wsdl:part name="requestid" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+    <wsdl:part name="remark" type="s:string" />
+    <wsdl:part name="baseUrl" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="CancelRequest_leaveSoapOut">
-    <wsdl:part name="parameters" element="tns:CancelRequest_leaveResponse" />
+  <wsdl:message name="CancelRequest_leaveHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
   </wsdl:message>
   <wsdl:message name="ApproveRequest_ClotHttpPostIn">
     <wsdl:part name="quickOperate" type="s:string" />
@@ -3226,6 +3256,13 @@
     <wsdl:part name="uid" type="s:string" />
   </wsdl:message>
   <wsdl:message name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfLeaveRequestMaster" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2HttpPostIn">
+    <wsdl:part name="uid" type="s:string" />
+    <wsdl:part name="year" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2HttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfLeaveRequestMaster" />
   </wsdl:message>
   <wsdl:message name="GetLeaveMasterByReuestIDHttpPostIn">
@@ -3540,16 +3577,11 @@
     <wsdl:part name="remark" type="s:string" />
   </wsdl:message>
   <wsdl:message name="WithDrawRequest_leaveHttpPostOut" />
-  <wsdl:message name="CancelRequest_leaveHttpPostIn">
-    <wsdl:part name="requestid" type="s:string" />
-    <wsdl:part name="UserID" type="s:string" />
-    <wsdl:part name="remark" type="s:string" />
-    <wsdl:part name="baseUrl" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="CancelRequest_leaveHttpPostOut">
-    <wsdl:part name="Body" element="tns:int" />
-  </wsdl:message>
   <wsdl:portType name="LeaveManagementV2Soap">
+    <wsdl:operation name="CancelRequest_leave">
+      <wsdl:input message="tns:CancelRequest_leaveSoapIn" />
+      <wsdl:output message="tns:CancelRequest_leaveSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ApproveRequest_Clot">
       <wsdl:input message="tns:ApproveRequest_ClotSoapIn" />
       <wsdl:output message="tns:ApproveRequest_ClotSoapOut" />
@@ -3749,6 +3781,10 @@
     <wsdl:operation name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUID">
       <wsdl:input message="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDSoapIn" />
       <wsdl:output message="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2">
+      <wsdl:input message="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2SoapIn" />
+      <wsdl:output message="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2SoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetLeaveMasterByReuestID">
       <wsdl:input message="tns:GetLeaveMasterByReuestIDSoapIn" />
@@ -3974,12 +4010,12 @@
       <wsdl:input message="tns:WithDrawRequest_leaveSoapIn" />
       <wsdl:output message="tns:WithDrawRequest_leaveSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="CancelRequest_leave">
-      <wsdl:input message="tns:CancelRequest_leaveSoapIn" />
-      <wsdl:output message="tns:CancelRequest_leaveSoapOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LeaveManagementV2HttpPost">
+    <wsdl:operation name="CancelRequest_leave">
+      <wsdl:input message="tns:CancelRequest_leaveHttpPostIn" />
+      <wsdl:output message="tns:CancelRequest_leaveHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="ApproveRequest_Clot">
       <wsdl:input message="tns:ApproveRequest_ClotHttpPostIn" />
       <wsdl:output message="tns:ApproveRequest_ClotHttpPostOut" />
@@ -4111,6 +4147,10 @@
     <wsdl:operation name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUID">
       <wsdl:input message="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDHttpPostIn" />
       <wsdl:output message="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2">
+      <wsdl:input message="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2HttpPostIn" />
+      <wsdl:output message="tns:GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2HttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetLeaveMasterByReuestID">
       <wsdl:input message="tns:GetLeaveMasterByReuestIDHttpPostIn" />
@@ -4300,13 +4340,18 @@
       <wsdl:input message="tns:WithDrawRequest_leaveHttpPostIn" />
       <wsdl:output message="tns:WithDrawRequest_leaveHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="CancelRequest_leave">
-      <wsdl:input message="tns:CancelRequest_leaveHttpPostIn" />
-      <wsdl:output message="tns:CancelRequest_leaveHttpPostOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LeaveManagementV2Soap" type="tns:LeaveManagementV2Soap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CancelRequest_leave">
+      <soap:operation soapAction="http://tempuri.org/CancelRequest_leave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ApproveRequest_Clot">
       <soap:operation soapAction="http://tempuri.org/ApproveRequest_Clot" style="document" />
       <wsdl:input>
@@ -4750,6 +4795,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUID">
       <soap:operation soapAction="http://tempuri.org/GetLeaveMaster_MyManageBeyondWaitingByApprovarUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2">
+      <soap:operation soapAction="http://tempuri.org/GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -5261,18 +5315,18 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CancelRequest_leave">
-      <soap:operation soapAction="http://tempuri.org/CancelRequest_leave" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LeaveManagementV2Soap12" type="tns:LeaveManagementV2Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CancelRequest_leave">
+      <soap12:operation soapAction="http://tempuri.org/CancelRequest_leave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ApproveRequest_Clot">
       <soap12:operation soapAction="http://tempuri.org/ApproveRequest_Clot" style="document" />
       <wsdl:input>
@@ -5716,6 +5770,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUID">
       <soap12:operation soapAction="http://tempuri.org/GetLeaveMaster_MyManageBeyondWaitingByApprovarUID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2">
+      <soap12:operation soapAction="http://tempuri.org/GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -6227,18 +6290,18 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CancelRequest_leave">
-      <soap12:operation soapAction="http://tempuri.org/CancelRequest_leave" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LeaveManagementV2HttpPost" type="tns:LeaveManagementV2HttpPost">
     <http:binding verb="POST" />
+    <wsdl:operation name="CancelRequest_leave">
+      <http:operation location="/CancelRequest_leave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ApproveRequest_Clot">
       <http:operation location="/ApproveRequest_Clot" />
       <wsdl:input>
@@ -6517,6 +6580,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUID">
       <http:operation location="/GetLeaveMaster_MyManageBeyondWaitingByApprovarUID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2">
+      <http:operation location="/GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -6936,15 +7008,6 @@
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
       <wsdl:output />
-    </wsdl:operation>
-    <wsdl:operation name="CancelRequest_leave">
-      <http:operation location="/CancelRequest_leave" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output>
-        <mime:mimeXml part="Body" />
-      </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="LeaveManagementV2">

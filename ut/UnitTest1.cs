@@ -11,9 +11,9 @@ using LSLibrary;
 
 namespace ut
 {
-
+    //測試用例包括1.所有狀態 7種，2.包括單，多條。3包括跨年。
+    //不包括，1.approver 自己申請。
     #region test workflow.
-    //todo 0. need add check balance and states.
     public class User
     {
         public int personid { get; set; }
@@ -48,13 +48,20 @@ namespace ut
             myManageHistory = new List<int>();
         }
 
-        public int AddLeave(DateTime dt, int section)
+        public void AttachLeaves(DateTime dt, int section,List<MODEL.Apply.apply_LeaveData> Predata)
+        {
+            MODEL.Apply.apply_LeaveData newLeave = new MODEL.Apply.apply_LeaveData(alid, alCode, alCode, section, dt, workh);
+            if (Predata == null)
+            {
+                Predata = new List<MODEL.Apply.apply_LeaveData>();
+            }
+            Predata.Add(newLeave);
+        }
+
+        public int AddLeave(List<MODEL.Apply.apply_LeaveData> leaveinfos)
         {
             int result = 0;
 
-            List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
-            MODEL.Apply.apply_LeaveData theLeaveInfo = new MODEL.Apply.apply_LeaveData(alid, alCode, alCode, section, dt,workh);
-            leaveinfos.Add(theLeaveInfo);
             string errorMsg = "";
             result = BLL.Leave.InsertLeave(leaveinfos, userid, empolyid, staffid, "", ref errorMsg, firsteid, true);
 
@@ -94,7 +101,38 @@ namespace ut
             string msg = "";
             return BLL.workflow.CancelRequest_leave(rid, userid, "withdraw", out msg);
         }
+
+
+        public void AttachCLOTS(MODEL.CLOT.enum_clotType type,DateTime dt, int fh,int fm,int th,int tm, string remk, string numh, List<MODEL.CLOT.CLOTItem> Predata)
+        {
+            MODEL.CLOT.CLOTItem newLeave = new MODEL.CLOT.CLOTItem(type, dt, fh, fm, th, tm,remk, numh);
+            if (Predata == null)
+            {
+                Predata = new List<MODEL.CLOT.CLOTItem>();
+            }
+            Predata.Add(newLeave);
+        }
+
+        public int AddCLOT()
+        {
+            int result = 0;
+
+            string errorMsg = "";
+
+
+            //result = BLL.CLOT.InsertCLOTRequests();
+
+            if (result <= 0)
+            {
+                throw new Exception("error on insert");
+            }
+            Console.WriteLine(name + ":add:" + result.ToString());
+            Console.WriteLine("");
+            return result;
+        }
     }
+
+
 
 
     [TestClass]
@@ -109,6 +147,55 @@ namespace ut
         public User user_103 = null;
         public User user_102 = null;//approrver1
         public User user_101 = null;//apporver2
+
+
+        [TestMethod]
+        public void add20batch()
+        {
+            DateTime dt = new DateTime(2022, 1, 1);
+            for (int i = 0; i < 25; i++)
+            {
+                Scene_Approved1(dt);
+                dt = dt.AddDays(1);
+            }
+        }
+
+        public void Scene_Approved1(DateTime dt)
+        {
+            List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
+            user_103.AttachLeaves(dt, 0, leaveinfos);
+            int Requestid = user_103.AddLeave(leaveinfos);
+
+            user_103.mywait.Add(Requestid);
+            user_102.myManagewait.Add(Requestid);
+
+
+            checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
+
+            user_102.ApproveLeave(Requestid, "a1");
+
+            user_102.myManagewait.Remove(Requestid);
+            user_102.myManageHistory.Add(Requestid);
+
+            user_101.myManagewait.Add(Requestid);
+
+
+            checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
+
+            user_101.ApproveLeave(Requestid, "a2");
+
+            user_101.myManagewait.Remove(Requestid);
+            user_101.myManageHistory.Add(Requestid);
+
+            user_103.mywait.Remove(Requestid);
+            user_103.myHistory.Add(Requestid);
+
+
+            checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
+        }
 
         public UT_Workflow()
         {
@@ -135,7 +222,43 @@ namespace ut
         
         //測試方法用戶是固定的，可以構造函數的時候變更。來達到測試不同用戶。裡面hardcode .來簡化代碼。
         [TestMethod]
-        public void StartTest()
+        public void StartTest_clot()
+        {
+            Console.WriteLine("Start Test");
+            Scene_waiting_clot();
+            //Scene_Approved_clot();
+            //Scene_Reject1_clot();
+            //Scene_WithDraw_clot();
+            //Scene_wc_clot();
+            //Scene_wc_approved_clot();
+            //Scene_wc_reject_clot();
+        }
+
+        private void Scene_waiting_clot()
+        {
+
+            //List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
+            //user_103.AttachLeaves(new DateTime(2022, 1, 1), 0, leaveinfos);
+            //user_103.AttachLeaves(new DateTime(2023, 1, 1), 0, leaveinfos);
+            //int Requestid = user_103.AddLeave(leaveinfos);
+            //user_103.mywait.Add(Requestid);
+            //user_102.myManagewait.Add(Requestid);
+
+            //checkAllUer();
+            //CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
+        }
+
+
+
+
+        #region clot
+
+
+        #endregion
+
+        #region leave
+        [TestMethod]
+        public void StartTest_leave()
         {
             Console.WriteLine("Start Test");
             Scene_waiting();
@@ -147,28 +270,40 @@ namespace ut
             Scene_wc_reject();
         }
 
-        
-
-
-
         public void Scene_waiting()
         {
-            int waitingRequestid = user_103.AddLeave(new DateTime(2022, 1, 1), 0);
-            user_103.mywait.Add(waitingRequestid);
-            user_102.myManagewait.Add(waitingRequestid);
-
-            checkAllUer();
-        }
-
-
-        public void Scene_Approved()
-        {
-            int Requestid = user_103.AddLeave(new DateTime(2022, 1, 2), 0);
-
+            List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
+            user_103.AttachLeaves(new DateTime(2022, 1, 1), 0, leaveinfos);
+            user_103.AttachLeaves(new DateTime(2023, 1, 1), 0, leaveinfos);
+            int Requestid = user_103.AddLeave(leaveinfos);
             user_103.mywait.Add(Requestid);
             user_102.myManagewait.Add(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
+        }
+
+        private void CheckLeaveRequestStatus(int Requestid, BLL.GlobalVariate.ApprovalRequestStatus status)
+        {
+            var request= BLL.Leave.GetRequestMasterByRequestID(Requestid);
+            if (request.Status != (byte)status)
+            {
+                throw new Exception("status is match");
+            }
+        }
+
+        public void Scene_Approved()
+        {
+            List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
+            user_103.AttachLeaves(new DateTime(2022, 1, 2), 0, leaveinfos);
+            int Requestid = user_103.AddLeave(leaveinfos);
+
+            user_103.mywait.Add(Requestid);
+            user_102.myManagewait.Add(Requestid);
+
+            
+            checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
 
             user_102.ApproveLeave(Requestid, "a1");
 
@@ -177,7 +312,9 @@ namespace ut
 
             user_101.myManagewait.Add(Requestid);
 
+            
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
 
             user_101.ApproveLeave(Requestid, "a2");
 
@@ -187,18 +324,23 @@ namespace ut
             user_103.mywait.Remove(Requestid);
             user_103.myHistory.Add(Requestid);
 
+            
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
         }
 
 
         public void Scene_Reject1()
         {
-            int Requestid = user_103.AddLeave(new DateTime(2022, 1, 3), 0);
+            List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
+            user_103.AttachLeaves(new DateTime(2022, 1, 3), 0, leaveinfos);
+            int Requestid = user_103.AddLeave(leaveinfos);
 
             user_103.mywait.Add(Requestid);
             user_102.myManagewait.Add(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
 
             user_102.ApproveLeave(Requestid, "a1");
 
@@ -208,6 +350,7 @@ namespace ut
             user_101.myManagewait.Add(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
 
             user_101.RejectLeave(Requestid, "a2");
 
@@ -218,16 +361,20 @@ namespace ut
             user_103.myHistory.Add(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.REJECT);
         }
 
         public void Scene_WithDraw()
         {
-            int Requestid = user_103.AddLeave(new DateTime(2022, 1, 4), 0);
+            List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
+            user_103.AttachLeaves(new DateTime(2022, 1, 4), 0, leaveinfos);
+            int Requestid = user_103.AddLeave(leaveinfos);
 
             user_103.mywait.Add(Requestid);
             user_102.myManagewait.Add(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
 
             user_102.ApproveLeave(Requestid, "a1");
 
@@ -237,6 +384,7 @@ namespace ut
             user_101.myManagewait.Add(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
 
             user_103.WithDrawLeave(Requestid);
 
@@ -249,18 +397,21 @@ namespace ut
             
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.CANCEL);
         }
-
 
 
         public void Scene_wc()
         {
-            int Requestid = user_103.AddLeave(new DateTime(2022, 1, 5), 0);
+            List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
+            user_103.AttachLeaves(new DateTime(2022, 1, 5), 0, leaveinfos);
+            int Requestid = user_103.AddLeave(leaveinfos);
 
             user_103.mywait.Add(Requestid);
             user_102.myManagewait.Add(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
 
             user_102.ApproveLeave(Requestid, "a1");
 
@@ -270,6 +421,7 @@ namespace ut
             user_101.myManagewait.Add(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
 
             user_101.ApproveLeave(Requestid, "a2");
 
@@ -280,6 +432,7 @@ namespace ut
             user_103.myHistory.Add(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
 
             int cancelRid=user_103.cancelLeave(Requestid);
 
@@ -290,16 +443,20 @@ namespace ut
             user_102.myManagewait.Add(cancelRid);
             user_102.myManageHistory.Remove(Requestid);
             checkAllUer();
+            CheckLeaveRequestStatus(cancelRid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL);
         }
 
         public void Scene_wc_approved()
         {
-            int Requestid = user_103.AddLeave(new DateTime(2022, 1, 6), 0);
+            List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
+            user_103.AttachLeaves(new DateTime(2022, 1, 6), 0, leaveinfos);
+            int Requestid = user_103.AddLeave(leaveinfos);
 
             user_103.mywait.Add(Requestid);
             user_102.myManagewait.Add(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
 
             user_102.ApproveLeave(Requestid, "a1");
 
@@ -309,6 +466,7 @@ namespace ut
             user_101.myManagewait.Add(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
 
             user_101.ApproveLeave(Requestid, "a2");
 
@@ -319,6 +477,7 @@ namespace ut
             user_103.myHistory.Add(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
 
             int cancelRid = user_103.cancelLeave(Requestid);
 
@@ -329,6 +488,8 @@ namespace ut
             user_102.myManagewait.Add(cancelRid);
             user_102.myManageHistory.Remove(Requestid);
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
+            CheckLeaveRequestStatus(cancelRid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL);
 
             user_102.ApproveLeave(cancelRid, "wc1");
 
@@ -339,6 +500,8 @@ namespace ut
             user_101.myManageHistory.Remove(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
+            CheckLeaveRequestStatus(cancelRid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL);
 
             user_101.ApproveLeave(cancelRid, "wc2");
             user_101.myManagewait.Remove(cancelRid);
@@ -349,27 +512,36 @@ namespace ut
             //user_103.myHistory.Add(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.CANCEL);
+            CheckLeaveRequestStatus(cancelRid, BLL.GlobalVariate.ApprovalRequestStatus.CONFIRM_CANCEL);
         }
 
         public void Scene_wc_reject()
         {
-            int Requestid = user_103.AddLeave(new DateTime(2022, 1, 7), 0);
+            List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
+            user_103.AttachLeaves(new DateTime(2022, 1, 7), 0, leaveinfos);
+            user_103.AttachLeaves(new DateTime(2022, 1, 8), 0, leaveinfos);
+            int Requestid = user_103.AddLeave(leaveinfos);
 
             user_103.mywait.Add(Requestid);
             user_102.myManagewait.Add(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
+
 
             user_102.ApproveLeave(Requestid, "a1");
-
+            
             user_102.myManagewait.Remove(Requestid);
             user_102.myManageHistory.Add(Requestid);
 
             user_101.myManagewait.Add(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
 
             user_101.ApproveLeave(Requestid, "a2");
+            
 
             user_101.myManagewait.Remove(Requestid);
             user_101.myManageHistory.Add(Requestid);
@@ -378,6 +550,7 @@ namespace ut
             user_103.myHistory.Add(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
 
             int cancelRid = user_103.cancelLeave(Requestid);
 
@@ -388,6 +561,8 @@ namespace ut
             user_102.myManagewait.Add(cancelRid);
             user_102.myManageHistory.Remove(Requestid);
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
+            CheckLeaveRequestStatus(cancelRid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL);
 
             user_102.ApproveLeave(cancelRid, "wc1");
 
@@ -398,6 +573,8 @@ namespace ut
             user_101.myManageHistory.Remove(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
+            CheckLeaveRequestStatus(cancelRid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL);
 
             user_101.RejectLeave(cancelRid, "rej wc2");
             user_101.myManagewait.Remove(cancelRid);
@@ -408,6 +585,8 @@ namespace ut
             //user_103.myHistory.Add(Requestid);
 
             checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
+            CheckLeaveRequestStatus(cancelRid, BLL.GlobalVariate.ApprovalRequestStatus.REJECT);
         }
 
 
@@ -486,6 +665,7 @@ namespace ut
                 throw new Exception("total is not equel");
             }
         }
+        #endregion
 
     }
 

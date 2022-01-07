@@ -405,7 +405,13 @@ namespace BLL
 
             else if (status == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
             {
-                result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMaster_MyManageBeyondWaitingByApprovarUID(uid).ToList();
+                //result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMaster_MyManageBeyondWaitingByApprovarUID(uid).ToList();
+                int year = System.DateTime.Now.Year;
+                if (from != null)
+                {
+                    year = from.Value.Year;
+                }
+                result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2(uid, year).ToList();
             }
             if (from != null)
             {
