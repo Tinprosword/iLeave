@@ -344,6 +344,11 @@ namespace BLL
         #endregion
 
         #region search application
+        public static bool CheckLeaveExist(int staffid, System.DateTime date, int leaveid, int sectionid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CheckLeaveExist(staffid, date, leaveid, sectionid);
+        }
+
         public static void UpdateTodayLeaveBalanceToTable(int eid)
         {
             WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.UpdateTodayLeaveBalanceToTable(eid);

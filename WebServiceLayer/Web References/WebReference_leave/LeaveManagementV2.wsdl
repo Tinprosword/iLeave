@@ -2,6 +2,31 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s1="http://tempuri.org/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="RejectCancelRequest_leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RejectCancelRequest_leaveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="WithDrawRequest_leave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WithDrawRequest_leaveResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="CancelRequest_leave">
         <s:complexType>
           <s:sequence>
@@ -762,6 +787,23 @@
           <s:element minOccurs="1" maxOccurs="1" name="p_id" nillable="true" type="s:int" />
         </s:sequence>
       </s:complexType>
+      <s:element name="CheckLeaveExist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="staffid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="leaveid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sectionid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckLeaveExistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckLeaveExistResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="checkALSL_ApplyingISok">
         <s:complexType>
           <s:sequence>
@@ -2317,31 +2359,6 @@
       <s:element name="ApproveCancelRequest_leaveResponse">
         <s:complexType />
       </s:element>
-      <s:element name="RejectCancelRequest_leave">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="RejectCancelRequest_leaveResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="WithDrawRequest_leave">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="WithDrawRequest_leaveResponse">
-        <s:complexType />
-      </s:element>
       <s:element name="int" type="s:int" />
       <s:element name="ArrayOfT_WorkflowInfo" nillable="true" type="tns:ArrayOfT_WorkflowInfo" />
       <s:element name="ArrayOfStaffCLOTRequest" nillable="true" type="tns:ArrayOfStaffCLOTRequest" />
@@ -2390,6 +2407,18 @@
       </s:complexType>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="RejectCancelRequest_leaveSoapIn">
+    <wsdl:part name="parameters" element="tns:RejectCancelRequest_leave" />
+  </wsdl:message>
+  <wsdl:message name="RejectCancelRequest_leaveSoapOut">
+    <wsdl:part name="parameters" element="tns:RejectCancelRequest_leaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="WithDrawRequest_leaveSoapIn">
+    <wsdl:part name="parameters" element="tns:WithDrawRequest_leave" />
+  </wsdl:message>
+  <wsdl:message name="WithDrawRequest_leaveSoapOut">
+    <wsdl:part name="parameters" element="tns:WithDrawRequest_leaveResponse" />
+  </wsdl:message>
   <wsdl:message name="CancelRequest_leaveSoapIn">
     <wsdl:part name="parameters" element="tns:CancelRequest_leave" />
   </wsdl:message>
@@ -2593,6 +2622,12 @@
   </wsdl:message>
   <wsdl:message name="GetLeaveMaster_MyManageWaitingByApprovarUIDSoapOut">
     <wsdl:part name="parameters" element="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckLeaveExistSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckLeaveExist" />
+  </wsdl:message>
+  <wsdl:message name="CheckLeaveExistSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckLeaveExistResponse" />
   </wsdl:message>
   <wsdl:message name="checkALSL_ApplyingISokSoapIn">
     <wsdl:part name="parameters" element="tns:checkALSL_ApplyingISok" />
@@ -3026,18 +3061,19 @@
   <wsdl:message name="ApproveCancelRequest_leaveSoapOut">
     <wsdl:part name="parameters" element="tns:ApproveCancelRequest_leaveResponse" />
   </wsdl:message>
-  <wsdl:message name="RejectCancelRequest_leaveSoapIn">
-    <wsdl:part name="parameters" element="tns:RejectCancelRequest_leave" />
+  <wsdl:message name="RejectCancelRequest_leaveHttpPostIn">
+    <wsdl:part name="requestid" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+    <wsdl:part name="remark" type="s:string" />
+    <wsdl:part name="url" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="RejectCancelRequest_leaveSoapOut">
-    <wsdl:part name="parameters" element="tns:RejectCancelRequest_leaveResponse" />
+  <wsdl:message name="RejectCancelRequest_leaveHttpPostOut" />
+  <wsdl:message name="WithDrawRequest_leaveHttpPostIn">
+    <wsdl:part name="requestid" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+    <wsdl:part name="remark" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="WithDrawRequest_leaveSoapIn">
-    <wsdl:part name="parameters" element="tns:WithDrawRequest_leave" />
-  </wsdl:message>
-  <wsdl:message name="WithDrawRequest_leaveSoapOut">
-    <wsdl:part name="parameters" element="tns:WithDrawRequest_leaveResponse" />
-  </wsdl:message>
+  <wsdl:message name="WithDrawRequest_leaveHttpPostOut" />
   <wsdl:message name="CancelRequest_leaveHttpPostIn">
     <wsdl:part name="requestid" type="s:string" />
     <wsdl:part name="UserID" type="s:string" />
@@ -3174,6 +3210,15 @@
   </wsdl:message>
   <wsdl:message name="GetLeaveMaster_MyManageWaitingByApprovarUIDHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfLeaveRequestMaster" />
+  </wsdl:message>
+  <wsdl:message name="CheckLeaveExistHttpPostIn">
+    <wsdl:part name="staffid" type="s:string" />
+    <wsdl:part name="date" type="s:string" />
+    <wsdl:part name="leaveid" type="s:string" />
+    <wsdl:part name="sectionid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckLeaveExistHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
   </wsdl:message>
   <wsdl:message name="checkALSL_ApplyingISokHttpPostIn">
     <wsdl:part name="currentApply" type="s:string" />
@@ -3564,20 +3609,15 @@
     <wsdl:part name="url" type="s:string" />
   </wsdl:message>
   <wsdl:message name="ApproveCancelRequest_leaveHttpPostOut" />
-  <wsdl:message name="RejectCancelRequest_leaveHttpPostIn">
-    <wsdl:part name="requestid" type="s:string" />
-    <wsdl:part name="UserID" type="s:string" />
-    <wsdl:part name="remark" type="s:string" />
-    <wsdl:part name="url" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="RejectCancelRequest_leaveHttpPostOut" />
-  <wsdl:message name="WithDrawRequest_leaveHttpPostIn">
-    <wsdl:part name="requestid" type="s:string" />
-    <wsdl:part name="UserID" type="s:string" />
-    <wsdl:part name="remark" type="s:string" />
-  </wsdl:message>
-  <wsdl:message name="WithDrawRequest_leaveHttpPostOut" />
   <wsdl:portType name="LeaveManagementV2Soap">
+    <wsdl:operation name="RejectCancelRequest_leave">
+      <wsdl:input message="tns:RejectCancelRequest_leaveSoapIn" />
+      <wsdl:output message="tns:RejectCancelRequest_leaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WithDrawRequest_leave">
+      <wsdl:input message="tns:WithDrawRequest_leaveSoapIn" />
+      <wsdl:output message="tns:WithDrawRequest_leaveSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="CancelRequest_leave">
       <wsdl:input message="tns:CancelRequest_leaveSoapIn" />
       <wsdl:output message="tns:CancelRequest_leaveSoapOut" />
@@ -3713,6 +3753,10 @@
     <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
       <wsdl:input message="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDSoapIn" />
       <wsdl:output message="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckLeaveExist">
+      <wsdl:input message="tns:CheckLeaveExistSoapIn" />
+      <wsdl:output message="tns:CheckLeaveExistSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="checkALSL_ApplyingISok">
       <wsdl:input message="tns:checkALSL_ApplyingISokSoapIn" />
@@ -4002,16 +4046,16 @@
       <wsdl:input message="tns:ApproveCancelRequest_leaveSoapIn" />
       <wsdl:output message="tns:ApproveCancelRequest_leaveSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="RejectCancelRequest_leave">
-      <wsdl:input message="tns:RejectCancelRequest_leaveSoapIn" />
-      <wsdl:output message="tns:RejectCancelRequest_leaveSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="WithDrawRequest_leave">
-      <wsdl:input message="tns:WithDrawRequest_leaveSoapIn" />
-      <wsdl:output message="tns:WithDrawRequest_leaveSoapOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="LeaveManagementV2HttpPost">
+    <wsdl:operation name="RejectCancelRequest_leave">
+      <wsdl:input message="tns:RejectCancelRequest_leaveHttpPostIn" />
+      <wsdl:output message="tns:RejectCancelRequest_leaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WithDrawRequest_leave">
+      <wsdl:input message="tns:WithDrawRequest_leaveHttpPostIn" />
+      <wsdl:output message="tns:WithDrawRequest_leaveHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="CancelRequest_leave">
       <wsdl:input message="tns:CancelRequest_leaveHttpPostIn" />
       <wsdl:output message="tns:CancelRequest_leaveHttpPostOut" />
@@ -4087,6 +4131,10 @@
     <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
       <wsdl:input message="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDHttpPostIn" />
       <wsdl:output message="tns:GetLeaveMaster_MyManageWaitingByApprovarUIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckLeaveExist">
+      <wsdl:input message="tns:CheckLeaveExistHttpPostIn" />
+      <wsdl:output message="tns:CheckLeaveExistHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="checkALSL_ApplyingISok">
       <wsdl:input message="tns:checkALSL_ApplyingISokHttpPostIn" />
@@ -4332,17 +4380,27 @@
       <wsdl:input message="tns:ApproveCancelRequest_leaveHttpPostIn" />
       <wsdl:output message="tns:ApproveCancelRequest_leaveHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="RejectCancelRequest_leave">
-      <wsdl:input message="tns:RejectCancelRequest_leaveHttpPostIn" />
-      <wsdl:output message="tns:RejectCancelRequest_leaveHttpPostOut" />
-    </wsdl:operation>
-    <wsdl:operation name="WithDrawRequest_leave">
-      <wsdl:input message="tns:WithDrawRequest_leaveHttpPostIn" />
-      <wsdl:output message="tns:WithDrawRequest_leaveHttpPostOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LeaveManagementV2Soap" type="tns:LeaveManagementV2Soap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RejectCancelRequest_leave">
+      <soap:operation soapAction="http://tempuri.org/RejectCancelRequest_leave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WithDrawRequest_leave">
+      <soap:operation soapAction="http://tempuri.org/WithDrawRequest_leave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CancelRequest_leave">
       <soap:operation soapAction="http://tempuri.org/CancelRequest_leave" style="document" />
       <wsdl:input>
@@ -4642,6 +4700,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
       <soap:operation soapAction="http://tempuri.org/GetLeaveMaster_MyManageWaitingByApprovarUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckLeaveExist">
+      <soap:operation soapAction="http://tempuri.org/CheckLeaveExist" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -5297,27 +5364,27 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="RejectCancelRequest_leave">
-      <soap:operation soapAction="http://tempuri.org/RejectCancelRequest_leave" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="WithDrawRequest_leave">
-      <soap:operation soapAction="http://tempuri.org/WithDrawRequest_leave" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LeaveManagementV2Soap12" type="tns:LeaveManagementV2Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RejectCancelRequest_leave">
+      <soap12:operation soapAction="http://tempuri.org/RejectCancelRequest_leave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WithDrawRequest_leave">
+      <soap12:operation soapAction="http://tempuri.org/WithDrawRequest_leave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CancelRequest_leave">
       <soap12:operation soapAction="http://tempuri.org/CancelRequest_leave" style="document" />
       <wsdl:input>
@@ -5617,6 +5684,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
       <soap12:operation soapAction="http://tempuri.org/GetLeaveMaster_MyManageWaitingByApprovarUID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckLeaveExist">
+      <soap12:operation soapAction="http://tempuri.org/CheckLeaveExist" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -6272,27 +6348,23 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="RejectCancelRequest_leave">
-      <soap12:operation soapAction="http://tempuri.org/RejectCancelRequest_leave" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="WithDrawRequest_leave">
-      <soap12:operation soapAction="http://tempuri.org/WithDrawRequest_leave" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LeaveManagementV2HttpPost" type="tns:LeaveManagementV2HttpPost">
     <http:binding verb="POST" />
+    <wsdl:operation name="RejectCancelRequest_leave">
+      <http:operation location="/RejectCancelRequest_leave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="WithDrawRequest_leave">
+      <http:operation location="/WithDrawRequest_leave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
     <wsdl:operation name="CancelRequest_leave">
       <http:operation location="/CancelRequest_leave" />
       <wsdl:input>
@@ -6447,6 +6519,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetLeaveMaster_MyManageWaitingByApprovarUID">
       <http:operation location="/GetLeaveMaster_MyManageWaitingByApprovarUID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckLeaveExist">
+      <http:operation location="/CheckLeaveExist" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -6990,20 +7071,6 @@
     </wsdl:operation>
     <wsdl:operation name="ApproveCancelRequest_leave">
       <http:operation location="/ApproveCancelRequest_leave" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output />
-    </wsdl:operation>
-    <wsdl:operation name="RejectCancelRequest_leave">
-      <http:operation location="/RejectCancelRequest_leave" />
-      <wsdl:input>
-        <mime:content type="application/x-www-form-urlencoded" />
-      </wsdl:input>
-      <wsdl:output />
-    </wsdl:operation>
-    <wsdl:operation name="WithDrawRequest_leave">
-      <http:operation location="/WithDrawRequest_leave" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

@@ -29,6 +29,7 @@ namespace ut
         public List<int> myHistory { get; set; }
         public List<int> myManagewait { get; set; }
         public List<int> myManageHistory { get; set; }
+        public List<Staff_Leave> myLeaves { get; set; }
 
 
         public User(int uid, int eid, int sid, int feid, int _alid, string _alcode,int _pid,double wh,string _name)
@@ -46,6 +47,7 @@ namespace ut
             myHistory = new List<int>();
             myManagewait = new List<int>();
             myManageHistory = new List<int>();
+            myLeaves = new List<Staff_Leave>();
         }
 
         public void AttachLeaves(DateTime dt, int section,List<MODEL.Apply.apply_LeaveData> Predata)
@@ -138,6 +140,13 @@ namespace ut
     }
 
 
+    public class Staff_Leave
+    {
+        public int staffid { get; set; }
+        public System.DateTime date { get; set; }
+        public int leaveid { get; set; }
+        public int sectionid { get; set; }
+    }
 
 
     [TestClass]
@@ -175,56 +184,6 @@ namespace ut
 
         }
 
-        #region other test case
-        [TestMethod]
-        public void add20batch()
-        {
-            DateTime dt = new DateTime(2022, 1, 1);
-            for (int i = 0; i < 20; i++)
-            {
-                Scene_Approved1(dt);
-                dt = dt.AddDays(1);
-            }
-        }
-
-        public void Scene_Approved1(DateTime dt)
-        {
-            List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
-            user_103.AttachLeaves(dt, 0, leaveinfos);
-            int Requestid = user_103.AddLeave(leaveinfos);
-
-            user_103.mywait.Add(Requestid);
-            user_102.myManagewait.Add(Requestid);
-
-
-            checkAllUer();
-            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
-
-            user_102.ApproveLeave(Requestid, "a1");
-
-            user_102.myManagewait.Remove(Requestid);
-            user_102.myManageHistory.Add(Requestid);
-
-            user_101.myManagewait.Add(Requestid);
-
-
-            checkAllUer();
-            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
-
-            user_101.ApproveLeave(Requestid, "a2");
-
-            user_101.myManagewait.Remove(Requestid);
-            user_101.myManageHistory.Add(Requestid);
-
-            user_103.mywait.Remove(Requestid);
-            user_103.myHistory.Add(Requestid);
-
-
-            checkAllUer();
-            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
-        }
-
-        #endregion
 
         #region clot
         //測試方法用戶是固定的，可以構造函數的時候變更。來達到測試不同用戶。裡面hardcode .來簡化代碼。
@@ -1000,13 +959,66 @@ namespace ut
         }
 
         #endregion
+
+
+
+        #region other test case
+        [TestMethod]
+        public void add20batch()
+        {
+            DateTime dt = new DateTime(2022, 1, 1);
+            for (int i = 0; i < 20; i++)
+            {
+                Scene_Approved1(dt);
+                dt = dt.AddDays(1);
+            }
+        }
+
+        public void Scene_Approved1(DateTime dt)
+        {
+            List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
+            user_103.AttachLeaves(dt, 0, leaveinfos);
+            int Requestid = user_103.AddLeave(leaveinfos);
+
+            user_103.mywait.Add(Requestid);
+            user_102.myManagewait.Add(Requestid);
+
+
+            checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
+
+            user_102.ApproveLeave(Requestid, "a1");
+
+            user_102.myManagewait.Remove(Requestid);
+            user_102.myManageHistory.Add(Requestid);
+
+            user_101.myManagewait.Add(Requestid);
+
+
+            checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
+
+            user_101.ApproveLeave(Requestid, "a2");
+
+            user_101.myManagewait.Remove(Requestid);
+            user_101.myManageHistory.Add(Requestid);
+
+            user_103.mywait.Remove(Requestid);
+            user_103.myHistory.Add(Requestid);
+
+
+            checkAllUer();
+            CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
+        }
+
+        #endregion
     }
 
 
     #endregion
 
 
-    #region pre test
+    #region pre test.
 
 
     public class mytestClass
