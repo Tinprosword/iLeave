@@ -145,8 +145,8 @@ namespace ut
         public string checkMyLeaveMater_wait()
         {
             string result = "";
-            var mywait = BLL.Leave.GetMyLeaveMaster(personid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, 2022);
-            var rids = mywait.Select(x => x.RequestID).ToList();
+            var mywaitaa = BLL.Leave.GetMyLeaveMaster(personid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, 2022);
+            var rids = mywaitaa.Select(x => x.RequestID).ToList();
             CheckResult(mywait, rids);
             Console.WriteLine(name + ":MyLeave_wait:total is " + rids.Count().ToString());
             return result;
@@ -172,13 +172,13 @@ namespace ut
             return result;
         }
 
-        public string checkMyManageLeaveMater_history(User user)
+        public string checkMyManageLeaveMater_history()
         {
             string result = "";
-            var mywait = BLL.Leave.GetMyManageLeaveMaster(user.userid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, 2022, null);
-            var rids = mywait.Select(x => x.RequestID).ToList();
-            CheckResult(user.myManageHistory, rids);
-            Console.WriteLine(user.name + ":MyManageLeaveMater_history:total is " + rids.Count().ToString());
+            var mywaitaa = BLL.Leave.GetMyManageLeaveMaster(userid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, 2022, null);
+            var rids = mywaitaa.Select(x => x.RequestID).ToList();
+            CheckResult(myManageHistory, rids);
+            Console.WriteLine(name + ":MyManageLeaveMater_history:total is " + rids.Count().ToString());
             return result;
         }
 
@@ -246,38 +246,6 @@ namespace ut
 
         }
 
-
-        #region clot
-        //測試方法用戶是固定的，可以構造函數的時候變更。來達到測試不同用戶。裡面hardcode .來簡化代碼。
-        [TestMethod]
-        public void StartTest_clot()
-        {
-            Console.WriteLine("Start Test");
-            Scene_waiting_clot();
-            //Scene_Approved_clot();
-            //Scene_Reject1_clot();
-            //Scene_WithDraw_clot();
-            //Scene_wc_clot();
-            //Scene_wc_approved_clot();
-            //Scene_wc_reject_clot();
-        }
-
-        private void Scene_waiting_clot()
-        {
-
-            //List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
-            //user_103.AttachLeaves(new DateTime(2022, 1, 1), 0, leaveinfos);
-            //user_103.AttachLeaves(new DateTime(2023, 1, 1), 0, leaveinfos);
-            //int Requestid = user_103.AddLeave(leaveinfos);
-            //user_103.mywait.Add(Requestid);
-            //user_102.myManagewait.Add(Requestid);
-
-            //checkAllUer();
-            //CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
-        }
-
-        #endregion
-
         #region leave
         [TestMethod]
         public void StartTest_leave()
@@ -308,7 +276,7 @@ namespace ut
 
         private void CheckLeaveRequestStatus(int Requestid, BLL.GlobalVariate.ApprovalRequestStatus status)
         {
-            var request= BLL.Leave.GetRequestMasterByRequestID(Requestid);
+            var request = BLL.Leave.GetRequestMasterByRequestID(Requestid);
             if (request.Status != (byte)status)
             {
                 throw new Exception("status is match");
@@ -324,7 +292,7 @@ namespace ut
             user_103.mywait.Add(Requestid);
             user_102.myManagewait.Add(Requestid);
 
-            
+
             checkAllUer();
             CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
 
@@ -335,7 +303,7 @@ namespace ut
 
             user_101.myManagewait.Add(Requestid);
 
-            
+
             checkAllUer();
             CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
 
@@ -347,7 +315,7 @@ namespace ut
             user_103.mywait.Remove(Requestid);
             user_103.myHistory.Add(Requestid);
 
-            
+
             checkAllUer();
             CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
         }
@@ -417,7 +385,7 @@ namespace ut
             user_103.mywait.Remove(Requestid);
             user_103.myHistory.Add(Requestid);
 
-            
+
 
             checkAllUer();
             CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.CANCEL);
@@ -457,7 +425,7 @@ namespace ut
             checkAllUer();
             CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
 
-            int cancelRid=user_103.cancelLeave(Requestid);
+            int cancelRid = user_103.cancelLeave(Requestid);
 
             user_103.mywait.Add(cancelRid);
             //todo 0 ，嚴格來說，不應該有。
@@ -554,7 +522,7 @@ namespace ut
 
 
             user_102.ApproveLeave(Requestid, "a1");
-            
+
             user_102.myManagewait.Remove(Requestid);
             user_102.myManageHistory.Add(Requestid);
 
@@ -564,7 +532,7 @@ namespace ut
             CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
 
             user_101.ApproveLeave(Requestid, "a2");
-            
+
 
             user_101.myManagewait.Remove(Requestid);
             user_101.myManageHistory.Add(Requestid);
@@ -622,17 +590,51 @@ namespace ut
 
         private void checkAll(User user)
         {
-            checkMyLeaveMater_wait(user);
-            checkMyLeaveMater_history(user);
-            checkMyManageLeaveMater_waiting(user);
-            checkMyManageLeaveMater_history(user);
+            user.checkMyLeaveMater_wait();
+            user.checkMyLeaveMater_history();
+            user.checkMyManageLeaveMater_waiting();
+            user.checkMyManageLeaveMater_history();
             Console.WriteLine("");
         }
 
-        
 
-        
+
+
         #endregion
+
+
+
+        #region clot
+        //測試方法用戶是固定的，可以構造函數的時候變更。來達到測試不同用戶。裡面hardcode .來簡化代碼。
+        [TestMethod]
+        public void StartTest_clot()
+        {
+            Console.WriteLine("Start Test");
+            Scene_waiting_clot();
+            //Scene_Approved_clot();
+            //Scene_Reject1_clot();
+            //Scene_WithDraw_clot();
+            //Scene_wc_clot();
+            //Scene_wc_approved_clot();
+            //Scene_wc_reject_clot();
+        }
+
+        private void Scene_waiting_clot()
+        {
+
+            //List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
+            //user_103.AttachLeaves(new DateTime(2022, 1, 1), 0, leaveinfos);
+            //user_103.AttachLeaves(new DateTime(2023, 1, 1), 0, leaveinfos);
+            //int Requestid = user_103.AddLeave(leaveinfos);
+            //user_103.mywait.Add(Requestid);
+            //user_102.myManagewait.Add(Requestid);
+
+            //checkAllUer();
+            //CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
+        }
+
+        #endregion
+
 
 
         #region leave change applyer
