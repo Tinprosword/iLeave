@@ -1733,13 +1733,13 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CheckLeaveExist", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool CheckLeaveExist(int staffid, System.DateTime date, int leaveid, int sectionid) {
+        public int[] CheckLeaveExist(int staffid, System.DateTime date, int leaveid, int sectionid) {
             object[] results = this.Invoke("CheckLeaveExist", new object[] {
                         staffid,
                         date,
                         leaveid,
                         sectionid});
-            return ((bool)(results[0]));
+            return ((int[])(results[0]));
         }
         
         /// <remarks/>
@@ -11341,10 +11341,10 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
-        public bool Result {
+        public int[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
+                return ((int[])(this.results[0]));
             }
         }
     }
