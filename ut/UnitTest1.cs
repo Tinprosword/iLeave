@@ -137,6 +137,68 @@ namespace ut
         {
             BLL.Leave.UpdateTodayLeaveBalanceToTable(empolyid);
         }
+
+
+
+
+
+        public string checkMyLeaveMater_wait()
+        {
+            string result = "";
+            var mywait = BLL.Leave.GetMyLeaveMaster(personid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, 2022);
+            var rids = mywait.Select(x => x.RequestID).ToList();
+            CheckResult(mywait, rids);
+            Console.WriteLine(name + ":MyLeave_wait:total is " + rids.Count().ToString());
+            return result;
+        }
+
+        public string checkMyLeaveMater_history()
+        {
+            string result = "";
+            var mywait = BLL.Leave.GetMyLeaveMaster(personid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, 2022);
+            var rids = mywait.Select(x => x.RequestID).ToList();
+            CheckResult(myHistory, rids);
+            Console.WriteLine(name + ":MyLeave_history:total is " + rids.Count().ToString());
+            return result;
+        }
+
+        public string checkMyManageLeaveMater_waiting()
+        {
+            string result = "";
+            var mywait = BLL.Leave.GetMyManageLeaveMaster(userid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, 2022, null);
+            var rids = mywait.Select(x => x.RequestID).ToList();
+            CheckResult(myManagewait, rids);
+            Console.WriteLine(name + "MyManageLeaveMater_waiting:total is " + rids.Count().ToString());
+            return result;
+        }
+
+        public string checkMyManageLeaveMater_history(User user)
+        {
+            string result = "";
+            var mywait = BLL.Leave.GetMyManageLeaveMaster(user.userid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, 2022, null);
+            var rids = mywait.Select(x => x.RequestID).ToList();
+            CheckResult(user.myManageHistory, rids);
+            Console.WriteLine(user.name + ":MyManageLeaveMater_history:total is " + rids.Count().ToString());
+            return result;
+        }
+
+        private void CheckResult(List<int> wantBe, List<int> data)
+        {
+            if (wantBe.Count() == data.Count())
+            {
+                foreach (int item in data)
+                {
+                    if (!wantBe.Contains(item))
+                    {
+                        throw new Exception("not contain :" + item);
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("total is not equel");
+            }
+        }
     }
 
 
@@ -569,63 +631,7 @@ namespace ut
 
         
 
-        public string checkMyLeaveMater_wait(User user)
-        {
-            string result = "";
-            var mywait = BLL.Leave.GetMyLeaveMaster(user.personid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, 2022);
-            var rids=mywait.Select(x => x.RequestID).ToList();
-            CheckResult(user.mywait, rids);
-            Console.WriteLine(user.name + ":MyLeave_wait:total is " + rids.Count().ToString());
-            return result;
-        }
-
-        public string checkMyLeaveMater_history(User user)
-        {
-            string result = "";
-            var mywait = BLL.Leave.GetMyLeaveMaster(user.personid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, 2022);
-            var rids = mywait.Select(x => x.RequestID).ToList();
-            CheckResult(user.myHistory, rids);
-            Console.WriteLine(user.name+ ":MyLeave_history:total is " + rids.Count().ToString());
-            return result;
-        }
-
-        public string checkMyManageLeaveMater_waiting(User user)
-        {
-            string result = "";
-            var mywait = BLL.Leave.GetMyManageLeaveMaster(user.userid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, 2022,null);
-            var rids = mywait.Select(x => x.RequestID).ToList();
-            CheckResult(user.myManagewait, rids);
-            Console.WriteLine(user.name + "MyManageLeaveMater_waiting:total is " + rids.Count().ToString());
-            return result;
-        }
-
-        public string checkMyManageLeaveMater_history(User user)
-        {
-            string result = "";
-            var mywait = BLL.Leave.GetMyManageLeaveMaster(user.userid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, 2022, null);
-            var rids = mywait.Select(x => x.RequestID).ToList();
-            CheckResult(user.myManageHistory, rids);
-            Console.WriteLine(user.name + ":MyManageLeaveMater_history:total is " + rids.Count().ToString());
-            return result;
-        }
-
-        private void CheckResult(List<int> wantBe, List<int> data)
-        {
-            if (wantBe.Count() == data.Count())
-            {
-                foreach (int item in data)
-                {
-                    if (!wantBe.Contains(item))
-                    {
-                        throw new Exception("not contain :" + item);
-                    }
-                }
-            }
-            else
-            {
-                throw new Exception("total is not equel");
-            }
-        }
+        
         #endregion
 
 
