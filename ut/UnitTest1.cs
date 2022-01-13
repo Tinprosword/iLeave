@@ -535,11 +535,9 @@ namespace ut
             int cancelRid = applyer.cancelLeave(Requestid);
 
             applyer.mywait.Add(cancelRid);
-            //todo 0 ，嚴格來說，不應該有。
-            //user_103.myHistory.Remove(Requestid);
+            //applyer.myHistory.Remove(Requestid);
 
             user_102.myManagewait.Add(cancelRid);
-            user_102.myManageHistory.Remove(Requestid);
             checkAllUer();
             CheckLeaveRequestStatus(cancelRid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL);
         }
@@ -583,11 +581,9 @@ namespace ut
             int cancelRid = applyer.cancelLeave(Requestid);
 
             applyer.mywait.Add(cancelRid);
-            //todo 0 ，嚴格來說，不應該有。
-            //user_103.myHistory.Remove(Requestid);
+            //applyer.myHistory.Remove(Requestid);
 
             user_102.myManagewait.Add(cancelRid);
-            user_102.myManageHistory.Remove(Requestid);
             checkAllUer();
             CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
             CheckLeaveRequestStatus(cancelRid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL);
@@ -595,10 +591,9 @@ namespace ut
             user_102.ApproveLeave(cancelRid, "wc1");
 
             user_102.myManagewait.Remove(cancelRid);
-            user_102.myManageHistory.Add(Requestid);
+            user_102.myManageHistory.Add(cancelRid);
 
             user_101.myManagewait.Add(cancelRid);
-            user_101.myManageHistory.Remove(Requestid);
 
             checkAllUer();
             CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
@@ -606,11 +601,10 @@ namespace ut
 
             user_101.ApproveLeave(cancelRid, "wc2");
             user_101.myManagewait.Remove(cancelRid);
-            user_101.myManageHistory.Add(Requestid);
+            user_101.myManageHistory.Add(cancelRid);
 
             applyer.mywait.Remove(cancelRid);
-            //todo 0 上面沒有減去首請求，這裡所有還有首請求。不需要再添加。
-            //user_103.myHistory.Add(Requestid);
+            //applyer.myHistory.Add(Requestid);
 
             Staff_Leave.DeleteItem(applyer.myLeaves, leaveItme.id);
             checkAllUer();
@@ -667,11 +661,10 @@ namespace ut
             int cancelRid = applyer.cancelLeave(Requestid);
 
             applyer.mywait.Add(cancelRid);
-            //todo 0 ，嚴格來說，不應該有。
-            //user_103.myHistory.Remove(Requestid);
+            //applyer.myHistory.Remove(Requestid);
 
             user_102.myManagewait.Add(cancelRid);
-            user_102.myManageHistory.Remove(Requestid);
+
             checkAllUer();
             CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
             CheckLeaveRequestStatus(cancelRid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL);
@@ -679,10 +672,9 @@ namespace ut
             user_102.ApproveLeave(cancelRid, "wc1");
 
             user_102.myManagewait.Remove(cancelRid);
-            user_102.myManageHistory.Add(Requestid);
+            user_102.myManageHistory.Add(cancelRid);
 
             user_101.myManagewait.Add(cancelRid);
-            user_101.myManageHistory.Remove(Requestid);
 
             checkAllUer();
             CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
@@ -690,11 +682,10 @@ namespace ut
 
             user_101.RejectLeave(cancelRid, "rej wc2");
             user_101.myManagewait.Remove(cancelRid);
-            user_101.myManageHistory.Add(Requestid);
+            user_101.myManageHistory.Add(cancelRid);
 
             applyer.mywait.Remove(cancelRid);
-            //todo 0 上面沒有減去首請求，這裡所有還有首請求。不需要再添加。
-            //user_103.myHistory.Add(Requestid);
+            //applyer.myHistory.Add(Requestid);
 
             checkAllUer();
             CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);

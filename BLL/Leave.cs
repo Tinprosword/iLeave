@@ -359,7 +359,7 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetFirstRequestInfo(requestid);
         }
 
-        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyLeaveMaster(int pid, GlobalVariate.LeaveBigRangeStatus status, DateTime? from, DateTime? to)
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyLeaveMaster(int pid, GlobalVariate.LeaveBigRangeStatus status, int year)
         {
             List<LeaveRequestMaster> result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMasterByPID(pid).ToList();
             int[] firstRequestId = result.Where(x => x.WorkflowTypeID == 0).Select(x => x.RequestID).ToArray();
@@ -385,21 +385,14 @@ namespace BLL
                 result = tempresult;
             }
 
-            if (from != null)
-            {
-                result = result.Where(x => x.leavefrom >= from).ToList();
-            }
-            if (to != null)
-            {
-                result = result.Where(x => x.leavefrom <= to).ToList();
-            }
+            result = result.Where(x => x.leavefrom.Year == year || x.leaveto.Year == year).ToList();
             result =result.OrderByDescending(x => x.leavefrom).ThenByDescending(x=>x.createDate).ToList();
             return result;
         }
 
 
 
-        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyManageLeaveMaster(int uid, GlobalVariate.LeaveBigRangeStatus status, DateTime? from, string name, DateTime? to)
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyManageLeaveMaster(int uid, GlobalVariate.LeaveBigRangeStatus status, int year, string name)
         {
             List<LeaveRequestMaster> result = new List<LeaveRequestMaster>();
 
@@ -410,22 +403,11 @@ namespace BLL
 
             else if (status == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
             {
-                //result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMaster_MyManageBeyondWaitingByApprovarUID(uid).ToList();
-                int year = System.DateTime.Now.Year;
-                if (from != null)
-                {
-                    year = from.Value.Year;
-                }
                 result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2(uid, year).ToList();
             }
-            if (from != null)
-            {
-                result = result.Where(x => x.leavefrom >= from).ToList();
-            }
-            if (to != null)
-            {
-                result = result.Where(x => x.leavefrom <= to).ToList();
-            }
+
+            result = result.Where(x => x.leavefrom.Year == year || x.leaveto.Year == year).ToList();
+
             if (!string.IsNullOrEmpty(name))
             {
                 result = result.Where(x => MODEL.UserName.IsNameLike(x.p_Surname + " " + x.p_Othername, x.p_NameCH, name) == true).ToList();
@@ -433,23 +415,6 @@ namespace BLL
             result = result.OrderByDescending(x => x.leavefrom).ThenByDescending(x => x.createDate).ToList();
 
             return result;
-        }
-
-        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyLeaveMaster(int pid, GlobalVariate.LeaveBigRangeStatus status, int year)
-        {
-            DateTime from = new DateTime(year, 1, 1);
-            int dayCount = DateTime.DaysInMonth(year, 12);
-            DateTime? to = new DateTime(year, 12, dayCount);
-            return GetMyLeaveMaster(pid, status, from,to);
-        }
-
-
-        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyManageLeaveMaster(int uid, GlobalVariate.LeaveBigRangeStatus status, int year, string name)
-        {
-            DateTime from = new DateTime(year, 1, 1);
-            int dayCount = DateTime.DaysInMonth(year, 12);
-            DateTime? to = new DateTime(year,12, dayCount);
-            return GetMyManageLeaveMaster(uid, status, from, name, to);
         }
 
 
@@ -789,7 +754,7 @@ namespace BLL
                 }
                 else if (masterStatus == (byte)GlobalVariate.ApprovalRequestStatus.CONFIRM_CANCEL)
                 {
-                    result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_Cancelled;
+                    result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_ConfirmCancelled;
                 }
                 else if (masterStatus == (byte)GlobalVariate.ApprovalRequestStatus.REJECT)
                 {

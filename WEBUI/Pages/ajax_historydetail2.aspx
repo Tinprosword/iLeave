@@ -52,10 +52,10 @@
                     <td>
                         <table class="col-xs-12 lsu-table-xs4padding lsf-clearPadding">
                             <tbody><tr>
-				                <td class="col-xs-4" style="width:120px"><asp:Literal ID="lt_col1" runat="server">lt</asp:Literal><asp:literal id="Literal1" runat="server"></asp:literal></td>
-				                <td class="col-xs-4" style="width:120px"><asp:Literal ID="lt_col2" runat="server">lt</asp:Literal><asp:literal id="Literal2" runat="server"></asp:literal></td>
-				                <td class="col-xs-2" style="width:60px;text-align:right;"><asp:Literal ID="lt_col3" runat="server">lt</asp:Literal><asp:literal id="Literal3" runat="server"></asp:literal></td>
-				                <td class="col-xs-3">&nbsp;</td>
+				                <td class="col-xs-4" style="width:120px"><asp:Literal ID="lt_col1" runat="server">lt</asp:Literal></td>
+				                <td class="col-xs-4" style="width:120px"><asp:Literal ID="lt_col2" runat="server">lt</asp:Literal></td>
+				                <td class="col-xs-2" style="width:60px;text-align:right;"><asp:Literal ID="lt_col3" runat="server">lt</asp:Literal></td>
+				                <td class="col-xs-3"><asp:Literal ID="lt_colstatus" runat="server">lt</asp:Literal></td>
                             </tr></tbody>
                         </table>
                     </td>
@@ -73,7 +73,7 @@
                                 <td class="col-xs-4" style="width:120px"><%#((DateTime)((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem).LeaveFrom).ToString("yyyy-MM-dd")%></td>
 					            <td class="col-xs-4" style="width:120px"><%#BLL.GlobalVariate.GetSectionMultLanguage(((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem),lan) %></td>
 					            <td class="col-xs-2" style="width:60px;text-align:right;"><%#BLL.GlobalVariate.GetUnit((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem) %>&nbsp;</td>
-					            <td class="col-xs-3"></td>
+					            <td class="col-xs-3"><%# GetLeaveStatus((WebServiceLayer.WebReference_leave.LeaveRequestDetail)Container.DataItem) %></td>
                             </tr>
                         </ItemTemplate>
                     </asp:Repeater>

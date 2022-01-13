@@ -158,7 +158,7 @@ namespace WEBUI.Pages
                 List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> ds = null;
                 if (dataType_myselfOrMyManage == 0)
                 {
-                    ds = BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, currentBigRange, year, name);
+                    ds = BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, currentBigRange,   year, name);
                 }
                 else
                 {

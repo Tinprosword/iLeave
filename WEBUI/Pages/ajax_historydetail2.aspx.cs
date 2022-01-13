@@ -19,6 +19,11 @@ namespace WEBUI.Pages
 
         public int nametype = 1;
 
+        public string GetLeaveStatus(WebServiceLayer.WebReference_leave.LeaveRequestDetail data)
+        {
+            return BLL.Leave.GetLeaveStatusDesc(data.WorkflowTypeID, data.Status);
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             nametype = BLL.CodeSetting.GetNameType(BLL.MultiLanguageHelper.GetChoose());// BLL.CodeSetting.GetSystemParameter(BLL.CodeSetting.staffNameFormat);
@@ -71,6 +76,7 @@ namespace WEBUI.Pages
                 this.lt_col1.Text = language_col1;
                 this.lt_col2.Text = language_col2;
                 this.lt_col3.Text = language_col3;
+                this.lt_colstatus.Text = BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lan).application_detail_status;
                 this.lt_bancetitle.Text = language_balance;
                 this.lt_applycount.Text = language_apply;
                 this.lt_days2.Text = BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lan).approval_days;
