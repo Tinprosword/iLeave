@@ -114,6 +114,11 @@ namespace BLL
                 {
                     result.Add(requestid);
                 }
+                else
+                {
+                    result.Add(requestid);
+                    break;
+                }
             }
 
             return result;
@@ -129,15 +134,14 @@ namespace BLL
             {
                 string baseurl = BLL.Other.GetWebSiteRootUrl();
                 int workInfoid= WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CreateNewWorkflow_colt(WebServiceLayer.WebReference_leave.WorkflowTypeID.CLOT_APPLICATION, createUid, request.Remarks, requestid, applyerEID, baseurl);
-                if (workInfoid > 0)
-                {
-                    result = requestid;
-                }
+                
+                result = requestid;
+                
             }
             return result;
         }
 
-        public static string CheckOnApplyList(List<MODEL.CLOT.CLOTItem> data, double balance,int eid,LSLibrary.WebAPP.LanguageType languageType)
+        public static string CheckOnApplyList(List<MODEL.CLOT.CLOTItem> data, double balance,int eid,LSLibrary.WebAPP.LanguageType languageType,int applygroupid)
         {
             string result = "";
             if (data == null || data.Count() == 0)
@@ -156,6 +160,15 @@ namespace BLL
                 }
             }
 
+            //check hasApplyGroup
+            if (result == "")
+            {
+                if (applygroupid <= 0)
+                {
+                    result = BLL.MultiLanguageHelper.GetLanguagePacket().Common_groupisemp;
+                }
+            }
+
 
             //check predate
             if (result == "")
@@ -169,6 +182,10 @@ namespace BLL
                     }
                 }
             }
+
+            
+            
+            
 
             //sp chec @ParaEmploymentID varchar(6), @ParaType int, @ParaDateFrom datetime,@ParaDateTo datetime,@ParaRangeHours float= 0
             if (result == "")

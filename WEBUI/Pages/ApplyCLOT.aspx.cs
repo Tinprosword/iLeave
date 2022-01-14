@@ -213,7 +213,8 @@ namespace WEBUI.Pages
                 tempList.Add(tempItem);
 
                 double balanceValue = BLL.Leave.GetBalanceView_CLOT_balance(loginer.userInfo.employID ?? 0);
-                string errormsg= BLL.CLOT.CheckOnApplyList(tempList, balanceValue, loginer.userInfo.employID ?? 0,BLL.MultiLanguageHelper.GetChoose());
+                var einfo = BLL.User_wsref.getEmploymentByid(loginer.userInfo.employID ?? 0);
+                string errormsg= BLL.CLOT.CheckOnApplyList(tempList, balanceValue, loginer.userInfo.employID ?? 0,BLL.MultiLanguageHelper.GetChoose(),einfo.ApprovalGroupID??0);
                 if (!string.IsNullOrEmpty(errormsg))
                 {
                     literal_errormsga.Visible = true;
@@ -281,11 +282,21 @@ namespace WEBUI.Pages
 
             var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
             double balanceValue = BLL.Leave.GetBalanceView_CLOT_balance(loginer.userInfo.employID ?? 0);
-            string errorMsg = BLL.CLOT.CheckOnApplyList(dataview.items, balanceValue, loginer.userInfo.employID ?? 0, BLL.MultiLanguageHelper.GetChoose());
+            var einfo= BLL.User_wsref.getEmploymentByid(loginer.userInfo.employID??0);
+            string errorMsg = BLL.CLOT.CheckOnApplyList(dataview.items, balanceValue, loginer.userInfo.employID ?? 0, BLL.MultiLanguageHelper.GetChoose(),einfo.ApprovalGroupID??0);
             bool validData = string.IsNullOrEmpty(errorMsg);
             if (validData)
             {
                 List<int> requestidArray = BLL.CLOT.InsertCLOTRequests(dataview.items, loginer.userInfo.id, loginer.userInfo.employID ?? 0);
+
+                bool hasError = requestidArray.Where(x => x <= 0).ToList().Count() >= 0 ? true : false;
+                if (hasError)
+                {
+                    this.literal_errormsga.Visible = true;
+                    this.literal_errormsga.Text = errorMsg;
+                    this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
+                    return;
+                }
 
                 //insert attachment
                 List<MODEL.App_AttachmentInfo> pics = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.IPage_Attachment>(NAME_OF_PAGE_VIEW, ViewState).GetAttachment();

@@ -1,0 +1,126 @@
+ip:192.168.19.202
+DataTime：2022/1/14 17:38:49
+Url：http://192.168.19.210/WEBUI/pages/applyCLOT.aspx
+Message：服务器无法处理请求。 ---> 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.CreateNewWorkflow_colt(WorkflowTypeID type, Int32 createrUID, String remark, Int32 RequestID, Int32 applyerEid, String baseurl) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 1141
+   在 BLL.CLOT.InsertCLOTRequest(StaffCLOTRequest request, Int32 createUid, Int32 applyerEID) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 131
+   在 BLL.CLOT.InsertCLOTRequests(List`1 items, Int32 createrUid, Int32 applyerEID) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 112
+   在 WEBUI.Pages.ApplyCLOT.btn_apply_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ApplyCLOT.aspx.cs:行号 288
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.202
+DataTime：2022/1/14 17:41:35
+Url：http://192.168.19.210/WEBUI/pages/applyCLOT.aspx
+Message：服务器无法处理请求。 ---> 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.CreateNewWorkflow_colt(WorkflowTypeID type, Int32 createrUID, String remark, Int32 RequestID, Int32 applyerEid, String baseurl) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 1141
+   在 BLL.CLOT.InsertCLOTRequest(StaffCLOTRequest request, Int32 createUid, Int32 applyerEID) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 131
+   在 BLL.CLOT.InsertCLOTRequests(List`1 items, Int32 createrUid, Int32 applyerEID) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 112
+   在 WEBUI.Pages.ApplyCLOT.btn_apply_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ApplyCLOT.aspx.cs:行号 288
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/1/14 17:44:33
+Url：http://localhost/WEBUI/pages/applyCLOT.aspx
+Message：服务器无法处理请求。 ---> 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.CreateNewWorkflow_colt(WorkflowTypeID type, Int32 createrUID, String remark, Int32 RequestID, Int32 applyerEid, String baseurl) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 1141
+   在 BLL.CLOT.InsertCLOTRequest(StaffCLOTRequest request, Int32 createUid, Int32 applyerEID) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 131
+   在 BLL.CLOT.InsertCLOTRequests(List`1 items, Int32 createrUid, Int32 applyerEID) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 112
+   在 WEBUI.Pages.ApplyCLOT.btn_apply_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ApplyCLOT.aspx.cs:行号 288
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/1/14 17:45:38
+Url：http://localhost/WEBUI/pages/applyCLOT.aspx
+Message：服务器无法处理请求。 ---> 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.CreateNewWorkflow_colt(WorkflowTypeID type, Int32 createrUID, String remark, Int32 RequestID, Int32 applyerEid, String baseurl) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 1141
+   在 BLL.CLOT.InsertCLOTRequest(StaffCLOTRequest request, Int32 createUid, Int32 applyerEID) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 131
+   在 BLL.CLOT.InsertCLOTRequests(List`1 items, Int32 createrUid, Int32 applyerEID) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 112
+   在 WEBUI.Pages.ApplyCLOT.btn_apply_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ApplyCLOT.aspx.cs:行号 288
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/1/14 17:50:05
+Url：http://localhost/WEBUI/pages/applyCLOT.aspx
+Message：服务器无法处理请求。 ---> 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.CreateNewWorkflow_colt(WorkflowTypeID type, Int32 createrUID, String remark, Int32 RequestID, Int32 applyerEid, String baseurl) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 1141
+   在 BLL.CLOT.InsertCLOTRequest(StaffCLOTRequest request, Int32 createUid, Int32 applyerEID) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 131
+   在 BLL.CLOT.InsertCLOTRequests(List`1 items, Int32 createrUid, Int32 applyerEID) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 112
+   在 WEBUI.Pages.ApplyCLOT.btn_apply_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ApplyCLOT.aspx.cs:行号 288
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/1/14 18:02:42
+Url：http://localhost/WEBUI/pages/applyCLOT.aspx
+Message：服务器无法处理请求。 ---> 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.CreateNewWorkflow_colt(WorkflowTypeID type, Int32 createrUID, String remark, Int32 RequestID, Int32 applyerEid, String baseurl) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 1141
+   在 BLL.CLOT.InsertCLOTRequest(StaffCLOTRequest request, Int32 createUid, Int32 applyerEID) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 136
+   在 BLL.CLOT.InsertCLOTRequests(List`1 items, Int32 createrUid, Int32 applyerEID) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 112
+   在 WEBUI.Pages.ApplyCLOT.btn_apply_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ApplyCLOT.aspx.cs:行号 288
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/1/14 18:04:05
+Url：http://localhost/WEBUI/pages/applyCLOT.aspx
+Message：服务器无法处理请求。 ---> 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.CreateNewWorkflow_colt(WorkflowTypeID type, Int32 createrUID, String remark, Int32 RequestID, Int32 applyerEid, String baseurl) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 1141
+   在 BLL.CLOT.InsertCLOTRequest(StaffCLOTRequest request, Int32 createUid, Int32 applyerEID) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 136
+   在 BLL.CLOT.InsertCLOTRequests(List`1 items, Int32 createrUid, Int32 applyerEID) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 112
+   在 WEBUI.Pages.ApplyCLOT.btn_apply_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ApplyCLOT.aspx.cs:行号 288
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

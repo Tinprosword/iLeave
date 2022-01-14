@@ -512,6 +512,7 @@ namespace BLL
 
 
         #region unity
+
         public static bool CheckALSLBalanceLimit(double currentApply, double availabelToday, bool canAndyday, bool canMoreYearEnd)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.checkALSL_ApplyingISok(currentApply, availabelToday, canAndyday, canMoreYearEnd);
