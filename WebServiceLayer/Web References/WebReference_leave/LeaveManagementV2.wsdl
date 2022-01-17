@@ -291,19 +291,20 @@
           <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="InputSource" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="IsClaimPayment" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="zeroWhenNoAttachOrRequestid" type="s:int" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetCLOTDetail">
+      <s:element name="GetCLOTDetail_UpdateCanceWaitingStatus">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="requestids" type="tns:ArrayOfInt" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetCLOTDetailResponse">
+      <s:element name="GetCLOTDetail_UpdateCanceWaitingStatusResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetCLOTDetailResult" type="tns:ArrayOfStaffCLOTRequest" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetCLOTDetail_UpdateCanceWaitingStatusResult" type="tns:ArrayOfStaffCLOTRequest" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -2485,11 +2486,11 @@
   <wsdl:message name="GetMyManageWaitingCLOTSoapOut">
     <wsdl:part name="parameters" element="tns:GetMyManageWaitingCLOTResponse" />
   </wsdl:message>
-  <wsdl:message name="GetCLOTDetailSoapIn">
-    <wsdl:part name="parameters" element="tns:GetCLOTDetail" />
+  <wsdl:message name="GetCLOTDetail_UpdateCanceWaitingStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCLOTDetail_UpdateCanceWaitingStatus" />
   </wsdl:message>
-  <wsdl:message name="GetCLOTDetailSoapOut">
-    <wsdl:part name="parameters" element="tns:GetCLOTDetailResponse" />
+  <wsdl:message name="GetCLOTDetail_UpdateCanceWaitingStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCLOTDetail_UpdateCanceWaitingStatusResponse" />
   </wsdl:message>
   <wsdl:message name="GetMyWaitingCLOTSoapIn">
     <wsdl:part name="parameters" element="tns:GetMyWaitingCLOT" />
@@ -3111,10 +3112,10 @@
   <wsdl:message name="GetMyManageWaitingCLOTHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfStaffCLOTRequest" />
   </wsdl:message>
-  <wsdl:message name="GetCLOTDetailHttpPostIn">
+  <wsdl:message name="GetCLOTDetail_UpdateCanceWaitingStatusHttpPostIn">
     <wsdl:part name="requestids" type="s1:StringArray" />
   </wsdl:message>
-  <wsdl:message name="GetCLOTDetailHttpPostOut">
+  <wsdl:message name="GetCLOTDetail_UpdateCanceWaitingStatusHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfStaffCLOTRequest" />
   </wsdl:message>
   <wsdl:message name="GetMyWaitingCLOTHttpPostIn">
@@ -3662,9 +3663,9 @@
       <wsdl:input message="tns:GetMyManageWaitingCLOTSoapIn" />
       <wsdl:output message="tns:GetMyManageWaitingCLOTSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetCLOTDetail">
-      <wsdl:input message="tns:GetCLOTDetailSoapIn" />
-      <wsdl:output message="tns:GetCLOTDetailSoapOut" />
+    <wsdl:operation name="GetCLOTDetail_UpdateCanceWaitingStatus">
+      <wsdl:input message="tns:GetCLOTDetail_UpdateCanceWaitingStatusSoapIn" />
+      <wsdl:output message="tns:GetCLOTDetail_UpdateCanceWaitingStatusSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetMyWaitingCLOT">
       <wsdl:input message="tns:GetMyWaitingCLOTSoapIn" />
@@ -4076,9 +4077,9 @@
       <wsdl:input message="tns:GetMyManageWaitingCLOTHttpPostIn" />
       <wsdl:output message="tns:GetMyManageWaitingCLOTHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetCLOTDetail">
-      <wsdl:input message="tns:GetCLOTDetailHttpPostIn" />
-      <wsdl:output message="tns:GetCLOTDetailHttpPostOut" />
+    <wsdl:operation name="GetCLOTDetail_UpdateCanceWaitingStatus">
+      <wsdl:input message="tns:GetCLOTDetail_UpdateCanceWaitingStatusHttpPostIn" />
+      <wsdl:output message="tns:GetCLOTDetail_UpdateCanceWaitingStatusHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetMyWaitingCLOT">
       <wsdl:input message="tns:GetMyWaitingCLOTHttpPostIn" />
@@ -4500,8 +4501,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetCLOTDetail">
-      <soap:operation soapAction="http://tempuri.org/GetCLOTDetail" style="document" />
+    <wsdl:operation name="GetCLOTDetail_UpdateCanceWaitingStatus">
+      <soap:operation soapAction="http://tempuri.org/GetCLOTDetail_UpdateCanceWaitingStatus" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -5484,8 +5485,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetCLOTDetail">
-      <soap12:operation soapAction="http://tempuri.org/GetCLOTDetail" style="document" />
+    <wsdl:operation name="GetCLOTDetail_UpdateCanceWaitingStatus">
+      <soap12:operation soapAction="http://tempuri.org/GetCLOTDetail_UpdateCanceWaitingStatus" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -6406,8 +6407,8 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetCLOTDetail">
-      <http:operation location="/GetCLOTDetail" />
+    <wsdl:operation name="GetCLOTDetail_UpdateCanceWaitingStatus">
+      <http:operation location="/GetCLOTDetail_UpdateCanceWaitingStatus" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

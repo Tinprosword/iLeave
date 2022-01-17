@@ -55,7 +55,7 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetMyManageWaitingCLOTOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetCLOTDetailOperationCompleted;
+        private System.Threading.SendOrPostCallback GetCLOTDetail_UpdateCanceWaitingStatusOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMyWaitingCLOTOperationCompleted;
         
@@ -325,7 +325,7 @@ namespace WebServiceLayer.WebReference_leave {
         public event GetMyManageWaitingCLOTCompletedEventHandler GetMyManageWaitingCLOTCompleted;
         
         /// <remarks/>
-        public event GetCLOTDetailCompletedEventHandler GetCLOTDetailCompleted;
+        public event GetCLOTDetail_UpdateCanceWaitingStatusCompletedEventHandler GetCLOTDetail_UpdateCanceWaitingStatusCompleted;
         
         /// <remarks/>
         public event GetMyWaitingCLOTCompletedEventHandler GetMyWaitingCLOTCompleted;
@@ -1020,31 +1020,31 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetCLOTDetail", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public StaffCLOTRequest[] GetCLOTDetail(int[] requestids) {
-            object[] results = this.Invoke("GetCLOTDetail", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetCLOTDetail_UpdateCanceWaitingStatus", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public StaffCLOTRequest[] GetCLOTDetail_UpdateCanceWaitingStatus(int[] requestids) {
+            object[] results = this.Invoke("GetCLOTDetail_UpdateCanceWaitingStatus", new object[] {
                         requestids});
             return ((StaffCLOTRequest[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetCLOTDetailAsync(int[] requestids) {
-            this.GetCLOTDetailAsync(requestids, null);
+        public void GetCLOTDetail_UpdateCanceWaitingStatusAsync(int[] requestids) {
+            this.GetCLOTDetail_UpdateCanceWaitingStatusAsync(requestids, null);
         }
         
         /// <remarks/>
-        public void GetCLOTDetailAsync(int[] requestids, object userState) {
-            if ((this.GetCLOTDetailOperationCompleted == null)) {
-                this.GetCLOTDetailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCLOTDetailOperationCompleted);
+        public void GetCLOTDetail_UpdateCanceWaitingStatusAsync(int[] requestids, object userState) {
+            if ((this.GetCLOTDetail_UpdateCanceWaitingStatusOperationCompleted == null)) {
+                this.GetCLOTDetail_UpdateCanceWaitingStatusOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCLOTDetail_UpdateCanceWaitingStatusOperationCompleted);
             }
-            this.InvokeAsync("GetCLOTDetail", new object[] {
-                        requestids}, this.GetCLOTDetailOperationCompleted, userState);
+            this.InvokeAsync("GetCLOTDetail_UpdateCanceWaitingStatus", new object[] {
+                        requestids}, this.GetCLOTDetail_UpdateCanceWaitingStatusOperationCompleted, userState);
         }
         
-        private void OnGetCLOTDetailOperationCompleted(object arg) {
-            if ((this.GetCLOTDetailCompleted != null)) {
+        private void OnGetCLOTDetail_UpdateCanceWaitingStatusOperationCompleted(object arg) {
+            if ((this.GetCLOTDetail_UpdateCanceWaitingStatusCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetCLOTDetailCompleted(this, new GetCLOTDetailCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetCLOTDetail_UpdateCanceWaitingStatusCompleted(this, new GetCLOTDetail_UpdateCanceWaitingStatusCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -9785,6 +9785,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private bool isClaimPaymentField;
         
+        private int zeroWhenNoAttachOrRequestidField;
+        
         /// <remarks/>
         public int ID {
             get {
@@ -10111,6 +10113,16 @@ namespace WebServiceLayer.WebReference_leave {
             }
             set {
                 this.isClaimPaymentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int zeroWhenNoAttachOrRequestid {
+            get {
+                return this.zeroWhenNoAttachOrRequestidField;
+            }
+            set {
+                this.zeroWhenNoAttachOrRequestidField = value;
             }
         }
     }
@@ -10793,17 +10805,17 @@ namespace WebServiceLayer.WebReference_leave {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetCLOTDetailCompletedEventHandler(object sender, GetCLOTDetailCompletedEventArgs e);
+    public delegate void GetCLOTDetail_UpdateCanceWaitingStatusCompletedEventHandler(object sender, GetCLOTDetail_UpdateCanceWaitingStatusCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetCLOTDetailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetCLOTDetail_UpdateCanceWaitingStatusCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetCLOTDetailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetCLOTDetail_UpdateCanceWaitingStatusCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

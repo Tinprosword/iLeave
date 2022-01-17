@@ -14,7 +14,7 @@ namespace BLL
         {
             List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> result = new List<StaffCLOTRequest>();
 
-            var tempResult= WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetCLOTDetail(new int[] { requestID }).ToList();
+            var tempResult= WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetCLOTDetail_UpdateCanceWaitingStatus(new int[] { requestID }).ToList();
             if (tempResult != null && tempResult.Count() > 0)
             {
                 result = tempResult;
@@ -260,6 +260,12 @@ namespace BLL
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.clot_CheckCLOTIsOverlap(eid, from, to);
         }
+
+        public static List<StaffCLOTRequest> GetCLOTDetails(int[] ids)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetCLOTDetail_UpdateCanceWaitingStatus(ids).ToList();
+        }
+
         #endregion
 
 

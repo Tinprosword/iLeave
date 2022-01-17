@@ -501,29 +501,63 @@ namespace ut
 
         private void CheckClotRequestStatus(List<int> Requestid, BLL.GlobalVariate.ApprovalRequestStatus status)
         {
-            foreach (var item in Requestid)
+            var data = BLL.CLOT.GetCLOTDetails(Requestid.ToArray());
+
+            foreach (var item in data)
             {
-                CheckClotRequestStatus(item, status);
+                if (item.Status != (int)status)
+                {
+                    throw new Exception(item.ID.ToString()+ "'s status is not match");
+                }
             }
+
         }
 
-        private void CheckClotRequestStatus(int Requestid, BLL.GlobalVariate.ApprovalRequestStatus status)
-        {
-            bool isok = false;
-            var request = BLL.CLOT.GetCLOTDetail(Requestid);
-            if (request != null && request.Count() > 0)
-            {
-                isok=request[0].Status == (int)status;
-            }
-            if (isok == false)
-            {
-                throw new Exception("status is not match or not exists");
-            }
-        }
+
         #endregion'
 
 
-        #region leave change applyer
+        #region leave
+        [TestMethod]
+        public void StartTest_leavev_all()
+        {
+            Console.WriteLine("Start Test");
+            User applyer = user_102;
+
+            applyer.UpdateALLeave();
+            Scene_waitingv2(applyer);
+            Scene_Approvedv2(applyer);
+            Scene_Reject1v2(applyer);
+            Scene_WithDrawv2(applyer);
+            Scene_wcv2(applyer);
+            Scene_wc_approvedv2(applyer);
+            Scene_wc_rejectv2(applyer);
+
+
+            applyer = user_101;
+
+            applyer.UpdateALLeave();
+            Scene_waitingv2(applyer);
+            Scene_Approvedv2(applyer);
+            Scene_Reject1v2(applyer);
+            Scene_WithDrawv2(applyer);
+            Scene_wcv2(applyer);
+            Scene_wc_approvedv2(applyer);
+            Scene_wc_rejectv2(applyer);
+
+            applyer = user_103;
+
+            applyer.UpdateALLeave();
+            Scene_waitingv2(applyer);
+            Scene_Approvedv2(applyer);
+            Scene_Reject1v2(applyer);
+            Scene_WithDrawv2(applyer);
+            Scene_wcv2(applyer);
+            Scene_wc_approvedv2(applyer);
+            Scene_wc_rejectv2(applyer);
+        }
+
+
         [TestMethod]
         public void StartTest_leavev_u102()
         {
@@ -901,6 +935,66 @@ namespace ut
         #region clot
         //測試方法用戶是固定的，可以構造函數的時候變更。來達到測試不同用戶。裡面hardcode .來簡化代碼。
         [TestMethod]
+        public void StartTest_clot_all()
+        {
+            User applyer = user_101;
+            Scene_waiting_clot(applyer);
+            Scene_Approved_clot(applyer);
+            Scene_Reject1_clot(applyer);
+            Scene_WithDraw_clot(applyer);
+            Scene_wc_clot(applyer);
+            Scene_wc_approved_clot(applyer);
+            Scene_wc_reject_clot(applyer);
+
+            applyer = user_102;
+            Scene_waiting_clot(applyer);
+            Scene_Approved_clot(applyer);
+            Scene_Reject1_clot(applyer);
+            Scene_WithDraw_clot(applyer);
+            Scene_wc_clot(applyer);
+            Scene_wc_approved_clot(applyer);
+            Scene_wc_reject_clot(applyer);
+
+            applyer = user_103;
+            Scene_waiting_clot(applyer);
+            Scene_Approved_clot(applyer);
+            Scene_Reject1_clot(applyer);
+            Scene_WithDraw_clot(applyer);
+            Scene_wc_clot(applyer);
+            Scene_wc_approved_clot(applyer);
+            Scene_wc_reject_clot(applyer);
+
+        }
+
+        [TestMethod]
+        public void StartTest_clot_u101()
+        {
+            Console.WriteLine("Start Test");
+            User applyer = user_101;
+            Scene_waiting_clot(applyer);
+            Scene_Approved_clot(applyer);
+            Scene_Reject1_clot(applyer);
+            Scene_WithDraw_clot(applyer);
+            Scene_wc_clot(applyer);
+            Scene_wc_approved_clot(applyer);
+            Scene_wc_reject_clot(applyer);
+        }
+
+        [TestMethod]
+        public void StartTest_clot_u102()
+        {
+            Console.WriteLine("Start Test");
+            User applyer = user_102;
+            Scene_waiting_clot(applyer);
+            Scene_Approved_clot(applyer);
+            Scene_Reject1_clot(applyer);
+            Scene_WithDraw_clot(applyer);
+            Scene_wc_clot(applyer);
+            Scene_wc_approved_clot(applyer);
+            Scene_wc_reject_clot(applyer);
+        }
+
+        [TestMethod]
         public void StartTest_clot_u103()
         {
             Console.WriteLine("Start Test");
@@ -910,8 +1004,8 @@ namespace ut
             Scene_Reject1_clot(applyer);
             Scene_WithDraw_clot(applyer);
             Scene_wc_clot(applyer);
-            //Scene_wc_approved_clot(applyer);
-            //Scene_wc_reject_clot(applyer);
+            Scene_wc_approved_clot(applyer);
+            Scene_wc_reject_clot(applyer);
         }
 
         private void Scene_waiting_clot(User applyer)
@@ -1032,7 +1126,6 @@ namespace ut
             CheckClotRequestStatus(clotids, BLL.GlobalVariate.ApprovalRequestStatus.CANCEL);
         }
 
-
         private void Scene_wc_clot(User applyer)
         {
             //1,add 2.mywaitclot.add 3.check alluser.4.check status.
@@ -1078,7 +1171,155 @@ namespace ut
             user_102.myManageHistroyClot.RemoveAll(x => clotids.Contains(x));
 
             checkAllUer_CLOTMyAndMyManageRecord();
-            CheckClotRequestStatus(clotids, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);//todo 0 狀態是不變的。要檢查一下，是否插入了histroy.
+            CheckClotRequestStatus(clotids, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL);
+        }
+
+
+        private void Scene_wc_approved_clot(User applyer)
+        {
+            //1,add 2.mywaitclot.add 3.check alluser.4.check status.
+            List<MODEL.CLOT.CLOTItem> cLOTItems = new List<MODEL.CLOT.CLOTItem>();
+            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 6), 10, 0, 12, 0, "ot2", "7", cLOTItems);
+            List<int> clotids = applyer.AddCLOT(cLOTItems);
+            applyer.myWaitClot.AddRange(clotids);
+            user_102.myManageWaitClot.AddRange(clotids);
+            checkAllUer_CLOTMyAndMyManageRecord();
+            CheckClotRequestStatus(clotids, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
+
+            //2 approve 1
+            user_102.ApproveCLOT(clotids, "1a");
+
+            user_102.myManageWaitClot.RemoveAll(x => clotids.Contains(x));
+            user_102.myManageHistroyClot.AddRange(clotids);
+
+            user_101.myManageWaitClot.AddRange(clotids);
+
+            checkAllUer_CLOTMyAndMyManageRecord();
+            CheckClotRequestStatus(clotids, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
+
+            //3 approve 2
+            user_101.ApproveCLOT(clotids, "2a");
+
+            user_101.myManageWaitClot.RemoveAll(x => clotids.Contains(x));
+            user_101.myManageHistroyClot.AddRange(clotids);
+
+            applyer.myWaitClot.RemoveAll(x => clotids.Contains(x));
+            applyer.myHistroyClot.AddRange(clotids);
+
+            checkAllUer_CLOTMyAndMyManageRecord();
+            CheckClotRequestStatus(clotids, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
+
+
+            //4 cancel
+            applyer.CancelCLOT(clotids, "cancel");
+
+            applyer.myWaitClot.AddRange(clotids);
+            applyer.myHistroyClot.RemoveAll(x => clotids.Contains(x));
+
+            user_102.myManageWaitClot.AddRange(clotids);
+            user_102.myManageHistroyClot.RemoveAll(x => clotids.Contains(x));
+
+            checkAllUer_CLOTMyAndMyManageRecord();
+            CheckClotRequestStatus(clotids, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL);
+
+            //5 approve cancel 1
+            user_102.ApproveCancelCLOT(clotids, "approve cancel1");
+
+            user_102.myManageWaitClot.RemoveAll(x => clotids.Contains(x));
+            user_102.myManageHistroyClot.AddRange(clotids);
+
+            user_101.myManageWaitClot.AddRange(clotids);
+            user_101.myManageHistroyClot.RemoveAll(x => clotids.Contains(x));
+
+            checkAllUer_CLOTMyAndMyManageRecord();
+            CheckClotRequestStatus(clotids, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL);
+
+            //approve cancel 2
+
+            user_101.ApproveCancelCLOT(clotids, "approve cancel2");
+
+            user_101.myManageWaitClot.RemoveAll(x => clotids.Contains(x));
+            user_101.myManageHistroyClot.AddRange(clotids);
+
+            applyer.myWaitClot.RemoveAll(x => clotids.Contains(x));
+            applyer.myHistroyClot.AddRange(clotids);
+
+            checkAllUer_CLOTMyAndMyManageRecord();
+            CheckClotRequestStatus(clotids, BLL.GlobalVariate.ApprovalRequestStatus.CANCEL);
+        }
+
+        private void Scene_wc_reject_clot(User applyer)
+        {
+            //1,add 2.mywaitclot.add 3.check alluser.4.check status.
+            List<MODEL.CLOT.CLOTItem> cLOTItems = new List<MODEL.CLOT.CLOTItem>();
+            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 7), 10, 0, 12, 0, "ot2", "7", cLOTItems);
+            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 8), 10, 0, 12, 0, "ot2", "7", cLOTItems);
+            List<int> clotids = applyer.AddCLOT(cLOTItems);
+            applyer.myWaitClot.AddRange(clotids);
+            user_102.myManageWaitClot.AddRange(clotids);
+            checkAllUer_CLOTMyAndMyManageRecord();
+            CheckClotRequestStatus(clotids, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
+
+            //2 approve 1
+            user_102.ApproveCLOT(clotids, "1a");
+
+            user_102.myManageWaitClot.RemoveAll(x => clotids.Contains(x));
+            user_102.myManageHistroyClot.AddRange(clotids);
+
+            user_101.myManageWaitClot.AddRange(clotids);
+
+            checkAllUer_CLOTMyAndMyManageRecord();
+            CheckClotRequestStatus(clotids, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
+
+            //3 approve 2
+            user_101.ApproveCLOT(clotids, "2a");
+
+            user_101.myManageWaitClot.RemoveAll(x => clotids.Contains(x));
+            user_101.myManageHistroyClot.AddRange(clotids);
+
+            applyer.myWaitClot.RemoveAll(x => clotids.Contains(x));
+            applyer.myHistroyClot.AddRange(clotids);
+
+            checkAllUer_CLOTMyAndMyManageRecord();
+            CheckClotRequestStatus(clotids, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
+
+
+            //4 cancel
+            applyer.CancelCLOT(clotids, "cancel");
+
+            applyer.myWaitClot.AddRange(clotids);
+            applyer.myHistroyClot.RemoveAll(x => clotids.Contains(x));
+
+            user_102.myManageWaitClot.AddRange(clotids);
+            user_102.myManageHistroyClot.RemoveAll(x => clotids.Contains(x));
+
+            checkAllUer_CLOTMyAndMyManageRecord();
+            CheckClotRequestStatus(clotids, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL);
+
+            //5 approve cancel 1
+            user_102.ApproveCancelCLOT(clotids, "approve cancel1");
+
+            user_102.myManageWaitClot.RemoveAll(x => clotids.Contains(x));
+            user_102.myManageHistroyClot.AddRange(clotids);
+
+            user_101.myManageWaitClot.AddRange(clotids);
+            user_101.myManageHistroyClot.RemoveAll(x => clotids.Contains(x));
+
+            checkAllUer_CLOTMyAndMyManageRecord();
+            CheckClotRequestStatus(clotids, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL);
+
+            //reject cancel 2
+
+            user_101.RejectCancelCLOT(clotids, "reject cancel2");
+
+            user_101.myManageWaitClot.RemoveAll(x => clotids.Contains(x));
+            user_101.myManageHistroyClot.AddRange(clotids);
+
+            applyer.myWaitClot.RemoveAll(x => clotids.Contains(x));
+            applyer.myHistroyClot.AddRange(clotids);
+
+            checkAllUer_CLOTMyAndMyManageRecord();
+            CheckClotRequestStatus(clotids, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
         }
 
         #endregion

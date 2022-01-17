@@ -289,11 +289,11 @@ namespace WEBUI.Pages
             {
                 List<int> requestidArray = BLL.CLOT.InsertCLOTRequests(dataview.items, loginer.userInfo.id, loginer.userInfo.employID ?? 0);
 
-                bool hasError = requestidArray.Where(x => x <= 0).ToList().Count() >= 0 ? true : false;
+                bool hasError = requestidArray.Where(x => x <= 0).ToList().Count() > 0 ? true : false;
                 if (hasError)
                 {
                     this.literal_errormsga.Visible = true;
-                    this.literal_errormsga.Text = errorMsg;
+                    this.literal_errormsga.Text = "Some data is error on insert.";
                     this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
                     return;
                 }
