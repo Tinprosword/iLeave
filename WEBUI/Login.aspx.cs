@@ -55,14 +55,19 @@ namespace WEBUI
                 {
                     if (!string.IsNullOrEmpty(isremember) && isremember == "1")
                     {
-                        this.tb_user.Text = cookie.loginname;
-                        this.tb_password.Text = cookie.loginpsw;
+                        this.tb_u1.Text = cookie.loginname;
+                        this.tb_p1.Text = cookie.loginpsw;
                     }
                     else
                     {
-                        this.tb_user.Text = "";
-                        this.tb_password.Text = "";
+                        this.tb_u1.Text = "";
+                        this.tb_p1.Text = "";
                     }
+                }
+                else
+                {
+                    this.tb_u1.Text = "";
+                    this.tb_p1.Text = "";
                 }
             }
 
@@ -90,8 +95,8 @@ namespace WEBUI
             {
                 this.lb_tc.CssClass = "loginSelect";
             }
-            this.tb_user.Attributes.Add("placeholder", BLL.MultiLanguageHelper.GetLanguagePacket(tt).Common_user);
-            this.tb_password.Attributes.Add("placeholder", BLL.MultiLanguageHelper.GetLanguagePacket(tt).Common_password);
+            this.tb_u1.Attributes.Add("placeholder", BLL.MultiLanguageHelper.GetLanguagePacket(tt).Common_user);
+            this.tb_p1.Attributes.Add("placeholder", BLL.MultiLanguageHelper.GetLanguagePacket(tt).Common_password);
         }
 
         private void ProgressLogin(string userid,string password)
@@ -139,16 +144,16 @@ namespace WEBUI
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string userid = this.tb_user.Text.Trim();
-            string password = this.tb_password.Text.Trim();
+            string userid = this.tb_u1.Text.Trim();
+            string password = this.tb_p1.Text.Trim();
 
             ProgressLogin(userid, password);
         }
 
         private void CleanInput()
         {
-            this.tb_user.Text = "";
-            this.tb_password.Text = "";
+            this.tb_u1.Text = "";
+            this.tb_p1.Text = "";
         }
 
         protected void cb_remember_CheckedChanged(object sender, EventArgs e)

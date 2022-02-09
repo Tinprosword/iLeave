@@ -21,18 +21,18 @@
                         </td>
                      </tr>   
                 </table>--%>
-                <table class="col-xs-12 lsu-bigtable" style="background-image:url(res/images/login_page_bg.jpg); background-repeat:no-repeat;background-size:360px 660px; height:660px;">
+                <table class="col-xs-12 lsu-bigtable" style=" ba background-repeat:no-repeat;background-size:360px 660px; height:660px;">
                     <tr><td style="width:40px"></td><td style="height:160px"></td><td></td></tr>
                     <tr>
                         <td colspan="3" style="height:60px; text-align:center"></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td colspan="2"><asp:TextBox ID="tb_user" runat="server" Width="90%" placeholder="User Name" Style="border:none; border-bottom:2px solid #eee;outline: none;"/></td>
+                        <td colspan="2"><asp:TextBox ID="tb_u1" runat="server" Width="80%" placeholder="User Name" Style="border:none; border-bottom:2px solid #eee;outline: none; background:none; background-color:rgba(0,0,0,0);"/></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td colspan="2"><asp:TextBox ID="tb_password" runat="server" Width="90%" TextMode="Password" placeholder="Password" CssClass="lsu-input_line"/></td>
+                        <td colspan="2"><asp:TextBox ID="tb_p1" runat="server" Width="80%" TextMode="Password" placeholder="Password" CssClass="lsu-input_line"/></td>
                     </tr>
 
                     <tr><td colspan="1"></td>
