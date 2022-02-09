@@ -21,20 +21,20 @@
                         </td>
                      </tr>   
                 </table>--%>
-                <table class="col-xs-12 lsu-bigtable" style=" ba background-repeat:no-repeat;background-size:360px 660px; height:660px;">
-                    <tr><td style="width:40px"></td><td style="height:160px"></td><td></td></tr>
+                <table class="col-xs-12 lsu-bigtable" style="  background-image:url(res/images/login_page_bg3.jpg);background-repeat:no-repeat;background-size:360px 660px; height:660px;">
+                    <tr><td style="width:40px"></td><td style="height:180px"></td><td></td></tr>
                     <tr>
                         <td colspan="3" style="height:60px; text-align:center"></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td colspan="2"><asp:TextBox ID="tb_u1" runat="server" Width="80%" placeholder="User Name" Style="border:none; border-bottom:2px solid #eee;outline: none; background:none; background-color:rgba(0,0,0,0);"/></td>
+                        <td colspan="2"><asp:TextBox ID="tb_u1" runat="server" Width="90%" placeholder="User Name" CssClass="lsu-input_line" AutoCompleteType="Disabled"/></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td colspan="2"><asp:TextBox ID="tb_p1" runat="server" Width="80%" TextMode="Password" placeholder="Password" CssClass="lsu-input_line"/></td>
+                        <td colspan="2"><asp:TextBox ID="tb_p1" runat="server" Width="90%" TextMode="Password" placeholder="Password" CssClass="lsu-input_line" AutoCompleteType="Disabled"/></td>
                     </tr>
-
+                    <tr style="height:10px"><td style="height:18px"></td></tr>
                     <tr><td colspan="1"></td>
                         <td colspan="2" style=""><asp:Button ID="Button1" runat="server" Text="Login"  Width="90%" ForeColor="White" BackColor="#0ee180" Height="30px" BorderWidth="0" OnClick="Button1_Click"/></td>
                     </tr>
@@ -53,7 +53,7 @@
                             </table>
                         </td>
                     </tr>
-                    <tr><td style="height:100px"></td></tr>
+                    <tr><td style="height:80px"></td></tr>
                     <tr style="height:20px;">
                         <td></td>
                         <td class="lsf-fontsizes1">
@@ -72,7 +72,7 @@
                             </table>
                         </td>
                     </tr>
-                    <tr><td style="height:80px"></td></tr>
+                    <tr><td style="height:70px"></td></tr>
                 </table>
             </div>
         </div>

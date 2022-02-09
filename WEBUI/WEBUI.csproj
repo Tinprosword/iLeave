@@ -101,6 +101,7 @@
     <Content Include="Res\images\exitaccount.png" />
     <Content Include="Res\images\go.png" />
     <Content Include="Res\images\login_page_bg.jpg" />
+    <Content Include="Res\images\login_page_bg2.jpg" />
     <Content Include="Res\images\ok2.png" />
     <Content Include="Res\images\search.png" />
     <Content Include="temp\delete\approvalMain.aspx" />
