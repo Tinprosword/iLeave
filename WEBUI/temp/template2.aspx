@@ -5,6 +5,7 @@
 	        <li class="active"><a data-toggle="tab" >History</a></li>
         </ul>
     temp2
+    <asp:TextBox ID="tb_user" runat="server" Width="90%" placeholder="User Name" Style="border:none; border-bottom:2px solid #eee;outline: none;"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
 </asp:Content>

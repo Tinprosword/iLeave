@@ -52,6 +52,8 @@
     text-align: center;border-radius: 30px;
 }
 
+.lsu-input_line{border:none;border-bottom:2px solid rgba(0, 0, 0, .125);outline:none !important;}
+
 
 /*function 为方便一些常用样式的使用，我们将这些使用率较高的样式剥离出来，按需使用，通常这些选择器具有固定样式表现，比如清除浮动等！不可滥用*/
 .lsf-redborder{border: 1px solid red}

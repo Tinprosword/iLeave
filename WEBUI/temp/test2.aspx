@@ -15,8 +15,10 @@
             <asp:RadioButton ID="RadioButton1" runat="server" />
             <asp:RadioButtonList ID="RadioButtonList1" runat="server" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
             </asp:RadioButtonList>
+            <br />
+            <br />
         </div>
-        
+        <asp:TextBox ID="TextBox1" runat="server"  placeholder="User Name" Style="border:none; border-bottom:2px solid #eee;outline: none;"></asp:TextBox>
     </form>
 </body>
 </html>
