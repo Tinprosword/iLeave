@@ -19,11 +19,12 @@
         <div id="cover"></div>
         <div class="container-fluid col-xs-12">
             <div class="row">
-                <div id="Navigation" class="lss-bannercolor-black" style="line-height:40px;height:40px;" runat="server" visible="false">
+                <div id="Navigation"  style="line-height:40px;height:40px; background-image:url(../res/images/banner.jpg); background-size:360px 40px; background-repeat:no-repeat;" runat="server" visible="false">
                     <div class="col-xs-1 lsf-clearPadding" style="height:40px;">
                         <asp:ImageButton ID="ib_back" runat="server" ImageUrl="~/Res/images/back2.png" Width="60px" Height="40px" style="padding-top:8px;padding-bottom:8px;padding-left:6px;" TabIndex="20"/>
                     </div>
-                    <div class="col-xs-9 lsf-center lsf-fontsizem1" style="color:white;font-weight:bold" ><asp:Literal ID="label_title" runat="server"></asp:Literal></div>
+                    <div class="col-xs-4"><img src="../Res/images/Menu110_dwlogo.png" width="120" height="40" /></div>
+                    <div class="col-xs-4"><img src="../Res/images/DW-iHR-APP-Menu31_02.png" width="120" height="40" /></div>
                     <div class="col-xs-1" ><asp:ImageButton ID="ib_exit" OnClick="ib_exit_Click" runat="server" ImageUrl="~/Res/images/exit30.png" Width="30px" Height="38px" style="padding-top:7px;padding-bottom:4px;padding-left:4px"/></div>
                 </div>
                 <div id="Navigation2" class="lss-bannercolor-black" style="line-height:40px;height:40px;" runat="server" visible="false">
