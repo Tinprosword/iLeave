@@ -19,13 +19,17 @@
         <div id="cover"></div>
         <div class="container-fluid col-xs-12" >
             <div class="row" style="height:53px">
-                <div id="Navigation"  style="line-height:53px;height:53px; background-image:url(../res/images/banner.jpg); background-size:360px 53px; background-repeat:no-repeat;" runat="server" visible="false">
-                    <div class="col-xs-1 lsf-clearPadding" style="height:53px;">
-                        <asp:ImageButton ID="ib_back" runat="server" ImageUrl="~/Res/images/back2.png" Width="60px" Height="53px" style="padding-top:8px;padding-bottom:8px;padding-left:6px;" TabIndex="20"/>
-                    </div>
-                    <div class="col-xs-4"><img src="../Res/images/Menu110_dwlogo.png" width="120" height="53" /></div>
-                    <div class="col-xs-4"><img src="../Res/images/DW-iHR-APP-Menu31_02.png" width="120" height="53" /></div>
-                    <div class="col-xs-2 lsf-clearPadding" ><asp:ImageButton ID="ib_exit" OnClick="ib_exit_Click" runat="server" ImageUrl="~/Res/images/exit30.png" Width="30px" Height="38px" style="padding-top:7px;padding-bottom:4px;padding-left:4px"/></div>
+                <div id="Navigation"   style="height:53px; background-image:url(../res/images/banner.jpg); background-size:cover" runat="server" visible="false">
+	                <div class="col-xs-1 lsf-clearPadding" style="height:53px; padding-top:6px;">
+		                <asp:ImageButton ID="ib_back" runat="server" ImageUrl="~/Res/images/back2.png" Width="60px" Height="40px" TabIndex="20"/>
+	                </div>
+	                <div class="col-xs-9 lsf-center lsf-fontsizem1" style="color:white;font-weight:bold; height:53px;line-height:53px; vertical-align:middle;">
+                        <asp:Literal ID="label_title" runat="server" Visible="false"></asp:Literal>
+                        <table id="tb_img" runat="server" visible="false">
+                            <tr><td><img src="../Res/images/Menu110_dwlogo.png" style=" height:53px; width:60px;" /> </td><td><img src="../Res/images/Menu110_ihr.png" style=" height:53px; width:60px;"/> </td></tr>
+                        </table>
+	                </div>
+	                <div class="col-xs-1"  style="height:53px; padding-top:6px;"><asp:ImageButton ID="ib_exit" OnClick="ib_exit_Click" runat="server" ImageUrl="~/Res/images/exit30.png" Width="30px" Height="38px" style="padding-top:7px;padding-bottom:4px;padding-left:4px"/></div>
                 </div>
                 <div id="Navigation2" class="lss-bannercolor-black" style="line-height:53px;height:53px;" runat="server" visible="false">
                     <div class="col-xs-2" >

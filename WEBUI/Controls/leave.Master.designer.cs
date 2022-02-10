@@ -58,6 +58,24 @@ namespace WEBUI.Controls {
         protected global::System.Web.UI.WebControls.ImageButton ib_back;
         
         /// <summary>
+        /// label_title 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal label_title;
+        
+        /// <summary>
+        /// tb_img 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable tb_img;
+        
+        /// <summary>
         /// ib_exit 控件。
         /// </summary>
         /// <remarks>

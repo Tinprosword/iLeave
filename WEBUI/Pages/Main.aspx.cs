@@ -23,11 +23,11 @@ namespace WEBUI.Pages
         {
             if (loginer.userInfo.moreEmployment)
             {
-                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "", "DW-iLeave", "~/pages/chooseEmployment.aspx?pid=" + loginer.userInfo.personid, true);
+                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "", "DW-iLeave", "~/pages/chooseEmployment.aspx?pid=" + loginer.userInfo.personid, true,null,false,true);
             }
             else
             {
-                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "", "DW-iLeave", "~/pages/chooseEmployment.aspx?pid=" + loginer.userInfo.personid, false);
+                ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "", "DW-iLeave", "~/pages/chooseEmployment.aspx?pid=" + loginer.userInfo.personid, false,null,false,true);
             }
             DisplayMenu(BLL.CodeSetting.GetMenu());
             SetMultiLanguage();
