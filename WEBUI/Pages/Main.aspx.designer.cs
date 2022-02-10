@@ -13,13 +13,13 @@ namespace WEBUI.Pages {
     public partial class Main {
         
         /// <summary>
-        /// bannerdiv 控件。
+        /// Label1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bannerdiv;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
         /// menu1 控件。
@@ -31,13 +31,13 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu1;
         
         /// <summary>
-        /// apply 控件。
+        /// ImageButton1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton apply;
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
         
         /// <summary>
         /// lt_applyleaveabc 控件。
@@ -58,13 +58,13 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu7;
         
         /// <summary>
-        /// clot 控件。
+        /// ImageButton2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton clot;
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
         
         /// <summary>
         /// lt_clot 控件。
@@ -85,13 +85,13 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu2;
         
         /// <summary>
-        /// approval 控件。
+        /// ImageButton3 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton approval;
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton3;
         
         /// <summary>
         /// lt_approal 控件。
@@ -112,13 +112,13 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu3;
         
         /// <summary>
-        /// Canlendar 控件。
+        /// ImageButton4 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton Canlendar;
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton4;
         
         /// <summary>
         /// lt_calendarabc 控件。
@@ -139,13 +139,13 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu6;
         
         /// <summary>
-        /// RosterInquiry 控件。
+        /// ImageButton5 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton RosterInquiry;
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton5;
         
         /// <summary>
         /// lt_RosterInquiry 控件。
@@ -166,13 +166,13 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu4;
         
         /// <summary>
-        /// Check 控件。
+        /// ImageButton6 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton Check;
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton6;
         
         /// <summary>
         /// lt_check 控件。
@@ -193,13 +193,13 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_payslip;
         
         /// <summary>
-        /// Payslip 控件。
+        /// ImageButton7 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton Payslip;
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton7;
         
         /// <summary>
         /// lt_payslip 控件。
@@ -220,13 +220,13 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu_Taxation;
         
         /// <summary>
-        /// taxation 控件。
+        /// ImageButton8 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton taxation;
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton8;
         
         /// <summary>
         /// lt_taxation 控件。
@@ -236,32 +236,5 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lt_taxation;
-        
-        /// <summary>
-        /// menu5 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menu5;
-        
-        /// <summary>
-        /// Setting 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton Setting;
-        
-        /// <summary>
-        /// lt_setting 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lt_setting;
     }
 }

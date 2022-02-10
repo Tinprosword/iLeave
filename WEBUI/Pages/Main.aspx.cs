@@ -35,7 +35,7 @@ namespace WEBUI.Pages
 
         private void DisplayMenu(string v)
         {
-            this.menu1.Visible = this.menu2.Visible = this.menu3.Visible = this.menu4.Visible = this.menu5.Visible = true;
+            this.menu1.Visible = this.menu2.Visible = this.menu3.Visible = this.menu4.Visible = true;
             if (!string.IsNullOrEmpty(v))
             {
                 if (v.Contains("1"))
@@ -54,10 +54,10 @@ namespace WEBUI.Pages
                 {
                     this.menu4.Visible = false;
                 }
-                if (v.Contains("5"))
-                {
-                    this.menu5.Visible = false;
-                }
+                //if (v.Contains("5"))
+                //{
+                //    this.menu5.Visible = false;
+                //}
                 if (v.Contains("6"))
                 {
                     this.menu6.Visible = false;
@@ -82,7 +82,7 @@ namespace WEBUI.Pages
             this.lt_applyleaveabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_apply;
             this.lt_approal.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_approvalTitle;
             this.lt_calendarabc.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_calendar;
-            this.lt_setting.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_setting;
+            //this.lt_setting.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_setting;
             this.lt_check.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_check;
             this.lt_RosterInquiry.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_rosterInqury;
             this.lt_clot.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_applyCLOT;

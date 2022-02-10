@@ -1,0 +1,15 @@
+ip:192.168.19.210
+DataTime：2022/2/10 10:59:04
+Url：http://192.168.19.210/WEBUI/pages/main.aspx
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void DisplayMenu(System.String)
+Trace：   在 WEBUI.Pages.Main.DisplayMenu(String v) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Main.aspx.cs:行号 38
+   在 WEBUI.Pages.Main.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Main.aspx.cs:行号 32
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
