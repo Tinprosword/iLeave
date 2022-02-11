@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Res/App/check.css" rel="stylesheet" />
     <div class="row" id="div_buttons">
-        <div class ="col-xs-12" style="padding:0px">
+        <div class ="col-xs-12" style="padding:0px; padding-top:5px;">
             <div class="col-xs-6" style="text-align:center; padding-left:3px;margin-left:0px; padding-right:4px;">
                 <asp:LinkButton ID="linkbtn_in" runat="server" CssClass="inButton" OnClick="OnClick_In"><asp:Image ID="image_in" runat="server" ImageUrl="~/Res/images/checkin-icon.png" style="vertical-align: middle;  text-align:center;  width:44px;" />&nbsp;<label style="color:white" id="label_checkin" runat="server">Check In</label></asp:LinkButton>
             </div>

@@ -23,7 +23,7 @@
 	                <div class="col-xs-1 lsf-clearPadding" style="height:53px; padding-top:15px; padding-left:6px;">
 		                <asp:ImageButton ID="ib_back" runat="server" ImageUrl="~/Res/images/back01_03.png" Width="26px" Height="23px"  TabIndex="20"/>
 	                </div>
-	                <div class="col-xs-9 lsf-center lsf-fontsizem1" style="color:white;font-weight:bold; height:53px;line-height:53px; vertical-align:middle;">
+	                <div class="col-xs-9 lsf-center lsf-fontsizem2" style="color:white;font-weight:bold; height:53px;line-height:53px; vertical-align:middle;">
                         <asp:Literal ID="label_title" runat="server" Visible="false"></asp:Literal>
                         <table id="tb_img" runat="server" visible="false">
                             <tr><td><img src="../Res/images/dataworld-150px.png" style="height:38px; width:80px;" /></td><td style="padding-left:40px;"><img src="../Res/images/DW-iHR-150px.png" style=" height:45px; width:90px;"/> </td></tr>
