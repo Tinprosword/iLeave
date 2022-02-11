@@ -44,6 +44,10 @@
                         
                     </asp:Panel>
                     <tr>
+                        <td style="width: 130px"></td>
+                        <td><asp:Button ID="btn_exist" runat="server" Text="exist" OnClick="btn_exist_Click" /></td>
+                    </tr>
+                    <tr>
                             <td><asp:Label ID="logineruser" runat="server"  style="color:white"></asp:Label></td>
                         </tr>
                 </table>

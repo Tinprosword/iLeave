@@ -29,6 +29,10 @@ namespace WEBUI.Pages
             {
                 ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, "", "DW-iLeave", "~/pages/chooseEmployment.aspx?pid=" + loginer.userInfo.personid, false,null,false,true);
             }
+            MODEL.UserName tempUser = new MODEL.UserName(loginer.userInfo.surname, loginer.userInfo.firstname, loginer.userInfo.nickname, loginer.userInfo.namech);
+            int nametype = BLL.CodeSetting.GetNameType(BLL.MultiLanguageHelper.GetChoose());
+            this.lb_name.Text = tempUser.GetDisplayName(nametype);
+
             DisplayMenu(BLL.CodeSetting.GetMenu());
             SetMultiLanguage();
         }

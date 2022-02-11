@@ -18,7 +18,7 @@ namespace WEBUI.Controls
             }
         }
 
-        public void SetupNaviagtion(bool isVisitable,string backLink,string title,string url,bool showback, ImageClickEventHandler ClickEvent=null,bool showgoback=false,bool showImgOrTitle=false)
+        public void SetupNaviagtion(bool isVisitable,string backLink,string title,string url,bool showback, ImageClickEventHandler ClickEvent=null,bool showgoback=false,bool ismainpage=false)
         {
             this.Navigation.Visible = isVisitable;
             this.Navigation2.Visible = showgoback;
@@ -31,9 +31,22 @@ namespace WEBUI.Controls
             this.ib_back.Visible = showback;
 
 
-            this.tb_img.Visible = showImgOrTitle;
-            this.label_title.Visible = !showImgOrTitle;
+            this.tb_img.Visible = ismainpage;
+            this.label_title.Visible = !ismainpage;
 
+
+            this.Navigation.Style.Remove("background-image");
+            this.Navigation.Style.Remove("background-color");
+            if(ismainpage)
+            {
+                this.Navigation.Style.Add(HtmlTextWriterStyle.BackgroundImage, "url(../res/images/banner.jpg)");
+            }
+            else
+            {
+                this.Navigation.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#06468c");
+            }
+
+            this.ib_exit.Visible = ismainpage;
         }
 
         public string GetMyPostBackArgumentByTargetname(string targetName)
@@ -85,11 +98,9 @@ namespace WEBUI.Controls
             this.PageState.Value = value;
         }
 
-
-        protected void ib_exit_Click(object sender, ImageClickEventArgs e)
+        protected void ib_setting_Click(object sender, ImageClickEventArgs e)
         {
-            LSLibrary.WebAPP.LoginManager.Logoff();
-            BLL.User_wsref.MPG_GoBackToLogin();
+            Response.Redirect("~/pages/setting.aspx");
         }
 
 

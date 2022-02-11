@@ -21,7 +21,7 @@
                         </td>
                      </tr>   
                 </table>--%>
-                <table class="col-xs-12 lsu-bigtable" style="  background-image:url(res/images/login_page_bg3.jpg);background-repeat:no-repeat;background-size:360px 660px; height:660px;">
+                <table class="col-xs-12 lsu-bigtable" style="  background-image:url(res/images/login_page_bg.jpg);background-repeat:no-repeat;background-size:360px 660px; height:660px;">
                     <tr><td style="width:40px"></td><td style="height:180px"></td><td></td></tr>
                     <tr>
                         <td colspan="3" style="height:60px; text-align:center"></td>

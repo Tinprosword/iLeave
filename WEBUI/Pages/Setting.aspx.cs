@@ -101,6 +101,12 @@ namespace WEBUI.Pages
             BLL.User_wsref.MPG_GoBackToSign();
         }
 
+        protected void btn_exist_Click(object sender, EventArgs e)
+        {
+            LSLibrary.WebAPP.LoginManager.Logoff();
+            BLL.User_wsref.MPG_GoBackToLogin();
+        }
+
 
         //protected void changeUser_Click(object sender, ImageClickEventArgs e)
         //{
