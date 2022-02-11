@@ -1,56 +1,46 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="Setting.aspx.cs" Inherits="WEBUI.Pages.Setting" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row">
+    <div class="row" style="background-color:#0954a7; height:585px;">
+        <div style="text-align:center;  position:absolute ; bottom:100px; width:100%">
+            <asp:Button ID="bt_out" runat="server" Text="Button" BackColor="#e10e51" style="vertical-align:bottom; color:white; text-align:center; border:0px solid red; font-size:20px" Width="280px" Height="40px" OnClick="bt_out_Click" />
+        </div>
                 <table class="col-xs-12 lsf-maringTop3px lsu-bigtable">
-                    <tr>
-                        <td style="width:130px;"><asp:Literal ID="lt_address" runat="server">Server address</asp:Literal></td>
-                        <td style="word-break:break-all;"><asp:Label ID="lb_serveraddress" runat="server"  Text="Label">http://192.168.19.210:8091/pages/setting.aspxhttp://192.168.19.210:8091/pages/setting.aspx</asp:Label></td>
+                    <tr style="height:1px;"><td ></td></tr>
+                    <tr style="height:80px;">
+                        <td style="width:25px;">&nbsp;</td>
+                        <td style="width:80px;"><img src="../Res/images/settingAccount.png" class="setting_img" /></td>
+                        <td class="whitea setting_link"><asp:LinkButton ID="lb_account" runat="server">Account</asp:LinkButton></td>
                     </tr>
-                    <tr>
-                        <td style="width: 130px"><asp:Literal ID="lt_language" runat="server">Language</asp:Literal></td>
-                        <td>
-                            <asp:RadioButtonList ID="cb_languagea" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" OnSelectedIndexChanged="cb_languagea_SelectedIndexChanged" AutoPostBack="true">
-                                <asp:ListItem Text="English　" Value="0" Selected="True"></asp:ListItem>
-                                <asp:ListItem Text="简体　" Value="1"></asp:ListItem>
-                                <asp:ListItem Text="繁體　" Value="2"></asp:ListItem>
-                            </asp:RadioButtonList>
+                    <tr style="height:80px;">
+                        <td>&nbsp;</td>
+                        <td><img src="../Res/images/settingLanguage.png" class="setting_img" /></td>
+                        <td class="whitea setting_link">
+                            <asp:LinkButton ID="lb_english" runat="server" OnClick="lb_english_Click">English</asp:LinkButton>&nbsp;&nbsp;&nbsp;
+                            <asp:LinkButton ID="lb_cn" runat="server" OnClick="lb_english_Click">简体</asp:LinkButton>&nbsp;&nbsp;&nbsp;
+                            <asp:LinkButton ID="lb_trans" runat="server" OnClick="lb_english_Click">繁體</asp:LinkButton>
                         </td>
                     </tr>
-<%--                    <tr>
-                        <td style="width: 130px">
-                            <asp:Literal ID="lt_changeEmploymnet" runat="server">Switch Employment</asp:Literal>
-                        </td>
-                        <td>
-                            <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/Res/images/changeUser.png"  Width="30px" OnClick="changeUser_Click"/>
-                        </td>
-                    </tr>--%>
-<%--                    <tr>
-                        <td style="width: 130px">
-                            <asp:Literal ID="lt_language0" runat="server">切换帐户</asp:Literal>
-                        </td>
-                        <td>
-                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/exit33.png"  Width="30px" OnClick="loginout_Click"/>
-                        </td>
-                    </tr>--%>
+                    <tr style="height:80px;">
+                        <td>&nbsp;</td>
+                        <td><img src="../Res/images/setting_othersetting.png" class="setting_img" /></td>
+                        <td class="whitea setting_link"><asp:LinkButton ID="lb_othersetting" runat="server">Other Settings</asp:LinkButton></td>
+                    </tr>
+                    <tr style="height:80px;">
+                        <td>&nbsp;</td>
+                        <td><img src="../Res/images/setting_loginout.png" class="setting_img" /></td>
+                        <td class="whitea setting_link"><asp:LinkButton ID="lb_out" runat="server" OnClick="lb_out_Click">Login Out</asp:LinkButton></td>
+                    </tr>
                     <asp:Panel ID="panel_changeServer" runat="server" Visible="true">
-                    <tr>
-                        <td style="width: 130px">
-                            <asp:Literal ID="lt_changeServer" runat="server">更换服务地址</asp:Literal>
-                        </td>
-                        <td>
-                            <asp:ImageButton ID="btn_changeserver" runat="server" ImageUrl="~/Res/images/changeserver.png"  Width="30px" OnClick="btn_changeserver_Click"/>
+                    <tr style="height:80px;">
+                        <td>&nbsp;</td>
+                        <td class="whitea setting_link">
+                            <asp:ImageButton ID="btn_changeserver" runat="server" ImageUrl="~/Res/images/changeserver.png" OnClick="btn_changeserver_Click" class="setting_img"/>
                         </td>
                     </tr>
-                        
                     </asp:Panel>
-                    <tr>
-                        <td style="width: 130px"></td>
-                        <td><asp:Button ID="btn_exist" runat="server" Text="exist" OnClick="btn_exist_Click" /></td>
-                    </tr>
-                    <tr>
-                            <td><asp:Label ID="logineruser" runat="server"  style="color:white"></asp:Label></td>
-                        </tr>
                 </table>
+        
+        
             </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">

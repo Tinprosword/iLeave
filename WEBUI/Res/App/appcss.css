@@ -52,7 +52,7 @@
     text-align: center;border-radius: 30px;
 }
 
-.lsu-input_line{border:none;border-bottom:2px solid #c8c8c8; color:#c8c8c8; outline  :none !important; background-color:rgba(0,0,0,0)}
+.lsu-input_line{border:none;border-bottom:2px solid #abc2cb; color:#abc2cb; outline  :none !important; background-color:rgba(0,0,0,0)}
 
 
 /*function 为方便一些常用样式的使用，我们将这些使用率较高的样式剥离出来，按需使用，通常这些选择器具有固定样式表现，比如清除浮动等！不可滥用*/
@@ -433,4 +433,22 @@ input,button,a {outline:0 none;}
 {
     padding-left:10px; padding-right:10px;
 
+}
+
+
+.setting_img
+{
+    width:48px;
+    height:48px;
+}
+
+.whitea a
+{
+    color:white;
+}
+
+.setting_link
+{
+    padding-left:20px; 
+    font-size:20px;
 }

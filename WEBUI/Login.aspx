@@ -34,9 +34,9 @@
                         <td></td>
                         <td colspan="2"><asp:TextBox ID="tb_p1" runat="server" Width="90%" TextMode="Password" placeholder="Password" CssClass="lsu-input_line" AutoCompleteType="Disabled"/></td>
                     </tr>
-                    <tr style="height:10px"><td style="height:18px"></td></tr>
+                    <tr style="height:30px"><td></td></tr>
                     <tr><td colspan="1"></td>
-                        <td colspan="2" style=""><asp:Button ID="Button1" runat="server" Text="Login"  Width="90%" ForeColor="White" BackColor="#0ee180" Height="30px" BorderWidth="0" OnClick="Button1_Click"/></td>
+                        <td colspan="2" style=""><asp:Button ID="Button1" runat="server" Text="Login"  Width="90%" ForeColor="White" BackColor="#0ee180" Height="40px" BorderWidth="0" OnClick="Button1_Click"/></td>
                     </tr>
                     <tr style="height:20px;">
                         <td></td>
@@ -72,7 +72,7 @@
                             </table>
                         </td>
                     </tr>
-                    <tr><td style="height:70px"></td></tr>
+                    <tr><td style="height:50px"></td></tr>
                 </table>
             </div>
         </div>

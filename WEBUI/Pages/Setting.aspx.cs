@@ -30,10 +30,9 @@ namespace WEBUI.Pages
             LoadLableLanguage(BLL.MultiLanguageHelper.GetLanguagePacket(BLL.MultiLanguageHelper.GetChoose()));
             BLL.Page.MyCookie myCookie = BLL.Page.MyCookieManage.GetCookie();
 
-            this.lb_serveraddress.Text = myCookie.serverAddress;
+
             int intLanguagae = (int)myCookie.language;
-            this.cb_languagea.SelectedValue = intLanguagae.ToString();
-            this.logineruser.Text = loginer.loginName;
+
 
             if (myCookie.isAppLogin =="1")
             {
@@ -47,31 +46,23 @@ namespace WEBUI.Pages
 
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
-        {}
+        {
+
+        }
+
+
 
         private void LoadLableLanguage(LSLibrary.WebAPP.BaseLanguage language)
         {
-            this.lt_address.Text = language.setting_service;
-            this.lt_language.Text = language.setting_language;
-            this.lt_changeServer.Text = language.setting_changeLink;
+
+            this.lb_account.Text = language.setting_account;
+            this.lb_othersetting.Text = language.setting_otherSetting;
+            this.lb_out.Text = language.seting_logout2;
+            this.bt_out.Text= language.seting_logout2;
         }
 
-      
-        protected void cb_languagea_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int language = int.Parse(this.cb_languagea.SelectedValue);
 
-            //保存到其他平台
-            ChangeSettingSendNotice(language, this.js_webview);
-
-            //cooike 也需要保存
-            var myc = BLL.Page.MyCookieManage.GetCookie();
-            myc.language = (LSLibrary.WebAPP.LanguageType)language;
-            BLL.Page.MyCookieManage.SetCookie(myc);
-
-            LSLibrary.WebAPP.BaseLanguage NewLanguage= BLL.MultiLanguageHelper.GetLanguagePacket(myc.language);
-            LoadLableLanguage(NewLanguage);
-        }
+       
 
         private static void ChangeSettingSendNotice(int languagetype,Literal literal)
         {
@@ -101,17 +92,42 @@ namespace WEBUI.Pages
             BLL.User_wsref.MPG_GoBackToSign();
         }
 
-        protected void btn_exist_Click(object sender, EventArgs e)
+
+        protected void lb_english_Click(object sender, EventArgs e)
+        {
+            LinkButton lb = (LinkButton)sender;
+            int language = 0;
+            if(lb==this.lb_cn)
+            {
+                language = 1;
+            }
+            else if(lb==this.lb_trans)
+            {
+                language = 2;
+            }
+
+            //保存到其他平台
+            ChangeSettingSendNotice(language, this.js_webview);
+
+            //cooike 也需要保存
+            var myc = BLL.Page.MyCookieManage.GetCookie();
+            myc.language = (LSLibrary.WebAPP.LanguageType)language;
+            BLL.Page.MyCookieManage.SetCookie(myc);
+
+            LSLibrary.WebAPP.BaseLanguage NewLanguage = BLL.MultiLanguageHelper.GetLanguagePacket(myc.language);
+            LoadLableLanguage(NewLanguage);
+        }
+
+        protected void bt_out_Click(object sender, EventArgs e)
         {
             LSLibrary.WebAPP.LoginManager.Logoff();
             BLL.User_wsref.MPG_GoBackToLogin();
         }
 
-
-        //protected void changeUser_Click(object sender, ImageClickEventArgs e)
-        //{
-        //    Response.Redirect("~/Pages/chooseEmployment.aspx?pid=" + loginer.userInfo.personid + "&sourcetype=2");
-        //}
-
+        protected void lb_out_Click(object sender, EventArgs e)
+        {
+            LSLibrary.WebAPP.LoginManager.Logoff();
+            BLL.User_wsref.MPG_GoBackToLogin();
+        }
     }
 }

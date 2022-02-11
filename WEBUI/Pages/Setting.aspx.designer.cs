@@ -13,40 +13,67 @@ namespace WEBUI.Pages {
     public partial class Setting {
         
         /// <summary>
-        /// lt_address 控件。
+        /// bt_out 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_address;
+        protected global::System.Web.UI.WebControls.Button bt_out;
         
         /// <summary>
-        /// lb_serveraddress 控件。
+        /// lb_account 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_serveraddress;
+        protected global::System.Web.UI.WebControls.LinkButton lb_account;
         
         /// <summary>
-        /// lt_language 控件。
+        /// lb_english 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_language;
+        protected global::System.Web.UI.WebControls.LinkButton lb_english;
         
         /// <summary>
-        /// cb_languagea 控件。
+        /// lb_cn 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList cb_languagea;
+        protected global::System.Web.UI.WebControls.LinkButton lb_cn;
+        
+        /// <summary>
+        /// lb_trans 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lb_trans;
+        
+        /// <summary>
+        /// lb_othersetting 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lb_othersetting;
+        
+        /// <summary>
+        /// lb_out 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lb_out;
         
         /// <summary>
         /// panel_changeServer 控件。
@@ -58,15 +85,6 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Panel panel_changeServer;
         
         /// <summary>
-        /// lt_changeServer 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_changeServer;
-        
-        /// <summary>
         /// btn_changeserver 控件。
         /// </summary>
         /// <remarks>
@@ -74,24 +92,6 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton btn_changeserver;
-        
-        /// <summary>
-        /// btn_exist 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_exist;
-        
-        /// <summary>
-        /// logineruser 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label logineruser;
         
         /// <summary>
         /// js_webview 控件。
