@@ -42,7 +42,7 @@ namespace WEBUI
 
             DisplayLanguage(language);
 
-            this.cb_remember.Checked = (isremember == "1" ? true : false);
+            //this.cb_remember.Checked = (isremember == "1" ? true : false);
 
 
             if (!string.IsNullOrEmpty(isremember) && isremember == "1" && queryAction == "")
@@ -107,14 +107,17 @@ namespace WEBUI
                 bool isLogin = loginResult.Result > 0 ? true : false;
                 if (isLogin)
                 {
-                    if (this.cb_remember.Checked)
-                    {
-                        var cookie= BLL.Page.MyCookieManage.GetCookie();
-                        cookie.isRemember = "1";
-                        cookie.loginname = userid;
-                        cookie.loginpsw = password;
-                        BLL.Page.MyCookieManage.SetCookie(cookie);
-                    }
+                    var cookie = BLL.Page.MyCookieManage.GetCookie();
+                    cookie.isRemember = "0";
+                    BLL.Page.MyCookieManage.SetCookie(cookie);
+                    //if (this.cb_remember.Checked)
+                    //{
+                    //    var cookie = BLL.Page.MyCookieManage.GetCookie();
+                    //    cookie.isRemember = "1";
+                    //    cookie.loginname = userid;
+                    //    cookie.loginpsw = password;
+                    //    BLL.Page.MyCookieManage.SetCookie(cookie);
+                    //}
 
                     MODEL.UserInfo userInfo= BLL.User_wsref.GetAndSaveInfoToSession(userid, loginResult);
                     if (userInfo != null)
@@ -138,7 +141,7 @@ namespace WEBUI
             //this.lt_user.Text = baseLanguage.login_user;
             //this.lt_password.Text = baseLanguage.login_password;
             this.Button1.Text= baseLanguage.login_loginbtn;
-            this.lt_remember2.Text = baseLanguage.login_remember;
+            //this.lt_remember2.Text = baseLanguage.login_remember;
         }
 
 
@@ -156,21 +159,21 @@ namespace WEBUI
             this.tb_p1.Text = "";
         }
 
-        protected void cb_remember_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!this.cb_remember.Checked)
-            {
-                var myc= BLL.Page.MyCookieManage.GetCookie();
-                myc.isRemember = "0";
-                BLL.Page.MyCookieManage.SetCookie(myc);
-            }
-            else
-            {
-                var myc = BLL.Page.MyCookieManage.GetCookie();
-                myc.isRemember = "1";
-                BLL.Page.MyCookieManage.SetCookie(myc);
-            }
-        }
+        //protected void cb_remember_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    //if (!this.cb_remember.Checked)
+        //    //{
+        //        var myc= BLL.Page.MyCookieManage.GetCookie();
+        //        myc.isRemember = "0";
+        //        BLL.Page.MyCookieManage.SetCookie(myc);
+        //    //}
+        //    //else
+        //    //{
+        //    //    var myc = BLL.Page.MyCookieManage.GetCookie();
+        //    //    myc.isRemember = "1";
+        //    //    BLL.Page.MyCookieManage.SetCookie(myc);
+        //    //}
+        //}
 
         protected void lb_eng_Click(object sender, EventArgs e)
         {

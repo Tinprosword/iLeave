@@ -33,14 +33,11 @@
                     <asp:Panel ID="panel_changeServer" runat="server" Visible="true">
                     <tr style="height:80px;">
                         <td>&nbsp;</td>
-                        <td class="whitea setting_link">
-                            <asp:ImageButton ID="btn_changeserver" runat="server" ImageUrl="~/Res/images/changeserver.png" OnClick="btn_changeserver_Click" class="setting_img"/>
-                        </td>
+                        <td class="whitea setting_link"><img src="../Res/images/closewhite2.png" class="setting_img" /></td>
+                        <td class="whitea setting_link"><asp:LinkButton ID="lb_changeserver" runat="server" OnClick="btn_changeserver_Click">ChangeServer</asp:LinkButton></td>
                     </tr>
                     </asp:Panel>
                 </table>
-        
-        
             </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">

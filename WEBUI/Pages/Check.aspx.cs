@@ -19,11 +19,12 @@ namespace WEBUI.Pages
 
         protected override void InitPage_OnFirstLoad2()
         {
-            
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
-        {}
+        {
+            lb_msg.Visible = false;
+        }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
@@ -31,8 +32,12 @@ namespace WEBUI.Pages
             OnMobileLoadUrl();
 
             SetupmultipleLanguage();
-            ShowDateOnLable(System.DateTime.Now);
-            ShowInout(loginer.userInfo.eNoRefFirstEid, GetCurrentLableDate());
+
+            this.lb_day.Text = System.DateTime.Today.ToString("yyyy-MM-dd");
+            this.lb_time.Text = BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
+
+            //ShowDateOnLable(System.DateTime.Now);
+            //ShowInout(loginer.userInfo.eNoRefFirstEid, GetCurrentLableDate());
         }
 
         private static string GetLocationUrl(LSLibrary.WebAPP.LanguageType _cul,double lat,double lon)
@@ -98,11 +103,16 @@ namespace WEBUI.Pages
                             var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber, 22, 2, 1, loginer.userInfo.surname, "000", "01", locationname, locationname);
                             BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
 
+                            this.lb_msg.Visible = true;
+                            this.lb_msg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
                         }
                         else
                         {
                             var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "OUT", loginer.userInfo.employNnumber, 22, 2, 1, loginer.userInfo.surname, "000", "01", locationname, locationname);
                             BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
+
+                            this.lb_msg.Visible = true;
+                            this.lb_msg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
                         }
                     }
 
@@ -113,16 +123,14 @@ namespace WEBUI.Pages
 
         private void SetupmultipleLanguage()
         {
-            this.label_checkin.InnerText = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin;
-            this.label_checkout.InnerText = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckout;
-            this.label_title_date.Text = BLL.MultiLanguageHelper.GetLanguagePacket().check_date;
-            this.label_title_inout.Text = BLL.MultiLanguageHelper.GetLanguagePacket().check_inout;
-            this.label_title_location.Text = BLL.MultiLanguageHelper.GetLanguagePacket().check_location;
+            this.bt_checkin.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin;
         }
 
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
-        {}
+        {
+            this.lb_time.Text = BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
+        }
         #endregion
 
         protected void OnClick_In(object sender, EventArgs e)
@@ -146,38 +154,18 @@ namespace WEBUI.Pages
 
                     var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber,centerfaceid,interfaceid, 1, loginer.userInfo.surname,deviceid, "01", "", "");
                     BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
-                }
-                ShowInout(loginer.userInfo.eNoRefFirstEid, GetCurrentLableDate());
-            }
-        }
 
-        protected void OnClick_Out(object sender, EventArgs e)
-        {
-            // insert record. show list
-            string js = GetMPDJS("GPS", "1");
-            if (js != "")//momible 
-            {
-                Response.Clear();
-                Response.Write(js);
-                Response.End();
-            }
-            else
-            {
-                var iguard = BLL.Other.GetIleavIGard();
-                if (iguard != null)
-                {
-                    int interfaceid = iguard.InterfaceID ?? 0;
-                    int centerfaceid = iguard.AttendanceInterfaceCenterID ?? 0;
-                    string deviceid = iguard.DeviceID;
-                    var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "OUT", loginer.userInfo.employNnumber,centerfaceid,interfaceid, 1, loginer.userInfo.surname, deviceid, "01", "", "");
-                    BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
+                    this.lb_msg.Visible = true;
+                    this.lb_msg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
                 }
-                ShowInout(loginer.userInfo.eNoRefFirstEid, GetCurrentLableDate());
-                
             }
+
         }
 
 
+
+
+        //由mobil 返回位置信息,並組成url ，頁面根據url 參數。處理數據。
         private static string GetMPDJS(string msgtype, string msgbody)
         {
             string agent = HttpContext.Current.Request.UserAgent;
@@ -197,48 +185,6 @@ namespace WEBUI.Pages
             }
             return result;
         }
-
-
-        protected void button_left_Click(object sender, EventArgs e)
-        {
-            DateTime lableDate = GetCurrentLableDate();
-            lableDate = lableDate.AddDays(-1);
-            ShowDateOnLable(lableDate);
-            ShowInout(loginer.userInfo.eNoRefFirstEid, GetCurrentLableDate());
-        }
-
-        protected void button_right_Click(object sender, EventArgs e)
-        {
-            DateTime lableDate = GetCurrentLableDate();
-            lableDate = lableDate.AddDays(1);
-            ShowDateOnLable(lableDate);
-            ShowInout(loginer.userInfo.eNoRefFirstEid, GetCurrentLableDate());
-        }
-
-        private void ShowDateOnLable(DateTime day)
-        {
-            this.label_SelectedDate.Text = day.ToString("yyyy-MM-dd");
-        }
-
-        private DateTime GetCurrentLableDate()
-        {
-            DateTime result = System.DateTime.Now;
-            string currentStr = this.label_SelectedDate.Text.Trim();
-            if (!DateTime.TryParse(currentStr, out result))
-            {
-                result = System.DateTime.Now;
-            }
-            return result;
-        }
-
-        private void ShowInout(List<string> enos,DateTime day)
-        {
-            var data= BLL.Other.GetAttendanceList(enos.ToArray());
-            data = data.Where(x => x.LogDateTime.Date == day.Date).ToArray();
-            this.repeater_list.DataSource = data;
-            this.repeater_list.DataBind();
-        }
-
 
 
         public static string SpecialLanguage(string inouttype)

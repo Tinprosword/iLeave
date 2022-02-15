@@ -162,5 +162,15 @@ namespace BLL
 
         }
 
+
+        public static string GetFormatTime(LSLibrary.WebAPP.LanguageType language)
+        {
+            DateTime date = System.DateTime.Now;
+            var ampm = date.Hour >= 12 ? "PM" : "AM";
+            string strTime = date.ToString("hh:mm") + " " + ampm;
+
+            return strTime;
+        }
+
     }
 }

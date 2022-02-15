@@ -54,7 +54,7 @@ namespace WEBUI.Pages
 
         private void LoadLableLanguage(LSLibrary.WebAPP.BaseLanguage language)
         {
-
+            lb_changeserver.Text = language.setting_changeLink;
             this.lb_account.Text = language.setting_account;
             this.lb_othersetting.Text = language.setting_otherSetting;
             this.lb_out.Text = language.seting_logout2;
@@ -87,7 +87,7 @@ namespace WEBUI.Pages
             }
         }
 
-        protected void btn_changeserver_Click(object sender, ImageClickEventArgs e)
+        protected void btn_changeserver_Click(object sender, EventArgs e)
         {
             BLL.User_wsref.MPG_GoBackToSign();
         }

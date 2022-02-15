@@ -52,7 +52,14 @@
     text-align: center;border-radius: 30px;
 }
 
-.lsu-input_line{border:none;border-bottom:2px solid #abc2cb; color:#abc2cb; outline  :none !important; background-color:rgba(0,0,0,0)}
+.lsu-input_line{border:none;border-bottom:2px solid #c8c8c8; color:#c8c8c8; outline  :none ; background-color:rgb(0,0,0) !important ; background-color:rgba(0,0,0,0) !important}
+
+
+.lsu-input_line:-internal-autofill-selected {
+    -webkit-text-fill-color: #c8c8c8 !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+}
+
 
 
 /*function 为方便一些常用样式的使用，我们将这些使用率较高的样式剥离出来，按需使用，通常这些选择器具有固定样式表现，比如清除浮动等！不可滥用*/
@@ -294,9 +301,9 @@ input,button,a {outline:0 none;}
 
 .loginSelect
 {
-    font-size:14px;
+    font-size:15px;
     font-weight:bold;
-    color:white;/*  #588da7    #2c8ea9 70ok  */
+    color:#c8c8c8;/*  #588da7    #2c8ea9 70ok  */
 }
 
 .loginUnSelect
@@ -451,4 +458,31 @@ input,button,a {outline:0 none;}
 {
     padding-left:20px; 
     font-size:20px;
+}
+
+
+/* place holder 的顏色*/
+input:-moz-placeholder,
+textarea:-moz-placeholder { 
+    color: #c4bfbf;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder { 
+    color: #c4bfbf;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder { 
+    color: #c4bfbf ;
+} 
+
+
+
+.MainColor_new
+{
+    color:#06468c
+}
+
+.MaintTextColor_new
+{
+    color:#c8c8c8
 }
