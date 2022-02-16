@@ -26,7 +26,7 @@
 	                <div class="col-xs-9 lsf-center lsf-fontsizem2" style="color:white;font-weight:bold; height:53px;line-height:53px; vertical-align:middle;">
                         <asp:Literal ID="label_title" runat="server" Visible="false"></asp:Literal>
                         <table id="tb_img" runat="server" visible="false">
-                            <tr><td><img src="../Res/images/dataworld-150px.png" style="height:38px; width:80px;" /></td><td style="padding-left:40px;"><img src="../Res/images/DW-iHR-150px.png" style=" height:45px; width:90px;"/> </td></tr>
+                            <tr><td><img src="../Res/images/dataworld-150px.png" style="height:47px; width:80px;" /></td><td style="padding-left:40px;"><img src="../Res/images/DW-iHR-150px.png" style=" height:51px; width:90px;"/> </td></tr>
                         </table>
 	                </div>
 	                <div class="col-xs-1"  style="height:53px; padding-top:10px;"><asp:ImageButton ID="ib_exit" OnClick="ib_setting_Click" runat="server" ImageUrl="~/Res/images/setting2.png" Width="30px" Height="30px" /></div>
