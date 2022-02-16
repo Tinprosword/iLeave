@@ -139,3 +139,17 @@ Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(We
    在 System.Web.UI.Control.LoadRecursive()
    在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
 ********************************************************************************************
+ip:192.168.19.81
+DataTime：2022/2/16 11:17:52
+Url：http://192.168.19.210/WEBUI/pages/Payslip.aspx
+Message：索引和长度必须引用该字符串内的位置。
+参数名: length
+Source：mscorlib
+Type：System.ArgumentOutOfRangeException
+Function：System.String Substring(Int32, Int32)
+Trace：   在 System.String.Substring(Int32 startIndex, Int32 length)
+   在 WEBUI.Pages.Payslip.btn_search_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Payslip.aspx.cs:行号 113
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

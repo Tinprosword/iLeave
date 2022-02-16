@@ -125,6 +125,21 @@ namespace WEBUI.Pages
             }
         }
 
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            byte[] empty = new byte[] { };
+            LSLibrary.HttpHelper.DownloadFile(empty, "testEmpty.pdf", Server, Response);
+        }
 
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            string filePath = Server.MapPath("../res/payslip.pdf");
+            LSLibrary.HttpHelper.DownloadFile(filePath, "payslip.pdf", Server, Response);
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../res/payslip.pdf", false);
+        }
     }
 }

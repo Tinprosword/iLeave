@@ -88,9 +88,12 @@
     <Content Include="Res\images\back_03.jpg" />
     <Content Include="Res\images\banner.jpg" />
     <Content Include="Res\images\bg.jpg" />
+    <Content Include="Res\images\bgo1.png" />
     <Content Include="Res\images\biger.png" />
     <Content Include="Res\images\changeserver.png" />
     <Content Include="Res\images\checkin-icon.png" />
+    <Content Include="Res\images\closewhite.png" />
+    <Content Include="Res\images\closewhite2.png" />
     <Content Include="Res\images\dataworld-150px.png" />
     <Content Include="Res\images\DW-iHR-150px.png" />
     <Content Include="Res\images\DW-iHR-APP-Menu31_02.png" />
@@ -662,6 +665,7 @@
     <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker3.css.map" />
     <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker3.standalone.css.map" />
+    <Content Include="Res\payslip.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -43,6 +43,7 @@ namespace BLL
         //us, cn, hk
 
         public static bool testvalue = true;
+        public static bool testdownload = true;
 
         #endregion
 

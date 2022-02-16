@@ -23,6 +23,9 @@
                 </td>
             </tr>
         </table>
+        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+               <asp:Button ID="Button2" runat="server" Text="Button" OnClick="Button2_Click" />
+               <asp:Button ID="Button3" runat="server" Text="Button" OnClick="Button3_Click" />
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
