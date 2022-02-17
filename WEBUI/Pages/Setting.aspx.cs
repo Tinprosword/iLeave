@@ -67,16 +67,16 @@ namespace WEBUI.Pages
         private static void ChangeSettingSendNotice(int languagetype,Literal literal)
         {
             string agent = HttpContext.Current.Request.UserAgent;
-            LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
+            LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.MobilWebHelper.GetClientType(agent);
 
             var cookies= BLL.Page.MyCookieManage.GetCookie();
 
-            if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android && cookies.isAppLogin=="1")//android
+            if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.android && cookies.isAppLogin=="1")//android
             {
                 string js = LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid("savesetting", languagetype.ToString(), HttpContext.Current.Server);
                 literal.Text = js;
             }
-            else if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone && cookies.isAppLogin == "1")//ios
+            else if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone && cookies.isAppLogin == "1")//ios
             {
                 string js = LSLibrary.WebAPP.MyJSHelper.SendMessageToIphone("savesetting", languagetype.ToString(), HttpContext.Current.Server);
                 literal.Text = js;

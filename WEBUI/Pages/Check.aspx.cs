@@ -169,17 +169,17 @@ namespace WEBUI.Pages
         private static string GetMPDJS(string msgtype, string msgbody)
         {
             string agent = HttpContext.Current.Request.UserAgent;
-            LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
+            LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.MobilWebHelper.GetClientType(agent);
 
             var cookies = BLL.Page.MyCookieManage.GetCookie();
 
             string result = "";
 
-            if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android && cookies.isAppLogin == "1")//android
+            if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.android && cookies.isAppLogin == "1")//android
             {
                 result = LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid(msgtype, msgbody, HttpContext.Current.Server);
             }
-            else if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone && cookies.isAppLogin == "1")//ios
+            else if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone && cookies.isAppLogin == "1")//ios
             {
                 result = LSLibrary.WebAPP.MyJSHelper.SendMessageToIphone(msgtype, msgbody, HttpContext.Current.Server);
             }

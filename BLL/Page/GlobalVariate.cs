@@ -328,8 +328,8 @@ namespace BLL
         {
             int SCNormalHeight = 640;
             string agent = HttpContext.Current.Request.UserAgent;
-            LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType type = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
-            if (type == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android || type == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone)
+            LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType type = LSLibrary.WebAPP.MobilWebHelper.GetClientType(agent);
+            if (type == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.android || type == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone)
             {
                 LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> loginer = LSLibrary.WebAPP.LoginManager.GetLoinger<MODEL.UserInfo>();
                 if (loginer != null && loginer.userInfo != null && loginer.userInfo.ScreenHeight > SCNormalHeight)

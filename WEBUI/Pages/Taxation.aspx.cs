@@ -10,6 +10,7 @@ namespace WEBUI.Pages
     public partial class Taxation : BLL.CustomLoginTemplate
     {
         WebServiceLayer.WebReference_leave.v_System_iLeave_Taxtion[] mMyPayslip;
+        private static string taxpdfname = "taxation";
 
         #region
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
@@ -24,6 +25,7 @@ namespace WEBUI.Pages
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
             this.lb_msg.Text = "";
+            this.LT_JSDOWNLOAD.Text = "";
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
@@ -106,7 +108,43 @@ namespace WEBUI.Pages
 
                     if (data != null && data.reportData != null && data.reportData.Length > 0 && data.msgtype == 1)
                     {
-                        LSLibrary.HttpHelper.DownloadFile(data.reportData, "taxation.pdf", Server, Response);
+                        string agent = HttpContext.Current.Request.UserAgent;
+                        LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.MobilWebHelper.GetClientType(agent);
+
+                        var cookies = BLL.Page.MyCookieManage.GetCookie();
+
+
+                        if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.android && cookies.isAppLogin == "1")//android
+                        {
+                            //0.delete prefile 1.SAVE TO FILE.and.get filename.
+                            BLL.Other.DeleteOlderFiles(Server);
+                            string tempFileName = taxpdfname + ".pdf";
+                            string tempDatetime= System.DateTime.Now.ToString("yyyyMMddHHmmss");
+                            string tempFileFolderPath = Server.MapPath("~/tempdownload") + LSLibrary.FileUtil.filepathflag + tempDatetime;
+                            string tempFilePath = LSLibrary.FileUtil.GenerateFileName(tempFileFolderPath, tempFileName);
+                            string tempFileURL = LSLibrary.WebAPP.httpHelper.GenerateURL("tempdownload/" + tempDatetime + "/" + tempFileName);
+                            LSLibrary.FileUtil.CreateFile(tempFilePath, data.reportData);
+
+                            string js = LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid("DOWNLOAD2", tempFileURL, HttpContext.Current.Server);
+                            LT_JSDOWNLOAD.Text = js;
+                        }
+                        else if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone && cookies.isAppLogin == "1")//ios
+                        {
+                            BLL.Other.DeleteOlderFiles(Server);
+                            string tempFileName = taxpdfname + ".pdf";
+                            string tempDatetime = System.DateTime.Now.ToString("yyyyMMddHHmmss");
+                            string tempFileFolderPath = Server.MapPath("~/tempdownload") + LSLibrary.FileUtil.filepathflag + tempDatetime;
+                            string tempFilePath = LSLibrary.FileUtil.GenerateFileName(tempFileFolderPath, tempFileName);
+                            string tempFileURL = LSLibrary.WebAPP.httpHelper.GenerateURL("tempdownload/" + tempDatetime + "/" + tempFileName);
+                            LSLibrary.FileUtil.CreateFile(tempFilePath, data.reportData);
+
+                            string js = LSLibrary.WebAPP.MyJSHelper.SendMessageToIphone("DOWNLOAD2", tempFileURL, HttpContext.Current.Server);
+                            LT_JSDOWNLOAD.Text = js;
+                        }
+                        else//pc
+                        {
+                            LSLibrary.HttpHelper.DownloadFile(data.reportData, taxpdfname+".pdf", Server, Response);
+                        }
                     }
                     else
                     {
@@ -123,23 +161,6 @@ namespace WEBUI.Pages
                     this.lb_msg.Text = "Error:no possible. year is not match.";
                 }
             }
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            byte[] empty = new byte[] { };
-            LSLibrary.HttpHelper.DownloadFile(empty, "testEmpty.pdf", Server, Response);
-        }
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            string filePath = Server.MapPath("../res/payslip.pdf");
-            LSLibrary.HttpHelper.DownloadFile(filePath, "payslip.pdf", Server, Response);
-        }
-
-        protected void Button3_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("../res/payslip.pdf", false);
         }
     }
 }

@@ -23,6 +23,7 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
+            LT_JSDOWNLOAD.Text = "";
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
@@ -94,30 +95,58 @@ namespace WEBUI.Pages
 
         protected void btn_search_Click(object sender, EventArgs e)
         {
-            bool realDownload = true;
-            if (!realDownload)
-            {
-                string filePath = Server.MapPath("../res/payslip.pdf");
-                LSLibrary.HttpHelper.DownloadFile(filePath, "payslip.pdf", Server, Response);
-            }
-            else
-            {
-                string filename = "Payslip.pdf";
+            string taxpdfname = "Payslip";
 
-                int companyid = 0;
-                var employee= BLL.User_wsref.GetPersonBaseInfoByUid(loginer.userInfo.id).FirstOrDefault();
-                if (employee != null)
-                {
-                    companyid=employee.s_CompanyID??0;
-                }
-                int selectedYear = int.Parse(this.DropDownList1.SelectedValue.Substring(0,4));
-                int selectMonth= int.Parse(this.DropDownList1.SelectedValue.Substring(4, 2));
-                var data= BLL.Other.GetPayslipReportData(loginer.userInfo.staffid??0, selectedYear, selectMonth,loginer.userInfo.id);
-                if (data != null && data.ReportDocumentArray != null && data.ReportDocumentArray.Length > 0)
-                {
-                    LSLibrary.HttpHelper.DownloadFile(data.ReportDocumentArray, filename, Server, Response);
-                }
+            int companyid = 0;
+            var employee= BLL.User_wsref.GetPersonBaseInfoByUid(loginer.userInfo.id).FirstOrDefault();
+            if (employee != null)
+            {
+                companyid=employee.s_CompanyID??0;
             }
+            int selectedYear = int.Parse(this.DropDownList1.SelectedValue.Substring(0,4));
+            int selectMonth= int.Parse(this.DropDownList1.SelectedValue.Substring(4, 2));
+            var data= BLL.Other.GetPayslipReportData(loginer.userInfo.staffid??0, selectedYear, selectMonth,loginer.userInfo.id);
+            if (data != null && data.ReportDocumentArray != null && data.ReportDocumentArray.Length > 0)
+            {
+                string agent = HttpContext.Current.Request.UserAgent;
+                LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.MobilWebHelper.GetClientType(agent);
+
+                var cookies = BLL.Page.MyCookieManage.GetCookie();
+
+
+                if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.android && cookies.isAppLogin == "1")//android
+                {
+                    BLL.Other.DeleteOlderFiles(Server);
+                    string tempFileName = taxpdfname + ".pdf";
+                    string tempDatetime = System.DateTime.Now.ToString("yyyyMMddHHmmss");
+                    string tempFileFolderPath = Server.MapPath("~/tempdownload") + LSLibrary.FileUtil.filepathflag + tempDatetime;
+                    string tempFilePath = LSLibrary.FileUtil.GenerateFileName(tempFileFolderPath, tempFileName);
+                    string tempFileURL = LSLibrary.WebAPP.httpHelper.GenerateURL("tempdownload/" + tempDatetime + "/" + tempFileName);
+                    LSLibrary.FileUtil.CreateFile(tempFilePath, data.ReportDocumentArray);
+
+                    string js = LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid("DOWNLOAD2", tempFileURL, HttpContext.Current.Server);
+                    LT_JSDOWNLOAD.Text = js;
+                }
+                else if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone && cookies.isAppLogin == "1")//ios
+                {
+                    BLL.Other.DeleteOlderFiles(Server);
+                    string tempFileName = taxpdfname + ".pdf";
+                    string tempDatetime = System.DateTime.Now.ToString("yyyyMMddHHmmss");
+                    string tempFileFolderPath = Server.MapPath("~/tempdownload") + LSLibrary.FileUtil.filepathflag + tempDatetime;
+                    string tempFilePath = LSLibrary.FileUtil.GenerateFileName(tempFileFolderPath, tempFileName);
+                    string tempFileURL = LSLibrary.WebAPP.httpHelper.GenerateURL("tempdownload/" + tempDatetime + "/" + tempFileName);
+                    LSLibrary.FileUtil.CreateFile(tempFilePath, data.ReportDocumentArray);
+
+                    string js = LSLibrary.WebAPP.MyJSHelper.SendMessageToIphone("DOWNLOAD2", tempFileURL, HttpContext.Current.Server);
+                    LT_JSDOWNLOAD.Text = js;
+                }
+                else//pc
+                {
+                   LSLibrary.HttpHelper.DownloadFile(data.ReportDocumentArray, taxpdfname + ".pdf", Server, Response);
+                }
+                
+            }
+            
         }
     }
 }

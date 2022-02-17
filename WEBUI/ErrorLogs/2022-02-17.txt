@@ -1,0 +1,17 @@
+ip:::1
+DataTime：2/17/2022 2:27:58 PM
+Url：http://localhost:49991/pages/taxation.aspx
+Message：无法找到指定文件。
+Source：LSLibrary
+Type：System.IO.FileNotFoundException
+Function：System.String[] GetFileNames(System.String)
+Trace：   在 LSLibrary.DirectoryUtil.GetFileNames(String directoryPath) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\FileUtil\DirectoryUtil.cs:行号 116
+   在 LSLibrary.FileUtil.DeleteFilesWhenCreateTimeBefore(String floderPath, Int32 hours) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\FileUtil\FileUtil.cs:行号 537
+   在 WEBUI.Pages.Taxation.Button3_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Taxation.aspx.cs:行号 167
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.WebControls.Button.System.Web.UI.IPostBackEventHandler.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(IPostBackEventHandler sourceControl, String eventArgument)
+   在 System.Web.UI.Page.RaisePostBackEvent(NameValueCollection postData)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

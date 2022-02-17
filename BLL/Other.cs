@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace BLL
 {
@@ -196,11 +197,21 @@ namespace BLL
         }
 
 
-        public static string ExeStropFun(int functionid, bool isbefore,string[] para)
+        public static string ExeStropFun(int functionid, bool isbefore, string[] para)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ExecuteFunctionStoreProc(functionid, isbefore, para);
         }
 
+        //删除临时文件夹中。创建8小时后的文件.
+        public static void DeleteOlderFiles(System.Web.HttpServerUtility server)
+        {
+            try
+            {
+                string floderPath = server.MapPath("../tempdownload");
+                LSLibrary.FileUtil.DeleteFilesWhenCreateTimeBefore(floderPath, 8);
+            }
+            catch { }
+        }
 
     }
 

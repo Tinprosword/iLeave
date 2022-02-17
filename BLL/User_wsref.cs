@@ -58,14 +58,14 @@ namespace BLL
         {
             string agent = HttpContext.Current.Request.UserAgent;
 
-            LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
-            if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.android && isapp)//android
+            LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.MobilWebHelper.GetClientType(agent);
+            if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.android && isapp)//android
             {
                 HttpContext.Current.Response.Clear();
                 HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid(AndroidMsgtype, androidMsgValue, HttpContext.Current.Server));
                 HttpContext.Current.Response.End();
             }
-            else if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.iphone && isapp)//ios
+            else if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone && isapp)//ios
             {
                 HttpContext.Current.Response.Clear();
                 HttpContext.Current.Response.Write(LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid(appleMsgtype, appleMsgValue, HttpContext.Current.Server));

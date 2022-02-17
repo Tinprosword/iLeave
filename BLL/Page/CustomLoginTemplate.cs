@@ -51,9 +51,9 @@ namespace BLL
         public static void ResetFormWhenPC(System.Web.UI.Page page)
         {
             string agent = HttpContext.Current.Request.UserAgent;
-            LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.HttpContractHelper.GetClientType(agent);
+            LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.MobilWebHelper.GetClientType(agent);
 
-            if (ClientType == LSLibrary.WebAPP.HttpContractHelper.Enum_ClientType.pc)
+            if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.pc)
             {
                 page.Form.Style.Add("width", "364px");
                 page.Form.Style.Add("margin-left", "40%");
