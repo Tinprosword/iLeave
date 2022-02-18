@@ -34,12 +34,12 @@
                         <td class="whitea setting_link"><asp:LinkButton ID="lb_changeserver" runat="server" OnClick="btn_changeserver_Click">ChangeServer</asp:LinkButton></td>
                     </tr>
                     </asp:Panel>
-                    <tr style="height:60px;"><td></td><td></td><td></td></tr>
+                    <tr style="height:10px;"><td></td><td></td><td></td></tr>
                     <tr style="height:30px;"><td></td><td colspan="2" class="whitea setting_link" style="font-size:15px; "><asp:LinkButton ID="lb_info" runat="server" Text="Terms" OnClick="lb_info_Click"></asp:LinkButton></td></tr>
                     <tr style="height:30px;"><td></td><td colspan="2" class="whitea setting_link" style="font-size:15px; "><asp:LinkButton ID="lb_privary" runat="server" Text="Private" OnClick="lb_privary_Click"></asp:LinkButton></td></tr>
                     <tr style="height:10px;"><td></td><td></td><td></td></tr>
 
-                    <tr style="height:60px;"><td colspan="3" style="text-align:center"><asp:Button ID="bt_out" runat="server" Text="Button" BackColor="#e10e51" style="vertical-align:bottom; color:white; text-align:center; border:0px solid red; font-size:20px" Width="280px" Height="40px" OnClick="bt_out_Click" /></td></tr>
+                    <tr><td colspan="3" style="text-align:center"><asp:Button ID="bt_out" runat="server" Text="Button" BackColor="#e10e51" style="vertical-align:bottom; color:white; text-align:center; border:0px solid red; font-size:20px" Width="280px" Height="40px" OnClick="bt_out_Click" /></td></tr>
                     
                 </table>
             </div>

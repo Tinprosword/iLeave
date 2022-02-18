@@ -16,7 +16,8 @@
             <div class="col-lg-12;">&nbsp;&nbsp;&nbsp;&nbsp;(1)Loading and installing the software on your computer, OR</div>
             <div class="col-lg-12;">&nbsp;&nbsp;&nbsp;&nbsp;(2)Clicking "I AGREE" or a similar affirmation, as applicable, that appears during installation of the Software, OR</div>
             <div class="col-lg-12;">&nbsp;&nbsp;&nbsp;&nbsp;(3)Using the Software</div>
-            <div class="col-lg-12;">&nbsp;&nbsp;&nbsp;&nbsp;IF YOU DO NOT AGREE TO BE LEGALLY BOUND BY THIS AGREEMENT (IN ITS ENTIRETY AND WITHOUT CHANGE TO OR ADDITION TO ITS 
+            <br />
+            <div class="col-lg-12;  lsf-fontbold">&nbsp;&nbsp;&nbsp;&nbsp;IF YOU DO NOT AGREE TO BE LEGALLY BOUND BY THIS AGREEMENT (IN ITS ENTIRETY AND WITHOUT CHANGE TO OR ADDITION TO ITS 
                 TERMS AND CONDITIONS), THEN YOU DO NOT HAVE A LICENSE TO USE THE SOFTWARE
             SCROLL THROUGH AND READ ALL OF THE FOLLOWING TERMS AND CONDITIONS
              </div>
