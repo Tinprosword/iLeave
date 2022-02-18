@@ -125,7 +125,7 @@ namespace WEBUI.Pages
                             string tempFileURL = LSLibrary.WebAPP.httpHelper.GenerateURL("tempdownload/" + tempDatetime + "/" + tempFileName);
                             LSLibrary.FileUtil.CreateFile(tempFilePath, data.reportData);
 
-                            string js = LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid("DOWNLOAD2", tempFileURL, HttpContext.Current.Server);
+                            string js = LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid("DOWNLOAD3", tempFileURL, HttpContext.Current.Server);
                             LT_JSDOWNLOAD.Text = js;
                         }
                         else if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone && cookies.isAppLogin == "1")//ios
@@ -138,7 +138,7 @@ namespace WEBUI.Pages
                             string tempFileURL = LSLibrary.WebAPP.httpHelper.GenerateURL("tempdownload/" + tempDatetime + "/" + tempFileName);
                             LSLibrary.FileUtil.CreateFile(tempFilePath, data.reportData);
 
-                            string js = LSLibrary.WebAPP.MyJSHelper.SendMessageToIphone("DOWNLOAD2", tempFileURL, HttpContext.Current.Server);
+                            string js = LSLibrary.WebAPP.MyJSHelper.SendMessageToIphone("DOWNLOAD3", tempFileURL, HttpContext.Current.Server);
                             LT_JSDOWNLOAD.Text = js;
                         }
                         else//pc

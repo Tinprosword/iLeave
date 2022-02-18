@@ -681,7 +681,6 @@
     <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker3.css.map" />
     <Content Include="Res\datepicker\bootstrap-datepicker-1.9.0\css\bootstrap-datepicker3.standalone.css.map" />
-    <Content Include="tempDownload\test.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -712,6 +711,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\locales\" />
+    <Folder Include="tempDownload\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
