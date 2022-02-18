@@ -27,7 +27,7 @@ namespace WEBUI.Pages
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().setting_current, "~/pages/main.aspx", true);
 
-            LoadLableLanguage(BLL.MultiLanguageHelper.GetLanguagePacket(BLL.MultiLanguageHelper.GetChoose()));
+            MultipleLanguage(BLL.MultiLanguageHelper.GetLanguagePacket(BLL.MultiLanguageHelper.GetChoose()));
             BLL.Page.MyCookie myCookie = BLL.Page.MyCookieManage.GetCookie();
 
 
@@ -52,13 +52,16 @@ namespace WEBUI.Pages
 
 
 
-        private void LoadLableLanguage(LSLibrary.WebAPP.BaseLanguage language)
+        private void MultipleLanguage(LSLibrary.WebAPP.BaseLanguage language)
         {
             lb_changeserver.Text = language.setting_changeLink;
             this.lb_account.Text = language.setting_account;
             this.lb_othersetting.Text = language.setting_otherSetting;
             this.lb_out.Text = language.seting_logout2;
             this.bt_out.Text= language.seting_logout2;
+            this.lb_versionname.Text = language.setting_ver;
+            this.lb_info.Text = language.setting_appinfo;
+            this.lb_privary.Text = language.setting_appprivary;
         }
 
 
@@ -115,7 +118,7 @@ namespace WEBUI.Pages
             BLL.Page.MyCookieManage.SetCookie(myc);
 
             LSLibrary.WebAPP.BaseLanguage NewLanguage = BLL.MultiLanguageHelper.GetLanguagePacket(myc.language);
-            LoadLableLanguage(NewLanguage);
+            MultipleLanguage(NewLanguage);
         }
 
         protected void bt_out_Click(object sender, EventArgs e)
@@ -128,6 +131,18 @@ namespace WEBUI.Pages
         {
             LSLibrary.WebAPP.LoginManager.Logoff();
             BLL.User_wsref.MPG_GoBackToLogin();
+        }
+
+        protected void lb_info_Click(object sender, EventArgs e)
+        {
+            string url = string.Format("article.aspx");
+            Response.Redirect(url);
+        }
+
+        protected void lb_privary_Click(object sender, EventArgs e)
+        {
+            string url = string.Format("article_pripary.aspx");
+            Response.Redirect(url);
         }
     }
 }

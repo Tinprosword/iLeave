@@ -65,8 +65,10 @@
 /*function 为方便一些常用样式的使用，我们将这些使用率较高的样式剥离出来，按需使用，通常这些选择器具有固定样式表现，比如清除浮动等！不可滥用*/
 .lsf-redborder{border: 1px solid red}
 .lsf-blueborder{border: 1px solid blue}
+.lsf-fontbold{ font-weight:bold}
 
 .lsf-center {text-align:center;vertical-align:middle;}
+.lsf-Textcenter {text-align:center;}
 .lsf-maringTop3px {margin-top: 3px}
 
 .lsf-fontsizem2 {font-size: 20px}

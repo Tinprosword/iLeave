@@ -73,6 +73,8 @@
     <Content Include="Pages\ajax_historydetail2.aspx" />
     <Content Include="Pages\ApplyCLOT.aspx" />
     <Content Include="Pages\approval_wait.aspx" />
+    <Content Include="Pages\Article.aspx" />
+    <Content Include="Pages\Article_pripary.aspx" />
     <Content Include="Pages\Check.aspx" />
     <Content Include="Pages\CLOTHistory.aspx" />
     <Content Include="Pages\ErrorPage.aspx" />
@@ -204,6 +206,20 @@
     </Compile>
     <Compile Include="Pages\approval_wait.aspx.designer.cs">
       <DependentUpon>approval_wait.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Article.aspx.cs">
+      <DependentUpon>Article.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Article.aspx.designer.cs">
+      <DependentUpon>Article.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Article_pripary.aspx.cs">
+      <DependentUpon>Article_pripary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Article_pripary.aspx.designer.cs">
+      <DependentUpon>Article_pripary.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Check.aspx.cs">
       <DependentUpon>Check.aspx</DependentUpon>
