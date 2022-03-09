@@ -711,7 +711,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Res\Bootstrap\bootstrap-3.3.7-dist\js\locales\" />
-    <Folder Include="tempDownload\" />
+    <Folder Include="tempDownload\holder\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -610,7 +610,7 @@ namespace ut
         {
             List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
             applyer.AttachLeaves(new DateTime(2022, 1, 1), 0, leaveinfos);
-            applyer.AttachLeaves(new DateTime(2023, 1, 1), 0, leaveinfos);
+            applyer.AttachLeaves(new DateTime(2022, 10, 1), 0, leaveinfos);
             int Requestid = applyer.AddLeave(leaveinfos);
             applyer.mywaitLeave.Add(Requestid);
             user_102.myManagewaitLeave.Add(Requestid);
