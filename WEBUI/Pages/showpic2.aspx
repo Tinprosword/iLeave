@@ -5,7 +5,7 @@
             <asp:Image ID="Image1" fixname="image1" isbig="0"  runat="server" style="width:99%" />
         </div>
         <div style="float:left;position:relative;top:10px;left:-15px; z-index:99;">
-            <img ID="img_big"  src="/Res/images/biger.png" Width="20" Height="20" onclick="ChangeImageSize('image1','isbig')"/>
+            <img ID="img_big"  src="../Res/images/biger.png" Width="20" Height="20" onclick="ChangeImageSize('image1','isbig')"/>
         </div>
     </div>
 </asp:Content>
