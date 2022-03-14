@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="row" style="padding-bottom:0px;margin-top:1px; height:500px;overflow-y:scroll" id="maindata" onscroll="setScrollTop()">
-        <asp:Repeater ID="rp_list" runat="server">
+        <asp:Repeater ID="rp_list" runat="server" OnItemDataBound="rp_list_ItemDataBound">
             <ItemTemplate>
                 <div class="col-xs-12" style=" line-height:8px;text-align:center;padding:0px;  margin:0px; padding-top:1px; padding-bottom:4px" onclick="MyPostBack('detail',<%#((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID %>)">
                     <label class="lsf-clearPadding" style="padding:0px;  margin:0px;height:1px;background-color:dimgray; width:90%; padding-left:3px; padding-right:3px;"></label>
@@ -50,7 +50,27 @@
                 <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applydate %>:<%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetApplydate()%></div>
                 <div class="col-xs-12 " style="margin-bottom:4px;">
                     <%--<div class="col-xs-4 lsf-clearPadding" style="width:40px;">--%><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applyRemark %>:<%--</div>--%><%--<div class="col-xs-8 lsf-clearPadding">--%><%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetApprovalRemark()%><%--</div>--%></div>
-                <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_attachment %>:<%# BLL.common.GetAttachmentHtml(   ((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID,Server,loginer.userInfo.loginName,BLL.GlobalVariate.AttachType.leave  )%></div>
+                <div class="col-xs-12 divheighter" style="margin-bottom:2px; height:30px;">
+                    <table style="width:90%;">
+                         <tr>
+                             <td style="white-space: nowrap"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_attachment %>:</td>
+                             <td style="width:20px;min-width:20px;" id="tr_left" runat="server" visible="false">
+                                 <img id="btnleft" src="../Res/images/add.png" style="width:100%; height:100%"  runat="server"/>
+                             </td>
+                             <td style="width:240px;padding-left:1px;padding-right:1px;">
+                                 <div id="fullf" class="hiddenScrollbar_NoWrap" style="width:238px;" runat="server">
+                                     <asp:Literal ID="lt_attachlist" runat="server"></asp:Literal>
+                                </div>
+                             </td>
+                             <td style="width:20px; min-width:20px;" id="tr_right" runat="server" visible="false">
+                                 <img id="btnright" src="../Res/images/add.png" style="width:100%; height:100%"  runat="server"/>
+                             </td>
+                             <td style="width:100px;">&nbsp;</td>
+                         </tr>
+ </table>
+
+
+                </div>
                 <asp:Panel ID="panel_admin_waitingApprove" runat="server" Visible="<%#BShow_WaitApplyPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,dataType_myselfOrMyManage) %>">
                     <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_approverRemark %>:</div>
                     <div class="col-xs-12">
@@ -108,7 +128,7 @@
                 <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().clot_Type%>:<%#ShowClotName(((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Type) %></div>
                 <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applydate %>:<%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).CreateDate.ToString("yyyy-MM-dd") %></div>
                 <div class="col-xs-12 " style="margin-bottom:4px;"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applyRemark %>:<%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Remarks %></div>
-                <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_attachment %>:<%# BLL.common.GetAttachmentHtml(   ((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).ID,Server,loginer.userInfo.loginName,BLL.GlobalVariate.AttachType.clot  )%></div>
+                <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_attachment %>:</div>
                 <asp:Panel ID="panel_admin_waitingApprove" runat="server" Visible="<%#BShow_WaitApplyPanel_clot(GetBigRange(),((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Status,dataType_myselfOrMyManage) %>">
                     <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_approverRemark %>:</div>
                     <div class="col-xs-12">
@@ -157,12 +177,12 @@
     <asp:Literal ID="js_waitdiv" runat="server"></asp:Literal>
     <script src="../Res/App/applywait.js"></script>
     <asp:Literal ID="lt_jsscrolltop" runat="server"></asp:Literal>
-
+     <script><asp:Literal ID="lt_jsScroll" runat="server"></asp:Literal></script>
     <script>
-    function setScrollTop()
-    {
-        var topvalue = $('#maindata').scrollTop();
-        setCookie("st", topvalue);
-    }
+        function setScrollTop()
+        {
+            var topvalue = $('#maindata').scrollTop();
+            setCookie("st", topvalue);
+        }
     </script>
 </asp:Content>
