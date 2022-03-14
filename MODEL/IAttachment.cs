@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace MODEL
 {
@@ -22,9 +23,14 @@ namespace MODEL
             this.originAttendance_HRDBPath = _bigImageAbsolutePath;
         }
 
-        public string GetFileName(int maxLength = 0)
+        public string GetOriginFileName(int maxLength = 0)
         {
             return LSLibrary.FileUtil.SubFileName(originAttendance_RelatePath, maxLength, "");
+        }
+
+        public string GetReduceFileName()
+        {
+            return LSLibrary.FileUtil.SubFileName(reduceAttendance_Image_RelatePath, 0, "");
         }
 
         public string Get_originAttendance_RealRelatePath()
@@ -33,7 +39,6 @@ namespace MODEL
             result = ".." + result;
             return result;
         }
-
 
 
     }

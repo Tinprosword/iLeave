@@ -45,6 +45,7 @@ namespace BLL
                 {
                     result = -1;
                     message = MultiLanguageHelper.GetLanguagePacket().apply_msg_emptydate;
+                    return result;
                 }
             }
 

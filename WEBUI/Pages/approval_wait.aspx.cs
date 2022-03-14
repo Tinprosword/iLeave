@@ -66,7 +66,6 @@ namespace WEBUI.Pages
 
         protected override void InitPage_OnFirstLoad2()
         {
-
         }
 
         
@@ -624,6 +623,70 @@ namespace WEBUI.Pages
             SetupRepeater();
         }
 
+        protected void rp_list_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            //1get item index. 2 get ref data. 3.get attach data. 4.do something.
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                //set tr_left tr_right\
+                var trleft = e.Item.FindControl("tr_left");
+                var trright = e.Item.FindControl("tr_right");
+                if (trleft == null || trright == null)
+                {
+                    return;
+                }
 
+                if (e.Item.DataItem is WebServiceLayer.WebReference_leave.LeaveRequestMaster == false)
+                {
+                    return;
+                }
+
+                WebServiceLayer.WebReference_leave.LeaveRequestMaster thedata = (WebServiceLayer.WebReference_leave.LeaveRequestMaster)e.Item.DataItem;
+
+                List<MODEL.App_AttachmentInfo> attachments = BLL.Leave.getAttendanceModel(loginer.loginName, thedata.RequestID, Server, GlobalVariate.AttachType.leave);
+                if (attachments == null)
+                {
+                    return;
+                }
+
+                if (attachments.Count >= 8)
+                {
+                    trleft.Visible = true;
+                    trright.Visible = true;
+                }
+                else
+                {
+                    trleft.Visible = false;
+                    trright.Visible = false;
+                }
+
+
+                //set attach list
+                var ltattachment = e.Item.FindControl("lt_attachlist");
+                if (ltattachment == null || ltattachment is Literal == false)
+                {
+                    return;
+                }
+
+
+                var ltattachment_lt = (Literal)ltattachment;
+                ltattachment_lt.Text = BLL.common.GetAttachmentHtml(attachments);
+
+                //set scroll function for each item.
+                var btnleft = e.Item.FindControl("btnleft");
+                var btnright = e.Item.FindControl("tr_right");
+                var divcontent = e.Item.FindControl("fullf");
+
+                if (btnleft == null || btnright == null || divcontent == null || trleft.Visible == false || trright.Visible==false)
+                {}
+                else
+                {
+                    string scrollJs = "SetSroll(\"#{0}\", \"#{1}\", \"#{2}\", {3});";
+                    scrollJs = string.Format(scrollJs, btnleft.ClientID, btnright.ClientID, divcontent.ClientID, 40);
+                    lt_jsScroll.Text += scrollJs;
+                }
+            }
+
+        }
     }
 }

@@ -22,7 +22,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:LinkButton ID="linkbtn_file" runat="server" OnClick="linkbtn_file_Click" CommandArgument="<%#((MODEL.App_AttachmentInfo)Container.DataItem).originAttendance_RelatePath %>"><%# ((MODEL.App_AttachmentInfo)Container.DataItem).GetFileName(15) %></asp:LinkButton>
+                                    <asp:LinkButton ID="linkbtn_file" runat="server" OnClick="linkbtn_file_Click" CommandArgument="<%#((MODEL.App_AttachmentInfo)Container.DataItem).originAttendance_RelatePath %>"><%# ((MODEL.App_AttachmentInfo)Container.DataItem).GetOriginFileName(15) %></asp:LinkButton>
                                 </td>
                             </tr>
                         </table>

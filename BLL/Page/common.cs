@@ -15,21 +15,34 @@ namespace BLL
 
         private static LSLibrary.LogUtil logUtil = new LSLibrary.LogUtil( GlobalVariate.pageServer.MapPath("mylog.txt"));
 
+
         //loginer.userInfo.loginName
-        public static string GetAttachmentHtml(int requestid,HttpServerUtility server,string loginname, GlobalVariate.AttachType attachtype)
+        //<div style="display:inline-block;"><a href="../Res/images/adddate2.png"><img style="width:20px; height:20px;" src="../Res/images/back4.png" /></a></div>
+        public static string GetAttachmentHtml(List<MODEL.App_AttachmentInfo> result)
         {
-            List<MODEL.App_AttachmentInfo> result = BLL.Leave.getAttendanceModel(loginname, requestid, server,  attachtype);
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < result.Count; i++)
             {
                 string filename = LSLibrary.FileUtil.GetFileName(result[i].originAttendance_RelatePath);
                 if (LSLibrary.FileUtil.IsImagge(filename))
                 {
-                    sb.Append("<a href='showpic2.aspx?path=" + result[i].originAttendance_RelatePath + "'>" + result[i].GetFileName(10) + "</a>&nbsp;");
+                    string tempItem= "<div style=\"display:inline-block;margin-right:5px; \"><a href=\"showpic2.aspx?path={0}\"><img style=\"width: 30px; height: 30px; \" src=\"{1}\" /></a></div>";
+                    string originPicPath = result[i].GetOriginFileName(0);
+                    string smallPicPath= result[i].GetReduceFileName();
+                    originPicPath = LSLibrary.WebAPP.httpHelper.GenerateURL("uploadpic\\" + originPicPath);
+                    smallPicPath = LSLibrary.WebAPP.httpHelper.GenerateURL("uploadpic\\reduce\\" + smallPicPath);
+                    tempItem = string.Format(tempItem, originPicPath, smallPicPath);
+                    sb.Append(tempItem);
                 }
                 else
                 {
-                    sb.Append("<a href=" + result[i].Get_originAttendance_RealRelatePath() + ">" + result[i].GetFileName(10) + "</a>&nbsp;");
+                    string tempItem = "<div style=\"display:inline-block; \"><a href=\"{0}\"><img style=\"width: 20px; height: 20px; \" src=\"{1}\" /></a></div>";
+                    string originPicPath = result[i].GetOriginFileName(0);
+                    string smallPicPath = result[i].GetReduceFileName();
+                    originPicPath = LSLibrary.WebAPP.httpHelper.GenerateURL("uploadpic\\" + originPicPath);
+                    smallPicPath = LSLibrary.WebAPP.httpHelper.GenerateURL("res\\images\\" + smallPicPath);
+                    tempItem = string.Format(tempItem, originPicPath, smallPicPath);
+                    sb.Append(tempItem);
                 }
             }
             return sb.ToString();

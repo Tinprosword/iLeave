@@ -202,3 +202,27 @@ function showCalendar(inputCssName) {
         format: "yyyy-mm-dd"//日期格式
     });
 }
+
+//隐藏scroll(需要配合css.),并可以设置个按钮来左右移动。leftbtn:#controlid.
+function SetSroll(leftbtn, rightbtn, content, offsetleft) {
+    var leftbtn = $(leftbtn);
+    var rightbtn = $(rightbtn);
+
+    leftbtn.click(
+        function () {
+            var divContent = $(content);
+            var sl = divContent.scrollLeft();
+            sl -= offsetleft;
+            divContent.scrollLeft(sl);
+        }
+    );
+
+    rightbtn.click(
+        function () {
+            var divContent = $(content);
+            var sl = divContent.scrollLeft();
+            sl += offsetleft;
+            divContent.scrollLeft(sl);
+        }
+    );
+}

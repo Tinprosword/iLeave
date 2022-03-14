@@ -1,0 +1,114 @@
+ip:::1
+DataTime：2022/3/11 8:47:58
+Url：http://localhost/WEBUI/pages/apply.aspx
+Message：索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+Source：mscorlib
+Type：System.ArgumentOutOfRangeException
+Function：Void ThrowArgumentOutOfRangeException(System.ExceptionArgument, System.ExceptionResource)
+Trace：   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.get_Item(Int32 index)
+   在 BLL.Leave.CheckBeforeApply(List`1 originDetail, String& message, Int32 eid, Nullable`1 staffid, List`1 allLeaveInfo, Boolean hasAttachment) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Leave.cs:行号 53
+   在 BLL.Leave.InsertLeave(List`1 originDetail, Int32 userid, Int32 employmentid, Nullable`1 staffid, String remarks, String& errorMsg, Int32 fid, Boolean hasAttachment) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Leave.cs:行号 151
+   在 WEBUI.Pages.Apply.button_apply_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 441
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/3/11 8:50:12
+Url：http://localhost/WEBUI/pages/apply.aspx
+Message：索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+Source：mscorlib
+Type：System.ArgumentOutOfRangeException
+Function：Void ThrowArgumentOutOfRangeException(System.ExceptionArgument, System.ExceptionResource)
+Trace：   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.get_Item(Int32 index)
+   在 BLL.Leave.CheckBeforeApply(List`1 originDetail, String& message, Int32 eid, Nullable`1 staffid, List`1 allLeaveInfo, Boolean hasAttachment) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Leave.cs:行号 53
+   在 BLL.Leave.InsertLeave(List`1 originDetail, Int32 userid, Int32 employmentid, Nullable`1 staffid, String remarks, String& errorMsg, Int32 fid, Boolean hasAttachment) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Leave.cs:行号 151
+   在 WEBUI.Pages.Apply.button_apply_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 441
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/3/11 10:15:42
+Url：http://localhost/WEBUI/pages/approval_wait.aspx?action=1&applicationtype=0&from=0
+Message：C:\Users\Administrator\source\repos\WebIleave\WEBUI\pages\approval_wait.aspx(62): error CS1061: 'pages_approval_wait_aspx' does not contain a definition for 'tr_left' and no extension method 'tr_left' accepting a first argument of type 'pages_approval_wait_aspx' could be found (are you missing a using directive or an assembly reference?)
+Source：System.Web
+Type：System.Web.HttpCompileException
+Function：System.Web.Compilation.BuildResult CompileWebFile(System.Web.VirtualPath)
+Trace：   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************
+ip:::1
+DataTime：2022/3/11 10:43:31
+Url：http://localhost/WEBUI/pages/approval_wait.aspx?action=1&applicationtype=0&from=0
+Message：索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+Source：mscorlib
+Type：System.ArgumentOutOfRangeException
+Function：System.Object get_Item(Int32)
+Trace：   在 System.Collections.ArrayList.get_Item(Int32 index)
+   在 System.Web.UI.WebControls.RepeaterItemCollection.get_Item(Int32 index)
+   在 WEBUI.Pages.approval_wait.rp_list_ItemDataBound(Object sender, RepeaterItemEventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 640
+   在 System.Web.UI.WebControls.Repeater.OnItemDataBound(RepeaterItemEventArgs e)
+   在 System.Web.UI.WebControls.Repeater.CreateItem(Int32 itemIndex, ListItemType itemType, Boolean dataBind, Object dataItem)
+   在 System.Web.UI.WebControls.Repeater.AddDataItemsIntoItemsArray(IEnumerable dataSource, Boolean useDataSource)
+   在 System.Web.UI.WebControls.Repeater.PostGetDataAction(IEnumerable dataSource)
+   在 System.Web.UI.WebControls.Repeater.OnDataBinding(EventArgs e)
+   在 WEBUI.Pages.approval_wait.SetupRepeater() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 168
+   在 WEBUI.Pages.approval_wait.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 83
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/3/11 10:47:15
+Url：http://localhost/WEBUI/pages/approval_wait.aspx?action=1&applicationtype=0&from=0
+Message：索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+Source：mscorlib
+Type：System.ArgumentOutOfRangeException
+Function：System.Object get_Item(Int32)
+Trace：   在 System.Collections.ArrayList.get_Item(Int32 index)
+   在 System.Web.UI.WebControls.RepeaterItemCollection.get_Item(Int32 index)
+   在 WEBUI.Pages.approval_wait.rp_list_ItemDataBound(Object sender, RepeaterItemEventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 640
+   在 System.Web.UI.WebControls.Repeater.OnItemDataBound(RepeaterItemEventArgs e)
+   在 System.Web.UI.WebControls.Repeater.CreateItem(Int32 itemIndex, ListItemType itemType, Boolean dataBind, Object dataItem)
+   在 System.Web.UI.WebControls.Repeater.AddDataItemsIntoItemsArray(IEnumerable dataSource, Boolean useDataSource)
+   在 System.Web.UI.WebControls.Repeater.PostGetDataAction(IEnumerable dataSource)
+   在 System.Web.UI.WebControls.Repeater.OnDataBinding(EventArgs e)
+   在 WEBUI.Pages.approval_wait.SetupRepeater() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 168
+   在 WEBUI.Pages.approval_wait.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 83
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.210
+DataTime：2022/3/11 11:06:35
+Url：http://192.168.19.210/WEBUI/pages/approval_wait.aspx?action=1&applicationtype=0&from=0
+Message：类型“System.Web.UI.WebControls.Repeater”不具有名为“on”的公共属性。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void AddProperty(System.String, System.String, System.String, Boolean)
+Trace：   在 System.Web.UI.ControlBuilder.AddProperty(String filter, String name, String value, Boolean mainDirectiveMode)
+   在 System.Web.UI.ControlBuilder.PreprocessAttributes(ParsedAttributeCollection attribs)
+   在 System.Web.UI.ControlBuilder.Init(TemplateParser parser, ControlBuilder parentBuilder, Type type, String tagName, String id, IDictionary attribs)
+   在 System.Web.UI.ControlBuilder.CreateBuilderFromType(TemplateParser parser, ControlBuilder parentBuilder, Type type, String tagName, String id, IDictionary attribs, Int32 line, String sourceFileName)
+   在 System.Web.UI.ControlBuilder.CreateChildBuilder(String filter, String tagName, IDictionary attribs, TemplateParser parser, ControlBuilder parentBuilder, String id, Int32 line, VirtualPath virtualPath, Type& childType, Boolean defaultProperty)
+   在 System.Web.UI.TemplateParser.ProcessBeginTag(Match match, String inputText)
+   在 System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+********************************************************************************************
