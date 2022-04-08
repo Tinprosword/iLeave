@@ -492,14 +492,11 @@ textarea::-webkit-input-placeholder {
 
 .hiddenScrollbar_NoWrap::-webkit-scrollbar 
 {
-  display: none; /* Chrome Safari */
 }
 
 .hiddenScrollbar_NoWrap 
 {
-  scrollbar-width: none; /* firefox */
-  -ms-overflow-style: none; /* IE 10+ */
-  overflow-x: hidden;
+  overflow-x:auto;
   overflow-y: auto;
   white-space: nowrap;
 }
