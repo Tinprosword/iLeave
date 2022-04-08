@@ -50,7 +50,7 @@
                 <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applydate %>:<%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetApplydate()%></div>
                 <div class="col-xs-12 " style="margin-bottom:4px;">
                     <%--<div class="col-xs-4 lsf-clearPadding" style="width:40px;">--%><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applyRemark %>:<%--</div>--%><%--<div class="col-xs-8 lsf-clearPadding">--%><%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetApprovalRemark()%><%--</div>--%></div>
-                <div class="col-xs-12 divheighter" style="margin-bottom:2px; height:45px;">
+                <div class="col-xs-12 divheighter" style="margin-bottom:2px;">
                     <table style="width:90%;">
                          <tr>
                              <td style="white-space: nowrap"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_attachment %>:</td>
@@ -129,7 +129,7 @@
                 <div class="col-xs-12 " style="margin-bottom:4px;"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applyRemark %>:<%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Remarks %></div>
 <%--                <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_attachment %>:</div>--%>
 
-                <div class="col-xs-12 divheighter" style="margin-bottom:2px; height:45px;">
+                <div class="col-xs-12 divheighter" style="margin-bottom:2px;">
                     <table style="width:90%;">
                          <tr>
                              <td style="white-space: nowrap"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_attachment %>:</td>

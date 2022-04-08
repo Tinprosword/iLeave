@@ -317,7 +317,7 @@ input,button,a {outline:0 none;}
 
 .divheighter
 {
-    height:23px;
+    min-height:23px;
 }
 
 .menuBox/*高度*/

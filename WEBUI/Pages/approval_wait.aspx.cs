@@ -18,6 +18,8 @@ namespace WEBUI.Pages
         public static string qs_action = "action";//0.my mange data  1.mydata 
         public static string qs_from = "from";//0leave 1clot 3.no need goback from
 
+        public static int attachmentNewLine = 6;
+
         public static string sessionname_rdl = "rdl";
 
         private readonly string tip = BLL.MultiLanguageHelper.GetLanguagePacket().canlendar_serchTip;
@@ -685,8 +687,33 @@ namespace WEBUI.Pages
                 //    scrollJs = string.Format(scrollJs, btnleft.ClientID, btnright.ClientID, divcontent.ClientID, 40);
                 //    lt_jsScroll.Text += scrollJs;
                 //}
+                rp_clot_list_ItemDataBound_changedivHeight(e, "fullf", attachments.Count);
             }
 
+        }
+
+        private void rp_clot_list_ItemDataBound_changedivHeight(RepeaterItemEventArgs e,string divname,int attachemntcount)
+        {
+            var divone = e.Item.FindControl(divname);
+
+            if (divone != null)
+            {
+                if (attachemntcount >= attachmentNewLine)
+                {
+                    if (divone is System.Web.UI.HtmlControls.HtmlControl)
+                    {
+                        System.Web.UI.HtmlControls.HtmlControl dd = (System.Web.UI.HtmlControls.HtmlControl)divone;
+                        dd.Style.Remove("height");
+                        dd.Style.Add("height", "45px");
+                    }
+                    else
+                    {
+                        System.Web.UI.HtmlControls.HtmlControl dd = (System.Web.UI.HtmlControls.HtmlControl)divone;
+                        dd.Style.Remove("height");
+                        dd.Style.Add("height", "30px");
+                    }
+                }
+            }
         }
 
 
@@ -720,7 +747,7 @@ namespace WEBUI.Pages
                 var ltattachment_lt = (Literal)ltattachment;
                 ltattachment_lt.Text = BLL.common.GetAttachmentHtml(attachments);
 
-
+                rp_clot_list_ItemDataBound_changedivHeight(e, "fullf", attachments.Count);
             }
         }
 
