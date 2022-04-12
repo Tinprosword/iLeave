@@ -26,9 +26,12 @@ namespace WEBUI.webservices
                         Response.Write(getXml(WebServiceLayer.MyWebService.GetDecodeWebServicesAddress()));
                         Response.End();
                     }
-                    else
+                    else if(Actionname== "saveheight")
                     {
-                        
+                        string height = Request.QueryString["sc"];
+                        int intHeight = 0;
+                        int.TryParse(height,out intHeight);
+                        LSLibrary.WebAPP.PageSessionHelper.SetValue(intHeight, "sh");
                     }
                 }
                 else

@@ -11,7 +11,6 @@ namespace BLL
     {
 
         private static bool isdbug = false;
-        private static int devMode = 1100;//1fix ;0,cofing dec 1 nofig;  3:nouse   4 nouse.
 
         private static LSLibrary.LogUtil logUtil = new LSLibrary.LogUtil( GlobalVariate.pageServer.MapPath("mylog.txt"));
 
@@ -183,6 +182,27 @@ namespace BLL
             string strTime = date.ToString("hh:mm") + " " + ampm;
 
             return strTime;
+        }
+
+
+        public static void setDivMinHeight(string sessionname, System.Web.UI.HtmlControls.HtmlGenericControl div)
+        {
+            string agent = HttpContext.Current.Request.UserAgent;
+            LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.MobilWebHelper.GetClientType(agent);
+
+            if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.android || ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone)//android
+            {
+                try
+                {
+                    int sh = (int)System.Web.HttpContext.Current.Session[sessionname];
+                    if (sh > 585)
+                    {
+                        div.Style.Remove("min-height");
+                        div.Style.Add("min-height", (sh-33).ToString() + "px");//本来减去banner 53 ,但是好像 手机的状态栏，会多出20.所以高度要更高20.所以少见20.
+                    }
+                }
+                catch { }
+            }
         }
 
     }

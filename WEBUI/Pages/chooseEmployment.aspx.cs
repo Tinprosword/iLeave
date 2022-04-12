@@ -27,9 +27,29 @@ namespace WEBUI.Pages
 
                 WebServiceLayer.WebReference_user.PersonBaseinfo[] allinfos = WebServiceLayer.MyWebService.GlobalWebServices.ws_user.GetPersonBaseInfoByPid(pid);
                 canlogins = WebServiceLayer.MyWebService.GlobalWebServices.ws_user.FilterCanLoginUser(allinfos);
+
                 if (canlogins != null && canlogins.Count() == 1)
                 {
                     Response.Redirect("getheight.aspx");
+                }
+                else
+                {
+                    //如果是同一个first id. 那么只显示最新的。
+                    var firsteid = canlogins.Select(x => x.e_FirstEmploymentID).ToList().Distinct().ToList();
+                    if(firsteid!=null && firsteid.Count()==1)
+                    {
+                        var latesteid = canlogins.OrderByDescending(x => x.e_CommenceDate).ToList();
+                        if(latesteid!=null && latesteid.Count()>0)
+                        {
+                            int eid = latesteid[0].e_id ?? 0;
+                            string eno = latesteid[0].e_EmploymentNumber;
+                            int sid = latesteid[0].s_id ?? 0;
+                            string sno = latesteid[0].s_StaffNumber;
+
+                            BLL.User_wsref.ChangeInfoToSession(eid, eno, sid, sno, true);
+                            Response.Redirect("getheight.aspx");
+                        }
+                    }
                 }
             }
             else

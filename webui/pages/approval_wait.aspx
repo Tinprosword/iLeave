@@ -50,24 +50,23 @@
                 <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applydate %>:<%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetApplydate()%></div>
                 <div class="col-xs-12 " style="margin-bottom:4px;">
                     <%--<div class="col-xs-4 lsf-clearPadding" style="width:40px;">--%><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applyRemark %>:<%--</div>--%><%--<div class="col-xs-8 lsf-clearPadding">--%><%# new WebServiceLayer.MyModel.LeaveMaster((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Info_GetApprovalRemark()%><%--</div>--%></div>
-                <div class="col-xs-12 divheighter" style="margin-bottom:2px; height:30px;">
+                <div class="col-xs-12 divheighter" style="margin-bottom:2px;">
                     <table style="width:90%;">
                          <tr>
                              <td style="white-space: nowrap"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_attachment %>:</td>
-                             <td style="width:20px;min-width:20px;" id="tr_left" runat="server" visible="false">
+<%--                             <td style="width:30px;min-width:30px; height:30px; min-height:30px" id="tr_left" runat="server" visible="false">
                                  <img id="btnleft" src="../Res/images/add.png" style="width:100%; height:100%"  runat="server"/>
-                             </td>
+                             </td>--%>
                              <td style="width:240px;padding-left:1px;padding-right:1px;">
                                  <div id="fullf" class="hiddenScrollbar_NoWrap" style="width:238px;" runat="server">
                                      <asp:Literal ID="lt_attachlist" runat="server"></asp:Literal>
                                 </div>
                              </td>
-                             <td style="width:20px; min-width:20px;" id="tr_right" runat="server" visible="false">
+<%--                             <td style="width:30px;min-width:30px; height:30px; min-height:30px" id="tr_right" runat="server" visible="false">
                                  <img id="btnright" src="../Res/images/add.png" style="width:100%; height:100%"  runat="server"/>
-                             </td>
-                             <td style="width:100px;">&nbsp;</td>
+                             </td>--%>
                          </tr>
- </table>
+                    </table>
 
 
                 </div>
@@ -113,7 +112,7 @@
             </ItemTemplate>
         </asp:Repeater>
 
-        <asp:Repeater ID="rp_clot" runat="server">
+        <asp:Repeater ID="rp_clot" runat="server" OnItemDataBound="rp_clot_list_ItemDataBound">
             <ItemTemplate>
                 <div class="col-xs-12" style=" line-height:8px;text-align:center;padding:0px;  margin:0px; padding-top:1px; padding-bottom:4px">
                     <label class="lsf-clearPadding" style="padding:0px;  margin:0px;height:1px;background-color:dimgray; width:90%; padding-left:3px; padding-right:3px;"></label>
@@ -128,7 +127,29 @@
                 <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().clot_Type%>:<%#ShowClotName(((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Type) %></div>
                 <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applydate %>:<%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).CreateDate.ToString("yyyy-MM-dd") %></div>
                 <div class="col-xs-12 " style="margin-bottom:4px;"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_applyRemark %>:<%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Remarks %></div>
-                <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_attachment %>:</div>
+<%--                <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_attachment %>:</div>--%>
+
+                <div class="col-xs-12 divheighter" style="margin-bottom:2px;">
+                    <table style="width:90%;">
+                         <tr>
+                             <td style="white-space: nowrap"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_attachment %>:</td>
+<%--                             <td style="width:30px;min-width:30px; height:30px; min-height:30px" id="tr_left" runat="server" visible="false">
+                                 <img id="btnleft" src="../Res/images/add.png" style="width:100%; height:100%"  runat="server"/>
+                             </td>--%>
+                             <td style="width:240px;padding-left:1px;padding-right:1px;">
+                                 <div id="fullf" class="hiddenScrollbar_NoWrap" style="width:238px;" runat="server">
+                                     <asp:Literal ID="lt_attachlist" runat="server"></asp:Literal>
+                                </div>
+                             </td>
+<%--                             <td style="width:30px;min-width:30px; height:30px; min-height:30px" id="tr_right" runat="server" visible="false">
+                                 <img id="btnright" src="../Res/images/add.png" style="width:100%; height:100%"  runat="server"/>
+                             </td>--%>
+                         </tr>
+                    </table>
+
+
+                </div>
+
                 <asp:Panel ID="panel_admin_waitingApprove" runat="server" Visible="<%#BShow_WaitApplyPanel_clot(GetBigRange(),((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Status,dataType_myselfOrMyManage) %>">
                     <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_approverRemark %>:</div>
                     <div class="col-xs-12">

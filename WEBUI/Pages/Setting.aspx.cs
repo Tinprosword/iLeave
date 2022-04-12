@@ -42,6 +42,8 @@ namespace WEBUI.Pages
             {
                 this.panel_changeServer.Visible = false;
             }
+
+            BLL.common.setDivMinHeight("sh", this.maindiv);
         }
 
 

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="Setting.aspx.cs" Inherits="WEBUI.Pages.Setting" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row" style="background-color:#0954a7; height:585px;">
+    <div class="row" style="background-color:#0954a7; height:585px;" id="maindiv" runat="server">
                 <table class="col-xs-12 lsf-maringTop3px lsu-bigtable">
                     <tr style="height:1px;"><td ></td><td ></td><td style="text-align:right;color:white; font-size:15px;"><asp:Label ID="lb_versionname" runat="server" Text="Ver."></asp:Label><asp:Label ID="lb_version" runat="server" Text="1.0.0"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
                     <tr style="height:80px;">

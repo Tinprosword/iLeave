@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="Main.aspx.cs" Inherits="WEBUI.Pages.Main" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row" style="background-color:#f3f7f9; min-height:585px;">
+    <div class="row" style="background-color:#f3f7f9; min-height:585px;" id="maindiv" runat="server">
         <div class="col-xs-12 lsf-center" style=" color:#8a8b8b; height:38px; line-height:38px; font-weight:bold; font-size:15px;"><asp:Label ID="lb_name" runat="server" Text="Chan Tai Man"></asp:Label></div>
         
   

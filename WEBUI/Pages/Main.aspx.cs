@@ -35,6 +35,8 @@ namespace WEBUI.Pages
 
             DisplayMenu(BLL.CodeSetting.GetMenu());
             SetMultiLanguage();
+
+            BLL.common.setDivMinHeight("sh", this.maindiv);
         }
 
         private void DisplayMenu(string v)
