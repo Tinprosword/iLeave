@@ -98,7 +98,7 @@ namespace WEBUI.Pages
         private List<string> uploadAttachmentAndReduce(string absolutePath, out string errorMsg)
         {
             List<string> types = null;//all format is ok.
-            List<string> files = BLL.common.UploadAttendanceAndReduce(Request, absolutePath, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg,30);
+            List<string> files = BLL.common.UploadAttendanceAndReduce(Request, absolutePath, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg,2);
             return files;
         }
 
