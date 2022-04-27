@@ -44,11 +44,6 @@
 
 
 
-
-
-
-
-
 //probably bug:detail change states 1 to 2 hardcode.        flag
 //TODO IMG->BIG IMG. error:pic gohistory()                  flag
 

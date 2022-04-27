@@ -12,6 +12,8 @@ namespace WEBUI.Pages
     {
         //页面不需要任何成员变量，唯一的user info 变量，由session提供。
         //页面就2个按钮事件，和一个展示数据方法。 并且按钮事件后都需要调用。所以展示数据方法必须复用。
+        //viewstate 不知道为什么，突然失效了。 用一个input 记录zone.因为
+
         #region pageevent
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {}
@@ -100,7 +102,7 @@ namespace WEBUI.Pages
 
                         if (inout == 0)
                         {
-                            var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber, 22, 2, 1, loginer.userInfo.surname, "000", "01", locationname, locationname);
+                            var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber, 22, 2, 1, loginer.userInfo.surname, "000", zoneCode, locationname, locationname);
                             BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
 
                             this.lb_msg.Visible = true;
@@ -108,14 +110,13 @@ namespace WEBUI.Pages
                         }
                         else
                         {
-                            var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "OUT", loginer.userInfo.employNnumber, 22, 2, 1, loginer.userInfo.surname, "000", "01", locationname, locationname);
+                            var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "OUT", loginer.userInfo.employNnumber, 22, 2, 1, loginer.userInfo.surname, "000", zoneCode, locationname, locationname);
                             BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
 
                             this.lb_msg.Visible = true;
                             this.lb_msg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
                         }
                     }
-
 
                 }
             }
@@ -130,12 +131,36 @@ namespace WEBUI.Pages
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {
             this.lb_time.Text = BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
+            this.lt_jsModelWindow.Text = "";
+        }
+
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+            int a = 4;
         }
         #endregion
 
         protected void OnClick_In(object sender, EventArgs e)
         {
-            // insert record. show list
+            var rpdate = BLL.calendar.GetRoster(System.DateTime.Today, new List<int> { loginer.userInfo.employID ?? 0 }).OrderBy(x=>x.Time);
+            bool hasMultiShift = rpdate.Count()>=2;
+            if (hasMultiShift)
+            {
+                this.lt_jsModelWindow.Text = "<script>$('#modal_shifts').modal();</script>";
+
+                this.rp_shifts.DataSource = rpdate;
+                this.rp_shifts.DataBind();
+            }
+            else
+            {
+                this.lt_jsModelWindow.Text = "";
+                // insert record. show list
+                CheckIn();
+            }
+        }
+
+        private void CheckIn()
+        {
             string js = GetMPDJS("GPS", "0");
             if (js != "")
             {
@@ -152,17 +177,14 @@ namespace WEBUI.Pages
                     int centerfaceid = iguard.AttendanceInterfaceCenterID ?? 0;
                     string deviceid = iguard.DeviceID;
 
-                    var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber,centerfaceid,interfaceid, 1, loginer.userInfo.surname,deviceid, "01", "", "");
+                    var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber, centerfaceid, interfaceid, 1, loginer.userInfo.surname, deviceid, "01", "", "");
                     BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
 
                     this.lb_msg.Visible = true;
                     this.lb_msg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
                 }
             }
-
         }
-
-
 
 
         //由mobil 返回位置信息,並組成url ，頁面根據url 參數。處理數據。
@@ -201,5 +223,13 @@ namespace WEBUI.Pages
 
             return result;
         }
+
+
+        protected void btn_model2_ok_Click(object sender, EventArgs e)
+        {
+            string selectZone = Request.Form["rd_shifts"];
+            CheckIn();
+        }
+
     }
 }

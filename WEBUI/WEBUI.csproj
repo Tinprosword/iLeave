@@ -445,6 +445,8 @@
     <Content Include="temp\test.aspx" />
     <Content Include="temp\test2.aspx" />
     <Content Include="temp\testabc.aspx" />
+    <Content Include="temp\testMaster.aspx" />
+    <Content Include="temp\testMaster2.aspx" />
     <Content Include="temp\testPost.aspx" />
     <Content Include="temp\testRQ.aspx" />
     <Content Include="temp\testWait.aspx" />
@@ -625,6 +627,20 @@
     </Compile>
     <Compile Include="temp\testabc.aspx.designer.cs">
       <DependentUpon>testabc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="temp\testMaster.aspx.cs">
+      <DependentUpon>testMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="temp\testMaster.aspx.designer.cs">
+      <DependentUpon>testMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="temp\testMaster2.aspx.cs">
+      <DependentUpon>testMaster2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="temp\testMaster2.aspx.designer.cs">
+      <DependentUpon>testMaster2.aspx</DependentUpon>
     </Compile>
     <Compile Include="temp\testPost.aspx.cs">
       <DependentUpon>testPost.aspx</DependentUpon>

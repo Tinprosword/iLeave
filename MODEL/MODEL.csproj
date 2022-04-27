@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Apply.cs" />
     <Compile Include="Calendar.cs" />
+    <Compile Include="check.cs" />
     <Compile Include="CLOT.cs" />
     <Compile Include="IAttachment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
