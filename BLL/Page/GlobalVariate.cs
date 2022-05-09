@@ -377,6 +377,17 @@ namespace BLL
             set { }
         }
 
+        public static string checkjsLastmodify
+        {
+            get
+            {
+                string filePath = pageServer.MapPath("~/Res/App/check.js");
+                return LSLibrary.FileUtil.GetLastWriteTime(filePath).ToString("yyyyMMddhhmmss");
+
+            }
+            set { }
+        }
+
         public static string autoscalejsLastmodify
         {
             get

@@ -184,6 +184,14 @@ namespace BLL
             return strTime;
         }
 
+        public static string GetFormatTime2(LSLibrary.WebAPP.LanguageType language,DateTime datetime)
+        {
+            var ampm = datetime.Hour >= 12 ? "PM" : "AM";
+            string strTime = datetime.ToString("hh:mm") + " " + ampm+" "+datetime.ToString("yyyy-MM-dd");
+
+            return strTime;
+        }
+
 
         public static void setDivMinHeight(string sessionname, System.Web.UI.HtmlControls.HtmlGenericControl div)
         {

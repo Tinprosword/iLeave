@@ -1,0 +1,244 @@
+ip:::1
+DataTime：2022/5/6 11:43:29
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void rp_shifts_ItemDataBound(System.Object, System.Web.UI.WebControls.RepeaterItemEventArgs)
+Trace：   在 WEBUI.Pages.Check.rp_shifts_ItemDataBound(Object sender, RepeaterItemEventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx.cs:行号 317
+   在 System.Web.UI.WebControls.Repeater.OnItemDataBound(RepeaterItemEventArgs e)
+   在 System.Web.UI.WebControls.Repeater.CreateItem(Int32 itemIndex, ListItemType itemType, Boolean dataBind, Object dataItem)
+   在 System.Web.UI.WebControls.Repeater.AddDataItemsIntoItemsArray(IEnumerable dataSource, Boolean useDataSource)
+   在 System.Web.UI.WebControls.Repeater.PostGetDataAction(IEnumerable dataSource)
+   在 System.Web.UI.WebControls.Repeater.OnDataBinding(EventArgs e)
+   在 WEBUI.Pages.Check.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx.cs:行号 50
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 50
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/6 11:44:49
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx(37): error CS1061: 'pages_check_aspx' does not contain a definition for 'rp_shifts_ItemDataBound' and no extension method 'rp_shifts_ItemDataBound' accepting a first argument of type 'pages_check_aspx' could be found (are you missing a using directive or an assembly reference?)
+Source：System.Web
+Type：System.Web.HttpCompileException
+Function：System.Web.Compilation.BuildResult PostProcessFoundBuildResult(System.Web.Compilation.BuildResult, Boolean, System.Web.VirtualPath)
+Trace：   在 System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/6 14:44:40
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：服务器标记的格式不正确。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void ProcessError(System.String)
+Trace：   在 System.Web.UI.TemplateParser.ProcessError(String message)
+   在 System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   在 System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/6 14:52:57
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：服务器标记的格式不正确。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void ProcessError(System.String)
+Trace：   在 System.Web.UI.TemplateParser.ProcessError(String message)
+   在 System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   在 System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/6 14:53:50
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：服务器标记的格式不正确。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void ProcessError(System.String)
+Trace：   在 System.Web.UI.TemplateParser.ProcessError(String message)
+   在 System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   在 System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/6 14:57:16
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：服务器标记的格式不正确。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void ProcessError(System.String)
+Trace：   在 System.Web.UI.TemplateParser.ProcessError(String message)
+   在 System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   在 System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/6 14:58:19
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：服务器标记的格式不正确。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void ProcessError(System.String)
+Trace：   在 System.Web.UI.TemplateParser.ProcessError(String message)
+   在 System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   在 System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/6 14:59:37
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx(43): error CS0030: Cannot convert type 'string' to 'bool'
+Source：System.Web
+Type：System.Web.HttpCompileException
+Function：System.Web.Compilation.BuildResult PostProcessFoundBuildResult(System.Web.Compilation.BuildResult, Boolean, System.Web.VirtualPath)
+Trace：   在 System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/6 15:00:43
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx(43): error CS0030: Cannot convert type 'string' to 'bool'
+Source：System.Web
+Type：System.Web.HttpCompileException
+Function：System.Web.Compilation.BuildResult PostProcessFoundBuildResult(System.Web.Compilation.BuildResult, Boolean, System.Web.VirtualPath)
+Trace：   在 System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/6 15:01:16
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx(43): error CS0030: Cannot convert type 'string' to 'bool'
+Source：System.Web
+Type：System.Web.HttpCompileException
+Function：System.Web.Compilation.BuildResult PostProcessFoundBuildResult(System.Web.Compilation.BuildResult, Boolean, System.Web.VirtualPath)
+Trace：   在 System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/6 15:01:37
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：C:\Users\Administrator\source\repos\WebIleave\WEBUI\pages\Check.aspx(43): error CS0030: Cannot convert type 'string' to 'bool'
+Source：System.Web
+Type：System.Web.HttpCompileException
+Function：System.Web.Compilation.BuildResult CompileWebFile(System.Web.VirtualPath)
+Trace：   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/6 15:02:21
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：服务器标记的格式不正确。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void ProcessError(System.String)
+Trace：   在 System.Web.UI.TemplateParser.ProcessError(String message)
+   在 System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   在 System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/6 15:06:05
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：服务器标记的格式不正确。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void ProcessError(System.String)
+Trace：   在 System.Web.UI.TemplateParser.ProcessError(String message)
+   在 System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   在 System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/6 15:08:18
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx(43): error CS0030: Cannot convert type 'string' to 'bool'
+Source：System.Web
+Type：System.Web.HttpCompileException
+Function：System.Web.Compilation.BuildResult PostProcessFoundBuildResult(System.Web.Compilation.BuildResult, Boolean, System.Web.VirtualPath)
+Trace：   在 System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/6 15:08:44
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx(43): error CS0030: Cannot convert type 'string' to 'bool'
+Source：System.Web
+Type：System.Web.HttpCompileException
+Function：System.Web.Compilation.BuildResult PostProcessFoundBuildResult(System.Web.Compilation.BuildResult, Boolean, System.Web.VirtualPath)
+Trace：   在 System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/6 15:13:11
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：无法将类型为“System.Web.UI.WebControls.RadioButton”的对象强制转换为类型“System.Web.UI.HtmlControls.HtmlInputRadioButton”。
+Source：WEBUI
+Type：System.InvalidCastException
+Function：System.String GetShiftcodeFromRepeater()
+Trace：   在 WEBUI.Pages.Check.GetShiftcodeFromRepeater() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx.cs:行号 97
+   在 WEBUI.Pages.Check.ProcessMyPostbackEvent(String targetname) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx.cs:行号 112
+   在 WEBUI.Pages.Check.PageLoad_Reset_ReInitUIOnEachLoad5() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx.cs:行号 54
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 68
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 50
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

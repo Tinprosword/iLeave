@@ -24,6 +24,8 @@ namespace BLL
             LSLibrary.WebAPP.LoginManager.OnSessionTimeOutHandler = BLL.User_wsref.MPG_GoBackToLogin;
         }
 
+        
+
         protected override void Page_Init(object sender, EventArgs e)
         {
             loginer = BLL.User_wsref.GetLoginer();

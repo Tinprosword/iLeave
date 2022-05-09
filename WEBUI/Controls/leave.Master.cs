@@ -103,6 +103,17 @@ namespace WEBUI.Controls
             Response.Redirect("~/pages/setting.aspx");
         }
 
+        public static WEBUI.Controls.leave FindMasterPage(System.Web.UI.Page page)
+        {
+            WEBUI.Controls.leave result = null;
+
+            if(page.Master is WEBUI.Controls.leave)
+            {
+                result = (WEBUI.Controls.leave)page.Master;
+            }
+
+            return result;
+        }
 
     }
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Net;
+using System.Web.UI.HtmlControls;
 
 namespace WEBUI.Pages
 {
@@ -12,7 +13,8 @@ namespace WEBUI.Pages
     {
         //页面不需要任何成员变量，唯一的user info 变量，由session提供。
         //页面就2个按钮事件，和一个展示数据方法。 并且按钮事件后都需要调用。所以展示数据方法必须复用。
-        //viewstate 不知道为什么，突然失效了。 用一个input 记录zone.因为
+
+        private static string ms_onclickCheckname = "Check";
 
         #region pageevent
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
@@ -26,52 +28,134 @@ namespace WEBUI.Pages
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
             lb_msg.Visible = false;
+            lb_msg2.Visible = false;
+            this.lt_jsmobileGps.Text = "";
+            this.lt_jsModelWindow.Text = "";
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().main_check, "~/pages/main.aspx", true);
-            OnMobileLoadUrl();
 
             SetupmultipleLanguage();
 
             this.lb_day.Text = System.DateTime.Today.ToString("yyyy-MM-dd");
             this.lb_time.Text = BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
 
-            //ShowDateOnLable(System.DateTime.Now);
-            //ShowInout(loginer.userInfo.eNoRefFirstEid, GetCurrentLableDate());
+            var rpdate = BLL.calendar.GetRoster(System.DateTime.Today, new List<int> { loginer.userInfo.employID ?? 0 }).OrderBy(x => x.Time);
+            this.rp_shifts.DataSource = rpdate;
+            this.rp_shifts.DataBind();
         }
 
-        private static string GetLocationUrl(LSLibrary.WebAPP.LanguageType _cul,double lat,double lon)
+        protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
+        {
+            this.lb_time.Text = BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
+            WEBUI.Controls.leave master = (WEBUI.Controls.leave)this.Master;
+            var targetName= master.GetMyPostTargetname();
+            ProcessMyPostbackEvent(targetName);
+        }
+
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+            int a = 4;
+        }
+
+        #endregion
+
+
+        #region postback event
+
+        protected void OnClick_In(object sender, EventArgs e)
+        {
+            bool hasMultiShift = this.rp_shifts.Items.Count >= 2;
+            if (hasMultiShift)
+            {
+                this.lt_jsModelWindow.Text = "<script>$('#modal_shifts').modal();</script>";
+            }
+            else
+            {
+                ProgressCheckIn();
+            }
+        }
+
+        protected void btn_model2_ok_Click(object sender, EventArgs e)
+        {
+            ProgressCheckIn();
+        }
+
+        #endregion
+
+
+        #region private function
+        public string GenerateCheckedString(int index)
+        {
+           return index == 0 ? "1" : "0";
+        }
+
+
+        private string GetShiftcodeFromRepeater()
         {
             string result = "";
-            result= "http://dev.virtualearth.net/REST/v1/Locations/" + lat + "," + lon + "?o=json&key=AqviYV7wGGW6_Bx2Y1RIb_-w4eqXlS_GsgYTVuA_KYVMmUpnhfq3CvtpOjM9R6JQ&output=json";
-            string culcode = "en-US";
-            if (_cul == LSLibrary.WebAPP.LanguageType.sc)
+
+            foreach (RepeaterItem item in this.rp_shifts.Items)
             {
-                culcode = "zh-Hans";
+                HtmlInputRadioButton economic = (HtmlInputRadioButton)item.FindControl("rd_shift");
+                if (economic.Checked)
+                {
+                    result = economic.Value.ToString();
+                }
             }
-            else if(_cul == LSLibrary.WebAPP.LanguageType.tc)
-            {
-                culcode = "zh-Hant";
-            }
-            result += "&c=" + culcode;
             return result;
         }
 
-        private void OnMobileLoadUrl()
-        {
-            if (!string.IsNullOrEmpty(Request.QueryString["action"]))
-            {
-                string action = Request.QueryString["action"];
-                if (action == "mobile")
-                {
-                    if (!string.IsNullOrEmpty(Request.QueryString["lat"]) && !string.IsNullOrEmpty(Request.QueryString["long"]) && !string.IsNullOrEmpty(Request.QueryString["inout"]))
-                    {
-                        double lat = double.Parse(Request.QueryString["lat"]);
-                        double lon = double.Parse(Request.QueryString["long"]);
-                        int inout = int.Parse(Request.QueryString["inout"]);
 
+
+        private void ProcessMyPostbackEvent(string targetname)
+        {
+            WEBUI.Controls.leave master = (WEBUI.Controls.leave)this.Master;
+
+            string zoneCode = GetShiftcodeFromRepeater();
+            if (string.IsNullOrEmpty(zoneCode))
+            {
+                zoneCode = "01";
+            }
+
+            if (targetname== ms_onclickCheckname)
+            {
+                var lastItem = BLL.Other.GetAttendanceList(new string[] { loginer.userInfo.employNnumber }).OrderByDescending(x => x.CreateDate).FirstOrDefault();
+
+                var value = master.GetMyPostBackArgumentByTargetname(targetname);
+                if(string.IsNullOrEmpty(value))// click on pc
+                {
+                    var iguard = BLL.Other.GetIleavIGard();
+                    if (iguard != null)
+                    {
+                        int interfaceid = iguard.InterfaceID ?? 0;
+                        int centerfaceid = iguard.AttendanceInterfaceCenterID ?? 0;
+                        string deviceid = iguard.DeviceID;
+
+                        var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber, centerfaceid, interfaceid, 1, loginer.userInfo.surname, deviceid, zoneCode, "", "");
+                        BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
+                    }
+                }
+                else//click on mobile.
+                {
+                    string lata = "";
+                    string longa = "";
+
+                    double lat = 0;
+                    double lon = 0;
+
+                    string[] valueArray = value.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+                    if(valueArray!=null && valueArray.Count()>=2)
+                    {
+                        lata = valueArray[0];
+                        longa = valueArray[1];
+                    }
+
+
+                    if (!string.IsNullOrEmpty(lata) && !string.IsNullOrEmpty(longa) && double.TryParse(lata,out lat) && double.TryParse(longa,out lon))
+                    {
                         string locationname = "";
                         try
                         {
@@ -100,26 +184,41 @@ namespace WEBUI.Pages
                             locationname = "";
                         }
 
-                        if (inout == 0)
-                        {
-                            var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber, 22, 2, 1, loginer.userInfo.surname, "000", zoneCode, locationname, locationname);
-                            BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
 
-                            this.lb_msg.Visible = true;
-                            this.lb_msg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
-                        }
-                        else
-                        {
-                            var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "OUT", loginer.userInfo.employNnumber, 22, 2, 1, loginer.userInfo.surname, "000", zoneCode, locationname, locationname);
-                            BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
+                        var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber, 22, 2, 1, loginer.userInfo.surname, "000", zoneCode, value, locationname);
+                        BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
 
-                            this.lb_msg.Visible = true;
-                            this.lb_msg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
-                        }
                     }
+                }
 
+
+                this.lb_msg.Visible = true;
+                this.lb_msg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
+                this.lb_msg2.Visible = true;
+
+                if (lastItem != null)
+                {
+                    this.lb_msg2.Text = BLL.MultiLanguageHelper.GetLanguagePacket().CommonLastcheckin + " : " + BLL.common.GetFormatTime2(BLL.MultiLanguageHelper.GetChoose(),lastItem.CreateDate);
                 }
             }
+        }
+
+
+        private static string GetLocationUrl(LSLibrary.WebAPP.LanguageType _cul, double lat, double lon)
+        {
+            string result = "";
+            result = "http://dev.virtualearth.net/REST/v1/Locations/" + lat + "," + lon + "?o=json&key=AqviYV7wGGW6_Bx2Y1RIb_-w4eqXlS_GsgYTVuA_KYVMmUpnhfq3CvtpOjM9R6JQ&output=json";
+            string culcode = "en-US";
+            if (_cul == LSLibrary.WebAPP.LanguageType.sc)
+            {
+                culcode = "zh-Hans";
+            }
+            else if (_cul == LSLibrary.WebAPP.LanguageType.tc)
+            {
+                culcode = "zh-Hant";
+            }
+            result += "&c=" + culcode;
+            return result;
         }
 
         private void SetupmultipleLanguage()
@@ -127,62 +226,16 @@ namespace WEBUI.Pages
             this.bt_checkin.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin;
         }
 
-
-        protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
-        {
-            this.lb_time.Text = BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
-            this.lt_jsModelWindow.Text = "";
-        }
-
-        protected void Page_LoadComplete(object sender, EventArgs e)
-        {
-            int a = 4;
-        }
-        #endregion
-
-        protected void OnClick_In(object sender, EventArgs e)
-        {
-            var rpdate = BLL.calendar.GetRoster(System.DateTime.Today, new List<int> { loginer.userInfo.employID ?? 0 }).OrderBy(x=>x.Time);
-            bool hasMultiShift = rpdate.Count()>=2;
-            if (hasMultiShift)
-            {
-                this.lt_jsModelWindow.Text = "<script>$('#modal_shifts').modal();</script>";
-
-                this.rp_shifts.DataSource = rpdate;
-                this.rp_shifts.DataBind();
-            }
-            else
-            {
-                this.lt_jsModelWindow.Text = "";
-                // insert record. show list
-                CheckIn();
-            }
-        }
-
-        private void CheckIn()
+        private void ProgressCheckIn()
         {
             string js = GetMPDJS("GPS", "0");
             if (js != "")
             {
-                Response.Clear();
-                Response.Write(js);
-                Response.End();
+                this.lt_jsmobileGps.Text = js;
             }
             else
             {
-                var iguard = BLL.Other.GetIleavIGard();
-                if (iguard != null)
-                {
-                    int interfaceid = iguard.InterfaceID ?? 0;
-                    int centerfaceid = iguard.AttendanceInterfaceCenterID ?? 0;
-                    string deviceid = iguard.DeviceID;
-
-                    var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber, centerfaceid, interfaceid, 1, loginer.userInfo.surname, deviceid, "01", "", "");
-                    BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
-
-                    this.lb_msg.Visible = true;
-                    this.lb_msg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
-                }
+                this.lt_jsModelWindow.Text = "<script>MyPostBack('"+ ms_onclickCheckname + "','')</script>";
             }
         }
 
@@ -224,12 +277,11 @@ namespace WEBUI.Pages
             return result;
         }
 
+        #endregion
 
-        protected void btn_model2_ok_Click(object sender, EventArgs e)
+        protected void rp_shifts_Load(object sender, EventArgs e)
         {
-            string selectZone = Request.Form["rd_shifts"];
-            CheckIn();
+            int a = 4;
         }
-
     }
 }

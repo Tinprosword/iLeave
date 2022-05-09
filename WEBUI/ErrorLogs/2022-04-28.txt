@@ -1,0 +1,28 @@
+ip:192.168.66.102
+DataTime：2022/4/28 11:18:08
+Url：http://192.168.66.101/WEBUI/pages/Check.aspx
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void InitPage_OnFirstLoad2()
+Trace：   在 WEBUI.Pages.Check.InitPage_OnFirstLoad2() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx.cs:行号 25
+   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 38
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.66.102
+DataTime：2022/4/28 11:19:26
+Url：http://192.168.66.101/WEBUI/pages/Check.aspx
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void InitPage_OnFirstLoad2()
+Trace：   在 WEBUI.Pages.Check.InitPage_OnFirstLoad2() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx.cs:行号 25
+   在 BLL.CustomLoginTemplate.Page_Init(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 38
+   在 System.Web.UI.Control.OnInit(EventArgs e)
+   在 System.Web.UI.Page.OnInit(EventArgs e)
+   在 System.Web.UI.Control.InitRecursive(Control namingContainer)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

@@ -1,0 +1,11 @@
+ip:::1
+DataTime：2022/5/5 10:22:14
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：服务器标记的格式不正确。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void ProcessError(System.String)
+Trace：   在 System.Web.UI.TemplateParser.ProcessError(String message)
+   在 System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   在 System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+********************************************************************************************

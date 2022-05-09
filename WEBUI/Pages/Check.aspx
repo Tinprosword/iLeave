@@ -17,15 +17,11 @@
             </div>
             <div class="col-xs-12" style="height:5px">&nbsp;</div>
             <div class="col-xs-12 MaintTextColor_new" style="text-align:center;">
-                <asp:Label ID="lb_msg" runat="server" Text="打卡：09:01 PM" Visible="false"></asp:Label>
+                <asp:Label ID="lb_msg" runat="server" Text="打卡：09:01 PM" Visible="false"></asp:Label><br />
+                <asp:Label ID="lb_msg2" runat="server" Text="last 打卡：09:01 PM" Visible="false"></asp:Label><br />
             </div>
         </div>
     </div>
-    <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true">
-        <asp:ListItem Text="aa" Value="1"></asp:ListItem>
-        <asp:ListItem Text="bb" Value="2"></asp:ListItem>
-    </asp:DropDownList>
-    <asp:Button ID="Button1" runat="server" Text="Button" />
     <!-- 模态框（Modal） -->
         <div class="modal fade col-xs-12" style="position:absolute; margin-top:20px;" id="modal_shifts" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	        <div class="modal-dialog" style="width:200px;display:inline">
@@ -39,12 +35,15 @@
 				        </h4>
 			        </div>--%>
 			        <div class="modal-body">
-                        <asp:Repeater ID="rp_shifts" runat="server">
+                        <asp:Repeater ID="rp_shifts" runat="server" OnLoad="rp_shifts_Load">
                             <HeaderTemplate>
                                 <table class=" table"><tr><td>Zone Code</td><td>Shift Code</td><td>Time</td></tr>
                             </HeaderTemplate>
                             <ItemTemplate>
-                                <tr><td><input id="Radio1" type="radio"  name="rd_shifts" value="<%#((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).ShiftCode %>"  <%#Container.ItemIndex==0?"checked='Checked'":"" %> /><%#((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).ZoneCode %></td><td><%#((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).ShiftCode %></td><td><%#((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).Time %></td>
+                                <tr>
+                                    <td><input type="radio" id="rd_shift" name="rd_shiftname" runat="server" value="<%#((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).ShiftCode %>" onclick="return selectSingleRadio(this,'rd_shiftname');" checked="<%#Container.ItemIndex==0?true:false %>"/>&nbsp;&nbsp;&nbsp;&nbsp;<%#((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).ZoneCode %></td>
+                                    <td><%#((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).ShiftCode %></td>
+                                    <td><%#((WebServiceLayer.WebReference_leave.v_System_Calendar)Container.DataItem).Time %></td>
                             </ItemTemplate>
                             <FooterTemplate>
                                 </table>
@@ -61,19 +60,17 @@
     <!-- /.modal -->
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
-    <asp:Literal ID="lt_jsModelWindow" runat="server"></asp:Literal>
     <script>
-       setInterval("document.getElementById('ContentPlaceHolder1_lb_time').innerHTML=formatDate(new Date());", 10000);
-
-       function formatDate(date) {
-          var hours = date.getHours();
-          var minutes = date.getMinutes();
-          var ampm = hours >= 12 ? 'PM' : 'AM';
-          hours = hours % 12;
-          hours = hours ? hours : 12; // the hour '0' should be '12'
-          minutes = minutes < 10 ? '0'+minutes : minutes;
-          var strTime = hours + ':' + minutes + ' ' + ampm;
-        return  strTime;
+        function selectSingleRadio(rbtn1, GroupName) {  
+            $("input[type=radio]").each(function (i) {  
+                if (this.name.substring(this.name.length - GroupName.length) == GroupName) {  
+                    this.checked = false;  
+                }  
+            })  
+            rbtn1.checked = true;  
         }
     </script>
+    <asp:Literal ID="lt_jsModelWindow" runat="server"></asp:Literal>
+    <asp:Literal ID="lt_jsmobileGps" runat="server"></asp:Literal>
+    <script src="../Res/App/check.js?lastmodify=<%=BLL.GlobalVariate.checkjsLastmodify %>"></script>
 </asp:Content>

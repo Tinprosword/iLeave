@@ -4,6 +4,7 @@
     theForm.mypostback_target.value = postback_target;
     theForm.mypostback_argument.value = postback_argument;
     theForm.submit();
+    return true;
 }
 
 
