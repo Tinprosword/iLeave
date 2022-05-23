@@ -142,7 +142,7 @@ namespace BLL
         }
 
         public static WebServiceLayer.WebReference_leave.AttendanceRawData GenerateModel(DateTime logdate,int uid,string _Type,string _ExternalRef,int _AttendanceInterfaceCenterID,
-            int _InterfaceID,int? _RemoteIdent,string _StaffName,string _DeviceID,string _Zone,string _GpsLocation,string _GpsLocationName)
+            int _InterfaceID,int? _RemoteIdent,string _StaffName,string _DeviceID,string _Zone,string _GpsLocation,string _GpsLocationName,string wifiadd,string wifiname)
         {
             WebServiceLayer.WebReference_leave.AttendanceRawData result = new WebServiceLayer.WebReference_leave.AttendanceRawData();
             result.LogDateTime = logdate;
@@ -158,8 +158,8 @@ namespace BLL
             result.CreateUser = uid;
             result.GpsLocation = _GpsLocation;
             result.GpsLocationName = _GpsLocationName;
-
-
+            result.WifiAddress = wifiadd;
+            result.WifiInfo = wifiname;
             return result;
         }
 

@@ -38,7 +38,8 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
-
+            this.errormsg.Visible = false;
+            this.errormsgdiv.Visible = false;
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
@@ -92,13 +93,25 @@ namespace WEBUI.Pages
 
             this.repeater_attandance.DataSource = applyPage.GetAttachment();
             this.repeater_attandance.DataBind();
+
+            //show errormsg
+            if(!string.IsNullOrEmpty(errmsg))
+            {
+                this.errormsg.Visible = true;
+                this.errormsgdiv.Visible = true;
+
+                this.errormsg.Text = errmsg;
+            }
         }
 
 
         private List<string> uploadAttachmentAndReduce(string absolutePath, out string errorMsg)
         {
             List<string> types = null;//all format is ok.
-            List<string> files = BLL.common.UploadAttendanceAndReduce(Request, absolutePath, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg,2);
+            int fileMax = 3;
+            string strfileMax = LSLibrary.WebAPP.WebConfig.getValue("AttachmentMaxSize");
+            int.TryParse(strfileMax, out fileMax);
+            List<string> files = BLL.common.UploadAttendanceAndReduce(Request, absolutePath, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg,3);
             return files;
         }
 

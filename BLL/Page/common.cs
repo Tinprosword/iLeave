@@ -86,7 +86,7 @@ namespace BLL
             {
                 if (common.canReduceImage(res[i]))
                 {
-                    LSLibrary.ImageThumbnail.ReducedImage(130, 130, fpath + "\\" + res[i], fpath + "\\" + Leave.reducePath + "\\" + res[i]);
+                    LSLibrary.ImageThumbnail.ReducedImage(400, 400, fpath + "\\" + res[i], fpath + "\\" + Leave.reducePath + "\\" + res[i]);
                 }
             }
             return res;

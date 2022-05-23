@@ -57,8 +57,8 @@ namespace WEBUI.Pages
         private void MultipleLanguage(LSLibrary.WebAPP.BaseLanguage language)
         {
             lb_changeserver.Text = language.setting_changeLink;
-            this.lb_account.Text = language.setting_account;
-            this.lb_othersetting.Text = language.setting_otherSetting;
+            //this.lb_account.Text = language.setting_account;
+            //this.lb_othersetting.Text = language.setting_otherSetting;
             this.lb_out.Text = language.seting_logout2;
             this.bt_out.Text= language.seting_logout2;
             this.lb_versionname.Text = language.setting_ver;

@@ -1,0 +1,116 @@
+ip:192.168.19.81
+DataTime：2022/5/20 10:59:23
+Url：http://192.168.19.72/webui/webservices/webservices.aspx?action=login
+Message：操作超时
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.AuthenticateUser(String UserName, String PasswordHash) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_user\Reference.cs:行号 668
+   在 BLL.User_wsref.CheckLogin(String uid, String password) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\User_wsref.cs:行号 31
+   在 WEBUI.webservices.webservices.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\webservices\webservices.aspx.cs:行号 47
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2022/5/20 10:59:42
+Url：http://192.168.19.72/webui/webservices/webservices.aspx?action=login
+Message：操作超时
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.AuthenticateUser(String UserName, String PasswordHash) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_user\Reference.cs:行号 668
+   在 BLL.User_wsref.CheckLogin(String uid, String password) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\User_wsref.cs:行号 31
+   在 WEBUI.webservices.webservices.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\webservices\webservices.aspx.cs:行号 47
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2022/5/20 11:00:03
+Url：http://192.168.19.72/webui/webservices/webservices.aspx?action=login
+Message：操作超时
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.AuthenticateUser(String UserName, String PasswordHash) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_user\Reference.cs:行号 668
+   在 BLL.User_wsref.CheckLogin(String uid, String password) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\User_wsref.cs:行号 31
+   在 WEBUI.webservices.webservices.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\webservices\webservices.aspx.cs:行号 47
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2022/5/20 11:00:17
+Url：http://192.168.19.72/webui/webservices/webservices.aspx?action=login
+Message：操作超时
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.AuthenticateUser(String UserName, String PasswordHash) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_user\Reference.cs:行号 668
+   在 BLL.User_wsref.CheckLogin(String uid, String password) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\User_wsref.cs:行号 31
+   在 WEBUI.webservices.webservices.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\webservices\webservices.aspx.cs:行号 47
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2022/5/20 11:00:57
+Url：http://192.168.19.72/webui/webservices/webservices.aspx?action=login
+Message：请求被中止: 操作超时。
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.AuthenticateUser(String UserName, String PasswordHash) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_user\Reference.cs:行号 668
+   在 BLL.User_wsref.CheckLogin(String uid, String password) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\User_wsref.cs:行号 31
+   在 WEBUI.webservices.webservices.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\webservices\webservices.aspx.cs:行号 47
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2022/5/20 11:01:31
+Url：http://192.168.19.72/webui/webservices/webservices.aspx?action=login
+Message：操作超时
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.AuthenticateUser(String UserName, String PasswordHash) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_user\Reference.cs:行号 668
+   在 BLL.User_wsref.CheckLogin(String uid, String password) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\User_wsref.cs:行号 31
+   在 WEBUI.webservices.webservices.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\webservices\webservices.aspx.cs:行号 47
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2022/5/20 15:00:40
+Url：http://192.168.19.72/WEBUI/pages/Check.aspx
+Message：服务器无法处理请求。 ---> 列名 'WifiAddress' 无效。
+列名 'WifiInfo' 无效。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.GetAttendanceByExternRef(String[] refs) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 2265
+   在 BLL.Other.GetAttendanceList(String[] refInfo) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Other.cs:行号 14
+   在 WEBUI.Pages.Check.ProcessMyPostbackEvent(String targetname) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx.cs:行号 125
+   在 WEBUI.Pages.Check.PageLoad_Reset_ReInitUIOnEachLoad5() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx.cs:行号 55
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 68
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 50
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

@@ -2,12 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row" style="background-color:#0954a7; height:585px;" id="maindiv" runat="server">
                 <table class="col-xs-12 lsf-maringTop3px lsu-bigtable">
-                    <tr style="height:1px;"><td ></td><td ></td><td style="text-align:right;color:white; font-size:15px;"><asp:Label ID="lb_versionname" runat="server" Text="Ver."></asp:Label><asp:Label ID="lb_version" runat="server" Text="1.0.0"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
-                    <tr style="height:80px;">
+                    <tr style="height:1px;"><td ></td><td ></td><td style="text-align:right;color:white; font-size:15px;"><asp:Label ID="lb_versionname" runat="server" Text="Ver."></asp:Label><asp:Label ID="lb_version" runat="server" Text="1.3.0"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+                    <%--<tr style="height:80px;">
                         <td style="width:25px;">&nbsp;</td>
                         <td style="width:80px;"><img src="../Res/images/settingAccount.png" class="setting_img" /></td>
                         <td class="whitea setting_link"><asp:LinkButton ID="lb_account" runat="server">Account</asp:LinkButton></td>
-                    </tr>
+                    </tr>--%>
                     <tr style="height:80px;">
                         <td>&nbsp;</td>
                         <td><img src="../Res/images/settingLanguage.png" class="setting_img" /></td>
@@ -17,11 +17,11 @@
                             <asp:LinkButton ID="lb_trans" runat="server" OnClick="lb_english_Click">繁體</asp:LinkButton>
                         </td>
                     </tr>
-                    <tr style="height:80px;">
+                  <%--  <tr style="height:80px;">
                         <td>&nbsp;</td>
                         <td><img src="../Res/images/setting_othersetting.png" class="setting_img" /></td>
                         <td class="whitea setting_link"><asp:LinkButton ID="lb_othersetting" runat="server">Other Settings</asp:LinkButton></td>
-                    </tr>
+                    </tr>--%>
                     <tr style="height:80px;">
                         <td>&nbsp;</td>
                         <td><img src="../Res/images/setting_loginout.png" class="setting_img" /></td>

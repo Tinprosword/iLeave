@@ -6,6 +6,9 @@
             <div class="col-xs-1"><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Res/images/upload2.png" Width="42px" Height="42px" OnClick="Upload_Click" /></div>
         </div>
         <div class="col-xs-12" style="padding:0px; overflow-y:scroll; height:500px;">
+            <div class="col-xs-12" id="errormsgdiv" runat="server" visible="false">
+                <asp:Label ID="errormsg" runat="server" Text="Label" Visible="false"></asp:Label>
+            </div>
             <asp:Repeater ID="repeater_attandance" runat="server" EnableViewState="true">
                 <ItemTemplate>
                     <div class="col-xs-6" style="width:48%; height:130px;float:left;border:1px solid #f4f4f4">

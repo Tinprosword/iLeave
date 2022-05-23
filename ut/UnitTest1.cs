@@ -421,22 +421,30 @@ namespace ut
         //AL12 AL12ALS  AL12CLY
         //14  2110  2109
 
-        public User user_103 = null;
+        public User user_103 = null;//user 
         public User user_102 = null;//approrver1
         public User user_101 = null;//apporver2
+
+        public int u101pid = 25628;
+        public int u102pid = 25629;
+        public int u103pid = 25630;
+
+        public string u101alcode = "AL07";
+        public string u102alcode = "AL07";
+        public string u103alcode = "AL07";
 
 
         public UT_Workflow()
         {
             var allLeaveinfo = BLL.CodeSetting.GetAllLeaveInfo();
 
-            var u103 = BLL.User_wsref.GetPersonBaseInfoByPid(25628);
-            var u102 = BLL.User_wsref.GetPersonBaseInfoByPid(25627);
-            var u101 = BLL.User_wsref.GetPersonBaseInfoByPid(25626);
+            var u103 = BLL.User_wsref.GetPersonBaseInfoByPid(u103pid);
+            var u102 = BLL.User_wsref.GetPersonBaseInfoByPid(u102pid);
+            var u101 = BLL.User_wsref.GetPersonBaseInfoByPid(u101pid);
 
-            string lcode1 = "AL12";
-            string lcode2 = "AL12ALS";
-            string lcode3 = "AL12CLY";
+            string lcode1 = u101alcode;
+            string lcode2 = u102alcode;
+            string lcode3 = u103alcode;
 
             int code1 = allLeaveinfo.Where(x => x.Code == lcode1).FirstOrDefault().ID;
             int code2 = allLeaveinfo.Where(x => x.Code == lcode2).FirstOrDefault().ID;

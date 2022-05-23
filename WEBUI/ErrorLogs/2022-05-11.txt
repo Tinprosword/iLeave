@@ -1,0 +1,28 @@
+ip:192.168.19.81
+DataTime：2022/5/11 14:43:06
+Url：http://192.168.19.56/WEBUI/pages/main.aspx
+Message：请求被中止: 操作超时。
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_codesettings.CodeSettingsV2.GetSystemParameter(String name) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_codesettings\Reference.cs:行号 136
+   在 BLL.CodeSetting.GetMenu() 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CodeSetting.cs:行号 78
+   在 WEBUI.Pages.Main.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Main.aspx.cs:行号 36
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 50
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.19.81
+DataTime：2022/5/11 14:43:28
+Url：http://192.168.19.56/WEBUI/pages/main.aspx
+Message：由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.66.100:9999
+Source：System
+Type：System.Net.Sockets.SocketException
+Function：Void DoConnect(System.Net.EndPoint, System.Net.SocketAddress)
+Trace：   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+********************************************************************************************

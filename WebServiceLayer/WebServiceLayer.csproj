@@ -72,10 +72,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://192.168.19.202:8888/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx">
+    <WebReferenceUrl Include="http://192.168.66.100:9999/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WebReference_codesettings\</RelPath>
-      <UpdateFromURL>http://192.168.19.202:8888/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx</UpdateFromURL>
+      <UpdateFromURL>http://192.168.66.100:9999/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -83,10 +83,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>WebServiceLayer_WebReference_codesettings_CodeSettingsV2</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://192.168.19.202:8888/dw-ihr/bll/ServicesWithSession/LeaveManagementV2.asmx">
+    <WebReferenceUrl Include="http://192.168.66.100:9999/dw-ihr/bll/ServicesWithSession/LeaveManagementV2.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WebReference_leave\</RelPath>
-      <UpdateFromURL>http://192.168.19.202:8888/dw-ihr/bll/ServicesWithSession/LeaveManagementV2.asmx</UpdateFromURL>
+      <UpdateFromURL>http://192.168.66.100:9999/dw-ihr/bll/ServicesWithSession/LeaveManagementV2.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -94,10 +94,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>WebServiceLayer_WebReference_leave_LeaveManagementV2</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://192.168.19.202:8888/dw-ihr/bll/ServicesWithSession/UserManagementV2.asmx">
+    <WebReferenceUrl Include="http://192.168.66.100:9999/dw-ihr/bll/ServicesWithSession/UserManagementV2.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WebReference_user\</RelPath>
-      <UpdateFromURL>http://192.168.19.202:8888/dw-ihr/bll/ServicesWithSession/UserManagementV2.asmx</UpdateFromURL>
+      <UpdateFromURL>http://192.168.66.100:9999/dw-ihr/bll/ServicesWithSession/UserManagementV2.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

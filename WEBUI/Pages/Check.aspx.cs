@@ -134,7 +134,7 @@ namespace WEBUI.Pages
                         int centerfaceid = iguard.AttendanceInterfaceCenterID ?? 0;
                         string deviceid = iguard.DeviceID;
 
-                        var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber, centerfaceid, interfaceid, 1, loginer.userInfo.surname, deviceid, zoneCode, "", "");
+                        var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber, centerfaceid, interfaceid, 1, loginer.userInfo.surname, deviceid, zoneCode, "", "","","");
                         BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
                     }
                 }
@@ -145,13 +145,20 @@ namespace WEBUI.Pages
 
                     double lat = 0;
                     double lon = 0;
+                    string macAddress = "";
 
                     string[] valueArray = value.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
                     if(valueArray!=null && valueArray.Count()>=2)
                     {
                         lata = valueArray[0];
                         longa = valueArray[1];
+
+                        if(valueArray.Count()>=3)
+                        {
+                            macAddress = valueArray[2];
+                        }
                     }
+
 
 
                     if (!string.IsNullOrEmpty(lata) && !string.IsNullOrEmpty(longa) && double.TryParse(lata,out lat) && double.TryParse(longa,out lon))
@@ -184,8 +191,8 @@ namespace WEBUI.Pages
                             locationname = "";
                         }
 
-
-                        var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber, 22, 2, 1, loginer.userInfo.surname, "000", zoneCode, value, locationname);
+                        
+                        var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber, 22, 2, 1, loginer.userInfo.surname, "000", zoneCode, value, locationname,macAddress,"");
                         BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
 
                     }

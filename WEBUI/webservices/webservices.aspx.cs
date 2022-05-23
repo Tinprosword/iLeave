@@ -11,6 +11,7 @@ namespace WEBUI.webservices
 {
     public partial class webservices : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -23,7 +24,7 @@ namespace WEBUI.webservices
                     {
                         Response.Clear();
 
-                        Response.Write(getXml(WebServiceLayer.MyWebService.GetDecodeWebServicesAddress()));
+                        Response.Write(getXml("ok"));
                         Response.End();
                     }
                     else if(Actionname== "saveheight")
@@ -32,6 +33,31 @@ namespace WEBUI.webservices
                         int intHeight = 0;
                         int.TryParse(height,out intHeight);
                         LSLibrary.WebAPP.PageSessionHelper.SetValue(intHeight, "sh");
+                    }
+                    else if(Actionname=="login")
+                    {
+                        //<Result>5322</Result>
+                        //<SessionID>ipqkjy3jts4vzq45ukat4yqn</SessionID >
+                        string UserName = "";
+                        string PasswordHash = "";
+                        if(!string.IsNullOrEmpty( Request["UserName"]) && !string.IsNullOrEmpty(Request["PasswordHash"]))
+                        {
+                            UserName = Request["UserName"];
+                            PasswordHash = Request["PasswordHash"];
+                            var loginresult= BLL.User_wsref.CheckLogin(UserName, PasswordHash);
+                            Response.Clear();
+
+                            string result= LSLibrary.XmlConvertor.ObjectToXml(loginresult, true);
+
+                            Response.Write(result);
+                            Response.End();
+                        }
+                    }
+                    else
+                    {
+                        Response.Clear();
+                        Response.Write(getXml(""));
+                        Response.End();
                     }
                 }
                 else
