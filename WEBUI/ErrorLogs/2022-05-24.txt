@@ -1,0 +1,17 @@
+ip:192.168.19.81
+DataTime：2022/5/24 18:03:21
+Url：http://192.168.19.72/WEBUI/Pages/Apply_Upload.aspx?urlpsessionname=Session_ApplyToUpload&urlpbacksessionname=Session_UploadToApply&urlpBackUrl=~%2fpages%2fApply.aspx%3faction%3dback
+Message：超过了最大请求长度。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Web.HttpRawUploadedContent GetEntireRawContent()
+Trace：   在 System.Web.HttpRequest.GetEntireRawContent()
+   在 System.Web.HttpRequest.GetMultipartContent()
+   在 System.Web.HttpRequest.FillInFormCollection()
+   在 System.Web.HttpRequest.EnsureForm()
+   在 System.Web.HttpRequest.get_Form()
+   在 System.Web.HttpRequest.get_HasForm()
+   在 System.Web.UI.Page.GetCollectionBasedOnMethod(Boolean dontReturnNull)
+   在 System.Web.UI.Page.DeterminePostBackMode()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

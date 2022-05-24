@@ -43,6 +43,9 @@ namespace BLL
         public static void MPG_GoBackToLogin()
         {
             var cookie= BLL.Page.MyCookieManage.GetCookie();
+            cookie.loginname = "";
+            cookie.loginpsw = "";
+            BLL.Page.MyCookieManage.SetCookie(cookie);
             MorePlaygroundAction("sys", "loginout", "sys", "loginout", "~/login.aspx?action=userloginout",cookie.isAppLogin=="1");
         }
 

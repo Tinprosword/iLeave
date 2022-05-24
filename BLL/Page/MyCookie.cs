@@ -45,7 +45,7 @@ namespace BLL.Page
             {
                 mycookie.language = LSLibrary.WebAPP.LanguageType.english;
                 mycookie.serverAddress = "";
-                mycookie.isRemember = "0";
+                mycookie.isRemember = "1";
                 mycookie.loginname = "";
                 mycookie.loginpsw = "";
                 mycookie.isAppLogin = "0";

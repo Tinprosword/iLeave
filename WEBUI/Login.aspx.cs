@@ -119,6 +119,11 @@ namespace WEBUI
                     //    BLL.Page.MyCookieManage.SetCookie(cookie);
                     //}
 
+                    cookie.isRemember = "1";
+                    cookie.loginname = userid;
+                    cookie.loginpsw = password;
+                    BLL.Page.MyCookieManage.SetCookie(cookie);
+
                     MODEL.UserInfo userInfo= BLL.User_wsref.GetAndSaveInfoToSession(userid, loginResult);
                     if (userInfo != null)
                     {
