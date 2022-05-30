@@ -71,6 +71,7 @@ namespace WEBUI.Pages
             this.lt_date.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Taxation_label_year;
             this.lt_status.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Paylist_lable_status;
             this.btn_search.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Common_download;
+            this.lt_replacement.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Taxation_label_replacement;
         }
 
 
@@ -97,6 +98,9 @@ namespace WEBUI.Pages
             int selectedYear = 0;
             int.TryParse(this.DropDownList1.SelectedValue, out selectedYear);
 
+            bool replace = this.cb_replacement.Checked;
+
+
             if (selectedYear != 0)
             {
                 var pEmployment = mMyPayslip.Where(x => x.TaxYear == selectedYear.ToString()).FirstOrDefault();
@@ -104,7 +108,7 @@ namespace WEBUI.Pages
                 if (pEmployment != null)
                 {
                     int pEmploymentID = pEmployment.EmploymentID;
-                    var data = BLL.Other.GetTextationReportData(selectedYear, pEmploymentID, loginer.userInfo.id);
+                    var data = BLL.Other.GetTextationReportData(selectedYear, pEmploymentID, loginer.userInfo.id,replace);
 
                     if (data != null && data.reportData != null && data.reportData.Length > 0 && data.msgtype == 1)
                     {

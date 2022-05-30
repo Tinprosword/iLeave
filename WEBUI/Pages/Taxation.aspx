@@ -18,6 +18,10 @@
                 <td><asp:Label ID="lb_status" runat="server"></asp:Label></td>
             </tr>
             <tr>
+                <td><asp:Literal ID="lt_replacement" runat="server"/></td>
+                <td><asp:CheckBox ID="cb_replacement" runat="server" /></td>
+            </tr>
+            <tr>
                 <td colspan="2" style="padding-top:10px; padding-left:10px"><asp:Button ID="btn_search" runat="server" Text="Download"  CssClass="CommonBlueButton" OnClick="btn_search_Click" />
                     <asp:Label ID="lb_msg" runat="server"></asp:Label>
                 </td>

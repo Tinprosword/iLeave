@@ -136,9 +136,9 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.LoadPaySlipReport(staffid, uid_operater, year, month);
         }
 
-        public static WebServiceLayer.WebReference_leave.ReportCommonData GetTextationReportData(int year,int eid,int uid_operater)
+        public static WebServiceLayer.WebReference_leave.ReportCommonData GetTextationReportData(int year,int eid,int uid_operater,bool replace)
         {
-            return  WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.LoadTaxationReport(year,eid,uid_operater);
+            return  WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.LoadTaxationReport(year,eid,uid_operater,replace);
         }
 
         public static WebServiceLayer.WebReference_leave.AttendanceRawData GenerateModel(DateTime logdate,int uid,string _Type,string _ExternalRef,int _AttendanceInterfaceCenterID,

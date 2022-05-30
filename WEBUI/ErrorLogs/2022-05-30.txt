@@ -1,0 +1,160 @@
+ip:::1
+DataTime：2022/5/30 15:33:19
+Url：http://localhost/WEBUI/pages/taxation.aspx
+Message：Server was unable to process request. ---> Missing parameter values. ---> Missing parameter values.
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.LoadTaxationReport(Int32 year, Int32 employid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 2606
+   在 BLL.Other.GetTextationReportData(Int32 year, Int32 eid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Other.cs:行号 141
+   在 WEBUI.Pages.Taxation.btn_search_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Taxation.aspx.cs:行号 107
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/30 15:34:54
+Url：http://localhost/WEBUI/pages/taxation.aspx
+Message：Server was unable to process request. ---> Missing parameter values. ---> Missing parameter values.
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.LoadTaxationReport(Int32 year, Int32 employid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 2606
+   在 BLL.Other.GetTextationReportData(Int32 year, Int32 eid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Other.cs:行号 141
+   在 WEBUI.Pages.Taxation.btn_search_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Taxation.aspx.cs:行号 107
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/30 15:35:11
+Url：http://localhost/WEBUI/pages/taxation.aspx
+Message：Server was unable to process request. ---> Missing parameter values. ---> Missing parameter values.
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.LoadTaxationReport(Int32 year, Int32 employid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 2606
+   在 BLL.Other.GetTextationReportData(Int32 year, Int32 eid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Other.cs:行号 141
+   在 WEBUI.Pages.Taxation.btn_search_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Taxation.aspx.cs:行号 107
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/30 15:38:08
+Url：http://localhost/WEBUI/pages/taxation.aspx
+Message：Server was unable to process request. ---> Missing parameter values. ---> Missing parameter values.
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.LoadTaxationReport(Int32 year, Int32 employid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 2606
+   在 BLL.Other.GetTextationReportData(Int32 year, Int32 eid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Other.cs:行号 141
+   在 WEBUI.Pages.Taxation.btn_search_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Taxation.aspx.cs:行号 107
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/30 15:42:29
+Url：http://localhost/WEBUI/pages/taxation.aspx
+Message：Server was unable to process request. ---> Missing parameter values. ---> Missing parameter values.
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.LoadTaxationReport(Int32 year, Int32 employid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 2606
+   在 BLL.Other.GetTextationReportData(Int32 year, Int32 eid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Other.cs:行号 141
+   在 WEBUI.Pages.Taxation.btn_search_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Taxation.aspx.cs:行号 107
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/30 15:43:43
+Url：http://localhost/WEBUI/pages/taxation.aspx
+Message：Server was unable to process request. ---> Missing parameter values. ---> Missing parameter values.
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.LoadTaxationReport(Int32 year, Int32 employid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 2606
+   在 BLL.Other.GetTextationReportData(Int32 year, Int32 eid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Other.cs:行号 141
+   在 WEBUI.Pages.Taxation.btn_search_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Taxation.aspx.cs:行号 107
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/30 15:47:28
+Url：http://localhost/WEBUI/pages/taxation.aspx
+Message：Server was unable to process request. ---> Missing parameter values. ---> Missing parameter values.
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.LoadTaxationReport(Int32 year, Int32 employid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 2606
+   在 BLL.Other.GetTextationReportData(Int32 year, Int32 eid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Other.cs:行号 141
+   在 WEBUI.Pages.Taxation.btn_search_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Taxation.aspx.cs:行号 107
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/30 15:48:39
+Url：http://localhost/WEBUI/pages/taxation.aspx
+Message：服务器无法处理请求。 ---> 缺少参数值。 ---> 缺少参数值。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.LoadTaxationReport(Int32 year, Int32 employid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 2606
+   在 BLL.Other.GetTextationReportData(Int32 year, Int32 eid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Other.cs:行号 141
+   在 WEBUI.Pages.Taxation.btn_search_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Taxation.aspx.cs:行号 107
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/30 15:50:25
+Url：http://localhost/WEBUI/pages/taxation.aspx
+Message：服务器无法处理请求。 ---> 缺少参数值。 ---> 缺少参数值。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.LoadTaxationReport(Int32 year, Int32 employid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 2606
+   在 BLL.Other.GetTextationReportData(Int32 year, Int32 eid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Other.cs:行号 141
+   在 WEBUI.Pages.Taxation.btn_search_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Taxation.aspx.cs:行号 107
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/5/30 15:51:28
+Url：http://localhost/WEBUI/pages/taxation.aspx
+Message：服务器无法处理请求。 ---> 缺少参数值。 ---> 缺少参数值。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.LoadTaxationReport(Int32 year, Int32 employid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 2606
+   在 BLL.Other.GetTextationReportData(Int32 year, Int32 eid, Int32 uid_operater) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Other.cs:行号 141
+   在 WEBUI.Pages.Taxation.btn_search_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Taxation.aspx.cs:行号 107
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

@@ -424,14 +424,17 @@ namespace ut
         public User user_103 = null;//user 
         public User user_102 = null;//approrver1
         public User user_101 = null;//apporver2
+        public User user_104 = null;//user
 
         public int u101pid = 25628;
         public int u102pid = 25629;
         public int u103pid = 25630;
+        public int u104pid = 25631;
 
         public string u101alcode = "AL07";
         public string u102alcode = "AL07";
         public string u103alcode = "AL07";
+        public string u104alcode = "AL07";
 
 
         public UT_Workflow()
@@ -441,18 +444,22 @@ namespace ut
             var u103 = BLL.User_wsref.GetPersonBaseInfoByPid(u103pid);
             var u102 = BLL.User_wsref.GetPersonBaseInfoByPid(u102pid);
             var u101 = BLL.User_wsref.GetPersonBaseInfoByPid(u101pid);
+            var u104 = BLL.User_wsref.GetPersonBaseInfoByPid(u104pid);
 
             string lcode1 = u101alcode;
             string lcode2 = u102alcode;
             string lcode3 = u103alcode;
+            string lcode4 = u104alcode;
 
             int code1 = allLeaveinfo.Where(x => x.Code == lcode1).FirstOrDefault().ID;
             int code2 = allLeaveinfo.Where(x => x.Code == lcode2).FirstOrDefault().ID;
             int code3 = allLeaveinfo.Where(x => x.Code == lcode3).FirstOrDefault().ID;
+            int code4 = allLeaveinfo.Where(x => x.Code == lcode4).FirstOrDefault().ID;
 
             user_103 = new User(u103[0].u_id ?? 0, u103[0].e_id ?? 0, u103[0].s_id ?? 0, u103[0].e_id ?? 0, code1, lcode1, u103[0].p_id, 8, "103");
             user_102 = new User(u102[0].u_id ?? 0, u102[0].e_id ?? 0, u102[0].s_id ?? 0, u102[0].e_id ?? 0, code2, lcode2, u102[0].p_id, 8, "102");
             user_101 = new User(u101[0].u_id ?? 0, u101[0].e_id ?? 0, u101[0].s_id ?? 0, u101[0].e_id ?? 0, code3, lcode3, u101[0].p_id, 8, "101");
+            user_104= new User(u104[0].u_id ?? 0, u104[0].e_id ?? 0, u104[0].s_id ?? 0, u104[0].e_id ?? 0, code4, lcode4, u104[0].p_id, 8, "104");
 
         }
 
@@ -526,6 +533,15 @@ namespace ut
 
 
         #region leave
+        [TestMethod]
+        public void StartTest_leavev_testNotice()
+        {
+            User applyer = user_104;
+            applyer.UpdateALLeave();
+            Scene_Approvedv2(applyer);
+        }
+
+
         [TestMethod]
         public void StartTest_leavev_all()
         {
