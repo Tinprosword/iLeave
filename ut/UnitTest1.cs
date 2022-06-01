@@ -75,7 +75,8 @@ namespace ut
             int result = 0;
 
             string errorMsg = "";
-            result = BLL.Leave.InsertLeave(leaveinfos, userid, empolyid, staffid, "", ref errorMsg, firsteid, true);
+            string remark = System.DateTime.Now.ToString("yyyyMMdd") + empolyid.ToString();
+            result = BLL.Leave.InsertLeave(leaveinfos, userid, empolyid, staffid,remark, ref errorMsg, firsteid, true);
 
             if (result <= 0)
             {
