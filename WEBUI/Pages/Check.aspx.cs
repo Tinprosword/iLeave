@@ -145,9 +145,10 @@ namespace WEBUI.Pages
 
                     double lat = 0;
                     double lon = 0;
+                    string locationname = "";
                     string macAddress = "";
 
-                    string[] valueArray = value.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] valueArray = value.Split(new char[] { '|' }, StringSplitOptions.None);
                     if(valueArray!=null && valueArray.Count()>=2)
                     {
                         lata = valueArray[0];
@@ -160,10 +161,9 @@ namespace WEBUI.Pages
                     }
 
 
-
+                    
                     if (!string.IsNullOrEmpty(lata) && !string.IsNullOrEmpty(longa) && double.TryParse(lata,out lat) && double.TryParse(longa,out lon))
                     {
-                        string locationname = "";
                         try
                         {
                             //string mapurl = "http://api.map.baidu.com/geocoder?output=json&coord_type=wgs84&location=" + lat + "," + lon + "&key=OGbSHmIkHo2qLybXmSG2mr8pZ4uypIok";
@@ -190,12 +190,16 @@ namespace WEBUI.Pages
                         {
                             locationname = "";
                         }
-
-                        
-                        var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber, 22, 2, 1, loginer.userInfo.surname, "000", zoneCode, value, locationname,macAddress,"");
-                        BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
-
                     }
+
+                    string strlocation = "";
+                    if (lat!=0 && lon!=0)
+                    {
+                        strlocation = lat.ToString() + "|" + lon.ToString();
+                    }
+                    
+                    var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber, 22, 2, 1, loginer.userInfo.surname, "000", zoneCode, strlocation, locationname, macAddress, "");
+                    BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
                 }
 
 

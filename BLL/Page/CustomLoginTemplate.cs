@@ -21,7 +21,7 @@ namespace BLL
 
         protected  void InitPageVaralbal0_OnsessionoutRegisterEvent()
         {
-            LSLibrary.WebAPP.LoginManager.OnSessionTimeOutHandler = BLL.User_wsref.MPG_GoBackToLogin;
+            LSLibrary.WebAPP.LoginManager.OnSessionTimeOutHandler = BLL.User_wsref.MPG_SessionOutToLogin;
         }
 
         
