@@ -426,16 +426,19 @@ namespace ut
         public User user_102 = null;//approrver1
         public User user_101 = null;//apporver2
         public User user_104 = null;//user
+        public User user_105 = null;
 
         public int u101pid = 25628;
         public int u102pid = 25629;
         public int u103pid = 25630;
         public int u104pid = 25631;
+        public int u105pid = 25632;
 
         public string u101alcode = "AL07";
         public string u102alcode = "AL07";
         public string u103alcode = "AL07";
         public string u104alcode = "AL07";
+        public string u105alcode = "AL07";
 
 
         public UT_Workflow()
@@ -446,22 +449,25 @@ namespace ut
             var u102 = BLL.User_wsref.GetPersonBaseInfoByPid(u102pid);
             var u101 = BLL.User_wsref.GetPersonBaseInfoByPid(u101pid);
             var u104 = BLL.User_wsref.GetPersonBaseInfoByPid(u104pid);
+            var u105 = BLL.User_wsref.GetPersonBaseInfoByPid(u105pid);
 
             string lcode1 = u101alcode;
             string lcode2 = u102alcode;
             string lcode3 = u103alcode;
             string lcode4 = u104alcode;
+            string lcode5 = u105alcode;
 
             int code1 = allLeaveinfo.Where(x => x.Code == lcode1).FirstOrDefault().ID;
             int code2 = allLeaveinfo.Where(x => x.Code == lcode2).FirstOrDefault().ID;
             int code3 = allLeaveinfo.Where(x => x.Code == lcode3).FirstOrDefault().ID;
             int code4 = allLeaveinfo.Where(x => x.Code == lcode4).FirstOrDefault().ID;
+            int code5= allLeaveinfo.Where(x => x.Code == lcode5).FirstOrDefault().ID;
 
             user_103 = new User(u103[0].u_id ?? 0, u103[0].e_id ?? 0, u103[0].s_id ?? 0, u103[0].e_id ?? 0, code1, lcode1, u103[0].p_id, 8, "103");
             user_102 = new User(u102[0].u_id ?? 0, u102[0].e_id ?? 0, u102[0].s_id ?? 0, u102[0].e_id ?? 0, code2, lcode2, u102[0].p_id, 8, "102");
             user_101 = new User(u101[0].u_id ?? 0, u101[0].e_id ?? 0, u101[0].s_id ?? 0, u101[0].e_id ?? 0, code3, lcode3, u101[0].p_id, 8, "101");
             user_104= new User(u104[0].u_id ?? 0, u104[0].e_id ?? 0, u104[0].s_id ?? 0, u104[0].e_id ?? 0, code4, lcode4, u104[0].p_id, 8, "104");
-
+            user_105 = new User(u105[0].u_id ?? 0, u105[0].e_id ?? 0, u105[0].s_id ?? 0, u105[0].e_id ?? 0, code5, lcode5, u105[0].p_id, 8, "105");
         }
 
         #region common function clot
@@ -571,6 +577,29 @@ namespace ut
             Scene_wc_rejectv2(applyer);
 
             applyer = user_103;
+
+            applyer.UpdateALLeave();
+            Scene_waitingv2(applyer);
+            Scene_Approvedv2(applyer);
+            Scene_Reject1v2(applyer);
+            Scene_WithDrawv2(applyer);
+            Scene_wcv2(applyer);
+            Scene_wc_approvedv2(applyer);
+            Scene_wc_rejectv2(applyer);
+
+            applyer = user_104;
+
+            applyer.UpdateALLeave();
+            Scene_waitingv2(applyer);
+            Scene_Approvedv2(applyer);
+            Scene_Reject1v2(applyer);
+            Scene_WithDrawv2(applyer);
+            Scene_wcv2(applyer);
+            Scene_wc_approvedv2(applyer);
+            Scene_wc_rejectv2(applyer);
+
+
+            applyer = user_105;
 
             applyer.UpdateALLeave();
             Scene_waitingv2(applyer);
