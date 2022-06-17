@@ -379,8 +379,11 @@ namespace BLL
                     var hasCancelItem = result.Where(x => x.WorkflowTypeID == 10 && x.employmentID == tempItem.employmentID && x.leavefrom == tempItem.leavefrom && x.leaveto == tempItem.leaveto).FirstOrDefault();
                     if (hasCancelItem != null)
                     {
-                        tempItem.WorkflowTypeID = 10;
-                        tempItem.Status = hasCancelItem.Status;
+                        if (tempItem.Status == 4)//数据库设计的缺陷，cancel request id不能和之前requestid 的关联起来。所以暂时把4的都当作是 confirm canceled.
+                        {
+                            tempItem.WorkflowTypeID = 10;
+                            tempItem.Status = hasCancelItem.Status;
+                        }
                     }
                 }
                 result = tempresult;
