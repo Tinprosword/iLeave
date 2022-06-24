@@ -405,8 +405,8 @@ namespace WEBUI.Pages
                 }
                 else if (btntype == 6)//cancel
                 {
-                    var firstinfo = BLL.Leave.GetFirstRequestinfoa(requestId);
-                    if (!firstinfo.hasCancel)
+                    int posibalCancelID = BLL.Leave.GetPossibalCancelRequestid(requestId);
+                    if (posibalCancelID==0)
                     {
                         int rid = BLL.workflow.CancelRequest_leave(requestId, loginer.userInfo.id, "", out errormsg);
                         callResult = rid <= 0 ? false : true;

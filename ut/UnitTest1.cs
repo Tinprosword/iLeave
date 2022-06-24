@@ -8,6 +8,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using LSLibrary;
+using System.Net;
+using System.Security;
+using System.Net.Mail;
 
 namespace ut
 {
@@ -991,6 +994,14 @@ namespace ut
         [TestMethod]
         public void StartTest_clot_all()
         {
+
+            var client = new SmtpClient();
+            
+                // Note: don't set a timeout unless you REALLY know what you are doing.
+                //client.Timeout = 1000 * 20;
+
+
+
             User applyer = user_101;
             Scene_waiting_clot(applyer);
             Scene_Approved_clot(applyer);

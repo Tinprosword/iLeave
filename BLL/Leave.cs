@@ -360,6 +360,11 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetFirstRequestInfo(requestid);
         }
 
+        public static int GetPossibalCancelRequestid(int requestid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetPossibalCancelRequestid(requestid);
+        }
+
         public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyLeaveMaster(int pid, GlobalVariate.LeaveBigRangeStatus status, int year)
         {
             List<LeaveRequestMaster> result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMasterByPID(pid).ToList();
@@ -729,10 +734,6 @@ namespace BLL
         public static List<WebServiceLayer.WebReference_leave.LeaveHistory> GetLeaveHistoryByRequest(int requestid)
         {
             List<WebServiceLayer.WebReference_leave.LeaveHistory> result= WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveHistory(requestid).ToList();
-            if (result != null && result.Count() > 0)
-            {
-                result.RemoveAt(0);
-            }
             return result;
         }
 

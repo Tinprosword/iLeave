@@ -35,6 +35,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetWorkTask_MaxSteps_NeedMeApproval_CLOT_ByUIDOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetPossibalCancelRequestidOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetLeaveHistoryOperationCompleted;
         
         private System.Threading.SendOrPostCallback CreateNewWorkflowOperationCompleted;
@@ -293,6 +295,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event GetWorkTask_MaxSteps_NeedMeApproval_CLOT_ByUIDCompletedEventHandler GetWorkTask_MaxSteps_NeedMeApproval_CLOT_ByUIDCompleted;
+        
+        /// <remarks/>
+        public event GetPossibalCancelRequestidCompletedEventHandler GetPossibalCancelRequestidCompleted;
         
         /// <remarks/>
         public event GetLeaveHistoryCompletedEventHandler GetLeaveHistoryCompleted;
@@ -696,6 +701,35 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.GetWorkTask_MaxSteps_NeedMeApproval_CLOT_ByUIDCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetWorkTask_MaxSteps_NeedMeApproval_CLOT_ByUIDCompleted(this, new GetWorkTask_MaxSteps_NeedMeApproval_CLOT_ByUIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetPossibalCancelRequestid", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int GetPossibalCancelRequestid(int requestID) {
+            object[] results = this.Invoke("GetPossibalCancelRequestid", new object[] {
+                        requestID});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetPossibalCancelRequestidAsync(int requestID) {
+            this.GetPossibalCancelRequestidAsync(requestID, null);
+        }
+        
+        /// <remarks/>
+        public void GetPossibalCancelRequestidAsync(int requestID, object userState) {
+            if ((this.GetPossibalCancelRequestidOperationCompleted == null)) {
+                this.GetPossibalCancelRequestidOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPossibalCancelRequestidOperationCompleted);
+            }
+            this.InvokeAsync("GetPossibalCancelRequestid", new object[] {
+                        requestID}, this.GetPossibalCancelRequestidOperationCompleted, userState);
+        }
+        
+        private void OnGetPossibalCancelRequestidOperationCompleted(object arg) {
+            if ((this.GetPossibalCancelRequestidCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetPossibalCancelRequestidCompleted(this, new GetPossibalCancelRequestidCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -10665,6 +10699,32 @@ namespace WebServiceLayer.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((t_WorkflowTask[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetPossibalCancelRequestidCompletedEventHandler(object sender, GetPossibalCancelRequestidCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetPossibalCancelRequestidCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetPossibalCancelRequestidCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }
