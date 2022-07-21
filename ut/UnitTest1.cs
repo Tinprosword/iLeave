@@ -437,11 +437,11 @@ namespace ut
         public int u104pid = 25631;
         public int u105pid = 25632;
 
-        public string u101alcode = "AL07";
+        public string u101alcode = "AL14";
         public string u102alcode = "AL07";
-        public string u103alcode = "AL07";
+        public string u103alcode = "AL14";
         public string u104alcode = "AL07";
-        public string u105alcode = "AL07";
+        public string u105alcode = "AL14";
 
 
         public UT_Workflow()
@@ -1547,6 +1547,8 @@ namespace ut
 
 
 
+
+
         [TestMethod]
         public void testbll4()
         {
@@ -1556,11 +1558,211 @@ namespace ut
 
 
         [TestMethod]
-        public void linqTrainning()
+        public void TempTestFunction()
         {
-            WebServiceLayer.WebReference_user.UserManagementV2 userManagement = new WebServiceLayer.WebReference_user.UserManagementV2();
+            Test_roundup();
+            //DataRange();
+        }
+
+        public void Test_roundup()
+        {
+            List<double> result = new List<double>();
+
+            result.Add(roundup_halforint(2.234, 0));//2.234
+            result.Add(11111111111111111);
+
+            result.Add(roundup_halforint(2, 1));//2
+            result.Add(roundup_halforint(2.001, 1));//3
+            result.Add(11111111111111111);
+
+            result.Add(roundup_halforint(2, 0.5f));//2
+            result.Add(roundup_halforint(2.0004, 0.5f));//2
+            result.Add(roundup_halforint(2.0005, 0.5f));//2.5
+            result.Add(roundup_halforint(2.5004, 0.5f));//2.5
+            result.Add(roundup_halforint(2.5005, 0.5f));//3
+            result.Add(11111111111111111);
+
+            result.Add(roundup_halforint(2, 2f));//2
+            result.Add(roundup_halforint(2.009, 2f));//2
+            result.Add(roundup_halforint(2.010, 2f));//2.5
+            result.Add(roundup_halforint(2.509, 2f));//2.5
+            result.Add(roundup_halforint(2.510, 2f));//3
+
+            int a = 4;
+        }
+
+        public void DataRange()
+        {
+            List<bool> result = new List<bool>();
+            result.Add(IsLastDay_Probation(new DateTime(2020, 1, 5), 1, 3, new DateTime(2020, 4, 3)));//false
+            result.Add(IsLastDay_Probation(new DateTime(2020, 1, 5), 1, 3, new DateTime(2020, 4, 4)));//t
+            result.Add(IsLastDay_Probation(new DateTime(2020, 1, 5), 1, 3, new DateTime(2020, 4, 5)));//f
 
 
+            result.Add(IsLastDay_Probation(new DateTime(2020, 1, 5), 1, 3, new DateTime(2021, 4, 3)));//f
+            result.Add(IsLastDay_Probation(new DateTime(2020, 1, 5), 1, 3, new DateTime(2021, 4, 4)));//t
+            result.Add(IsLastDay_Probation(new DateTime(2020, 1, 5), 1, 3, new DateTime(2021, 4, 5)));//f
+
+
+            result.Add(IsLastDay_Probation(new DateTime(2020, 1, 31), 1, 3, new DateTime(2020, 4, 29)));//f
+            result.Add(IsLastDay_Probation(new DateTime(2020, 1, 31), 1, 3, new DateTime(2020, 4, 30)));//t
+            result.Add(IsLastDay_Probation(new DateTime(2020, 1, 31), 1, 3, new DateTime(2020, 5, 1)));//f
+
+            int a = 4;
+
+        }
+
+
+        public static double roundup_halforint(double value, float roundupValue)
+        {
+            double result = value;
+
+            int intTermination = (int)value;
+            double floatTermination = value - intTermination;
+            floatTermination = Math.Round(floatTermination, 3);
+
+            if (roundupValue == 0.5)
+            {
+                if (floatTermination > 0.5)
+                {
+                    result = intTermination + 1;
+                }
+                else if (floatTermination > 0 && floatTermination <= 0.5)
+                {
+                    result = intTermination + 0.5;
+                }
+                else
+                {
+                    result = intTermination;
+                }
+            }
+            else if (roundupValue == 1)
+            {
+                if (floatTermination > 0)
+                {
+                    result = intTermination + 1;
+                }
+                else
+                {
+                    result = intTermination;
+                }
+            }
+            else if(roundupValue==2)
+            {
+                if (floatTermination >= 0.51)
+                {
+                    result = intTermination + 1;
+                }
+                else if (floatTermination >= 0.01 && floatTermination < 0.51)
+                {
+                    result = intTermination + 0.5;
+                }
+                else
+                {
+                    result = intTermination;
+                }
+            }
+
+            return result;
+        }
+
+
+        [TestMethod]
+        public void testtemp()
+        {
+            DateRange dr1 = new DateRange(new DateTime(2022, 2, 5), new DateTime(2022, 3, 5));
+
+            DateRange t1 = new DateRange(new DateTime(2022, 1, 1), new DateTime(2022, 2, 4));
+
+            DateRange t2 = new DateRange(new DateTime(2022, 1, 1), new DateTime(2022, 2, 5));
+
+            DateRange t3 = new DateRange(new DateTime(2022, 1, 1), new DateTime(2022, 2, 6));
+
+            DateRange t4 = new DateRange(new DateTime(2022, 1, 1), new DateTime(2022, 3, 5));
+
+            DateRange t5 = new DateRange(new DateTime(2022, 1, 1), new DateTime(2022, 3, 6));
+
+            DateRange t6 = new DateRange(new DateTime(2022, 2, 5), new DateTime(2022, 2, 5));
+
+            DateRange t7 = new DateRange(new DateTime(2022, 2, 6), new DateTime(2022, 2, 8));
+
+            DateRange t8 = new DateRange(new DateTime(2022, 2, 6), new DateTime(2022, 3, 5));
+
+            DateRange t9 = new DateRange(new DateTime(2022, 2, 6), new DateTime(2022, 3, 9));
+
+            DateRange t10 = new DateRange(new DateTime(2022, 3, 5), new DateTime(2022, 3, 9));
+
+            DateRange t11 = new DateRange(new DateTime(2022, 3, 6), new DateTime(2022, 3, 9));
+
+            List<bool> result = new List<bool>();
+            result.Add(HasUniteData(dr1, t1));
+            result.Add(HasUniteData(dr1, t2));
+            result.Add(HasUniteData(dr1, t3));
+            result.Add(HasUniteData(dr1, t4));
+            result.Add(HasUniteData(dr1, t5));
+            result.Add(HasUniteData(dr1, t6));
+            result.Add(HasUniteData(dr1, t7));
+            result.Add(HasUniteData(dr1, t8));
+            result.Add(HasUniteData(dr1, t9));
+            result.Add(HasUniteData(dr1, t10));
+            result.Add(HasUniteData(dr1, t11));
+
+            int a = 4;
+        }
+
+
+        //是否有重叠日期
+        public static bool HasUniteData(DateRange dr1, DateRange dr2)
+        {
+            bool result = false;
+            if (dr2.fromday < dr1.fromday && dr2.today >= dr1.fromday)
+            {
+                result = true;
+            }
+            if (dr2.fromday == dr1.fromday)
+            {
+                result = true;
+            }
+            if (dr2.fromday > dr1.fromday && dr2.fromday <= dr1.today)
+            {
+                result = true;
+            }
+            return result;
+        }
+
+        public class DateRange
+        {
+            public DateTime fromday { get; set; }
+            public DateTime today { get; set; }
+            public DateRange(DateTime from, DateTime to)
+            {
+                fromday = from;
+                today = to;
+            }
+        }
+
+
+            private static bool IsLastDay_Probation(DateTime joinday, int delayyear, int delaymonth, DateTime checkday)
+        {
+            bool result = false;
+            //check parameter.
+            if (checkday >= joinday && delayyear >= 0 && delaymonth >= 1)
+            {
+                int yearOffset = checkday.Year - joinday.Year;
+
+                DateTime start1 = joinday.AddYears(yearOffset);
+                DateTime end1 = start1.AddMonths(delaymonth).AddDays(-1);
+
+                DateTime start2 = joinday.AddYears(yearOffset - 1);
+                DateTime end2 = start2.AddMonths(delaymonth).AddDays(-1);
+
+
+                if (checkday == end1 || checkday == end2)
+                {
+                    result = true;
+                }
+            }
+            return result;
         }
 
 

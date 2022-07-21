@@ -129,6 +129,10 @@ namespace WEBUI
                     {
                         Response.Redirect("~/Pages/chooseEmployment.aspx?pid=" + userInfo.personid+"&sourcetype=1");
                     }
+                    else
+                    {
+                        this.lt_js.Text = LSLibrary.JavasScriptHelper.AlertMessage("No employment.");
+                    }
                 }
                 else
                 {
@@ -137,7 +141,9 @@ namespace WEBUI
                 }
             }
             else
-            { }
+            {
+                this.lt_js.Text = LSLibrary.JavasScriptHelper.AlertMessage("Can not empty.");
+            }
         }
 
 
