@@ -142,7 +142,6 @@ namespace WEBUI
             }
             else
             {
-                this.lt_js.Text = LSLibrary.JavasScriptHelper.AlertMessage("Can not empty.");
             }
         }
 

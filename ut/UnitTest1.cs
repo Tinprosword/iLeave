@@ -1560,8 +1560,61 @@ namespace ut
         [TestMethod]
         public void TempTestFunction()
         {
-            Test_roundup();
+            DateTime splitd = new DateTime(2022, 3, 30);
+            DateTime startdate = new DateTime(2022, 2, 5);
+            var dd= getEndDate_month(splitd,startdate);
+
+            int a = 4;
+            //Test_roundup();
             //DataRange();
+        }
+
+
+        public static DateTime getEndDate_month(DateTime splitDate, DateTime startdate)
+        {
+            DateTime result = startdate;
+            try
+            {
+                if (splitDate.Day <= 28)
+                {
+                    if (startdate.Day >= splitDate.Day)
+                    {
+                        result = startdate.AddMonths(1);
+                    }
+                    int year = result.Year;
+                    int month = result.Month;
+                    int day = splitDate.Day;
+                    result = new DateTime(year, month, day);
+                }
+                else
+                {
+                    int realSplitday = splitDate.Day;
+                    int daysMonth_startday = System.DateTime.DaysInMonth(startdate.Year, startdate.Month);
+                    realSplitday = System.Math.Min(realSplitday, daysMonth_startday);
+                    if (startdate.Day >= realSplitday)
+                    {
+                        result = startdate.AddMonths(1);
+                    }
+                    //1.整月天数，是否大于等于 split day.
+                    //1.1是，用split day
+                    //1.2否，用最大天数
+                    int daysMonth = System.DateTime.DaysInMonth(result.Year, result.Month);
+                    if (daysMonth >= splitDate.Day)
+                    {
+                        result = new DateTime(result.Year, result.Month, splitDate.Day);
+                    }
+                    else
+                    {
+                        result = new DateTime(result.Year, result.Month, daysMonth);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("error:getEndDate_month");
+            }
+            return result;
+
         }
 
         public void Test_roundup()

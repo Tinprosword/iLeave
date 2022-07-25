@@ -13,7 +13,7 @@
             </div>
             <div class="col-xs-12" style="height:50px">&nbsp;</div>
             <div class="col-xs-12" style="text-align:center"><%-->OnClick_In--%>
-                <asp:Button ID="bt_checkin" OnClick="OnClick_In" runat="server" Text="Button" style="width:260px; height:260px; border:0px red solid; border-radius:130px; background-color:#06468c; color:#ffffff;font-size:40px" />
+                <asp:Button ID="bt_checkin" OnClick="OnClick_In" runat="server" Text="Button" style="width:280px; height:280px; border:0px red solid; border-radius:140px; background-color:#06468c; color:#ffffff;font-size:37px" />
             </div>
             <div class="col-xs-12" style="height:5px">&nbsp;</div>
             <div class="col-xs-12 MaintTextColor_new" style="text-align:center;">
