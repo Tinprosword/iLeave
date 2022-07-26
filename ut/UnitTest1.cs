@@ -1560,14 +1560,100 @@ namespace ut
         [TestMethod]
         public void TempTestFunction()
         {
-            DateTime splitd = new DateTime(2022, 3, 30);
-            DateTime startdate = new DateTime(2022, 2, 5);
-            var dd= getEndDate_month(splitd,startdate);
 
-            int a = 4;
+            TestMerge();
+            //testSplit();
             //Test_roundup();
             //DataRange();
         }
+
+        private static void TestMerge()
+        {
+            List<StaffSL> sl = new List<StaffSL>();
+
+            sl.Add(new StaffSL(new DateTime(2020, 1, 1), new DateTime(2020, 1, 1), 3));
+            sl.Add(new StaffSL(new DateTime(2020, 1, 2), new DateTime(2020, 1, 2), 3));
+
+            sl.Add(new StaffSL(new DateTime(2020, 1, 5), new DateTime(2020, 1, 6), 3));
+            sl.Add(new StaffSL(new DateTime(2020, 1, 7), new DateTime(2020, 1, 8), 3));
+
+
+            sl.Add(new StaffSL(new DateTime(2020, 1, 10), new DateTime(2020, 1, 10), 3));
+            sl.Add(new StaffSL(new DateTime(2020, 1, 11), new DateTime(2020, 1, 11), 3));
+            sl.Add(new StaffSL(new DateTime(2020, 1, 12), new DateTime(2020, 1, 13), 3));
+
+
+            sl.Add(new StaffSL(new DateTime(2020, 1, 15), new DateTime(2020, 1, 15), 3));
+
+            var result= StaffSL.GetRanges(sl);
+
+        }
+
+        private static void testSplit()
+        {
+            DateTime splitd = new DateTime(2022, 3, 30);
+            DateTime startdate = new DateTime(2022, 2, 5);
+            var dd = getEndDate_month(splitd, startdate);
+
+            int a = 4;
+        }
+
+        public class StaffSL
+        {
+            public DateTime start;
+            public DateTime end;
+            public double unit;
+            public StaffSL() { }
+            public StaffSL(DateTime s, DateTime e, double u)
+            {
+                start = s;
+                end = e;
+                unit = u;
+            }
+
+            public static List<DateRange> GetRanges(List<StaffSL> data)
+            {
+                List<DateRange> result = new List<DateRange>();
+
+                data = data.OrderBy(x => x.start).ToList();
+
+                //
+                DateTime? TempStart = null;
+                DateTime? TempEnd = null;
+
+                foreach (var theItem in data)
+                {
+                    if (TempStart == null || TempEnd == null)
+                    {
+                        TempStart = theItem.start;
+                        TempEnd = theItem.end;
+                    }
+                    else
+                    {
+                        if (theItem.start.Date == TempEnd.Value.Date.AddDays(1).Date)
+                        {
+                            TempEnd = theItem.end;
+                        }
+                        else
+                        {
+                            result.Add(new DateRange(TempStart ?? System.DateTime.MinValue, TempEnd ?? System.DateTime.MinValue));
+
+                            TempStart = theItem.start.Date;
+                            TempEnd = theItem.end.Date;
+                        }
+                    }
+                }
+
+                if (TempStart != null && TempEnd != null)
+                {
+                    result.Add(new DateRange(TempStart ?? System.DateTime.MinValue, TempEnd ?? System.DateTime.MinValue));
+                }
+
+                return result;
+            }
+        }
+
+     
 
 
         public static DateTime getEndDate_month(DateTime splitDate, DateTime startdate)

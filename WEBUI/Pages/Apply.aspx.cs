@@ -564,7 +564,18 @@ namespace WEBUI.Pages
             }
             else
             {
-                return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,0,0)";
+                var clientType = LSLibrary.WebAPP.MobilWebHelper.GetClientType(HttpContext.Current.Request.UserAgent);
+                var cookies = BLL.Page.MyCookieManage.GetCookie();
+
+                if (clientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone && cookies.isAppLogin == "1")
+                {
+                    return "return checkNewTab('',1,0,0)";
+                }
+                else
+                {
+                    return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,0,0)";
+                }
+                
             }
         }
 
@@ -576,7 +587,17 @@ namespace WEBUI.Pages
             }
             else
             {
-                return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,3,0)";
+                var clientType = LSLibrary.WebAPP.MobilWebHelper.GetClientType(HttpContext.Current.Request.UserAgent);
+                var cookies = BLL.Page.MyCookieManage.GetCookie();
+
+                if (clientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone && cookies.isAppLogin == "1")
+                {
+                    return "return checkNewTab('',1,3,0)";
+                }
+                else
+                {
+                    return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,3,0)";
+                }
             }
         }
 
