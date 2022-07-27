@@ -4,7 +4,7 @@
                 <table class="col-xs-12 lsf-maringTop3px lsu-bigtable">
                     <tr style="height:1px;"><td ></td><td ></td><td style="text-align:right;color:white; font-size:15px;"><asp:Label ID="lb_versionname" runat="server" Text="Ver."></asp:Label>
                         <%--X 表示主版本号，当 API 的兼容性变化时，X 需递增。Y 表示次版本号，当增加功能时(不影响 API 的兼容性)，Y 需递增。Z 表示修订号，当做 Bug 修复时(不影响 API 的兼容性)，Z 需递增。--%>
-                        <asp:Label ID="lb_version" runat="server" Text="1.4.0"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+                        <asp:Label ID="lb_version" runat="server" Text="1.4.1"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
                     <%--<tr style="height:80px;">
                         <td style="width:25px;">&nbsp;</td>
                         <td style="width:80px;"><img src="../Res/images/settingAccount.png" class="setting_img" /></td>
