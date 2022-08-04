@@ -1809,6 +1809,14 @@ namespace ut
         [TestMethod]
         public void testtemp()
         {
+            var p= LSLibrary.MD5Util.GetMD5_32("Admin2022");
+
+            var gg = 4;
+            //testRange();
+        }
+
+        private static void testRange()
+        {
             DateRange dr1 = new DateRange(new DateTime(2022, 2, 5), new DateTime(2022, 3, 5));
 
             DateRange t1 = new DateRange(new DateTime(2022, 1, 1), new DateTime(2022, 2, 4));

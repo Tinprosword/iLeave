@@ -65,7 +65,7 @@ namespace WEBUI.Pages
                 LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, preViewState, ViewState);
                 MODEL.Apply.ViewState_page applypage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, this.ViewState);
                 applypage.LeaveList = applypage.LeaveList.ToList();
-                LoadUI(applypage.leavetype, applypage.LeaveTypeSelectValue,  applypage.ddlsectionSelectvalue, applypage.remarks, applypage.LeaveList,applypage.GetAttachment().Count(),applypage.hasHour,applypage.bydayorHour,applypage.from,applypage.to,applypage.totalHours);
+                LoadUI(applypage.leavetype, applypage.LeaveTypeSelectValue, applypage.ddlsectionSelectvalue, applypage.remarks, applypage.LeaveList, applypage.GetAttachment().Count(), applypage.hasHour, applypage.bydayorHour, applypage.from, applypage.to, applypage.totalHours);
                 IsLeaveTypeEnable();
                 this.lt_js_prg.Text = LSLibrary.WebAPP.MyJSHelper.CustomPost("", "");//避免有害刷新，所以手动post,引导无害刷新。
             }
@@ -85,9 +85,9 @@ namespace WEBUI.Pages
         {
         }
 
-        private void LoadUI(List<LSLibrary.WebAPP.ValueText<int>> leveTypeData,string leaveTypeSelectedValue,string ddlSectionSelected,string remarks,List<MODEL.Apply.apply_LeaveData> leaveDays,int numberofAttachment,bool hashour,int bydayorbyhout,DateTime? f,DateTime? t,double totalH)
+        private void LoadUI(List<LSLibrary.WebAPP.ValueText<int>> leveTypeData, string leaveTypeSelectedValue, string ddlSectionSelected, string remarks, List<MODEL.Apply.apply_LeaveData> leaveDays, int numberofAttachment, bool hashour, int bydayorbyhout, DateTime? f, DateTime? t, double totalH)
         {
-            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current,"~/pages/main.aspx", true);
+            ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx", true);
 
             int intNameType = BLL.CodeSetting.GetNameType(BLL.MultiLanguageHelper.GetChoose());
 
@@ -98,10 +98,10 @@ namespace WEBUI.Pages
             this.ddl_leavetype.SelectedValue = leaveTypeSelectedValue;
 
 
-            LoadLeaveSectionAndTime(int.Parse(this.ddl_leavetype.SelectedValue),bydayorbyhout,f,t,totalH,ddlSectionSelected);
+            LoadLeaveSectionAndTime(int.Parse(this.ddl_leavetype.SelectedValue), bydayorbyhout, f, t, totalH, ddlSectionSelected);
             RefleshApplyBalance(int.Parse(this.ddl_leavetype.SelectedValue));
 
-            string numberPath= BLL.common.GetAttachmentNumberPath(numberofAttachment);
+            string numberPath = BLL.common.GetAttachmentNumberPath(numberofAttachment);
             this.ib_counta.ImageUrl = numberPath;
             this.ib_counta.Visible = !string.IsNullOrEmpty(numberPath);
 
@@ -113,7 +113,7 @@ namespace WEBUI.Pages
             //this.button_apply.OnClientClick = "return ShowMessage('" + BLL.MultiLanguageHelper.GetLanguagePacket().submit_success + "','aa')";//OnClientClick='return ShowMessage(<%=BLL.GlobalVariate.submit_success%>,"aa")'
         }
 
-        
+
 
 
 
@@ -172,8 +172,8 @@ namespace WEBUI.Pages
             LSLibrary.WebAPP.PageSessionHelper.SetValue(this.ViewState[ViewState_PageName], BLL.GlobalVariate.Session_ApplyToUpload);
             string url = "~/Pages/Apply_Upload.aspx?{0}={1}&{2}={3}&{4}={5}";
             string backurl = System.Web.HttpUtility.UrlEncode("~/pages/Apply.aspx?action=back");
-            url = string.Format(url, Apply_Upload.url_GetsessionName, BLL.GlobalVariate.Session_ApplyToUpload,Apply_Upload.url_BacksessionName,BLL.GlobalVariate.Session_UploadToApply,Apply_Upload.url_backUrlname, backurl);
-            Response.Redirect(url,true);
+            url = string.Format(url, Apply_Upload.url_GetsessionName, BLL.GlobalVariate.Session_ApplyToUpload, Apply_Upload.url_BacksessionName, BLL.GlobalVariate.Session_UploadToApply, Apply_Upload.url_backUrlname, backurl);
+            Response.Redirect(url, true);
         }
         #endregion
 
@@ -201,7 +201,7 @@ namespace WEBUI.Pages
             int dayOrHour = GetByDayOrHourFromUI();
             bool dayisNotOK = (dayOrHour == 0 && (ddl_leavetype.SelectedValue == "0" || dropdl_section.SelectedValue == "-1"));
             bool totalisok = LSLibrary.CString.isDouble(this.tb_total.Text);
-            bool hourIsNotOK = (dayOrHour == 1 && (ddl_leavetype.SelectedValue == "0" || this.tb_total.Text == "" || this.tb_total.Text == "0" || totalisok==false));
+            bool hourIsNotOK = (dayOrHour == 1 && (ddl_leavetype.SelectedValue == "0" || this.tb_total.Text == "" || this.tb_total.Text == "0" || totalisok == false));
 
             if (dayisNotOK || hourIsNotOK)
             {
@@ -220,7 +220,7 @@ namespace WEBUI.Pages
 
             bool checkUIInput = CheckUIOnCalendar();
 
-            if (checkUIInput==false)
+            if (checkUIInput == false)
             {
                 this.literal_errormsga.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_msgselect;
                 this.literal_errormsga.Visible = true;
@@ -245,7 +245,7 @@ namespace WEBUI.Pages
             {
                 pagedate.LeaveList.RemoveAt(intIndex);
 
-                LSLibrary.WebAPP.ViewStateHelper.SetValue( ViewState_PageName, pagedate, ViewState);
+                LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, pagedate, ViewState);
                 this.repeater_leave.DataSource = pagedate.LeaveList;
                 this.repeater_leave.DataBind();
             }
@@ -317,7 +317,7 @@ namespace WEBUI.Pages
         }
 
 
-        private void LoadLeaveSectionAndTime(int leaveID,int byDayByhour, DateTime? from,DateTime? to,double total,string Selectsection)
+        private void LoadLeaveSectionAndTime(int leaveID, int byDayByhour, DateTime? from, DateTime? to, double total, string Selectsection)
         {
             //1.leaveid=0==>init  2.
             List<LSLibrary.WebAPP.ValueText<int>> ddlSource = BLL.Leave.GetDDLSectionsData(leaveID, (int)loginer.userInfo.employID);
@@ -329,14 +329,14 @@ namespace WEBUI.Pages
             LoadTime_init();
 
             bool AllowHour = false;
-            var tempaaa= BLL.User_wsref.GetPersonBaseInfoByPid(loginer.userInfo.personid);
+            var tempaaa = BLL.User_wsref.GetPersonBaseInfoByPid(loginer.userInfo.personid);
             if (tempaaa != null && tempaaa.Count() > 0)
             {
-                AllowHour = BLL.Leave.AllowHour(leaveID, tempaaa[0].s_PositionID??0);
+                AllowHour = BLL.Leave.AllowHour(leaveID, tempaaa[0].s_PositionID ?? 0);
             }
 
-             
-            if (leaveID == 0 || AllowHour==false)
+
+            if (leaveID == 0 || AllowHour == false)
             {
                 //hiden radio. hiden time
                 tr_radio.Visible = false;
@@ -390,7 +390,7 @@ namespace WEBUI.Pages
 
                 double applying = pagedate.getApplying();
 
-                BLL.Leave.UpdateTodayLeaveBalanceToTable(loginer.userInfo.employID??0);
+                BLL.Leave.UpdateTodayLeaveBalanceToTable(loginer.userInfo.employID ?? 0);
 
                 double cleanValue = BLL.Leave.GetAailabeValue_substractFutherAndWait(leaveid, (int)loginer.userInfo.staffid, (int)loginer.userInfo.employID);
 
@@ -419,13 +419,13 @@ namespace WEBUI.Pages
             RefleshApplyBalance(leaveid);
         }
 
-        
+
         #endregion
 
         #region [module] apply
         protected void button_apply_Click(object sender, EventArgs e)
         {
-            string waitCode= LSLibrary.WebAPP.httpHelper.WaitDiv_show(BLL.MultiLanguageHelper.GetLanguagePacket().Commonsubmit_success);
+            string waitCode = LSLibrary.WebAPP.httpHelper.WaitDiv_show(BLL.MultiLanguageHelper.GetLanguagePacket().Commonsubmit_success);
             Response.Write(waitCode);
             Response.Flush();
 
@@ -438,17 +438,17 @@ namespace WEBUI.Pages
             {
                 hasAttachment = true;
             }
-            int reslut = BLL.Leave.InsertLeave(LeaveList, loginer.userInfo.id, (int)loginer.userInfo.employID, null, this.tb_remarks.Text.Trim(), ref errorMsg,loginer.userInfo.firsteid??0,hasAttachment);
+            int reslut = BLL.Leave.InsertLeave(LeaveList, loginer.userInfo.id, (int)loginer.userInfo.employID, null, this.tb_remarks.Text.Trim(), ref errorMsg, loginer.userInfo.firsteid ?? 0, hasAttachment);
             if (reslut >= 0)
             {
                 for (int i = 0; i < pics.Count; i++)
                 {
-                    BLL.common.copyFileTo(pics[i].originAttendance_RelatePath, pics[i].originAttendance_HRDBPath,Server);
+                    BLL.common.copyFileTo(pics[i].originAttendance_RelatePath, pics[i].originAttendance_HRDBPath, Server);
                 }
-                BLL.Leave.InsertAttachment(pics, loginer.userInfo.id, loginer.userInfo.personid, reslut,BLL.GlobalVariate.AttachmentUploadType.LEAVE_CERTIFICATE,BLL.GlobalVariate.WorkflowTypeID.LEAVE_APPLICATION);
+                BLL.Leave.InsertAttachment(pics, loginer.userInfo.id, loginer.userInfo.personid, reslut, BLL.GlobalVariate.AttachmentUploadType.LEAVE_CERTIFICATE, BLL.GlobalVariate.WorkflowTypeID.LEAVE_APPLICATION);
 
                 string successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().apply_msgapplyok);
-                Response.Write(successMsg+".");
+                Response.Write(successMsg + ".");
                 Response.Flush();
                 System.Threading.Thread.Sleep(50);//休眠2秒,获得较好显示体验
 
@@ -471,7 +471,7 @@ namespace WEBUI.Pages
             page.Response.End();
         }
 
-       
+
         #endregion
 
         #region [common function]
@@ -486,9 +486,9 @@ namespace WEBUI.Pages
             this.ltlistdate.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_list_data;
             this.ltlisttype.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_list_type;
             this.lt_listsection.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_list_section;
-            this.lt_new.Text= BLL.MultiLanguageHelper.GetLanguagePacket().apply_new;
+            this.lt_new.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_new;
             this.lt_mypending.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_pending;
-            this.lt_myhistory.Text= BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed;
+            this.lt_myhistory.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed;
             this.btn_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_button;
 
             this.lt_estimation.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_estimation;
@@ -519,7 +519,7 @@ namespace WEBUI.Pages
                 applyPage.ddlsectionSelectvalue = "0";
                 applyPage.bydayorHour = byhourOrDAY;
                 applyPage.from = new DateTime(1900, 1, 1, int.Parse(this.DropDownList1.SelectedValue), int.Parse(DropDownList2.SelectedValue), 0);
-                applyPage.to= new DateTime(1900, 1, 1, int.Parse(this.DropDownList3.SelectedValue), int.Parse(DropDownList4.SelectedValue), 0);
+                applyPage.to = new DateTime(1900, 1, 1, int.Parse(this.DropDownList3.SelectedValue), int.Parse(DropDownList4.SelectedValue), 0);
                 applyPage.totalHours = double.Parse(this.tb_total.Text);
             }
             applyPage.remarks = this.tb_remarks.Text;
@@ -538,7 +538,7 @@ namespace WEBUI.Pages
 
 
 
-            LSLibrary.WebAPP.ViewStateHelper.SetValue( ViewState_PageName, applyPage, ViewState);
+            LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, applyPage, ViewState);
         }
 
         private void IsLeaveTypeEnable()
@@ -564,18 +564,10 @@ namespace WEBUI.Pages
             }
             else
             {
-                var clientType = LSLibrary.WebAPP.MobilWebHelper.GetClientType(HttpContext.Current.Request.UserAgent);
-                var cookies = BLL.Page.MyCookieManage.GetCookie();
 
-                if (clientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone && cookies.isAppLogin == "1")
-                {
-                    return "return checkNewTab('',1,0,0)";
-                }
-                else
-                {
-                    return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,0,0)";
-                }
-                
+                return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,0,0)";
+
+
             }
         }
 
@@ -587,23 +579,24 @@ namespace WEBUI.Pages
             }
             else
             {
-                var clientType = LSLibrary.WebAPP.MobilWebHelper.GetClientType(HttpContext.Current.Request.UserAgent);
-                var cookies = BLL.Page.MyCookieManage.GetCookie();
 
-                if (clientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone && cookies.isAppLogin == "1")
-                {
-                    return "return checkNewTab('',1,3,0)";
-                }
-                else
-                {
-                    return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,3,0)";
-                }
+                return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,3,0)";
+
             }
         }
 
         public string showesEvent()
         {
-            return "window.location.href='estimation.aspx'";
+            if (!IsPostBack)
+            {
+                return "return checkOtherPage('','estimation.aspx')";
+            }
+            else
+            {
+
+                return "return checkOtherPage('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "','estimation.aspx')";
+
+            }
         }
 
 
@@ -615,7 +608,7 @@ namespace WEBUI.Pages
             MODEL.Apply.ViewState_page pagedate = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, ViewState);
             MODEL.Apply.ajax_data_apply ajaxdata = new MODEL.Apply.ajax_data_apply();
             ajaxdata.pagedata = pagedate;
-            ajaxdata.loginid = loginer.userInfo.employID??0;
+            ajaxdata.loginid = loginer.userInfo.employID ?? 0;
             ((WEBUI.Controls.leave)this.Master).SetPageState(LSLibrary.MyJson.SObj(ajaxdata));
         }
 
@@ -644,7 +637,7 @@ namespace WEBUI.Pages
             int tom = int.Parse(this.DropDownList4.SelectedValue);
 
 
-            double totalHours = BLL.Leave.GetRealTotalHours(fromh, toh, fromm, tom, loginer.userInfo.employID??0);
+            double totalHours = BLL.Leave.GetRealTotalHours(fromh, toh, fromm, tom, loginer.userInfo.employID ?? 0);
 
             this.tb_total.Text = totalHours.ToString();
         }

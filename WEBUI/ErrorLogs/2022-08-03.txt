@@ -1,0 +1,13 @@
+ip:::1
+DataTime：2022/8/3 10:40:10
+Url：http://localhost/WEBUI/pages/applyCLOT.aspx
+Message：System.Web.UI.HtmlControls.HtmlTableCellCollection 必须具有类型为“System.Web.UI.HtmlControls.HtmlTableCell”的项。“tr”的类型为“System.Web.UI.HtmlControls.HtmlTableRow”。
+Source：System.Web
+Type：System.Web.HttpException
+Function：System.Type GetChildControlType(System.String, System.Collections.IDictionary)
+Trace：   在 System.Web.UI.CollectionBuilder.GetChildControlType(String tagName, IDictionary attribs)
+   在 System.Web.UI.ControlBuilder.CreateChildBuilder(String filter, String tagName, IDictionary attribs, TemplateParser parser, ControlBuilder parentBuilder, String id, Int32 line, VirtualPath virtualPath, Type& childType, Boolean defaultProperty)
+   在 System.Web.UI.ControlBuilder.CreateChildBuilder(String filter, String tagName, IDictionary attribs, TemplateParser parser, ControlBuilder parentBuilder, String id, Int32 line, VirtualPath virtualPath, Type& childType, Boolean defaultProperty)
+   在 System.Web.UI.TemplateParser.ProcessBeginTag(Match match, String inputText)
+   在 System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+********************************************************************************************

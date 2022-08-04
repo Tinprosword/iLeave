@@ -142,7 +142,16 @@ namespace WEBUI.Pages
             }
             else if (from == 3)
             {
-                sourceType = int.Parse( this.rbl_sourceType.SelectedValue);
+                try
+                {
+                    sourceType = int.Parse(this.rbl_sourceType.SelectedValue);
+                }
+                catch
+                {
+                    this.rp_clot.Visible = false;
+                    this.rp_list.Visible = false;
+                    return;//hidden 了 leave and cl/ot. 所以直接不显示repeater.
+                }
             }
             
             this.rp_clot.Visible = false;
@@ -260,8 +269,25 @@ namespace WEBUI.Pages
             else
             {
                 this.rbl_sourceType.Visible = true;
-
-                this.rbl_sourceType.SelectedValue= getrdlvalue(Session).ToString();
+                var hiddenMenu = BLL.CodeSetting.GetMenu();
+                if (hiddenMenu.Contains("1") == true && hiddenMenu.Contains("7") == false)
+                {
+                    this.rbl_sourceType.Items.RemoveAt(0);
+                    this.rbl_sourceType.SelectedIndex = 0;
+                }
+                else if (hiddenMenu.Contains("1") == false && hiddenMenu.Contains("7") == true)
+                {
+                    this.rbl_sourceType.Items.RemoveAt(1);
+                    this.rbl_sourceType.SelectedIndex = 0;
+                }
+                else if (hiddenMenu.Contains("1") == true && hiddenMenu.Contains("7") == true)
+                {
+                    this.rbl_sourceType.Items.Clear();
+                }
+                else
+                {
+                    this.rbl_sourceType.SelectedValue = getrdlvalue(Session).ToString();
+                }
             }
         }
 

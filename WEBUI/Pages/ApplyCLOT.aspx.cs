@@ -98,11 +98,38 @@ namespace WEBUI.Pages
             this.lt_hours.Text= BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_NOOFHours;
         }
 
+        private void GetCLOTSection(out int cls, out int ots)
+        {
+            cls = (int)BLL.GlobalVariate.CLSection.none;
+            ots = (int)BLL.GlobalVariate.OTSection.none;
+
+            var allPositions = BLL.Other.GetPositions();
+            var myEmploymentInfo = BLL.User_wsref.getEmploymentByid(loginer.userInfo.employID ?? 0);
+
+            WebServiceLayer.WebReference_leave.PositionInfo loginerPosition = null;
+            if (allPositions != null)
+            {
+                var tempP = allPositions.Where(x => x.ID == myEmploymentInfo.PositionID).ToList();
+                if (tempP != null && tempP.Count() == 1)
+                {
+                    loginerPosition = tempP[0];
+                }
+            }
+            if (loginerPosition != null)
+            {
+                cls = loginerPosition.minCLType;
+                ots = loginerPosition.minOTType;
+            }
+
+        }
+
         private void LoadUI()
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().main_applyCLOT, "~/pages/main.aspx", true);
 
             var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
+            GetCLOTSection(out dataview.clSectionType_InitOnpageload_UpdateAlways, out dataview.otSectionType_InitOnpageload_UpdateAlways);
+            LSLibrary.WebAPP.ViewStateHelper.SetValue(NAME_OF_PAGE_VIEW, dataview, this.ViewState);
 
             int intNameType = BLL.CodeSetting.GetNameType(BLL.MultiLanguageHelper.GetChoose());
             MODEL.UserName tempUserName = new MODEL.UserName(loginer.userInfo.surname, loginer.userInfo.firstname, loginer.userInfo.nickname, loginer.userInfo.namech);
@@ -135,7 +162,7 @@ namespace WEBUI.Pages
             DropDownList4.Items.Clear();
             bool onlyHalfHour = BLL.SystemParameters.mCLOTOnlyHalfHours();
             
-            if (onlyHalfHour)
+            if (onlyHalfHour && (dataview.otSectionType_InitOnpageload_UpdateAlways==(int)BLL.GlobalVariate.OTSection.none || dataview.otSectionType_InitOnpageload_UpdateAlways == (int)BLL.GlobalVariate.OTSection.hour)  && (dataview.clSectionType_InitOnpageload_UpdateAlways == (int)BLL.GlobalVariate.CLSection.none || dataview.clSectionType_InitOnpageload_UpdateAlways == (int)BLL.GlobalVariate.CLSection.hour))
             {
                 this.DropDownList2.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));
                 this.DropDownList2.Items.Add(new ListItem(30.ToString("00"), 30.ToString()));
@@ -152,16 +179,19 @@ namespace WEBUI.Pages
                 }
             }
 
-
             this.tb_remarks.Text=GetDefaultRemark();
 
-            
-            int numberofAttachment = dataview.GetAttachment().Count() ;
+            //section 控件必须等type ,hours, totalHouse 等控件初始化之后才进行。所以放到这里。
+            ProcessSectinInfo((MODEL.CLOT.enum_clotType)int.Parse(this.ddl_leavetype.SelectedValue),(BLL.GlobalVariate.CLSection) dataview.clSectionType_InitOnpageload_UpdateAlways,(BLL.GlobalVariate.OTSection) dataview.otSectionType_InitOnpageload_UpdateAlways);
+
+            int numberofAttachment = dataview.GetAttachment().Count();
             string numberPath = BLL.common.GetAttachmentNumberPath(numberofAttachment);
             this.ib_counta.ImageUrl = numberPath;
             this.ib_counta.Visible = !string.IsNullOrEmpty(numberPath);
 
             SetupReport();
+
+            
         }
 
         private void SetupReport()
@@ -335,10 +365,8 @@ namespace WEBUI.Pages
 
         private string GetDefaultRemark()
         {
-            int type = 0;
-            string str = this.ddl_leavetype.SelectedValue;
-            int.TryParse(str, out type);
-            if (type == (int)MODEL.CLOT.enum_clotType.CL)
+            MODEL.CLOT.enum_clotType tt = GetCLOTType();
+            if (tt == MODEL.CLOT.enum_clotType.CL)
             {
                 return BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_REMARK_CL;
             }
@@ -348,9 +376,77 @@ namespace WEBUI.Pages
             }
         }
 
+        private MODEL.CLOT.enum_clotType GetCLOTType()
+        {
+            int type = 0;
+            string str = this.ddl_leavetype.SelectedValue;
+            int.TryParse(str, out type);
+            if (type == (int)MODEL.CLOT.enum_clotType.CL)
+            {
+                return MODEL.CLOT.enum_clotType.CL;
+            }
+            else
+            {
+                return MODEL.CLOT.enum_clotType.OT;
+            }
+        }
+
         protected void ddl_leavetype_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.tb_remarks.Text= GetDefaultRemark();
+            MODEL.CLOT.enum_clotType tt = GetCLOTType();
+
+            var pageData = (MODEL.CLOT.ViewState_page)LSLibrary.WebAPP.ViewStateHelper.GetValue(NAME_OF_PAGE_VIEW, this.ViewState);
+            ProcessSectinInfo(tt,(BLL.GlobalVariate.CLSection)pageData.clSectionType_InitOnpageload_UpdateAlways,(BLL.GlobalVariate.OTSection)pageData.otSectionType_InitOnpageload_UpdateAlways);
+        }
+
+        private void ProcessSectinInfo(MODEL.CLOT.enum_clotType clOrOT,BLL.GlobalVariate.CLSection cLSection,BLL.GlobalVariate.OTSection oTSection)
+        {
+            //1.init secion 2. set defaul item 3. onSectionChanged.
+            int sectionType = 0;//0 hour, 1,half 2.fullday.
+            if (clOrOT == MODEL.CLOT.enum_clotType.OT)
+            {
+                if (oTSection == BLL.GlobalVariate.OTSection.half)
+                {
+                    sectionType = 1;
+                }
+                else if (oTSection == BLL.GlobalVariate.OTSection.full)
+                {
+                    sectionType = 2;
+                }
+            }
+            else if (clOrOT == MODEL.CLOT.enum_clotType.CL)
+            {
+                if (cLSection == BLL.GlobalVariate.CLSection.half)
+                {
+                    sectionType = 1;
+                }
+                else if (cLSection == BLL.GlobalVariate.CLSection.full)
+                {
+                    sectionType = 2;
+                }
+            }
+
+            this.tr_secion.Visible = false;
+            if (sectionType == 1 || sectionType == 2)
+            {
+                this.tr_secion.Visible = true;
+                if (sectionType == 2)
+                {
+                    this.ddl_section.Items.Clear();
+                    this.ddl_section.Items.Add(new ListItem("Full", "0"));
+                    this.ddl_section.SelectedIndex = 0;
+                }
+
+                if (sectionType == 1)
+                {
+                    this.ddl_section.Items.Clear();
+                    this.ddl_section.Items.Add(new ListItem("Full", "0"));
+                    this.ddl_section.Items.Add(new ListItem("AM", "1"));
+                    this.ddl_section.Items.Add(new ListItem("PM", "2"));
+                    this.ddl_section.SelectedIndex = 0;
+                }
+            }
         }
 
         //js传递apply sum 标签的值 ,如果为空表示没有做任何处理 . 否则有数据,那么传递不同的参数向js function.
@@ -400,7 +496,7 @@ namespace WEBUI.Pages
         }
 
         //RE-Calculate number of hours.
-        protected void DropDownList1_TextChanged(object sender, EventArgs e)
+        protected void OnFromTO_TextChanged(object sender, EventArgs e)
         {
             int fromh = int.Parse(this.DropDownList1.SelectedValue);
             int fromm = int.Parse(this.DropDownList2.SelectedValue);
@@ -456,6 +552,11 @@ namespace WEBUI.Pages
             this.DropDownList4.SelectedValue = dataview.ddltom;
             this.tb_hours.Text = dataview.numberofhour;
             this.tb_remarks.Text = dataview.remark;
+        }
+
+        protected void ddl_section_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

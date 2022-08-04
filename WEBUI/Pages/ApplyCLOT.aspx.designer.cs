@@ -175,6 +175,33 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.TextBox tb_date;
         
         /// <summary>
+        /// tr_secion 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow tr_secion;
+        
+        /// <summary>
+        /// lt_section 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_section;
+        
+        /// <summary>
+        /// ddl_section 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_section;
+        
+        /// <summary>
         /// lt_time 控件。
         /// </summary>
         /// <remarks>

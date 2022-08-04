@@ -192,6 +192,16 @@ namespace BLL
             beyongdWait
         }
 
+        public enum OTSection
+        {
+            none=0,half=3,full=2,hour=1
+        }
+
+        public enum CLSection
+        {
+            none = 0, half = 2, full = 1, hour = 3
+        }
+
         //public string GetStateDesc(ApprovalRequestStatus status)
         //{
         //    return RequestDesc[status];

@@ -53,6 +53,29 @@ namespace WEBUI.webservices
                             Response.End();
                         }
                     }
+                    else if (Actionname == "login_simple")
+                    {
+                        //<Result>5322</Result>
+                        //<SessionID>ipqkjy3jts4vzq45ukat4yqn</SessionID >
+                        string UserName = "";
+                        string Password = "";
+                        if (!string.IsNullOrEmpty(Request["UserName"]) && !string.IsNullOrEmpty(Request["Password"]))
+                        {
+                            UserName = Request["UserName"];
+                            Password = Request["Password"];
+                            var loginresult = BLL.User_wsref.CheckLogin(UserName, Password);
+
+                            Response.Clear();
+                            Response.Write(loginresult.Result.ToString());
+                            Response.End();
+                        }
+                        else
+                        {
+                            Response.Clear();
+                            Response.Write("-99");
+                            Response.End();
+                        }
+                    }
                     else
                     {
                         Response.Clear();

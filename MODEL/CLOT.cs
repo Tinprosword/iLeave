@@ -21,12 +21,16 @@ namespace MODEL
             public string ddltom;
             public string numberofhour;
             public string remark;
+            public int clSectionType_InitOnpageload_UpdateAlways;//初始化在 pageload中， 会保持一直更新。
+            public int otSectionType_InitOnpageload_UpdateAlways;//初始化在 pageload中， 会保持一直更新。
 
 
             public ViewState_page()
             {
                 items = new List<CLOTItem>();
                 attachments = new List<App_AttachmentInfo>();
+                clSectionType_InitOnpageload_UpdateAlways = 0;
+                otSectionType_InitOnpageload_UpdateAlways = 0;
             }
 
             public List<App_AttachmentInfo> GetAttachment()

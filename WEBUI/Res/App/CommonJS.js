@@ -227,3 +227,26 @@ function SetSroll(leftbtn, rightbtn, content, offsetleft) {
         }
     );
 }
+
+
+
+function ConfirmAndLocation(msg,locationUrl)
+{
+    if (msg != "")
+    {
+        if (confirm(msg))
+        {
+            event.preventDefault();
+            window.location.href = locationUrl;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+    else
+    {
+        window.location.href = locationUrl;
+    }
+}

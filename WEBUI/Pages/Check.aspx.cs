@@ -120,23 +120,28 @@ namespace WEBUI.Pages
                 zoneCode = "01";
             }
 
+
+            var iguard = BLL.Other.GetIleavIGard();
+            int interfaceid = 0;
+            int centerfaceid = 0;
+            string deviceid = "";
+
+            if (iguard != null)
+            {
+                interfaceid = iguard.InterfaceID ?? 0;
+                centerfaceid = iguard.AttendanceInterfaceCenterID ?? 0;
+                deviceid = iguard.DeviceID;
+            }
+
             if (targetname== ms_onclickCheckname)
             {
-                var lastItem = BLL.Other.GetAttendanceList(new string[] { loginer.userInfo.employNnumber }).OrderByDescending(x => x.CreateDate).FirstOrDefault();
+                var lastItem = BLL.Other.GetAttendanceList(new string[] { loginer.userInfo.staffNumber }).OrderByDescending(x => x.CreateDate).FirstOrDefault();
 
                 var value = master.GetMyPostBackArgumentByTargetname(targetname);
                 if(string.IsNullOrEmpty(value))// click on pc
                 {
-                    var iguard = BLL.Other.GetIleavIGard();
-                    if (iguard != null)
-                    {
-                        int interfaceid = iguard.InterfaceID ?? 0;
-                        int centerfaceid = iguard.AttendanceInterfaceCenterID ?? 0;
-                        string deviceid = iguard.DeviceID;
-
-                        var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber, centerfaceid, interfaceid, 1, loginer.userInfo.surname, deviceid, zoneCode, "", "","","");
-                        BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
-                    }
+                    var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.staffNumber, centerfaceid, interfaceid, 1, loginer.userInfo.surname, deviceid, zoneCode, "", "","","");
+                    BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
                 }
                 else//click on mobile.
                 {
@@ -197,8 +202,8 @@ namespace WEBUI.Pages
                     {
                         strlocation = lat.ToString() + "|" + lon.ToString();
                     }
-                    
-                    var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.employNnumber, 22, 2, 1, loginer.userInfo.surname, "000", zoneCode, strlocation, locationname, macAddress, "");
+
+                    var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.staffNumber, centerfaceid, interfaceid, 1, loginer.userInfo.surname, "000", zoneCode, strlocation, locationname, macAddress, "");
                     BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
                 }
 
