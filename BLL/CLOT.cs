@@ -266,12 +266,49 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetCLOTDetail_UpdateCanceWaitingStatus(ids).ToList();
         }
 
-        #endregion
+        public static void GetWorkHourInfoByShift(WebServiceLayer.WebReference_codesettings.Shift  theShift, out DateTime amfrom, out DateTime amto, out DateTime pmfrom, out DateTime pmto, out double amhours, out double pmhours, out double fullhours)
+        {
+            fullhours = 7.5; amhours = 3.5; pmhours = 4;
+            amfrom = new System.DateTime(2022, 1, 1, 9, 0, 0);
+            amto = new System.DateTime(2022, 1, 1, 12, 30, 0);
+            pmfrom = new System.DateTime(2022, 1, 1, 2, 1, 0);
+            pmto = new System.DateTime(2022, 1, 1, 18, 1, 0);
+
+            if (theShift == null)
+            {
+                return;
+            }
+
+            fullhours = theShift.TotalWorkHour;
+            amhours = theShift.AMWorkingHour;
+            pmhours = theShift.PMWorkingHour;
+            amfrom = theShift.BankOnTime;
+            amto = theShift.LunchIn;
+            pmfrom = theShift.LunchOut;
+            pmto = theShift.BankOffTime;
+
+            bool needResetAmPm = false;
+            if (amto.ToString("yyyy-MM-dd") == "1900-01-01" || pmfrom.ToString("yyyy-MM-dd") == "1900-01-01")
+            {
+                needResetAmPm = true;
+            }
+
+            if (needResetAmPm)
+            {
+                amhours = fullhours / 2.0;
+                pmhours = amhours;
+                amto = amfrom.AddHours(amhours);
+                pmfrom = amto;
+            }
+        }
 
 
-        #region check
-        //-1 hours is small zero ,或者不是数字 -4 override in Repeater.
-        public static int CheckOnAddSingleItem(MODEL.CLOT.CLOTItem tempItem, MODEL.CLOT.ViewState_page dataview, int eid)
+    #endregion
+
+
+    #region check
+    //-1 hours is small zero ,或者不是数字 -4 override in Repeater.
+    public static int CheckOnAddSingleItem(MODEL.CLOT.CLOTItem tempItem, MODEL.CLOT.ViewState_page dataview, int eid)
         {
             int result = 1;
 

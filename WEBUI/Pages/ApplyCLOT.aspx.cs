@@ -554,9 +554,46 @@ namespace WEBUI.Pages
             this.tb_remarks.Text = dataview.remark;
         }
 
-        protected void ddl_section_TextChanged(object sender, EventArgs e)
-        {
 
+        protected void ddl_section_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedSection = int.Parse(this.ddl_section.SelectedValue);
+
+            double fullWorkHours = 7.5; double amWorkhours = 3.5; double pmWorkHours = 4;
+            DateTime amFrom = new System.DateTime(2022, 1, 1, 9, 0, 0); DateTime amTo = new System.DateTime(2022, 1, 1, 12, 30, 0);
+            DateTime pmFrom = new System.DateTime(2022, 1, 1, 2, 1, 0); DateTime pmTo = new System.DateTime(2022, 1, 1, 18, 1, 0);
+
+            var einfo = BLL.User_wsref.getEmploymentByid(loginer.userInfo.employID??0);
+            if (einfo != null)
+            {
+                var shift = BLL.CodeSetting.GetShiftbyid(einfo.ShiftID);
+
+                BLL.CLOT.GetWorkHourInfoByShift(shift, out amFrom, out amTo, out pmFrom, out pmTo, out amWorkhours, out pmWorkHours, out fullWorkHours);
+            }
+
+            if (selectedSection == 0)
+            {
+                this.DropDownList1.SelectedValue = amFrom.Hour.ToString();
+                this.DropDownList2.SelectedValue = amFrom.Minute.ToString();
+                this.DropDownList3.SelectedValue = pmTo.Hour.ToString();
+                this.DropDownList4.SelectedValue = pmTo.Minute.ToString();
+            }
+            else if (selectedSection == 1)
+            {
+                this.DropDownList1.SelectedValue = amFrom.Hour.ToString();
+                this.DropDownList2.SelectedValue = amFrom.Minute.ToString();
+                this.DropDownList3.SelectedValue = amTo.Hour.ToString();
+                this.DropDownList4.SelectedValue = amTo.Minute.ToString();
+            }
+            else if (selectedSection == 2)
+            {
+                this.DropDownList1.SelectedValue = pmFrom.Hour.ToString();
+                this.DropDownList2.SelectedValue = pmFrom.Minute.ToString();
+                this.DropDownList3.SelectedValue = pmTo.Hour.ToString();
+                this.DropDownList4.SelectedValue = pmTo.Minute.ToString();
+            }
+
+            OnFromTO_TextChanged(null, null);
         }
     }
 }

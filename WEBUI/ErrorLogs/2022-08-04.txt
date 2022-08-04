@@ -1,0 +1,13 @@
+ip:::1
+DataTime：2022/8/4 17:54:37
+Url：http://localhost/WEBUI/pages/applyCLOT.aspx
+Message：未将对象引用设置到对象的实例。
+Source：BLL
+Type：System.NullReferenceException
+Function：Void GetWorkHourInfoByShift(WebServiceLayer.WebReference_codesettings.Shift, System.DateTime ByRef, System.DateTime ByRef, System.DateTime ByRef, System.DateTime ByRef, Double ByRef, Double ByRef, Double ByRef)
+Trace：   在 BLL.CLOT.GetWorkHourInfoByShift(Shift theShift, DateTime& amfrom, DateTime& amto, DateTime& pmfrom, DateTime& pmto, Double& amhours, Double& pmhours, Double& fullhours) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\CLOT.cs:行号 277
+   在 WEBUI.Pages.ApplyCLOT.ddl_section_SelectedIndexChanged(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ApplyCLOT.aspx.cs:行号 566
+   在 System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged(EventArgs e)
+   在 System.Web.UI.Page.RaiseChangedEvents()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

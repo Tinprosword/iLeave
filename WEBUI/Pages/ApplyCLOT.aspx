@@ -47,7 +47,7 @@
             <tr id="tr_secion" runat="server" visible="false">
                 <td><asp:Literal ID="lt_section" runat="server">Section</asp:Literal></td>
                 <td>
-                    <asp:DropDownList ID="ddl_section" runat="server" Width="80px" OnTextChanged="ddl_section_TextChanged" AutoPostBack="true"></asp:DropDownList>
+                    <asp:DropDownList ID="ddl_section" runat="server" Width="80px" AutoPostBack="true" OnSelectedIndexChanged="ddl_section_SelectedIndexChanged"></asp:DropDownList>
                 </td>
             </tr>
             <tr>
