@@ -637,7 +637,7 @@ namespace WEBUI.Pages
             int tom = int.Parse(this.DropDownList4.SelectedValue);
 
 
-            double totalHours = BLL.Leave.GetRealTotalHours(fromh, toh, fromm, tom, loginer.userInfo.employID ?? 0);
+            double totalHours = BLL.Leave.GetRealTotalHours(fromh, toh, fromm, tom, loginer.userInfo.employID ?? 0,-1);
 
             this.tb_total.Text = totalHours.ToString();
         }

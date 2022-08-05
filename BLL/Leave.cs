@@ -288,26 +288,54 @@ namespace BLL
             return result;
         }
 
-        public static double GetRealTotalHours(int fromh,int toh,int fromm,int tom,int eid)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fromh"></param>
+        /// <param name="toh"></param>
+        /// <param name="fromm"></param>
+        /// <param name="tom"></param>
+        /// <param name="eid"></param>
+        /// <param name="section">-1 hours, 0:full day ,1 am 2 pm</param>
+        /// <returns></returns>
+        public static double GetRealTotalHours(int fromh,int toh,int fromm,int tom,int eid,int section)
         {
             DateTime theday = System.DateTime.Now;
             double totalHours = 0;
             totalHours = BLL.CLOT.CalculateNumberofHours(fromh, toh, fromm, tom, theday);
 
-
+            
             var einfo = BLL.User_wsref.getEmploymentByid(eid);
             if (einfo != null)
             {
                 var shift = BLL.CodeSetting.GetShiftbyid(einfo.ShiftID);
-                if (shift != null && shift.IsExcludeLunchHour == true)
+                if (shift != null)
                 {
+                    //用shift 修正一次。
                     DateTime f1 = new DateTime(1900, 1, 1, fromh, fromm, 0);
                     DateTime t1 = new DateTime(1900, 1, 1, toh, tom, 0);
                     DateTime f2 = new DateTime(1900, 1, 1, shift.LunchIn.Hour, shift.LunchIn.Minute, 0);
                     DateTime t2 = new DateTime(1900, 1, 1, shift.LunchOut.Hour, shift.LunchOut.Minute, 0);
                     totalHours = BLL.CodeSetting.GetRealTotal(f1, t1, f2, t2);
+
+
+                    //再修正一次，如果是am,pm,fullday.
+                    if (section == 0)
+                    {
+                        totalHours = shift.TotalWorkHour;
+                    }
+                    else if (section == 1)
+                    {
+                        totalHours = shift.AMWorkingHour == 0 ? shift.TotalWorkHour / 2f : shift.AMWorkingHour;
+                    }
+                    else if (section == 2)
+                    {
+                        totalHours = shift.PMWorkingHour == 0 ? shift.TotalWorkHour / 2f : shift.PMWorkingHour;
+                    }
                 }
             }
+
+            
 
             return totalHours;
         }

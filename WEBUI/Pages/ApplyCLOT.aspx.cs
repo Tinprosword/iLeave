@@ -183,6 +183,7 @@ namespace WEBUI.Pages
 
             //section 控件必须等type ,hours, totalHouse 等控件初始化之后才进行。所以放到这里。
             ProcessSectinInfo((MODEL.CLOT.enum_clotType)int.Parse(this.ddl_leavetype.SelectedValue),(BLL.GlobalVariate.CLSection) dataview.clSectionType_InitOnpageload_UpdateAlways,(BLL.GlobalVariate.OTSection) dataview.otSectionType_InitOnpageload_UpdateAlways);
+            ddl_section_SelectedIndexChanged(null, null);
 
             int numberofAttachment = dataview.GetAttachment().Count();
             string numberPath = BLL.common.GetAttachmentNumberPath(numberofAttachment);
@@ -398,6 +399,7 @@ namespace WEBUI.Pages
 
             var pageData = (MODEL.CLOT.ViewState_page)LSLibrary.WebAPP.ViewStateHelper.GetValue(NAME_OF_PAGE_VIEW, this.ViewState);
             ProcessSectinInfo(tt,(BLL.GlobalVariate.CLSection)pageData.clSectionType_InitOnpageload_UpdateAlways,(BLL.GlobalVariate.OTSection)pageData.otSectionType_InitOnpageload_UpdateAlways);
+            ddl_section_SelectedIndexChanged(null, null);
         }
 
         private void ProcessSectinInfo(MODEL.CLOT.enum_clotType clOrOT,BLL.GlobalVariate.CLSection cLSection,BLL.GlobalVariate.OTSection oTSection)
@@ -503,15 +505,21 @@ namespace WEBUI.Pages
             int toh = int.Parse(this.DropDownList3.SelectedValue);
             int tom = int.Parse(this.DropDownList4.SelectedValue);
 
+            int clotSection = -1;//默认hours
+            if (tr_secion.Visible)//否则查看所选值。
+            {
+                int.TryParse(ddl_section.SelectedValue, out clotSection);
+            }
 
             DateTime theday = System.DateTime.Now;
             bool bvalidday = DateTime.TryParse(this.tb_date.Text, out theday);
             if (bvalidday)
             {
-                double hours = BLL.Leave.GetRealTotalHours(fromh, toh, fromm, tom, loginer.userInfo.employID??0);
+                double hours = BLL.Leave.GetRealTotalHours(fromh, toh, fromm, tom, loginer.userInfo.employID??0, clotSection);
                 this.tb_hours.Text = hours.ToString();
             }
         }
+
 
         protected void image_btn_Click(object sender, ImageClickEventArgs e)
         {
