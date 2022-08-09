@@ -141,9 +141,9 @@ namespace ut
 
 
         #region clot function
-        public void AttachCLOTS(MODEL.CLOT.enum_clotType type,DateTime dt, int fh,int fm,int th,int tm, string remk, string numh, List<MODEL.CLOT.CLOTItem> Predata)
+        public void AttachCLOTS(MODEL.CLOT.enum_clotType type,DateTime dt, int fh,int fm,int th,int tm, string remk, string numh,int section, List<MODEL.CLOT.CLOTItem> Predata)
         {
-            MODEL.CLOT.CLOTItem newLeave = new MODEL.CLOT.CLOTItem(type, dt, fh, fm, th, tm,remk, numh);
+            MODEL.CLOT.CLOTItem newLeave = new MODEL.CLOT.CLOTItem(type, dt, fh, fm, th, tm,remk, numh,section);
             if (Predata == null)
             {
                 Predata = new List<MODEL.CLOT.CLOTItem>();
@@ -1077,7 +1077,7 @@ namespace ut
         {
             //1,add 2.mywaitclot.add 3.check alluser.4.check status.
             List<MODEL.CLOT.CLOTItem> cLOTItems = new List<MODEL.CLOT.CLOTItem>();
-            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 1), 10, 0, 12, 0, "ot1", "7", cLOTItems);
+            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 1), 10, 0, 12, 0, "ot1", "7",-1, cLOTItems);
             List<int> clotids= applyer.AddCLOT(cLOTItems);
             applyer.myWaitClot.AddRange(clotids);
             user_102.myManageWaitClot.AddRange(clotids);
@@ -1090,7 +1090,7 @@ namespace ut
         {
             //1,add 2.mywaitclot.add 3.check alluser.4.check status.
             List<MODEL.CLOT.CLOTItem> cLOTItems = new List<MODEL.CLOT.CLOTItem>();
-            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 2), 10, 0, 12, 0, "ot2", "7", cLOTItems);
+            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 2), 10, 0, 12, 0, "ot2", "7", 0, cLOTItems);
             List<int> clotids = applyer.AddCLOT(cLOTItems);
             applyer.myWaitClot.AddRange(clotids);
             user_102.myManageWaitClot.AddRange(clotids);
@@ -1125,7 +1125,7 @@ namespace ut
         {
             //1,add 2.mywaitclot.add 3.check alluser.4.check status.
             List<MODEL.CLOT.CLOTItem> cLOTItems = new List<MODEL.CLOT.CLOTItem>();
-            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 3), 10, 0, 12, 0, "ot2", "7", cLOTItems);
+            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 3), 10, 0, 12, 0, "ot2", "7", -1, cLOTItems);
             List<int> clotids = applyer.AddCLOT(cLOTItems);
             applyer.myWaitClot.AddRange(clotids);
             user_102.myManageWaitClot.AddRange(clotids);
@@ -1160,7 +1160,7 @@ namespace ut
         {
             //1,add 2.mywaitclot.add 3.check alluser.4.check status.
             List<MODEL.CLOT.CLOTItem> cLOTItems = new List<MODEL.CLOT.CLOTItem>();
-            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 4), 10, 0, 12, 0, "ot2", "7", cLOTItems);
+            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 4), 10, 0, 12, 0, "ot2", "7", -1, cLOTItems);
             List<int> clotids = applyer.AddCLOT(cLOTItems);
             applyer.myWaitClot.AddRange(clotids);
             user_102.myManageWaitClot.AddRange(clotids);
@@ -1195,7 +1195,7 @@ namespace ut
         {
             //1,add 2.mywaitclot.add 3.check alluser.4.check status.
             List<MODEL.CLOT.CLOTItem> cLOTItems = new List<MODEL.CLOT.CLOTItem>();
-            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 5), 10, 0, 12, 0, "ot2", "7", cLOTItems);
+            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 5), 10, 0, 12, 0, "ot2", "7", -1, cLOTItems);
             List<int> clotids = applyer.AddCLOT(cLOTItems);
             applyer.myWaitClot.AddRange(clotids);
             user_102.myManageWaitClot.AddRange(clotids);
@@ -1244,7 +1244,7 @@ namespace ut
         {
             //1,add 2.mywaitclot.add 3.check alluser.4.check status.
             List<MODEL.CLOT.CLOTItem> cLOTItems = new List<MODEL.CLOT.CLOTItem>();
-            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 6), 10, 0, 12, 0, "ot2", "7", cLOTItems);
+            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 6), 10, 0, 12, 0, "ot2", "7", -1, cLOTItems);
             List<int> clotids = applyer.AddCLOT(cLOTItems);
             applyer.myWaitClot.AddRange(clotids);
             user_102.myManageWaitClot.AddRange(clotids);
@@ -1317,8 +1317,8 @@ namespace ut
         {
             //1,add 2.mywaitclot.add 3.check alluser.4.check status.
             List<MODEL.CLOT.CLOTItem> cLOTItems = new List<MODEL.CLOT.CLOTItem>();
-            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 7), 10, 0, 12, 0, "ot2", "7", cLOTItems);
-            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 8), 10, 0, 12, 0, "ot2", "7", cLOTItems);
+            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 7), 10, 0, 12, 0, "ot2", "7",1 ,cLOTItems);
+            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 8), 10, 0, 12, 0, "ot2", "7", 2,cLOTItems);
             List<int> clotids = applyer.AddCLOT(cLOTItems);
             applyer.myWaitClot.AddRange(clotids);
             user_102.myManageWaitClot.AddRange(clotids);

@@ -222,16 +222,9 @@ namespace WEBUI.Pages
             bool bvalidday = DateTime.TryParse(this.tb_date.Text, out theday);
             int type = int.Parse(ddl_leavetype.SelectedValue);
             string remark = this.tb_remarks.Text.Trim();
+            int clotSection = tr_secion.Visible == true ? int.Parse(this.ddl_section.SelectedValue) : -1;
 
-            MODEL.CLOT.CLOTItem tempItem = new MODEL.CLOT.CLOTItem();
-            tempItem.date = theday;
-            tempItem.fromhour = fromh;
-            tempItem.tohour = toh;
-            tempItem.frommin = fromm;
-            tempItem.tominute = tom;
-            tempItem.type = (MODEL.CLOT.enum_clotType)type;
-            tempItem.remark = remark;
-            tempItem.numberofHours = this.tb_hours.Text;
+            MODEL.CLOT.CLOTItem tempItem = new MODEL.CLOT.CLOTItem((MODEL.CLOT.enum_clotType)type, theday, fromh, fromm, toh, tom, remark, this.tb_hours.Text, clotSection);
 
             var dataview = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.CLOT.ViewState_page>(NAME_OF_PAGE_VIEW, this.ViewState);
             validData = BLL.CLOT.CheckOnAddSingleItem(tempItem,dataview,loginer.userInfo.employID??0);

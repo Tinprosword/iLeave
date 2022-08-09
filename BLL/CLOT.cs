@@ -107,7 +107,7 @@ namespace BLL
                 tempData.EmploymentID = applyerEID;
                 tempData.Remarks = item.remark;
                 tempData.Hour = item.GetHoursFromStringMember();
-
+                tempData.Section = item.section;
 
                 var requestid= InsertCLOTRequest(tempData, createrUid, applyerEID);
                 if (requestid > 0)

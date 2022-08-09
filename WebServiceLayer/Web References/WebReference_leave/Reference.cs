@@ -6732,6 +6732,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private int zeroWhenNoAttachOrRequestidField;
         
+        private int sectionField;
+        
         /// <remarks/>
         public int ID {
             get {
@@ -7068,6 +7070,16 @@ namespace WebServiceLayer.WebReference_leave {
             }
             set {
                 this.zeroWhenNoAttachOrRequestidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Section {
+            get {
+                return this.sectionField;
+            }
+            set {
+                this.sectionField = value;
             }
         }
     }

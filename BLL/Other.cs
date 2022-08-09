@@ -9,6 +9,11 @@ namespace BLL
 {
     public class Other
     {
+        public static string GetVersion()
+        {
+            return "1.5.0";
+        }
+
         public static WebServiceLayer.WebReference_leave.AttendanceRawData[] GetAttendanceList(string[] refInfo)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetAttendanceByExternRef(refInfo);

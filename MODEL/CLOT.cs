@@ -66,11 +66,14 @@ namespace MODEL
             public int tominute;
             public string remark;
             public string numberofHours;
+            public int section;
 
-            public CLOTItem()
-            { }
+            private CLOTItem()
+            {
+                section = -1;
+            }
 
-            public CLOTItem(enum_clotType t, System.DateTime d, int fh, int fm, int th, int tm, string remark, string numberhours)
+            public CLOTItem(enum_clotType t, System.DateTime d, int fh, int fm, int th, int tm, string remark, string numberhours,int _section)
             {
                 this.date = d;
                 this.fromhour = fh;
@@ -80,6 +83,7 @@ namespace MODEL
                 this.type = t;
                 this.remark = remark;
                 this.numberofHours = numberhours;
+                this.section = _section;
             }
 
             public string GetTimeRangeDesc()

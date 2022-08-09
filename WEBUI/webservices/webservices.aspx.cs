@@ -27,6 +27,13 @@ namespace WEBUI.webservices
                         Response.Write(getXml("ok"));
                         Response.End();
                     }
+                    if (Actionname == "version")
+                    {
+                        Response.Clear();
+
+                        Response.Write(BLL.Other.GetVersion());
+                        Response.End();
+                    }
                     else if(Actionname== "saveheight")
                     {
                         string height = Request.QueryString["sc"];
