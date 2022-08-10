@@ -565,7 +565,17 @@ namespace WEBUI.Pages
             else
             {
 
-                return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,0,0)";
+                var clientType = LSLibrary.WebAPP.MobilWebHelper.GetClientType(HttpContext.Current.Request.UserAgent);
+                var cookies = BLL.Page.MyCookieManage.GetCookie();
+
+                if (clientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone && cookies.isAppLogin == "1" && BLL.GlobalVariate.iosDebug)
+                {
+                    return "return checkNewTab('',1,1,0)";
+                }
+                else
+                {
+                    return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,0,0)";
+                }
 
 
             }
@@ -580,7 +590,17 @@ namespace WEBUI.Pages
             else
             {
 
-                return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,3,0)";
+                var clientType = LSLibrary.WebAPP.MobilWebHelper.GetClientType(HttpContext.Current.Request.UserAgent);
+                var cookies = BLL.Page.MyCookieManage.GetCookie();
+
+                if (clientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone && cookies.isAppLogin == "1" && BLL.GlobalVariate.iosDebug)
+                {
+                    return "return checkNewTab('',1,3,0)";
+                }
+                else
+                {
+                    return "return checkNewTab('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "',1,3,0)";
+                }
 
             }
         }
@@ -593,8 +613,17 @@ namespace WEBUI.Pages
             }
             else
             {
+                var clientType = LSLibrary.WebAPP.MobilWebHelper.GetClientType(HttpContext.Current.Request.UserAgent);
+                var cookies = BLL.Page.MyCookieManage.GetCookie();
 
-                return "return checkOtherPage('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "','estimation.aspx')";
+                if (clientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone && cookies.isAppLogin == "1" && BLL.GlobalVariate.iosDebug)
+                {
+                    return "return checkOtherPage('','estimation.aspx')";
+                }
+                else
+                {
+                    return "return checkOtherPage('" + BLL.MultiLanguageHelper.GetLanguagePacket().apply_msg_tab + "','estimation.aspx')";
+                }
 
             }
         }
