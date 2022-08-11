@@ -45,7 +45,7 @@ namespace BLL.Page
             {
                 mycookie.language = LSLibrary.WebAPP.LanguageType.english;
                 mycookie.serverAddress = "";
-                mycookie.isRemember = "1";
+                mycookie.isRemember = "0";
                 mycookie.loginname = "";
                 mycookie.loginpsw = "";
                 mycookie.isAppLogin = "0";
@@ -62,7 +62,7 @@ namespace BLL.Page
                 mycookie.wait_scrollTop = wst;
             }
 
-            SetCookie(mycookie);
+           // SetCookie(mycookie);
 
             return mycookie;
         }
@@ -78,6 +78,7 @@ namespace BLL.Page
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_ISAPP, myCookie.isAppLogin, 360);
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_WST, myCookie.wait_scrollTop, 360);
         }
+
 
     }
 }

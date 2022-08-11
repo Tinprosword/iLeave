@@ -55,7 +55,7 @@ namespace BLL
             cookie.loginname = "";
             cookie.loginpsw = "";
             BLL.Page.MyCookieManage.SetCookie(cookie);
-            MorePlaygroundAction("sys", "sessionout", "sys", "sessionout", "~/login.aspx?action=userloginout", cookie.isAppLogin == "1");
+            MorePlaygroundAction("sys", "sessionout", "sys", "sessionout", "~/login.aspx?action=userSessionout", cookie.isAppLogin == "1");
         }
 
 

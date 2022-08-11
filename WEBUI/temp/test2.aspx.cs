@@ -12,15 +12,21 @@ namespace WEBUI.temp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (false)
-            if (1 == 2)
-            {
-                int a = 4;
-            }
-            else
-            {
-                int b = 5;
-            }
+            BLL.Page.MyCookie cookie = BLL.Page.MyCookieManage.GetCookie();
+            var isrem = cookie.isRemember;
+
+            cookie.isRemember = "0";
+            BLL.Page.MyCookieManage.SetCookie(cookie);
+            cookie = BLL.Page.MyCookieManage.GetCookie();
+            var isrem2 = cookie.isRemember;
+
+            cookie.isRemember = "1";
+            BLL.Page.MyCookieManage.SetCookie(cookie);
+            cookie = BLL.Page.MyCookieManage.GetCookie();
+            var isrem3 = cookie.isRemember;
+
+            var a = 4;
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)

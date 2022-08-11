@@ -21,7 +21,7 @@
                         </td>
                      </tr>   
                 </table>--%>
-                <table class="col-xs-12 lsu-bigtable" style="  background-image:url(res/images/bgo1.png);background-repeat:no-repeat;background-size:360px 660px; height:660px;">
+                <table class="col-xs-12 lsu-bigtable" style="background-image:url(res/images/bgo1.png);background-repeat:no-repeat;background-size:360px 660px; height:660px;">
                     <tr><td style="width:40px"></td><td style="height:180px"></td><td></td></tr>
                     <tr>
                         <td colspan="3" style="height:60px; text-align:center"></td>
@@ -43,12 +43,9 @@
                         <td class="lsf-fontsizes1">
                             <table>
                                 <tr>
-                                    <td style="width:20px"><%--<asp:CheckBox ID="cb_remember" Text=" " runat="server" OnCheckedChanged="cb_remember_CheckedChanged"  AutoPostBack="true"/>--%></td>
-                                    <td style="width:100px"><%--<asp:Literal ID="lt_remember2" runat="server">Remember Me</asp:Literal>--%></td>
+                                    <td style="width:20px"><asp:CheckBox ID="cb_remember" Text=" " runat="server"  AutoPostBack="true" OnCheckedChanged="cb_remember_CheckedChanged"/></td>
+                                    <td style="width:230px; color:#c8c8c8;"><asp:Literal ID="lt_remember2" runat="server">Remember Me</asp:Literal></td>
                                     <td style="width:25px"></td>
-                                    <td style="width:135px">
-                                        
-                                    </td>
                                 </tr>
                             </table>
                         </td>

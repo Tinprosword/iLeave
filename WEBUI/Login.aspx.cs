@@ -34,51 +34,69 @@ namespace WEBUI
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
+            OtherPageEvent();
+            initControls();
+            AutoLogin();
+
             LoadLableLanguage(BLL.MultiLanguageHelper.GetLanguagePacket());
 
-            BLL.Page.MyCookie cookie = BLL.Page.MyCookieManage.GetCookie();
-            string isremember = cookie.isRemember;
-            LSLibrary.WebAPP.LanguageType language = cookie.language;
-
-            DisplayLanguage(language);
-
-            //this.cb_remember.Checked = (isremember == "1" ? true : false);
-
-
-            if (!string.IsNullOrEmpty(isremember) && isremember == "1" && queryAction == "")
-            {
-                ProgressLogin(cookie.loginname, cookie.loginpsw);
-            }
-            else
-            {
-                if (queryAction != "")
-                {
-                    if (!string.IsNullOrEmpty(isremember) && isremember == "1")
-                    {
-                        this.tb_u1.Text = cookie.loginname;
-                        this.tb_p1.Text = cookie.loginpsw;
-                    }
-                    else
-                    {
-                        this.tb_u1.Text = "";
-                        this.tb_p1.Text = "";
-                    }
-                }
-                else
-                {
-                    this.tb_u1.Text = "";
-                    this.tb_p1.Text = "";
-                }
-            }
-
             //reset isapp=0
+            BLL.Page.MyCookie cookie = BLL.Page.MyCookieManage.GetCookie();
             cookie.isAppLogin = "0";
             BLL.Page.MyCookieManage.SetCookie(cookie);
 
             this.Page.SetFocus(this.Button1);
         }
 
-        private void DisplayLanguage(LSLibrary.WebAPP.LanguageType tt)
+        private void OtherPageEvent()
+        {
+            if (queryAction.ToLower() == "userloginout")
+            {
+                this.tb_u1.Text = "";
+                this.tb_p1.Text = "";
+
+                var myc = BLL.Page.MyCookieManage.GetCookie();
+                myc.isRemember = "0";
+                myc.loginname = "";
+                myc.loginpsw = "";
+                BLL.Page.MyCookieManage.SetCookie(myc);
+
+            }
+            else if (queryAction.ToLower() == "usersessionout")
+            {
+                this.tb_u1.Text = "";
+                this.tb_p1.Text = "";
+            }
+        }
+
+        private void AutoLogin()
+        {
+            BLL.Page.MyCookie data = BLL.Page.MyCookieManage.GetCookie();
+
+            string isremember = data.isRemember;
+            if (!string.IsNullOrEmpty(isremember) && isremember == "1" && queryAction == "" && !string.IsNullOrEmpty(data.loginname) && !string.IsNullOrEmpty(data.loginpsw) )
+            {
+                ProgressLogin(data.loginname, data.loginpsw);
+            }
+            else
+            {
+                
+            }
+        }
+
+        private void initControls()
+        {
+            BLL.Page.MyCookie data = BLL.Page.MyCookieManage.GetCookie();
+
+            string isremember = data.isRemember;
+            LSLibrary.WebAPP.LanguageType tt = data.language;
+
+
+            this.cb_remember.Checked = (isremember == "1" ? true : false);
+            DisplayLanguageLink(tt);
+        }
+
+        private void DisplayLanguageLink(LSLibrary.WebAPP.LanguageType tt)
         {
             this.lb_eng.CssClass = "loginUnSelect";
             this.lb_sc.CssClass = "loginUnSelect";
@@ -107,22 +125,22 @@ namespace WEBUI
                 bool isLogin = loginResult.Result > 0 ? true : false;
                 if (isLogin)
                 {
-                    var cookie = BLL.Page.MyCookieManage.GetCookie();
-                    cookie.isRemember = "0";
-                    BLL.Page.MyCookieManage.SetCookie(cookie);
-                    //if (this.cb_remember.Checked)
-                    //{
-                    //    var cookie = BLL.Page.MyCookieManage.GetCookie();
-                    //    cookie.isRemember = "1";
-                    //    cookie.loginname = userid;
-                    //    cookie.loginpsw = password;
-                    //    BLL.Page.MyCookieManage.SetCookie(cookie);
-                    //}
-
-                    cookie.isRemember = "1";
-                    cookie.loginname = userid;
-                    cookie.loginpsw = password;
-                    BLL.Page.MyCookieManage.SetCookie(cookie);
+                    if (this.cb_remember.Checked)
+                    {
+                        var cookie = BLL.Page.MyCookieManage.GetCookie();
+                        cookie.isRemember = "1";
+                        cookie.loginname = userid;
+                        cookie.loginpsw = password;
+                        BLL.Page.MyCookieManage.SetCookie(cookie);
+                    }
+                    else
+                    {
+                        var cookie = BLL.Page.MyCookieManage.GetCookie();
+                        cookie.isRemember = "0";
+                        cookie.loginname = "";
+                        cookie.loginpsw = "";
+                        BLL.Page.MyCookieManage.SetCookie(cookie);
+                    }
 
                     MODEL.UserInfo userInfo= BLL.User_wsref.GetAndSaveInfoToSession(userid, loginResult);
                     if (userInfo != null)
@@ -137,7 +155,7 @@ namespace WEBUI
                 else
                 {
                     this.lt_js.Text = LSLibrary.JavasScriptHelper.AlertMessage(BLL.GlobalVariate.login_error);
-                    CleanInput();
+                    //CleanInput();
                 }
             }
             else
@@ -151,7 +169,7 @@ namespace WEBUI
             //this.lt_user.Text = baseLanguage.login_user;
             //this.lt_password.Text = baseLanguage.login_password;
             this.Button1.Text= baseLanguage.login_loginbtn;
-            //this.lt_remember2.Text = baseLanguage.login_remember;
+            this.lt_remember2.Text = baseLanguage.login_remember;
         }
 
 
@@ -197,7 +215,14 @@ namespace WEBUI
 
             LSLibrary.WebAPP.BaseLanguage baseLanguage = BLL.MultiLanguageHelper.GetLanguagePacket(selectlang);
             LoadLableLanguage(baseLanguage);
-            DisplayLanguage(selectlang);
+            DisplayLanguageLink(selectlang);
+        }
+
+        protected void cb_remember_CheckedChanged(object sender, EventArgs e)
+        {
+            var myc = BLL.Page.MyCookieManage.GetCookie();
+            myc.isRemember = this.cb_remember.Checked==true?"1":"0";
+            BLL.Page.MyCookieManage.SetCookie(myc);
         }
     }
 }
