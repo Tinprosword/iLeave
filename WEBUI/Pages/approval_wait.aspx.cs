@@ -14,8 +14,11 @@ namespace WEBUI.Pages
     //accumulate 的处理验证.
     public partial class approval_wait : BLL.CustomLoginTemplate
     {
-        //这3个参数，控制了数据的来源，和对应的操作面板的显示。（）
-        //
+        //这3个参数，控制了数据的来源，和对应的操作面板的显示。（为什么from会多一个3出来，主要是考虑manage 页面，需要手动选择1，或者2，同时多个控件需要保存数据，如果1，跳到2，那么url变化，无法保存控件状态。
+        //做完后发现应该可以用server.transfer.链接对于后台来说变化了，而且还保存了数据，但是页面上看不出变化也不太好。）
+        //action=0 时，是否可以取消qs_from?
+
+        
         public static string qs_action = "action";//0.my mange data  1.mydata 
         public static string qs_bigRange = "applicationType";//0:penging. 3:history.
         public static string qs_from = "from";//0.leave 1.clot 3.来源于管理页面，管理页面里面有radio控件，来保存并确定是leave 还是clot.
