@@ -759,9 +759,15 @@ namespace BLL
         }
 
 
-        public static List<WebServiceLayer.WebReference_leave.LeaveHistory> GetLeaveHistoryByRequest(int requestid)
+        public static List<WebServiceLayer.WebReference_leave.LeaveHistory> GetLeaveHistoryByRequest_clot(int requestid)
         {
-            List<WebServiceLayer.WebReference_leave.LeaveHistory> result= WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveHistory(requestid).ToList();
+            List<WebServiceLayer.WebReference_leave.LeaveHistory> result= WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveHistory_clot(requestid).ToList();
+            return result;
+        }
+
+        public static List<WebServiceLayer.WebReference_leave.LeaveHistory> GetLeaveHistoryByRequest_leawve(int requestid)
+        {
+            List<WebServiceLayer.WebReference_leave.LeaveHistory> result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveHistory_leave(requestid).ToList();
             return result;
         }
 

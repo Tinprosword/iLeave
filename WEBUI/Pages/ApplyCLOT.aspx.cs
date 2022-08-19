@@ -183,7 +183,10 @@ namespace WEBUI.Pages
 
             //section 控件必须等type ,hours, totalHouse 等控件初始化之后才进行。所以放到这里。
             ProcessSectinInfo((MODEL.CLOT.enum_clotType)int.Parse(this.ddl_leavetype.SelectedValue),(BLL.GlobalVariate.CLSection) dataview.clSectionType_InitOnpageload_UpdateAlways,(BLL.GlobalVariate.OTSection) dataview.otSectionType_InitOnpageload_UpdateAlways);
-            ddl_section_SelectedIndexChanged(null, null);
+            if (ddl_section.Visible)
+            {
+                ddl_section_SelectedIndexChanged(null, null);
+            }
 
             int numberofAttachment = dataview.GetAttachment().Count();
             string numberPath = BLL.common.GetAttachmentNumberPath(numberofAttachment);

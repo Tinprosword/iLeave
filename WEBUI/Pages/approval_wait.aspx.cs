@@ -14,9 +14,11 @@ namespace WEBUI.Pages
     //accumulate 的处理验证.
     public partial class approval_wait : BLL.CustomLoginTemplate
     {
-        public static string qs_bigRange = "applicationType";//penging history.
+        //这3个参数，控制了数据的来源，和对应的操作面板的显示。（）
+        //
         public static string qs_action = "action";//0.my mange data  1.mydata 
-        public static string qs_from = "from";//0leave 1clot 3.no need goback from
+        public static string qs_bigRange = "applicationType";//0:penging. 3:history.
+        public static string qs_from = "from";//0.leave 1.clot 3.来源于管理页面，管理页面里面有radio控件，来保存并确定是leave 还是clot.
 
         public static int attachmentNewLine = 6;
 

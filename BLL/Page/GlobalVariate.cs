@@ -6,7 +6,7 @@ namespace BLL
     public class GlobalVariate
     {
         #region global string
-        public static bool iosDebug =true;
+        public static bool iosDebug =false;
 
         public static string login_error = "invalid user and password.";
         //public static string submit_success = "Submitted,Please wait.";

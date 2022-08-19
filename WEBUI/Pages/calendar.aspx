@@ -30,7 +30,7 @@
             <div class="col-xs-12 lsf-clearPadding" style="height:150px; overflow-y:scroll;">
                 <table class="col-xs-12 lsu-table-xs lsf-clearPadding">
                     <tr class="lss-bgcolor-blue" style="color:white;padding-right:0px">
-                        <td class="col-xs-4"><asp:Literal ID="lt_name" runat="server">Name</asp:Literal></td>
+                        <td class="col-xs-4" style="min-width:105px"><asp:Literal ID="lt_name" runat="server">Name</asp:Literal></td>
                         <td class="col-xs-3" style='min-width:88px; display:<%=LSLibrary.WebAPP.HtmlCssHelper.CSS_DisplayValue(!bHiddenLeaveCode)%>'><asp:Literal ID="lt_section" runat="server">Type</asp:Literal></td>
                         <td class="col-xs-3" style='display:<%=LSLibrary.WebAPP.HtmlCssHelper.CSS_DisplayValue(bHiddenLeaveCode)%>'><asp:Literal ID="lt_leavecode" runat="server">LeaveCode</asp:Literal></td>
                         <td class="col-xs-5"><asp:Literal ID="lt_status" runat="server">Status</asp:Literal></td>
@@ -52,7 +52,7 @@
             <div class="col-xs-12 lsf-clearPadding" style="height:150px; overflow:scroll;">
                 <table class="col-xs-12 lsu-table-xs">
                     <tr class="lss-bgcolor-blue" style="color:white;">
-                        <td class="col-xs-3"><asp:Literal ID="lt_displayname" runat="server">Name</asp:Literal></td>
+                        <td class="col-xs-3" style="min-width:105px"><asp:Literal ID="lt_displayname" runat="server">Name</asp:Literal></td>
                         <td class="col-xs-6"><asp:Literal ID="lt_shiftCode" runat="server">Shift</asp:Literal></td>
                         <td class="col-xs-3"><asp:Literal ID="lt_remark" runat="server">Remark</asp:Literal></td>
                     </tr>

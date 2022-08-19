@@ -50,16 +50,20 @@ namespace BLL
             base.Page_Load(sender, e);
         }
 
+        //就是大屏幕的时候，不需要充满，而是固定大小并居中的效果。
+        //ceshi .iphone. android . and their brower ,and pc.
         public static void ResetFormWhenPC(System.Web.UI.Page page)
         {
             string agent = HttpContext.Current.Request.UserAgent;
             LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.MobilWebHelper.GetClientType(agent);
 
+            var ppp = page.Form.Style.Keys;
+
             if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.pc)
             {
                 page.Form.Style.Add("width", "364px");
                 page.Form.Style.Add("margin-left", "40%");
-                
+
                 page.Form.Style.Add("min-height", "640px");
                 page.Form.Style.Add("margin-top", "40px");
 

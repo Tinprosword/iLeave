@@ -82,17 +82,17 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetLeaveHistory">
+      <s:element name="GetLeaveHistory_leave">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="requestId" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetLeaveHistoryResponse">
+      <s:element name="GetLeaveHistory_leaveResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveHistoryResult" type="tns:ArrayOfLeaveHistory" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveHistory_leaveResult" type="tns:ArrayOfLeaveHistory" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -113,6 +113,20 @@
           <s:element minOccurs="1" maxOccurs="1" name="uid" type="s:int" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetLeaveHistory_clot">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeaveHistory_clotResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLeaveHistory_clotResult" type="tns:ArrayOfLeaveHistory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="CreateNewWorkflow">
         <s:complexType>
           <s:sequence>
@@ -2451,11 +2465,17 @@
   <wsdl:message name="GetPossibalCancelRequestidSoapOut">
     <wsdl:part name="parameters" element="tns:GetPossibalCancelRequestidResponse" />
   </wsdl:message>
-  <wsdl:message name="GetLeaveHistorySoapIn">
-    <wsdl:part name="parameters" element="tns:GetLeaveHistory" />
+  <wsdl:message name="GetLeaveHistory_leaveSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLeaveHistory_leave" />
   </wsdl:message>
-  <wsdl:message name="GetLeaveHistorySoapOut">
-    <wsdl:part name="parameters" element="tns:GetLeaveHistoryResponse" />
+  <wsdl:message name="GetLeaveHistory_leaveSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLeaveHistory_leaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveHistory_clotSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLeaveHistory_clot" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveHistory_clotSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLeaveHistory_clotResponse" />
   </wsdl:message>
   <wsdl:message name="CreateNewWorkflowSoapIn">
     <wsdl:part name="parameters" element="tns:CreateNewWorkflow" />
@@ -3111,10 +3131,16 @@
   <wsdl:message name="GetPossibalCancelRequestidHttpPostOut">
     <wsdl:part name="Body" element="tns:int" />
   </wsdl:message>
-  <wsdl:message name="GetLeaveHistoryHttpPostIn">
+  <wsdl:message name="GetLeaveHistory_leaveHttpPostIn">
     <wsdl:part name="requestId" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="GetLeaveHistoryHttpPostOut">
+  <wsdl:message name="GetLeaveHistory_leaveHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfLeaveHistory" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveHistory_clotHttpPostIn">
+    <wsdl:part name="requestId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLeaveHistory_clotHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfLeaveHistory" />
   </wsdl:message>
   <wsdl:message name="ApproveRequest_leaveHttpPostIn">
@@ -3659,9 +3685,13 @@
       <wsdl:input message="tns:GetPossibalCancelRequestidSoapIn" />
       <wsdl:output message="tns:GetPossibalCancelRequestidSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetLeaveHistory">
-      <wsdl:input message="tns:GetLeaveHistorySoapIn" />
-      <wsdl:output message="tns:GetLeaveHistorySoapOut" />
+    <wsdl:operation name="GetLeaveHistory_leave">
+      <wsdl:input message="tns:GetLeaveHistory_leaveSoapIn" />
+      <wsdl:output message="tns:GetLeaveHistory_leaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveHistory_clot">
+      <wsdl:input message="tns:GetLeaveHistory_clotSoapIn" />
+      <wsdl:output message="tns:GetLeaveHistory_clotSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="CreateNewWorkflow">
       <wsdl:input message="tns:CreateNewWorkflowSoapIn" />
@@ -4101,9 +4131,13 @@
       <wsdl:input message="tns:GetPossibalCancelRequestidHttpPostIn" />
       <wsdl:output message="tns:GetPossibalCancelRequestidHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetLeaveHistory">
-      <wsdl:input message="tns:GetLeaveHistoryHttpPostIn" />
-      <wsdl:output message="tns:GetLeaveHistoryHttpPostOut" />
+    <wsdl:operation name="GetLeaveHistory_leave">
+      <wsdl:input message="tns:GetLeaveHistory_leaveHttpPostIn" />
+      <wsdl:output message="tns:GetLeaveHistory_leaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveHistory_clot">
+      <wsdl:input message="tns:GetLeaveHistory_clotHttpPostIn" />
+      <wsdl:output message="tns:GetLeaveHistory_clotHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="ApproveRequest_leave">
       <wsdl:input message="tns:ApproveRequest_leaveHttpPostIn" />
@@ -4460,8 +4494,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetLeaveHistory">
-      <soap:operation soapAction="http://tempuri.org/GetLeaveHistory" style="document" />
+    <wsdl:operation name="GetLeaveHistory_leave">
+      <soap:operation soapAction="http://tempuri.org/GetLeaveHistory_leave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveHistory_clot">
+      <soap:operation soapAction="http://tempuri.org/GetLeaveHistory_clot" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -5453,8 +5496,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetLeaveHistory">
-      <soap12:operation soapAction="http://tempuri.org/GetLeaveHistory" style="document" />
+    <wsdl:operation name="GetLeaveHistory_leave">
+      <soap12:operation soapAction="http://tempuri.org/GetLeaveHistory_leave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveHistory_clot">
+      <soap12:operation soapAction="http://tempuri.org/GetLeaveHistory_clot" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -6446,8 +6498,17 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetLeaveHistory">
-      <http:operation location="/GetLeaveHistory" />
+    <wsdl:operation name="GetLeaveHistory_leave">
+      <http:operation location="/GetLeaveHistory_leave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveHistory_clot">
+      <http:operation location="/GetLeaveHistory_clot" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

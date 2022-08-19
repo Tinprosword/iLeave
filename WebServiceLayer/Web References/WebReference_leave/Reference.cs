@@ -37,7 +37,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetPossibalCancelRequestidOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetLeaveHistoryOperationCompleted;
+        private System.Threading.SendOrPostCallback GetLeaveHistory_leaveOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetLeaveHistory_clotOperationCompleted;
         
         private System.Threading.SendOrPostCallback CreateNewWorkflowOperationCompleted;
         
@@ -300,7 +302,10 @@ namespace WebServiceLayer.WebReference_leave {
         public event GetPossibalCancelRequestidCompletedEventHandler GetPossibalCancelRequestidCompleted;
         
         /// <remarks/>
-        public event GetLeaveHistoryCompletedEventHandler GetLeaveHistoryCompleted;
+        public event GetLeaveHistory_leaveCompletedEventHandler GetLeaveHistory_leaveCompleted;
+        
+        /// <remarks/>
+        public event GetLeaveHistory_clotCompletedEventHandler GetLeaveHistory_clotCompleted;
         
         /// <remarks/>
         public event CreateNewWorkflowCompletedEventHandler CreateNewWorkflowCompleted;
@@ -734,31 +739,60 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLeaveHistory", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public LeaveHistory[] GetLeaveHistory(int requestId) {
-            object[] results = this.Invoke("GetLeaveHistory", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLeaveHistory_leave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public LeaveHistory[] GetLeaveHistory_leave(int requestId) {
+            object[] results = this.Invoke("GetLeaveHistory_leave", new object[] {
                         requestId});
             return ((LeaveHistory[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetLeaveHistoryAsync(int requestId) {
-            this.GetLeaveHistoryAsync(requestId, null);
+        public void GetLeaveHistory_leaveAsync(int requestId) {
+            this.GetLeaveHistory_leaveAsync(requestId, null);
         }
         
         /// <remarks/>
-        public void GetLeaveHistoryAsync(int requestId, object userState) {
-            if ((this.GetLeaveHistoryOperationCompleted == null)) {
-                this.GetLeaveHistoryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLeaveHistoryOperationCompleted);
+        public void GetLeaveHistory_leaveAsync(int requestId, object userState) {
+            if ((this.GetLeaveHistory_leaveOperationCompleted == null)) {
+                this.GetLeaveHistory_leaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLeaveHistory_leaveOperationCompleted);
             }
-            this.InvokeAsync("GetLeaveHistory", new object[] {
-                        requestId}, this.GetLeaveHistoryOperationCompleted, userState);
+            this.InvokeAsync("GetLeaveHistory_leave", new object[] {
+                        requestId}, this.GetLeaveHistory_leaveOperationCompleted, userState);
         }
         
-        private void OnGetLeaveHistoryOperationCompleted(object arg) {
-            if ((this.GetLeaveHistoryCompleted != null)) {
+        private void OnGetLeaveHistory_leaveOperationCompleted(object arg) {
+            if ((this.GetLeaveHistory_leaveCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetLeaveHistoryCompleted(this, new GetLeaveHistoryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetLeaveHistory_leaveCompleted(this, new GetLeaveHistory_leaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetLeaveHistory_clot", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public LeaveHistory[] GetLeaveHistory_clot(int requestId) {
+            object[] results = this.Invoke("GetLeaveHistory_clot", new object[] {
+                        requestId});
+            return ((LeaveHistory[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetLeaveHistory_clotAsync(int requestId) {
+            this.GetLeaveHistory_clotAsync(requestId, null);
+        }
+        
+        /// <remarks/>
+        public void GetLeaveHistory_clotAsync(int requestId, object userState) {
+            if ((this.GetLeaveHistory_clotOperationCompleted == null)) {
+                this.GetLeaveHistory_clotOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLeaveHistory_clotOperationCompleted);
+            }
+            this.InvokeAsync("GetLeaveHistory_clot", new object[] {
+                        requestId}, this.GetLeaveHistory_clotOperationCompleted, userState);
+        }
+        
+        private void OnGetLeaveHistory_clotOperationCompleted(object arg) {
+            if ((this.GetLeaveHistory_clotCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetLeaveHistory_clotCompleted(this, new GetLeaveHistory_clotCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -10743,17 +10777,43 @@ namespace WebServiceLayer.WebReference_leave {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetLeaveHistoryCompletedEventHandler(object sender, GetLeaveHistoryCompletedEventArgs e);
+    public delegate void GetLeaveHistory_leaveCompletedEventHandler(object sender, GetLeaveHistory_leaveCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetLeaveHistoryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetLeaveHistory_leaveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetLeaveHistoryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetLeaveHistory_leaveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public LeaveHistory[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((LeaveHistory[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetLeaveHistory_clotCompletedEventHandler(object sender, GetLeaveHistory_clotCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetLeaveHistory_clotCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetLeaveHistory_clotCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

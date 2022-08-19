@@ -49,7 +49,9 @@ namespace WEBUI.Pages
 
 
             //histroy
-            List<WebServiceLayer.WebReference_leave.LeaveHistory> history = BLL.Leave.GetLeaveHistoryByRequest(requestID);
+            List<WebServiceLayer.WebReference_leave.LeaveHistory> history = BLL.Leave.GetLeaveHistoryByRequest_clot(requestID);
+
+
             panel_history.Visible = history.Count == 0 ? false : true;
             this.rp_history.DataSource = history;
             this.rp_history.DataBind();

@@ -226,7 +226,21 @@ namespace BLL
            
             hours = clot.Hour.ToString();
 
-            return strdate + " " + time + " (" + hours + " " + BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours + ")";
+            string halfStr = "";
+            if (clot.Section == 1)
+            {
+                halfStr = "AM";
+            }
+            else if (clot.Section == 2)
+            {
+                halfStr = "PM";
+            }
+            else if (clot.Section == 0)
+            {
+                halfStr = "FullDay";
+            }
+
+            return strdate + " " + time + " (" + hours + " " + BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours + " "+ halfStr+ ")";
         }
 
         public static string showCLOTTimev2(WebServiceLayer.WebReference_leave.StaffCLOTRequest clot)
