@@ -14,9 +14,8 @@ namespace WEBUI.Pages
     //accumulate 的处理验证.
     public partial class approval_wait : BLL.CustomLoginTemplate
     {
-        //这3个参数，控制了数据的来源，和对应的操作面板的显示。（为什么from会多一个3出来，主要是考虑manage 页面，需要手动选择1，或者2，同时多个控件需要保存数据，如果1，跳到2，那么url变化，无法保存控件状态。
-        //做完后发现应该可以用server.transfer.链接对于后台来说变化了，而且还保存了数据，但是页面上看不出变化也不太好。）
-        //action=0 时，是否可以取消qs_from?
+        //这3个参数，控制了数据的来源，和对应的操作面板的显示.
+        //action=1 时.   clot,leave 取决于 qs_from?        action=1时，clot leave取决于 页面控件radio. from 只是一个站位参数，默认为1.
 
         
         public static string qs_action = "action";//0.my mange data  1.mydata 
@@ -137,15 +136,20 @@ namespace WEBUI.Pages
         private void SetupRepeater()
         {
             int sourceType = 0;
-            if (from == 0)
+
+            //applyer
+            if (dataType_myselfOrMyManage == 1)
             {
-                sourceType = 0;
+                if (from == 0)
+                {
+                    sourceType = 0;
+                }
+                else if (from == 1)
+                {
+                    sourceType = 1;
+                }
             }
-            else if (from == 1)
-            {
-                sourceType = 1;
-            }
-            else if (from == 3)
+            else//approver
             {
                 try
                 {
@@ -158,7 +162,7 @@ namespace WEBUI.Pages
                     return;//hidden 了 leave and cl/ot. 所以直接不显示repeater.
                 }
             }
-            
+
             this.rp_clot.Visible = false;
             this.rp_list.Visible = false;
 
@@ -218,7 +222,7 @@ namespace WEBUI.Pages
             this.ddl_year.SelectedValue = DateTime.Now.Year.ToString();
 
             //tab
-            if (dataType_myselfOrMyManage == 0)
+            if (dataType_myselfOrMyManage == 0)//manage
             {
                 this.myTabApproval.Visible = true;
                 this.myTabApply.Visible = false;
@@ -235,7 +239,7 @@ namespace WEBUI.Pages
                     this.myTabApproval_history.Attributes.Add("class", "active");
                 }
             }
-            else
+            else//applyer.
             {
                 this.myTabApproval.Visible = false;
                 this.myTabApply.Visible = true;
@@ -267,7 +271,7 @@ namespace WEBUI.Pages
             this.ib_search.Visible = dataType_myselfOrMyManage == 0;
 
             //radioOption
-            if (from == 0 || from == 1)
+            if (dataType_myselfOrMyManage==1)//manage
             {
                 this.rbl_sourceType.Visible = false;
             }
