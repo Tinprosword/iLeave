@@ -45,6 +45,7 @@ namespace BLL
             var cookie= BLL.Page.MyCookieManage.GetCookie();
             cookie.loginname = "";
             cookie.loginpsw = "";
+            cookie.isRemember = "0";
             BLL.Page.MyCookieManage.SetCookie(cookie);
             MorePlaygroundAction("sys", "logout", "sys", "logout", "~/login.aspx?action=userloginout",cookie.isAppLogin=="1");
         }
@@ -52,9 +53,6 @@ namespace BLL
         public static void MPG_SessionOutToLogin()
         {
             var cookie = BLL.Page.MyCookieManage.GetCookie();
-            cookie.loginname = "";
-            cookie.loginpsw = "";
-            BLL.Page.MyCookieManage.SetCookie(cookie);
             MorePlaygroundAction("sys", "sessionout", "sys", "sessionout", "~/login.aspx?action=userSessionout", cookie.isAppLogin == "1");
         }
 

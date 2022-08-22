@@ -74,7 +74,7 @@ namespace WEBUI
             BLL.Page.MyCookie data = BLL.Page.MyCookieManage.GetCookie();
 
             string isremember = data.isRemember;
-            if (!string.IsNullOrEmpty(isremember) && isremember == "1" && queryAction == "" && !string.IsNullOrEmpty(data.loginname) && !string.IsNullOrEmpty(data.loginpsw) )
+            if (!string.IsNullOrEmpty(isremember) && isremember == "1" && !string.IsNullOrEmpty(data.loginname) && !string.IsNullOrEmpty(data.loginpsw) )
             {
                 ProgressLogin(data.loginname, data.loginpsw);
             }

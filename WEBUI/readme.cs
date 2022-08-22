@@ -23,8 +23,6 @@
 //全地区和所有分地区 ，加起来没有 相等数量。                            ok.
 
 
-
-
 /*
 1.5.0 : 
 hr add secion字段，  ileave 需要同步添加section 处理，
@@ -32,22 +30,6 @@ hr add secion字段，  ileave 需要同步添加section 处理，
 
 
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //probably bug:detail change states 1 to 2 hardcode.        flag
@@ -96,3 +78,7 @@ hr add secion字段，  ileave 需要同步添加section 处理，
 
 //version:
 //d9c134ce
+
+
+//1.51 修改了session out 的处理逻辑。不清空登录。否则登录不了。
+

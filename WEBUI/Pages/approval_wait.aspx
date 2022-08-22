@@ -1,10 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="approval_wait.aspx.cs" Inherits="WEBUI.Pages.approval_wait" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
+        <%--approver's menu.--%>
         <ul id="myTabApproval" class="nav nav-tabs lsf-clearPadding modifyTab" runat="server">
 	        <li id="myTabApproval_pending" runat="server"><a style="padding-top:5px; padding-bottom:3px;padding-left:10px; padding-right:10px; " data-toggle="tab" runat="server" id="Approvalpending" onclick="window.location.href='approval_wait.aspx?action=0&applicationtype=0&from=3'"><asp:Literal ID="lt_pending" runat="server" Text="Pending"/></a></li>
 	        <li id="myTabApproval_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;padding-left:10px; padding-right:10px; " data-toggle="tab" runat="server" id="ApprovalHistory" onclick="window.location.href='approval_wait.aspx?action=0&applicationtype=3&from=3'"><asp:Literal ID="lt_processed" runat="server" Text="History"/></a></li>
         </ul>
+        <%--applyer's menu--%>
         <ul id="myTabApply" class="nav nav-tabs lsf-clearPadding modifyTab" runat="server">
 	        <li id="myTabapply_new" runat="server"><a style="padding-top:5px; padding-bottom:3px;padding-left:10px; padding-right:10px; " data-toggle="tab" onclick="<%=showNewLink() %>"><asp:Literal ID="lt_new" runat="server" Text="New"></asp:Literal></a></li>
 	        <li id="myTabapply_pending" runat="server"><a style="padding-top:4px; padding-bottom:4px;padding-left:10px; padding-right:10px; " data-toggle="tab" onclick="window.location.href='approval_wait.aspx?action=1&applicationtype=0&from=<%=from%>'"><asp:Literal ID="lt_mypending" runat="server" Text="Pending"/></a></li>
