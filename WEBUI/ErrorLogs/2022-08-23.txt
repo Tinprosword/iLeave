@@ -1,0 +1,28 @@
+ip:::1
+DataTime：2022/8/23 12:17:24
+Url：http://localhost/WEBUI/pages/approval_wait.aspx?action=0&applicationtype=0&from=0&requestid=35218
+Message：无法在发送 HTTP 标头之后进行重定向。
+Source：System.Web
+Type：System.Web.HttpException
+Function：Void Redirect(System.String, Boolean, Boolean)
+Trace：   在 System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 522
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/8/23 15:12:15
+Url：http://localhost/WEBUI/pages/approval_wait.aspx?action=1&applicationtype=0&from=0&requestid=35178
+Message：索引(从零开始)必须大于或等于零，且小于参数列表的大小。
+Source：mscorlib
+Type：System.FormatException
+Function：System.Text.StringBuilder AppendFormatHelper(System.IFormatProvider, System.String, System.ParamsArray)
+Trace：   在 System.Text.StringBuilder.AppendFormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   在 System.String.FormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   在 System.String.Format(String format, Object arg0, Object arg1)
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 521
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

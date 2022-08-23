@@ -406,25 +406,51 @@ namespace BLL
             else if (status == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
             {
                 var tempresult = result.Where(x => (x.WorkflowTypeID == 0 && x.Status != (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE) || (x.workinfoID==null) ).ToList();
-
-                foreach (var tempItem in tempresult)
-                {
-                    var hasCancelItem = result.Where(x => x.WorkflowTypeID == 10 && x.employmentID == tempItem.employmentID && x.leavefrom == tempItem.leavefrom && x.leaveto == tempItem.leaveto).FirstOrDefault();
-                    if (hasCancelItem != null)
-                    {
-                        if (tempItem.Status == 4)//数据库设计的缺陷，cancel request id不能和之前requestid 的关联起来。所以暂时把4的都当作是 confirm canceled.
-                        {
-                            tempItem.WorkflowTypeID = 10;
-                            tempItem.Status = hasCancelItem.Status;
-                        }
-                    }
-                }
+                GetMyLeaveMaster_fixStatus(tempresult, result);
                 result = tempresult;
             }
 
             result = result.Where(x => x.leavefrom.Year == year || x.leaveto.Year == year).ToList();
             result =result.OrderByDescending(x => x.leavefrom).ThenByDescending(x=>x.createDate).ToList();
             return result;
+        }
+
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyLeaveMasterByRequestID(int pid, GlobalVariate.LeaveBigRangeStatus status,int requestid)
+        {
+            List<LeaveRequestMaster> result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMasterByPID(pid).ToList();
+            int[] firstRequestId = result.Where(x => x.WorkflowTypeID == 0).Select(x => x.RequestID).ToArray();
+
+
+            if (status == GlobalVariate.LeaveBigRangeStatus.waitapproval)
+            {
+                result = result.Where(x => (x.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && x.WorkflowTypeID == 0) || (x.WorkflowTypeID == 10 && x.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL)).ToList();
+            }
+            else if (status == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
+            {
+                var tempresult = result.Where(x => (x.WorkflowTypeID == 0 && x.Status != (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE) || (x.workinfoID == null)).ToList();
+                GetMyLeaveMaster_fixStatus(tempresult, result);
+                result = tempresult;
+            }
+
+            result = result.Where(x => x.RequestID==requestid).ToList();
+            result = result.OrderByDescending(x => x.leavefrom).ThenByDescending(x => x.createDate).ToList();
+            return result;
+        }
+
+        private static void GetMyLeaveMaster_fixStatus(List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> needFixData, List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> allData)
+        {
+            foreach (var tempItem in needFixData)
+            {
+                var hasCancelItem = allData.Where(x => x.WorkflowTypeID == 10 && x.employmentID == tempItem.employmentID && x.leavefrom == tempItem.leavefrom && x.leaveto == tempItem.leaveto).FirstOrDefault();
+                if (hasCancelItem != null)
+                {
+                    if (tempItem.Status == 4)//数据库设计的缺陷，cancel request id不能和之前requestid 的关联起来。所以暂时把4的都当作是 confirm canceled.
+                    {
+                        tempItem.WorkflowTypeID = 10;
+                        tempItem.Status = hasCancelItem.Status;
+                    }
+                }
+            }
         }
 
 
@@ -449,6 +475,26 @@ namespace BLL
             {
                 result = result.Where(x => MODEL.UserName.IsNameLike(x.p_Surname + " " + x.p_Othername, x.p_NameCH, name) == true).ToList();
             }
+            result = result.OrderByDescending(x => x.leavefrom).ThenByDescending(x => x.createDate).ToList();
+
+            return result;
+        }
+
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyManageLeaveMasterByRequestid(int uid, GlobalVariate.LeaveBigRangeStatus status,int requestid)
+        {
+            List<LeaveRequestMaster> result = new List<LeaveRequestMaster>();
+
+            if (status == GlobalVariate.LeaveBigRangeStatus.waitapproval)
+            {
+                result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMaster_MyManageWaitingByApprovarUID(uid).ToList();
+            }
+
+            else if (status == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
+            {
+                result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2(uid, 0).ToList();//year 参数无效了。所以填个0.
+            }
+
+            result = result.Where(x => x.RequestID == requestid).ToList();
             result = result.OrderByDescending(x => x.leavefrom).ThenByDescending(x => x.createDate).ToList();
 
             return result;

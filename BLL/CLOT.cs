@@ -129,10 +129,10 @@ namespace BLL
             return result;
         }
 
-        
+
         #endregion
 
-
+        #region insert
         public static List<int> InsertCLOTRequests(List<MODEL.CLOT.CLOTItem> items, int createrUid, int applyerEID)
         {
             List<int> result = new List<int>();
@@ -248,6 +248,7 @@ namespace BLL
             
             return result;
         }
+        #endregion
 
         #region other function
         public static string showCLOTTime(WebServiceLayer.WebReference_leave.StaffCLOTRequest clot)
@@ -359,8 +360,7 @@ namespace BLL
 
     #endregion
 
-
-    #region check
+        #region check
     //-1 hours is small zero ,或者不是数字 -4 override in Repeater.
     public static int CheckOnAddSingleItem(MODEL.CLOT.CLOTItem tempItem, MODEL.CLOT.ViewState_page dataview, int eid)
         {

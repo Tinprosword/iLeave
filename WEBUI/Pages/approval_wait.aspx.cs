@@ -45,6 +45,7 @@ namespace WEBUI.Pages
             }
             return result;
         }
+
         public static void setrdlvalue(System.Web.SessionState.HttpSessionState ss,int value)
         {
             ss[sessionname_rdl] = value;
@@ -78,7 +79,6 @@ namespace WEBUI.Pages
         {
         }
 
-        
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
             lb_errormsg.Text = "";
@@ -88,6 +88,7 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
+            
             SetupNavinigation();
             SetupSearchAndTab();
             SetupRepeater();
@@ -178,14 +179,30 @@ namespace WEBUI.Pages
                 this.rp_list.Visible = true;
                 
                 List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> ds = null;
-                if (dataType_myselfOrMyManage == 0)
+
+                if (mRequestid > 0)
                 {
-                    ds = BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, currentBigRange,   year, name);
+                    if (dataType_myselfOrMyManage == 0)
+                    {
+                        ds = BLL.Leave.GetMyManageLeaveMasterByRequestid(loginer.userInfo.id, currentBigRange,mRequestid);
+                    }
+                    else
+                    {
+                        ds = BLL.Leave.GetMyLeaveMasterByRequestID(loginer.userInfo.personid, currentBigRange,mRequestid);
+                    }
                 }
                 else
                 {
-                    ds = BLL.Leave.GetMyLeaveMaster(loginer.userInfo.personid, currentBigRange, year);
+                    if (dataType_myselfOrMyManage == 0)
+                    {
+                        ds = BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, currentBigRange, year, name);
+                    }
+                    else
+                    {
+                        ds = BLL.Leave.GetMyLeaveMaster(loginer.userInfo.personid, currentBigRange, year);
+                    }
                 }
+
 
                 this.rp_list.DataSource = ds;
                 this.rp_list.DataBind();
@@ -236,6 +253,10 @@ namespace WEBUI.Pages
                 this.ddl_year.Items.Add(new ListItem(i.ToString(),i.ToString()));
             }
             this.ddl_year.SelectedValue = DateTime.Now.Year.ToString();
+            if (mRequestid > 0)
+            {
+                this.ddl_year.Visible = false;
+            }
 
             //tab
             if (dataType_myselfOrMyManage == 0)//manage
@@ -281,13 +302,26 @@ namespace WEBUI.Pages
                     this.myTabapply_es.Visible = false;
                 }
             }
+            if (mRequestid > 0)
+            {
+                this.myTabApproval.Visible = false;
+                this.myTabApply.Visible = false;
+            }
+
+
             //staff
             this.tb_staff.SetTip(tip);
             this.tb_staff.Visible = dataType_myselfOrMyManage == 0;
             this.ib_search.Visible = dataType_myselfOrMyManage == 0;
+            if (mRequestid > 0)
+            {
+                this.tb_staff.Visible = false;
+                this.ib_search.Visible = false;
+            }
+
 
             //radioOption
-            if (dataType_myselfOrMyManage==1)//manage
+            if (dataType_myselfOrMyManage==1)//myself
             {
                 this.rbl_sourceType.Visible = false;
             }
@@ -311,7 +345,16 @@ namespace WEBUI.Pages
                 }
                 else
                 {
-                    this.rbl_sourceType.SelectedValue = getrdlvalue(Session).ToString();
+                    if (mRequestid > 0)
+                    {
+                        this.rbl_sourceType.SelectedValue = from.ToString();//requestid ,存在那么每次都要重新加载radio.
+                        this.rbl_sourceType.Visible = false;
+                    }
+                    else
+                    {
+                        this.rbl_sourceType.SelectedValue = getrdlvalue(Session).ToString();//没有request,读session.保证tab，改变也可以存储 clot or leave.
+                    }
+                    
                 }
             }
         }
@@ -470,22 +513,50 @@ namespace WEBUI.Pages
                         div_error.Visible = true;
                     }
                 }
-                SetupRepeater();
 
-                if (callResult)
+                if (mRequestid > 0)
                 {
-                    Response.Write(successMsg + ".");
+                    //直接跳转，简化逻辑。
+                    string url = "?action={0}&applicationtype=3&from={1}";
+                    url = string.Format(url, dataType_myselfOrMyManage, from);
+
+                    if (callResult)
+                    {
+                        Response.Write(successMsg + ".");
+                    }
+                    else
+                    {
+                        Response.Write(errormsg);
+                    }
+                    Response.Flush();
+                    System.Threading.Thread.Sleep(50);//休眠2秒,获得较好显示体验
+
+                    this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
+
+                    this.lt_jsscrolltop.Text = LSLibrary.WebAPP.MyJSHelper.Goto(url);
+
+                    
                 }
                 else
                 {
-                    Response.Write(errormsg);
+
+                    SetupRepeater();
+
+                    if (callResult)
+                    {
+                        Response.Write(successMsg + ".");
+                    }
+                    else
+                    {
+                        Response.Write(errormsg);
+                    }
+                    Response.Flush();
+                    System.Threading.Thread.Sleep(50);//休眠2秒,获得较好显示体验
+
+                    this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
+
+                    this.lt_jsscrolltop.Text = "<script>var vv=getCookie('st'); $('#maindata').scrollTop(vv);</script>";
                 }
-                Response.Flush();
-                System.Threading.Thread.Sleep(50);//休眠2秒,获得较好显示体验
-
-                this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
-
-                this.lt_jsscrolltop.Text = "<script>var vv=getCookie('st'); $('#maindata').scrollTop(vv);</script>";
             }
         }
 
