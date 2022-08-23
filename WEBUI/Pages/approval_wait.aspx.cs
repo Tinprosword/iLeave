@@ -21,6 +21,7 @@ namespace WEBUI.Pages
         public static string qs_action = "action";//0.my mange data  1.mydata 
         public static string qs_bigRange = "applicationType";//0:penging. 3:history.
         public static string qs_from = "from";//0.leave 1.clot 3.来源于管理页面，管理页面里面有radio控件，来保存并确定是leave 还是clot.
+        public static string qs_requestid = "requestid";
 
         public static int attachmentNewLine = 6;
 
@@ -32,6 +33,7 @@ namespace WEBUI.Pages
         protected int dataType_myselfOrMyManage = 0;
         protected GlobalVariate.LeaveBigRangeStatus bigRange = 0;
         protected int from = 0;
+        protected int mRequestid = 0;
 
 
         public static int getrdlvalue(System.Web.SessionState.HttpSessionState ss)
@@ -61,6 +63,8 @@ namespace WEBUI.Pages
                 bigRange=(GlobalVariate.LeaveBigRangeStatus)intbig;
                 string strfrom = Request.QueryString[qs_from];
                 int.TryParse(strfrom, out from);
+                string strRequestid = Request.QueryString[qs_requestid];
+                int.TryParse(strRequestid, out mRequestid);
 
                 nametype = BLL.CodeSetting.GetNameType(BLL.MultiLanguageHelper.GetChoose());
             }
@@ -91,7 +95,6 @@ namespace WEBUI.Pages
             this.lt_jsscrolltop.Text = "<script>setCookie('st',0);</script>";
         }
 
-        
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {
@@ -193,15 +196,28 @@ namespace WEBUI.Pages
 
                 List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> ds = new List<WebServiceLayer.WebReference_leave.StaffCLOTRequest>();
 
-                
 
-                if (dataType_myselfOrMyManage == 1)
+                if (mRequestid > 0)
                 {
-                    ds = BLL.CLOT.GetMyCLOT(loginer.userInfo.firsteid ?? 0, currentBigRange, year);
+                    if (dataType_myselfOrMyManage == 1)
+                    {
+                        ds = BLL.CLOT.GetMyClOTByRequestid(loginer.userInfo.firsteid ?? 0, currentBigRange, mRequestid);
+                    }
+                    else if (dataType_myselfOrMyManage == 0)
+                    {
+                        ds = BLL.CLOT.GetMyManageClOTByRequestid(loginer.userInfo.id, currentBigRange, mRequestid);
+                    }
                 }
-                else if (dataType_myselfOrMyManage == 0)
+                else
                 {
-                    ds = BLL.CLOT.GetMyManageClOT(loginer.userInfo.id, currentBigRange, year, name);
+                    if (dataType_myselfOrMyManage == 1)
+                    {
+                        ds = BLL.CLOT.GetMyCLOT(loginer.userInfo.firsteid ?? 0, currentBigRange, year);
+                    }
+                    else if (dataType_myselfOrMyManage == 0)
+                    {
+                        ds = BLL.CLOT.GetMyManageClOT(loginer.userInfo.id, currentBigRange, year, name);
+                    }
                 }
 
                 ds = ds.OrderByDescending(x => x.Date).ThenByDescending(x => x.TimeFrom==null?0:x.TimeFrom.Value.Hour).ToList();
