@@ -81,6 +81,7 @@
     <Content Include="Pages\estimation.aspx" />
     <Content Include="Pages\Payslip.aspx" />
     <Content Include="Pages\RosterInquiry.aspx" />
+    <Content Include="Pages\shortcut.aspx" />
     <Content Include="Pages\Taxation.aspx" />
     <Content Include="Res\App\applywait.js" />
     <Content Include="Res\App\check.css" />
@@ -263,6 +264,13 @@
     </Compile>
     <Compile Include="Pages\RosterInquiry.aspx.designer.cs">
       <DependentUpon>RosterInquiry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\shortcut.aspx.cs">
+      <DependentUpon>shortcut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\shortcut.aspx.designer.cs">
+      <DependentUpon>shortcut.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Taxation.aspx.cs">
       <DependentUpon>Taxation.aspx</DependentUpon>
