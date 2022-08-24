@@ -197,6 +197,7 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
+    <asp:Literal ID="js_error" runat="server"></asp:Literal>
     <asp:Literal ID="js_waitdiv" runat="server"></asp:Literal>
     <script src="../Res/App/applywait.js"></script>
     <asp:Literal ID="lt_jsscrolltop" runat="server"></asp:Literal>
