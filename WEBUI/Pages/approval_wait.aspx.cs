@@ -84,6 +84,7 @@ namespace WEBUI.Pages
             lb_errormsg.Text = "";
             lb_errormsg.Visible = false;
             div_error.Visible = false;
+            js_error.Text = "";
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
@@ -190,6 +191,11 @@ namespace WEBUI.Pages
                     {
                         ds = BLL.Leave.GetMyLeaveMasterByRequestID(loginer.userInfo.personid, currentBigRange,mRequestid);
                     }
+
+                    if (ds.Count() == 0)
+                    {   //此信息不存在：1.已经处理，2.或者此信息不属于当前登录帐号，请退出账户，重新点击链接，在登录页面输入正确的帐号登录。
+                        this.js_error.Text = LSLibrary.WebAPP.MyJSHelper.AlertMessage("此信息不存在.\\n1.已经处理，\\n2.或者此信息不属于当前登录帐号，请退出账户，重新点击链接，在登录页面输入正确的帐号登录。");
+                    }
                 }
                 else
                 {
@@ -224,6 +230,11 @@ namespace WEBUI.Pages
                     {
                         ds = BLL.CLOT.GetMyManageClOTByRequestid(loginer.userInfo.id, currentBigRange, mRequestid);
                     }
+
+                    if (ds.Count() == 0)
+                    {   //此信息不存在：1.已经处理，2.或者此信息不属于当前登录帐号，请退出账户，重新点击链接，在登录页面输入正确的帐号登录。
+                        this.js_error.Text = LSLibrary.WebAPP.MyJSHelper.AlertMessage("此信息不存在：1.已经处理，2.或者此信息不属于当前登录帐号，请退出账户，重新点击链接，在登录页面输入正确的帐号登录。");
+                    }
                 }
                 else
                 {
@@ -240,6 +251,8 @@ namespace WEBUI.Pages
                 ds = ds.OrderByDescending(x => x.Date).ThenByDescending(x => x.TimeFrom==null?0:x.TimeFrom.Value.Hour).ToList();
                 this.rp_clot.DataSource = ds;
                 this.rp_clot.DataBind();
+
+                
             }
         }
 
