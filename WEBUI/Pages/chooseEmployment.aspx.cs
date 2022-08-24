@@ -30,7 +30,7 @@ namespace WEBUI.Pages
 
                 if (canlogins != null && canlogins.Count() == 1)
                 {
-                    Response.Redirect("getheight.aspx");
+                    gotoNextPage();
                 }
                 else
                 {
@@ -47,7 +47,8 @@ namespace WEBUI.Pages
                             string sno = latesteid[0].s_StaffNumber;
 
                             BLL.User_wsref.ChangeInfoToSession(eid, eno, sid, sno, true);
-                            Response.Redirect("getheight.aspx");
+
+                            gotoNextPage();
                         }
                     }
                 }
@@ -55,6 +56,20 @@ namespace WEBUI.Pages
             else
             {
                 BLL.User_wsref.MPG_GoBackToLogin();
+            }
+        }
+
+        private void gotoNextPage()
+        {
+            string tempUrl = BLL.common.isShortcutQSAndGetDecodeURL(Request);
+            if (!string.IsNullOrEmpty(tempUrl))
+            {
+                tempUrl = HttpUtility.UrlEncode(tempUrl);
+                Response.Redirect("getheight.aspx?action=shortcut&url=" + tempUrl);
+            }
+            else
+            {
+                Response.Redirect("getheight.aspx");
             }
         }
 
@@ -96,7 +111,8 @@ namespace WEBUI.Pages
             string sno = btn.Attributes["sno"];
 
             BLL.User_wsref.ChangeInfoToSession(eid, eno, sid, sno, true);
-            Response.Redirect("getheight.aspx");
+
+            gotoNextPage();
         }
 
 

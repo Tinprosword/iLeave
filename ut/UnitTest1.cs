@@ -1809,10 +1809,12 @@ namespace ut
         [TestMethod]
         public void testtemp()
         {
-            var p= LSLibrary.MD5Util.GetMD5_32("Admin2022");
+            //var p= LSLibrary.MD5Util.GetMD5_32("Admin2022");
 
-            var gg = 4;
+            //var gg = 4;
             //testRange();
+            var dd = System.Web.HttpUtility.UrlEncode("approval_wait.aspx?action=0&applicationtype=0&from=0&requestid=35218");
+            var a = 3;
         }
 
         private static void testRange()

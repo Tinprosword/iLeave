@@ -67,6 +67,10 @@ namespace WEBUI
                 this.tb_u1.Text = "";
                 this.tb_p1.Text = "";
             }
+            else if (queryAction.ToLower() == "shortcut")
+            {
+                //什么都不做，自动走下面的autoLogin()流程
+            }
         }
 
         private void AutoLogin()
@@ -80,7 +84,7 @@ namespace WEBUI
             }
             else
             {
-                
+                //什么都不做，等待登录。
             }
         }
 
@@ -145,7 +149,7 @@ namespace WEBUI
                     MODEL.UserInfo userInfo= BLL.User_wsref.GetAndSaveInfoToSession(userid, loginResult);
                     if (userInfo != null)
                     {
-                        Response.Redirect("~/Pages/chooseEmployment.aspx?pid=" + userInfo.personid+"&sourcetype=1");
+                        gotoNextPage(userInfo.personid);
                     }
                     else
                     {
@@ -162,6 +166,24 @@ namespace WEBUI
             {
             }
         }
+
+
+        private void gotoNextPage(int pid)
+        {
+            string tempUrl = BLL.common.isShortcutQSAndGetDecodeURL(Request);
+
+            if (!string.IsNullOrEmpty(tempUrl))
+            {
+                tempUrl = HttpUtility.UrlEncode(tempUrl);
+                Response.Redirect("~/Pages/chooseEmployment.aspx?pid=" + pid + "&sourcetype=1&action=shortcut&url=" + tempUrl);
+            }
+            else
+            {
+                Response.Redirect("~/Pages/chooseEmployment.aspx?pid=" + pid + "&sourcetype=1");
+            }
+        }
+
+
 
 
         private void LoadLableLanguage(LSLibrary.WebAPP.BaseLanguage baseLanguage)

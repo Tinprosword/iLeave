@@ -12,7 +12,7 @@ namespace BLL
 
         private static bool isdbug = false;
 
-        private static LSLibrary.LogUtil logUtil = new LSLibrary.LogUtil( GlobalVariate.pageServer.MapPath("mylog.txt"));
+        private static LSLibrary.LogUtil logUtil = new LSLibrary.LogUtil(GlobalVariate.pageServer.MapPath("mylog.txt"));
 
 
         //loginer.userInfo.loginName
@@ -25,9 +25,9 @@ namespace BLL
                 string filename = LSLibrary.FileUtil.GetFileName(result[i].originAttendance_RelatePath);
                 if (LSLibrary.FileUtil.IsImagge(filename))
                 {
-                    string tempItem= "<div style=\"display:inline-block;margin-right:5px; \"><a href=\"showpic2.aspx?path={0}\"><img style=\"width: 30px; height: 30px; \" src=\"{1}\" /></a></div>";
+                    string tempItem = "<div style=\"display:inline-block;margin-right:5px; \"><a href=\"showpic2.aspx?path={0}\"><img style=\"width: 30px; height: 30px; \" src=\"{1}\" /></a></div>";
                     string originPicPath = result[i].GetOriginFileName(0);
-                    string smallPicPath= result[i].GetReduceFileName();
+                    string smallPicPath = result[i].GetReduceFileName();
                     originPicPath = LSLibrary.WebAPP.httpHelper.GenerateURL("uploadpic\\" + originPicPath);
                     smallPicPath = LSLibrary.WebAPP.httpHelper.GenerateURL("uploadpic\\reduce\\" + smallPicPath);
                     tempItem = string.Format(tempItem, originPicPath, smallPicPath);
@@ -50,7 +50,7 @@ namespace BLL
 
 
 
-        public static void copyFileTo(string filePath, string descPath,HttpServerUtility server)
+        public static void copyFileTo(string filePath, string descPath, HttpServerUtility server)
         {
             string absfilepath = server.MapPath(filePath);
             System.IO.Directory.CreateDirectory(System.IO.Directory.GetParent(descPath).ToString());
@@ -106,8 +106,8 @@ namespace BLL
             }
         }
 
-        
-        public static void WriteLog(System.Diagnostics.StackFrame sf , string log)
+
+        public static void WriteLog(System.Diagnostics.StackFrame sf, string log)
         {
             if (isdbug)
             {
@@ -124,7 +124,7 @@ namespace BLL
         }
 
 
-        public static void CheckMyPostback(string eventName,HttpRequest Request,EventHandler eventHandler,object sender,EventArgs e)
+        public static void CheckMyPostback(string eventName, HttpRequest Request, EventHandler eventHandler, object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(Request.Form["mypostback_target"]))
             {
@@ -149,7 +149,7 @@ namespace BLL
             }
         }
 
-        public static void OnClickAttachment(string relativePath,HttpResponse Response,HttpServerUtility Server)
+        public static void OnClickAttachment(string relativePath, HttpResponse Response, HttpServerUtility Server)
         {
             string filePath = Server.MapPath(relativePath);
             bool isimage = LSLibrary.FileUtil.IsImagge(System.IO.Path.GetFileName(filePath));
@@ -163,9 +163,9 @@ namespace BLL
             }
         }
 
-        public static string ShowJsFunction(string msg,string eventName)
+        public static string ShowJsFunction(string msg, string eventName)
         {
-            string js = "return ShowMessage('" + msg + "','"+eventName+"');";
+            string js = "return ShowMessage('" + msg + "','" + eventName + "');";
             return js;
         }
 
@@ -184,10 +184,10 @@ namespace BLL
             return strTime;
         }
 
-        public static string GetFormatTime2(LSLibrary.WebAPP.LanguageType language,DateTime datetime)
+        public static string GetFormatTime2(LSLibrary.WebAPP.LanguageType language, DateTime datetime)
         {
             var ampm = datetime.Hour >= 12 ? "PM" : "AM";
-            string strTime = datetime.ToString("hh:mm") + " " + ampm+" "+datetime.ToString("yyyy-MM-dd");
+            string strTime = datetime.ToString("hh:mm") + " " + ampm + " " + datetime.ToString("yyyy-MM-dd");
 
             return strTime;
         }
@@ -206,12 +206,30 @@ namespace BLL
                     if (sh > 585)
                     {
                         div.Style.Remove("min-height");
-                        div.Style.Add("min-height", (sh-33).ToString() + "px");//本来减去banner 53 ,但是好像 手机的状态栏，会多出20.所以高度要更高20.所以少见20.
+                        div.Style.Add("min-height", (sh - 33).ToString() + "px");//本来减去banner 53 ,但是好像 手机的状态栏，会多出20.所以高度要更高20.所以少见20.
                     }
                 }
                 catch { }
             }
         }
 
+        public static string isShortcutQSAndGetDecodeURL(HttpRequest request)
+        {
+            string result = "";
+            if (!string.IsNullOrEmpty(request.QueryString["action"]))
+            {
+                string queryAction = request.QueryString["action"];
+
+                if (queryAction.ToLower() == "shortcut")
+                {
+                    if (!string.IsNullOrEmpty(request.QueryString["url"]))
+                    {
+                        result = request.QueryString["url"];
+                    }
+                }
+            }
+
+            return result;
+        }
     }
 }

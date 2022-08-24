@@ -26,7 +26,21 @@ namespace WEBUI.Pages
             //js += "window.location.href='main.aspx';";
             //lt_jsGetheight.Text = "<script>" + js + "</script>";
 
-            Response.Redirect("~/pages/main.aspx");
+            gotoNextPage();
+        }
+
+        private void gotoNextPage()
+        {
+            string tempUrl = BLL.common.isShortcutQSAndGetDecodeURL(Request);
+            if (!string.IsNullOrEmpty(tempUrl))
+            {
+                tempUrl = HttpUtility.UrlEncode(tempUrl);
+                Response.Redirect("shortcut.aspx?url=" + tempUrl);//直接跳到shortcut.aspx 是正确方式，复用检测登录者的逻辑。
+            }
+            else
+            {
+                Response.Redirect("~/pages/main.aspx");
+            }
         }
     }
 }
