@@ -201,7 +201,7 @@
     <asp:Literal ID="js_waitdiv" runat="server"></asp:Literal>
     <script src="../Res/App/applywait.js"></script>
     <asp:Literal ID="lt_jsscrolltop" runat="server"></asp:Literal>
-     <script><asp:Literal ID="lt_jsScroll" runat="server"></asp:Literal></script>
+    <script><asp:Literal ID="lt_jsScroll" runat="server"></asp:Literal></script>
     <script>
         function setScrollTop()
         {
