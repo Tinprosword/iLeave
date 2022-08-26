@@ -453,7 +453,6 @@
     <Content Include="temp\template2.aspx" />
     <Content Include="temp\test.aspx" />
     <Content Include="temp\test2.aspx" />
-    <Content Include="temp\testaaa.aspx" />
     <Content Include="temp\testabc.aspx" />
     <Content Include="temp\testMaster.aspx" />
     <Content Include="temp\testMaster2.aspx" />
@@ -630,13 +629,6 @@
     </Compile>
     <Compile Include="temp\test2.aspx.designer.cs">
       <DependentUpon>test2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="temp\testaaa.aspx.cs">
-      <DependentUpon>testaaa.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="temp\testaaa.aspx.designer.cs">
-      <DependentUpon>testaaa.aspx</DependentUpon>
     </Compile>
     <Compile Include="temp\testabc.aspx.cs">
       <DependentUpon>testabc.aspx</DependentUpon>
