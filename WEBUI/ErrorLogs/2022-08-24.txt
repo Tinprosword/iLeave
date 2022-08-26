@@ -32,3 +32,39 @@ Trace：   在 System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath
    在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
    在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 ********************************************************************************************
+ip:::1
+DataTime：2022/8/24 16:10:21
+Url：http://localhost/WEBUI/temp/testpost.aspx
+Message：未知错误(0x80005000)
+Source：System.DirectoryServices
+Type：System.Runtime.InteropServices.COMException
+Function：Void Bind(Boolean)
+Trace：   在 System.DirectoryServices.DirectoryEntry.Bind(Boolean throwIfFail)
+   在 System.DirectoryServices.DirectoryEntry.Bind()
+   在 System.DirectoryServices.DirectoryEntry.get_IsContainer()
+   在 System.DirectoryServices.DirectoryEntries.ChildEnumerator..ctor(DirectoryEntry container)
+   在 System.DirectoryServices.DirectoryEntries.GetEnumerator()
+   在 LSLibrary.IISHelper.GetLocalIISStations() 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\Network\IISHelper.cs:行号 20
+   在 WEBUI.testPost.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\temp\testPost.aspx.cs:行号 14
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/8/24 16:13:42
+Url：http://localhost/WEBUI/temp/testpost.aspx
+Message：未知错误(0x80005000)
+Source：System.DirectoryServices
+Type：System.Runtime.InteropServices.COMException
+Function：Void Bind(Boolean)
+Trace：   在 System.DirectoryServices.DirectoryEntry.Bind(Boolean throwIfFail)
+   在 System.DirectoryServices.DirectoryEntry.Bind()
+   在 System.DirectoryServices.DirectoryEntry.get_IsContainer()
+   在 System.DirectoryServices.DirectoryEntries.ChildEnumerator..ctor(DirectoryEntry container)
+   在 System.DirectoryServices.DirectoryEntries.GetEnumerator()
+   在 LSLibrary.IISHelper.GetLocalIISStations() 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\Network\IISHelper.cs:行号 20
+   在 WEBUI.testPost.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\temp\testPost.aspx.cs:行号 14
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

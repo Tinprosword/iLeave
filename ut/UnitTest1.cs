@@ -1809,10 +1809,33 @@ namespace ut
         [TestMethod]
         public void testtemp()
         {
-            //var p= LSLibrary.MD5Util.GetMD5_32("Admin2022");
+            string Password = "HK@12345678";
 
-            //var gg = 4;
-            //testRange();
+            System.Security.Cryptography.MD5CryptoServiceProvider p_MD5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            var pahash= ConvertByteArrayToHex(p_MD5.ComputeHash(System.Text.Encoding.UTF8.GetBytes(Password)));
+
+
+            var a = 33;
+        }
+
+
+        public static string ComputeMD5HashHEX(string Seed)
+        {
+            System.Security.Cryptography.MD5CryptoServiceProvider p_MD5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            return ConvertByteArrayToHex(p_MD5.ComputeHash(System.Text.Encoding.UTF8.GetBytes(Seed)));
+        }
+        public static string ConvertByteArrayToHex(byte[] ByteArray)
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            for (int i = 0; i < ByteArray.Length; i++)
+            {
+                sb.Append(ByteArray[i].ToString("X2"));
+            }
+            return sb.ToString();
+        }
+
+        private static void urlcode()
+        {
             var dd = System.Web.HttpUtility.UrlEncode("approval_wait.aspx?action=0&applicationtype=0&from=0&requestid=35218");
             var a = 3;
         }

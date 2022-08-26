@@ -11,10 +11,8 @@ namespace WEBUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-
-            }
+            var listabc = BLL.Other.GetHRWebSiteRootUrl();
+            Response.Write(listabc);
         }
 
         public void POST()

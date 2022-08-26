@@ -172,7 +172,7 @@ namespace BLL
             int requestid = tempResult.ProcessID;
             if (string.IsNullOrWhiteSpace(errorMsg) && requestid>0)
             {
-                string baseurl = BLL.Other.GetWebSiteRootUrl();
+                string baseurl = BLL.Other.GetHRWebSiteRootUrl();
                 int workInfoid= WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CreateNewWorkflow_colt(WebServiceLayer.WebReference_leave.WorkflowTypeID.CLOT_APPLICATION, createUid, request.Remarks, requestid, applyerEID, baseurl);
                 
                 result = requestid;

@@ -169,7 +169,7 @@ namespace BLL
         }
 
 
-        public static string GetWebSiteRootUrl()
+        public static string GetHRWebSiteRootUrl()
         {
             string result = "";
 
@@ -181,18 +181,13 @@ namespace BLL
             string sysUrl= BLL.CodeSetting.GetSystemParameter(BLL.CodeSetting.SystemParameter_baseurl);
             if (string.IsNullOrEmpty(sysUrl))
             {
-                string theUrl = System.Web.HttpContext.Current.Request.Url.ToString();
+                string theUrl = LSLibrary.IISHelper.GetWebSiteBaseUrlWithFolderFlag(System.Web.HttpContext.Current);
+                //去掉  2个//和中间的字符。
 
-                string[] ileavesitename = { "ILEAVE", "DW-ILEAVE","TEMP", "LEAVE", "IHR-ILEAVE", "HR-ILEAVE" };
-                foreach (string sitename in ileavesitename)
-                {
-                    int p_intStart = theUrl.ToUpper().IndexOf("/"+sitename+"/");
-                    if (p_intStart > -1)
-                    {
-                        result = theUrl.Substring(0, p_intStart) + "/UI/";
-                        break;
-                    }
-                }
+                theUrl=theUrl.Remove(theUrl.Length - 1);
+                int p_indexaa = theUrl.LastIndexOf("/");
+
+                result = theUrl.Substring(0, p_indexaa) + "/UI/";
             }
             else
             {

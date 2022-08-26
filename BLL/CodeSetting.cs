@@ -12,6 +12,7 @@ namespace BLL
     {
         public static string SystemParameter_showleaveCode = "HIDE_LEAVECODE_IN_LEAVE_CALENDAR";
         public static string SystemParameter_baseurl = "ILEAVE_HRBASEURL";
+        public static string SystemParameter_ILEAVE_APPNAME = "ILEAVE_APPNAME";
 
         public static WebServiceLayer.WebReference_codesettings.LeaveInfo[] GetAllLeaveInfo()
         {
