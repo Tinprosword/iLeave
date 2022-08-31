@@ -513,12 +513,27 @@ namespace WEBUI.Pages
                 else if (btntype == 6)//cancel
                 {
                     int posibalCancelID = BLL.Leave.GetPossibalCancelRequestid(requestId);
+
+
+                    var theWorkflow = BLL.Leave.GetWorkflowByRequestID(requestId,(int) BLL.GlobalVariate.WorkflowTypeID.LEAVE_APPLICATION);
+
+                    if (theWorkflow == null)
+                    {
+                        lb_errormsg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approvalWaitcannotCancel;
+                        lb_errormsg.Visible = true;
+                        div_error.Visible = true;
+                        this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
+                        return;
+                    }
+
+
                     if (posibalCancelID==0)
                     {
                         int rid = BLL.workflow.CancelRequest_leave(requestId, loginer.userInfo.id, "", out errormsg);
                         callResult = rid <= 0 ? false : true;
                         successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgcancel);
                     }
+
                     else
                     {
                         lb_errormsg.Text = "Can not cancel again";
@@ -629,6 +644,17 @@ namespace WEBUI.Pages
                 }
                 else if (btntype == 6)//cancel
                 {
+                    var theWorkflow = BLL.Leave.GetWorkflowByRequestID(requestId, (int)BLL.GlobalVariate.WorkflowTypeID.CLOT_APPLICATION);
+
+                    if (theWorkflow == null)
+                    {
+                        lb_errormsg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approvalWaitcannotCancel;
+                        lb_errormsg.Visible = true;
+                        div_error.Visible = true;
+                        return;
+                    }
+
+
                     callResult = BLL.workflow.CancelRequest_leave_clot(requestId, loginer.userInfo.id, "", out errormsg);
                     successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgcancel);
                 }

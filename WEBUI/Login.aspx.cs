@@ -22,14 +22,18 @@ namespace WEBUI
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
-        {}
+        {
+
+        }
 
         protected override void InitPage_OnFirstLoad2()
-        {}
+        {
 
+        }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
+            this.tb_p1.Attributes.Add("value", Request.Form[tb_p1.ClientID]);
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()

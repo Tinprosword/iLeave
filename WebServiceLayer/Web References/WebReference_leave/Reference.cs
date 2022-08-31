@@ -29,6 +29,8 @@ namespace WebServiceLayer.WebReference_leave {
     [System.Web.Services.WebServiceBindingAttribute(Name="LeaveManagementV2Soap", Namespace="http://tempuri.org/")]
     public partial class LeaveManagementV2 : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback Gett_WorkflowTaskByInfoIDOperationCompleted;
+        
         private System.Threading.SendOrPostCallback Gett_WorkflowTaskByRequestIDOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetWorkTask_MaxSteps_NeedMeApproval_leave_ByUIDOperationCompleted;
@@ -247,9 +249,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetTaskSequenceOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetWorkflowTaskExtendByUidOperationCompleted;
+        private System.Threading.SendOrPostCallback GetWorkinfoByRequestOperationCompleted;
         
-        private System.Threading.SendOrPostCallback Gett_WorkflowTaskByInfoIDOperationCompleted;
+        private System.Threading.SendOrPostCallback GetWorkflowTaskExtendByUidOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -288,6 +290,9 @@ namespace WebServiceLayer.WebReference_leave {
                 this.useDefaultCredentialsSetExplicitly = true;
             }
         }
+        
+        /// <remarks/>
+        public event Gett_WorkflowTaskByInfoIDCompletedEventHandler Gett_WorkflowTaskByInfoIDCompleted;
         
         /// <remarks/>
         public event Gett_WorkflowTaskByRequestIDCompletedEventHandler Gett_WorkflowTaskByRequestIDCompleted;
@@ -617,10 +622,39 @@ namespace WebServiceLayer.WebReference_leave {
         public event GetTaskSequenceCompletedEventHandler GetTaskSequenceCompleted;
         
         /// <remarks/>
+        public event GetWorkinfoByRequestCompletedEventHandler GetWorkinfoByRequestCompleted;
+        
+        /// <remarks/>
         public event GetWorkflowTaskExtendByUidCompletedEventHandler GetWorkflowTaskExtendByUidCompleted;
         
         /// <remarks/>
-        public event Gett_WorkflowTaskByInfoIDCompletedEventHandler Gett_WorkflowTaskByInfoIDCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Gett_WorkflowTaskByInfoID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_WorkflowTask[] Gett_WorkflowTaskByInfoID(int infoID) {
+            object[] results = this.Invoke("Gett_WorkflowTaskByInfoID", new object[] {
+                        infoID});
+            return ((t_WorkflowTask[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Gett_WorkflowTaskByInfoIDAsync(int infoID) {
+            this.Gett_WorkflowTaskByInfoIDAsync(infoID, null);
+        }
+        
+        /// <remarks/>
+        public void Gett_WorkflowTaskByInfoIDAsync(int infoID, object userState) {
+            if ((this.Gett_WorkflowTaskByInfoIDOperationCompleted == null)) {
+                this.Gett_WorkflowTaskByInfoIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGett_WorkflowTaskByInfoIDOperationCompleted);
+            }
+            this.InvokeAsync("Gett_WorkflowTaskByInfoID", new object[] {
+                        infoID}, this.Gett_WorkflowTaskByInfoIDOperationCompleted, userState);
+        }
+        
+        private void OnGett_WorkflowTaskByInfoIDOperationCompleted(object arg) {
+            if ((this.Gett_WorkflowTaskByInfoIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Gett_WorkflowTaskByInfoIDCompleted(this, new Gett_WorkflowTaskByInfoIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Gett_WorkflowTaskByRequestID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -3974,6 +4008,37 @@ namespace WebServiceLayer.WebReference_leave {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetWorkinfoByRequest", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_WorkflowInfo GetWorkinfoByRequest(int requestid, int workflowid) {
+            object[] results = this.Invoke("GetWorkinfoByRequest", new object[] {
+                        requestid,
+                        workflowid});
+            return ((t_WorkflowInfo)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetWorkinfoByRequestAsync(int requestid, int workflowid) {
+            this.GetWorkinfoByRequestAsync(requestid, workflowid, null);
+        }
+        
+        /// <remarks/>
+        public void GetWorkinfoByRequestAsync(int requestid, int workflowid, object userState) {
+            if ((this.GetWorkinfoByRequestOperationCompleted == null)) {
+                this.GetWorkinfoByRequestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetWorkinfoByRequestOperationCompleted);
+            }
+            this.InvokeAsync("GetWorkinfoByRequest", new object[] {
+                        requestid,
+                        workflowid}, this.GetWorkinfoByRequestOperationCompleted, userState);
+        }
+        
+        private void OnGetWorkinfoByRequestOperationCompleted(object arg) {
+            if ((this.GetWorkinfoByRequestCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetWorkinfoByRequestCompleted(this, new GetWorkinfoByRequestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetWorkflowTaskExtendByUid", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public WorkflowTaskExtend[] GetWorkflowTaskExtendByUid(int uid) {
             object[] results = this.Invoke("GetWorkflowTaskExtendByUid", new object[] {
@@ -3999,35 +4064,6 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.GetWorkflowTaskExtendByUidCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetWorkflowTaskExtendByUidCompleted(this, new GetWorkflowTaskExtendByUidCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Gett_WorkflowTaskByInfoID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public t_WorkflowTask[] Gett_WorkflowTaskByInfoID(int infoID) {
-            object[] results = this.Invoke("Gett_WorkflowTaskByInfoID", new object[] {
-                        infoID});
-            return ((t_WorkflowTask[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void Gett_WorkflowTaskByInfoIDAsync(int infoID) {
-            this.Gett_WorkflowTaskByInfoIDAsync(infoID, null);
-        }
-        
-        /// <remarks/>
-        public void Gett_WorkflowTaskByInfoIDAsync(int infoID, object userState) {
-            if ((this.Gett_WorkflowTaskByInfoIDOperationCompleted == null)) {
-                this.Gett_WorkflowTaskByInfoIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGett_WorkflowTaskByInfoIDOperationCompleted);
-            }
-            this.InvokeAsync("Gett_WorkflowTaskByInfoID", new object[] {
-                        infoID}, this.Gett_WorkflowTaskByInfoIDOperationCompleted, userState);
-        }
-        
-        private void OnGett_WorkflowTaskByInfoIDOperationCompleted(object arg) {
-            if ((this.Gett_WorkflowTaskByInfoIDCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.Gett_WorkflowTaskByInfoIDCompleted(this, new Gett_WorkflowTaskByInfoIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -10673,6 +10709,32 @@ namespace WebServiceLayer.WebReference_leave {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Gett_WorkflowTaskByInfoIDCompletedEventHandler(object sender, Gett_WorkflowTaskByInfoIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Gett_WorkflowTaskByInfoIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Gett_WorkflowTaskByInfoIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_WorkflowTask[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_WorkflowTask[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void Gett_WorkflowTaskByRequestIDCompletedEventHandler(object sender, Gett_WorkflowTaskByRequestIDCompletedEventArgs e);
     
     /// <remarks/>
@@ -13243,6 +13305,32 @@ namespace WebServiceLayer.WebReference_leave {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetWorkinfoByRequestCompletedEventHandler(object sender, GetWorkinfoByRequestCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetWorkinfoByRequestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetWorkinfoByRequestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_WorkflowInfo Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_WorkflowInfo)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void GetWorkflowTaskExtendByUidCompletedEventHandler(object sender, GetWorkflowTaskExtendByUidCompletedEventArgs e);
     
     /// <remarks/>
@@ -13263,32 +13351,6 @@ namespace WebServiceLayer.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((WorkflowTaskExtend[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void Gett_WorkflowTaskByInfoIDCompletedEventHandler(object sender, Gett_WorkflowTaskByInfoIDCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class Gett_WorkflowTaskByInfoIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal Gett_WorkflowTaskByInfoIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public t_WorkflowTask[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((t_WorkflowTask[])(this.results[0]));
             }
         }
     }

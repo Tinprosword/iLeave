@@ -393,6 +393,11 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetPossibalCancelRequestid(requestid);
         }
 
+        public static WebServiceLayer.WebReference_leave.t_WorkflowInfo GetWorkflowByRequestID(int requestid, int workflowid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetWorkinfoByRequest(requestid, workflowid);
+        }
+
         public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyLeaveMaster(int pid, GlobalVariate.LeaveBigRangeStatus status, int year)
         {
             List<LeaveRequestMaster> result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMasterByPID(pid).ToList();
