@@ -395,7 +395,10 @@ namespace WEBUI.Pages
 
             var pageData = (MODEL.CLOT.ViewState_page)LSLibrary.WebAPP.ViewStateHelper.GetValue(NAME_OF_PAGE_VIEW, this.ViewState);
             ProcessSectinInfo(tt,(BLL.GlobalVariate.CLSection)pageData.clSectionType_InitOnpageload_UpdateAlways,(BLL.GlobalVariate.OTSection)pageData.otSectionType_InitOnpageload_UpdateAlways);
-            ddl_section_SelectedIndexChanged(null, null);
+            if (ddl_section.Visible)
+            {
+                ddl_section_SelectedIndexChanged(null, null);
+            }
         }
 
         private void ProcessSectinInfo(MODEL.CLOT.enum_clotType clOrOT,BLL.GlobalVariate.CLSection cLSection,BLL.GlobalVariate.OTSection oTSection)
@@ -581,7 +584,8 @@ namespace WEBUI.Pages
 
         protected void ddl_section_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selectedSection = int.Parse(this.ddl_section.SelectedValue);
+            int selectedSection = 0;
+            int.TryParse(this.ddl_section.SelectedValue,out selectedSection);
 
             double fullWorkHours = 7.5; double amWorkhours = 3.5; double pmWorkHours = 4;
             DateTime amFrom = new System.DateTime(2022, 1, 1, 9, 0, 0); DateTime amTo = new System.DateTime(2022, 1, 1, 12, 30, 0);

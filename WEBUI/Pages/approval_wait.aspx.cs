@@ -20,7 +20,7 @@ namespace WEBUI.Pages
         
         public static string qs_action = "action";//0.my mange data  1.mydata 
         public static string qs_bigRange = "applicationType";//0:penging. 3:history.
-        public static string qs_from = "from";//0.leave 1.clot 3.来源于管理页面，管理页面里面有radio控件，来保存并确定是leave 还是clot.
+        public static string qs_from = "from";//0.leave 1.clot 
         public static string qs_requestid = "requestid";
 
         public static int attachmentNewLine = 6;
@@ -197,7 +197,7 @@ namespace WEBUI.Pages
                         this.js_error.Text = LSLibrary.WebAPP.MyJSHelper.AlertMessage("此信息不存在.\\n1.已经处理，\\n2.或者此信息不属于当前登录帐号，请退出账户，重新点击链接，在登录页面输入正确的帐号登录。");
                     }
                 }
-                else
+                else//clot
                 {
                     if (dataType_myselfOrMyManage == 0)
                     {

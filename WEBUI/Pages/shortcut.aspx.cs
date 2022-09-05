@@ -7,6 +7,13 @@ using System.Web.UI.WebControls;
 
 namespace WEBUI.Pages
 {
+    //public static string qs_action = "action";//0.my mange data  1.mydata 
+    //public static string qs_bigRange = "applicationType";//0:penging. 3:history.
+    //public static string qs_from = "from";//0.leave 1.clot 
+    //public static string qs_requestid = "requestid";
+
+
+
     //外部链接，从这里开始。未登录分支登录后，又回到这里走登录的分支。 逻辑闭合，代码复用。nice.
     public partial class shortcut:System.Web.UI.Page
     {
