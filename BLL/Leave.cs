@@ -398,29 +398,8 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetWorkinfoByRequest(requestid, workflowid);
         }
 
-        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyLeaveMaster(int pid, GlobalVariate.LeaveBigRangeStatus status, int year)
-        {
-            List<LeaveRequestMaster> result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMasterByPID(pid).ToList();
-            int[] firstRequestId = result.Where(x => x.WorkflowTypeID == 0).Select(x => x.RequestID).ToArray();
-
-
-            if (status == GlobalVariate.LeaveBigRangeStatus.waitapproval)
-            {
-                result = result.Where(x => (x.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE && x.WorkflowTypeID == 0) || (x.WorkflowTypeID == 10 && x.Status == (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL)).ToList();
-            }
-            else if (status == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
-            {
-                var tempresult = result.Where(x => (x.WorkflowTypeID == 0 && x.Status != (byte)GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE) || (x.workinfoID==null) ).ToList();
-                GetMyLeaveMaster_fixStatus(tempresult, result);
-                result = tempresult;
-            }
-
-            result = result.Where(x => x.leavefrom.Year == year || x.leaveto.Year == year).ToList();
-            result =result.OrderByDescending(x => x.leavefrom).ThenByDescending(x=>x.createDate).ToList();
-            return result;
-        }
-
-        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyLeaveMasterByRequestID(int pid, GlobalVariate.LeaveBigRangeStatus status,int requestid)
+        #region my leave
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyLeaveMaster_all(int pid, GlobalVariate.LeaveBigRangeStatus status)
         {
             List<LeaveRequestMaster> result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMasterByPID(pid).ToList();
             int[] firstRequestId = result.Where(x => x.WorkflowTypeID == 0).Select(x => x.RequestID).ToArray();
@@ -436,6 +415,24 @@ namespace BLL
                 GetMyLeaveMaster_fixStatus(tempresult, result);
                 result = tempresult;
             }
+
+            result = result.OrderByDescending(x => x.leavefrom).ThenByDescending(x => x.createDate).ToList();
+            return result;
+        }
+
+
+
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyLeaveMaster(int pid, GlobalVariate.LeaveBigRangeStatus status, int year)
+        {
+            List<LeaveRequestMaster> result = GetMyLeaveMaster_all(pid, status);
+            result = result.Where(x => x.leavefrom.Year == year || x.leaveto.Year == year).ToList();
+            result =result.OrderByDescending(x => x.leavefrom).ThenByDescending(x=>x.createDate).ToList();
+            return result;
+        }
+
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyLeaveMasterByRequestID(int pid, GlobalVariate.LeaveBigRangeStatus status,int requestid)
+        {
+            List<LeaveRequestMaster> result = GetMyLeaveMaster_all(pid, status);
 
             result = result.Where(x => x.RequestID==requestid).ToList();
             result = result.OrderByDescending(x => x.leavefrom).ThenByDescending(x => x.createDate).ToList();
@@ -458,9 +455,9 @@ namespace BLL
             }
         }
 
+        #endregion
 
-
-        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyManageLeaveMaster(int uid, GlobalVariate.LeaveBigRangeStatus status, int year, string name)
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyManageLeaveMasterAll(int uid, GlobalVariate.LeaveBigRangeStatus status)
         {
             List<LeaveRequestMaster> result = new List<LeaveRequestMaster>();
 
@@ -471,8 +468,19 @@ namespace BLL
 
             else if (status == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
             {
-                result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2(uid, year).ToList();
+                result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2(uid, 0).ToList();
             }
+
+            
+            result = result.OrderByDescending(x => x.leavefrom).ThenByDescending(x => x.createDate).ToList();
+
+            return result;
+        }
+
+
+        public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyManageLeaveMaster(int uid, GlobalVariate.LeaveBigRangeStatus status, int year, string name)
+        {
+            List<LeaveRequestMaster> result = GetMyManageLeaveMasterAll(uid, status);
 
             result = result.Where(x => x.leavefrom.Year == year || x.leaveto.Year == year).ToList();
 
@@ -487,17 +495,7 @@ namespace BLL
 
         public static List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> GetMyManageLeaveMasterByRequestid(int uid, GlobalVariate.LeaveBigRangeStatus status,int requestid)
         {
-            List<LeaveRequestMaster> result = new List<LeaveRequestMaster>();
-
-            if (status == GlobalVariate.LeaveBigRangeStatus.waitapproval)
-            {
-                result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMaster_MyManageWaitingByApprovarUID(uid).ToList();
-            }
-
-            else if (status == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
-            {
-                result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMaster_MyManageBeyondWaitingByApprovarUIDv2(uid, 0).ToList();//year 参数无效了。所以填个0.
-            }
+            List<LeaveRequestMaster> result = GetMyManageLeaveMasterAll(uid, status);
 
             result = result.Where(x => x.RequestID == requestid).ToList();
             result = result.OrderByDescending(x => x.leavefrom).ThenByDescending(x => x.createDate).ToList();

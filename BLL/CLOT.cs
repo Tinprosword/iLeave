@@ -32,15 +32,7 @@ namespace BLL
 
         public static List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> GetMyClOTByRequestid(int firstEID, GlobalVariate.LeaveBigRangeStatus status, int requestid)
         {
-            List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> result = new List<StaffCLOTRequest>();
-            if (status == GlobalVariate.LeaveBigRangeStatus.waitapproval)
-            {
-                result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetMyWaitingCLOT(firstEID).ToList();
-            }
-            else if (status == GlobalVariate.LeaveBigRangeStatus.beyongdWait)
-            {
-                result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetMyBeyondWaitingCLOT(firstEID).ToList();
-            }
+            List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> result = GetMyClOT(firstEID, status, null, null);
 
             result = result.Where(x => x.ID == requestid).ToList();
 
@@ -67,7 +59,7 @@ namespace BLL
             {
                 result = result.Where(x => x.Date <= to).ToList();
             }
-
+            result = result.OrderByDescending(x => x.TimeFrom).ThenByDescending(x => x.CreateDate).ToList();
             return result;
         }
 
@@ -172,7 +164,7 @@ namespace BLL
             int requestid = tempResult.ProcessID;
             if (string.IsNullOrWhiteSpace(errorMsg) && requestid>0)
             {
-                string baseurl = BLL.Other.GetHRWebSiteRootUrl();
+                string baseurl = workflow.GetTestBaseUrl();// BLL.Other.GetHRWebSiteRootUrl();
                 int workInfoid= WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CreateNewWorkflow_colt(WebServiceLayer.WebReference_leave.WorkflowTypeID.CLOT_APPLICATION, createUid, request.Remarks, requestid, applyerEID, baseurl);
                 
                 result = requestid;

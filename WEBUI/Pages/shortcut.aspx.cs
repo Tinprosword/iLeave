@@ -120,6 +120,12 @@ namespace WEBUI.Pages
             BLL.GlobalVariate.LeaveBigRangeStatus pendingorhistory = BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval;
             bool checkRequestBelongUid = true;
 
+            int personid = 0;
+            var personinfo = BLL.User_wsref.GetPersonBaseInfoByUid(uid);
+            if (personinfo != null && personinfo.Count()>= 1)
+            {
+                personid = personinfo[0].p_id;
+            }
 
             List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> leave_wait = null;
             List<WebServiceLayer.WebReference_leave.LeaveRequestMaster> leave_history = null;
@@ -146,8 +152,8 @@ namespace WEBUI.Pages
                 }
                 else//my leave
                 {
-                    leave_wait = BLL.Leave.GetMyLeaveMasterByRequestID(uid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, requestid);
-                    leave_history = BLL.Leave.GetMyLeaveMasterByRequestID(uid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, requestid);
+                    leave_wait = BLL.Leave.GetMyLeaveMasterByRequestID(personid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, requestid);
+                    leave_history = BLL.Leave.GetMyLeaveMasterByRequestID(personid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, requestid);
 
                     if (leave_wait == null || leave_wait.Count() == 0)
                     {
@@ -163,13 +169,13 @@ namespace WEBUI.Pages
             {
                 if (manageOrMy == 0)
                 {
-                    clot_wait = BLL.CLOT.GetMyClOTByRequestid(uid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, requestid);
-                    clot_history = BLL.CLOT.GetMyClOTByRequestid(uid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, requestid);
+                    clot_wait = BLL.CLOT.GetMyManageClOTByRequestid(uid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, requestid);
+                    clot_history = BLL.CLOT.GetMyManageClOTByRequestid(uid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, requestid);
                 }
                 else
                 {
-                    clot_wait = BLL.CLOT.GetMyManageClOTByRequestid(uid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, requestid);
-                    clot_history = BLL.CLOT.GetMyManageClOTByRequestid(uid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, requestid);
+                    clot_wait = BLL.CLOT.GetMyClOTByRequestid(uid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, requestid);
+                    clot_history = BLL.CLOT.GetMyClOTByRequestid(uid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, requestid);
                 }
                 
 

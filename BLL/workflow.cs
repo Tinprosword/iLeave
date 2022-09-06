@@ -9,7 +9,7 @@ namespace BLL
 {
     public class workflow
     {
-        private static string GetTestBaseUrl()
+        public static string GetTestBaseUrl()
         {
             return "http://localhost/WEBUI/";
         }
