@@ -141,6 +141,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetFirstRequestidByWaitCancelRequestid_ws">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cancelingRequestID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFirstRequestidByWaitCancelRequestid_wsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetFirstRequestidByWaitCancelRequestid_wsResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="CreateNewWorkflow">
         <s:complexType>
           <s:sequence>
@@ -197,6 +211,7 @@
           <s:enumeration value="CANCEL_LEAVE_APPLICATION" />
           <s:enumeration value="EXPENSE_CLAIM" />
           <s:enumeration value="CANCEL_CLOT_APPLICATION" />
+          <s:enumeration value="SENDPASSWORDLINKTOPERSONUSEREMAIL" />
         </s:restriction>
       </s:simpleType>
       <s:complexType name="ArrayOfStaffLeaveRequest">
@@ -2499,6 +2514,12 @@
   <wsdl:message name="GetLeaveHistory_clotSoapOut">
     <wsdl:part name="parameters" element="tns:GetLeaveHistory_clotResponse" />
   </wsdl:message>
+  <wsdl:message name="GetFirstRequestidByWaitCancelRequestid_wsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFirstRequestidByWaitCancelRequestid_ws" />
+  </wsdl:message>
+  <wsdl:message name="GetFirstRequestidByWaitCancelRequestid_wsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFirstRequestidByWaitCancelRequestid_wsResponse" />
+  </wsdl:message>
   <wsdl:message name="CreateNewWorkflowSoapIn">
     <wsdl:part name="parameters" element="tns:CreateNewWorkflow" />
   </wsdl:message>
@@ -3171,6 +3192,12 @@
   <wsdl:message name="GetLeaveHistory_clotHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfLeaveHistory" />
   </wsdl:message>
+  <wsdl:message name="GetFirstRequestidByWaitCancelRequestid_wsHttpPostIn">
+    <wsdl:part name="cancelingRequestID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFirstRequestidByWaitCancelRequestid_wsHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
   <wsdl:message name="ApproveRequest_leaveHttpPostIn">
     <wsdl:part name="requestid" type="s:string" />
     <wsdl:part name="ApproverUid" type="s:string" />
@@ -3726,6 +3753,10 @@
       <wsdl:input message="tns:GetLeaveHistory_clotSoapIn" />
       <wsdl:output message="tns:GetLeaveHistory_clotSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetFirstRequestidByWaitCancelRequestid_ws">
+      <wsdl:input message="tns:GetFirstRequestidByWaitCancelRequestid_wsSoapIn" />
+      <wsdl:output message="tns:GetFirstRequestidByWaitCancelRequestid_wsSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="CreateNewWorkflow">
       <wsdl:input message="tns:CreateNewWorkflowSoapIn" />
       <wsdl:output message="tns:CreateNewWorkflowSoapOut" />
@@ -4176,6 +4207,10 @@
       <wsdl:input message="tns:GetLeaveHistory_clotHttpPostIn" />
       <wsdl:output message="tns:GetLeaveHistory_clotHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetFirstRequestidByWaitCancelRequestid_ws">
+      <wsdl:input message="tns:GetFirstRequestidByWaitCancelRequestid_wsHttpPostIn" />
+      <wsdl:output message="tns:GetFirstRequestidByWaitCancelRequestid_wsHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="ApproveRequest_leave">
       <wsdl:input message="tns:ApproveRequest_leaveHttpPostIn" />
       <wsdl:output message="tns:ApproveRequest_leaveHttpPostOut" />
@@ -4551,6 +4586,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetLeaveHistory_clot">
       <soap:operation soapAction="http://tempuri.org/GetLeaveHistory_clot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFirstRequestidByWaitCancelRequestid_ws">
+      <soap:operation soapAction="http://tempuri.org/GetFirstRequestidByWaitCancelRequestid_ws" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -5569,6 +5613,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetFirstRequestidByWaitCancelRequestid_ws">
+      <soap12:operation soapAction="http://tempuri.org/GetFirstRequestidByWaitCancelRequestid_ws" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CreateNewWorkflow">
       <soap12:operation soapAction="http://tempuri.org/CreateNewWorkflow" style="document" />
       <wsdl:input>
@@ -6573,6 +6626,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetLeaveHistory_clot">
       <http:operation location="/GetLeaveHistory_clot" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFirstRequestidByWaitCancelRequestid_ws">
+      <http:operation location="/GetFirstRequestidByWaitCancelRequestid_ws" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

@@ -10,7 +10,19 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            
         </div>
     </form>
+    <script>
+        function confirmloginout(msg,url) {
+            if (confirm(msg)) {
+                window.location.href="?action=logout&url=" + url;
+            }
+            else {
+                //window.location('main.aspx');
+            }
+        }
+        </script>
+    <asp:Literal ID="lt_js" runat="server"></asp:Literal>
 </body>
 </html>

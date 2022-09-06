@@ -43,6 +43,8 @@ namespace WebServiceLayer.WebReference_leave {
         
         private System.Threading.SendOrPostCallback GetLeaveHistory_clotOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetFirstRequestidByWaitCancelRequestid_wsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback CreateNewWorkflowOperationCompleted;
         
         private System.Threading.SendOrPostCallback ApproveRequest_leaveOperationCompleted;
@@ -311,6 +313,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         public event GetLeaveHistory_clotCompletedEventHandler GetLeaveHistory_clotCompleted;
+        
+        /// <remarks/>
+        public event GetFirstRequestidByWaitCancelRequestid_wsCompletedEventHandler GetFirstRequestidByWaitCancelRequestid_wsCompleted;
         
         /// <remarks/>
         public event CreateNewWorkflowCompletedEventHandler CreateNewWorkflowCompleted;
@@ -827,6 +832,35 @@ namespace WebServiceLayer.WebReference_leave {
             if ((this.GetLeaveHistory_clotCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetLeaveHistory_clotCompleted(this, new GetLeaveHistory_clotCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetFirstRequestidByWaitCancelRequestid_ws", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int GetFirstRequestidByWaitCancelRequestid_ws(int cancelingRequestID) {
+            object[] results = this.Invoke("GetFirstRequestidByWaitCancelRequestid_ws", new object[] {
+                        cancelingRequestID});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetFirstRequestidByWaitCancelRequestid_wsAsync(int cancelingRequestID) {
+            this.GetFirstRequestidByWaitCancelRequestid_wsAsync(cancelingRequestID, null);
+        }
+        
+        /// <remarks/>
+        public void GetFirstRequestidByWaitCancelRequestid_wsAsync(int cancelingRequestID, object userState) {
+            if ((this.GetFirstRequestidByWaitCancelRequestid_wsOperationCompleted == null)) {
+                this.GetFirstRequestidByWaitCancelRequestid_wsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetFirstRequestidByWaitCancelRequestid_wsOperationCompleted);
+            }
+            this.InvokeAsync("GetFirstRequestidByWaitCancelRequestid_ws", new object[] {
+                        cancelingRequestID}, this.GetFirstRequestidByWaitCancelRequestid_wsOperationCompleted, userState);
+        }
+        
+        private void OnGetFirstRequestidByWaitCancelRequestid_wsOperationCompleted(object arg) {
+            if ((this.GetFirstRequestidByWaitCancelRequestid_wsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetFirstRequestidByWaitCancelRequestid_wsCompleted(this, new GetFirstRequestidByWaitCancelRequestid_wsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -10680,6 +10714,9 @@ namespace WebServiceLayer.WebReference_leave {
         
         /// <remarks/>
         CANCEL_CLOT_APPLICATION,
+        
+        /// <remarks/>
+        SENDPASSWORDLINKTOPERSONUSEREMAIL,
     }
     
     /// <remarks/>
@@ -10885,6 +10922,32 @@ namespace WebServiceLayer.WebReference_leave {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((LeaveHistory[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetFirstRequestidByWaitCancelRequestid_wsCompletedEventHandler(object sender, GetFirstRequestidByWaitCancelRequestid_wsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetFirstRequestidByWaitCancelRequestid_wsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetFirstRequestidByWaitCancelRequestid_wsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

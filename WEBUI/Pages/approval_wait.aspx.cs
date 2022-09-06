@@ -193,11 +193,11 @@ namespace WEBUI.Pages
                     }
 
                     if (ds.Count() == 0)
-                    {   //此信息不存在：1.已经处理，2.或者此信息不属于当前登录帐号，请退出账户，重新点击链接，在登录页面输入正确的帐号登录。
-                        this.js_error.Text = LSLibrary.WebAPP.MyJSHelper.AlertMessage("此信息不存在.\\n1.已经处理，\\n2.或者此信息不属于当前登录帐号，请退出账户，重新点击链接，在登录页面输入正确的帐号登录。");
+                    {
+                        SetupRepeater_NOtExistRequest();
                     }
                 }
-                else//clot
+                else
                 {
                     if (dataType_myselfOrMyManage == 0)
                     {
@@ -232,8 +232,8 @@ namespace WEBUI.Pages
                     }
 
                     if (ds.Count() == 0)
-                    {   //此信息不存在：1.已经处理，2.或者此信息不属于当前登录帐号，请退出账户，重新点击链接，在登录页面输入正确的帐号登录。
-                        this.js_error.Text = LSLibrary.WebAPP.MyJSHelper.AlertMessage("此信息不存在：1.已经处理，2.或者此信息不属于当前登录帐号，请退出账户，重新点击链接，在登录页面输入正确的帐号登录。");
+                    {
+                        SetupRepeater_NOtExistRequest();
                     }
                 }
                 else
@@ -254,6 +254,12 @@ namespace WEBUI.Pages
 
                 
             }
+        }
+
+        private void SetupRepeater_NOtExistRequest()
+        {
+            string message = BLL.MultiLanguageHelper.GetLanguagePacket().Commonfailure;
+            this.js_error.Text = LSLibrary.WebAPP.MyJSHelper.AlertMessageAndGoto(message,"main.aspx");
         }
 
 
