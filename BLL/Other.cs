@@ -11,7 +11,7 @@ namespace BLL
     {
         public static string GetVersion()
         {
-            return "1.5.1";
+            return "1.6.0";
         }
 
         public static WebServiceLayer.WebReference_leave.AttendanceRawData[] GetAttendanceList(string[] refInfo)

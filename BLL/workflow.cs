@@ -11,7 +11,8 @@ namespace BLL
     {
         public static string GetTestBaseUrl()
         {
-            return "http://localhost/WEBUI/";
+            return BLL.Other.GetHRWebSiteRootUrl();
+            //return "http://localhost/WEBUI/";
         }
 
 
