@@ -224,7 +224,7 @@ namespace WEBUI.Pages
                 {
                     if (dataType_myselfOrMyManage == 1)
                     {
-                        ds = BLL.CLOT.GetMyClOTByRequestid(loginer.userInfo.firsteid ?? 0, currentBigRange, mRequestid);
+                        ds = BLL.CLOT.GetMyClOTByRequestidUID(loginer.userInfo.id, currentBigRange, mRequestid);
                     }
                     else if (dataType_myselfOrMyManage == 0)
                     {
@@ -240,7 +240,7 @@ namespace WEBUI.Pages
                 {
                     if (dataType_myselfOrMyManage == 1)
                     {
-                        ds = BLL.CLOT.GetMyCLOT(loginer.userInfo.firsteid ?? 0, currentBigRange, year);
+                        ds = BLL.CLOT.GetMyCLOTUID(loginer.userInfo.id, currentBigRange, year);
                     }
                     else if (dataType_myselfOrMyManage == 0)
                     {

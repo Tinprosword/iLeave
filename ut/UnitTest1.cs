@@ -346,7 +346,7 @@ namespace ut
         public string checkMyCLOT_wait()
         {
             string result = "";
-            var mywaitaa = BLL.CLOT.GetMyCLOT(firsteid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, 2022);
+            var mywaitaa = BLL.CLOT.GetMyCLOTUID(userid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, 2022);
             var rids = mywaitaa.Select(x => x.ID).ToList();
             CheckResult(myWaitClot, rids);
             Console.WriteLine(name + ":Myclot_wait:total is " + rids.Count().ToString());
@@ -356,7 +356,7 @@ namespace ut
         public string checkMyCLOT_history()
         {
             string result = "";
-            var mywait = BLL.CLOT.GetMyCLOT(firsteid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, 2022);
+            var mywait = BLL.CLOT.GetMyCLOTUID(userid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, 2022);
             var rids = mywait.Select(x => x.ID).ToList();
             CheckResult(myHistroyClot, rids);
             Console.WriteLine(name + ":MyClot_history:total is " + rids.Count().ToString());

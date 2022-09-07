@@ -22,24 +22,24 @@ namespace BLL
             return result;
         }
 
-        public static List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> GetMyCLOT(int firsteid, GlobalVariate.LeaveBigRangeStatus status, int year)
+        public static List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> GetMyCLOTUID(int firsteid, GlobalVariate.LeaveBigRangeStatus status, int year)
         {
             DateTime from = new DateTime(year, 1, 1);
             int dayCount = DateTime.DaysInMonth(year, 12);
             DateTime? to = new DateTime(year, 12, dayCount);
-            return GetMyClOT(firsteid, status, from, to);
+            return GetMyClOT_AllByUID(firsteid, status, from, to);
         }
 
-        public static List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> GetMyClOTByRequestid(int firstEID, GlobalVariate.LeaveBigRangeStatus status, int requestid)
+        public static List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> GetMyClOTByRequestidUID(int firstEID, GlobalVariate.LeaveBigRangeStatus status, int requestid)
         {
-            List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> result = GetMyClOT(firstEID, status, null, null);
+            List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> result = GetMyClOT_AllByUID(firstEID, status, null, null);
 
             result = result.Where(x => x.ID == requestid).ToList();
 
             return result;
         }
 
-        public static List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> GetMyClOT(int firstEID, GlobalVariate.LeaveBigRangeStatus status, DateTime? from, DateTime? to)
+        public static List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> GetMyClOT_AllByUID(int firstEID, GlobalVariate.LeaveBigRangeStatus status, DateTime? from, DateTime? to)
         {
             List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> result = new List<StaffCLOTRequest>();
             if (status == GlobalVariate.LeaveBigRangeStatus.waitapproval)

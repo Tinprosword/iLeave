@@ -174,8 +174,8 @@ namespace WEBUI.Pages
                 }
                 else
                 {
-                    clot_wait = BLL.CLOT.GetMyClOTByRequestid(uid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, requestid);
-                    clot_history = BLL.CLOT.GetMyClOTByRequestid(uid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, requestid);
+                    clot_wait = BLL.CLOT.GetMyClOTByRequestidUID(uid, BLL.GlobalVariate.LeaveBigRangeStatus.waitapproval, requestid);
+                    clot_history = BLL.CLOT.GetMyClOTByRequestidUID(uid, BLL.GlobalVariate.LeaveBigRangeStatus.beyongdWait, requestid);
                 }
                 
 
