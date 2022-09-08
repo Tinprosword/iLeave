@@ -664,22 +664,49 @@ namespace WEBUI.Pages
                     callResult = BLL.workflow.CancelRequest_leave_clot(requestId, loginer.userInfo.id, "", out errormsg);
                     successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgcancel);
                 }
-                SetupRepeater();
 
-                if (callResult)
+                if (mRequestid > 0)
                 {
-                    Response.Write(successMsg + ".");
+                    //直接跳转，简化逻辑。
+                    string url = "?action={0}&applicationtype=3&from={1}";
+                    url = string.Format(url, dataType_myselfOrMyManage, from);
+
+                    if (callResult)
+                    {
+                        Response.Write(successMsg + ".");
+                    }
+                    else
+                    {
+                        Response.Write(errormsg);
+                    }
+                    Response.Flush();
+                    System.Threading.Thread.Sleep(50);//休眠2秒,获得较好显示体验
+
+                    this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
+
+                    this.lt_jsscrolltop.Text = LSLibrary.WebAPP.MyJSHelper.Goto(url);
                 }
                 else
                 {
-                    Response.Write(errormsg);
+                    SetupRepeater();
+
+                    if (callResult)
+                    {
+                        Response.Write(successMsg + ".");
+                    }
+                    else
+                    {
+                        Response.Write(errormsg);
+                    }
+                    Response.Flush();
+                    System.Threading.Thread.Sleep(50);//休眠2秒,获得较好显示体验
+
+                    this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
+
+                    this.lt_jsscrolltop.Text = "<script>var vv=getCookie('st'); $('#maindata').scrollTop(vv);</script>";
                 }
-                Response.Flush();
-                System.Threading.Thread.Sleep(50);//休眠2秒,获得较好显示体验
 
-                this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
-
-                this.lt_jsscrolltop.Text = "<script>var vv=getCookie('st'); $('#maindata').scrollTop(vv);</script>";
+                
             }
         }
 

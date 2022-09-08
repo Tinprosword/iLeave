@@ -1,0 +1,66 @@
+ip:::1
+DataTime：2022/9/8 10:18:55
+Url：http://localhost/WEBUI/login.aspx?action=userSessionout
+Message：服务器无法处理请求。 ---> 用户 'IIS APPPOOL\hrRelease' 登录失败。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.AuthenticateUser(String UserName, String PasswordHash) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_user\Reference.cs:行号 523
+   在 BLL.User_wsref.CheckLogin(String uid, String password) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\User_wsref.cs:行号 33
+   在 WEBUI.Login.ProgressLogin(String userid, String password) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Login.aspx.cs:行号 132
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/9/8 10:19:04
+Url：http://localhost/WEBUI/login.aspx?action=userSessionout
+Message：服务器无法处理请求。 ---> 用户 'IIS APPPOOL\hrRelease' 登录失败。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.AuthenticateUser(String UserName, String PasswordHash) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_user\Reference.cs:行号 523
+   在 BLL.User_wsref.CheckLogin(String uid, String password) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\User_wsref.cs:行号 33
+   在 WEBUI.Login.ProgressLogin(String userid, String password) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Login.aspx.cs:行号 132
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/9/8 10:26:12
+Url：http://localhost/WEBUI/pages/Apply.aspx?action=backCalendar
+Message：操作超时
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.CreateNewWorkflow(MyWorkflowTask p_ExistingWorkflowTask, WorkflowTypeID TaskType, StaffLeaveRequest[] p_ApprovalRequest, Int32 createrUID, String p_strDescription, String p_strFormulatedURL, String baseURL, String p_strWorkflowInfoParameter, Int32 p_intLeaveRequestID, Int32 p_intEmploymentID) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 870
+   在 BLL.workflow.InsertWorkflow(StaffLeaveRequest[] details, Int32 uid, Int32 requestLeaveID, Int32 employMentID) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\workflow.cs:行号 43
+   在 BLL.Leave.InsertLeave(List`1 originDetail, Int32 userid, Int32 employmentid, Nullable`1 staffid, String remarks, String& errorMsg, Int32 fid, Boolean hasAttachment) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Leave.cs:行号 165
+   在 WEBUI.Pages.Apply.button_apply_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 441
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/9/8 10:35:38
+Url：http://localhost/WEBUI/pages/Apply.aspx?action=backCalendar
+Message：操作超时
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_leave.LeaveManagementV2.CreateNewWorkflow(MyWorkflowTask p_ExistingWorkflowTask, WorkflowTypeID TaskType, StaffLeaveRequest[] p_ApprovalRequest, Int32 createrUID, String p_strDescription, String p_strFormulatedURL, String baseURL, String p_strWorkflowInfoParameter, Int32 p_intLeaveRequestID, Int32 p_intEmploymentID) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_leave\Reference.cs:行号 870
+   在 BLL.workflow.InsertWorkflow(StaffLeaveRequest[] details, Int32 uid, Int32 requestLeaveID, Int32 employMentID) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\workflow.cs:行号 43
+   在 BLL.Leave.InsertLeave(List`1 originDetail, Int32 userid, Int32 employmentid, Nullable`1 staffid, String remarks, String& errorMsg, Int32 fid, Boolean hasAttachment) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Leave.cs:行号 165
+   在 WEBUI.Pages.Apply.button_apply_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 441
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
