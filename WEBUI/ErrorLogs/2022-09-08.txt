@@ -64,3 +64,48 @@ Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(We
    在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
    在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
 ********************************************************************************************
+ip:192.168.66.100
+DataTime：2022/9/8 15:39:59
+Url：http://192.168.66.101/WEBUI/pages/approval_wait.aspx?action=0&applicationtype=0&from=0
+Message：操作超时
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\workflow.cs:行号 65
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 493
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.66.100
+DataTime：2022/9/8 15:44:34
+Url：http://192.168.66.101/WEBUI/pages/approval_wait.aspx?action=0&applicationtype=0&from=0
+Message：操作超时
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\workflow.cs:行号 65
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 493
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:192.168.66.100
+DataTime：2022/9/8 16:57:55
+Url：http://192.168.66.101/WEBUI/pages/approval_wait.aspx?action=0&applicationtype=0&from=0
+Message：操作超时
+Source：System.Web.Services
+Type：System.Net.WebException
+Function：System.Net.WebResponse GetWebResponse(System.Net.WebRequest)
+Trace：   在 System.Web.Services.Protocols.WebClientProtocol.GetWebResponse(WebRequest request)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 BLL.workflow.ApproveRequest_leave(Int32 requestid, Int32 HandlerUID, String remark, String& errorMsg) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\workflow.cs:行号 65
+   在 WEBUI.Pages.approval_wait.btn_Click(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\approval_wait.aspx.cs:行号 493
+   在 System.Web.UI.WebControls.Button.OnClick(EventArgs e)
+   在 System.Web.UI.WebControls.Button.RaisePostBackEvent(String eventArgument)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

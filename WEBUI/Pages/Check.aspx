@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="Check.aspx.cs" Inherits="WEBUI.Pages.Check"  EnableEventValidation="false" ViewStateMode="Enabled"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="Check.aspx.cs" Inherits="WEBUI.Pages.Check"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Res/App/check.css" rel="stylesheet" />
     <div class="row" id="div_buttons">
@@ -69,8 +69,16 @@
             })  
             rbtn1.checked = true;  
         }
+
+        function forceCheckint(msg,action,value) {
+            if (confirm(msg)) {
+                MyPostBack(action, value);
+            }
+
+        }
     </script>
     <asp:Literal ID="lt_jsModelWindow" runat="server"></asp:Literal>
     <asp:Literal ID="lt_jsmobileGps" runat="server"></asp:Literal>
+    <asp:Literal ID="lt_jsConfirmForce" runat="server"></asp:Literal>
     <script src="../Res/App/check.js?lastmodify=<%=BLL.GlobalVariate.checkjsLastmodify %>"></script>
 </asp:Content>

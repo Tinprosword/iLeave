@@ -1,0 +1,30 @@
+ip:::1
+DataTime：2022/9/9 17:06:29
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void ProcessMyPostbackEvent(System.String)
+Trace：   在 WEBUI.Pages.Check.ProcessMyPostbackEvent(String targetname) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx.cs:行号 229
+   在 WEBUI.Pages.Check.PageLoad_Reset_ReInitUIOnEachLoad5() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx.cs:行号 61
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 68
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 50
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/9/9 17:12:04
+Url：http://localhost/WEBUI/pages/Check.aspx
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void ProcessMyPostbackEvent(System.String)
+Trace：   在 WEBUI.Pages.Check.ProcessMyPostbackEvent(String targetname) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx.cs:行号 229
+   在 WEBUI.Pages.Check.PageLoad_Reset_ReInitUIOnEachLoad5() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Check.aspx.cs:行号 61
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 68
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 50
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

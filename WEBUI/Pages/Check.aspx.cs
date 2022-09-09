@@ -9,16 +9,25 @@ using System.Web.UI.HtmlControls;
 
 namespace WEBUI.Pages
 {
-    public partial class Check:BLL.CustomLoginTemplate
+    public partial class Check : BLL.CustomLoginTemplate
     {
         //页面不需要任何成员变量，唯一的user info 变量，由session提供。
         //页面就2个按钮事件，和一个展示数据方法。 并且按钮事件后都需要调用。所以展示数据方法必须复用。
 
-        private static string ms_onclickCheckname = "Check";
+        //todo 0  !!! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //發現ViewStateHelper.SetValue 要放到 PageLoad_InitUIOnFirstLoad4。否則會失效. 但是apply.aspx又可以， 
+        //沒有找出原因。看了下流程，是因為page事件並沒有按照自己想像中的走，好想是因為變量引用問題，導致.net 需要這些變量，在前一個page 事件還沒走完，丟先調用了後一個頁面事件。
+        //看來自己寫的page 框架，有問題。！！！！！有空要仔細測試下為什麼。
+
+        private static string m_CheckinActionName = "Check";
+        private static string m_ForceChekinActonName = "ForceCheck";
+        private static string ViewState_PageName = "ViewState_PageNameaaa";
+
+
 
         #region pageevent
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
-        {}
+        { }
 
 
         protected override void InitPage_OnFirstLoad2()
@@ -31,10 +40,13 @@ namespace WEBUI.Pages
             lb_msg2.Visible = false;
             this.lt_jsmobileGps.Text = "";
             this.lt_jsModelWindow.Text = "";
+            this.lt_jsConfirmForce.Text = "";
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
+            LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, new MODEL.Check.ViewState_page(), this.ViewState);
+
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().main_check, "~/pages/main.aspx", true);
 
             SetupmultipleLanguage();
@@ -51,7 +63,7 @@ namespace WEBUI.Pages
         {
             this.lb_time.Text = BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
             WEBUI.Controls.leave master = (WEBUI.Controls.leave)this.Master;
-            var targetName= master.GetMyPostTargetname();
+            var targetName = master.GetMyPostTargetname();
             ProcessMyPostbackEvent(targetName);
         }
 
@@ -89,7 +101,7 @@ namespace WEBUI.Pages
         #region private function
         public string GenerateCheckedString(int index)
         {
-           return index == 0 ? "1" : "0";
+            return index == 0 ? "1" : "0";
         }
 
 
@@ -112,36 +124,51 @@ namespace WEBUI.Pages
 
         private void ProcessMyPostbackEvent(string targetname)
         {
-            WEBUI.Controls.leave master = (WEBUI.Controls.leave)this.Master;
-
-            string zoneCode = GetShiftcodeFromRepeater();
-            if (string.IsNullOrEmpty(zoneCode))
+            if (targetname == m_ForceChekinActonName)
             {
-                zoneCode = "01";
+                var tempView = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Check.ViewState_page>(ViewState_PageName, this.ViewState);
+                tempView.mIsForceCheckin = true;
+                LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, tempView, this.ViewState);
             }
 
-
-            var iguard = BLL.Other.GetIleavIGard();
-            int interfaceid = 0;
-            int centerfaceid = 0;
-            string deviceid = "";
-
-            if (iguard != null)
+            if (targetname == m_CheckinActionName || targetname==m_ForceChekinActonName)
             {
-                interfaceid = iguard.InterfaceID ?? 0;
-                centerfaceid = iguard.AttendanceInterfaceCenterID ?? 0;
-                deviceid = iguard.DeviceID;
-            }
+                WEBUI.Controls.leave master = (WEBUI.Controls.leave)this.Master;
 
-            if (targetname== ms_onclickCheckname)
-            {
+                string zoneCode = GetShiftcodeFromRepeater();
+                if (string.IsNullOrEmpty(zoneCode))
+                {
+                    zoneCode = "01";
+                }
+
+
+                var iguard = BLL.Other.GetIleavIGard();
+                int interfaceid = 0;
+                int centerfaceid = 0;
+                string deviceid = "";
+
+                if (iguard != null)
+                {
+                    interfaceid = iguard.InterfaceID ?? 0;
+                    centerfaceid = iguard.AttendanceInterfaceCenterID ?? 0;
+                    deviceid = iguard.DeviceID;
+                }
+
+
+                bool isMobile = false;
+                bool isMobileValidCheckin = false;
+
                 var lastItem = BLL.Other.GetAttendanceList(new string[] { loginer.userInfo.staffNumber }).OrderByDescending(x => x.CreateDate).FirstOrDefault();
 
                 var value = master.GetMyPostBackArgumentByTargetname(targetname);
-                if(string.IsNullOrEmpty(value))// click on pc
+
+                isMobile = string.IsNullOrEmpty(value) == true ? false : true;
+
+                WebServiceLayer.WebReference_leave.AttendanceRawData tempModer = null;
+
+                if (!isMobile)// click on pc
                 {
-                    var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.staffNumber, centerfaceid, interfaceid, 1, loginer.userInfo.surname, deviceid, zoneCode, "", "","","");
-                    BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
+                    tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.staffNumber, centerfaceid, interfaceid, 1, loginer.userInfo.surname, deviceid, zoneCode, "", "", "", "");
                 }
                 else//click on mobile.
                 {
@@ -203,20 +230,49 @@ namespace WEBUI.Pages
                         strlocation = lat.ToString() + "|" + lon.ToString();
                     }
 
-                    var tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.staffNumber, centerfaceid, interfaceid, 1, loginer.userInfo.surname, "000", zoneCode, strlocation, locationname, macAddress, "");
-                    BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
+                    isMobileValidCheckin = isValaidCheckin();
+                    var viewstateaa = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Check.ViewState_page>(ViewState_PageName, this.ViewState);
+                    if (isMobileValidCheckin || viewstateaa.mIsForceCheckin)
+                    {
+                        tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.staffNumber, centerfaceid, interfaceid, 1, loginer.userInfo.surname, "000", zoneCode, strlocation, locationname, macAddress, "");
+                        if (viewstateaa.mIsForceCheckin)//強制打卡值能使用一次。
+                        {
+                            viewstateaa.mIsForceCheckin = false;
+                            LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, viewstateaa, this.ViewState);
+                        }
+                    }
+                    else
+                    {
+                        tempModer = null;
+                        if (BLL.Other.GetEnableForceCheckif())
+                        {
+                            string js = "<script>forceCheckint('{0}','{1}','{2}')</script>";
+                            js = string.Format(js, "Force check in?", m_ForceChekinActonName, value);
+                            this.lt_jsConfirmForce.Text = js;
+                        }
+                    }
                 }
 
-
-                this.lb_msg.Visible = true;
-                this.lb_msg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
-                this.lb_msg2.Visible = true;
-
-                if (lastItem != null)
+                if (tempModer!=null)
                 {
-                    this.lb_msg2.Text = BLL.MultiLanguageHelper.GetLanguagePacket().CommonLastcheckin + " : " + BLL.common.GetFormatTime2(BLL.MultiLanguageHelper.GetChoose(),lastItem.CreateDate);
+                    BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
+
+                    this.lb_msg.Visible = true;
+                    this.lb_msg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
+                    this.lb_msg2.Visible = true;
+
+                    if (lastItem != null)
+                    {
+                        this.lb_msg2.Text = BLL.MultiLanguageHelper.GetLanguagePacket().CommonLastcheckin + " : " + BLL.common.GetFormatTime2(BLL.MultiLanguageHelper.GetChoose(), lastItem.CreateDate);
+                    }
                 }
             }
+        }
+
+        private bool isValaidCheckin()
+        {
+            //todo 0 check invaid checkin
+            return false;
         }
 
 
@@ -251,7 +307,7 @@ namespace WEBUI.Pages
             }
             else
             {
-                this.lt_jsModelWindow.Text = "<script>MyPostBack('"+ ms_onclickCheckname + "','')</script>";
+                this.lt_jsModelWindow.Text = LSLibrary.WebAPP.MyJSHelper.CustomPost(m_CheckinActionName, "");// "<script>MyPostBack('" + m_CheckinActionName + "','')</script>";
             }
         }
 

@@ -12,28 +12,12 @@ namespace MODEL
         [Serializable]
         public class ViewState_page
         {
-            public string testid { get; set; }
-
-            public string _zoneCode { get; set; }
+            public bool mIsForceCheckin;
 
             public ViewState_page()
             {
-                _zoneCode = "01";//default is 01
+                mIsForceCheckin = false;
             }
-
-            public string GetZone()
-            {
-                return _zoneCode;
-            }
-            public void SetZone(string value)
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    _zoneCode = value;
-                }
-            }
-
-
         }
     }
 }

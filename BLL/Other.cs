@@ -213,6 +213,10 @@ namespace BLL
             catch { }
         }
 
+        public static bool GetEnableForceCheckif()
+        {
+            return false;
+        }
     }
 
 }
