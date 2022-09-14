@@ -133,22 +133,8 @@ namespace WEBUI
                 bool isLogin = loginResult.Result > 0 ? true : false;
                 if (isLogin)
                 {
-                    if (this.cb_remember.Checked)
-                    {
-                        var cookie = BLL.Page.MyCookieManage.GetCookie();
-                        cookie.isRemember = "1";
-                        cookie.loginname = userid;
-                        cookie.loginpsw = password;
-                        BLL.Page.MyCookieManage.SetCookie(cookie);
-                    }
-                    else
-                    {
-                        var cookie = BLL.Page.MyCookieManage.GetCookie();
-                        cookie.isRemember = "0";
-                        cookie.loginname = "";
-                        cookie.loginpsw = "";
-                        BLL.Page.MyCookieManage.SetCookie(cookie);
-                    }
+
+                    BLL.Other.UpdateCookieAfterLoginByIsRemeber(this.cb_remember.Checked, userid, password);
 
                     MODEL.UserInfo userInfo= BLL.User_wsref.GetAndSaveInfoToSession(userid, loginResult);
                     if (userInfo != null)

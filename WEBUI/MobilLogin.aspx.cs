@@ -35,6 +35,9 @@ namespace WEBUI
                 myCookie.loginname = loginID;
                 myCookie.loginpsw = password;
                 myCookie.isAppLogin = "1";
+                myCookie.loginname = "";
+                myCookie.loginpsw = "";
+
 
                 BLL.Page.MyCookieManage.SetCookie(myCookie);
                 
@@ -43,7 +46,11 @@ namespace WEBUI
                 if (loginResult.Result > 0)
                 {
                     MODEL.UserInfo userInfo = BLL.User_wsref.GetAndSaveInfoToSession(loginID, loginResult);
-                   
+
+                    var cookie = BLL.Page.MyCookieManage.GetCookie();
+                    BLL.Other.UpdateCookieAfterLoginByIsRemeber(cookie.isRemember=="1", cookie.loginname, cookie.loginpsw);
+
+
                     if (userInfo != null)
                     {
                         Response.Redirect("~/Pages/chooseEmployment.aspx?pid=" + userInfo.personid + "&sourcetype=1");

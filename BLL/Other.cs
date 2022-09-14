@@ -15,6 +15,26 @@ namespace BLL
             return "1.6.0";
         }
 
+        public static void UpdateCookieAfterLoginByIsRemeber(bool isremember,string _loginUserName,string _password)
+        {
+            if (isremember)
+            {
+                var cookie = BLL.Page.MyCookieManage.GetCookie();
+                cookie.isRemember = "1";
+                cookie.loginname = _loginUserName;
+                cookie.loginpsw = _password;
+                BLL.Page.MyCookieManage.SetCookie(cookie);
+            }
+            else
+            {
+                var cookie = BLL.Page.MyCookieManage.GetCookie();
+                cookie.isRemember = "0";
+                cookie.loginname = "";
+                cookie.loginpsw = "";
+                BLL.Page.MyCookieManage.SetCookie(cookie);
+            }
+        }
+
         public static WebServiceLayer.WebReference_leave.AttendanceRawData[] GetAttendanceList(string[] refInfo)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetAttendanceByExternRef(refInfo);
