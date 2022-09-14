@@ -9,6 +9,7 @@ namespace BLL
 {
     public class Other
     {
+
         public static string GetVersion()
         {
             return "1.6.0";

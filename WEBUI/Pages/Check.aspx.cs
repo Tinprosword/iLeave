@@ -22,7 +22,8 @@ namespace WEBUI.Pages
         private static string m_CheckinActionName = "Check";
         private static string m_ForceChekinActonName = "ForceCheck";
         private static string ViewState_PageName = "ViewState_PageNameaaa";
-
+        private static string mGoolgeKey = "AIzaSyBct1Ksb5gAqLQMZREgskseovJW6RVYTWs";
+        private static int mMapAPI = 1;//0:binggo 1.google
 
 
         #region pageevent
@@ -198,24 +199,21 @@ namespace WEBUI.Pages
                     {
                         try
                         {
-                            //string mapurl = "http://api.map.baidu.com/geocoder?output=json&coord_type=wgs84&location=" + lat + "," + lon + "&key=OGbSHmIkHo2qLybXmSG2mr8pZ4uypIok";
-                            string mapurlBingo = GetLocationUrl(BLL.MultiLanguageHelper.GetChoose(), lat, lon);
-
-                            System.Net.WebClient webClient = new WebClient();
-                            webClient.Encoding = System.Text.Encoding.UTF8;
-                            string jsonstr = webClient.DownloadString(mapurlBingo);
-                            System.Xml.XmlDocument xmlDoc = LSLibrary.MyJson.UnSxml(jsonstr);
-
-                            var addlist = xmlDoc.GetElementsByTagName("addressLine");
-                            var locallist = xmlDoc.GetElementsByTagName("locality");
-                            if (locallist != null && locallist.Count > 0)
+                            string url_map = "";
+                            if (mMapAPI == 0)
                             {
-                                locationname = locallist[0].InnerText;
+                                url_map = BLL.Checkin.GetLocationUrl_bingo(LSLibrary.WebAPP.LanguageType.tc, lat, lon);
+                                locationname = BLL.Checkin.GetAddFromUrl_Bingo(url_map);
                             }
-
-                            if (addlist != null && addlist.Count > 0)
+                            else if (mMapAPI == 1)//主動防禦
                             {
-                                locationname = addlist[0].InnerText + " " + locationname;
+                                url_map = BLL.Checkin.GetLocationUrl_Google(lat, lon, mGoolgeKey, LSLibrary.WebAPP.LanguageType.tc);
+                                locationname = BLL.Checkin.GetAddFromUrl_Google(url_map);
+                            }
+                            else//被動防禦
+                            {
+                                url_map = BLL.Checkin.GetLocationUrl_Google(lat, lon, mGoolgeKey, LSLibrary.WebAPP.LanguageType.tc);
+                                locationname = BLL.Checkin.GetAddFromUrl_Google(url_map);
                             }
                         }
                         catch
@@ -272,26 +270,12 @@ namespace WEBUI.Pages
         private bool isValaidCheckin()
         {
             //todo 0 check invaid checkin
-            return false;
+            return true;
         }
 
 
-        private static string GetLocationUrl(LSLibrary.WebAPP.LanguageType _cul, double lat, double lon)
-        {
-            string result = "";
-            result = "http://dev.virtualearth.net/REST/v1/Locations/" + lat + "," + lon + "?o=json&key=AqviYV7wGGW6_Bx2Y1RIb_-w4eqXlS_GsgYTVuA_KYVMmUpnhfq3CvtpOjM9R6JQ&output=json";
-            string culcode = "en-US";
-            if (_cul == LSLibrary.WebAPP.LanguageType.sc)
-            {
-                culcode = "zh-Hans";
-            }
-            else if (_cul == LSLibrary.WebAPP.LanguageType.tc)
-            {
-                culcode = "zh-Hant";
-            }
-            result += "&c=" + culcode;
-            return result;
-        }
+       
+
 
         private void SetupmultipleLanguage()
         {
