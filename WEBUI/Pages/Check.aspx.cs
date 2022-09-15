@@ -195,7 +195,7 @@ namespace WEBUI.Pages
 
 
                     
-                    if (!string.IsNullOrEmpty(lata) && !string.IsNullOrEmpty(longa) && double.TryParse(lata,out lat) && double.TryParse(longa,out lon))
+                    if(!string.IsNullOrEmpty(lata) && !string.IsNullOrEmpty(longa) && double.TryParse(lata,out lat) && double.TryParse(longa,out lon))
                     {
                         try
                         {
@@ -265,6 +265,9 @@ namespace WEBUI.Pages
                     }
                 }
             }
+
+            //enalbe btn again
+            this.bt_checkin.Enabled = true;
         }
 
         private bool isValaidCheckin()
@@ -288,6 +291,8 @@ namespace WEBUI.Pages
             if (js != "")
             {
                 this.lt_jsmobileGps.Text = js;
+                //disnable btn first for double click
+                this.bt_checkin.Enabled = false;
             }
             else
             {

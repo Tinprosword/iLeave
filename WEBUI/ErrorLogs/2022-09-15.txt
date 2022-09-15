@@ -1,0 +1,10 @@
+ip:192.168.19.81
+DataTime：2022/9/15 11:04:10
+Url：http://192.168.19.42/webui/webservices/webservices.aspx?action=login
+Message：远程主机强迫关闭了一个现有的连接。
+Source：System
+Type：System.Net.Sockets.SocketException
+Function：Int32 Receive(Byte[], Int32, Int32, System.Net.Sockets.SocketFlags)
+Trace：   在 System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   在 System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+********************************************************************************************
