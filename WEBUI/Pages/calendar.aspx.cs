@@ -268,7 +268,6 @@ namespace WEBUI.Pages
             if (isFromApply)
             {
                 ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().apply_calendar_current,null, true, BackEvent);
-                this.btn_ok.Click += BackEvent;
             }
             else
             {
@@ -622,5 +621,9 @@ namespace WEBUI.Pages
             }
         }
 
+        protected void btn_ok_Click(object sender, EventArgs e)
+        {
+            BackEvent(sender, e);
+        }
     }
 }

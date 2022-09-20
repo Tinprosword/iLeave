@@ -24,7 +24,8 @@
         </div>
         <div class="col-xs-9 lss-color-blue" style=" font-weight:bold; font-size:18px;margin-top:15px"><asp:Label ID="Label1" Height="21px" runat="server" Text="lb_date">2020-04-07</asp:Label></div>
         <div class="col-xs-3 lss-color-blue" style="margin-top:10px; text-align:right; padding-right:32px;" id="app_ok" runat="server" visible="false">
-            <asp:Button ID="btn_ok" runat="server" Text="Add" BackColor="#588da7" ForeColor="White" BorderWidth="0" Height="27px" Font-Size="16px" style="border-radius:5px 5px 5px 5px"/>
+<%--  因為復用一個方法，所以           this.btn_ok.Click += BackEvent;--%>
+            <asp:Button ID="btn_ok" runat="server" Text="Add" BackColor="#588da7" ForeColor="White" BorderWidth="0" Height="27px" Font-Size="16px" style="border-radius:5px 5px 5px 5px" OnClick="btn_ok_Click"/>
         </div>
         <div class="col-xs-12" id="leaveDiv" runat="server" visible="true">
             <div class="col-xs-12 lsf-clearPadding" style="height:150px; overflow-y:scroll;">
