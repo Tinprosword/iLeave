@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using WebServiceLayer.WebReference_leave;
 
 namespace BLL
 {
@@ -88,8 +88,9 @@ namespace BLL
         {
             bool result = false;
             errorMsg = "";
-            int check = Check_WithDrawRequest_leave();
-            if (check > 0)
+            List<LeaveRequestDetail> details = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetExtendLeaveDetailsByReuestID(requestid).ToList();
+            var check = Check_WithDrawRequest_leave(details);
+            if (check.mResult)
             {
                 WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.WithDrawRequest_leave(requestid, HandlerUID,remark);
                 result = true;
@@ -97,7 +98,7 @@ namespace BLL
             else
             {
                 result = false;
-                errorMsg = "";
+                errorMsg = check.mMessage;
             }
             return result;
         }
@@ -106,7 +107,7 @@ namespace BLL
         {
             int result = 0;
             errorMsg = "";
-            int check = Check_WithDrawRequest_leave();
+            int check = 1;
             if (check > 0)
             {
                 string baseurl = GetTestBaseUrl();
@@ -176,9 +177,22 @@ namespace BLL
         {
             return 1;
         }
-        private static int Check_WithDrawRequest_leave()
+        private static LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool> Check_WithDrawRequest_leave(List<LeaveRequestDetail> details)
         {
-            return 1;
+            LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool> result = new LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool>(true, "");
+
+            //check block
+            var datelist = details.Select(x => x.LeaveTo).ToList();
+            result.mResult = !BLL.Leave.needBlockCheck(BLL.Leave.ConvertDateListNull(datelist));
+            if (result.mResult==false)
+            {
+                result.mMessage += BLL.MultiLanguageHelper.GetLanguagePacket().Common_block_withdraw + "\r\n";
+            }
+
+            //check other.
+
+
+            return result;
         }
         #endregion
 

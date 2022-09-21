@@ -27,7 +27,7 @@ namespace BLL
         }
 
         /// <summary>
-        /// 0:ok -1:empty .-2 same apply day or section,-3 sp error -4 other error
+        /// 0:ok -1:empty .-2 same apply day or section,-3 sp error -4 other error,-5 block.
         /// </summary>
         /// <param name="originDetail"></param>
         /// <param name="message"></param>
@@ -135,10 +135,55 @@ namespace BLL
                 }
             }
 
+            //check block date. can not apply earlier today except sl.
+            if (result == 0)
+            {
+                if (!isSL)
+                {
+                    List<DateTime> DateList = originDetail.Select(x => x.LeaveDate).ToList();
+                    bool needBlock = needBlockCheck(DateList);
+
+                    if (needBlock)
+                    {
+                        result = -5;
+                        message += BLL.MultiLanguageHelper.GetLanguagePacket().Common_block_application + "\r\n";
+                    }
+                }
+            }
+
             return result;
         }
 
+        public static bool needBlockCheck(List<DateTime> leaveTime)
+        {
+            bool result = false;
 
+            leaveTime = leaveTime.Where(x => x < System.DateTime.Now.Date).ToList();
+            
+            if (leaveTime != null && leaveTime.Count() > 0)
+            {
+                result = true;
+            }
+
+            return result;
+        }
+
+        public static List<DateTime> ConvertDateListNull(List<DateTime?> dlist)
+        {
+            List<DateTime> result = new List<DateTime>();
+            if (dlist != null && dlist.Count() > 0)
+            {
+                foreach (var theItem in dlist)
+                {
+                    if (theItem != null)
+                    {
+                        result.Add(theItem??System.DateTime.MinValue);
+                    }
+                }
+            }
+
+            return result;
+        }
 
 
         //>0 ok:request id. -1 check error -2.insert error
@@ -509,10 +554,7 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveMasterByReuestID(requestid);
         }
 
-        public static List<WebServiceLayer.WebReference_leave.t_StaffLeaveRequestDetail> GetLeaveDetailsByReuestID(int requestid)
-        {
-            return WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetLeaveDetailsByReuestID(requestid).ToList();
-        }
+      
 
 
         public static List<WebServiceLayer.WebReference_leave.LeaveRequestDetail> GetExtendLeaveDetailsByReuestID(int requestid)
