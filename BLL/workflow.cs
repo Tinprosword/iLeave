@@ -354,7 +354,6 @@ namespace BLL
             return result;
         }
 
-
         public static bool RejectCancelRequest_leave_clot(int requestid, int HandlerUID, string remark, out string errorMsg)
         {
             bool result = false;
@@ -388,10 +387,12 @@ namespace BLL
         {
             return 1;
         }
+
         private static int Check_RejectRequest_leave_clot()
         {
             return 1;
         }
+
         private static LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool> WithDrawRequest_leave_clot_Check(List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> details)
         {
             LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool> result = new LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool>(true, "");
@@ -412,7 +413,6 @@ namespace BLL
 
             return result;
         }
-
 
         private static LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool> CancelRequest_leave_clot_check(List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> details)
         {
