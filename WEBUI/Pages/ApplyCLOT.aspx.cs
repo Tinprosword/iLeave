@@ -160,7 +160,7 @@ namespace WEBUI.Pages
 
             DropDownList2.Items.Clear();
             DropDownList4.Items.Clear();
-            bool onlyHalfHour = BLL.SystemParameters.mCLOTOnlyHalfHours();
+            bool onlyHalfHour = BLL.SystemParameters.GetSysParameters().mCLOTOnlyHalfHours;
             
             if (onlyHalfHour && (dataview.otSectionType_InitOnpageload_UpdateAlways==(int)BLL.GlobalVariate.OTSection.none || dataview.otSectionType_InitOnpageload_UpdateAlways == (int)BLL.GlobalVariate.OTSection.hour)  && (dataview.clSectionType_InitOnpageload_UpdateAlways == (int)BLL.GlobalVariate.CLSection.none || dataview.clSectionType_InitOnpageload_UpdateAlways == (int)BLL.GlobalVariate.CLSection.hour))
             {

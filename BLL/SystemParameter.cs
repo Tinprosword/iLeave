@@ -871,118 +871,94 @@ namespace BLL
 
         #endregion
 
+        #region member
+        //设置参数默认值
+        public bool mIsBatch = false;
+        public bool misClearAndAdd = false;
+        public bool mHiddenActingStaff = true;
+        public bool p_leaveCalendarDetail_Grid = false;
+        public bool p_boolAskConfirmation = true;
+        public string IsEnableHKCAAVQCLOTLogic = "";
+        public string IsHIDE_CLOT_TIME_FROMTO = "";
+        public string UI_DisplayDecimal = "";
+        public bool mHiddenCLOTAdmin = false;
+        public bool mHiddenCLOTPortal = false;
+        public bool mHiddenDoctorPortal = false;
+        public bool mHiddenDoctorAdmin = false;
+        public bool mBLOCK_BACKDATE_CANCELLATION = false;
+        public bool mBLOCK_BACKDATE_APPLY = false;
+        public bool mBLOCK_BACKDATE_WITHDRAW = false;
+        public bool mINBOX_UNREADONLY_ON_MY_TASK = true;
+        public int mGridSize = 16;
+        public bool mShowPositionCode = false;
+        public bool mLEAVE_SL_MERGE_APPROVE_PENDING_CONSECUTIVE_CALC = false;
+        public double mDayDefination = 0;
+        public bool mUseSnapshot = false;
+        public int mAlv2 = 1;
+        public bool mNewDocType = false;
+        public bool mAttachmentHiddenDoctor = true;
+        public int mPortal_InBox_OutBox_Mode = 2;//0:old 1.batch mode 2. addfilter for batch mode.
+        public bool mCalculateYearlyJoinRelated = true;
+        public string IsUseDefaultShiftHour = "";
+        public bool mCLOTOnlyHalfHours = false;
+        public int mLEAVE_DATEFROM_Control = 1;
+        public int mLeaveHourUnit = -1;
+        #endregion
 
-        //懶加載
-        public static bool mCLOTOnlyHalfHours()
-        {
-            bool result = false;
-            string str = WebServiceLayer.MyWebService.GlobalWebServices.ws_codesetting.GetSystemParameter(SystemParameters.LEAVE_CLOTHALFHOUR);
-            if (!string.IsNullOrEmpty(str))
-            {
-                result = str == "1";
-            }
-            return result;
-        }
-
-        public static int mLeaveHourUnit()
-        {
-            int result = -1;
-            string str = WebServiceLayer.MyWebService.GlobalWebServices.ws_codesetting.GetSystemParameter(SystemParameters.HOURLY_LEAVE_MINUTES_UNIT);
-            if (!string.IsNullOrEmpty(str))
-            {
-                int.TryParse(str, out result);
-            }
-            return result;
-        }
-
+        //single mode. 因為對於所有用戶來說，sys是同樣的數據，所以可以用single 模式。
+        private SystemParameters() { }
+        private static SystemParameters mSystemParameters = null;
         
+        public static SystemParameters GetSysParameters()
+        {
+            if (mSystemParameters == null)
+            {
+                SystemParameters data = new SystemParameters();
 
-        //從hr copy 過來。需要那個就挑代碼出來，寫個懶加載方法吧。
-        ////设置参数默认值
-        //public bool mIsBatch = false;
-        //public bool misClearAndAdd = false;
-        //public bool mHiddenActingStaff = true;
-        //public bool p_leaveCalendarDetail_Grid = false;
-        //public bool p_boolAskConfirmation = true;
-        //public string IsEnableHKCAAVQCLOTLogic = "";
-        //public string IsHIDE_CLOT_TIME_FROMTO = "";
-        //public string UI_DisplayDecimal = "";
-        //public bool mHiddenCLOTAdmin = false;
-        //public bool mHiddenCLOTPortal = false;
-        //public bool mHiddenDoctorPortal = false;
-        //public bool mHiddenDoctorAdmin = false;
-        //public bool mBLOCK_BACKDATE_CANCELLATION = false;
-        //public bool mINBOX_UNREADONLY_ON_MY_TASK = true;
-        //public int mGridSize = 16;
-        //public bool mShowPositionCode = false;
-        //public bool mLEAVE_SL_MERGE_APPROVE_PENDING_CONSECUTIVE_CALC = false;
-        //public double mDayDefination = 0;
-        //public bool mUseSnapshot = false;
-        //public int mAlv2 = 1;
-        //public bool mNewDocType = false;
-        //public bool mAttachmentHiddenDoctor = true;
-        //public int mPortal_InBox_OutBox_Mode = 2;//0:old 1.batch mode 2. addfilter for batch mode.
-        //public bool mCalculateYearlyJoinRelated = true;
-        //public string IsUseDefaultShiftHour = "";
+                data.misClearAndAdd = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_ADD_BUTTON_MODE) == "2";
+                data.mHiddenActingStaff = true; //mHiddenActingStaff todo 0 add it in db later.
+                data.p_leaveCalendarDetail_Grid = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_CALENDAR_DETAIL_GRID) == "1";
+                data.p_boolAskConfirmation = BLL.CodeSetting.GetSystemParameter(SystemParameters.ENABLE_SAVE_CONFIRMMESSAGE) != "0";
+                data.IsEnableHKCAAVQCLOTLogic = BLL.CodeSetting.GetSystemParameter(SystemParameters.ENABLE_HKCAAVQ_CLOT_APPLICATION_LOGIC);
+                data.IsHIDE_CLOT_TIME_FROMTO = BLL.CodeSetting.GetSystemParameter(SystemParameters.HIDE_CLOT_TIME_FROMTO);
+                data.UI_DisplayDecimal = BLL.CodeSetting.GetSystemParameter(SystemParameters.UI_DISPLAY_DECIMAL);
 
+                data.IsUseDefaultShiftHour = BLL.CodeSetting.GetSystemParameter(SystemParameters.ENABLE_CLOT_DEFAULT_SHIFT_HOUR);
 
+                data.mHiddenCLOTPortal = BLL.CodeSetting.GetSystemParameter(SystemParameters.HIDDEN_CLOT_APPLICATION_FOR_PORTAL) == "1";
+                data.mHiddenCLOTAdmin = BLL.CodeSetting.GetSystemParameter(SystemParameters.HIDDEN_CLOT_APPLICATION) == "1";
+                data.mHiddenDoctorPortal = BLL.CodeSetting.GetSystemParameter(SystemParameters.HIDDEN_DOCTOR_VISIT_APPLICATION) == "1";
+                data.mHiddenDoctorAdmin = BLL.CodeSetting.GetSystemParameter(SystemParameters.HIDDEN_DOCTOR_VISIT_APPLICATION) == "1";
 
+                data.mAttachmentHiddenDoctor = BLL.CodeSetting.GetSystemParameter(SystemParameters.PORTAL_LEAVE_HIDE_DOCTOR_RECEIPT) == "0" ? false : true;
 
-        ///// <summary>
-        ///// should just call it once when page_load.
-        ///// </summary>
-        ///// <param name="session"></param>
-        ///// <returns></returns>
-        //public static SystemParameters GetSysParameters()
-        //{
+                
+                data.mINBOX_UNREADONLY_ON_MY_TASK = BLL.CodeSetting.GetSystemParameter(SystemParameters.DEFAULT_INBOX_UNREADONLY_ON_MY_TASK) == "0" ? false : true;
+                data.mGridSize = int.Parse(BLL.CodeSetting.GetSystemParameter(SystemParameters.PORTAL_GRID_SIZE));
+                data.mShowPositionCode = Convert.ToBoolean(int.Parse(BLL.CodeSetting.GetSystemParameter(SystemParameters.SHOW_POSITION_PORTAL_INBOX)));
 
-        //    SystemParameters data = new SystemParameters();
+                data.mLEAVE_SL_MERGE_APPROVE_PENDING_CONSECUTIVE_CALC = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_SL_MERGE_APPROVE_PENDING_CONSECUTIVE_CALC) == "1" ? true : false;
 
+                data.mDayDefination = Convert.ToDouble(BLL.CodeSetting.GetSystemParameter(SystemParameters.SICK_LEAVE_CONSECUTIVE_DAY_DEFINITION));
+                data.mUseSnapshot = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BALANCE_SNAPSHOT_DAY) != "";
 
+                data.mNewDocType = BLL.CodeSetting.GetSystemParameter(SystemParameters.PERSONINFO_DOCUMENT_TYPE) == "1" ? true : false;
+                string piomString = BLL.CodeSetting.GetSystemParameter(SystemParameters.Portal_InBox_OutBox_Mode);
+                if (!string.IsNullOrEmpty(piomString))
+                {
+                    int.TryParse(piomString, out data.mPortal_InBox_OutBox_Mode);
+                }
+                data.mCalculateYearlyJoinRelated = BLL.CodeSetting.GetSystemParameter(SystemParameters.REPORT_SHOW_YEARLYJOIN_RELATED) == "1";
+                data.mCLOTOnlyHalfHours = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_CLOTHALFHOUR) == "1";
 
-        //    //从外部加载重新赋值
-        //    string[] hiddenContentArray = GetSysPara(HIDDEN_CONTENT).Split(new string[] { "," }, StringSplitOptions.None);
-        //    data.mIsBatch = GetSysPara( ENABLE_LEAVE_BATCH_MODE) == "1";
-        //    data.misClearAndAdd = GetSysPara(LEAVE_ADD_BUTTON_MODE) == "2";
-        //    data.mHiddenActingStaff = true; //mHiddenActingStaff todo 0 add it in db later.
-        //    data.p_leaveCalendarDetail_Grid = GetSysPara(LEAVE_CALENDAR_DETAIL_GRID) == "1";
-        //    data.p_boolAskConfirmation = GetSysPara(ENABLE_SAVE_CONFIRMMESSAGE) != "0";
-        //    data.IsEnableHKCAAVQCLOTLogic = GetSysPara(ENABLE_HKCAAVQ_CLOT_APPLICATION_LOGIC);
-        //    data.IsHIDE_CLOT_TIME_FROMTO = GetSysPara(HIDE_CLOT_TIME_FROMTO);
-        //    data.UI_DisplayDecimal = GetSysPara(UI_DISPLAY_DECIMAL);
+                data.mBLOCK_BACKDATE_CANCELLATION = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BLOCK_BACKDATE_CANCELLATION) == "1";
+                data.mBLOCK_BACKDATE_APPLY = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BLOCK_BACKDATE_APPLICATION) == "1" ? true : false;
+                data.mBLOCK_BACKDATE_WITHDRAW = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BLOCK_BACKDATE_WITHDRAWAL) == "1" ? true : false;
+                data.mLeaveHourUnit = LSLibrary.ConvertHelper.ToInt32(BLL.CodeSetting.GetSystemParameter(SystemParameters.HOURLY_LEAVE_MINUTES_UNIT), -1);
 
-        //    data.IsUseDefaultShiftHour = GetSysPara(ENABLE_CLOT_DEFAULT_SHIFT_HOUR);
-
-        //    data.mHiddenCLOTPortal = GetSysPara(HIDDEN_CLOT_APPLICATION_FOR_PORTAL) == "1";
-        //    data.mHiddenCLOTAdmin = GetSysPara(HIDDEN_CLOT_APPLICATION) == "1";
-        //    data.mHiddenDoctorPortal = GetSysPara(HIDDEN_DOCTOR_VISIT_APPLICATION) == "1";
-        //    data.mHiddenDoctorAdmin = GetSysPara(HIDDEN_DOCTOR_VISIT_APPLICATION) == "1";
-
-        //    data.mAttachmentHiddenDoctor = GetSysPara(PORTAL_LEAVE_HIDE_DOCTOR_RECEIPT) == "0" ? false : true;
-
-        //    data.mBLOCK_BACKDATE_CANCELLATION = GetSysPara(LEAVE_BLOCK_BACKDATE_CANCELLATION) == "1";
-        //    data.mINBOX_UNREADONLY_ON_MY_TASK = GetSysPara(DEFAULT_INBOX_UNREADONLY_ON_MY_TASK) == "0" ? false : true;
-        //    data.mGridSize = int.Parse(GetSysPara(PORTAL_GRID_SIZE));
-        //    data.mShowPositionCode = Convert.ToBoolean(int.Parse(GetSysPara(SHOW_POSITION_PORTAL_INBOX)));
-
-        //    data.mLEAVE_SL_MERGE_APPROVE_PENDING_CONSECUTIVE_CALC = GetSysPara(LEAVE_SL_MERGE_APPROVE_PENDING_CONSECUTIVE_CALC) == "1" ? true : false;
-
-        //    data.mDayDefination = Convert.ToDouble(GetSysPara(SICK_LEAVE_CONSECUTIVE_DAY_DEFINITION));
-        //    data.mUseSnapshot = GetSysPara(LEAVE_BALANCE_SNAPSHOT_DAY) != "";
-
-        //    data.mAlv2 = GetSysPara(ALBALANCEVERSION) == "0" ? 0 : 1;
-        //    data.mNewDocType = GetSysPara(PERSONINFO_DOCUMENT_TYPE) == "1" ? true : false;
-        //    string piomString = GetSysPara(Portal_InBox_OutBox_Mode);
-        //    if (!string.IsNullOrEmpty(piomString))
-        //    {
-        //        int.TryParse(piomString, out data.mPortal_InBox_OutBox_Mode);
-        //    }
-        //    data.mCalculateYearlyJoinRelated = GetSysPara(REPORT_SHOW_YEARLYJOIN_RELATED) == "1";
-        //    data.mCLOTOnlyHalfHours = GetSysPara(LEAVE_CLOTHALFHOUR) == "1";
-
-
-        //    return data;
-        //}
-
+                mSystemParameters = data;
+            }
+            return mSystemParameters;
+        }
     }
 }

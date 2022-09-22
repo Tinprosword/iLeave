@@ -157,12 +157,13 @@ namespace BLL
         public static bool needBlockCheck(List<DateTime> leaveTime)
         {
             bool result = false;
-
-            leaveTime = leaveTime.Where(x => x < System.DateTime.Now.Date).ToList();
-            
-            if (leaveTime != null && leaveTime.Count() > 0)
+            if (BLL.SystemParameters.GetSysParameters().mBLOCK_BACKDATE_APPLY)
             {
-                result = true;
+                leaveTime = leaveTime.Where(x => x < System.DateTime.Now.Date).ToList();
+                if (leaveTime != null && leaveTime.Count() > 0)
+                {
+                    result = true;
+                }
             }
 
             return result;

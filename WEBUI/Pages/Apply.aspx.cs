@@ -281,7 +281,7 @@ namespace WEBUI.Pages
             DropDownList2.Items.Clear();
             DropDownList4.Items.Clear();
 
-            int hourUnit = BLL.SystemParameters.mLeaveHourUnit();
+            int hourUnit = BLL.SystemParameters.GetSysParameters().mLeaveHourUnit;
             if (hourUnit == 15)
             {
                 this.DropDownList2.Items.Add(new ListItem(0.ToString("00"), 0.ToString()));

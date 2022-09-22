@@ -114,7 +114,7 @@ namespace ut
         public int cancelLeave(int rid)
         {
             string msg = "";
-            return BLL.workflow.CancelRequest_leave(rid, userid, "withdraw", out msg);
+            return BLL.workflow.CancelRequest_leave(rid, userid, "withdraw").mResult;
         }
 
         public void UpdateALLeave()

@@ -1,0 +1,34 @@
+ip:::1
+DataTime：2022/9/22 10:55:34
+Url：http://localhost/WEBUI/pages/apply.aspx
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void LoadTime_init()
+Trace：   在 WEBUI.Pages.Apply.LoadTime_init() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 284
+   在 WEBUI.Pages.Apply.LoadLeaveSectionAndTime(Int32 leaveID, Int32 byDayByhour, Nullable`1 from, Nullable`1 to, Double total, String Selectsection) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 329
+   在 WEBUI.Pages.Apply.LoadUI(List`1 leveTypeData, String leaveTypeSelectedValue, String ddlSectionSelected, String remarks, List`1 leaveDays, Int32 numberofAttachment, Boolean hashour, Int32 bydayorbyhout, Nullable`1 f, Nullable`1 t, Double totalH) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 101
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 76
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 50
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2022/9/22 10:56:28
+Url：http://localhost/WEBUI/pages/apply.aspx
+Message：未将对象引用设置到对象的实例。
+Source：WEBUI
+Type：System.NullReferenceException
+Function：Void LoadTime_init()
+Trace：   在 WEBUI.Pages.Apply.LoadTime_init() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 284
+   在 WEBUI.Pages.Apply.LoadLeaveSectionAndTime(Int32 leaveID, Int32 byDayByhour, Nullable`1 from, Nullable`1 to, Double total, String Selectsection) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 329
+   在 WEBUI.Pages.Apply.LoadUI(List`1 leveTypeData, String leaveTypeSelectedValue, String ddlSectionSelected, String remarks, List`1 leaveDays, Int32 numberofAttachment, Boolean hashour, Int32 bydayorbyhout, Nullable`1 f, Nullable`1 t, Double totalH) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 101
+   在 WEBUI.Pages.Apply.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Apply.aspx.cs:行号 76
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 50
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

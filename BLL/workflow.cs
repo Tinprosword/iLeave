@@ -50,7 +50,7 @@ namespace BLL
         {
             bool result = false;
             errorMsg = "";
-            int check = Check_ApproveRequest_leave();
+            int check = ApproveRequest_leave_Check();
             if (check > 0)
             {
                 string baseurl = GetTestBaseUrl();
@@ -89,7 +89,7 @@ namespace BLL
             bool result = false;
             errorMsg = "";
             List<LeaveRequestDetail> details = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetExtendLeaveDetailsByReuestID(requestid).ToList();
-            var check = Check_WithDrawRequest_leave(details);
+            var check = WithDrawRequest_leave_Check(details);
             if (check.mResult)
             {
                 WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.WithDrawRequest_leave(requestid, HandlerUID,remark);
@@ -103,19 +103,31 @@ namespace BLL
             return result;
         }
 
-        public static int CancelRequest_leave(int requestid, int HandlerUID,string remark, out string errorMsg)
+        public static LSLibrary.WebAPP.CodeHelper.CommonReturnResult<int> CancelRequest_leave(int requestid, int HandlerUID,string remark)
         {
-            int result = 0;
-            errorMsg = "";
-            int check = 1;
-            if (check > 0)
+            LSLibrary.WebAPP.CodeHelper.CommonReturnResult<int> result = new LSLibrary.WebAPP.CodeHelper.CommonReturnResult<int>(0, "");
+            List<LeaveRequestDetail> details = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetExtendLeaveDetailsByReuestID(requestid).ToList();
+            var check = WithDrawRequest_leave_Check(details);
+            if (check.mResult)
             {
                 string baseurl = GetTestBaseUrl();
-                result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CancelRequest_leave(requestid, HandlerUID, remark,baseurl);
+                //return cancel Requestid.
+                int cancelRequestID=WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CancelRequest_leave(requestid, HandlerUID, remark,baseurl);
+                if (cancelRequestID > 0)
+                {
+                    result.mResult = cancelRequestID;
+                    result.mMessage = "";
+                }
+                else
+                {
+                    result.mResult = 0;
+                    result.mMessage = "Cancel Fail.\r\n";
+                }
             }
             else
             {
-                errorMsg = "error";
+                result.mResult = 0;
+                result.mMessage = check.mMessage;
             }
             return result;
         }
@@ -169,7 +181,7 @@ namespace BLL
             return 1;
         }
 
-        private static int Check_ApproveRequest_leave()
+        private static int ApproveRequest_leave_Check()
         {
             return 1;
         }
@@ -177,16 +189,40 @@ namespace BLL
         {
             return 1;
         }
-        private static LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool> Check_WithDrawRequest_leave(List<LeaveRequestDetail> details)
+        private static LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool> WithDrawRequest_leave_Check(List<LeaveRequestDetail> details)
         {
             LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool> result = new LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool>(true, "");
 
             //check block
-            var datelist = details.Select(x => x.LeaveTo).ToList();
-            result.mResult = !BLL.Leave.needBlockCheck(BLL.Leave.ConvertDateListNull(datelist));
-            if (result.mResult==false)
+            if (BLL.SystemParameters.GetSysParameters().mBLOCK_BACKDATE_WITHDRAW)
             {
-                result.mMessage += BLL.MultiLanguageHelper.GetLanguagePacket().Common_block_withdraw + "\r\n";
+                var datelist = details.Select(x => x.LeaveTo).ToList();
+                result.mResult = !BLL.Leave.needBlockCheck(BLL.Leave.ConvertDateListNull(datelist));
+                if (result.mResult == false)
+                {
+                    result.mMessage += BLL.MultiLanguageHelper.GetLanguagePacket().Common_block_withdraw + "\r\n";
+                }
+            }
+
+            //check other.
+
+
+            return result;
+        }
+
+        private static LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool> CancelRequest_leave_check(List<LeaveRequestDetail> details)
+        {
+            LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool> result = new LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool>(true, "");
+
+            //check block
+            if (BLL.SystemParameters.GetSysParameters().mBLOCK_BACKDATE_CANCELLATION)
+            {
+                var datelist = details.Select(x => x.LeaveTo).ToList();
+                result.mResult = !BLL.Leave.needBlockCheck(BLL.Leave.ConvertDateListNull(datelist));
+                if (result.mResult == false)
+                {
+                    result.mMessage += BLL.MultiLanguageHelper.GetLanguagePacket().Common_block_withdraw + "\r\n";
+                }
             }
 
             //check other.
