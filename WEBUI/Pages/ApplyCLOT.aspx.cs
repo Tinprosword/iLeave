@@ -241,7 +241,7 @@ namespace WEBUI.Pages
 
                 double balanceValue = BLL.Leave.GetBalanceView_CLOT_balance(loginer.userInfo.employID ?? 0);
                 var einfo = BLL.User_wsref.getEmploymentByid(loginer.userInfo.employID ?? 0);
-                string errormsg= BLL.CLOT.CheckOnApplyList(tempList, balanceValue, loginer.userInfo.employID ?? 0,BLL.MultiLanguageHelper.GetChoose(),einfo.ApprovalGroupID??0);
+                string errormsg = BLL.CLOT.CheckOnApplyList(tempList, balanceValue, loginer.userInfo.employID ?? 0, BLL.MultiLanguageHelper.GetChoose(), einfo.ApprovalGroupID ?? 0);
                 if (!string.IsNullOrEmpty(errormsg))
                 {
                     literal_errormsga.Visible = true;
@@ -273,6 +273,16 @@ namespace WEBUI.Pages
             {
                 literal_errormsga.Visible = true;
                 literal_errormsga.Text = BLL.MultiLanguageHelper.GetLanguagePacket().common_msg_overlapCurrentapplying;
+            }
+            else if (validData == -5)
+            {
+                literal_errormsga.Visible = true;
+                literal_errormsga.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Common_block_application;
+            }
+            else
+            {
+                literal_errormsga.Visible = true;
+                literal_errormsga.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Commonfailure;
             }
 
             SetupReport();

@@ -350,11 +350,11 @@ namespace BLL
         }
 
 
-    #endregion
+        #endregion
 
         #region check
-    //-1 hours is small zero ,或者不是数字 -4 override in Repeater.
-    public static int CheckOnAddSingleItem(MODEL.CLOT.CLOTItem tempItem, MODEL.CLOT.ViewState_page dataview, int eid)
+        //-1 hours is small zero ,或者不是数字 -4 override in Repeater.,-5 block.
+        public static int CheckOnAddSingleItem(MODEL.CLOT.CLOTItem tempItem, MODEL.CLOT.ViewState_page dataview, int eid)
         {
             int result = 1;
 
@@ -369,6 +369,15 @@ namespace BLL
                 if (tempItem.GetHoursFromStringMember() <= 0)
                 {
                     result = -1;
+                }
+            }
+
+            if (result == 1)
+            {
+                if (BLL.SystemParameters.GetSysParameters().mBLOCK_BACKDATE_APPLY && tempItem.type==MODEL.CLOT.enum_clotType.CL)
+                {
+                    bool nblock= BLL.Leave.isContainEarlierToday(new List<DateTime>() { tempItem.date });
+                    result = nblock == true ? -5 : 1;
                 }
             }
 

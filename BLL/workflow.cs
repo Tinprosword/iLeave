@@ -197,7 +197,7 @@ namespace BLL
             if (BLL.SystemParameters.GetSysParameters().mBLOCK_BACKDATE_WITHDRAW)
             {
                 var datelist = details.Select(x => x.LeaveTo).ToList();
-                result.mResult = !BLL.Leave.needBlockCheck(BLL.Leave.ConvertDateListNull(datelist));
+                result.mResult = !BLL.Leave.isContainEarlierToday(BLL.Leave.ConvertDateListNull(datelist));
                 if (result.mResult == false)
                 {
                     result.mMessage += BLL.MultiLanguageHelper.GetLanguagePacket().Common_block_withdraw + "\r\n";
@@ -218,7 +218,7 @@ namespace BLL
             if (BLL.SystemParameters.GetSysParameters().mBLOCK_BACKDATE_CANCELLATION)
             {
                 var datelist = details.Select(x => x.LeaveTo).ToList();
-                result.mResult = !BLL.Leave.needBlockCheck(BLL.Leave.ConvertDateListNull(datelist));
+                result.mResult = !BLL.Leave.isContainEarlierToday(BLL.Leave.ConvertDateListNull(datelist));
                 if (result.mResult == false)
                 {
                     result.mMessage += BLL.MultiLanguageHelper.GetLanguagePacket().Common_block_withdraw + "\r\n";
@@ -298,8 +298,10 @@ namespace BLL
         {
             bool result = false;
             errorMsg = "";
-            int check = Check_WithDrawRequest_leave_clot();
-            if (check > 0)
+
+            var tempClotList = BLL.CLOT.GetCLOTDetail(requestid);
+            LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool> checkResult = WithDrawRequest_leave_clot_Check(tempClotList);
+            if (checkResult.mResult)
             {
                 WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.WithDrawRequest_clot(requestid, HandlerUID, remark);
                 result = true;
@@ -307,7 +309,7 @@ namespace BLL
             else
             {
                 result = false;
-                errorMsg = "";
+                errorMsg = checkResult.mMessage;
             }
             return result;
         }
@@ -316,8 +318,10 @@ namespace BLL
         {
             bool result = false;
             errorMsg = "";
-            int check = Check_WithDrawRequest_leave_clot();
-            if (check > 0)
+
+            var tempClotList = BLL.CLOT.GetCLOTDetail(requestid);
+            LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool> checkResult = CancelRequest_leave_clot_check(tempClotList);
+            if (checkResult.mResult)
             {
                 string baseurl = GetTestBaseUrl();
                 WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CancelCLOT(requestid, remark, HandlerUID, baseurl);
@@ -326,7 +330,7 @@ namespace BLL
             else
             {
                 result = false;
-                errorMsg = "";
+                errorMsg = checkResult.mMessage;
             }
             return result;
         }
@@ -388,9 +392,47 @@ namespace BLL
         {
             return 1;
         }
-        private static int Check_WithDrawRequest_leave_clot()
+        private static LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool> WithDrawRequest_leave_clot_Check(List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> details)
         {
-            return 1;
+            LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool> result = new LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool>(true, "");
+
+            if (BLL.SystemParameters.GetSysParameters().mBLOCK_BACKDATE_WITHDRAW)
+            {
+                if (details != null && details.Count() > 0)
+                {
+                    var dateList = details.Where(x => x.Type == (int)MODEL.CLOT.enum_clotType.CL).Select(x => x.Date).ToList();
+                    bool isEarlier = BLL.Leave.isContainEarlierToday(dateList);
+                    if (isEarlier)
+                    {
+                        result.mResult = false;
+                        result.mMessage = BLL.MultiLanguageHelper.GetLanguagePacket().Common_block_withdraw + "\r\n";
+                    }
+                }
+            }
+
+            return result;
+        }
+
+
+        private static LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool> CancelRequest_leave_clot_check(List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> details)
+        {
+            LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool> result = new LSLibrary.WebAPP.CodeHelper.CommonReturnResult<bool>(true, "");
+
+            if (BLL.SystemParameters.GetSysParameters().mBLOCK_BACKDATE_CANCELLATION)
+            {
+                if (details != null && details.Count() > 0)
+                {
+                    var dateList = details.Where(x => x.Type == (int)MODEL.CLOT.enum_clotType.CL).Select(x => x.Date).ToList();
+                    bool isEarlier = BLL.Leave.isContainEarlierToday(dateList);
+                    if (isEarlier)
+                    {
+                        result.mResult = false;
+                        result.mMessage = BLL.MultiLanguageHelper.GetLanguagePacket().Common_block_withdraw + "\r\n";
+                    }
+                }
+            }
+
+            return result;
         }
         #endregion
     }

@@ -138,15 +138,18 @@ namespace BLL
             //check block date. can not apply earlier today except sl.
             if (result == 0)
             {
-                if (!isSL)
+                if (BLL.SystemParameters.GetSysParameters().mBLOCK_BACKDATE_APPLY)
                 {
-                    List<DateTime> DateList = originDetail.Select(x => x.LeaveDate).ToList();
-                    bool needBlock = needBlockCheck(DateList);
-
-                    if (needBlock)
+                    if (!isSL)
                     {
-                        result = -5;
-                        message += BLL.MultiLanguageHelper.GetLanguagePacket().Common_block_application + "\r\n";
+                        List<DateTime> DateList = originDetail.Select(x => x.LeaveDate).ToList();
+                        bool needBlock = isContainEarlierToday(DateList);
+
+                        if (needBlock)
+                        {
+                            result = -5;
+                            message += BLL.MultiLanguageHelper.GetLanguagePacket().Common_block_application + "\r\n";
+                        }
                     }
                 }
             }
@@ -154,16 +157,14 @@ namespace BLL
             return result;
         }
 
-        public static bool needBlockCheck(List<DateTime> leaveTime)
+        public static bool isContainEarlierToday(List<DateTime> leaveTime)
         {
             bool result = false;
-            if (BLL.SystemParameters.GetSysParameters().mBLOCK_BACKDATE_APPLY)
+            
+            leaveTime = leaveTime.Where(x => x < System.DateTime.Now.Date).ToList();
+            if (leaveTime != null && leaveTime.Count() > 0)
             {
-                leaveTime = leaveTime.Where(x => x < System.DateTime.Now.Date).ToList();
-                if (leaveTime != null && leaveTime.Count() > 0)
-                {
-                    result = true;
-                }
+                result = true;
             }
 
             return result;
