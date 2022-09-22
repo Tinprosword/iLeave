@@ -107,7 +107,7 @@ namespace BLL
         {
             LSLibrary.WebAPP.CodeHelper.CommonReturnResult<int> result = new LSLibrary.WebAPP.CodeHelper.CommonReturnResult<int>(0, "");
             List<LeaveRequestDetail> details = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetExtendLeaveDetailsByReuestID(requestid).ToList();
-            var check = WithDrawRequest_leave_Check(details);
+            var check = CancelRequest_leave_check(details);
             if (check.mResult)
             {
                 string baseurl = GetTestBaseUrl();
@@ -221,7 +221,7 @@ namespace BLL
                 result.mResult = !BLL.Leave.isContainEarlierToday(BLL.Leave.ConvertDateListNull(datelist));
                 if (result.mResult == false)
                 {
-                    result.mMessage += BLL.MultiLanguageHelper.GetLanguagePacket().Common_block_withdraw + "\r\n";
+                    result.mMessage += BLL.MultiLanguageHelper.GetLanguagePacket().Common_block_cancel + "\r\n";
                 }
             }
 
@@ -253,7 +253,6 @@ namespace BLL
             return type==null?"": names[(int)type];
         }
         #endregion
-
 
         #region update clot
         public static bool ApproveRequest_leave_clot(int requestid, int HandlerUID, string remark, out string errorMsg)
@@ -427,7 +426,7 @@ namespace BLL
                     if (isEarlier)
                     {
                         result.mResult = false;
-                        result.mMessage = BLL.MultiLanguageHelper.GetLanguagePacket().Common_block_withdraw + "\r\n";
+                        result.mMessage = BLL.MultiLanguageHelper.GetLanguagePacket().Common_block_cancel + "\r\n";
                     }
                 }
             }

@@ -1091,6 +1091,7 @@ namespace ut
             //1,add 2.mywaitclot.add 3.check alluser.4.check status.
             List<MODEL.CLOT.CLOTItem> cLOTItems = new List<MODEL.CLOT.CLOTItem>();
             applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.OT, new DateTime(2022, 1, 2), 10, 0, 12, 0, "ot2", "7", 0, cLOTItems);
+            applyer.AttachCLOTS(MODEL.CLOT.enum_clotType.CL, new DateTime(2022, 1, 24), 10, 0, 12, 0, "CL1", "7", 0, cLOTItems);
             List<int> clotids = applyer.AddCLOT(cLOTItems);
             applyer.myWaitClot.AddRange(clotids);
             user_102.myManageWaitClot.AddRange(clotids);
@@ -1120,6 +1121,8 @@ namespace ut
             checkAllUer_CLOTMyAndMyManageRecord();
             CheckClotRequestStatus(clotids, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
         }
+
+
 
         private void Scene_Reject1_clot(User applyer)
         {
