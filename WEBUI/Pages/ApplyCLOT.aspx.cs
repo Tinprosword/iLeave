@@ -62,7 +62,7 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {
-            //CLOTTab.SetEvent((WEBUI.Controls.leave)Master);
+            
         }
         #endregion
 
@@ -183,10 +183,13 @@ namespace WEBUI.Pages
 
             //section 控件必须等type ,hours, totalHouse 等控件初始化之后才进行。所以放到这里。
             ProcessSectinInfo((MODEL.CLOT.enum_clotType)int.Parse(this.ddl_leavetype.SelectedValue),(BLL.GlobalVariate.CLSection) dataview.clSectionType_InitOnpageload_UpdateAlways,(BLL.GlobalVariate.OTSection) dataview.otSectionType_InitOnpageload_UpdateAlways);
-            if (tr_secion.Visible)
+            if (tr_secion.Visible)//顯示section內容和只讀。
             {
                 ddl_section_SelectedIndexChanged(null, null);
             }
+            loadui_DisnableFromToByTrSection();
+
+
 
             int numberofAttachment = dataview.GetAttachment().Count();
             string numberPath = BLL.common.GetAttachmentNumberPath(numberofAttachment);
@@ -194,6 +197,20 @@ namespace WEBUI.Pages
             this.ib_counta.Visible = !string.IsNullOrEmpty(numberPath);
 
             SetupReport();
+        }
+
+        private void loadui_DisnableFromToByTrSection()
+        {
+            if (tr_secion.Visible)
+            {
+                this.DropDownList1.Enabled = this.DropDownList2.Enabled = this.DropDownList3.Enabled = this.DropDownList4.Enabled = false;
+                this.tb_hours.Enabled = false;
+            }
+            else
+            {
+                this.DropDownList1.Enabled = this.DropDownList2.Enabled = this.DropDownList3.Enabled = this.DropDownList4.Enabled = true;
+                this.tb_hours.Enabled = true;
+            }
         }
 
         private void SetupReport()
@@ -403,10 +420,11 @@ namespace WEBUI.Pages
 
             var pageData = (MODEL.CLOT.ViewState_page)LSLibrary.WebAPP.ViewStateHelper.GetValue(NAME_OF_PAGE_VIEW, this.ViewState);
             ProcessSectinInfo(tt,(BLL.GlobalVariate.CLSection)pageData.clSectionType_InitOnpageload_UpdateAlways,(BLL.GlobalVariate.OTSection)pageData.otSectionType_InitOnpageload_UpdateAlways);
-            if (ddl_section.Visible)
+            if (tr_secion.Visible)
             {
                 ddl_section_SelectedIndexChanged(null, null);
             }
+            loadui_DisnableFromToByTrSection();
         }
 
         private void ProcessSectinInfo(MODEL.CLOT.enum_clotType clOrOT,BLL.GlobalVariate.CLSection cLSection,BLL.GlobalVariate.OTSection oTSection)
