@@ -541,7 +541,6 @@ namespace ut
 
         #endregion'
 
-
         #region leave
         [TestMethod]
         public void StartTest_leavev_testNotice()
@@ -988,7 +987,6 @@ namespace ut
 
         #endregion
 
-
         #region clot
         //測試方法用戶是固定的，可以構造函數的時候變更。來達到測試不同用戶。裡面hardcode .來簡化代碼。
         [TestMethod]
@@ -1391,10 +1389,6 @@ namespace ut
         }
 
         #endregion
-
-
-
-
 
         #region other test case
         [TestMethod]

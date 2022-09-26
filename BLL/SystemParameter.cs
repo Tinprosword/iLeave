@@ -907,58 +907,55 @@ namespace BLL
 
         //single mode. 因為對於所有用戶來說，sys是同樣的數據，所以可以用single 模式。
         private SystemParameters() { }
-        private static SystemParameters mSystemParameters = null;
-        
+
         public static SystemParameters GetSysParameters()
         {
-            if (mSystemParameters == null)
+
+            SystemParameters data = new SystemParameters();
+
+            data.misClearAndAdd = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_ADD_BUTTON_MODE) == "2";
+            data.mHiddenActingStaff = true; //mHiddenActingStaff todo 0 add it in db later.
+            data.p_leaveCalendarDetail_Grid = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_CALENDAR_DETAIL_GRID) == "1";
+            data.p_boolAskConfirmation = BLL.CodeSetting.GetSystemParameter(SystemParameters.ENABLE_SAVE_CONFIRMMESSAGE) != "0";
+            data.IsEnableHKCAAVQCLOTLogic = BLL.CodeSetting.GetSystemParameter(SystemParameters.ENABLE_HKCAAVQ_CLOT_APPLICATION_LOGIC);
+            data.IsHIDE_CLOT_TIME_FROMTO = BLL.CodeSetting.GetSystemParameter(SystemParameters.HIDE_CLOT_TIME_FROMTO);
+            data.UI_DisplayDecimal = BLL.CodeSetting.GetSystemParameter(SystemParameters.UI_DISPLAY_DECIMAL);
+
+            data.IsUseDefaultShiftHour = BLL.CodeSetting.GetSystemParameter(SystemParameters.ENABLE_CLOT_DEFAULT_SHIFT_HOUR);
+
+            data.mHiddenCLOTPortal = BLL.CodeSetting.GetSystemParameter(SystemParameters.HIDDEN_CLOT_APPLICATION_FOR_PORTAL) == "1";
+            data.mHiddenCLOTAdmin = BLL.CodeSetting.GetSystemParameter(SystemParameters.HIDDEN_CLOT_APPLICATION) == "1";
+            data.mHiddenDoctorPortal = BLL.CodeSetting.GetSystemParameter(SystemParameters.HIDDEN_DOCTOR_VISIT_APPLICATION) == "1";
+            data.mHiddenDoctorAdmin = BLL.CodeSetting.GetSystemParameter(SystemParameters.HIDDEN_DOCTOR_VISIT_APPLICATION) == "1";
+
+            data.mAttachmentHiddenDoctor = BLL.CodeSetting.GetSystemParameter(SystemParameters.PORTAL_LEAVE_HIDE_DOCTOR_RECEIPT) == "0" ? false : true;
+
+
+            data.mINBOX_UNREADONLY_ON_MY_TASK = BLL.CodeSetting.GetSystemParameter(SystemParameters.DEFAULT_INBOX_UNREADONLY_ON_MY_TASK) == "0" ? false : true;
+            data.mGridSize = int.Parse(BLL.CodeSetting.GetSystemParameter(SystemParameters.PORTAL_GRID_SIZE));
+            data.mShowPositionCode = Convert.ToBoolean(int.Parse(BLL.CodeSetting.GetSystemParameter(SystemParameters.SHOW_POSITION_PORTAL_INBOX)));
+
+            data.mLEAVE_SL_MERGE_APPROVE_PENDING_CONSECUTIVE_CALC = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_SL_MERGE_APPROVE_PENDING_CONSECUTIVE_CALC) == "1" ? true : false;
+
+            data.mDayDefination = Convert.ToDouble(BLL.CodeSetting.GetSystemParameter(SystemParameters.SICK_LEAVE_CONSECUTIVE_DAY_DEFINITION));
+            data.mUseSnapshot = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BALANCE_SNAPSHOT_DAY) != "";
+
+            data.mNewDocType = BLL.CodeSetting.GetSystemParameter(SystemParameters.PERSONINFO_DOCUMENT_TYPE) == "1" ? true : false;
+            string piomString = BLL.CodeSetting.GetSystemParameter(SystemParameters.Portal_InBox_OutBox_Mode);
+            if (!string.IsNullOrEmpty(piomString))
             {
-                SystemParameters data = new SystemParameters();
-
-                data.misClearAndAdd = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_ADD_BUTTON_MODE) == "2";
-                data.mHiddenActingStaff = true; //mHiddenActingStaff todo 0 add it in db later.
-                data.p_leaveCalendarDetail_Grid = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_CALENDAR_DETAIL_GRID) == "1";
-                data.p_boolAskConfirmation = BLL.CodeSetting.GetSystemParameter(SystemParameters.ENABLE_SAVE_CONFIRMMESSAGE) != "0";
-                data.IsEnableHKCAAVQCLOTLogic = BLL.CodeSetting.GetSystemParameter(SystemParameters.ENABLE_HKCAAVQ_CLOT_APPLICATION_LOGIC);
-                data.IsHIDE_CLOT_TIME_FROMTO = BLL.CodeSetting.GetSystemParameter(SystemParameters.HIDE_CLOT_TIME_FROMTO);
-                data.UI_DisplayDecimal = BLL.CodeSetting.GetSystemParameter(SystemParameters.UI_DISPLAY_DECIMAL);
-
-                data.IsUseDefaultShiftHour = BLL.CodeSetting.GetSystemParameter(SystemParameters.ENABLE_CLOT_DEFAULT_SHIFT_HOUR);
-
-                data.mHiddenCLOTPortal = BLL.CodeSetting.GetSystemParameter(SystemParameters.HIDDEN_CLOT_APPLICATION_FOR_PORTAL) == "1";
-                data.mHiddenCLOTAdmin = BLL.CodeSetting.GetSystemParameter(SystemParameters.HIDDEN_CLOT_APPLICATION) == "1";
-                data.mHiddenDoctorPortal = BLL.CodeSetting.GetSystemParameter(SystemParameters.HIDDEN_DOCTOR_VISIT_APPLICATION) == "1";
-                data.mHiddenDoctorAdmin = BLL.CodeSetting.GetSystemParameter(SystemParameters.HIDDEN_DOCTOR_VISIT_APPLICATION) == "1";
-
-                data.mAttachmentHiddenDoctor = BLL.CodeSetting.GetSystemParameter(SystemParameters.PORTAL_LEAVE_HIDE_DOCTOR_RECEIPT) == "0" ? false : true;
-
-                
-                data.mINBOX_UNREADONLY_ON_MY_TASK = BLL.CodeSetting.GetSystemParameter(SystemParameters.DEFAULT_INBOX_UNREADONLY_ON_MY_TASK) == "0" ? false : true;
-                data.mGridSize = int.Parse(BLL.CodeSetting.GetSystemParameter(SystemParameters.PORTAL_GRID_SIZE));
-                data.mShowPositionCode = Convert.ToBoolean(int.Parse(BLL.CodeSetting.GetSystemParameter(SystemParameters.SHOW_POSITION_PORTAL_INBOX)));
-
-                data.mLEAVE_SL_MERGE_APPROVE_PENDING_CONSECUTIVE_CALC = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_SL_MERGE_APPROVE_PENDING_CONSECUTIVE_CALC) == "1" ? true : false;
-
-                data.mDayDefination = Convert.ToDouble(BLL.CodeSetting.GetSystemParameter(SystemParameters.SICK_LEAVE_CONSECUTIVE_DAY_DEFINITION));
-                data.mUseSnapshot = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BALANCE_SNAPSHOT_DAY) != "";
-
-                data.mNewDocType = BLL.CodeSetting.GetSystemParameter(SystemParameters.PERSONINFO_DOCUMENT_TYPE) == "1" ? true : false;
-                string piomString = BLL.CodeSetting.GetSystemParameter(SystemParameters.Portal_InBox_OutBox_Mode);
-                if (!string.IsNullOrEmpty(piomString))
-                {
-                    int.TryParse(piomString, out data.mPortal_InBox_OutBox_Mode);
-                }
-                data.mCalculateYearlyJoinRelated = BLL.CodeSetting.GetSystemParameter(SystemParameters.REPORT_SHOW_YEARLYJOIN_RELATED) == "1";
-                data.mCLOTOnlyHalfHours = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_CLOTHALFHOUR) == "1";
-
-                data.mBLOCK_BACKDATE_CANCELLATION = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BLOCK_BACKDATE_CANCELLATION) == "1";
-                data.mBLOCK_BACKDATE_APPLY = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BLOCK_BACKDATE_APPLICATION) == "1" ? true : false;
-                data.mBLOCK_BACKDATE_WITHDRAW = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BLOCK_BACKDATE_WITHDRAWAL) == "1" ? true : false;
-                data.mLeaveHourUnit = LSLibrary.ConvertHelper.ToInt32(BLL.CodeSetting.GetSystemParameter(SystemParameters.HOURLY_LEAVE_MINUTES_UNIT), -1);
-
-                mSystemParameters = data;
+                int.TryParse(piomString, out data.mPortal_InBox_OutBox_Mode);
             }
-            return mSystemParameters;
+            data.mCalculateYearlyJoinRelated = BLL.CodeSetting.GetSystemParameter(SystemParameters.REPORT_SHOW_YEARLYJOIN_RELATED) == "1";
+            data.mCLOTOnlyHalfHours = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_CLOTHALFHOUR) == "1";
+
+            data.mBLOCK_BACKDATE_CANCELLATION = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BLOCK_BACKDATE_CANCELLATION) == "1";
+            data.mBLOCK_BACKDATE_APPLY = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BLOCK_BACKDATE_APPLICATION) == "1" ? true : false;
+            data.mBLOCK_BACKDATE_WITHDRAW = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BLOCK_BACKDATE_WITHDRAWAL) == "1" ? true : false;
+            data.mLeaveHourUnit = LSLibrary.ConvertHelper.ToInt32(BLL.CodeSetting.GetSystemParameter(SystemParameters.HOURLY_LEAVE_MINUTES_UNIT), -1);
+
+
+            return data;
         }
     }
 }
