@@ -21,7 +21,7 @@
                 </td>
             </tr>
             <tr>
-                <td><asp:Literal ID="lt_leave" runat="server">Leave</asp:Literal></td>
+                <td><asp:Literal ID="lt_leave" runat="server">Type</asp:Literal></td>
                 <td colspan="2">
                     <asp:DropDownList style="height:24px" ID="ddl_leavetype" runat="server" Width="90%" AutoPostBack="true" OnSelectedIndexChanged="ddl_leavetype_SelectedIndexChanged">
                     </asp:DropDownList>
@@ -29,11 +29,15 @@
             </tr>
             
             <tr>
-                <td><asp:Literal ID="lt_apply" runat="server">Apply</asp:Literal></td>
+                <td><asp:Literal ID="lt_apply" runat="server">Planned</asp:Literal></td>
                 <td colspan="2">
-                    <asp:label ID="lt_applydays" runat="server" Width="90px"> </asp:label>
-                    <asp:label ID="lt_balance" runat="server" Width="60px">Banlance</asp:label>
-                    <asp:label ID="lt_balancedays" runat="server"> </asp:label>&nbsp;<asp:label Font-Size="14px" ID="lt_balancedetail" runat="server"></asp:label>
+                    <asp:label ID="lt_applydays" runat="server" style="white-space: pre;"></asp:label>
+                </td>
+            </tr>
+            <tr>
+                <td><asp:label ID="lt_balance" runat="server" Width="60px">Banlance</asp:label></td>
+                <td colspan="2">
+                    <asp:label ID="lt_balancedays" runat="server" style="white-space: pre;"></asp:label>
                 </td>
             </tr>
             <tr>

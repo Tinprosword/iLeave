@@ -33,10 +33,13 @@ namespace WEBUI.Pages
             //base info
             nametype = BLL.CodeSetting.GetNameType((LSLibrary.WebAPP.LanguageType)(lan));
             List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> detail = BLL.CLOT.GetCLOTDetail(requestID);
+            double fulldayHours = BLL.CodeSetting.GetFulldayWorkHours(employmentNo);
 
             //balance
             double balanceValue = BLL.Leave.GetBalanceView_CLOT_balance(employmentNo);
-            this.lt_balance.Text = (balanceValue).ToString("0.##");
+
+            this.lt_balance.Text = BLL.common.GenerateCLOTDisplay(double.Parse((balanceValue).ToString("0.##")), fulldayHours,
+                BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lan).applyCLOT_list_Hours2, BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lan).Common_label_Day);
 
             //apply
             double appSum = 0;
@@ -44,7 +47,9 @@ namespace WEBUI.Pages
             {
                 appSum += detail[i].Hour;
             }
-            this.lt_apply.Text = appSum.ToString("0.###");
+
+            this.lt_apply.Text = BLL.common.GenerateCLOTDisplay(double.Parse((appSum).ToString("0.##")), fulldayHours,
+                BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lan).applyCLOT_list_Hours2, BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lan).Common_label_Day);
 
 
 
@@ -86,8 +91,6 @@ namespace WEBUI.Pages
             this.lt_leavedetail.Text = language_title;
             this.lt_bancetitle.Text = language_balance;
             this.lt_applycount.Text = language_apply;
-            this.lt_days2.Text = BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lan).approvalWait_CLOT_hours;
-            this.lt_days.Text = BLL.MultiLanguageHelper.GetLanguagePacket((LSLibrary.WebAPP.LanguageType)lan).approvalWait_CLOT_hours;
 
             this.lt_historytitle.Text = language_title2;
 

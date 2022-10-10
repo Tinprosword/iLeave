@@ -1806,13 +1806,20 @@ namespace ut
         [TestMethod]
         public void testtemp()
         {
-            string Password = "HK@12345678";
+            var abc0 = String.Format("{0,6:0.##}", 7);
+            var abc1 = String.Format("{0,6:0.##}", 21);
+            var abc2 = String.Format("{0,6:0.##}", 21.5);
 
-            System.Security.Cryptography.MD5CryptoServiceProvider p_MD5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
-            var pahash= ConvertByteArrayToHex(p_MD5.ComputeHash(System.Text.Encoding.UTF8.GetBytes(Password)));
+            var bbb= int. Parse(DateTime.Now.ToString("1ddhhmmssf"));
+
+            int a = 4;
+            //string Password = "HK@12345678";
+
+            //System.Security.Cryptography.MD5CryptoServiceProvider p_MD5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            //var pahash= ConvertByteArrayToHex(p_MD5.ComputeHash(System.Text.Encoding.UTF8.GetBytes(Password)));
 
 
-            var a = 33;
+            //var a = 33;
         }
 
 

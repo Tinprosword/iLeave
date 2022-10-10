@@ -231,5 +231,49 @@ namespace BLL
 
             return result;
         }
+
+        public static string GenerateCLOTDisplay(double clotHours, double fullDayHours,string hoursStr,string dayStr)
+        {
+            string result = "";
+
+            double days = (double)(clotHours / fullDayHours);
+            days = roundDown_halforint(days, 0.5f);
+            //string displayFormat = "{0}{1} ({2}{3})";
+            result = string.Format("{0,-3:0.##}", clotHours) + hoursStr + "&nbsp;&nbsp;&nbsp;(" + string.Format("{0,-3:0.##}", days) + dayStr + ")";
+            //result = string.Form§at(displayFormat, string.Format("{0,-3:0.##}", clotHours), hoursStr, string.Format("{0,-3:0.##}", days), dayStr);
+            return result;
+        }
+
+        public static double roundDown_halforint(double value, float roundupValue)
+        {
+            double result = value;
+
+            int intTermination = (int)value;
+            double floatTermination = value - intTermination;
+            floatTermination = Math.Round(floatTermination, 3);
+
+            if (roundupValue == 0.5)
+            {
+                if (floatTermination >= 0.5)
+                {
+                    result = intTermination + 0.5;
+                }
+                else if (floatTermination > 0 && floatTermination < 0.5)
+                {
+                    result = intTermination;
+                }
+                else
+                {
+                    result = intTermination;
+                }
+            }
+            else if (roundupValue == 1)
+            {
+                result = intTermination;
+            }
+
+            return result;
+        }
+
     }
 }

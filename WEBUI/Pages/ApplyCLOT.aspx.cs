@@ -96,6 +96,7 @@ namespace WEBUI.Pages
             this.btn_apply.Text = BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_Submit;
 
             this.lt_hours.Text= BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_NOOFHours;
+            this.lt_section.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_section;
         }
 
         private void GetCLOTSection(out int cls, out int ots)
@@ -145,7 +146,11 @@ namespace WEBUI.Pages
             this.lt_balancedays.Text = "--";
 
             double balanceValue = BLL.Leave.GetBalanceView_CLOT_balance(loginer.userInfo.employID??0);
-            this.lt_balancedays.Text = (balanceValue).ToString("0.##") + " " + BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours2;
+            double fulldayHours = BLL.CodeSetting.GetFulldayWorkHours(loginer.userInfo.employID ?? 0);
+
+            this.lt_balancedays.Text = BLL.common.GenerateCLOTDisplay(double.Parse((balanceValue).ToString("0.##")), fulldayHours,
+                BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours2, BLL.MultiLanguageHelper.GetLanguagePacket().Common_label_Day);
+                //(balanceValue).ToString("0.##") + " " + BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours2;
             RefleshApplyBalance();
 
             this.tb_date.Text = System.DateTime.Now.ToString("yyyy-MM-dd");
@@ -303,11 +308,6 @@ namespace WEBUI.Pages
             SetupReport();
             RefleshApplyBalance();
         }
-
-        
-
-        
-        
 
         protected void delete_Click(object sender, ImageClickEventArgs e)
         {
@@ -531,10 +531,11 @@ namespace WEBUI.Pages
             if (dataview != null && dataview.items != null)
             {
                 double totalHour = MODEL.CLOT.CLOTItem.GetTotalUnit(dataview.items);
-
                 totalHour = waitingValue + totalHour;
 
-                this.lt_applydays.Text = totalHour.ToString()+" "+ BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours2;
+                double fullDayHours = BLL.CodeSetting.GetFulldayWorkHours(loginer.userInfo.employID ?? 0);
+                this.lt_applydays.Text = BLL.common.GenerateCLOTDisplay(totalHour, fullDayHours,
+                    BLL.MultiLanguageHelper.GetLanguagePacket().applyCLOT_list_Hours2, BLL.MultiLanguageHelper.GetLanguagePacket().Common_label_Day);
             }
             else
             {

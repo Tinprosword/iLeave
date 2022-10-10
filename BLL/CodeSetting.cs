@@ -90,5 +90,37 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_codesetting.GetRealTotal(startDate1, endDate1, startDate2, endDate2);
         }
 
+
+        public static WebServiceLayer.WebReference_codesettings.Shift GetShiftbyEid(int eid)
+        {
+            WebServiceLayer.WebReference_codesettings.Shift result = null;
+
+            var einfo = BLL.User_wsref.getEmploymentByid(eid);
+            if (einfo != null)
+            {
+                var shift = BLL.CodeSetting.GetShiftbyid(einfo.ShiftID);
+                if (shift != null)
+                {
+                    result = shift;
+                }
+            }
+
+            return result;
+        }
+
+
+        public static double GetFulldayWorkHours(int eid)
+        {
+            double result = 8;
+
+            var theShift = BLL.CodeSetting.GetShiftbyEid(eid);
+            if (theShift != null)
+            {
+                result = theShift.TotalWorkHour;
+            }
+            return result;
+        }
+
+
     }
 }

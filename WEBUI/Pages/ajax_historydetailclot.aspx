@@ -12,8 +12,8 @@
         <%--balance--%>
 		<table class="col-xs-12 lsf-clearPadding" style="margin-bottom:9px; height:40px;">
 			<tbody>
-                <tr><td class="col-xs-4 lsf-clearPadding;" style="padding-left:4px;padding-right:1px"><asp:Literal ID="lt_bancetitle" runat="server">lt</asp:Literal></td><td style="text-align:right;width:40px;"><div id="lbbalance"><asp:Literal ID="lt_balance" runat="server">3.81</asp:Literal></div></td><td>&nbsp;&nbsp;&nbsp;<asp:Literal ID="lt_days" runat="server">Day(s)</asp:Literal></td></tr>
-			    <tr><td style="padding-left:4px;padding-right:1px"><asp:Literal ID="lt_applycount" runat="server">lt</asp:Literal></td><td style="text-align:right"><div id="lbapply"><asp:Literal ID="lt_apply" runat="server">3.81</asp:Literal></div></td><td>&nbsp;&nbsp;&nbsp;<asp:Literal ID="lt_days2" runat="server">Day(s)</asp:Literal></td></tr>
+                <tr><td class="col-xs-4 lsf-clearPadding;" style="padding-left:4px;padding-right:1px"><asp:Literal ID="lt_bancetitle" runat="server">lt</asp:Literal></td><td><div id="lbbalance"><asp:Label style="white-space: pre;" ID="lt_balance" runat="server">3.81</asp:Label></div></td></tr>
+			    <tr><td style="padding-left:4px;padding-right:1px"><asp:Label ID="lt_applycount" runat="server">lt</asp:Label></td><td><div id="lbapply" ><asp:Label ID="lt_apply" runat="server" style="white-space: pre;">3.81</asp:Label></div></td></tr>
 		    </tbody>
 		</table>
 

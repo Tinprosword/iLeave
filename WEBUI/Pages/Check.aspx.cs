@@ -278,8 +278,6 @@ namespace WEBUI.Pages
 
 
        
-
-
         private void SetupmultipleLanguage()
         {
             this.bt_checkin.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin;

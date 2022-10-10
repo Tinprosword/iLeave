@@ -1,0 +1,19 @@
+ip:::1
+DataTime：2022/9/27 11:32:26
+Url：http://localhost/WEBUI/pages/applyCLOT.aspx
+Message：输入字符串的格式不正确。
+Source：mscorlib
+Type：System.FormatException
+Function：System.Text.StringBuilder AppendFormatHelper(System.IFormatProvider, System.String, System.ParamsArray)
+Trace：   在 System.Text.StringBuilder.AppendFormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   在 System.String.FormatHelper(IFormatProvider provider, String format, ParamsArray args)
+   在 System.String.Format(String format, Object arg0)
+   在 BLL.common.GenerateCLOTDisplay(Double clotHours, Double fullDayHours, String hoursStr, String dayStr) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\common.cs:行号 242
+   在 WEBUI.Pages.ApplyCLOT.LoadUI() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ApplyCLOT.aspx.cs:行号 150
+   在 WEBUI.Pages.ApplyCLOT.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\ApplyCLOT.aspx.cs:行号 56
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 66
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 50
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
