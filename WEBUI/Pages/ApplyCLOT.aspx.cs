@@ -561,8 +561,28 @@ namespace WEBUI.Pages
             bool bvalidday = DateTime.TryParse(this.tb_date.Text, out theday);
             if (bvalidday)
             {
+                var einfo = BLL.User_wsref.getEmploymentByid(loginer.userInfo.employID ?? 0);
+                WebServiceLayer.WebReference_codesettings.Shift theShift = null;
+                double fullHours = 0;
+
+                if (einfo != null)
+                {
+                    theShift = BLL.CodeSetting.GetShiftbyid(einfo.ShiftID);
+                    if (theShift != null)
+                    {
+                        fullHours = theShift.TotalWorkHour;
+                    }
+                }
+
+
                 double hours = BLL.Leave.GetRealTotalHours(fromh, toh, fromm, tom, loginer.userInfo.employID??0, clotSection);
                 this.tb_hours.Text = hours.ToString();
+
+                //1.section=-1:hours ,  2.has section  1.1
+                string displayDay = "";
+                displayDay = BLL.common.GenerateCLOTDisplayDay(hours, fullHours, BLL.MultiLanguageHelper.GetLanguagePacket().Common_D, 1);
+                
+                this.lb_hours2day.Text = displayDay;
             }
         }
 

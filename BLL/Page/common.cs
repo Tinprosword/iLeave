@@ -244,6 +244,31 @@ namespace BLL
             return result;
         }
 
+        public static string GenerateCLOTDisplayDay(double clotHours, double fullDayHours, string dayStr, int decimalType)
+        {
+            string result = "";
+            if (fullDayHours != 0)
+            {
+                double days = (double)(clotHours / fullDayHours);
+                if (decimalType == 1)
+                {
+                    days = (double)System.Math.Round((Decimal)days, 1);
+                }
+                else
+                {
+                    days = (double)System.Math.Round((Decimal)days, 1);
+                }
+                string strFormat = "({0} {1})";
+                result = string.Format(strFormat, days, dayStr);
+            }
+            else
+            {
+                string strFormat = "({0} {1})";
+                result = string.Format(strFormat, "--", dayStr);
+            }
+            return result;
+        }
+
         public static double roundDown_halforint(double value, float roundupValue)
         {
             double result = value;
