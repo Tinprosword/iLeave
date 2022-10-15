@@ -74,8 +74,8 @@
                 <td><asp:Literal ID="lt_hours" runat="server" Text="Number of Hours"></asp:Literal></td>
                 <td>
                     <div style="float:left;">
-                        <asp:TextBox ID="tb_hours" runat="server" Width="80" Text="0" ></asp:TextBox>
-                        <asp:Label ID="lb_hours2day" runat="server" Text="(0.5 Day)"></asp:Label>
+                        <asp:TextBox ID="tb_hours" runat="server" Width="80" Text="0" OnTextChanged="tb_hours_TextChanged"  AutoPostBack="true"></asp:TextBox>
+                        <asp:Label ID="lb_hours2day" runat="server" Text=""></asp:Label>
                     </div>
                 </td>
                 <td>

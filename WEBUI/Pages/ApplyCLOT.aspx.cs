@@ -587,6 +587,8 @@ namespace WEBUI.Pages
         }
 
 
+
+
         protected void image_btn_Click(object sender, ImageClickEventArgs e)
         {
             SaveViewStateFromUI_WhenGotoOtherPage();
@@ -669,6 +671,31 @@ namespace WEBUI.Pages
             }
 
             OnFromTO_TextChanged(null, null);
+        }
+
+        protected void tb_hours_TextChanged(object sender, EventArgs e)
+        {
+            double hours = 0;
+            double.TryParse(this.tb_hours.Text, out hours);
+
+
+            var einfo = BLL.User_wsref.getEmploymentByid(loginer.userInfo.employID ?? 0);
+            WebServiceLayer.WebReference_codesettings.Shift theShift = null;
+            double fullHours = 0;
+
+            if (einfo != null)
+            {
+                theShift = BLL.CodeSetting.GetShiftbyid(einfo.ShiftID);
+                if (theShift != null)
+                {
+                    fullHours = theShift.TotalWorkHour;
+                }
+            }
+
+            string displayDay = "";
+            displayDay = BLL.common.GenerateCLOTDisplayDay(hours, fullHours, BLL.MultiLanguageHelper.GetLanguagePacket().Common_D, 1);
+
+            this.lb_hours2day.Text = displayDay;
         }
     }
 }
