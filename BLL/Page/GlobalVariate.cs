@@ -58,6 +58,8 @@ namespace BLL
             clot_add_portal=13
         }
 
+        
+
         public enum AttachmentUploadType
         {
             [System.ComponentModel.Description("AttachmentUndefined")]

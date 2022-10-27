@@ -42,6 +42,10 @@ namespace WebServiceLayer.WebReference_codesettings {
         
         private System.Threading.SendOrPostCallback GetCompanyCodeOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ExecSqlCommandOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ExecFn_checkmsgOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetLeaveSectionsOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
@@ -99,6 +103,12 @@ namespace WebServiceLayer.WebReference_codesettings {
         
         /// <remarks/>
         public event GetCompanyCodeCompletedEventHandler GetCompanyCodeCompleted;
+        
+        /// <remarks/>
+        public event ExecSqlCommandCompletedEventHandler ExecSqlCommandCompleted;
+        
+        /// <remarks/>
+        public event ExecFn_checkmsgCompletedEventHandler ExecFn_checkmsgCompleted;
         
         /// <remarks/>
         public event GetLeaveSectionsCompletedEventHandler GetLeaveSectionsCompleted;
@@ -286,6 +296,76 @@ namespace WebServiceLayer.WebReference_codesettings {
             if ((this.GetCompanyCodeCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetCompanyCodeCompleted(this, new GetCompanyCodeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ExecSqlCommand", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string ExecSqlCommand(string sql) {
+            object[] results = this.Invoke("ExecSqlCommand", new object[] {
+                        sql});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ExecSqlCommandAsync(string sql) {
+            this.ExecSqlCommandAsync(sql, null);
+        }
+        
+        /// <remarks/>
+        public void ExecSqlCommandAsync(string sql, object userState) {
+            if ((this.ExecSqlCommandOperationCompleted == null)) {
+                this.ExecSqlCommandOperationCompleted = new System.Threading.SendOrPostCallback(this.OnExecSqlCommandOperationCompleted);
+            }
+            this.InvokeAsync("ExecSqlCommand", new object[] {
+                        sql}, this.ExecSqlCommandOperationCompleted, userState);
+        }
+        
+        private void OnExecSqlCommandOperationCompleted(object arg) {
+            if ((this.ExecSqlCommandCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ExecSqlCommandCompleted(this, new ExecSqlCommandCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ExecFn_checkmsg", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string ExecFn_checkmsg(int uid, int eid, string ssid, decimal lat, decimal lng, System.DateTime checkedtime, string lang) {
+            object[] results = this.Invoke("ExecFn_checkmsg", new object[] {
+                        uid,
+                        eid,
+                        ssid,
+                        lat,
+                        lng,
+                        checkedtime,
+                        lang});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ExecFn_checkmsgAsync(int uid, int eid, string ssid, decimal lat, decimal lng, System.DateTime checkedtime, string lang) {
+            this.ExecFn_checkmsgAsync(uid, eid, ssid, lat, lng, checkedtime, lang, null);
+        }
+        
+        /// <remarks/>
+        public void ExecFn_checkmsgAsync(int uid, int eid, string ssid, decimal lat, decimal lng, System.DateTime checkedtime, string lang, object userState) {
+            if ((this.ExecFn_checkmsgOperationCompleted == null)) {
+                this.ExecFn_checkmsgOperationCompleted = new System.Threading.SendOrPostCallback(this.OnExecFn_checkmsgOperationCompleted);
+            }
+            this.InvokeAsync("ExecFn_checkmsg", new object[] {
+                        uid,
+                        eid,
+                        ssid,
+                        lat,
+                        lng,
+                        checkedtime,
+                        lang}, this.ExecFn_checkmsgOperationCompleted, userState);
+        }
+        
+        private void OnExecFn_checkmsgOperationCompleted(object arg) {
+            if ((this.ExecFn_checkmsgCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ExecFn_checkmsgCompleted(this, new ExecFn_checkmsgCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1090,6 +1170,10 @@ namespace WebServiceLayer.WebReference_codesettings {
         
         private int sectionField;
         
+        private bool isNoPaidRestDayField;
+        
+        private System.Nullable<int> payItemTypeIDField;
+        
         /// <remarks/>
         public System.DateTime LunchIn {
             get {
@@ -1410,6 +1494,27 @@ namespace WebServiceLayer.WebReference_codesettings {
                 this.sectionField = value;
             }
         }
+        
+        /// <remarks/>
+        public bool IsNoPaidRestDay {
+            get {
+                return this.isNoPaidRestDayField;
+            }
+            set {
+                this.isNoPaidRestDayField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> PayItemTypeID {
+            get {
+                return this.payItemTypeIDField;
+            }
+            set {
+                this.payItemTypeIDField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -1588,6 +1693,58 @@ namespace WebServiceLayer.WebReference_codesettings {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void ExecSqlCommandCompletedEventHandler(object sender, ExecSqlCommandCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ExecSqlCommandCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ExecSqlCommandCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void ExecFn_checkmsgCompletedEventHandler(object sender, ExecFn_checkmsgCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ExecFn_checkmsgCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ExecFn_checkmsgCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }

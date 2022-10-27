@@ -124,6 +124,8 @@
               <s:element minOccurs="1" maxOccurs="1" name="DutyLocationID" type="s:int" />
               <s:element minOccurs="0" maxOccurs="1" name="cpList" type="tns:ArrayOfT_CustomProp" />
               <s:element minOccurs="1" maxOccurs="1" name="Section" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsNoPaidRestDay" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="PayItemTypeID" nillable="true" type="s:int" />
             </s:sequence>
           </s:extension>
         </s:complexContent>
@@ -208,6 +210,40 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="ExecSqlCommand">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecSqlCommandResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExecSqlCommandResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecFn_checkmsg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="uid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="eid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ssid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lat" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="lng" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="checkedtime" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="lang" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecFn_checkmsgResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExecFn_checkmsgResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetLeaveSections">
         <s:complexType>
           <s:sequence>
@@ -272,6 +308,18 @@
   <wsdl:message name="GetCompanyCodeSoapOut">
     <wsdl:part name="parameters" element="tns:GetCompanyCodeResponse" />
   </wsdl:message>
+  <wsdl:message name="ExecSqlCommandSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecSqlCommand" />
+  </wsdl:message>
+  <wsdl:message name="ExecSqlCommandSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecSqlCommandResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecFn_checkmsgSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecFn_checkmsg" />
+  </wsdl:message>
+  <wsdl:message name="ExecFn_checkmsgSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecFn_checkmsgResponse" />
+  </wsdl:message>
   <wsdl:message name="GetLeaveSectionsSoapIn">
     <wsdl:part name="parameters" element="tns:GetLeaveSections" />
   </wsdl:message>
@@ -307,6 +355,24 @@
   <wsdl:message name="GetCompanyCodeHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfString" />
   </wsdl:message>
+  <wsdl:message name="ExecSqlCommandHttpPostIn">
+    <wsdl:part name="sql" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ExecSqlCommandHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ExecFn_checkmsgHttpPostIn">
+    <wsdl:part name="uid" type="s:string" />
+    <wsdl:part name="eid" type="s:string" />
+    <wsdl:part name="ssid" type="s:string" />
+    <wsdl:part name="lat" type="s:string" />
+    <wsdl:part name="lng" type="s:string" />
+    <wsdl:part name="checkedtime" type="s:string" />
+    <wsdl:part name="lang" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ExecFn_checkmsgHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:message name="GetLeaveSectionsHttpPostIn">
     <wsdl:part name="leaveClass" type="s:string" />
     <wsdl:part name="position" type="s:string" />
@@ -339,6 +405,14 @@
       <wsdl:input message="tns:GetCompanyCodeSoapIn" />
       <wsdl:output message="tns:GetCompanyCodeSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ExecSqlCommand">
+      <wsdl:input message="tns:ExecSqlCommandSoapIn" />
+      <wsdl:output message="tns:ExecSqlCommandSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecFn_checkmsg">
+      <wsdl:input message="tns:ExecFn_checkmsgSoapIn" />
+      <wsdl:output message="tns:ExecFn_checkmsgSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetLeaveSections">
       <wsdl:input message="tns:GetLeaveSectionsSoapIn" />
       <wsdl:output message="tns:GetLeaveSectionsSoapOut" />
@@ -364,6 +438,14 @@
     <wsdl:operation name="GetCompanyCode">
       <wsdl:input message="tns:GetCompanyCodeHttpPostIn" />
       <wsdl:output message="tns:GetCompanyCodeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecSqlCommand">
+      <wsdl:input message="tns:ExecSqlCommandHttpPostIn" />
+      <wsdl:output message="tns:ExecSqlCommandHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecFn_checkmsg">
+      <wsdl:input message="tns:ExecFn_checkmsgHttpPostIn" />
+      <wsdl:output message="tns:ExecFn_checkmsgHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetLeaveSections">
       <wsdl:input message="tns:GetLeaveSectionsHttpPostIn" />
@@ -419,6 +501,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetCompanyCode">
       <soap:operation soapAction="http://tempuri.org/GetCompanyCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecSqlCommand">
+      <soap:operation soapAction="http://tempuri.org/ExecSqlCommand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecFn_checkmsg">
+      <soap:operation soapAction="http://tempuri.org/ExecFn_checkmsg" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -492,6 +592,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ExecSqlCommand">
+      <soap12:operation soapAction="http://tempuri.org/ExecSqlCommand" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecFn_checkmsg">
+      <soap12:operation soapAction="http://tempuri.org/ExecFn_checkmsg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetLeaveSections">
       <soap12:operation soapAction="http://tempuri.org/GetLeaveSections" style="document" />
       <wsdl:input>
@@ -549,6 +667,24 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ExecSqlCommand">
+      <http:operation location="/ExecSqlCommand" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecFn_checkmsg">
+      <http:operation location="/ExecFn_checkmsg" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetLeaveSections">
       <http:operation location="/GetLeaveSections" />
       <wsdl:input>
@@ -561,13 +697,13 @@
   </wsdl:binding>
   <wsdl:service name="CodeSettingsV2">
     <wsdl:port name="CodeSettingsV2Soap" binding="tns:CodeSettingsV2Soap">
-      <soap:address location="http://192.168.66.100:9999/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx" />
+      <soap:address location="http://192.168.66.100:8888/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx" />
     </wsdl:port>
     <wsdl:port name="CodeSettingsV2Soap12" binding="tns:CodeSettingsV2Soap12">
-      <soap12:address location="http://192.168.66.100:9999/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx" />
+      <soap12:address location="http://192.168.66.100:8888/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx" />
     </wsdl:port>
     <wsdl:port name="CodeSettingsV2HttpPost" binding="tns:CodeSettingsV2HttpPost">
-      <http:address location="http://192.168.66.100:9999/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx" />
+      <http:address location="http://192.168.66.100:8888/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

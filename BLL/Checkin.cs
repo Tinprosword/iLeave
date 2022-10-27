@@ -102,5 +102,10 @@ namespace BLL
             return result;
         }
 
+        public static string CheckCheckin(int uid, int eid, string ssid, decimal lat, decimal lng, DateTime checkedtime, string lang)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_codesetting.ExecFn_checkmsg(uid, eid, ssid, lat, lng, checkedtime, lang.ToString());
+        }
+
     }
 }

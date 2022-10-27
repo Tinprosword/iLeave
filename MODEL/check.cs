@@ -12,11 +12,11 @@ namespace MODEL
         [Serializable]
         public class ViewState_page
         {
-            public bool mIsForceCheckin;
+            
 
             public ViewState_page()
             {
-                mIsForceCheckin = false;
+                
             }
         }
     }

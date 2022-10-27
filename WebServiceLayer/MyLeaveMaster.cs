@@ -74,4 +74,35 @@ namespace WebServiceLayer.MyModel
             return true;
         }
     }
+
+    public class AttendanceRawData
+    {
+        private WebReference_leave.AttendanceRawData mData;
+
+        public AttendanceRawData(WebReference_leave.AttendanceRawData _d)
+        {
+            mData = _d;
+        }
+
+        public void getlatlng(out decimal lat, out decimal lng)
+        {
+            lat = 0;
+            lng = 0;
+
+            //location 
+            if (mData!=null && !string.IsNullOrEmpty(mData.GpsLocation))
+            {
+                string[] tempresult = mData.GpsLocation.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+                if (tempresult != null && tempresult.Count() == 2)
+                {
+                    decimal lui = 0; decimal lon = 0;
+                    if (decimal.TryParse(tempresult[0], out lui) && decimal.TryParse(tempresult[1], out lon))
+                    {
+                        lat = lui;
+                        lng = lon;
+                    }
+                }
+            }
+        }
+    }
 }

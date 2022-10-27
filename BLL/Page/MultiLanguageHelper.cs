@@ -8,6 +8,26 @@ namespace BLL
 {
     public class MultiLanguageHelper
     {
+        //en-us  zh-hk  zh-cn
+        public static string Convertohrfromileave(LSLibrary.WebAPP.LanguageType lt)
+        {
+            string result = "en-us";
+
+            if (lt == LSLibrary.WebAPP.LanguageType.english)
+            {
+                result = "en-us";
+            }
+            else if (lt == LSLibrary.WebAPP.LanguageType.sc)
+            {
+                result = "zh-cn";
+            }
+            else if(lt==LSLibrary.WebAPP.LanguageType.tc)
+            {
+                result = "zh-hk";
+            }
+            return result;
+        }
+
         public static LSLibrary.WebAPP.LanguageType GetChoose()
         {
             return (LSLibrary.WebAPP.LanguageType)Page.MyCookieManage.GetCookie().language;

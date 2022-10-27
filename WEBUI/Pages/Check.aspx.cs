@@ -128,7 +128,7 @@ namespace WEBUI.Pages
             if (targetname == m_ForceChekinActonName)
             {
                 var tempView = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Check.ViewState_page>(ViewState_PageName, this.ViewState);
-                tempView.mIsForceCheckin = true;
+               
                 LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, tempView, this.ViewState);
             }
 
@@ -230,39 +230,52 @@ namespace WEBUI.Pages
 
                     isMobileValidCheckin = isValaidCheckin();
                     var viewstateaa = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Check.ViewState_page>(ViewState_PageName, this.ViewState);
-                    if (isMobileValidCheckin || viewstateaa.mIsForceCheckin)
+                    if (isMobileValidCheckin)
                     {
                         tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.staffNumber, centerfaceid, interfaceid, 1, loginer.userInfo.surname, "000", zoneCode, strlocation, locationname, macAddress, "");
-                        if (viewstateaa.mIsForceCheckin)//強制打卡值能使用一次。
-                        {
-                            viewstateaa.mIsForceCheckin = false;
-                            LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, viewstateaa, this.ViewState);
-                        }
                     }
                     else
                     {
                         tempModer = null;
-                        if (BLL.Other.GetEnableForceCheckif())
-                        {
-                            string js = "<script>forceCheckint('{0}','{1}','{2}')</script>";
-                            js = string.Format(js, "Force check in?", m_ForceChekinActonName, value);
-                            this.lt_jsConfirmForce.Text = js;
-                        }
                     }
+                    
                 }
 
                 if (tempModer!=null)
                 {
                     BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
 
+                    //1.if mobile ,need get checkmsg and replace raw message.
+                    string lb_msg_msg = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
+                    if (!isMobile)
+                    {
+                        
+                    }
+                    else
+                    {
+                        decimal lat = 0; decimal lng = 0;
+                        WebServiceLayer.MyModel.AttendanceRawData mymodel_rawdate = new WebServiceLayer.MyModel.AttendanceRawData(tempModer);
+                        mymodel_rawdate.getlatlng(out lat, out lng);
+
+                        var lng_ileave = BLL.MultiLanguageHelper.GetChoose();
+                        string checkMsg = BLL.Checkin.CheckCheckin(loginer.userInfo.id, loginer.userInfo.employID ?? 0, tempModer.WifiAddress, lat, lng, tempModer.LogDateTime, BLL.MultiLanguageHelper.Convertohrfromileave(lng_ileave).ToString());
+                        if (!string.IsNullOrEmpty(checkMsg.Trim()))
+                        {
+                            lb_msg_msg = checkMsg;
+                        }
+                    }
                     this.lb_msg.Visible = true;
-                    this.lb_msg.Text = BLL.MultiLanguageHelper.GetLanguagePacket().Commoncheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose());
-                    this.lb_msg2.Visible = true;
+                    this.lb_msg.Text = lb_msg_msg;
+
+
 
                     if (lastItem != null)
                     {
+                        this.lb_msg2.Visible = true;
                         this.lb_msg2.Text = BLL.MultiLanguageHelper.GetLanguagePacket().CommonLastcheckin + " : " + BLL.common.GetFormatTime2(BLL.MultiLanguageHelper.GetChoose(), lastItem.CreateDate);
                     }
+
+                  
                 }
             }
 
@@ -270,9 +283,9 @@ namespace WEBUI.Pages
             this.bt_checkin.Enabled = true;
         }
 
+        //always insert .so the result is true always now.
         private bool isValaidCheckin()
         {
-            //todo 0 check invaid checkin
             return true;
         }
 
