@@ -20,6 +20,7 @@ namespace WEBUI.Pages
         private string GetSessionName = "";
         private string TakeBackSessionName = "";
         private string BackUrl = "";//~/pages/Apply.aspx?action=back
+        private BLL.SystemParameters mSystemParameter = null;
 
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
@@ -31,6 +32,8 @@ namespace WEBUI.Pages
             {
                 Response.Redirect("~/pages/main.aspx", true);
             }
+
+            mSystemParameter = BLL.SystemParameters.GetSysParameters();
         }
 
         protected override void InitPage_OnFirstLoad2()
@@ -108,9 +111,7 @@ namespace WEBUI.Pages
         private List<string> uploadAttachmentAndReduce(string absolutePath, out string errorMsg)
         {
             List<string> types = null;//all format is ok.
-            int fileMax = 3;
-            string strfileMax = LSLibrary.WebAPP.WebConfig.getValue("AttachmentMaxSize");
-            int.TryParse(strfileMax, out fileMax);
+            int fileMax = mSystemParameter.mILEAVE_UPLOADFILE_MAXSIZE;
             List<string> files = BLL.common.UploadAttendanceAndReduce(Request, absolutePath, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg,3);
             return files;
         }

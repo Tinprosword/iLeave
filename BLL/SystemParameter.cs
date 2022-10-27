@@ -868,6 +868,7 @@ namespace BLL
 
         //BIlly 2021.12.02 - defalut selection of taxation version
         public const string TAXATION_DEFAULT_VERSION = "TAXATION_DEFAULT_VERSION";
+        public const string ILEAVE_UPLOADFILE_MAXSIZE = "ILEAVE_UPLOADFILE_MAXSIZE";
 
         #endregion
 
@@ -903,14 +904,15 @@ namespace BLL
         public bool mCLOTOnlyHalfHours = false;
         public int mLEAVE_DATEFROM_Control = 1;
         public int mLeaveHourUnit = -1;
+        public int mILEAVE_UPLOADFILE_MAXSIZE = 4;
         #endregion
 
-        //single mode. 因為對於所有用戶來說，sys是同樣的數據，所以可以用single 模式。
+        //single mode. 因為對於所有用戶來說，sys是同樣的數據，所以可以用single 模式。但是後面發現，用戶會切換Services(Database),導致systemParameter不會變。
+        //todo 0 感覺還是應該放到session中。登錄的時候初始化，拿的時候再判斷下。沒有再拿下。
         private SystemParameters() { }
 
         public static SystemParameters GetSysParameters()
         {
-
             SystemParameters data = new SystemParameters();
 
             data.misClearAndAdd = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_ADD_BUTTON_MODE) == "2";
@@ -953,7 +955,7 @@ namespace BLL
             data.mBLOCK_BACKDATE_APPLY = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BLOCK_BACKDATE_APPLICATION) == "1" ? true : false;
             data.mBLOCK_BACKDATE_WITHDRAW = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BLOCK_BACKDATE_WITHDRAWAL) == "1" ? true : false;
             data.mLeaveHourUnit = LSLibrary.ConvertHelper.ToInt32(BLL.CodeSetting.GetSystemParameter(SystemParameters.HOURLY_LEAVE_MINUTES_UNIT), -1);
-
+            data.mILEAVE_UPLOADFILE_MAXSIZE = LSLibrary.ConvertHelper.ToInt32(BLL.CodeSetting.GetSystemParameter(SystemParameters.HOURLY_LEAVE_MINUTES_UNIT), 4);
 
             return data;
         }
