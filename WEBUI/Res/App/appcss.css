@@ -500,3 +500,15 @@ textarea::-webkit-input-placeholder {
   overflow-y:hidden;
   white-space: nowrap;
 }
+
+
+
+.breakspan{
+    word-break:normal; 
+    width:auto; 
+    display:block; 
+    white-space:pre-wrap;
+    word-wrap : break-word ;
+    overflow: hidden ;
+    border:0px;
+    }

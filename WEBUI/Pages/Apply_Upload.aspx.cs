@@ -112,7 +112,7 @@ namespace WEBUI.Pages
         {
             List<string> types = null;//all format is ok.
             int fileMax = mSystemParameter.mILEAVE_UPLOADFILE_MAXSIZE;
-            List<string> files = BLL.common.UploadAttendanceAndReduce(Request, absolutePath, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg,3);
+            List<string> files = BLL.common.UploadAttendanceAndReduce(Request, absolutePath, types, System.DateTime.Now.ToString("yyyyMMdd"), out errorMsg, fileMax);
             return files;
         }
 

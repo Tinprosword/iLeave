@@ -85,6 +85,24 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Button btn_search;
         
         /// <summary>
+        /// lb_downloadtip 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_downloadtip;
+        
+        /// <summary>
+        /// lb_downloadtip2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_downloadtip2;
+        
+        /// <summary>
         /// LT_JSDOWNLOAD 控件。
         /// </summary>
         /// <remarks>
@@ -92,5 +110,14 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal LT_JSDOWNLOAD;
+        
+        /// <summary>
+        /// lt_js_showdown 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_js_showdown;
     }
 }

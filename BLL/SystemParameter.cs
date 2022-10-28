@@ -868,7 +868,7 @@ namespace BLL
 
         //BIlly 2021.12.02 - defalut selection of taxation version
         public const string TAXATION_DEFAULT_VERSION = "TAXATION_DEFAULT_VERSION";
-        public const string ILEAVE_UPLOADFILE_MAXSIZE = "ILEAVE_UPLOADFILE_MAXSIZE";
+        public const string ILEAVE_ATTACHMENT_SIZE = "ILEAVE_ATTACHMENT_SIZE";
 
         #endregion
 
@@ -955,7 +955,7 @@ namespace BLL
             data.mBLOCK_BACKDATE_APPLY = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BLOCK_BACKDATE_APPLICATION) == "1" ? true : false;
             data.mBLOCK_BACKDATE_WITHDRAW = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BLOCK_BACKDATE_WITHDRAWAL) == "1" ? true : false;
             data.mLeaveHourUnit = LSLibrary.ConvertHelper.ToInt32(BLL.CodeSetting.GetSystemParameter(SystemParameters.HOURLY_LEAVE_MINUTES_UNIT), -1);
-            data.mILEAVE_UPLOADFILE_MAXSIZE = LSLibrary.ConvertHelper.ToInt32(BLL.CodeSetting.GetSystemParameter(SystemParameters.HOURLY_LEAVE_MINUTES_UNIT), 4);
+            data.mILEAVE_UPLOADFILE_MAXSIZE = LSLibrary.ConvertHelper.ToInt32(BLL.CodeSetting.GetSystemParameter(SystemParameters.ILEAVE_ATTACHMENT_SIZE), 4);
 
             return data;
         }

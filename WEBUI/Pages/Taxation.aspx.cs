@@ -26,6 +26,23 @@ namespace WEBUI.Pages
         {
             this.lb_msg.Text = "";
             this.LT_JSDOWNLOAD.Text = "";
+
+            string downloadTip = BLL.MultiLanguageHelper.GetLanguagePacket().Common_downloadTip;
+            string downloadTip2 = BLL.MultiLanguageHelper.GetLanguagePacket().Common_downloadTip2;
+
+
+           
+
+            if (string.IsNullOrEmpty(downloadTip2))
+            {
+                this.lt_js_showdown.Text = "<script> function showdownloadMsg() {$(\"#" + this.lb_downloadtip.ClientID + "\").text('" + downloadTip + "'); setTimeout('emptydownloadMsg()',40000);}</script>";
+            }
+            else
+            {
+                this.lt_js_showdown.Text = "<script> function showdownloadMsg() {$(\"#" + this.lb_downloadtip.ClientID + "\").text('" + downloadTip + "'); $(\"#" + this.lb_downloadtip2.ClientID + "\").text('" + downloadTip2 + "'); setTimeout('emptydownloadMsg()',40000);}</script>";
+            }
+
+          
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
@@ -165,6 +182,10 @@ namespace WEBUI.Pages
                     this.lb_msg.Text = "Error:no possible. year is not match.";
                 }
             }
+
+            
         }
+
+
     }
 }

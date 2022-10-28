@@ -18,11 +18,33 @@
                 <td><asp:Label ID="lb_status" runat="server"></asp:Label></td>
             </tr>
             <tr>
-                <td colspan="2" style="padding-top:10px; padding-left:10px"><asp:Button ID="btn_search" runat="server" Text="Download"  CssClass="CommonBlueButton" OnClick="btn_search_Click" /></td>
+                <td colspan="2" style="padding-top:10px; padding-left:10px">
+                    <asp:Button ID="btn_search" runat="server" Text="Download"  CssClass="CommonBlueButton" OnClick="btn_search_Click" OnClientClick="showdownloadMsg()" />
+                    <br />
+                    <asp:Label ID="lb_downloadtip" runat="server" CssClass="breakspan" Text=""></asp:Label>
+                    <asp:Label ID="lb_downloadtip2" runat="server" CssClass="breakspan" Text=""></asp:Label>
+                </td>
             </tr>
         </table>
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
     <asp:Literal ID="LT_JSDOWNLOAD" runat="server"></asp:Literal>
+    <asp:Literal ID="lt_js_showdown" runat="server"></asp:Literal>
+
+    <script>
+
+     <%--   function showdownloadMsg()
+        {
+            $("#<%=this.lb_downloadtip.ClientID%>").text('startdownload');
+            setTimeout('emptydownloadMsg()',4000);
+        }--%>
+
+        function emptydownloadMsg() {
+            $("#<%=this.lb_downloadtip.ClientID%>").text('');
+            $("#<%=this.lb_downloadtip2.ClientID%>").text('');
+        }
+
+    </script>
+
 </asp:Content>
