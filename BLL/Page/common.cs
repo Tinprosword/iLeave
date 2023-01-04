@@ -232,7 +232,7 @@ namespace BLL
             return result;
         }
 
-        public static string GenerateCLOTDisplay(double clotHours, double fullDayHours,string hoursStr,string dayStr)
+        public static string GenerateCLOTDisplay(double clotHours, double fullDayHours, string hoursStr, string dayStr)
         {
             string result = "";
 
@@ -279,14 +279,28 @@ namespace BLL
 
             if (roundupValue == 0.5)
             {
-                if (floatTermination >= 0.5)
+                //1.>=0<0.5 =>0 . 2  >=0.5=>0.5   .3 .<0 >-0.5 =>0  4. <=-0.5 =>-0.5
+                if (floatTermination == 0)
                 {
-                    result = intTermination + 0.5;
+                    result = intTermination;
                 }
                 else if (floatTermination > 0 && floatTermination < 0.5)
                 {
                     result = intTermination;
                 }
+                else if (floatTermination >= 0.5)
+                {
+                    result = intTermination + 0.5;
+                }
+                else if (floatTermination < 0 && floatTermination >= -0.5)
+                {
+                    result = intTermination - 0.5;
+                }
+                else if (floatTermination <= -0.5)
+                {
+                    result = intTermination - 1;
+                }
+
                 else
                 {
                     result = intTermination;
@@ -299,6 +313,5 @@ namespace BLL
 
             return result;
         }
-
     }
 }

@@ -1806,22 +1806,37 @@ namespace ut
         [TestMethod]
         public void testtemp()
         {
-            var abc0 = String.Format("{0,6:0.##}", 7);
-            var abc1 = String.Format("{0,6:0.##}", 21);
-            var abc2 = String.Format("{0,6:0.##}", 21.5);
-
-            var bbb= int. Parse(DateTime.Now.ToString("1ddhhmmssf"));
-
-            int a = 4;
-            //string Password = "HK@12345678";
-
-            //System.Security.Cryptography.MD5CryptoServiceProvider p_MD5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
-            //var pahash= ConvertByteArrayToHex(p_MD5.ComputeHash(System.Text.Encoding.UTF8.GetBytes(Password)));
-
-
-            //var a = 33;
+            abc aaa = new abc();
+            FixInvalidMinDatetime(aaa);
+            int b = 4;
         }
 
+        public static void FixInvalidMinDatetime(object OBJ)
+        {
+            try
+            {
+                var allFiles = OBJ.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance);
+                foreach (var item in allFiles)
+                {
+                    if (item.FieldType == typeof(System.DateTime))
+                    {
+                        if (((DateTime)item.GetValue(OBJ)).Year == 1)
+                        {
+                            item.SetValue(OBJ, new DateTime(1900, 1, 1));
+                        }
+                    }
+                }
+            }
+            catch { }
+        }
+
+        public class abc
+        {
+            public string a;
+            string b;
+            DateTime c;
+            public DateTime d;
+        }
 
         public static string ComputeMD5HashHEX(string Seed)
         {
