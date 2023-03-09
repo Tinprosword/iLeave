@@ -558,13 +558,13 @@ namespace ut
             User applyer = user_102;
 
             applyer.UpdateALLeave();
-            Scene_waitingv2(applyer);
-            Scene_Approvedv2(applyer);
-            Scene_Reject1v2(applyer);
-            Scene_WithDrawv2(applyer);
-            Scene_wcv2(applyer);
-            Scene_wc_approvedv2(applyer);
-            Scene_wc_rejectv2(applyer);
+            Scene_waitingv2(applyer);//1.1  ; 10.1
+            Scene_Approvedv2(applyer);//1.2
+            Scene_Reject1v2(applyer);//1.3
+            Scene_WithDrawv2(applyer);//1.4
+            Scene_wcv2(applyer);//1.5
+            Scene_wc_approvedv2(applyer);//1.6
+            Scene_wc_rejectv2(applyer);//1.7 ; 1.8
 
 
             applyer = user_101;
@@ -730,7 +730,7 @@ namespace ut
             checkAllUer_leaveMyAndMyManageRecord();
             CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
 
-            user_102.ApproveLeave(Requestid, "a1");
+            user_102.ApproveLeave(Requestid, "approve remark");
 
             user_102.myManagewaitLeave.Remove(Requestid);
             user_102.myManageHistoryLeave.Add(Requestid);
@@ -740,7 +740,7 @@ namespace ut
             checkAllUer_leaveMyAndMyManageRecord();
             CheckLeaveRequestStatus(Requestid, BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE);
 
-            user_101.RejectLeave(Requestid, "a2");
+            user_101.RejectLeave(Requestid, "reject remark");
 
             user_101.myManagewaitLeave.Remove(Requestid);
             user_101.myManageHistoryLeave.Add(Requestid);
@@ -1806,9 +1806,29 @@ namespace ut
         [TestMethod]
         public void testtemp()
         {
-            abc aaa = new abc();
-            FixInvalidMinDatetime(aaa);
-            int b = 4;
+            double result= GetDecimal(1);
+            result = GetDecimal(1.34);
+            result = GetDecimal(1.54);
+            result = GetDecimal(-0.23);
+            result = GetDecimal(-5.67);
+
+            int a = 4;
+        }
+
+        public static double GetDecimal(double data)
+        {
+            double result = 0;
+            string strData = data.ToString();
+            if (strData.Contains('.'))
+            {
+                string decimalStr = strData.Substring(strData.IndexOf('.'));
+                double.TryParse(decimalStr, out result);
+                if(data<0)
+                {
+                    result = -result;
+                }
+            }
+            return result;
         }
 
         public static void FixInvalidMinDatetime(object OBJ)
