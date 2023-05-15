@@ -48,7 +48,7 @@
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).MM_DD %></td>
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).Shift_In %></td>
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).Attend_In %></td>
-                            <td rowspan="2"  style=" vertical-align:top; padding-top:4px; word-break:break-all; word-wrap:break-word;"  title="<%#((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).Remark%>"><%#getRemark( ((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).Remark,22)%></td>
+                            <td rowspan="2"  style=" vertical-align:top; padding-top:4px; word-break:break-all; word-wrap:break-word;"  title="<%#((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).Remark%>"><%#getRemark( ((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).Remark,99)%></td>
                         </tr>
                         <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>">
                             <td></td>
@@ -78,7 +78,7 @@
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).MM_DD %></td>
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).Shift_In %></td>
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).Attend_In %></td>
-                            <td rowspan="2"  style="vertical-align:top; padding-top:4px; word-break:break-all; word-wrap:break-word;" title="<%#((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).Remark %>"><%#getRemark( ((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).Remark,22)%></td>
+                            <td rowspan="2"  style="vertical-align:top; padding-top:4px; word-break:break-all; word-wrap:break-word;" title="<%#((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).Remark %>"><%#getRemark( ((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).Remark,99)%></td>
                         </tr>
                         <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>">
                             <td></td>
