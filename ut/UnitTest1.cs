@@ -1451,10 +1451,14 @@ namespace ut
 
     public class mytestClass
     {
+
+
         public int getint()
         {
             return 1;
         }
+
+        
     }
 
     public static class MytestClassExtend
@@ -1986,6 +1990,51 @@ namespace ut
             int abc = 44;
         }
 
+        [TestMethod]
+        public void testtest()
+        {
+            DateTime? result = GetSpecialEndYearDate(new DateTime(2022, 2, 1));
+
+            DateTime? result2 = GetSpecialEndYearDate(new DateTime(2023, 12, 31));
+
+            DateTime? result3 = GetSpecialEndYearDate(new DateTime(2024, 1, 1));
+
+            DateTime? result4 = GetSpecialEndYearDate(new DateTime(2025, 3, 1));
+
+            int a = 4;
+        }
+
+        public DateTime? GetSpecialEndYearDate(DateTime applydate)
+        {
+            DateTime? carryforwardDate_CurrentYearField = null;// new DateTime(2024, 1, 1);
+            DateTime? result = null;
+            DateTime? carryforwardDate_applydate = carryforwardDate_CurrentYearField;
+
+            if (carryforwardDate_CurrentYearField != null)
+            {
+                //1.get temp carryforwardDate_applydate ,same year,month,day 2. if applydate>< temp ok. other add 1year.
+                int year_carryforwardDate = carryforwardDate_CurrentYearField.Value.Year;
+                int month_carryforwardDate = carryforwardDate_CurrentYearField.Value.Month;
+                int day_carryforwardDate = carryforwardDate_CurrentYearField.Value.Day;
+
+                DateTime temp = new DateTime(applydate.Year, month_carryforwardDate, day_carryforwardDate);
+                if (applydate < temp)
+                {
+                    carryforwardDate_applydate = temp;
+                }
+                else
+                {
+                    carryforwardDate_applydate = temp.AddYears(1);
+                }
+            }
+
+            if (carryforwardDate_applydate != null)
+            {
+                result = carryforwardDate_applydate.Value.AddDays(-1);
+            }
+            return result;
+        }
+
 
         [TestMethod]
         public void Txml_0102()
@@ -2039,4 +2088,6 @@ namespace ut
     }
 
     #endregion
+
+
 }

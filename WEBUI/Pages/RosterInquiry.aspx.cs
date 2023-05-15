@@ -292,10 +292,10 @@ namespace WEBUI.Pages
             }
         }
 
-        protected string getRemark(string remark)
+        protected string getRemark(string remark,int maxlent=10)
         {
             int length = remark.Length;
-            int maxleng = System.Math.Min(length, 10);
+            int maxleng = System.Math.Min(length, maxlent);
 
             return remark.Substring(0, maxleng);
 

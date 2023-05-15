@@ -48,7 +48,7 @@
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).MM_DD %></td>
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).Shift_In %></td>
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).Attend_In %></td>
-                            <td rowspan="2"  style=" vertical-align:top; padding-top:4px;"><%#getRemark( ((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).Remark)%></td>
+                            <td rowspan="2"  style=" vertical-align:top; padding-top:4px; word-break:break-all; word-wrap:break-word;"  title="<%#((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).Remark%>"><%#getRemark( ((WebServiceLayer.WebReference_leave.v_System_iLeave_Leave_List)Container.DataItem).Remark,22)%></td>
                         </tr>
                         <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>">
                             <td></td>
@@ -69,7 +69,7 @@
                     <td class="col-xs-2"><asp:Literal ID="lt_listdate2" runat="server"></asp:Literal></td>
                     <td class="col-xs-2" ><asp:Literal ID="lt_listshift2" runat="server"></asp:Literal></td>
                     <td class="col-xs-2" ><asp:Literal ID="lt_listattend2" runat="server"></asp:Literal></td>
-                    <td class="col-xs-3" ><asp:Literal ID="lt_listremark2" runat="server"></asp:Literal></td>
+                    <td class="col-xs-2" ><asp:Literal ID="lt_listremark2" runat="server"></asp:Literal></td>
                 </tr>
                 <asp:Repeater ID="rp_roster" runat="server" EnableViewState="true">
                     <ItemTemplate>
@@ -78,7 +78,7 @@
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).MM_DD %></td>
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).Shift_In %></td>
                             <td><%# ((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).Attend_In %></td>
-                            <td rowspan="2" style="vertical-align:top; padding-top:4px;"><%#getRemark( ((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).Remark)%></td>
+                            <td rowspan="2"  style="vertical-align:top; padding-top:4px; word-break:break-all; word-wrap:break-word;" title="<%#((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).Remark %>"><%#getRemark( ((WebServiceLayer.WebReference_leave.v_System_iLeave_Roster_List)Container.DataItem).Remark,22)%></td>
                         </tr>
                         <tr style="<%#BLL.Leave.SetBackgroundColor(Container.ItemIndex)%>">
                             <td></td>
