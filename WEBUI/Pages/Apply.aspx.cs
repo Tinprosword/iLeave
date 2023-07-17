@@ -7,15 +7,6 @@ using System.Web;
 
 namespace WEBUI.Pages
 {
-    public static class ExtendPage
-    {
-        public static System.Diagnostics.StackFrame getStackFrame(this System.Web.UI.Page page)
-        {
-            return new System.Diagnostics.StackFrame(true);
-        }
-    }
-
-
     public partial class Apply : BLL.CustomLoginTemplate
     {
         private static string ViewState_PageName = "PageView";

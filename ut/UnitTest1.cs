@@ -83,7 +83,7 @@ namespace ut
 
             if (result <= 0)
             {
-                throw new Exception("error on insert");
+                throw new Exception("error on insert:" + errorMsg);
             }
             Console.WriteLine(name+ ":add:" + result.ToString());
             Console.WriteLine("");
