@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="Main.aspx.cs" Inherits="WEBUI.Pages.Main" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row" style="background-color:#f3f7f9; min-height:585px;" id="maindiv" runat="server">
+    <div class="row" style="background-color:#f3f7f9; min-height:585px; position:relative;" id="maindiv" runat="server">
         <div class="col-xs-12 lsf-center" style=" color:#8a8b8b; height:38px; line-height:38px; font-weight:bold; font-size:15px;"><asp:Label ID="lb_name" runat="server" Text="Chan Tai Man"></asp:Label></div>
         
   
@@ -102,7 +102,14 @@
             <asp:ImageButton ID="Setting" runat="server" ImageUrl="~/Res/images/Content_Page_Color_Botton_F.png" CssClass="menucss" OnClick="Setting_Click"/>
             <div style="position:relative;top:-66px; font-size:26px; height:0px;color:white"><asp:LinkButton ID="lt_setting" runat="server" OnClick="Setting_Click" CssClass="fixLink"></asp:LinkButton></div>
         </div>--%>
-
+        <div style=" position:absolute; z-index:1; right:5px; top:3px; background-color:white; width:100px; height:60px; border:solid 1px black;">
+            <asp:LinkButton ID="LB_MSG" runat="server" Text="Message"/><br />
+            <asp:LinkButton ID="LB_Setup" runat="server" Text="Setup"/>
+        </div>
     </div>
 </asp:Content>
-<asp:Content ContentPlaceHolderID="contentjs" runat="server"></asp:Content>
+<asp:Content ContentPlaceHolderID="contentjs" runat="server">
+    <script type="text/javascript">
+        alert("aaa");
+    </script>
+</asp:Content>

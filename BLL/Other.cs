@@ -186,6 +186,8 @@ namespace BLL
             result.GpsLocationName = _GpsLocationName;
             result.WifiAddress = wifiadd;
             result.WifiInfo = wifiname;
+            result.LeaveDocumentPath = "";
+            result.LeaveDocument2Path = "";
             return result;
         }
 
