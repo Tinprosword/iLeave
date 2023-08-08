@@ -110,6 +110,6 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="contentjs" runat="server">
     <script type="text/javascript">
-        alert("aaa");
+        
     </script>
 </asp:Content>
