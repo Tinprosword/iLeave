@@ -24,6 +24,17 @@ function HiddenDivByfixname(windowname)
     return;
 }
 
+function HiddenOrShowDivByfixname(windowname) {
+    var winabc = $("div[fixname='" + windowname + "']");
+    if (winabc.is(":hidden")) {
+        winabc.show();
+    }
+    else {
+        winabc.hide();
+    }
+    return;
+}
+
 
 function GOHistory()
 {

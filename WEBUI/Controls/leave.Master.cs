@@ -98,10 +98,7 @@ namespace WEBUI.Controls
             this.PageState.Value = value;
         }
 
-        protected void ib_setting_Click(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("~/pages/setting.aspx");
-        }
+       
 
         public static WEBUI.Controls.leave FindMasterPage(System.Web.UI.Page page)
         {

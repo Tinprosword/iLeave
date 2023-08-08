@@ -71,6 +71,7 @@
     <Content Include="Controls\CLOTTab.ascx" />
     <Content Include="Pages\ajax_historydetailclot.aspx" />
     <Content Include="Pages\ajax_historydetail2.aspx" />
+    <Content Include="Pages\Announcement.aspx" />
     <Content Include="Pages\ApplyCLOT.aspx" />
     <Content Include="Pages\approval_wait.aspx" />
     <Content Include="Pages\Article.aspx" />
@@ -194,6 +195,13 @@
     </Compile>
     <Compile Include="Pages\ajax_historydetail2.aspx.designer.cs">
       <DependentUpon>ajax_historydetail2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Announcement.aspx.cs">
+      <DependentUpon>Announcement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Announcement.aspx.designer.cs">
+      <DependentUpon>Announcement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ApplyCLOT.aspx.cs">
       <DependentUpon>ApplyCLOT.aspx</DependentUpon>
