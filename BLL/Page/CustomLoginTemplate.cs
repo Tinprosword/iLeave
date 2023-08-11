@@ -39,8 +39,6 @@ namespace BLL
             {
                 InitPage_OnFirstLoad2();
             }
-
-            base.Page_Init(sender, e);
         }
 
         protected override void Page_Load(object sender, EventArgs e)

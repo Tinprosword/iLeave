@@ -38,6 +38,16 @@ namespace WEBUI.Pages
             this.lt_js_prg.Text = "";
         }
 
+        protected override void InitPage_OnNotFirstLoad2()
+        {
+
+        }
+
+        protected override void PageLoad_InitUIOnNotFirstLoad4()
+        {
+
+        }
+
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
@@ -661,5 +671,7 @@ namespace WEBUI.Pages
 
             this.tb_total.Text = totalHours.ToString();
         }
+
+        
     }
 }

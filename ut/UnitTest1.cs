@@ -1479,12 +1479,59 @@ namespace ut
         [TestMethod]
         public void TestMethod1()
         {
-            ICSHelper iCSHelper = new ICSHelper("mycalendar", "my first metting");
-            ICSHelper.DataItem item = new ICSHelper.DataItem(DateTime.Now, DateTime.Now, "my first calendar","test location", "test my desc",true);
-            ICSHelper.DataItem item2 = new ICSHelper.DataItem(DateTime.Now.AddHours(4), DateTime.Now.AddHours(5), "my secode calendar", "test location", "test my desc", false);
-            iCSHelper.InsertItem(item);
-            iCSHelper.InsertItem(item2);
-            iCSHelper.Save("c:\\abc\\");
+            //ICSHelper iCSHelper = new ICSHelper("mycalendar", "my first metting");
+            //ICSHelper.DataItem item = new ICSHelper.DataItem(DateTime.Now, DateTime.Now, "my first calendar","test location", "test my desc",true);
+            //ICSHelper.DataItem item2 = new ICSHelper.DataItem(DateTime.Now.AddHours(4), DateTime.Now.AddHours(5), "my secode calendar", "test location", "test my desc", false);
+            //iCSHelper.InsertItem(item);
+            //iCSHelper.InsertItem(item2);
+            //iCSHelper.Save("c:\\abc\\");
+
+            DateTime aa = System.DateTime.Now;
+
+
+            aa = getSpecialSplitbyday(new DateTime(2023, 4, 3), new DateTime(1900, 5, 31));
+        }
+
+
+        [TestMethod]
+        public  DateTime getSpecialSplitbyday(DateTime startdate, DateTime splitdate)
+        {
+            int d1 = startdate.Day;
+            int d2 = splitdate.Day;
+            if (d2 > d1)
+            {
+                int maxDaysTheMonth = System.DateTime.DaysInMonth(startdate.Year, startdate.Month);
+                if (d2 > maxDaysTheMonth)
+                {
+                    return new DateTime(startdate.Year, startdate.Month, maxDaysTheMonth);
+                }
+                else
+                {
+                    return new DateTime(startdate.Year, startdate.Month, d2);
+                }
+            }
+            else
+            {
+                int year = startdate.Year;
+                int month = startdate.Month;
+                int nextmonth = month + 1;
+                if (nextmonth >= 13)
+                {
+                    nextmonth = 1;
+                    year = year + 1;
+                }
+
+
+                int maxDaysTheMonth = System.DateTime.DaysInMonth(year, nextmonth);
+                if (d2 > maxDaysTheMonth)
+                {
+                    return new DateTime(year, nextmonth, maxDaysTheMonth);
+                }
+                else
+                {
+                    return new DateTime(year, nextmonth, d2);
+                }
+            }
         }
 
 

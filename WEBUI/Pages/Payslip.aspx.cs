@@ -166,5 +166,13 @@ namespace WEBUI.Pages
             }
             
         }
+
+        protected override void InitPage_OnNotFirstLoad2()
+        {
+        }
+
+        protected override void PageLoad_InitUIOnNotFirstLoad4()
+        {
+        }
     }
 }

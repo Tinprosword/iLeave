@@ -26,6 +26,14 @@ namespace WEBUI
 
         }
 
+        protected override void InitPage_OnNotFirstLoad2()
+        {
+        }
+
+        protected override void PageLoad_InitUIOnNotFirstLoad4()
+        {
+        }
+
         protected override void InitPage_OnFirstLoad2()
         {
 
@@ -236,5 +244,7 @@ namespace WEBUI
             myc.isRemember = this.cb_remember.Checked==true?"1":"0";
             BLL.Page.MyCookieManage.SetCookie(myc);
         }
+
+       
     }
 }

@@ -38,7 +38,7 @@
                     <div class="col-xs-6 lsf-center lsf-fontsizem1" style="color:white;font-weight:bold" ><asp:Literal ID="Literal1" runat="server"></asp:Literal></div>
                 </div>
                 <div fixname="div_menu" style=" position:absolute; z-index:99; right:18px; bottom:-70px; background-color:white; width:100px; height:60px; border:solid 1px black; display:none">
-                    <asp:LinkButton ID="LB_MSG" runat="server" Text="Message" PostBackUrl="~/Pages/Announcement.aspx"/><br />
+                    <asp:LinkButton ID="LB_MSG" runat="server" Text="Message" PostBackUrl="~/Pages/Announcement.aspx?activetab=1"/><br />
                     <asp:LinkButton ID="LB_Setup" runat="server" Text="Setup" PostBackUrl="~/Pages/Setting.aspx"/>
                 </div>
             </div>

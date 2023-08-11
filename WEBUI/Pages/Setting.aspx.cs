@@ -23,6 +23,12 @@ namespace WEBUI.Pages
         {
         }
 
+        protected override void InitPage_OnNotFirstLoad2()
+        { }
+
+        protected override void PageLoad_InitUIOnNotFirstLoad4()
+        { }
+
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().setting_current, "~/pages/main.aspx", true);

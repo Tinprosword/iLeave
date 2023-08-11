@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Announcement.cs" />
     <Compile Include="Apply.cs" />
     <Compile Include="Calendar.cs" />
     <Compile Include="check.cs" />

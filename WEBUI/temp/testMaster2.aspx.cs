@@ -35,5 +35,15 @@ namespace WEBUI.temp
         {
             int a = 4;
         }
+
+        protected override void InitPage_OnNotFirstLoad2()
+        {
+
+        }
+
+        protected override void PageLoad_InitUIOnNotFirstLoad4()
+        {
+
+        }
     }
 }

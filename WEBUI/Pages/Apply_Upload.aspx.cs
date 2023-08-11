@@ -45,6 +45,12 @@ namespace WEBUI.Pages
             this.errormsgdiv.Visible = false;
         }
 
+        protected override void InitPage_OnNotFirstLoad2()
+        {}
+
+        protected override void PageLoad_InitUIOnNotFirstLoad4()
+        {}
+
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
             object PreViewstate = LSLibrary.WebAPP.PageSessionHelper.GetValueAndCleanSoon(GetSessionName);
@@ -183,5 +189,7 @@ namespace WEBUI.Pages
                 Response.Redirect(augument);
             }
         }
+
+        
     }
 }
