@@ -4,11 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using WebServiceLayer;
 
 namespace BLL
 {
     public class Other
     {
+        #region anncount
+        public static List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement> GetAnouncementByFEIDType(int firsteid,MODEL.Announcement.enum_Announce_tabs type,int year)
+        {
+            List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement> result = new List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement>();
+            var tempresult = GetAnouncementByFEID(firsteid);
+            if (tempresult != null && tempresult.Count()>0)
+            {
+                tempresult = tempresult.Where(x => x.TypeID == (int)type && year >= x.ValidDateFrom.Year && year <= x.ValidDateTo.Year).ToList();
+                result = tempresult;
+            }
+            return result;
+        }
+
+
+        private static List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement> GetAnouncementByFEID(int firsteid)
+        {
+            return MyWebService.GlobalWebServices.ws_Ileave_Other.Announce_GetAnnouncementByFirstEid(firsteid).ToList();
+        }
+        #endregion
+
 
         public static string GetVersion()
         {

@@ -15,25 +15,11 @@ namespace WEBUI.Pages
 
         public MODEL.Announcement.ViewState_page mViewState_Page = null;
 
-        #region enum
-        public enum enum_Announce_tabs
-        {
-            NOTICE=1,
-            POLICY=2,
-            Procedure=3
-        }
-        #endregion
-
+        
         #region page Event
-
-        protected override void InitPage_OnNotFirstLoad2()
-        { }
-
-        protected override void PageLoad_InitUIOnNotFirstLoad4()
-        { }
-
         protected override void InitPage_OnBeforeF5RegisterEvent()
-        { }
+        {
+        }
 
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
         {
@@ -56,36 +42,32 @@ namespace WEBUI.Pages
         }
 
         protected override void InitPage_OnFirstLoad2()
-        {
-            LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, mViewState_Page, ViewState);
-        }
+        {}
+        protected override void InitPage_OnNotFirstLoad2()
+        {}
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
-        {
-            if(!IsPostBack)
-            mViewState_Page = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Announcement.ViewState_page>(ViewState_PageName, ViewState);
-
-            if (mViewState_Page == null)
-            {
-                string strAction = Request.QueryString[qs_activeTab];
-                int qs_activetab_value;
-                int.TryParse(strAction, out qs_activetab_value);
-
-                mViewState_Page = new MODEL.Announcement.ViewState_page(qs_activetab_value, System.DateTime.Now.Year);
-            }
-            else
-            {
-                
-            }
-        }
+        {}
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
-            SetupNavinigation();
-            SetupSearchAndTab((enum_Announce_tabs)mViewState_Page.ActiveTab);
+            //init pageViewState.
+            string strAction = Request.QueryString[qs_activeTab];
+            int qs_activetab_value;
+            int.TryParse(strAction, out qs_activetab_value);
+            mViewState_Page = new MODEL.Announcement.ViewState_page(qs_activetab_value, System.DateTime.Now.Year);
 
-            SetupRepeater((enum_Announce_tabs)mViewState_Page.ActiveTab, int.Parse(this.ddl_year.SelectedValue),loginer.userInfo.employID??0);
+            SetupNavinigation();
+            SetupSearchAndTab((MODEL.Announcement.enum_Announce_tabs)mViewState_Page.ActiveTab);
+            SetupRepeater((MODEL.Announcement.enum_Announce_tabs)mViewState_Page.ActiveTab, int.Parse(this.ddl_year.SelectedValue),loginer.userInfo.employID??0);
+
             MultplayLanguage();
+        }
+
+        protected override void PageLoad_InitUIOnNotFirstLoad4()
+        {
+            //load pageViewState.
+            mViewState_Page = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Announcement.ViewState_page>(ViewState_PageName, ViewState);
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
@@ -93,7 +75,6 @@ namespace WEBUI.Pages
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            int a = 4;
             LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, mViewState_Page, ViewState);
         }
 
@@ -104,13 +85,16 @@ namespace WEBUI.Pages
             this.lb_procedure.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed;
         }
 
-        private void SetupRepeater(enum_Announce_tabs activeTab,int year,int eid)
+        private void SetupRepeater(MODEL.Announcement.enum_Announce_tabs activeTab,int year,int Feid)
         {
-            //
-            this.lb_msg.Text += "show rep"+activeTab.ToString() + "\r\n";
+            List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement> MyAnnouncements = new List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement>();
+            MyAnnouncements = BLL.Other.GetAnouncementByFEIDType(Feid,activeTab,year);
+            this.rp_announctment.DataSource = MyAnnouncements;
+            this.rp_announctment.DataBind();
+            //this.lb_msg.Text += "repeater:" + activeTab.ToString() + ". year:" + year.ToString() + ". \r\n </br>";
         }
 
-        private void SetupSearchAndTab(enum_Announce_tabs activeTab)
+        private void SetupSearchAndTab(MODEL.Announcement.enum_Announce_tabs activeTab)
         {
             SetupSearchAndTab_Tab(activeTab);
             SetupSearchAndTab_DDLYear();
@@ -118,27 +102,28 @@ namespace WEBUI.Pages
 
         private void SetupSearchAndTab_DDLYear()
         {
-            List<int> yearRange = BLL.Leave.GetDefaultYearRange();
-            for (int i = yearRange[0]; i <= yearRange[1]; i++)
+            int startYear = 2021;//todo get earylest year of msg.
+
+            for (int i = startYear; i <= System.DateTime.Now.Year; i++)
             {
                 this.ddl_year.Items.Add(new ListItem(i.ToString(), i.ToString()));
             }
             this.ddl_year.SelectedValue = DateTime.Now.Year.ToString();
         }
 
-        private void SetupSearchAndTab_Tab(enum_Announce_tabs activeTab)
+        private void SetupSearchAndTab_Tab(MODEL.Announcement.enum_Announce_tabs activeTab)
         {
             this.myTab_Notice.Attributes.Remove("class");
             this.myTab_policy.Attributes.Remove("class");
             this.myTab_Procedure.Attributes.Remove("class");
 
 
-            if (activeTab == enum_Announce_tabs.Procedure)
+            if (activeTab == MODEL.Announcement.enum_Announce_tabs.Procedure)
             {
                 this.myTab_Procedure.Attributes.Add("class", "active");
 
             }
-            else if (activeTab == enum_Announce_tabs.POLICY)
+            else if (activeTab == MODEL.Announcement.enum_Announce_tabs.POLICY)
             {
                 this.myTab_policy.Attributes.Add("class", "active");
             }
@@ -163,26 +148,25 @@ namespace WEBUI.Pages
         protected void TABOnClick(object sender, EventArgs e)
         {
             LinkButton LB_Sender = (LinkButton)sender;
-            enum_Announce_tabs activeTab = enum_Announce_tabs.NOTICE;
+            MODEL.Announcement.enum_Announce_tabs activeTab = MODEL.Announcement.enum_Announce_tabs.NOTICE;
 
             if (LB_Sender.ID == "lb_policy")
             {
-                activeTab = enum_Announce_tabs.POLICY;
+                activeTab = MODEL.Announcement.enum_Announce_tabs.POLICY;
             }
             else if (LB_Sender.ID == "lb_procedure")
             {
-                activeTab = enum_Announce_tabs.Procedure;
+                activeTab = MODEL.Announcement.enum_Announce_tabs.Procedure;
             }
             else
             {
-                activeTab = enum_Announce_tabs.NOTICE;
+                activeTab = MODEL.Announcement.enum_Announce_tabs.NOTICE;
             }
             mViewState_Page.ActiveTab = (int)activeTab;
-            LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, mViewState_Page, ViewState);
 
-            SetupSearchAndTab_Tab((enum_Announce_tabs)mViewState_Page.ActiveTab);
+            SetupSearchAndTab_Tab((MODEL.Announcement.enum_Announce_tabs)mViewState_Page.ActiveTab);
 
-            SetupRepeater((enum_Announce_tabs)mViewState_Page.ActiveTab,mViewState_Page.SelectedYear,loginer.userInfo.employID??0);
+            SetupRepeater((MODEL.Announcement.enum_Announce_tabs)mViewState_Page.ActiveTab,mViewState_Page.SelectedYear,loginer.userInfo.employID??0);
         }
 
         protected void lb_policy_Click(object sender, EventArgs e)
@@ -203,7 +187,9 @@ namespace WEBUI.Pages
 
         protected void ddl_year_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            DropDownList ddl_year = (DropDownList)sender;
+            mViewState_Page.SelectedYear = int.Parse(ddl_year.SelectedValue);
+            SetupRepeater((MODEL.Announcement.enum_Announce_tabs)mViewState_Page.ActiveTab, mViewState_Page.SelectedYear, loginer.userInfo.employID??0);
         }
     }
 }

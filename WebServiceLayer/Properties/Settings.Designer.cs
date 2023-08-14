@@ -52,5 +52,15 @@ namespace WebServiceLayer.Properties {
                 return ((string)(this["WebServiceLayer_WebReference_user_UserManagementV2"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.66.100:9000/bll/ileave_other.asmx")]
+        public string WebServiceLayer_WebReference_Ileave_Other_ILeave_Other {
+            get {
+                return ((string)(this["WebServiceLayer_WebReference_Ileave_Other_ILeave_Other"]));
+            }
+        }
     }
 }

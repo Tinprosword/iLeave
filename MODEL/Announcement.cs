@@ -8,6 +8,16 @@ namespace MODEL
 {
     public class Announcement
     {
+
+        #region enum
+        public enum enum_Announce_tabs
+        {
+            NOTICE = 1,
+            POLICY = 2,
+            Procedure = 3
+        }
+        #endregion
+
         [Serializable]
         public class ViewState_page
         {

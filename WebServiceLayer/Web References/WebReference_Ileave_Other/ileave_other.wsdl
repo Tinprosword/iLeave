@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Test_GetList">
+        <s:complexType />
+      </s:element>
+      <s:element name="Test_GetListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Test_GetListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Announce_GetAnnouncementByFirstEid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="firstEID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Announce_GetAnnouncementByFirstEidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Announce_GetAnnouncementByFirstEidResult" type="tns:ArrayOfT_Announcement" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfT_Announcement">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="t_Announcement" nillable="true" type="tns:t_Announcement" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="t_Announcement">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValidDateFrom" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValidDateTo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="SortSeq" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsOnTop" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
+      <s:element name="ArrayOfT_Announcement" nillable="true" type="tns:ArrayOfT_Announcement" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Test_GetListSoapIn">
+    <wsdl:part name="parameters" element="tns:Test_GetList" />
+  </wsdl:message>
+  <wsdl:message name="Test_GetListSoapOut">
+    <wsdl:part name="parameters" element="tns:Test_GetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="Announce_GetAnnouncementByFirstEidSoapIn">
+    <wsdl:part name="parameters" element="tns:Announce_GetAnnouncementByFirstEid" />
+  </wsdl:message>
+  <wsdl:message name="Announce_GetAnnouncementByFirstEidSoapOut">
+    <wsdl:part name="parameters" element="tns:Announce_GetAnnouncementByFirstEidResponse" />
+  </wsdl:message>
+  <wsdl:message name="Test_GetListHttpPostIn" />
+  <wsdl:message name="Test_GetListHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="Announce_GetAnnouncementByFirstEidHttpPostIn">
+    <wsdl:part name="firstEID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Announce_GetAnnouncementByFirstEidHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfT_Announcement" />
+  </wsdl:message>
+  <wsdl:portType name="ILeave_OtherSoap">
+    <wsdl:operation name="Test_GetList">
+      <wsdl:input message="tns:Test_GetListSoapIn" />
+      <wsdl:output message="tns:Test_GetListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Announce_GetAnnouncementByFirstEid">
+      <wsdl:input message="tns:Announce_GetAnnouncementByFirstEidSoapIn" />
+      <wsdl:output message="tns:Announce_GetAnnouncementByFirstEidSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ILeave_OtherHttpPost">
+    <wsdl:operation name="Test_GetList">
+      <wsdl:input message="tns:Test_GetListHttpPostIn" />
+      <wsdl:output message="tns:Test_GetListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Announce_GetAnnouncementByFirstEid">
+      <wsdl:input message="tns:Announce_GetAnnouncementByFirstEidHttpPostIn" />
+      <wsdl:output message="tns:Announce_GetAnnouncementByFirstEidHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ILeave_OtherSoap" type="tns:ILeave_OtherSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Test_GetList">
+      <soap:operation soapAction="http://tempuri.org/Test_GetList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Announce_GetAnnouncementByFirstEid">
+      <soap:operation soapAction="http://tempuri.org/Announce_GetAnnouncementByFirstEid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ILeave_OtherSoap12" type="tns:ILeave_OtherSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Test_GetList">
+      <soap12:operation soapAction="http://tempuri.org/Test_GetList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Announce_GetAnnouncementByFirstEid">
+      <soap12:operation soapAction="http://tempuri.org/Announce_GetAnnouncementByFirstEid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ILeave_OtherHttpPost" type="tns:ILeave_OtherHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Test_GetList">
+      <http:operation location="/Test_GetList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Announce_GetAnnouncementByFirstEid">
+      <http:operation location="/Announce_GetAnnouncementByFirstEid" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ILeave_Other">
+    <wsdl:port name="ILeave_OtherSoap" binding="tns:ILeave_OtherSoap">
+      <soap:address location="http://192.168.66.100:9000/bll/ileave_other.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ILeave_OtherSoap12" binding="tns:ILeave_OtherSoap12">
+      <soap12:address location="http://192.168.66.100:9000/bll/ileave_other.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ILeave_OtherHttpPost" binding="tns:ILeave_OtherHttpPost">
+      <http:address location="http://192.168.66.100:9000/bll/ileave_other.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

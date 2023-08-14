@@ -21,7 +21,21 @@
             </asp:DropDownList>
         </div>
     </div>
-    <asp:Label ID="lb_msg" runat="server" Text="testmsg"></asp:Label>
+    <div class="row">
+        <asp:Repeater ID="rp_announctment" runat="server">
+            <ItemTemplate>
+                <div class="col-xs-12" style=" line-height:8px;text-align:center;padding:0px;  margin:0px; padding-top:1px; padding-bottom:4px" >
+                    <label class="lsf-clearPadding" style="padding:0px;  margin:0px;height:1px;background-color:dimgray; width:90%; padding-left:3px; padding-right:3px;"></label>
+                </div>
+                <div class="col-xs-12 divheighter" style="text-align:center; font-size:14px; font-weight:bold; padding-bottom:5px;">
+                    <asp:Label ID="lb_title" runat="server" Text="<%#((WebServiceLayer.WebReference_Ileave_Other.t_Announcement)Container.DataItem).Subject.Trim()%>"/>
+                </div>
+                <div class="col-xs-12 divheighter" style="padding-bottom:8px">
+                    <asp:Label ID="lb_content" runat="server" Text="<%#((WebServiceLayer.WebReference_Ileave_Other.t_Announcement)Container.DataItem).Content.Trim()%>"/>
+                </div>
+            </ItemTemplate>
+        </asp:Repeater>
+    </div>
 </asp:Content><asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
     
 </asp:Content>
