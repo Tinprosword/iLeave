@@ -80,9 +80,9 @@ namespace WEBUI.Pages
 
         private void MultplayLanguage()
         {
-            this.lb_notice.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_new;
-            this.lb_policy.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_pending;
-            this.lb_procedure.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed;
+            this.lb_notice.Text = BLL.MultiLanguageHelper.GetLanguagePacket().announcement_NoticeBoard;
+            this.lb_policy.Text = BLL.MultiLanguageHelper.GetLanguagePacket().announcement_Policy;
+            this.lb_procedure.Text = BLL.MultiLanguageHelper.GetLanguagePacket().announcement_Procedure;
         }
 
         private void SetupRepeater(MODEL.Announcement.enum_Announce_tabs activeTab,int year,int Feid)
@@ -102,13 +102,15 @@ namespace WEBUI.Pages
 
         private void SetupSearchAndTab_DDLYear()
         {
-            int startYear = 2021;//todo get earylest year of msg.
+            int startYear = BLL.Other.GetAnouncementFirstYear(loginer.userInfo.firsteid ?? 0);
+            this.ddl_year.Items.Add(new ListItem("-All-", "-1"));
 
-            for (int i = startYear; i <= System.DateTime.Now.Year; i++)
+            for (int i = System.DateTime.Now.Year; i >= startYear; i--)
             {
                 this.ddl_year.Items.Add(new ListItem(i.ToString(), i.ToString()));
             }
-            this.ddl_year.SelectedValue = DateTime.Now.Year.ToString();
+            this.ddl_year.SelectedValue = "-1";
+            mViewState_Page.SelectedYear = int.Parse(this.ddl_year.SelectedValue);
         }
 
         private void SetupSearchAndTab_Tab(MODEL.Announcement.enum_Announce_tabs activeTab)
@@ -145,6 +147,16 @@ namespace WEBUI.Pages
         #endregion
 
         #region click event
+        protected string RP_DisplayTitle(WebServiceLayer.WebReference_Ileave_Other.t_Announcement item)
+        {
+            return item.Subject.Trim();
+        }
+
+        protected string RP_DisplayContent(WebServiceLayer.WebReference_Ileave_Other.t_Announcement item)
+        {
+            return  item.Content.Trim();//--"　　"
+        }
+
         protected void TABOnClick(object sender, EventArgs e)
         {
             LinkButton LB_Sender = (LinkButton)sender;

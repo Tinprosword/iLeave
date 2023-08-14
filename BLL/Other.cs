@@ -11,13 +11,35 @@ namespace BLL
     public class Other
     {
         #region anncount
+        public static int GetAnouncementFirstYear(int firsteid)
+        {
+            int result = System.DateTime.Now.Year - 1;
+
+            var tempResult = GetAnouncementByFEID(firsteid);
+
+            if (tempResult != null && tempResult.Count > 0)
+            {
+                tempResult = tempResult.OrderBy(x => x.CreateDate).ToList();
+                result=tempResult[0].CreateDate.Year;
+            }
+
+            return result;
+        }
+
         public static List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement> GetAnouncementByFEIDType(int firsteid,MODEL.Announcement.enum_Announce_tabs type,int year)
         {
             List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement> result = new List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement>();
             var tempresult = GetAnouncementByFEID(firsteid);
             if (tempresult != null && tempresult.Count()>0)
             {
-                tempresult = tempresult.Where(x => x.TypeID == (int)type && year >= x.ValidDateFrom.Year && year <= x.ValidDateTo.Year).ToList();
+                tempresult = tempresult.Where(x => x.TypeID == (int)type
+                && int.Parse(System.DateTime.Now.ToString("yyyyMMdd")) >= int.Parse(x.ValidDateFrom.ToString("yyyyMMdd"))
+                && int.Parse(System.DateTime.Now.ToString("yyyyMMdd")) <= int.Parse(x.ValidDateTo.ToString("yyyyMMdd")) 
+                && x.Status == 1).OrderBy(x => x.SortSeq).ToList();
+                if (year != -1)
+                {
+                    tempresult = tempresult.Where(x => x.CreateDate.Year == year).ToList();
+                }
                 result = tempresult;
             }
             return result;

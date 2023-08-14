@@ -28,10 +28,10 @@
                     <label class="lsf-clearPadding" style="padding:0px;  margin:0px;height:1px;background-color:dimgray; width:90%; padding-left:3px; padding-right:3px;"></label>
                 </div>
                 <div class="col-xs-12 divheighter" style="text-align:center; font-size:14px; font-weight:bold; padding-bottom:5px;">
-                    <asp:Label ID="lb_title" runat="server" Text="<%#((WebServiceLayer.WebReference_Ileave_Other.t_Announcement)Container.DataItem).Subject.Trim()%>"/>
+                    <asp:Label ID="lb_title" runat="server" Text="<%#RP_DisplayTitle((WebServiceLayer.WebReference_Ileave_Other.t_Announcement)Container.DataItem)%>"/>
                 </div>
                 <div class="col-xs-12 divheighter" style="padding-bottom:8px">
-                    <asp:Label ID="lb_content" runat="server" Text="<%#((WebServiceLayer.WebReference_Ileave_Other.t_Announcement)Container.DataItem).Content.Trim()%>"/>
+                    <asp:Label ID="lb_content" runat="server" Text="<%#RP_DisplayContent((WebServiceLayer.WebReference_Ileave_Other.t_Announcement)Container.DataItem)%>"/>
                 </div>
             </ItemTemplate>
         </asp:Repeater>
