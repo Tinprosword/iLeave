@@ -33,6 +33,16 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         
         private System.Threading.SendOrPostCallback Announce_GetAnnouncementByFirstEidOperationCompleted;
         
+        private System.Threading.SendOrPostCallback Announce_GetAnnouncementByAnncounceIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback Announce_GetAttachementByAnnounceIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback Attachment_GetAttachmentByteOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAttachementByattIDOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback Attachment_GetFileNameOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -76,6 +86,21 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         
         /// <remarks/>
         public event Announce_GetAnnouncementByFirstEidCompletedEventHandler Announce_GetAnnouncementByFirstEidCompleted;
+        
+        /// <remarks/>
+        public event Announce_GetAnnouncementByAnncounceIDCompletedEventHandler Announce_GetAnnouncementByAnncounceIDCompleted;
+        
+        /// <remarks/>
+        public event Announce_GetAttachementByAnnounceIDCompletedEventHandler Announce_GetAttachementByAnnounceIDCompleted;
+        
+        /// <remarks/>
+        public event Attachment_GetAttachmentByteCompletedEventHandler Attachment_GetAttachmentByteCompleted;
+        
+        /// <remarks/>
+        public event GetAttachementByattIDCompletedEventHandler GetAttachementByattIDCompleted;
+        
+        /// <remarks/>
+        public event Attachment_GetFileNameCompletedEventHandler Attachment_GetFileNameCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Test_GetList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -130,6 +155,152 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
             if ((this.Announce_GetAnnouncementByFirstEidCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.Announce_GetAnnouncementByFirstEidCompleted(this, new Announce_GetAnnouncementByFirstEidCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Announce_GetAnnouncementByAnncounceID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_Announcement Announce_GetAnnouncementByAnncounceID(int anncounceid) {
+            object[] results = this.Invoke("Announce_GetAnnouncementByAnncounceID", new object[] {
+                        anncounceid});
+            return ((t_Announcement)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Announce_GetAnnouncementByAnncounceIDAsync(int anncounceid) {
+            this.Announce_GetAnnouncementByAnncounceIDAsync(anncounceid, null);
+        }
+        
+        /// <remarks/>
+        public void Announce_GetAnnouncementByAnncounceIDAsync(int anncounceid, object userState) {
+            if ((this.Announce_GetAnnouncementByAnncounceIDOperationCompleted == null)) {
+                this.Announce_GetAnnouncementByAnncounceIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAnnounce_GetAnnouncementByAnncounceIDOperationCompleted);
+            }
+            this.InvokeAsync("Announce_GetAnnouncementByAnncounceID", new object[] {
+                        anncounceid}, this.Announce_GetAnnouncementByAnncounceIDOperationCompleted, userState);
+        }
+        
+        private void OnAnnounce_GetAnnouncementByAnncounceIDOperationCompleted(object arg) {
+            if ((this.Announce_GetAnnouncementByAnncounceIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Announce_GetAnnouncementByAnncounceIDCompleted(this, new Announce_GetAnnouncementByAnncounceIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Announce_GetAttachementByAnnounceID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_Attachment[] Announce_GetAttachementByAnnounceID(int announceid) {
+            object[] results = this.Invoke("Announce_GetAttachementByAnnounceID", new object[] {
+                        announceid});
+            return ((t_Attachment[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Announce_GetAttachementByAnnounceIDAsync(int announceid) {
+            this.Announce_GetAttachementByAnnounceIDAsync(announceid, null);
+        }
+        
+        /// <remarks/>
+        public void Announce_GetAttachementByAnnounceIDAsync(int announceid, object userState) {
+            if ((this.Announce_GetAttachementByAnnounceIDOperationCompleted == null)) {
+                this.Announce_GetAttachementByAnnounceIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAnnounce_GetAttachementByAnnounceIDOperationCompleted);
+            }
+            this.InvokeAsync("Announce_GetAttachementByAnnounceID", new object[] {
+                        announceid}, this.Announce_GetAttachementByAnnounceIDOperationCompleted, userState);
+        }
+        
+        private void OnAnnounce_GetAttachementByAnnounceIDOperationCompleted(object arg) {
+            if ((this.Announce_GetAttachementByAnnounceIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Announce_GetAttachementByAnnounceIDCompleted(this, new Announce_GetAttachementByAnnounceIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Attachment_GetAttachmentByte", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")]
+        public byte[] Attachment_GetAttachmentByte(int aid) {
+            object[] results = this.Invoke("Attachment_GetAttachmentByte", new object[] {
+                        aid});
+            return ((byte[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Attachment_GetAttachmentByteAsync(int aid) {
+            this.Attachment_GetAttachmentByteAsync(aid, null);
+        }
+        
+        /// <remarks/>
+        public void Attachment_GetAttachmentByteAsync(int aid, object userState) {
+            if ((this.Attachment_GetAttachmentByteOperationCompleted == null)) {
+                this.Attachment_GetAttachmentByteOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAttachment_GetAttachmentByteOperationCompleted);
+            }
+            this.InvokeAsync("Attachment_GetAttachmentByte", new object[] {
+                        aid}, this.Attachment_GetAttachmentByteOperationCompleted, userState);
+        }
+        
+        private void OnAttachment_GetAttachmentByteOperationCompleted(object arg) {
+            if ((this.Attachment_GetAttachmentByteCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Attachment_GetAttachmentByteCompleted(this, new Attachment_GetAttachmentByteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAttachementByattID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_Attachment GetAttachementByattID(int attid) {
+            object[] results = this.Invoke("GetAttachementByattID", new object[] {
+                        attid});
+            return ((t_Attachment)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAttachementByattIDAsync(int attid) {
+            this.GetAttachementByattIDAsync(attid, null);
+        }
+        
+        /// <remarks/>
+        public void GetAttachementByattIDAsync(int attid, object userState) {
+            if ((this.GetAttachementByattIDOperationCompleted == null)) {
+                this.GetAttachementByattIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAttachementByattIDOperationCompleted);
+            }
+            this.InvokeAsync("GetAttachementByattID", new object[] {
+                        attid}, this.GetAttachementByattIDOperationCompleted, userState);
+        }
+        
+        private void OnGetAttachementByattIDOperationCompleted(object arg) {
+            if ((this.GetAttachementByattIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAttachementByattIDCompleted(this, new GetAttachementByattIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Attachment_GetFileName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string Attachment_GetFileName(string FilePath) {
+            object[] results = this.Invoke("Attachment_GetFileName", new object[] {
+                        FilePath});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Attachment_GetFileNameAsync(string FilePath) {
+            this.Attachment_GetFileNameAsync(FilePath, null);
+        }
+        
+        /// <remarks/>
+        public void Attachment_GetFileNameAsync(string FilePath, object userState) {
+            if ((this.Attachment_GetFileNameOperationCompleted == null)) {
+                this.Attachment_GetFileNameOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAttachment_GetFileNameOperationCompleted);
+            }
+            this.InvokeAsync("Attachment_GetFileName", new object[] {
+                        FilePath}, this.Attachment_GetFileNameOperationCompleted, userState);
+        }
+        
+        private void OnAttachment_GetFileNameOperationCompleted(object arg) {
+            if ((this.Attachment_GetFileNameCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Attachment_GetFileNameCompleted(this, new Attachment_GetFileNameCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -318,6 +489,212 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class t_Attachment {
+        
+        private int idField;
+        
+        private int typeIDField;
+        
+        private int relatedPartyIDField;
+        
+        private short functionIDField;
+        
+        private string pathField;
+        
+        private string remarksField;
+        
+        private System.DateTime modifiedDateField;
+        
+        private int modifiedUserField;
+        
+        private System.DateTime createDateField;
+        
+        private int createUserField;
+        
+        private System.Nullable<System.DateTime> expiryDateField;
+        
+        private System.Nullable<int> noticePeriodField;
+        
+        private int payrollPeriodIDField;
+        
+        private System.Nullable<int> statusField;
+        
+        private System.Nullable<int> relatedRequestIDField;
+        
+        private System.Nullable<int> workFlowTypeIDField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int TypeID {
+            get {
+                return this.typeIDField;
+            }
+            set {
+                this.typeIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int RelatedPartyID {
+            get {
+                return this.relatedPartyIDField;
+            }
+            set {
+                this.relatedPartyIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public short FunctionID {
+            get {
+                return this.functionIDField;
+            }
+            set {
+                this.functionIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Path {
+            get {
+                return this.pathField;
+            }
+            set {
+                this.pathField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Remarks {
+            get {
+                return this.remarksField;
+            }
+            set {
+                this.remarksField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ModifiedDate {
+            get {
+                return this.modifiedDateField;
+            }
+            set {
+                this.modifiedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ModifiedUser {
+            get {
+                return this.modifiedUserField;
+            }
+            set {
+                this.modifiedUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CreateUser {
+            get {
+                return this.createUserField;
+            }
+            set {
+                this.createUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<System.DateTime> ExpiryDate {
+            get {
+                return this.expiryDateField;
+            }
+            set {
+                this.expiryDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> NoticePeriod {
+            get {
+                return this.noticePeriodField;
+            }
+            set {
+                this.noticePeriodField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int PayrollPeriodID {
+            get {
+                return this.payrollPeriodIDField;
+            }
+            set {
+                this.payrollPeriodIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> RelatedRequestID {
+            get {
+                return this.relatedRequestIDField;
+            }
+            set {
+                this.relatedRequestIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> WorkFlowTypeID {
+            get {
+                return this.workFlowTypeIDField;
+            }
+            set {
+                this.workFlowTypeIDField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void Test_GetListCompletedEventHandler(object sender, Test_GetListCompletedEventArgs e);
     
@@ -365,6 +742,136 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((t_Announcement[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Announce_GetAnnouncementByAnncounceIDCompletedEventHandler(object sender, Announce_GetAnnouncementByAnncounceIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Announce_GetAnnouncementByAnncounceIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Announce_GetAnnouncementByAnncounceIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_Announcement Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_Announcement)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Announce_GetAttachementByAnnounceIDCompletedEventHandler(object sender, Announce_GetAttachementByAnnounceIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Announce_GetAttachementByAnnounceIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Announce_GetAttachementByAnnounceIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_Attachment[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_Attachment[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Attachment_GetAttachmentByteCompletedEventHandler(object sender, Attachment_GetAttachmentByteCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Attachment_GetAttachmentByteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Attachment_GetAttachmentByteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public byte[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((byte[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetAttachementByattIDCompletedEventHandler(object sender, GetAttachementByattIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAttachementByattIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAttachementByattIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_Attachment Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_Attachment)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Attachment_GetFileNameCompletedEventHandler(object sender, Attachment_GetFileNameCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Attachment_GetFileNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Attachment_GetFileNameCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }

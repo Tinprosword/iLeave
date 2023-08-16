@@ -16,6 +16,14 @@ namespace WEBUI.Controls
             {
                 this.appcss.Href += "?lastmodify=" + BLL.GlobalVariate.appcssLastmodify;
             }
+
+            initUi();
+        }
+
+        private void initUi()
+        {
+            this.LB_MSG.Text = BLL.MultiLanguageHelper.GetLanguagePacket().main_Message;
+            this.LB_Setup.Text = BLL.MultiLanguageHelper.GetLanguagePacket().setting_current;
         }
 
         public void SetupNaviagtion(bool isVisitable,string backLink,string title,string url,bool showback, ImageClickEventHandler ClickEvent=null,bool showgoback=false,bool ismainpage=false)

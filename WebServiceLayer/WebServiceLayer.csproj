@@ -149,6 +149,9 @@
     <None Include="Web References\WebReference_Ileave_Other\t_Announcement.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\WebReference_Ileave_Other\t_Attachment.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\WebReference_leave\AttachmentInfo.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>

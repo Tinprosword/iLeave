@@ -11,6 +11,17 @@ namespace BLL
     public class Other
     {
         #region anncount
+
+        public static string GetFileName(string filePath)
+        {
+            return MyWebService.GlobalWebServices.ws_Ileave_Other.Attachment_GetFileName(filePath);
+        }
+
+        public static byte[] GetByteByAttachmentid(int aid)
+        {
+            return MyWebService.GlobalWebServices.ws_Ileave_Other.Attachment_GetAttachmentByte(aid);
+        }
+
         public static int GetAnouncementFirstYear(int firsteid)
         {
             int result = System.DateTime.Now.Year - 1;
@@ -23,6 +34,41 @@ namespace BLL
                 result=tempResult[0].CreateDate.Year;
             }
 
+            return result;
+        }
+
+        public static List<MODEL.Announcement.GirdViewData> GetAnouncementByFEIDType_Grid(int firsteid, MODEL.Announcement.enum_Announce_tabs type, int year)
+        {
+            List<MODEL.Announcement.GirdViewData> result = new List<MODEL.Announcement.GirdViewData>();
+
+            List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement> tempResult = GetAnouncementByFEIDType(firsteid, type, year);
+
+            for (int i = 0; i < tempResult.Count(); i++)
+            {
+                int announceid = tempResult[i].ID;
+                List<WebServiceLayer.WebReference_Ileave_Other.t_Attachment> tempAttachement = MyWebService.GlobalWebServices.ws_Ileave_Other.Announce_GetAttachementByAnnounceID(announceid).ToList();
+                List<MODEL.Announcement.Attachement> tempGridAttachment = new List<MODEL.Announcement.Attachement>();
+                foreach(var theAtt in tempAttachement)
+                {
+                    tempGridAttachment.Add(Attachement_Conert2me(theAtt));
+                }
+
+                var tempItem = new MODEL.Announcement.GirdViewData(tempResult[i].Subject, tempResult[i].Content, tempGridAttachment, tempResult[i].SortSeq);
+                result.Add(tempItem);
+            }
+
+            return result;
+        }
+
+        public static MODEL.Announcement.Attachement Attachement_Conert2me(WebServiceLayer.WebReference_Ileave_Other.t_Attachment item)
+        {
+            MODEL.Announcement.Attachement result = null;
+            if (item != null)
+            {
+                string filePath = item.Path;
+                string fileName = WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_Other.Attachment_GetFileName(filePath);
+                result = new MODEL.Announcement.Attachement(fileName, filePath, item.CreateDate,item.ID);
+            }
             return result;
         }
 
@@ -46,9 +92,24 @@ namespace BLL
         }
 
 
-        private static List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement> GetAnouncementByFEID(int firsteid)
+        public static List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement> GetAnouncementByFEID(int firsteid)
         {
             return MyWebService.GlobalWebServices.ws_Ileave_Other.Announce_GetAnnouncementByFirstEid(firsteid).ToList();
+        }
+
+        public static WebServiceLayer.WebReference_Ileave_Other.t_Announcement GetAnouncementByID(int aid)
+        {
+            return MyWebService.GlobalWebServices.ws_Ileave_Other.Announce_GetAnnouncementByAnncounceID(aid);
+        }
+
+        public static WebServiceLayer.WebReference_Ileave_Other.t_Attachment GetAttachementByattID(int aid)
+        {
+            return MyWebService.GlobalWebServices.ws_Ileave_Other.GetAttachementByattID(aid);
+        }
+
+        public static string Attachment_GetFileName(string filePath)
+        {
+            return MyWebService.GlobalWebServices.ws_Ileave_Other.Attachment_GetFileName(filePath);
         }
         #endregion
 

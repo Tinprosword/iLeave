@@ -1,0 +1,242 @@
+ip:::1
+DataTime：2023/8/15 11:30:54
+Url：http://localhost/WEBUI/pages/Announcement.aspx?activetab=1
+Message：长度不能小于 0。
+参数名: length
+Source：mscorlib
+Type：System.ArgumentOutOfRangeException
+Function：System.String Substring(Int32, Int32)
+Trace：   在 System.String.Substring(Int32 startIndex, Int32 length)
+   在 LSLibrary.FileUtil.GetFileNameNoExtension(String filePath) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\FileUtil\FileUtil.cs:行号 341
+   在 LSLibrary.FileUtil.SubFileName(String str, Int32 maxLength, String replace) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\FileUtil\FileUtil.cs:行号 513
+   在 MODEL.App_AttachmentInfo.GetOriginFileName(Int32 maxLength) 位置 C:\Users\Administrator\source\repos\WebIleave\MODEL\IAttachment.cs:行号 28
+   在 BLL.common.GetAttachmentHtml(List`1 result) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\common.cs:行号 39
+   在 WEBUI.Pages.Announcement.RP_DisplayAttachment(t_Announcement item) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 164
+   在 ASP.pages_announcement_aspx.__DataBinding__control21(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\pages\Announcement.aspx:行号 37
+   在 System.Web.UI.Control.OnDataBinding(EventArgs e)
+   在 System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   在 System.Web.UI.Control.DataBindChildren()
+   在 System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   在 System.Web.UI.WebControls.Repeater.CreateItem(Int32 itemIndex, ListItemType itemType, Boolean dataBind, Object dataItem)
+   在 System.Web.UI.WebControls.Repeater.AddDataItemsIntoItemsArray(IEnumerable dataSource, Boolean useDataSource)
+   在 System.Web.UI.WebControls.Repeater.PostGetDataAction(IEnumerable dataSource)
+   在 System.Web.UI.WebControls.Repeater.OnDataBinding(EventArgs e)
+   在 WEBUI.Pages.Announcement.SetupRepeater(enum_Announce_tabs activeTab, Int32 year, Int32 Feid) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 93
+   在 WEBUI.Pages.Announcement.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 62
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 70
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2023/8/15 11:31:23
+Url：http://localhost/WEBUI/pages/Announcement.aspx?activetab=1
+Message：长度不能小于 0。
+参数名: length
+Source：mscorlib
+Type：System.ArgumentOutOfRangeException
+Function：System.String Substring(Int32, Int32)
+Trace：   在 System.String.Substring(Int32 startIndex, Int32 length)
+   在 LSLibrary.FileUtil.GetFileNameNoExtension(String filePath) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\FileUtil\FileUtil.cs:行号 341
+   在 LSLibrary.FileUtil.SubFileName(String str, Int32 maxLength, String replace) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\FileUtil\FileUtil.cs:行号 513
+   在 MODEL.App_AttachmentInfo.GetOriginFileName(Int32 maxLength) 位置 C:\Users\Administrator\source\repos\WebIleave\MODEL\IAttachment.cs:行号 28
+   在 BLL.common.GetAttachmentHtml(List`1 result) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\common.cs:行号 39
+   在 WEBUI.Pages.Announcement.RP_DisplayAttachment(t_Announcement item) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 164
+   在 ASP.pages_announcement_aspx.__DataBinding__control21(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\pages\Announcement.aspx:行号 37
+   在 System.Web.UI.Control.OnDataBinding(EventArgs e)
+   在 System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   在 System.Web.UI.Control.DataBindChildren()
+   在 System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   在 System.Web.UI.WebControls.Repeater.CreateItem(Int32 itemIndex, ListItemType itemType, Boolean dataBind, Object dataItem)
+   在 System.Web.UI.WebControls.Repeater.AddDataItemsIntoItemsArray(IEnumerable dataSource, Boolean useDataSource)
+   在 System.Web.UI.WebControls.Repeater.PostGetDataAction(IEnumerable dataSource)
+   在 System.Web.UI.WebControls.Repeater.OnDataBinding(EventArgs e)
+   在 WEBUI.Pages.Announcement.SetupRepeater(enum_Announce_tabs activeTab, Int32 year, Int32 Feid) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 93
+   在 WEBUI.Pages.Announcement.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 62
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 70
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2023/8/15 11:32:13
+Url：http://localhost/WEBUI/pages/Announcement.aspx?activetab=1
+Message：长度不能小于 0。
+参数名: length
+Source：mscorlib
+Type：System.ArgumentOutOfRangeException
+Function：System.String Substring(Int32, Int32)
+Trace：   在 System.String.Substring(Int32 startIndex, Int32 length)
+   在 LSLibrary.FileUtil.GetFileNameNoExtension(String filePath) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\FileUtil\FileUtil.cs:行号 341
+   在 LSLibrary.FileUtil.SubFileName(String str, Int32 maxLength, String replace) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\FileUtil\FileUtil.cs:行号 513
+   在 MODEL.App_AttachmentInfo.GetOriginFileName(Int32 maxLength) 位置 C:\Users\Administrator\source\repos\WebIleave\MODEL\IAttachment.cs:行号 28
+   在 BLL.common.GetAttachmentHtml(List`1 result) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\common.cs:行号 39
+   在 WEBUI.Pages.Announcement.RP_DisplayAttachment(t_Announcement item) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 164
+   在 ASP.pages_announcement_aspx.__DataBinding__control21(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\pages\Announcement.aspx:行号 37
+   在 System.Web.UI.Control.OnDataBinding(EventArgs e)
+   在 System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   在 System.Web.UI.Control.DataBindChildren()
+   在 System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   在 System.Web.UI.WebControls.Repeater.CreateItem(Int32 itemIndex, ListItemType itemType, Boolean dataBind, Object dataItem)
+   在 System.Web.UI.WebControls.Repeater.AddDataItemsIntoItemsArray(IEnumerable dataSource, Boolean useDataSource)
+   在 System.Web.UI.WebControls.Repeater.PostGetDataAction(IEnumerable dataSource)
+   在 System.Web.UI.WebControls.Repeater.OnDataBinding(EventArgs e)
+   在 WEBUI.Pages.Announcement.SetupRepeater(enum_Announce_tabs activeTab, Int32 year, Int32 Feid) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 93
+   在 WEBUI.Pages.Announcement.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 62
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 70
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2023/8/15 16:58:41
+Url：http://localhost/WEBUI/pages/Announcement.aspx?activetab=1
+Message：C:\Users\Administrator\source\repos\WebIleave\WEBUI\pages\Announcement.aspx(37): error CS0030: Cannot convert type 'string' to 'bool'
+Source：System.Web
+Type：System.Web.HttpCompileException
+Function：System.Web.Compilation.BuildResult CompileWebFile(System.Web.VirtualPath)
+Trace：   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+********************************************************************************************
+ip:::1
+DataTime：2023/8/15 17:00:39
+Url：http://localhost/WEBUI/pages/Announcement.aspx?activetab=1
+Message：Unable to cast object of type 'GirdViewData' to type 'WebServiceLayer.WebReference_Ileave_Other.t_Announcement'.
+Source：WEBUI
+Type：System.InvalidCastException
+Function：Void rp_announctment_ItemDataBound(System.Object, System.Web.UI.WebControls.RepeaterItemEventArgs)
+Trace：   在 WEBUI.Pages.Announcement.rp_announctment_ItemDataBound(Object sender, RepeaterItemEventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 232
+   在 System.Web.UI.WebControls.Repeater.OnItemDataBound(RepeaterItemEventArgs e)
+   在 System.Web.UI.WebControls.Repeater.CreateItem(Int32 itemIndex, ListItemType itemType, Boolean dataBind, Object dataItem)
+   在 System.Web.UI.WebControls.Repeater.AddDataItemsIntoItemsArray(IEnumerable dataSource, Boolean useDataSource)
+   在 System.Web.UI.WebControls.Repeater.PostGetDataAction(IEnumerable dataSource)
+   在 System.Web.UI.WebControls.Repeater.OnDataBinding(EventArgs e)
+   在 WEBUI.Pages.Announcement.SetupRepeater(enum_Announce_tabs activeTab, Int32 year, Int32 Feid) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 93
+   在 WEBUI.Pages.Announcement.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 63
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 70
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2023/8/15 17:24:45
+Url：http://localhost/WEBUI/pages/Announcement.aspx?activetab=1
+Message：无法将类型为“GirdViewData”的对象强制转换为类型“WebServiceLayer.WebReference_Ileave_Other.t_Announcement”。
+Source：WEBUI
+Type：System.InvalidCastException
+Function：Void rp_announctment_ItemDataBound(System.Object, System.Web.UI.WebControls.RepeaterItemEventArgs)
+Trace：   在 WEBUI.Pages.Announcement.rp_announctment_ItemDataBound(Object sender, RepeaterItemEventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 232
+   在 System.Web.UI.WebControls.Repeater.OnItemDataBound(RepeaterItemEventArgs e)
+   在 System.Web.UI.WebControls.Repeater.CreateItem(Int32 itemIndex, ListItemType itemType, Boolean dataBind, Object dataItem)
+   在 System.Web.UI.WebControls.Repeater.AddDataItemsIntoItemsArray(IEnumerable dataSource, Boolean useDataSource)
+   在 System.Web.UI.WebControls.Repeater.PostGetDataAction(IEnumerable dataSource)
+   在 System.Web.UI.WebControls.Repeater.OnDataBinding(EventArgs e)
+   在 WEBUI.Pages.Announcement.SetupRepeater(enum_Announce_tabs activeTab, Int32 year, Int32 Feid) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 93
+   在 WEBUI.Pages.Announcement.PageLoad_InitUIOnFirstLoad4() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 63
+   在 LSLibrary.WebAPP.PageTemplate_Common.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\WebAPP\PageTemplate.cs:行号 70
+   在 BLL.CustomLoginTemplate.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\Page\CustomLoginTemplate.cs:行号 48
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2023/8/15 17:34:45
+Url：http://localhost/WEBUI/pages/Announcement.aspx?activetab=1
+Message：指定的转换无效。
+Source：WEBUI
+Type：System.InvalidCastException
+Function：Void rp_announctment_ItemCommand(System.Object, System.Web.UI.WebControls.RepeaterCommandEventArgs)
+Trace：   在 WEBUI.Pages.Announcement.rp_announctment_ItemCommand(Object source, RepeaterCommandEventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 257
+   在 System.Web.UI.WebControls.Repeater.OnItemCommand(RepeaterCommandEventArgs e)
+   在 System.Web.UI.WebControls.Repeater.OnBubbleEvent(Object sender, EventArgs e)
+   在 System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   在 System.Web.UI.WebControls.RepeaterItem.OnBubbleEvent(Object source, EventArgs e)
+   在 System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2023/8/15 17:34:49
+Url：http://localhost/WEBUI/pages/Announcement.aspx?activetab=1
+Message：指定的转换无效。
+Source：WEBUI
+Type：System.InvalidCastException
+Function：Void rp_announctment_ItemCommand(System.Object, System.Web.UI.WebControls.RepeaterCommandEventArgs)
+Trace：   在 WEBUI.Pages.Announcement.rp_announctment_ItemCommand(Object source, RepeaterCommandEventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 257
+   在 System.Web.UI.WebControls.Repeater.OnItemCommand(RepeaterCommandEventArgs e)
+   在 System.Web.UI.WebControls.Repeater.OnBubbleEvent(Object sender, EventArgs e)
+   在 System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   在 System.Web.UI.WebControls.RepeaterItem.OnBubbleEvent(Object source, EventArgs e)
+   在 System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2023/8/15 17:47:27
+Url：http://localhost/WEBUI/pages/Announcement.aspx?activetab=1
+Message：指定的转换无效。
+Source：WEBUI
+Type：System.InvalidCastException
+Function：Void rp_announctment_ItemCommand(System.Object, System.Web.UI.WebControls.RepeaterCommandEventArgs)
+Trace：   在 WEBUI.Pages.Announcement.rp_announctment_ItemCommand(Object source, RepeaterCommandEventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 258
+   在 System.Web.UI.WebControls.Repeater.OnItemCommand(RepeaterCommandEventArgs e)
+   在 System.Web.UI.WebControls.Repeater.OnBubbleEvent(Object sender, EventArgs e)
+   在 System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   在 System.Web.UI.WebControls.RepeaterItem.OnBubbleEvent(Object source, EventArgs e)
+   在 System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2023/8/15 17:47:27
+Url：http://localhost/WEBUI/pages/Announcement.aspx?activetab=1
+Message：指定的转换无效。
+Source：WEBUI
+Type：System.InvalidCastException
+Function：Void rp_announctment_ItemCommand(System.Object, System.Web.UI.WebControls.RepeaterCommandEventArgs)
+Trace：   在 WEBUI.Pages.Announcement.rp_announctment_ItemCommand(Object source, RepeaterCommandEventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 258
+   在 System.Web.UI.WebControls.Repeater.OnItemCommand(RepeaterCommandEventArgs e)
+   在 System.Web.UI.WebControls.Repeater.OnBubbleEvent(Object sender, EventArgs e)
+   在 System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   在 System.Web.UI.WebControls.RepeaterItem.OnBubbleEvent(Object source, EventArgs e)
+   在 System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2023/8/15 17:55:03
+Url：http://localhost/WEBUI/pages/Announcement.aspx?activetab=1
+Message：指定的转换无效。
+Source：WEBUI
+Type：System.InvalidCastException
+Function：Void rp_announctment_ItemCommand(System.Object, System.Web.UI.WebControls.RepeaterCommandEventArgs)
+Trace：   在 WEBUI.Pages.Announcement.rp_announctment_ItemCommand(Object source, RepeaterCommandEventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 269
+   在 System.Web.UI.WebControls.Repeater.OnItemCommand(RepeaterCommandEventArgs e)
+   在 System.Web.UI.WebControls.Repeater.OnBubbleEvent(Object sender, EventArgs e)
+   在 System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   在 System.Web.UI.WebControls.RepeaterItem.OnBubbleEvent(Object source, EventArgs e)
+   在 System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
+ip:::1
+DataTime：2023/8/15 17:56:42
+Url：http://localhost/WEBUI/pages/Announcement.aspx?activetab=1
+Message：指定的转换无效。
+Source：WEBUI
+Type：System.InvalidCastException
+Function：Void rp_announctment_ItemCommand(System.Object, System.Web.UI.WebControls.RepeaterCommandEventArgs)
+Trace：   在 WEBUI.Pages.Announcement.rp_announctment_ItemCommand(Object source, RepeaterCommandEventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\Pages\Announcement.aspx.cs:行号 269
+   在 System.Web.UI.WebControls.Repeater.OnItemCommand(RepeaterCommandEventArgs e)
+   在 System.Web.UI.WebControls.Repeater.OnBubbleEvent(Object sender, EventArgs e)
+   在 System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   在 System.Web.UI.WebControls.RepeaterItem.OnBubbleEvent(Object source, EventArgs e)
+   在 System.Web.UI.Control.RaiseBubbleEvent(Object source, EventArgs args)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************

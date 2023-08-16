@@ -33,5 +33,44 @@ namespace MODEL
 
         }
 
+
+        #region page_girdview
+        public class GirdViewData
+        {
+            public GirdViewData(string title, string content, List<Attachement> attachement, int seq)
+            {
+                this.title = title;
+                this.content = content;
+                Attachement = attachement;
+                this.seq = seq;
+            }
+
+            public string title { get; set; }
+            public string content { get; set; }
+            public List<Attachement> Attachement { get; set; }
+            public int seq { get; set; }
+        }
+
+        public class Attachement
+        {
+            public Attachement(string fileName, string filePath, DateTime fileCreateTime,int _id)
+            {
+
+                this.fileName = fileName;
+                this.filePath = filePath;
+                this.idInTable = _id;
+                this.fileCreateTime = fileCreateTime;
+            }
+
+            public int idInTable { get; set; }
+            public string fileName { get; set; }
+            public string filePath { get; set; }
+            public DateTime fileCreateTime { get; set; }
+
+
+        }
+
+
+        #endregion
     }
 }

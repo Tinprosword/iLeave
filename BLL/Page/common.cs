@@ -48,8 +48,6 @@ namespace BLL
         }
 
 
-
-
         public static void copyFileTo(string filePath, string descPath, HttpServerUtility server)
         {
             string absfilepath = server.MapPath(filePath);

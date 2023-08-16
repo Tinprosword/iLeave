@@ -53,8 +53,108 @@
           <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
         </s:sequence>
       </s:complexType>
+      <s:element name="Announce_GetAnnouncementByAnncounceID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="anncounceid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Announce_GetAnnouncementByAnncounceIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Announce_GetAnnouncementByAnncounceIDResult" type="tns:t_Announcement" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Announce_GetAttachementByAnnounceID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="announceid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Announce_GetAttachementByAnnounceIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Announce_GetAttachementByAnnounceIDResult" type="tns:ArrayOfT_Attachment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfT_Attachment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="t_Attachment" nillable="true" type="tns:t_Attachment" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="t_Attachment">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RelatedPartyID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FunctionID" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="Path" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpiryDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="NoticePeriod" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PayrollPeriodID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RelatedRequestID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkFlowTypeID" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Attachment_GetAttachmentByte">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="aid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Attachment_GetAttachmentByteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Attachment_GetAttachmentByteResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAttachementByattID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="attid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAttachementByattIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAttachementByattIDResult" type="tns:t_Attachment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Attachment_GetFileName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilePath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Attachment_GetFileNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Attachment_GetFileNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
       <s:element name="ArrayOfT_Announcement" nillable="true" type="tns:ArrayOfT_Announcement" />
+      <s:element name="t_Announcement" nillable="true" type="tns:t_Announcement" />
+      <s:element name="ArrayOfT_Attachment" nillable="true" type="tns:ArrayOfT_Attachment" />
+      <s:element name="base64Binary" nillable="true" type="s:base64Binary" />
+      <s:element name="t_Attachment" nillable="true" type="tns:t_Attachment" />
+      <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
   <wsdl:message name="Test_GetListSoapIn">
@@ -69,6 +169,36 @@
   <wsdl:message name="Announce_GetAnnouncementByFirstEidSoapOut">
     <wsdl:part name="parameters" element="tns:Announce_GetAnnouncementByFirstEidResponse" />
   </wsdl:message>
+  <wsdl:message name="Announce_GetAnnouncementByAnncounceIDSoapIn">
+    <wsdl:part name="parameters" element="tns:Announce_GetAnnouncementByAnncounceID" />
+  </wsdl:message>
+  <wsdl:message name="Announce_GetAnnouncementByAnncounceIDSoapOut">
+    <wsdl:part name="parameters" element="tns:Announce_GetAnnouncementByAnncounceIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="Announce_GetAttachementByAnnounceIDSoapIn">
+    <wsdl:part name="parameters" element="tns:Announce_GetAttachementByAnnounceID" />
+  </wsdl:message>
+  <wsdl:message name="Announce_GetAttachementByAnnounceIDSoapOut">
+    <wsdl:part name="parameters" element="tns:Announce_GetAttachementByAnnounceIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="Attachment_GetAttachmentByteSoapIn">
+    <wsdl:part name="parameters" element="tns:Attachment_GetAttachmentByte" />
+  </wsdl:message>
+  <wsdl:message name="Attachment_GetAttachmentByteSoapOut">
+    <wsdl:part name="parameters" element="tns:Attachment_GetAttachmentByteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAttachementByattIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAttachementByattID" />
+  </wsdl:message>
+  <wsdl:message name="GetAttachementByattIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAttachementByattIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="Attachment_GetFileNameSoapIn">
+    <wsdl:part name="parameters" element="tns:Attachment_GetFileName" />
+  </wsdl:message>
+  <wsdl:message name="Attachment_GetFileNameSoapOut">
+    <wsdl:part name="parameters" element="tns:Attachment_GetFileNameResponse" />
+  </wsdl:message>
   <wsdl:message name="Test_GetListHttpPostIn" />
   <wsdl:message name="Test_GetListHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfString" />
@@ -79,6 +209,36 @@
   <wsdl:message name="Announce_GetAnnouncementByFirstEidHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfT_Announcement" />
   </wsdl:message>
+  <wsdl:message name="Announce_GetAnnouncementByAnncounceIDHttpPostIn">
+    <wsdl:part name="anncounceid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Announce_GetAnnouncementByAnncounceIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:t_Announcement" />
+  </wsdl:message>
+  <wsdl:message name="Announce_GetAttachementByAnnounceIDHttpPostIn">
+    <wsdl:part name="announceid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Announce_GetAttachementByAnnounceIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfT_Attachment" />
+  </wsdl:message>
+  <wsdl:message name="Attachment_GetAttachmentByteHttpPostIn">
+    <wsdl:part name="aid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Attachment_GetAttachmentByteHttpPostOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="GetAttachementByattIDHttpPostIn">
+    <wsdl:part name="attid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAttachementByattIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:t_Attachment" />
+  </wsdl:message>
+  <wsdl:message name="Attachment_GetFileNameHttpPostIn">
+    <wsdl:part name="FilePath" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Attachment_GetFileNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="ILeave_OtherSoap">
     <wsdl:operation name="Test_GetList">
       <wsdl:input message="tns:Test_GetListSoapIn" />
@@ -87,6 +247,26 @@
     <wsdl:operation name="Announce_GetAnnouncementByFirstEid">
       <wsdl:input message="tns:Announce_GetAnnouncementByFirstEidSoapIn" />
       <wsdl:output message="tns:Announce_GetAnnouncementByFirstEidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Announce_GetAnnouncementByAnncounceID">
+      <wsdl:input message="tns:Announce_GetAnnouncementByAnncounceIDSoapIn" />
+      <wsdl:output message="tns:Announce_GetAnnouncementByAnncounceIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Announce_GetAttachementByAnnounceID">
+      <wsdl:input message="tns:Announce_GetAttachementByAnnounceIDSoapIn" />
+      <wsdl:output message="tns:Announce_GetAttachementByAnnounceIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Attachment_GetAttachmentByte">
+      <wsdl:input message="tns:Attachment_GetAttachmentByteSoapIn" />
+      <wsdl:output message="tns:Attachment_GetAttachmentByteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachementByattID">
+      <wsdl:input message="tns:GetAttachementByattIDSoapIn" />
+      <wsdl:output message="tns:GetAttachementByattIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Attachment_GetFileName">
+      <wsdl:input message="tns:Attachment_GetFileNameSoapIn" />
+      <wsdl:output message="tns:Attachment_GetFileNameSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILeave_OtherHttpPost">
@@ -97,6 +277,26 @@
     <wsdl:operation name="Announce_GetAnnouncementByFirstEid">
       <wsdl:input message="tns:Announce_GetAnnouncementByFirstEidHttpPostIn" />
       <wsdl:output message="tns:Announce_GetAnnouncementByFirstEidHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Announce_GetAnnouncementByAnncounceID">
+      <wsdl:input message="tns:Announce_GetAnnouncementByAnncounceIDHttpPostIn" />
+      <wsdl:output message="tns:Announce_GetAnnouncementByAnncounceIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Announce_GetAttachementByAnnounceID">
+      <wsdl:input message="tns:Announce_GetAttachementByAnnounceIDHttpPostIn" />
+      <wsdl:output message="tns:Announce_GetAttachementByAnnounceIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Attachment_GetAttachmentByte">
+      <wsdl:input message="tns:Attachment_GetAttachmentByteHttpPostIn" />
+      <wsdl:output message="tns:Attachment_GetAttachmentByteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachementByattID">
+      <wsdl:input message="tns:GetAttachementByattIDHttpPostIn" />
+      <wsdl:output message="tns:GetAttachementByattIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Attachment_GetFileName">
+      <wsdl:input message="tns:Attachment_GetFileNameHttpPostIn" />
+      <wsdl:output message="tns:Attachment_GetFileNameHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ILeave_OtherSoap" type="tns:ILeave_OtherSoap">
@@ -112,6 +312,51 @@
     </wsdl:operation>
     <wsdl:operation name="Announce_GetAnnouncementByFirstEid">
       <soap:operation soapAction="http://tempuri.org/Announce_GetAnnouncementByFirstEid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Announce_GetAnnouncementByAnncounceID">
+      <soap:operation soapAction="http://tempuri.org/Announce_GetAnnouncementByAnncounceID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Announce_GetAttachementByAnnounceID">
+      <soap:operation soapAction="http://tempuri.org/Announce_GetAttachementByAnnounceID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Attachment_GetAttachmentByte">
+      <soap:operation soapAction="http://tempuri.org/Attachment_GetAttachmentByte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachementByattID">
+      <soap:operation soapAction="http://tempuri.org/GetAttachementByattID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Attachment_GetFileName">
+      <soap:operation soapAction="http://tempuri.org/Attachment_GetFileName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -140,6 +385,51 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Announce_GetAnnouncementByAnncounceID">
+      <soap12:operation soapAction="http://tempuri.org/Announce_GetAnnouncementByAnncounceID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Announce_GetAttachementByAnnounceID">
+      <soap12:operation soapAction="http://tempuri.org/Announce_GetAttachementByAnnounceID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Attachment_GetAttachmentByte">
+      <soap12:operation soapAction="http://tempuri.org/Attachment_GetAttachmentByte" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachementByattID">
+      <soap12:operation soapAction="http://tempuri.org/GetAttachementByattID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Attachment_GetFileName">
+      <soap12:operation soapAction="http://tempuri.org/Attachment_GetFileName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ILeave_OtherHttpPost" type="tns:ILeave_OtherHttpPost">
     <http:binding verb="POST" />
@@ -154,6 +444,51 @@
     </wsdl:operation>
     <wsdl:operation name="Announce_GetAnnouncementByFirstEid">
       <http:operation location="/Announce_GetAnnouncementByFirstEid" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Announce_GetAnnouncementByAnncounceID">
+      <http:operation location="/Announce_GetAnnouncementByAnncounceID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Announce_GetAttachementByAnnounceID">
+      <http:operation location="/Announce_GetAttachementByAnnounceID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Attachment_GetAttachmentByte">
+      <http:operation location="/Attachment_GetAttachmentByte" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttachementByattID">
+      <http:operation location="/GetAttachementByattID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Attachment_GetFileName">
+      <http:operation location="/Attachment_GetFileName" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
