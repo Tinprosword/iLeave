@@ -11,7 +11,7 @@ namespace WEBUI.Pages
     {
         public static string ViewState_PageName = "ViewState_PageName";
         public static string qs_activeTab = "ActiveTab";
-        private static string mStatic_rp_link_commandname = "mStatic_rp_link_commandname";
+
 
 
         public MODEL.Announcement.ViewState_page mViewState_Page = null;
@@ -152,43 +152,7 @@ namespace WEBUI.Pages
             return item.title.Trim();
         }
 
-        protected string RP_DisplayContent(MODEL.Announcement.GirdViewData item)
-        {
-            return  item.content.Trim();//--"　　"
-        }
-
-        protected string RP_DisplayAttach(int index, MODEL.Announcement.GirdViewData item)
-        {
-            string result = "";
-            if (item != null && item.Attachement != null && item.Attachement.Count - 1 >= index)
-            {
-                result = item.Attachement[index].fileName;
-            }
-            return result;
-        }
-
-        protected bool RP_AttachVisialbe(int index, MODEL.Announcement.GirdViewData item)
-        {
-            bool result = false;
-            if (item != null && item.Attachement != null && item.Attachement.Count - 1 >= index)
-            {
-                result = true;
-            }
-            return result;
-        }
-
-        protected int RP_AttachID(int index, MODEL.Announcement.GirdViewData item)
-        {
-            int result = -1;
-            if (item != null && item.Attachement != null && item.Attachement.Count - 1 >= index)
-            {
-                result = item.Attachement[index].idInTable;
-            }
-            return result;
-        }
-
-
-
+      
         protected void TABOnClick(object sender, EventArgs e)
         {
             LinkButton LB_Sender = (LinkButton)sender;
@@ -236,54 +200,19 @@ namespace WEBUI.Pages
             SetupRepeater((MODEL.Announcement.enum_Announce_tabs)mViewState_Page.ActiveTab, mViewState_Page.SelectedYear, loginer.userInfo.employID??0);
         }
 
-        //protected void rp_announctment_ItemDataBound(object sender, RepeaterItemEventArgs e)
-        //{
-        //    int dataIndex = e.Item.ItemIndex;
-        //    var data = (MODEL.Announcement)e.Item.DataItem;
-        //    var theRepeater = (Repeater)sender;
 
-        //    Panel tempDIv = (Panel)e.Item.FindControl("Panel1");
-        //    for (int i = 6404; i < 6408; i++)
-        //    {
-        //        var tempLB = new LinkButton();
-        //        tempLB.Text = "abc";
-        //        tempLB.CommandName = mStatic_rp_link_commandname;
-        //        tempLB.CommandArgument = i.ToString();
-        //        tempLB.Click += TempLB_Click;
-        //        tempDIv.Controls.Add(tempLB);
-        //    }
-        //}
+       
 
-        private void TempLB_Click(object sender, EventArgs e)
+
+        protected void lb_title_Click(object sender, EventArgs e)
         {
-            int a = 4;
-
-        }
-
-        protected void rp_announctment_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            if (e.CommandName == mStatic_rp_link_commandname)
+            LinkButton lb_anncount = (LinkButton)sender;
+            int aid = 0;
+            int.TryParse(lb_anncount.CommandArgument, out aid);
+            if (aid > 0)
             {
-                int attachmentID = 0;
-                int.TryParse(e.CommandArgument.ToString(), out attachmentID);
-                if (attachmentID > 0)
-                {
-                    var attachInfo = BLL.Other.GetAttachementByattID(attachmentID);
-                    string filePath = attachInfo.Path;
-                    string fileName = BLL.Other.Attachment_GetFileName(filePath);
-
-                    byte[] fileData = BLL.Other.GetByteByAttachmentid(attachmentID);
-                    if (fileData != null && fileData.Length > 0)
-                    {
-                        LSLibrary.WebAPP.httpHelper.SimpleDownloadLocalFile_ClearAndEndResponse(fileData, this.Response, fileName);
-                    }
-                }
+                Response.Redirect("announcementdetail.aspx?id=" + aid);
             }
-        }
-
-        protected void lb_attachment1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

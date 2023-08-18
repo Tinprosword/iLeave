@@ -53,7 +53,7 @@ namespace BLL
                     tempGridAttachment.Add(Attachement_Conert2me(theAtt));
                 }
 
-                var tempItem = new MODEL.Announcement.GirdViewData(tempResult[i].Subject, tempResult[i].Content, tempGridAttachment, tempResult[i].SortSeq);
+                var tempItem = new MODEL.Announcement.GirdViewData(tempResult[i].Subject, tempResult[i].Content, tempGridAttachment, tempResult[i].SortSeq, tempResult[i].ID);
                 result.Add(tempItem);
             }
 

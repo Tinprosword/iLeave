@@ -37,14 +37,16 @@ namespace MODEL
         #region page_girdview
         public class GirdViewData
         {
-            public GirdViewData(string title, string content, List<Attachement> attachement, int seq)
+            public GirdViewData(string title, string content, List<Attachement> attachement, int seq,int _id)
             {
                 this.title = title;
                 this.content = content;
                 Attachement = attachement;
                 this.seq = seq;
+                this.idInTable = _id;
             }
 
+            public int idInTable { get; set; }
             public string title { get; set; }
             public string content { get; set; }
             public List<Attachement> Attachement { get; set; }
