@@ -16,6 +16,7 @@ namespace WEBUI.Pages
 
         public MODEL.Announcement.ViewState_page mViewState_Page = null;
 
+
         
         #region page Event
         protected override void InitPage_OnBeforeF5RegisterEvent()
@@ -52,17 +53,29 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
-            //init pageViewState.
             string strAction = Request.QueryString[qs_activeTab];
             int qs_activetab_value;
             int.TryParse(strAction, out qs_activetab_value);
-            mViewState_Page = new MODEL.Announcement.ViewState_page(qs_activetab_value, System.DateTime.Now.Year);
+
+            //init pageViewState.
+            InitPageViewState(qs_activetab_value);
 
             SetupNavinigation();
             SetupSearchAndTab((MODEL.Announcement.enum_Announce_tabs)mViewState_Page.ActiveTab);
-            SetupRepeater((MODEL.Announcement.enum_Announce_tabs)mViewState_Page.ActiveTab, int.Parse(this.ddl_year.SelectedValue),loginer.userInfo.employID??0);
+            SetupRepeater((MODEL.Announcement.enum_Announce_tabs)mViewState_Page.ActiveTab, int.Parse(this.ddl_year.SelectedValue), loginer.userInfo.employID ?? 0);
 
             MultplayLanguage();
+        }
+
+        private void InitPageViewState(int qs_activetab_value)
+        {
+            var unReadList = BLL.Announcement.Announce_GetUnReadAnnouncement(loginer.userInfo.firsteid ?? 0);
+            List<int> unreadIDS = new List<int>();
+            if (unReadList != null && unReadList.Count > 0)
+            {
+                unreadIDS = unReadList.Select(x => x.ID).ToList();
+            }
+            mViewState_Page = new MODEL.Announcement.ViewState_page(qs_activetab_value, System.DateTime.Now.Year, unreadIDS);
         }
 
         protected override void PageLoad_InitUIOnNotFirstLoad4()
@@ -84,11 +97,12 @@ namespace WEBUI.Pages
             this.lb_notice.Text = BLL.MultiLanguageHelper.GetLanguagePacket().announcement_NoticeBoard;
             this.lb_policy.Text = BLL.MultiLanguageHelper.GetLanguagePacket().announcement_Policy;
             this.lb_procedure.Text = BLL.MultiLanguageHelper.GetLanguagePacket().announcement_Procedure;
+            this.btn_readAll.Text = BLL.MultiLanguageHelper.GetLanguagePacket().announcement_allReaded;
         }
 
         private void SetupRepeater(MODEL.Announcement.enum_Announce_tabs activeTab,int year,int Feid)
         {
-            var MyAnnouncements = BLL.Other.GetAnouncementByFEIDType_Grid(Feid,activeTab,year);
+            var MyAnnouncements = BLL.Announcement.GetAnouncementByFEIDType(Feid,activeTab,year);
             this.rp_announctment.DataSource = MyAnnouncements;
             this.rp_announctment.DataBind();
             //this.lb_msg.Text += "repeater:" + activeTab.ToString() + ". year:" + year.ToString() + ". \r\n </br>";
@@ -102,7 +116,7 @@ namespace WEBUI.Pages
 
         private void SetupSearchAndTab_DDLYear()
         {
-            int startYear = BLL.Other.GetAnouncementFirstYear(loginer.userInfo.firsteid ?? 0);
+            int startYear = BLL.Announcement.GetAnouncementFirstYear(loginer.userInfo.firsteid ?? 0);
             this.ddl_year.Items.Add(new ListItem("-All-", "-1"));
 
             for (int i = System.DateTime.Now.Year; i >= startYear; i--)
@@ -147,12 +161,25 @@ namespace WEBUI.Pages
         #endregion
 
         #region click event
-        protected string RP_DisplayTitle(MODEL.Announcement.GirdViewData item)
+
+
+        public string rp_announctment_displayTitle(WebServiceLayer.WebReference_Ileave_Other.t_Announcement record)
         {
-            return item.title.Trim();
+            string result = "";
+            if (record != null)
+            {
+                if (mViewState_Page.UnReadAnnounceID.Contains(record.ID))
+                {
+                    return " ("+BLL.MultiLanguageHelper.GetLanguagePacket().Common_New+")";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            return result;
         }
 
-      
         protected void TABOnClick(object sender, EventArgs e)
         {
             LinkButton LB_Sender = (LinkButton)sender;
@@ -193,6 +220,7 @@ namespace WEBUI.Pages
         }
         #endregion
 
+
         protected void ddl_year_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList ddl_year = (DropDownList)sender;
@@ -214,5 +242,20 @@ namespace WEBUI.Pages
                 Response.Redirect("announcementdetail.aspx?id=" + aid);
             }
         }
+
+        protected void btn_readAll_Click(object sender, EventArgs e)
+        {
+            List<int> unreads = mViewState_Page.UnReadAnnounceID;
+            if (unreads != null && unreads.Count > 0)
+            {
+                foreach (var theID in unreads)
+                {
+                    BLL.Announcement.Announce_ReadAnncount(theID, loginer.userInfo.firsteid??0);
+                }
+            }
+            //reload rp .但是因为是前端绑定。不需要重载了。
+            mViewState_Page.UnReadAnnounceID = new List<int>();
+        }
+
     }
 }

@@ -35,6 +35,12 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         
         private System.Threading.SendOrPostCallback Announce_GetAnnouncementByAnncounceIDOperationCompleted;
         
+        private System.Threading.SendOrPostCallback Announce_ReadAnnounceOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback Announce_GetUnReadAnnouncementOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback Announce_GetReadAnnouncementIDOperationCompleted;
+        
         private System.Threading.SendOrPostCallback Announce_GetAttachementByAnnounceIDOperationCompleted;
         
         private System.Threading.SendOrPostCallback Attachment_GetAttachmentByteOperationCompleted;
@@ -89,6 +95,15 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         
         /// <remarks/>
         public event Announce_GetAnnouncementByAnncounceIDCompletedEventHandler Announce_GetAnnouncementByAnncounceIDCompleted;
+        
+        /// <remarks/>
+        public event Announce_ReadAnnounceCompletedEventHandler Announce_ReadAnnounceCompleted;
+        
+        /// <remarks/>
+        public event Announce_GetUnReadAnnouncementCompletedEventHandler Announce_GetUnReadAnnouncementCompleted;
+        
+        /// <remarks/>
+        public event Announce_GetReadAnnouncementIDCompletedEventHandler Announce_GetReadAnnouncementIDCompleted;
         
         /// <remarks/>
         public event Announce_GetAttachementByAnnounceIDCompletedEventHandler Announce_GetAttachementByAnnounceIDCompleted;
@@ -184,6 +199,94 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
             if ((this.Announce_GetAnnouncementByAnncounceIDCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.Announce_GetAnnouncementByAnncounceIDCompleted(this, new Announce_GetAnnouncementByAnncounceIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Announce_ReadAnnounce", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void Announce_ReadAnnounce(int firsteid, int announceID) {
+            this.Invoke("Announce_ReadAnnounce", new object[] {
+                        firsteid,
+                        announceID});
+        }
+        
+        /// <remarks/>
+        public void Announce_ReadAnnounceAsync(int firsteid, int announceID) {
+            this.Announce_ReadAnnounceAsync(firsteid, announceID, null);
+        }
+        
+        /// <remarks/>
+        public void Announce_ReadAnnounceAsync(int firsteid, int announceID, object userState) {
+            if ((this.Announce_ReadAnnounceOperationCompleted == null)) {
+                this.Announce_ReadAnnounceOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAnnounce_ReadAnnounceOperationCompleted);
+            }
+            this.InvokeAsync("Announce_ReadAnnounce", new object[] {
+                        firsteid,
+                        announceID}, this.Announce_ReadAnnounceOperationCompleted, userState);
+        }
+        
+        private void OnAnnounce_ReadAnnounceOperationCompleted(object arg) {
+            if ((this.Announce_ReadAnnounceCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Announce_ReadAnnounceCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Announce_GetUnReadAnnouncement", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_Announcement[] Announce_GetUnReadAnnouncement(int firstEID) {
+            object[] results = this.Invoke("Announce_GetUnReadAnnouncement", new object[] {
+                        firstEID});
+            return ((t_Announcement[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Announce_GetUnReadAnnouncementAsync(int firstEID) {
+            this.Announce_GetUnReadAnnouncementAsync(firstEID, null);
+        }
+        
+        /// <remarks/>
+        public void Announce_GetUnReadAnnouncementAsync(int firstEID, object userState) {
+            if ((this.Announce_GetUnReadAnnouncementOperationCompleted == null)) {
+                this.Announce_GetUnReadAnnouncementOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAnnounce_GetUnReadAnnouncementOperationCompleted);
+            }
+            this.InvokeAsync("Announce_GetUnReadAnnouncement", new object[] {
+                        firstEID}, this.Announce_GetUnReadAnnouncementOperationCompleted, userState);
+        }
+        
+        private void OnAnnounce_GetUnReadAnnouncementOperationCompleted(object arg) {
+            if ((this.Announce_GetUnReadAnnouncementCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Announce_GetUnReadAnnouncementCompleted(this, new Announce_GetUnReadAnnouncementCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Announce_GetReadAnnouncementID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int[] Announce_GetReadAnnouncementID(int firstEID) {
+            object[] results = this.Invoke("Announce_GetReadAnnouncementID", new object[] {
+                        firstEID});
+            return ((int[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Announce_GetReadAnnouncementIDAsync(int firstEID) {
+            this.Announce_GetReadAnnouncementIDAsync(firstEID, null);
+        }
+        
+        /// <remarks/>
+        public void Announce_GetReadAnnouncementIDAsync(int firstEID, object userState) {
+            if ((this.Announce_GetReadAnnouncementIDOperationCompleted == null)) {
+                this.Announce_GetReadAnnouncementIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAnnounce_GetReadAnnouncementIDOperationCompleted);
+            }
+            this.InvokeAsync("Announce_GetReadAnnouncementID", new object[] {
+                        firstEID}, this.Announce_GetReadAnnouncementIDOperationCompleted, userState);
+        }
+        
+        private void OnAnnounce_GetReadAnnouncementIDOperationCompleted(object arg) {
+            if ((this.Announce_GetReadAnnouncementIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Announce_GetReadAnnouncementIDCompleted(this, new Announce_GetReadAnnouncementIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -768,6 +871,62 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((t_Announcement)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Announce_ReadAnnounceCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Announce_GetUnReadAnnouncementCompletedEventHandler(object sender, Announce_GetUnReadAnnouncementCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Announce_GetUnReadAnnouncementCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Announce_GetUnReadAnnouncementCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_Announcement[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_Announcement[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Announce_GetReadAnnouncementIDCompletedEventHandler(object sender, Announce_GetReadAnnouncementIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Announce_GetReadAnnouncementIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Announce_GetReadAnnouncementIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int[])(this.results[0]));
             }
         }
     }

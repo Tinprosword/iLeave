@@ -8,9 +8,8 @@ using WebServiceLayer;
 
 namespace BLL
 {
-    public class Other
+    public class Announcement
     {
-        #region anncount
 
         public static string GetFileName(string filePath)
         {
@@ -31,56 +30,23 @@ namespace BLL
             if (tempResult != null && tempResult.Count > 0)
             {
                 tempResult = tempResult.OrderBy(x => x.CreateDate).ToList();
-                result=tempResult[0].CreateDate.Year;
+                result = tempResult[0].CreateDate.Year;
             }
 
             return result;
         }
 
-        public static List<MODEL.Announcement.GirdViewData> GetAnouncementByFEIDType_Grid(int firsteid, MODEL.Announcement.enum_Announce_tabs type, int year)
-        {
-            List<MODEL.Announcement.GirdViewData> result = new List<MODEL.Announcement.GirdViewData>();
 
-            List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement> tempResult = GetAnouncementByFEIDType(firsteid, type, year);
 
-            for (int i = 0; i < tempResult.Count(); i++)
-            {
-                int announceid = tempResult[i].ID;
-                List<WebServiceLayer.WebReference_Ileave_Other.t_Attachment> tempAttachement = MyWebService.GlobalWebServices.ws_Ileave_Other.Announce_GetAttachementByAnnounceID(announceid).ToList();
-                List<MODEL.Announcement.Attachement> tempGridAttachment = new List<MODEL.Announcement.Attachement>();
-                foreach(var theAtt in tempAttachement)
-                {
-                    tempGridAttachment.Add(Attachement_Conert2me(theAtt));
-                }
-
-                var tempItem = new MODEL.Announcement.GirdViewData(tempResult[i].Subject, tempResult[i].Content, tempGridAttachment, tempResult[i].SortSeq, tempResult[i].ID);
-                result.Add(tempItem);
-            }
-
-            return result;
-        }
-
-        public static MODEL.Announcement.Attachement Attachement_Conert2me(WebServiceLayer.WebReference_Ileave_Other.t_Attachment item)
-        {
-            MODEL.Announcement.Attachement result = null;
-            if (item != null)
-            {
-                string filePath = item.Path;
-                string fileName = WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_Other.Attachment_GetFileName(filePath);
-                result = new MODEL.Announcement.Attachement(fileName, filePath, item.CreateDate,item.ID);
-            }
-            return result;
-        }
-
-        public static List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement> GetAnouncementByFEIDType(int firsteid,MODEL.Announcement.enum_Announce_tabs type,int year)
+        public static List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement> GetAnouncementByFEIDType(int firsteid, MODEL.Announcement.enum_Announce_tabs type, int year)
         {
             List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement> result = new List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement>();
             var tempresult = GetAnouncementByFEID(firsteid);
-            if (tempresult != null && tempresult.Count()>0)
+            if (tempresult != null && tempresult.Count() > 0)
             {
                 tempresult = tempresult.Where(x => x.TypeID == (int)type
                 && int.Parse(System.DateTime.Now.ToString("yyyyMMdd")) >= int.Parse(x.ValidDateFrom.ToString("yyyyMMdd"))
-                && int.Parse(System.DateTime.Now.ToString("yyyyMMdd")) <= int.Parse(x.ValidDateTo.ToString("yyyyMMdd")) 
+                && int.Parse(System.DateTime.Now.ToString("yyyyMMdd")) <= int.Parse(x.ValidDateTo.ToString("yyyyMMdd"))
                 && x.Status == 1).OrderBy(x => x.SortSeq).ToList();
                 if (year != -1)
                 {
@@ -102,15 +68,24 @@ namespace BLL
             return MyWebService.GlobalWebServices.ws_Ileave_Other.Announce_GetAnnouncementByAnncounceID(aid);
         }
 
-        public static WebServiceLayer.WebReference_Ileave_Other.t_Attachment GetAttachementByattID(int aid)
+        public static List<WebServiceLayer.WebReference_Ileave_Other.t_Announcement> Announce_GetUnReadAnnouncement(int firstEID)
         {
-            return MyWebService.GlobalWebServices.ws_Ileave_Other.GetAttachementByattID(aid);
+            return MyWebService.GlobalWebServices.ws_Ileave_Other.Announce_GetUnReadAnnouncement(firstEID).ToList();
         }
 
-        public static string Attachment_GetFileName(string filePath)
+        public static void Announce_ReadAnncount(int announceID, int firsteid)
         {
-            return MyWebService.GlobalWebServices.ws_Ileave_Other.Attachment_GetFileName(filePath);
+            MyWebService.GlobalWebServices.ws_Ileave_Other.Announce_ReadAnnounce(firsteid, announceID);
         }
+    }
+
+    public class Other
+    {
+        #region anncount
+
+        
+
+        
         #endregion
 
 
@@ -346,4 +321,21 @@ namespace BLL
         }
     }
 
+    public class Attachment
+    {
+        public static List<WebServiceLayer.WebReference_Ileave_Other.t_Attachment> GetAttachementByAnnounceID(int announceid)
+        {
+            return MyWebService.GlobalWebServices.ws_Ileave_Other.Announce_GetAttachementByAnnounceID(announceid).ToList();
+        }
+
+        public static WebServiceLayer.WebReference_Ileave_Other.t_Attachment GetAttachementByattID(int aid)
+        {
+            return MyWebService.GlobalWebServices.ws_Ileave_Other.GetAttachementByattID(aid);
+        }
+
+        public static string Attachment_GetFileName(string filePath)
+        {
+            return MyWebService.GlobalWebServices.ws_Ileave_Other.Attachment_GetFileName(filePath);
+        }
+    }
 }

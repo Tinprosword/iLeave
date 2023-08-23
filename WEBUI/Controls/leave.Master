@@ -29,7 +29,7 @@
                             <tr><td><img src="../Res/images/dataworld-150px.png" style="height:47px; width:80px;" /></td><td style="padding-left:40px;"><img src="../Res/images/DW-iHR-150px.png" style=" height:51px; width:90px;"/> </td></tr>
                         </table>
 	                </div>
-	                <div class="col-xs-1"  style="height:53px; padding-top:10px;"><asp:ImageButton ID="ib_exit"  runat="server" ImageUrl="~/Res/images/setting2.png" Width="30px" Height="30px" OnClientClick="HiddenOrShowDivByfixname('div_menu');return false;" /></div>
+	                <div class="col-xs-1"  style="height:53px; padding-top:10px;"><asp:ImageButton ID="ib_exit"  runat="server" ImageUrl="~/Res/images/menu4.png" Width="40px" Height="40px" OnClientClick="HiddenOrShowDivByfixname('div_menu');return false;" /></div><%--setting2.png--%>
                 </div>
                 <div id="Navigation2" class="lss-bannercolor-black" style="line-height:53px;height:53px;" runat="server" visible="false">
                     <div class="col-xs-2" >
@@ -38,7 +38,7 @@
                     <div class="col-xs-6 lsf-center lsf-fontsizem1" style="color:white;font-weight:bold" ><asp:Literal ID="Literal1" runat="server"></asp:Literal></div>
                 </div>
                 <div fixname="div_menu" style="border-radius:0%; position:absolute; z-index:99; right:18px; bottom:-60px; background-color:#f3f7f9; width:90px; height:60px; border:solid 0px black; display:none">
-                    <div style="padding-left:4px; padding-top:4px; font-weight:bold; "><asp:LinkButton ID="LB_MSG" runat="server" Text="Message" PostBackUrl="~/Pages/Announcement.aspx?activetab=1"/></div>
+                    <div style="padding-left:4px; padding-top:4px; font-weight:bold; "><asp:LinkButton ID="LB_MSG" runat="server" Text="Message" PostBackUrl="~/Pages/Announcement.aspx?activetab=1"/><asp:Label Style="color:red;" ID="lb_unreadCount" runat="server" Text="(0)"></asp:Label></div>
                     <div style="padding-left:4px; padding-top:4px; font-weight:bold;"><asp:LinkButton ID="LB_Setup" runat="server" Text="Setup" PostBackUrl="~/Pages/Setting.aspx"/></div>
                 </div>
             </div>

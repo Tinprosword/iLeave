@@ -7,8 +7,9 @@ using System.Web.UI.WebControls;
 
 namespace WEBUI.Controls
 {
-    public partial class leave : System.Web.UI.MasterPage
+    public partial class leave : System.Web.UI.MasterPage,BLL.ILoginPageMaster
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             lt_jsfixmsg.Text = "";
@@ -118,6 +119,18 @@ namespace WEBUI.Controls
             }
 
             return result;
+        }
+
+        public void ReSetMessageCountLable(int UnReadmsgCount)
+        {
+            if (UnReadmsgCount > 0)
+            {
+                this.lb_unreadCount.Text = "(" + UnReadmsgCount.ToString() + ")";
+            }
+            else
+            {
+                this.lb_unreadCount.Text = "";
+            }
         }
 
     }

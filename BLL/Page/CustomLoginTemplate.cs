@@ -10,6 +10,13 @@ using System.Web;
 
 namespace BLL
 {
+    //master is in ui. so need interface  for bll to control ui.
+    public interface ILoginPageMaster
+    {
+        void ReSetMessageCountLable(int count);
+    }
+
+
     public abstract class CustomLoginTemplate : LSLibrary.WebAPP.PageTemplate_Common
     {
         public LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> loginer;
@@ -45,8 +52,34 @@ namespace BLL
         {
             CustomLoginTemplate.SetPageLanguage(this);
             CustomLoginTemplate.ResetFormWhenPC(this);
+            CustomLoginTemplate.SetMessageUnreadCount(this, loginer);
             base.Page_Load(sender, e);
         }
+
+        public static void SetMessageUnreadCount(System.Web.UI.Page page, LSLibrary.WebAPP.LoginUser<MODEL.UserInfo> loginer)
+        {
+            if (page != null)
+            {
+                var theMasterPage = page.Master;
+                if (theMasterPage != null)
+                {
+                    if (theMasterPage is ILoginPageMaster)
+                    {
+                        if (loginer != null)
+                        {
+                            var theCount= BLL.Announcement.Announce_GetUnReadAnnouncement(loginer.userInfo.firsteid ?? 0);
+                            int messageCount = 0;
+                            if (theCount != null && theCount.Count > 0)
+                            {
+                                messageCount = theCount.Count;
+                            }
+                            ((ILoginPageMaster)theMasterPage).ReSetMessageCountLable(messageCount);//todo unreadmessage
+                        }
+                    }
+                }
+            }
+        }
+        
 
         //就是大屏幕的时候，不需要充满，而是固定大小并居中的效果。
         //ceshi .iphone. android . and their brower ,and pc.
