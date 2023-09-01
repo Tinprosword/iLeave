@@ -29,7 +29,13 @@
                             <tr><td><img src="../Res/images/dataworld-150px.png" style="height:47px; width:80px;" /></td><td style="padding-left:40px;"><img src="../Res/images/DW-iHR-150px.png" style=" height:51px; width:90px;"/> </td></tr>
                         </table>
 	                </div>
-	                <div class="col-xs-1"  style="height:53px; padding-top:10px;"><asp:ImageButton ID="ib_exit"  runat="server" ImageUrl="~/Res/images/menu4.png" Width="40px" Height="40px" OnClientClick="HiddenOrShowDivByfixname('div_menu');return false;" /></div><%--setting2.png--%>
+	                <div class="col-xs-1"  style="height:53px; padding-top:10px;">
+                        <asp:ImageButton ID="ib_exit"  runat="server" ImageUrl="~/Res/images/menu4.png" Width="40px" Height="40px" OnClientClick="HiddenOrShowDivByfixname('div_menu');return false;" />
+                        <div style="float:left;color:red;position:absolute;top:8px;left:40px">
+                            <asp:Image ID="img_unreadNumber" runat="server" ImageUrl="~/Res/images/redcicle.png" Width="16px" Height="16px" Visible="false"/>
+                        </div>
+	                </div><%--setting2.png--%>
+                    
                 </div>
                 <div id="Navigation2" class="lss-bannercolor-black" style="line-height:53px;height:53px;" runat="server" visible="false">
                     <div class="col-xs-2" >

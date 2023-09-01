@@ -53,6 +53,7 @@ namespace WEBUI.Controls
             else
             {
                 this.Navigation.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#06468c");
+                this.img_unreadNumber.Visible = false;
             }
 
             this.ib_exit.Visible = ismainpage;
@@ -131,6 +132,20 @@ namespace WEBUI.Controls
             {
                 this.lb_unreadCount.Text = "";
             }
+            //this.lb_unreadCount.Visible = false;//2个message count 不好看。
+
+
+            if (UnReadmsgCount > 0)
+            {
+                string numberPath = BLL.common.GetAttachmentNumberPath(UnReadmsgCount);
+                this.img_unreadNumber.ImageUrl = numberPath;
+                this.img_unreadNumber.Visible = !string.IsNullOrEmpty(numberPath);
+            }
+            else
+            {
+                this.img_unreadNumber.Visible = false;
+            }
+            
         }
 
     }

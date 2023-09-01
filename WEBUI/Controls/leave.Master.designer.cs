@@ -85,6 +85,15 @@ namespace WEBUI.Controls {
         protected global::System.Web.UI.WebControls.ImageButton ib_exit;
         
         /// <summary>
+        /// img_unreadNumber 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image img_unreadNumber;
+        
+        /// <summary>
         /// Navigation2 控件。
         /// </summary>
         /// <remarks>

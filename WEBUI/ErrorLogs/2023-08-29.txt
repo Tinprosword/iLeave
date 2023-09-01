@@ -1,0 +1,17 @@
+ip:192.168.66.132
+DataTime：2023/8/29 11:06:42
+Url：http://192.168.66.101/webui/webservices/webservices.aspx?action=login_simple
+Message：服务器无法处理请求。 ---> 无法打开登录所请求的数据库 "DWIHR_DEMO"。登录失败。
+用户 'sa' 登录失败。
+Source：System.Web.Services
+Type：System.Web.Services.Protocols.SoapException
+Function：System.Object[] ReadResponse(System.Web.Services.Protocols.SoapClientMessage, System.Net.WebResponse, System.IO.Stream, Boolean)
+Trace：   在 System.Web.Services.Protocols.SoapHttpClientProtocol.ReadResponse(SoapClientMessage message, WebResponse response, Stream responseStream, Boolean asyncCall)
+   在 System.Web.Services.Protocols.SoapHttpClientProtocol.Invoke(String methodName, Object[] parameters)
+   在 WebServiceLayer.WebReference_user.UserManagementV2.AuthenticateUser(String UserName, String PasswordHash) 位置 C:\Users\Administrator\source\repos\WebIleave\WebServiceLayer\Web References\WebReference_user\Reference.cs:行号 813
+   在 BLL.User_wsref.CheckLogin(String uid, String password) 位置 C:\Users\Administrator\source\repos\WebIleave\BLL\User_wsref.cs:行号 31
+   在 WEBUI.webservices.webservices.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\webservices\webservices.aspx.cs:行号 73
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
