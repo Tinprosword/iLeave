@@ -10,6 +10,10 @@ namespace BLL
 {
     public class Announcement
     {
+        public static void DeviceID_InsertOrUpdateDeviceID(int iosOrAndroid ,string deviceid,string username)
+        {
+            MyWebService.GlobalWebServices.ws_Ileave_Other.DeviceID_InsertOrUpdateDeviceID(iosOrAndroid, deviceid, username);
+        }
 
         public static string GetFileName(string filePath)
         {

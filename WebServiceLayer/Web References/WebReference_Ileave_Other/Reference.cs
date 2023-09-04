@@ -49,6 +49,8 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         
         private System.Threading.SendOrPostCallback Attachment_GetFileNameOperationCompleted;
         
+        private System.Threading.SendOrPostCallback DeviceID_InsertOrUpdateDeviceIDOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -116,6 +118,9 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         
         /// <remarks/>
         public event Attachment_GetFileNameCompletedEventHandler Attachment_GetFileNameCompleted;
+        
+        /// <remarks/>
+        public event DeviceID_InsertOrUpdateDeviceIDCompletedEventHandler DeviceID_InsertOrUpdateDeviceIDCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Test_GetList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -404,6 +409,38 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
             if ((this.Attachment_GetFileNameCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.Attachment_GetFileNameCompleted(this, new Attachment_GetFileNameCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/DeviceID_InsertOrUpdateDeviceID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void DeviceID_InsertOrUpdateDeviceID(int iosOrAndroid, string deviceID, string uid) {
+            this.Invoke("DeviceID_InsertOrUpdateDeviceID", new object[] {
+                        iosOrAndroid,
+                        deviceID,
+                        uid});
+        }
+        
+        /// <remarks/>
+        public void DeviceID_InsertOrUpdateDeviceIDAsync(int iosOrAndroid, string deviceID, string uid) {
+            this.DeviceID_InsertOrUpdateDeviceIDAsync(iosOrAndroid, deviceID, uid, null);
+        }
+        
+        /// <remarks/>
+        public void DeviceID_InsertOrUpdateDeviceIDAsync(int iosOrAndroid, string deviceID, string uid, object userState) {
+            if ((this.DeviceID_InsertOrUpdateDeviceIDOperationCompleted == null)) {
+                this.DeviceID_InsertOrUpdateDeviceIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeviceID_InsertOrUpdateDeviceIDOperationCompleted);
+            }
+            this.InvokeAsync("DeviceID_InsertOrUpdateDeviceID", new object[] {
+                        iosOrAndroid,
+                        deviceID,
+                        uid}, this.DeviceID_InsertOrUpdateDeviceIDOperationCompleted, userState);
+        }
+        
+        private void OnDeviceID_InsertOrUpdateDeviceIDOperationCompleted(object arg) {
+            if ((this.DeviceID_InsertOrUpdateDeviceIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeviceID_InsertOrUpdateDeviceIDCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1034,6 +1071,10 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void DeviceID_InsertOrUpdateDeviceIDCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

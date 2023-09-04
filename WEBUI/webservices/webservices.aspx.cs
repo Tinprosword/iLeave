@@ -34,27 +34,27 @@ namespace WEBUI.webservices
                         Response.Write(BLL.Other.GetVersion());
                         Response.End();
                     }
-                    else if(Actionname== "saveheight")
+                    else if (Actionname == "saveheight")
                     {
                         string height = Request.QueryString["sc"];
                         int intHeight = 0;
-                        int.TryParse(height,out intHeight);
+                        int.TryParse(height, out intHeight);
                         LSLibrary.WebAPP.PageSessionHelper.SetValue(intHeight, "sh");
                     }
-                    else if(Actionname=="login")
+                    else if (Actionname == "login")
                     {
                         //<Result>5322</Result>
                         //<SessionID>ipqkjy3jts4vzq45ukat4yqn</SessionID >
                         string UserName = "";
                         string PasswordHash = "";
-                        if(!string.IsNullOrEmpty( Request["UserName"]) && !string.IsNullOrEmpty(Request["PasswordHash"]))
+                        if (!string.IsNullOrEmpty(Request["UserName"]) && !string.IsNullOrEmpty(Request["PasswordHash"]))
                         {
                             UserName = Request["UserName"];
                             PasswordHash = Request["PasswordHash"];
-                            var loginresult= BLL.User_wsref.CheckLogin(UserName, PasswordHash);
+                            var loginresult = BLL.User_wsref.CheckLogin(UserName, PasswordHash);
                             Response.Clear();
 
-                            string result= LSLibrary.XmlConvertor.ObjectToXml(loginresult, true);
+                            string result = LSLibrary.XmlConvertor.ObjectToXml(loginresult, true);
 
                             Response.Write(result);
                             Response.End();
@@ -83,6 +83,10 @@ namespace WEBUI.webservices
                             Response.End();
                         }
                     }
+                    else if(Actionname=="common_action")
+                    {
+                        commonaction();
+                    }
                     else
                     {
                         Response.Clear();
@@ -95,6 +99,35 @@ namespace WEBUI.webservices
                     Response.Clear();
                     Response.Write(getXml(""));
                     Response.End();
+                }
+            }
+        }
+
+        public void commonaction()
+        {
+            string actionType = Request["action_type"];
+            string actionKey = Request["acion_key"];
+            string actionValue = Request["action_value"];
+            if (actionType == "deviceid")
+            {
+                string username = actionKey;
+                string devicedid = actionValue;
+
+                if (string.IsNullOrEmpty(actionKey) || string.IsNullOrEmpty(actionValue))
+                {
+                    return;
+                }
+
+                LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.MobilWebHelper.GetClientTypeBy_RequestUserAgent();
+
+
+                if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.android )//android
+                {
+                    BLL.Announcement.DeviceID_InsertOrUpdateDeviceID(2, devicedid, username);
+                }
+                else if(ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone )
+                {
+                    BLL.Announcement.DeviceID_InsertOrUpdateDeviceID(1, devicedid, username);
                 }
             }
         }

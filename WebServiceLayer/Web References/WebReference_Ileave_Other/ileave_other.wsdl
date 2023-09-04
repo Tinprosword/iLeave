@@ -192,6 +192,18 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="DeviceID_InsertOrUpdateDeviceID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="iosOrAndroid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="uid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeviceID_InsertOrUpdateDeviceIDResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
       <s:element name="ArrayOfT_Announcement" nillable="true" type="tns:ArrayOfT_Announcement" />
       <s:element name="t_Announcement" nillable="true" type="tns:t_Announcement" />
@@ -262,6 +274,12 @@
   <wsdl:message name="Attachment_GetFileNameSoapOut">
     <wsdl:part name="parameters" element="tns:Attachment_GetFileNameResponse" />
   </wsdl:message>
+  <wsdl:message name="DeviceID_InsertOrUpdateDeviceIDSoapIn">
+    <wsdl:part name="parameters" element="tns:DeviceID_InsertOrUpdateDeviceID" />
+  </wsdl:message>
+  <wsdl:message name="DeviceID_InsertOrUpdateDeviceIDSoapOut">
+    <wsdl:part name="parameters" element="tns:DeviceID_InsertOrUpdateDeviceIDResponse" />
+  </wsdl:message>
   <wsdl:message name="Test_GetListHttpPostIn" />
   <wsdl:message name="Test_GetListHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfString" />
@@ -319,6 +337,12 @@
   <wsdl:message name="Attachment_GetFileNameHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="DeviceID_InsertOrUpdateDeviceIDHttpPostIn">
+    <wsdl:part name="iosOrAndroid" type="s:string" />
+    <wsdl:part name="deviceID" type="s:string" />
+    <wsdl:part name="uid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeviceID_InsertOrUpdateDeviceIDHttpPostOut" />
   <wsdl:portType name="ILeave_OtherSoap">
     <wsdl:operation name="Test_GetList">
       <wsdl:input message="tns:Test_GetListSoapIn" />
@@ -359,6 +383,10 @@
     <wsdl:operation name="Attachment_GetFileName">
       <wsdl:input message="tns:Attachment_GetFileNameSoapIn" />
       <wsdl:output message="tns:Attachment_GetFileNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeviceID_InsertOrUpdateDeviceID">
+      <wsdl:input message="tns:DeviceID_InsertOrUpdateDeviceIDSoapIn" />
+      <wsdl:output message="tns:DeviceID_InsertOrUpdateDeviceIDSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILeave_OtherHttpPost">
@@ -401,6 +429,10 @@
     <wsdl:operation name="Attachment_GetFileName">
       <wsdl:input message="tns:Attachment_GetFileNameHttpPostIn" />
       <wsdl:output message="tns:Attachment_GetFileNameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeviceID_InsertOrUpdateDeviceID">
+      <wsdl:input message="tns:DeviceID_InsertOrUpdateDeviceIDHttpPostIn" />
+      <wsdl:output message="tns:DeviceID_InsertOrUpdateDeviceIDHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ILeave_OtherSoap" type="tns:ILeave_OtherSoap">
@@ -488,6 +520,15 @@
     </wsdl:operation>
     <wsdl:operation name="Attachment_GetFileName">
       <soap:operation soapAction="http://tempuri.org/Attachment_GetFileName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeviceID_InsertOrUpdateDeviceID">
+      <soap:operation soapAction="http://tempuri.org/DeviceID_InsertOrUpdateDeviceID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -588,6 +629,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DeviceID_InsertOrUpdateDeviceID">
+      <soap12:operation soapAction="http://tempuri.org/DeviceID_InsertOrUpdateDeviceID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ILeave_OtherHttpPost" type="tns:ILeave_OtherHttpPost">
     <http:binding verb="POST" />
@@ -678,6 +728,13 @@
       <wsdl:output>
         <mime:mimeXml part="Body" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeviceID_InsertOrUpdateDeviceID">
+      <http:operation location="/DeviceID_InsertOrUpdateDeviceID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ILeave_Other">
