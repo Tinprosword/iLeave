@@ -15,7 +15,9 @@ namespace WEBUI.temp
         {}
 
         protected override void InitPage_OnFirstLoad2()
-        {}
+        {
+         
+        }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {}
