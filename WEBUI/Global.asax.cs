@@ -10,9 +10,27 @@ namespace WEBUI
 {
     public class Global : System.Web.HttpApplication
     {
+        private System.Threading.Timer g_schuduleCheck_1min = null;
+        private string patherror = "";
+
         protected void Application_Start(object sender, EventArgs e)
         {
             BLL.GlobalVariate.pageServer = Server;//把server工具类给bll.这样就不用每个页面都赋值,因为页面不是永远在,而application是一直存在
+            StartGenerateFileSchedule();
+        }
+
+        private void StartGenerateFileSchedule()
+        {
+            LSLibrary.logHelper.WriteFILEToWebLOG("Application_Start: shedule:", patherror);
+            patherror=Server.MapPath("~/ErrorLogs/");
+            int periodMilliSeconds = 1000 * 10;//10s
+
+            g_schuduleCheck_1min = new System.Threading.Timer(new System.Threading.TimerCallback(FindShedules), 2, 0, periodMilliSeconds);
+        }
+
+        private void FindShedules(object obj)
+        {
+            LSLibrary.logHelper.WriteFILEToWebLOG("loop: shedule:",patherror);
         }
 
         protected void Session_Start(object sender, EventArgs e)
