@@ -23,14 +23,15 @@ namespace WEBUI
         {
             LSLibrary.logHelper.WriteFILEToWebLOG("Application_Start: shedule:", patherror);
             patherror=Server.MapPath("~/ErrorLogs/");
-            int periodMilliSeconds = 1000 * 10;//10s
-
-            g_schuduleCheck_1min = new System.Threading.Timer(new System.Threading.TimerCallback(FindShedules), 2, 0, periodMilliSeconds);
+            int periodMilliSeconds = 1000 * 60;//10s
+            //new System.Threading.Thread(FindShedules);
+            g_schuduleCheck_1min = new System.Threading.Timer(new System.Threading.TimerCallback(FindShedules), 2, 0,periodMilliSeconds);
         }
 
         private void FindShedules(object obj)
         {
             LSLibrary.logHelper.WriteFILEToWebLOG("loop: shedule:",patherror);
+            BLL.Announcement.PushNotice();
         }
 
         protected void Session_Start(object sender, EventArgs e)

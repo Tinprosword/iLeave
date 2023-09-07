@@ -17,6 +17,47 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetUnPushAllDeviceIDs_ios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="announceid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnPushAllDeviceIDs_iosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUnPushAllDeviceIDs_iosResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOneUnPushID">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetOneUnPushIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOneUnPushIDResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetPushed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="announceid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="androidOrIos" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="deviceid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetPushedResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="Announce_GetAnnouncementByFirstEid">
         <s:complexType>
           <s:sequence>
@@ -106,11 +147,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfInt">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="Announce_GetAttachementByAnnounceID">
         <s:complexType>
           <s:sequence>
@@ -205,9 +241,9 @@
         <s:complexType />
       </s:element>
       <s:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
+      <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
       <s:element name="ArrayOfT_Announcement" nillable="true" type="tns:ArrayOfT_Announcement" />
       <s:element name="t_Announcement" nillable="true" type="tns:t_Announcement" />
-      <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
       <s:element name="ArrayOfT_Attachment" nillable="true" type="tns:ArrayOfT_Attachment" />
       <s:element name="base64Binary" nillable="true" type="s:base64Binary" />
       <s:element name="t_Attachment" nillable="true" type="tns:t_Attachment" />
@@ -219,6 +255,24 @@
   </wsdl:message>
   <wsdl:message name="Test_GetListSoapOut">
     <wsdl:part name="parameters" element="tns:Test_GetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUnPushAllDeviceIDs_iosSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUnPushAllDeviceIDs_ios" />
+  </wsdl:message>
+  <wsdl:message name="GetUnPushAllDeviceIDs_iosSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUnPushAllDeviceIDs_iosResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOneUnPushIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOneUnPushID" />
+  </wsdl:message>
+  <wsdl:message name="GetOneUnPushIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOneUnPushIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetPushedSoapIn">
+    <wsdl:part name="parameters" element="tns:SetPushed" />
+  </wsdl:message>
+  <wsdl:message name="SetPushedSoapOut">
+    <wsdl:part name="parameters" element="tns:SetPushedResponse" />
   </wsdl:message>
   <wsdl:message name="Announce_GetAnnouncementByFirstEidSoapIn">
     <wsdl:part name="parameters" element="tns:Announce_GetAnnouncementByFirstEid" />
@@ -284,6 +338,22 @@
   <wsdl:message name="Test_GetListHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfString" />
   </wsdl:message>
+  <wsdl:message name="GetUnPushAllDeviceIDs_iosHttpPostIn">
+    <wsdl:part name="announceid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUnPushAllDeviceIDs_iosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetOneUnPushIDHttpPostIn" />
+  <wsdl:message name="GetOneUnPushIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="SetPushedHttpPostIn">
+    <wsdl:part name="announceid" type="s:string" />
+    <wsdl:part name="androidOrIos" type="s:string" />
+    <wsdl:part name="deviceid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetPushedHttpPostOut" />
   <wsdl:message name="Announce_GetAnnouncementByFirstEidHttpPostIn">
     <wsdl:part name="firstEID" type="s:string" />
   </wsdl:message>
@@ -348,6 +418,18 @@
       <wsdl:input message="tns:Test_GetListSoapIn" />
       <wsdl:output message="tns:Test_GetListSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetUnPushAllDeviceIDs_ios">
+      <wsdl:input message="tns:GetUnPushAllDeviceIDs_iosSoapIn" />
+      <wsdl:output message="tns:GetUnPushAllDeviceIDs_iosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOneUnPushID">
+      <wsdl:input message="tns:GetOneUnPushIDSoapIn" />
+      <wsdl:output message="tns:GetOneUnPushIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPushed">
+      <wsdl:input message="tns:SetPushedSoapIn" />
+      <wsdl:output message="tns:SetPushedSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="Announce_GetAnnouncementByFirstEid">
       <wsdl:input message="tns:Announce_GetAnnouncementByFirstEidSoapIn" />
       <wsdl:output message="tns:Announce_GetAnnouncementByFirstEidSoapOut" />
@@ -394,6 +476,18 @@
       <wsdl:input message="tns:Test_GetListHttpPostIn" />
       <wsdl:output message="tns:Test_GetListHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetUnPushAllDeviceIDs_ios">
+      <wsdl:input message="tns:GetUnPushAllDeviceIDs_iosHttpPostIn" />
+      <wsdl:output message="tns:GetUnPushAllDeviceIDs_iosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOneUnPushID">
+      <wsdl:input message="tns:GetOneUnPushIDHttpPostIn" />
+      <wsdl:output message="tns:GetOneUnPushIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPushed">
+      <wsdl:input message="tns:SetPushedHttpPostIn" />
+      <wsdl:output message="tns:SetPushedHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="Announce_GetAnnouncementByFirstEid">
       <wsdl:input message="tns:Announce_GetAnnouncementByFirstEidHttpPostIn" />
       <wsdl:output message="tns:Announce_GetAnnouncementByFirstEidHttpPostOut" />
@@ -439,6 +533,33 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Test_GetList">
       <soap:operation soapAction="http://tempuri.org/Test_GetList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnPushAllDeviceIDs_ios">
+      <soap:operation soapAction="http://tempuri.org/GetUnPushAllDeviceIDs_ios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOneUnPushID">
+      <soap:operation soapAction="http://tempuri.org/GetOneUnPushID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPushed">
+      <soap:operation soapAction="http://tempuri.org/SetPushed" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -548,6 +669,33 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetUnPushAllDeviceIDs_ios">
+      <soap12:operation soapAction="http://tempuri.org/GetUnPushAllDeviceIDs_ios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOneUnPushID">
+      <soap12:operation soapAction="http://tempuri.org/GetOneUnPushID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPushed">
+      <soap12:operation soapAction="http://tempuri.org/SetPushed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Announce_GetAnnouncementByFirstEid">
       <soap12:operation soapAction="http://tempuri.org/Announce_GetAnnouncementByFirstEid" style="document" />
       <wsdl:input>
@@ -649,6 +797,31 @@
       <wsdl:output>
         <mime:mimeXml part="Body" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnPushAllDeviceIDs_ios">
+      <http:operation location="/GetUnPushAllDeviceIDs_ios" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOneUnPushID">
+      <http:operation location="/GetOneUnPushID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPushed">
+      <http:operation location="/SetPushed" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
     </wsdl:operation>
     <wsdl:operation name="Announce_GetAnnouncementByFirstEid">
       <http:operation location="/Announce_GetAnnouncementByFirstEid" />

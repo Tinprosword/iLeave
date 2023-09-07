@@ -10,6 +10,94 @@ namespace BLL
 {
     public class Announcement
     {
+        //public class PushInfo
+        //{
+        //    public int AnnouncementID;
+        //    public List<string> DevicesIDs;
+
+        //    public PushInfo(int announcementID, List<string> devicesIDs)
+        //    {
+        //        AnnouncementID = announcementID;
+        //        DevicesIDs = devicesIDs;
+        //    }
+        //}
+
+        #region push notice
+        public static void PushNotice()
+        {
+            List<int> announceIDs = GetOneUnPushID();
+
+            foreach (int announceID in announceIDs)
+            {
+                List<string> deviceids_ios = GetUnPushAllDeviceIDs_ios(announceID);
+                List<string> deviceids_android = GetUnPushAllDeviceIDs_android(announceID);
+
+                var announce = GetAnouncementByID(announceID);
+                string announce_title = announce.Subject;
+
+
+                foreach (string thedeviceid in deviceids_ios)
+                {
+                    pushIOSNotice(announce_title, thedeviceid);
+                    SetPushed(announceID, 1, thedeviceid);
+                }
+                foreach (string thedeviceid in deviceids_android)
+                {
+                    pushAndroidNotice(announce_title, thedeviceid);
+                    SetPushed(announceID, 2, thedeviceid);
+                }
+            }
+        }
+
+        private static void pushIOSNotice(string title, string deviceid)
+        {
+            //todo push call python
+            string pythonPath = "C:\\Users\\Administrator\\source\\repos\\WebIleave\\WEBUI\\pythonPro\\python-3.8.2rc2-embed-amd64\\python.exe";
+            string pythonFunctionFilename = "C:\\Users\\Administrator\\source\\repos\\WebIleave\\WEBUI\\pythonPro\\apns\\anps.py";
+            title = safePythnParatemter(title);
+            LSLibrary.pythenHelper.RunPythonScript(pythonPath, pythonFunctionFilename, "-u",new string[] { title});
+        }
+
+        private static string safePythnParatemter(string par)
+        {
+            return par.Replace(' ', '_');
+        }
+
+        private static void pushAndroidNotice(string title, string deviceid)
+        {
+            //todo push call python
+        }
+
+        public static List<int> GetOneUnPushID()
+        {
+            List<int> result = new List<int>();
+            result = MyWebService.GlobalWebServices.ws_Ileave_Other.GetOneUnPushID().ToList();
+            return result;
+        }
+
+        
+        public static List<string> GetUnPushAllDeviceIDs_ios(int anncountid)
+        {
+            List<string> result = new List<string>();
+            result = MyWebService.GlobalWebServices.ws_Ileave_Other.GetUnPushAllDeviceIDs_ios(anncountid).ToList();
+            return result;
+        }
+
+        public static List<string> GetUnPushAllDeviceIDs_android(int anncountid)
+        {
+            List<string> result = new List<string>();
+            //todo push
+            return result;
+        }
+
+        public static void SetPushed(int announceid,int androidOrIos,string deviceid)
+        {
+            MyWebService.GlobalWebServices.ws_Ileave_Other.SetPushed(announceid, androidOrIos, deviceid);
+        }
+
+
+        #endregion
+
         public static void DeviceID_InsertOrUpdateDeviceID(int iosOrAndroid ,string deviceid,string username)
         {
             MyWebService.GlobalWebServices.ws_Ileave_Other.DeviceID_InsertOrUpdateDeviceID(iosOrAndroid, deviceid, username);

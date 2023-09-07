@@ -8,14 +8,14 @@ a=eval(sys.argv[1])
 async def run(title):
     
     apns_key_client = APNs(
-        key='C:\\Users\\Administrator\\source\\repos\\WebIleave\\WEBUI\\pythonPro\\apns\\ileave_apns_develop.p8',
-        key_id='ZKLB3T3TP6',
-        team_id='LG8S9KFR3V',
-        topic='com.dwsolutions.dw-ihr',  # Bundle ID
-        use_sandbox=True,
+        key='C:\\Users\\Administrator\\source\\repos\\WebIleave\\WEBUI\\pythonPro\\apns\\apns-key.p8',
+        key_id='A533U9KJ66',
+        team_id='84Z2AMFMF3',
+        topic='com.mr-noone.apns-tool',  # Bundle ID
+        use_sandbox=False,
     )
     request = NotificationRequest(
-        device_token='0ea0ddfb0e67e098f7545d99578ee4882033518336ed18b598703b9edf668f5e',
+        device_token='0EA5869282D55F4EFCC1B172D40DF9A42B48DECC61E6E9275260A25CA63FF9F7',
         message = {
             "aps": {
                 "alert": a,
