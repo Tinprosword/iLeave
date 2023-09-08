@@ -75,6 +75,17 @@ namespace BLL
             return result;
         }
 
+        public static bool android_googlePushNotice()
+        {
+            bool result = false;
+            var tempResult= LSLibrary.WebAPP.WebConfig.getValue("androidGooglePush");
+            if (!string.IsNullOrEmpty(tempResult) && tempResult=="1")
+            {
+                result = true;
+            }
+            return result;
+        }
+
         
         public static List<string> GetUnPushAllDeviceIDs_ios(int anncountid)
         {

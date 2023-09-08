@@ -3,7 +3,7 @@ import asyncio
 from uuid import uuid4
 from aioapns import APNs, NotificationRequest, PushType
 
-a=eval(sys.argv[1])
+a=sys.argv[1]
 
 async def run(title):
     
@@ -18,7 +18,7 @@ async def run(title):
         device_token='0EA5869282D55F4EFCC1B172D40DF9A42B48DECC61E6E9275260A25CA63FF9F7',
         message = {
             "aps": {
-                "alert": a,
+                "alert": title,
                 "badge": "1",
             }
         },
