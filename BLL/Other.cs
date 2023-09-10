@@ -23,6 +23,16 @@ namespace BLL
         //}
 
         #region push notice
+        public static List<string> GetAndroidLocalPush(string username)
+        {
+            List<string> result = new List<string>();
+
+
+            return result;
+        }
+
+
+
         public static void PushNotice()
         {
             List<int> announceIDs = GetOneUnPushID();

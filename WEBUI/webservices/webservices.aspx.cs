@@ -11,7 +11,18 @@ namespace WEBUI.webservices
 {
     public partial class webservices : System.Web.UI.Page
     {
-        
+        public class MyPushnotiece
+        {
+            public MyPushnotiece(string title)
+            {
+                this.title = title;
+            }
+
+            public MyPushnotiece() { }
+
+            public string title { get; set; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -121,14 +132,34 @@ namespace WEBUI.webservices
                 LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.MobilWebHelper.GetClientTypeBy_RequestUserAgent();
 
 
-                if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.android )//android
+                if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.android)//android
                 {
                     BLL.Announcement.DeviceID_InsertOrUpdateDeviceID(2, devicedid, username);
                 }
-                else if(ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone )
+                else if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone)
                 {
                     BLL.Announcement.DeviceID_InsertOrUpdateDeviceID(1, devicedid, username);
                 }
+            }
+            else if (actionType == "GetMyAndroidLocalPushNotice")
+            {
+                string uid = actionKey;
+
+                if (string.IsNullOrEmpty(actionKey))
+                {
+                    return;
+                }
+
+                List<MyPushnotiece> notices = new List<MyPushnotiece>();
+                notices.Add(new MyPushnotiece(uid+"n1"));
+                notices.Add(new MyPushnotiece(uid + "n2"));
+
+                Response.Clear();
+
+                string ttresult = LSLibrary.XmlConvertor.ObjectToXml(notices, true);
+
+                Response.Write(ttresult);
+                Response.End();
             }
         }
 

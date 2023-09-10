@@ -1,0 +1,20 @@
+ip:192.168.19.70
+DataTime：2023/9/10 13:04:13
+Url：http://192.168.19.70/webui/webservices/webservices.aspx?action=common_action&action_type=GetMyAndroidLocalPushNotice&acion_key=d102&action_value=1
+Message：WEBUI.webservices.webservices.MyPushnotiece 无法序列化，因为它没有无参数的构造函数。
+Source：System.Xml
+Type：System.InvalidOperationException
+Function：Void CheckSupported()
+Trace：   在 System.Xml.Serialization.TypeDesc.CheckSupported()
+   在 System.Xml.Serialization.TypeDesc.CheckSupported()
+   在 System.Xml.Serialization.TypeScope.GetTypeDesc(Type type, MemberInfo source, Boolean directReference, Boolean throwOnError)
+   在 System.Xml.Serialization.ModelScope.GetTypeModel(Type type, Boolean directReference)
+   在 System.Xml.Serialization.XmlReflectionImporter.ImportTypeMapping(Type type, XmlRootAttribute root, String defaultNamespace)
+   在 System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)
+   在 LSLibrary.XmlConvertor.ObjectToXml(Object obj, Boolean toBeIndented) 位置 C:\Users\Administrator\source\repos\WebIleave\Function\LSLibrary_dotNet\FileUtil\XmlConvertor.cs:行号 68
+   在 WEBUI.webservices.webservices.commonaction() 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\webservices\webservices.aspx.cs:行号 157
+   在 WEBUI.webservices.webservices.Page_Load(Object sender, EventArgs e) 位置 C:\Users\Administrator\source\repos\WebIleave\WEBUI\webservices\webservices.aspx.cs:行号 97
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+********************************************************************************************
