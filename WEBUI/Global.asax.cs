@@ -12,6 +12,7 @@ namespace WEBUI
     {
         private System.Threading.Timer g_schuduleCheck_1min = null;
         private string patherror = "";
+        private string pathPython = "";
 
         protected void Application_Start(object sender, EventArgs e)
         {
@@ -23,7 +24,7 @@ namespace WEBUI
         {
             LSLibrary.logHelper.WriteFILEToWebLOG("Application_Start: shedule:", patherror);
             patherror=Server.MapPath("~/ErrorLogs/");
-            int periodMilliSeconds = 1000 * 60;//10s
+            int periodMilliSeconds = 1000 * 40;//10s
             //new System.Threading.Thread(FindShedules);
             g_schuduleCheck_1min = new System.Threading.Timer(new System.Threading.TimerCallback(FindShedules), 2, 0,periodMilliSeconds);
         }
@@ -31,7 +32,7 @@ namespace WEBUI
         private void FindShedules(object obj)
         {
             LSLibrary.logHelper.WriteFILEToWebLOG("loop: shedule:",patherror);
-            BLL.Announcement.PushNotice();
+            BLL.Announcement.PushNotice(BLL.GlobalVariate.pageServer);
         }
 
         protected void Session_Start(object sender, EventArgs e)

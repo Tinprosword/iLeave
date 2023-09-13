@@ -23,17 +23,34 @@ namespace BLL
         //}
 
         #region push notice
-        public static List<string> GetAndroidLocalPush(string username)
+        public static List<int> GetAndroidLocalPush(string username)
         {
-            List<string> result = new List<string>();
+            //1.isLocal 2.get need push announceid 3.is me ,4 not push
+            List<int> result = new List<int>();
+            bool isgooglePush = android_googlePushNotice();
+            if (!isgooglePush)
+            {
+                result = GetOneUnPushID();
+                if (result != null && result.Count() > 0)
+                {
+                    var myPushed = MyWebService.GlobalWebServices.ws_Ileave_Other.GetPushedAnnounceIDs_AndroidLocal(username);
+                    result = result.Where(x => myPushed.Contains(x.ToString()) == false).ToList();
 
+                    if (result != null && result.Count() > 0)
+                    {
+                        var myAnnounce = MyWebService.GlobalWebServices.ws_Ileave_Other.Announce_GetAnnouncementByUsername(username).ToList();
+                        var myAnnounce_id = myAnnounce.Select(x => x.ID).ToList();
 
+                        result = result.Where(x => myAnnounce_id.Contains(x)).ToList();
+                    }
+                }
+            }
             return result;
         }
 
 
 
-        public static void PushNotice()
+        public static void PushNotice(HttpServerUtility theServer)
         {
             List<int> announceIDs = GetOneUnPushID();
 
@@ -48,24 +65,44 @@ namespace BLL
 
                 foreach (string thedeviceid in deviceids_ios)
                 {
-                    pushIOSNotice(announce_title, thedeviceid);
-                    SetPushed(announceID, 1, thedeviceid);
+                    try
+                    {
+                        pushIOSNotice(announce_title, thedeviceid,theServer);
+                        SetPushed(announceID, WebServiceLayer.WebReference_Ileave_Other.enum_CommonKeyValueTypeCode.Push_Already_ios, thedeviceid);
+                    }
+                    catch(Exception exxx)
+                    {
+                        BLL.common.WriteLog(exxx.Message);
+                    }
                 }
                 foreach (string thedeviceid in deviceids_android)
                 {
-                    pushAndroidNotice(announce_title, thedeviceid);
-                    SetPushed(announceID, 2, thedeviceid);
+                    try
+                    {
+                        pushAndroidNotice(announce_title, thedeviceid);
+                        SetPushed(announceID, WebServiceLayer.WebReference_Ileave_Other.enum_CommonKeyValueTypeCode.Push_Already_android, thedeviceid);
+                    }
+                    catch (Exception exxx)
+                    {
+                        BLL.common.WriteLog(exxx.Message);
+                    }
                 }
             }
         }
 
-        private static void pushIOSNotice(string title, string deviceid)
+        private static void pushIOSNotice(string title, string deviceid, HttpServerUtility theServer)
         {
             //todo push call python
-            string pythonPath = "C:\\Users\\Administrator\\source\\repos\\WebIleave\\WEBUI\\pythonPro\\python-3.8.2rc2-embed-amd64\\python.exe";
-            string pythonFunctionFilename = "C:\\Users\\Administrator\\source\\repos\\WebIleave\\WEBUI\\pythonPro\\apns\\anps.py";
+            string pythonPath = "";
+            string pythonFunctionFilename = "";
+
+            pythonPath = theServer.MapPath("~/pythonpro/") + "python-3.8.2rc2-embed-amd64\\python.exe";
+            pythonFunctionFilename= theServer.MapPath("~/pythonpro/") + "apns\\anps.py";
+            string p8path= theServer.MapPath("~/pythonpro/") + "apns\\ileave_apns_develop.p8";
+
+
             title = safePythnParatemter(title);
-            LSLibrary.pythenHelper.RunPythonScript(pythonPath, pythonFunctionFilename, "-u",new string[] { title});
+            LSLibrary.pythenHelper.RunPythonScript_iosPush(title, deviceid, pythonPath, pythonFunctionFilename, p8path);
         }
 
         private static string safePythnParatemter(string par)
@@ -85,13 +122,14 @@ namespace BLL
             return result;
         }
 
+        //!null &==1 false
         public static bool android_googlePushNotice()
         {
-            bool result = false;
-            var tempResult= LSLibrary.WebAPP.WebConfig.getValue("androidGooglePush");
+            bool result = true;
+            var tempResult= LSLibrary.WebAPP.WebConfig.getValue("androidLocalPush");
             if (!string.IsNullOrEmpty(tempResult) && tempResult=="1")
             {
-                result = true;
+                result = false;
             }
             return result;
         }
@@ -111,7 +149,7 @@ namespace BLL
             return result;
         }
 
-        public static void SetPushed(int announceid,int androidOrIos,string deviceid)
+        public static void SetPushed(int announceid, WebServiceLayer.WebReference_Ileave_Other.enum_CommonKeyValueTypeCode androidOrIos,string deviceid)
         {
             MyWebService.GlobalWebServices.ws_Ileave_Other.SetPushed(announceid, androidOrIos, deviceid);
         }

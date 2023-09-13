@@ -21,4 +21,5 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
+    <asp:Literal ID="LT_JSDOWNLOAD" runat="server"></asp:Literal>
 </asp:Content>

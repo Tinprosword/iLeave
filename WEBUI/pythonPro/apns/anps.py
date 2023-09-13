@@ -1,33 +1,39 @@
 import sys
 import asyncio
+import os
+import pathlib
 from uuid import uuid4
 from aioapns import APNs, NotificationRequest, PushType
 
-a=eval(sys.argv[1])
+a=sys.argv[1]
+b=sys.argv[2]
+c=sys.argv[3]
+print(c)
 
-async def run(title):
-    
+async def run(title,devicetoken,p8path):
+	#rootPath= os.path.abspath('./')
+	#print('aa')
     apns_key_client = APNs(
-        key='C:\\Users\\Administrator\\source\\repos\\WebIleave\\WEBUI\\pythonPro\\apns\\ileave_apns_develop.p8',
+        key=p8path,
         key_id='9S2ZRZ8C2S',
         team_id='LG8S9KFR3V',
         topic='com.dwsolutions.dw-ihr',  # Bundle ID
         use_sandbox=False,
     )
     request = NotificationRequest(
-        device_token='0ea0ddfb0e67e098f7545d99578ee4882033518336ed18b598703b9edf668f5e',
+        device_token=devicetoken,
         message = {
             "aps": {
-                "alert": a,
+                "alert": title,
                 "badge": "1",
             }
         },
         notification_id=str(uuid4()),  # optional
         time_to_live=3,                # optional
-        push_type=PushType.BACKGROUND,      # optional ALERT backgroud
+        push_type=PushType.ALERT,      # optional ALERT BACKGROUND
     )
     #await apns_cert_client.send_notification(request)
     await apns_key_client.send_notification(request)
 
 loop = asyncio.get_event_loop()
-loop.run_until_complete(run(a))
+loop.run_until_complete(run(a,b,c))

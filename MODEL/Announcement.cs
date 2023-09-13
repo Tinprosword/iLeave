@@ -38,6 +38,7 @@ namespace MODEL
         public static List<LSLibrary.keyValueCommon> GetAttachmentType()
         {
             List<LSLibrary.keyValueCommon> result = new List<LSLibrary.keyValueCommon>();
+            result.Add(new LSLibrary.keyValueCommon(12, "Announcement"));
             result.Add(new LSLibrary.keyValueCommon(100, "Address Proof"));
             result.Add(new LSLibrary.keyValueCommon(101, "Bank Account Document"));
             result.Add(new LSLibrary.keyValueCommon(102, "REQUIRED_PERSON_ATTACHMENT_FOR_CREATE_STAFF"));

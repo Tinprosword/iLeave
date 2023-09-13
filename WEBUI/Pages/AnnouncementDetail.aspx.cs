@@ -134,14 +134,59 @@ namespace WEBUI.Pages
                 {
                     string filePath = attachInfo.Path;
                     string fileName = BLL.Attachment.Attachment_GetFileName(filePath);
-
                     byte[] fileData = BLL.Announcement.GetByteByAttachmentid(attachmentID);
+
                     if (fileData != null && fileData.Length > 0)
                     {
-                        LSLibrary.WebAPP.httpHelper.SimpleDownloadLocalFile_ClearAndEndResponse(fileData, this.Response, fileName);
+                        //区分不同的平台。来download.
+
+                        string agent = HttpContext.Current.Request.UserAgent;
+                        LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.MobilWebHelper.GetClientType(agent);
+                        var cookies = BLL.Page.MyCookieManage.GetCookie();
+
+                        if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.android && cookies.isAppLogin == "1")//android
+                        {
+                            //0.删除超过8小时的文件。1.获得文件的byte[],name  2.在临时文件夹中生成一个临时文件。3.生成 提供下载的js。
+                            BLL.Other.DeleteOlderFiles(Server);
+                            string TempFileUrl = GenerateFile_TempFloderHardCode(fileName, fileData);
+                            string JSDownload = LSLibrary.WebAPP.MyJSHelper.SendMessageToAndroid("DOWNLOAD3", TempFileUrl, HttpContext.Current.Server);
+                            LT_JSDOWNLOAD.Text = JSDownload;
+                        }
+                        else if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone && cookies.isAppLogin == "1")
+                        {
+                            BLL.Other.DeleteOlderFiles(Server);
+                            string TempFileUrl = GenerateFile_TempFloderHardCode(fileName, fileData);
+                            string JSDownload = LSLibrary.WebAPP.MyJSHelper.SendMessageToIphone("DOWNLOAD3", TempFileUrl, HttpContext.Current.Server);
+                            LT_JSDOWNLOAD.Text = JSDownload;
+                        }
+                        else
+                        {
+                            LSLibrary.WebAPP.httpHelper.SimpleDownloadLocalFile_ClearAndEndResponse(fileData, this.Response, fileName);
+                        }
                     }
                 }
             }
         }
+
+        private string GenerateFile_TempFloderHardCode(string tempFileName, byte[] filedate,string tempFloderPath= "~/tempdownload")
+        {
+            string result = "";
+            try
+            {
+                string tempDatetime = System.DateTime.Now.ToString("yyyyMMddHHmmss");
+                string tempFileFolderPath = Server.MapPath(tempFloderPath) + LSLibrary.FileUtil.filepathflag + tempDatetime;
+                string tempFilePath = LSLibrary.FileUtil.GenerateFileName(tempFileFolderPath, tempFileName);
+                string tempFileURL = LSLibrary.WebAPP.httpHelper.GenerateURL("tempdownload/" + tempDatetime + "/" + tempFileName);
+                LSLibrary.FileUtil.CreateFile(tempFilePath, filedate);
+                result = tempFileURL;
+            }
+            catch
+            {
+
+            }
+            return result;
+        }
+
+
     }
 }

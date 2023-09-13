@@ -31,11 +31,17 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         
         private System.Threading.SendOrPostCallback Test_GetListOperationCompleted;
         
+        private System.Threading.SendOrPostCallback Test_GetList2OperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetPushedAnnounceIDs_AndroidLocalOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetUnPushAllDeviceIDs_iosOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetOneUnPushIDOperationCompleted;
         
         private System.Threading.SendOrPostCallback SetPushedOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback Announce_GetAnnouncementByUsernameOperationCompleted;
         
         private System.Threading.SendOrPostCallback Announce_GetAnnouncementByFirstEidOperationCompleted;
         
@@ -99,6 +105,12 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         public event Test_GetListCompletedEventHandler Test_GetListCompleted;
         
         /// <remarks/>
+        public event Test_GetList2CompletedEventHandler Test_GetList2Completed;
+        
+        /// <remarks/>
+        public event GetPushedAnnounceIDs_AndroidLocalCompletedEventHandler GetPushedAnnounceIDs_AndroidLocalCompleted;
+        
+        /// <remarks/>
         public event GetUnPushAllDeviceIDs_iosCompletedEventHandler GetUnPushAllDeviceIDs_iosCompleted;
         
         /// <remarks/>
@@ -106,6 +118,9 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         
         /// <remarks/>
         public event SetPushedCompletedEventHandler SetPushedCompleted;
+        
+        /// <remarks/>
+        public event Announce_GetAnnouncementByUsernameCompletedEventHandler Announce_GetAnnouncementByUsernameCompleted;
         
         /// <remarks/>
         public event Announce_GetAnnouncementByFirstEidCompletedEventHandler Announce_GetAnnouncementByFirstEidCompleted;
@@ -161,6 +176,62 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
             if ((this.Test_GetListCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.Test_GetListCompleted(this, new Test_GetListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Test_GetList2", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] Test_GetList2() {
+            object[] results = this.Invoke("Test_GetList2", new object[0]);
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Test_GetList2Async() {
+            this.Test_GetList2Async(null);
+        }
+        
+        /// <remarks/>
+        public void Test_GetList2Async(object userState) {
+            if ((this.Test_GetList2OperationCompleted == null)) {
+                this.Test_GetList2OperationCompleted = new System.Threading.SendOrPostCallback(this.OnTest_GetList2OperationCompleted);
+            }
+            this.InvokeAsync("Test_GetList2", new object[0], this.Test_GetList2OperationCompleted, userState);
+        }
+        
+        private void OnTest_GetList2OperationCompleted(object arg) {
+            if ((this.Test_GetList2Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Test_GetList2Completed(this, new Test_GetList2CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetPushedAnnounceIDs_AndroidLocal", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] GetPushedAnnounceIDs_AndroidLocal(string androidLocalUID) {
+            object[] results = this.Invoke("GetPushedAnnounceIDs_AndroidLocal", new object[] {
+                        androidLocalUID});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetPushedAnnounceIDs_AndroidLocalAsync(string androidLocalUID) {
+            this.GetPushedAnnounceIDs_AndroidLocalAsync(androidLocalUID, null);
+        }
+        
+        /// <remarks/>
+        public void GetPushedAnnounceIDs_AndroidLocalAsync(string androidLocalUID, object userState) {
+            if ((this.GetPushedAnnounceIDs_AndroidLocalOperationCompleted == null)) {
+                this.GetPushedAnnounceIDs_AndroidLocalOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPushedAnnounceIDs_AndroidLocalOperationCompleted);
+            }
+            this.InvokeAsync("GetPushedAnnounceIDs_AndroidLocal", new object[] {
+                        androidLocalUID}, this.GetPushedAnnounceIDs_AndroidLocalOperationCompleted, userState);
+        }
+        
+        private void OnGetPushedAnnounceIDs_AndroidLocalOperationCompleted(object arg) {
+            if ((this.GetPushedAnnounceIDs_AndroidLocalCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetPushedAnnounceIDs_AndroidLocalCompleted(this, new GetPushedAnnounceIDs_AndroidLocalCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -222,7 +293,7 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SetPushed", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void SetPushed(int announceid, int androidOrIos, string deviceid) {
+        public void SetPushed(int announceid, enum_CommonKeyValueTypeCode androidOrIos, string deviceid) {
             this.Invoke("SetPushed", new object[] {
                         announceid,
                         androidOrIos,
@@ -230,12 +301,12 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         }
         
         /// <remarks/>
-        public void SetPushedAsync(int announceid, int androidOrIos, string deviceid) {
+        public void SetPushedAsync(int announceid, enum_CommonKeyValueTypeCode androidOrIos, string deviceid) {
             this.SetPushedAsync(announceid, androidOrIos, deviceid, null);
         }
         
         /// <remarks/>
-        public void SetPushedAsync(int announceid, int androidOrIos, string deviceid, object userState) {
+        public void SetPushedAsync(int announceid, enum_CommonKeyValueTypeCode androidOrIos, string deviceid, object userState) {
             if ((this.SetPushedOperationCompleted == null)) {
                 this.SetPushedOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetPushedOperationCompleted);
             }
@@ -249,6 +320,35 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
             if ((this.SetPushedCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SetPushedCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Announce_GetAnnouncementByUsername", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_Announcement[] Announce_GetAnnouncementByUsername(string username) {
+            object[] results = this.Invoke("Announce_GetAnnouncementByUsername", new object[] {
+                        username});
+            return ((t_Announcement[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Announce_GetAnnouncementByUsernameAsync(string username) {
+            this.Announce_GetAnnouncementByUsernameAsync(username, null);
+        }
+        
+        /// <remarks/>
+        public void Announce_GetAnnouncementByUsernameAsync(string username, object userState) {
+            if ((this.Announce_GetAnnouncementByUsernameOperationCompleted == null)) {
+                this.Announce_GetAnnouncementByUsernameOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAnnounce_GetAnnouncementByUsernameOperationCompleted);
+            }
+            this.InvokeAsync("Announce_GetAnnouncementByUsername", new object[] {
+                        username}, this.Announce_GetAnnouncementByUsernameOperationCompleted, userState);
+        }
+        
+        private void OnAnnounce_GetAnnouncementByUsernameOperationCompleted(object arg) {
+            if ((this.Announce_GetAnnouncementByUsernameCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Announce_GetAnnouncementByUsernameCompleted(this, new Announce_GetAnnouncementByUsernameCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -564,6 +664,31 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
             }
             return false;
         }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public enum enum_CommonKeyValueTypeCode {
+        
+        /// <remarks/>
+        ANCR,
+        
+        /// <remarks/>
+        IOSDEVICEID,
+        
+        /// <remarks/>
+        ANDROIDDEVICEID,
+        
+        /// <remarks/>
+        Push_Already_ios,
+        
+        /// <remarks/>
+        Push_Already_android,
+        
+        /// <remarks/>
+        Push_Already_Localandroid,
     }
     
     /// <remarks/>
@@ -965,6 +1090,58 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Test_GetList2CompletedEventHandler(object sender, Test_GetList2CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Test_GetList2CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Test_GetList2CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetPushedAnnounceIDs_AndroidLocalCompletedEventHandler(object sender, GetPushedAnnounceIDs_AndroidLocalCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetPushedAnnounceIDs_AndroidLocalCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetPushedAnnounceIDs_AndroidLocalCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void GetUnPushAllDeviceIDs_iosCompletedEventHandler(object sender, GetUnPushAllDeviceIDs_iosCompletedEventArgs e);
     
     /// <remarks/>
@@ -1018,6 +1195,32 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void SetPushedCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Announce_GetAnnouncementByUsernameCompletedEventHandler(object sender, Announce_GetAnnouncementByUsernameCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Announce_GetAnnouncementByUsernameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Announce_GetAnnouncementByUsernameCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_Announcement[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_Announcement[])(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]

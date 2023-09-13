@@ -151,14 +151,30 @@ namespace WEBUI.webservices
                 }
 
                 List<MyPushnotiece> notices = new List<MyPushnotiece>();
-                notices.Add(new MyPushnotiece(uid+"n1"));
-                notices.Add(new MyPushnotiece(uid + "n2"));
+
+                var myloaclpush= BLL.Announcement.GetAndroidLocalPush(uid);
+                if (myloaclpush != null && myloaclpush.Count() > 0)
+                {
+                    foreach (int theid in myloaclpush)
+                    {
+                        var theAnounce= BLL.Announcement.GetAnouncementByID(theid);
+                        if (theAnounce != null)
+                        {
+                            string title = theAnounce.Subject;
+                            notices.Add(new MyPushnotiece(title));
+
+                            BLL.Announcement.SetPushed(theid, WebServiceLayer.WebReference_Ileave_Other.enum_CommonKeyValueTypeCode.Push_Already_Localandroid, uid);
+                        }
+                    }
+                }
 
                 Response.Clear();
 
                 string ttresult = LSLibrary.XmlConvertor.ObjectToXml(notices, true);
 
                 Response.Write(ttresult);
+
+
                 Response.End();
             }
         }
