@@ -266,3 +266,5 @@ __pycache__/
 /DBHelper
 /WEBUI/ErrorLogs/2020-12-03.txt
 /WEBUI/uploadPic
+/WEBUI/tempDownload
+/WEBUI/ErrorLogs
