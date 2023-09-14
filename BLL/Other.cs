@@ -107,7 +107,7 @@ namespace BLL
 
         private static string safePythnParatemter(string par)
         {
-            return par.Replace(' ', '_');
+            return par.Replace(' ', '　');
         }
 
         private static void pushAndroidNotice(string title, string deviceid)

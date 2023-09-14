@@ -154,9 +154,12 @@ namespace WEBUI.Pages
                         }
                         else if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone && cookies.isAppLogin == "1")
                         {
+                            //0.删除超过8小时的文件。1.获得文件的byte[],name  2.在临时文件夹中生成一个临时文件。3.生成 提供下载的js。
+                            //苹果编码有问题。特殊符号就用时间数字代替。
                             BLL.Other.DeleteOlderFiles(Server);
-                            string TempFileUrl = GenerateFile_TempFloderHardCode(fileName, fileData);
-                            string JSDownload = LSLibrary.WebAPP.MyJSHelper.SendMessageToIphone("DOWNLOAD3", TempFileUrl, HttpContext.Current.Server);
+                            fileName = LSLibrary.StringUtil.Safe_ios_downloadFile(fileName);
+                            string TempFolderName = GenerateFile_TempFloderHardCode(fileName, fileData);
+                            string JSDownload = LSLibrary.WebAPP.MyJSHelper.SendMessageToIphone("DOWNLOAD3", TempFolderName, HttpContext.Current.Server);
                             LT_JSDOWNLOAD.Text = JSDownload;
                         }
                         else
@@ -177,6 +180,25 @@ namespace WEBUI.Pages
                 string tempFileFolderPath = Server.MapPath(tempFloderPath) + LSLibrary.FileUtil.filepathflag + tempDatetime;
                 string tempFilePath = LSLibrary.FileUtil.GenerateFileName(tempFileFolderPath, tempFileName);
                 string tempFileURL = LSLibrary.WebAPP.httpHelper.GenerateURL("tempdownload/" + tempDatetime + "/" + tempFileName);
+                LSLibrary.FileUtil.CreateFile(tempFilePath, filedate);
+                result = tempFileURL;
+            }
+            catch
+            {
+
+            }
+            return result;
+        }
+
+        private string GenerateFolderName_TempFloderHardCode(string tempFileName, byte[] filedate, string tempFloderPath = "~/tempdownload")
+        {
+            string result = "";
+            try
+            {
+                string tempDatetime = System.DateTime.Now.ToString("yyyyMMddHHmmss");
+                string tempFileFolderPath = Server.MapPath(tempFloderPath) + LSLibrary.FileUtil.filepathflag + tempDatetime;
+                string tempFilePath = LSLibrary.FileUtil.GenerateFileName(tempFileFolderPath, tempFileName);
+                string tempFileURL = LSLibrary.WebAPP.httpHelper.GenerateURL("tempdownload/" + tempDatetime + "/");
                 LSLibrary.FileUtil.CreateFile(tempFilePath, filedate);
                 result = tempFileURL;
             }
