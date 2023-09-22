@@ -10,7 +10,6 @@ namespace WEBUI.temp
 {
     public partial class test2 : System.Web.UI.Page
     {
-
         public class XMLFields
         {
             public string smtpServerAdd;
