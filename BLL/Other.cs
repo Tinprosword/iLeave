@@ -90,9 +90,10 @@ namespace BLL
             }
         }
 
-        private static void pushIOSNotice(string title, string deviceid, HttpServerUtility theServer)
+        public static void pushIOSNotice(string title, string deviceid, HttpServerUtility theServer)
         {
             //todo push call python
+            //C:\Users\Administrator\source\repos\WebIleave\WEBUI\pythonPro\python-3.8.2rc2-embed-amd64\python.exe C:\Users\Administrator\source\repos\WebIleave\WEBUI\pythonPro\apns\anps.py "a b c" 05eb62ba07a11d74f322066ed37c3a21926a47e8b3fd2d6b9deb2090cde723e0 C:\Users\Administrator\source\repos\WebIleave\WEBUI\pythonPro\apns\ileave_apns_develop.p8
             string pythonPath = "";
             string pythonFunctionFilename = "";
 
@@ -107,7 +108,7 @@ namespace BLL
 
         private static string safePythnParatemter(string par)
         {
-            return par.Replace(' ', '　');
+            return par;
         }
 
         private static void pushAndroidNotice(string title, string deviceid)

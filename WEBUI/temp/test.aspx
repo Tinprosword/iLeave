@@ -9,6 +9,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:Button ID="test1" runat="server" Text="Test" OnClick="test1_Click" />
+
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         <input type="button" value="向左" id="left">
    <input type="button" value="向右" id="right">

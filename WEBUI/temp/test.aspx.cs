@@ -146,13 +146,18 @@ namespace WEBUI
             //getbaseinfo();
             //showsite();
 
+           
+        }
+
+        private void test2()
+        {
             DateTime f1 = new DateTime(2021, 1, 1, 1, 0, 0);
             DateTime t1 = new DateTime(2021, 1, 1, 2, 0, 0);
 
             DateTime f2 = new DateTime(2021, 1, 1, 3, 0, 0);
             DateTime t2 = new DateTime(2021, 1, 1, 4, 0, 0);
-            testDateRange(f1,t1,f2,t2);
-            this.Label1.Text+= GetRealTotal(f1, t1, f2, t2)+"       ---";
+            testDateRange(f1, t1, f2, t2);
+            this.Label1.Text += GetRealTotal(f1, t1, f2, t2) + "       ---";
 
 
             f1 = new DateTime(2021, 1, 1, 1, 0, 0);
@@ -238,7 +243,10 @@ namespace WEBUI
             }
         }
 
-
+        protected void test1_Click(object sender, EventArgs e)
+        {
+            BLL.Announcement.pushIOSNotice("hi test", "05eb62ba07a11d74f322066ed37c3a21926a47e8b3fd2d6b9deb2090cde723e0", Server);
+        }
     }
 
 
