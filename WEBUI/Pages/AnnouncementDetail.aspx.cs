@@ -156,8 +156,13 @@ namespace WEBUI.Pages
                         {
                             //0.删除超过8小时的文件。1.获得文件的byte[],name  2.在临时文件夹中生成一个临时文件。3.生成 提供下载的js。
                             //苹果编码有问题。特殊符号就用时间数字代替。
+                            //苹果的txt.utf8,全部转为utf8-bom
                             BLL.Other.DeleteOlderFiles(Server);
                             fileName = LSLibrary.StringUtil.Safe_ios_downloadFile(fileName);
+                            if (fileName.Contains(".txt"))
+                            {
+                                fileData = LSLibrary.StringUtil.UTF8ToUTF8BOM(fileData);
+                            }
                             string TempFolderName = GenerateFile_TempFloderHardCode(fileName, fileData);
                             string JSDownload = LSLibrary.WebAPP.MyJSHelper.SendMessageToIphone("DOWNLOAD3", TempFolderName, HttpContext.Current.Server);
                             LT_JSDOWNLOAD.Text = JSDownload;
