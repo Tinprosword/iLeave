@@ -35,7 +35,11 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         
         private System.Threading.SendOrPostCallback GetPushedAnnounceIDs_AndroidLocalOperationCompleted;
         
+        private System.Threading.SendOrPostCallback Notice_ClearInvalidOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetUnPushAllDeviceIDs_iosOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetUnPushAllDeviceIDs_AndroidOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetOneUnPushIDOperationCompleted;
         
@@ -111,7 +115,13 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         public event GetPushedAnnounceIDs_AndroidLocalCompletedEventHandler GetPushedAnnounceIDs_AndroidLocalCompleted;
         
         /// <remarks/>
+        public event Notice_ClearInvalidCompletedEventHandler Notice_ClearInvalidCompleted;
+        
+        /// <remarks/>
         public event GetUnPushAllDeviceIDs_iosCompletedEventHandler GetUnPushAllDeviceIDs_iosCompleted;
+        
+        /// <remarks/>
+        public event GetUnPushAllDeviceIDs_AndroidCompletedEventHandler GetUnPushAllDeviceIDs_AndroidCompleted;
         
         /// <remarks/>
         public event GetOneUnPushIDCompletedEventHandler GetOneUnPushIDCompleted;
@@ -236,6 +246,32 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Notice_ClearInvalid", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void Notice_ClearInvalid() {
+            this.Invoke("Notice_ClearInvalid", new object[0]);
+        }
+        
+        /// <remarks/>
+        public void Notice_ClearInvalidAsync() {
+            this.Notice_ClearInvalidAsync(null);
+        }
+        
+        /// <remarks/>
+        public void Notice_ClearInvalidAsync(object userState) {
+            if ((this.Notice_ClearInvalidOperationCompleted == null)) {
+                this.Notice_ClearInvalidOperationCompleted = new System.Threading.SendOrPostCallback(this.OnNotice_ClearInvalidOperationCompleted);
+            }
+            this.InvokeAsync("Notice_ClearInvalid", new object[0], this.Notice_ClearInvalidOperationCompleted, userState);
+        }
+        
+        private void OnNotice_ClearInvalidOperationCompleted(object arg) {
+            if ((this.Notice_ClearInvalidCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Notice_ClearInvalidCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetUnPushAllDeviceIDs_ios", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string[] GetUnPushAllDeviceIDs_ios(int announceid) {
             object[] results = this.Invoke("GetUnPushAllDeviceIDs_ios", new object[] {
@@ -261,6 +297,35 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
             if ((this.GetUnPushAllDeviceIDs_iosCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetUnPushAllDeviceIDs_iosCompleted(this, new GetUnPushAllDeviceIDs_iosCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetUnPushAllDeviceIDs_Android", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] GetUnPushAllDeviceIDs_Android(int announceid) {
+            object[] results = this.Invoke("GetUnPushAllDeviceIDs_Android", new object[] {
+                        announceid});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetUnPushAllDeviceIDs_AndroidAsync(int announceid) {
+            this.GetUnPushAllDeviceIDs_AndroidAsync(announceid, null);
+        }
+        
+        /// <remarks/>
+        public void GetUnPushAllDeviceIDs_AndroidAsync(int announceid, object userState) {
+            if ((this.GetUnPushAllDeviceIDs_AndroidOperationCompleted == null)) {
+                this.GetUnPushAllDeviceIDs_AndroidOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUnPushAllDeviceIDs_AndroidOperationCompleted);
+            }
+            this.InvokeAsync("GetUnPushAllDeviceIDs_Android", new object[] {
+                        announceid}, this.GetUnPushAllDeviceIDs_AndroidOperationCompleted, userState);
+        }
+        
+        private void OnGetUnPushAllDeviceIDs_AndroidOperationCompleted(object arg) {
+            if ((this.GetUnPushAllDeviceIDs_AndroidCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetUnPushAllDeviceIDs_AndroidCompleted(this, new GetUnPushAllDeviceIDs_AndroidCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1142,6 +1207,10 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Notice_ClearInvalidCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void GetUnPushAllDeviceIDs_iosCompletedEventHandler(object sender, GetUnPushAllDeviceIDs_iosCompletedEventArgs e);
     
     /// <remarks/>
@@ -1153,6 +1222,32 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         private object[] results;
         
         internal GetUnPushAllDeviceIDs_iosCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetUnPushAllDeviceIDs_AndroidCompletedEventHandler(object sender, GetUnPushAllDeviceIDs_AndroidCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetUnPushAllDeviceIDs_AndroidCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetUnPushAllDeviceIDs_AndroidCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

@@ -1608,11 +1608,20 @@ namespace ut
         [TestMethod]
         public void TempTestFunction()
         {
-
-            TestMerge();
+            TestAndroidPush();
+            //TestMerge();
             //testSplit();
             //Test_roundup();
             //DataRange();
+        }
+
+        private void TestAndroidPush()
+        {
+            string androidID = "enW3dAo54ME:APA91bFenC2tedUEzEkpauE5TRI-ukreTQurwbnLwzu1Xbm8ZhhG6yFmdBQGSFeWHYxF-nufcYOY9k-eR1u9zn7wqvmmfW1M0C-IYhoKzPqPbSsvUaD5DoKvxIbHQ32WJ0XPu07l4cA_";
+            //string aa= LSLibrary.HttpWebRequestHelper.HttpPost_Josn("https://fcm.googleapis.com/fcm/send", "AAAAvJufqGw:APA91bHN5s-7tbRL4VrrSmo_HGycigWZwvqf7z5xo_Ee8k-GFcJ4JOD-QtZ-efPpu-PUevGON1KzvzmockvyitjK_1zuR3G6fl1XdPct7U3cAUrYf78xV0Sb9gkzPb7LJL3N6qRE-Va-", "810064783468", androidID, "test1",3000);
+
+            int a = BLL.Announcement.pushAndroidNotice("test222", androidID);
+            int b = 333;
         }
 
         private static void TestMerge()
@@ -2031,10 +2040,6 @@ namespace ut
         [TestMethod]
         public void testtryParse()
         {
-            string a = "abc";
-            DateTime tt = System.DateTime.Now;
-            DateTime.TryParse(a, out tt);
-            int abc = 44;
         }
 
         [TestMethod]

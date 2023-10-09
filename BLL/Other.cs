@@ -54,6 +54,8 @@ namespace BLL
         {
             List<int> announceIDs = GetOneUnPushID();
 
+            WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_Other.Notice_ClearInvalid();
+
             foreach (int announceID in announceIDs)
             {
                 List<string> deviceids_ios = GetUnPushAllDeviceIDs_ios(announceID);
@@ -65,26 +67,48 @@ namespace BLL
 
                 foreach (string thedeviceid in deviceids_ios)
                 {
-                    try
+                    if (thedeviceid.Contains("error:") == false)//跳过错误的deviceids
                     {
-                        pushIOSNotice(announce_title, thedeviceid,theServer);
-                        SetPushed(announceID, WebServiceLayer.WebReference_Ileave_Other.enum_CommonKeyValueTypeCode.Push_Already_ios, thedeviceid);
-                    }
-                    catch(Exception exxx)
-                    {
-                        BLL.common.WriteLog(exxx.Message);
+                        try
+                        {
+                            pushIOSNotice(announce_title, thedeviceid, theServer);
+                            SetPushed(announceID, WebServiceLayer.WebReference_Ileave_Other.enum_CommonKeyValueTypeCode.Push_Already_ios, thedeviceid);
+                        }
+                        catch (Exception exxx)
+                        {
+                            BLL.common.WriteLog(exxx.Message);
+                        }
                     }
                 }
-                foreach (string thedeviceid in deviceids_android)
+                bool isServerTimeOut = false;
+
+                if (!isServerTimeOut)
                 {
-                    try
+                    foreach (string thedeviceid in deviceids_android)
                     {
-                        pushAndroidNotice(announce_title, thedeviceid);
-                        SetPushed(announceID, WebServiceLayer.WebReference_Ileave_Other.enum_CommonKeyValueTypeCode.Push_Already_android, thedeviceid);
-                    }
-                    catch (Exception exxx)
-                    {
-                        BLL.common.WriteLog(exxx.Message);
+                        if (thedeviceid.Contains("error:") == false)//跳过错误的deviceids
+                        {
+                            try
+                            {
+                                int result = pushAndroidNotice(announce_title, thedeviceid);
+                                if (result == 1)//成功就插入记录。
+                                {
+                                    SetPushed(announceID, WebServiceLayer.WebReference_Ileave_Other.enum_CommonKeyValueTypeCode.Push_Already_android, thedeviceid);
+                                }
+                                else if (result == -1)//timeout 超时的话，下面的也不做。
+                                {
+                                    break;
+                                }
+                                else//其他错误，跳过，做下一个。
+                                {
+                                    continue;
+                                }
+                            }
+                            catch (Exception exxx)
+                            {
+                                BLL.common.WriteLog(exxx.Message);
+                            }
+                        }
                     }
                 }
             }
@@ -111,9 +135,26 @@ namespace BLL
             return par;
         }
 
-        private static void pushAndroidNotice(string title, string deviceid)
+        //-1.error_timeout.  0.error_other    1.success
+        public static int pushAndroidNotice(string msgContent, string deviceid)
         {
-            //todo push call python
+            int result = 1;
+            string sendResult= LSLibrary.HttpWebRequestHelper.HttpPost_Josn("https://fcm.googleapis.com/fcm/send", "AAAAvJufqGw:APA91bHN5s-7tbRL4VrrSmo_HGycigWZwvqf7z5xo_Ee8k-GFcJ4JOD-QtZ-efPpu-PUevGON1KzvzmockvyitjK_1zuR3G6fl1XdPct7U3cAUrYf78xV0Sb9gkzPb7LJL3N6qRE-Va-", "810064783468", deviceid,msgContent,3000);
+
+            
+            if (sendResult.ToUpper().Contains("TIMEOUT"))
+            {
+                result = -1;
+            }
+            else if (sendResult.ToUpper().Contains("ERROR"))
+            {
+                result = 0;
+            }
+            else//todo  0 这里会有其他失败，现在全当作成功，那么就会导致有时候失败发送，当成成功。不会再次发送。
+            {
+                result = 1;
+            }
+            return result;
         }
 
         public static List<int> GetOneUnPushID()
@@ -146,7 +187,7 @@ namespace BLL
         public static List<string> GetUnPushAllDeviceIDs_android(int anncountid)
         {
             List<string> result = new List<string>();
-            //todo push
+            result = MyWebService.GlobalWebServices.ws_Ileave_Other.GetUnPushAllDeviceIDs_Android(anncountid).ToList();
             return result;
         }
 

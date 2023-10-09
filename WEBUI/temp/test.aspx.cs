@@ -145,105 +145,20 @@ namespace WEBUI
             //this.Label1.Text = leavebase.add(1, 3).ToString();
             //getbaseinfo();
             //showsite();
-
-           
         }
 
-        private void test2()
+        private void addgroup()
         {
-            DateTime f1 = new DateTime(2021, 1, 1, 1, 0, 0);
-            DateTime t1 = new DateTime(2021, 1, 1, 2, 0, 0);
-
-            DateTime f2 = new DateTime(2021, 1, 1, 3, 0, 0);
-            DateTime t2 = new DateTime(2021, 1, 1, 4, 0, 0);
-            testDateRange(f1, t1, f2, t2);
-            this.Label1.Text += GetRealTotal(f1, t1, f2, t2) + "       ---";
-
-
-            f1 = new DateTime(2021, 1, 1, 1, 0, 0);
-            t1 = new DateTime(2021, 1, 1, 2, 0, 0);
-
-            f2 = new DateTime(2021, 1, 1, 0, 0, 0);
-            t2 = new DateTime(2021, 1, 1, 1, 35, 0);
-            testDateRange(f1, t1, f2, t2);
-            this.Label1.Text += GetRealTotal(f1, t1, f2, t2) + "       ---";
-
-            f1 = new DateTime(2021, 1, 1, 1, 0, 0);
-            t1 = new DateTime(2021, 1, 1, 2, 0, 0);
-
-            f2 = new DateTime(2021, 1, 1, 1, 30, 0);
-            t2 = new DateTime(2021, 1, 1, 2, 30, 0);
-            testDateRange(f1, t1, f2, t2);
-            this.Label1.Text += GetRealTotal(f1, t1, f2, t2) + "       ---";
-
-
-            f1 = new DateTime(2021, 1, 1, 1, 0, 0);
-            t1 = new DateTime(2021, 1, 1, 2, 0, 0);
-
-            f2 = new DateTime(2021, 1, 1, 1, 18, 0);
-            t2 = new DateTime(2021, 1, 1, 1, 42, 0);
-            testDateRange(f1, t1, f2, t2);
-            this.Label1.Text += GetRealTotal(f1, t1, f2, t2) + "       ---";
-
-            f1 = new DateTime(2021, 1, 1, 1, 0, 0);
-            t1 = new DateTime(2021, 1, 1, 2, 0, 0);
-
-            f2 = new DateTime(2021, 1, 1, 0, 15, 0);
-            t2 = new DateTime(2021, 1, 1, 2, 45, 0);
-            testDateRange(f1, t1, f2, t2);
-            this.Label1.Text += GetRealTotal(f1, t1, f2, t2) + "       ---";
-
-            f1 = new DateTime(2021, 1, 1, 1, 0, 0);
-            t1 = new DateTime(2021, 1, 1, 2, 0, 0);
-
-            f2 = new DateTime(2021, 1, 1, 1, 0, 0);
-            t2 = new DateTime(2021, 1, 1, 2, 0, 0);
-            testDateRange(f1, t1, f2, t2);
-            this.Label1.Text += GetRealTotal(f1, t1, f2, t2) + "       ---";
         }
 
-        private  void testDateRange(DateTime f1,DateTime t1,DateTime f2,DateTime t2)
-        {//1no overlap .1left 2.right 3.center 4full over 5,just full
-           
-
-            DateTime? rf1; DateTime? rt1; DateTime? rf2; DateTime? rt2;
-
-            DeleteOverlapRangeFromDate1(f1, t1, f2, t2, out rf1, out rt1, out rf2, out rt2);
-
-            this.Label1.Text += rf1.GetValueOrDefault().ToShortTimeString() + "--" + rt1.GetValueOrDefault().ToShortTimeString();
-            this.Label1.Text+= rf2.GetValueOrDefault().ToShortTimeString() + "--" + rt2.GetValueOrDefault().ToShortTimeString()+"\r\n"+"|";
-        }
-
-
-
-
-
-        private void showsite()
-        {
-            this.Label1.Text = BLL.Other.GetHRWebSiteRootUrl();
-        }
-
-        private void getbaseinfo()
-        {
-            string url = "http://localhost:80/WEBUI/webservices/leave.asmx/GetCLOTDetail_html";
-
-            int index= url.IndexOf("webservices");
-            if (index > 0)
-            {
-                url = url.Substring(0, index);
-            }
-
-            if (url == "http://localhost:80/WEBUI/")
-            {
-                this.Label1.Text = "ok" + url;
-            }
-            else
-            {
-                this.Label1.Text = "error" + url;
-            }
-        }
+   
 
         protected void test1_Click(object sender, EventArgs e)
+        {
+            addgroup();
+        }
+
+        private void iosPush()
         {
             BLL.Announcement.pushIOSNotice("hi test", "05eb62ba07a11d74f322066ed37c3a21926a47e8b3fd2d6b9deb2090cde723e0", Server);
         }

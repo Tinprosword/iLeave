@@ -1085,6 +1085,10 @@
     <Content Include="Res\images\Menu3_payslip.png" />
     <Content Include="Res\images\Menu3_roster.png" />
     <Content Include="Res\images\Menu3_tax.png" />
+    <Content Include="Res\images\menu4.png" />
+    <Content Include="Res\images\menu5.png" />
+    <Content Include="Res\images\menu6.png" />
+    <Content Include="Res\images\menu7.png" />
     <Content Include="Res\images\ok2.png" />
     <Content Include="Res\images\search.png" />
     <Content Include="Res\images\setting.png" />

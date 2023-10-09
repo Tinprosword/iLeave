@@ -132,13 +132,14 @@ namespace WEBUI.webservices
                 LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType ClientType = LSLibrary.WebAPP.MobilWebHelper.GetClientTypeBy_RequestUserAgent();
 
 
-                if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.android)//android
-                {
-                    BLL.Announcement.DeviceID_InsertOrUpdateDeviceID(2, devicedid, username);
-                }
-                else if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone)
+                //todo 0. 这里判断anroid 有点问题。但是走这里的都是mobile .所以暂时这样处理。
+                if (ClientType == LSLibrary.WebAPP.MobilWebHelper.Enum_ClientType.iphone)
                 {
                     BLL.Announcement.DeviceID_InsertOrUpdateDeviceID(1, devicedid, username);
+                }
+                else
+                {
+                    BLL.Announcement.DeviceID_InsertOrUpdateDeviceID(2, devicedid, username);
                 }
             }
             else if (actionType == "GetMyAndroidLocalPushNotice")
