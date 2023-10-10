@@ -447,7 +447,6 @@ namespace WEBUI.Pages
                     BLL.common.copyFileTo(pics[i].originAttendance_RelatePath, pics[i].originAttendance_HRDBPath, Server);
                 }
                 BLL.Leave.InsertAttachment(pics, loginer.userInfo.id, loginer.userInfo.personid, reslut, BLL.GlobalVariate.AttachmentUploadType.LEAVE_CERTIFICATE, BLL.GlobalVariate.WorkflowTypeID.LEAVE_APPLICATION);
-
                 string successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().apply_msgapplyok);
                 Response.Write(successMsg + ".");
                 Response.Flush();
