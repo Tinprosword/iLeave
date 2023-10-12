@@ -1387,7 +1387,6 @@ namespace ut
             checkAllUer_CLOTMyAndMyManageRecord();
             CheckClotRequestStatus(clotids, BLL.GlobalVariate.ApprovalRequestStatus.APPROVE);
         }
-
         #endregion
 
         #region other test case
