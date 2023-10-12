@@ -39,6 +39,7 @@ namespace WebServiceLayer
             public WebReference_user.UserManagementV2 ws_user = new WebReference_user.UserManagementV2();
             public WebReference_leave.LeaveManagementV2 ws_leave = new WebReference_leave.LeaveManagementV2();
             public WebReference_Ileave_Other.ILeave_Other ws_Ileave_Other = new WebReference_Ileave_Other.ILeave_Other();
+            public WebReference_WorkflowPN.ILeave_workflowPN ws_Ileave_workflowPN = new WebReference_WorkflowPN.ILeave_workflowPN();
 
 
 
@@ -60,11 +61,13 @@ namespace WebServiceLayer
                 ws_leave.CookieContainer = cookieContainer;
                 ws_codesetting.CookieContainer = cookieContainer;
                 ws_Ileave_Other.CookieContainer = cookieContainer;
+                ws_Ileave_workflowPN.CookieContainer = cookieContainer;
 
                 ws_user.Url = GetDecodeWebServicesAddress()+ "/ServicesWithSession/UserManagementV2.asmx";
                 ws_leave.Url = GetDecodeWebServicesAddress()+ "/ServicesWithSession/LeaveManagementV2.asmx";
                 ws_codesetting.Url = GetDecodeWebServicesAddress()+ "/ServicesWithSession/CodeSettingsV2.asmx";
                 ws_Ileave_Other.Url= GetDecodeWebServicesAddress() + "/ileave_other.asmx";
+                ws_Ileave_workflowPN.Url = GetDecodeWebServicesAddress() + "/ILeave_workflowPN.asmx";
             }
 
         }

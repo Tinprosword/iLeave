@@ -26,7 +26,17 @@ namespace WebServiceLayer.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.66.100:8888/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.66.100:9000/bll/ileave_other.asmx")]
+        public string WebServiceLayer_WebReference_Ileave_Other_ILeave_Other {
+            get {
+                return ((string)(this["WebServiceLayer_WebReference_Ileave_Other_ILeave_Other"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.66.100:9000/dw-ihr/bll/ServicesWithSession/CodeSettingsV2.asmx")]
         public string WebServiceLayer_WebReference_codesettings_CodeSettingsV2 {
             get {
                 return ((string)(this["WebServiceLayer_WebReference_codesettings_CodeSettingsV2"]));
@@ -36,7 +46,7 @@ namespace WebServiceLayer.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.66.100:8888/dw-ihr/bll/ServicesWithSession/LeaveManagementV2.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.66.100:9000/dw-ihr/bll/ServicesWithSession/LeaveManagementV2.asmx")]
         public string WebServiceLayer_WebReference_leave_LeaveManagementV2 {
             get {
                 return ((string)(this["WebServiceLayer_WebReference_leave_LeaveManagementV2"]));
@@ -46,7 +56,7 @@ namespace WebServiceLayer.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.66.100:8888/dw-ihr/bll/ServicesWithSession/UserManagementV2.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.66.100:9000/dw-ihr/bll/ServicesWithSession/UserManagementV2.asmx")]
         public string WebServiceLayer_WebReference_user_UserManagementV2 {
             get {
                 return ((string)(this["WebServiceLayer_WebReference_user_UserManagementV2"]));
@@ -56,10 +66,10 @@ namespace WebServiceLayer.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.66.100:9000/bll/ileave_other.asmx")]
-        public string WebServiceLayer_WebReference_Ileave_Other_ILeave_Other {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.66.100:9000/bll/ILeave_workflowPN.asmx")]
+        public string WebServiceLayer_WebReference_WorkflowPN_ILeave_workflowPN {
             get {
-                return ((string)(this["WebServiceLayer_WebReference_Ileave_Other_ILeave_Other"]));
+                return ((string)(this["WebServiceLayer_WebReference_WorkflowPN_ILeave_workflowPN"]));
             }
         }
     }

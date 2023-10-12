@@ -71,6 +71,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\WebReference_WorkflowPN\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -122,6 +127,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>WebServiceLayer_WebReference_Ileave_Other_ILeave_Other</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://192.168.66.100:9000/bll/ILeave_workflowPN.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WebReference_WorkflowPN\</RelPath>
+      <UpdateFromURL>http://192.168.66.100:9000/bll/ILeave_workflowPN.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WebServiceLayer_WebReference_WorkflowPN_ILeave_workflowPN</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
@@ -270,6 +286,11 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebReference_user\UserManagementV2.wsdl" />
+    <None Include="Web References\WebReference_WorkflowPN\ILeave_workflowPN.wsdl" />
+    <None Include="Web References\WebReference_WorkflowPN\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\WebReference_leave\LeaveManagementV2.disco" />
@@ -288,6 +309,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\WebReference_Ileave_Other\ileave_other.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WebReference_WorkflowPN\ILeave_workflowPN.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="InsertPN_ApplyLeave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPN_ApplyLeaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertPN_ApplyLeaveResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertPN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="applicationType" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ReceiverUID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertPNResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
+      <s:element name="int" type="s:int" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="InsertPN_ApplyLeaveSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPN_ApplyLeave" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApplyLeaveSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPN_ApplyLeaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertPNSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPN" />
+  </wsdl:message>
+  <wsdl:message name="InsertPNSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPNResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApplyLeaveHttpPostIn">
+    <wsdl:part name="requestid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApplyLeaveHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="InsertPNHttpPostIn">
+    <wsdl:part name="applicationType" type="s:string" />
+    <wsdl:part name="requestid" type="s:string" />
+    <wsdl:part name="ReceiverUID" type="s:string" />
+    <wsdl:part name="MessageBody" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertPNHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:portType name="ILeave_workflowPNSoap">
+    <wsdl:operation name="InsertPN_ApplyLeave">
+      <wsdl:input message="tns:InsertPN_ApplyLeaveSoapIn" />
+      <wsdl:output message="tns:InsertPN_ApplyLeaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN">
+      <wsdl:input message="tns:InsertPNSoapIn" />
+      <wsdl:output message="tns:InsertPNSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ILeave_workflowPNHttpPost">
+    <wsdl:operation name="InsertPN_ApplyLeave">
+      <wsdl:input message="tns:InsertPN_ApplyLeaveHttpPostIn" />
+      <wsdl:output message="tns:InsertPN_ApplyLeaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN">
+      <wsdl:input message="tns:InsertPNHttpPostIn" />
+      <wsdl:output message="tns:InsertPNHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ILeave_workflowPNSoap" type="tns:ILeave_workflowPNSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertPN_ApplyLeave">
+      <soap:operation soapAction="http://tempuri.org/InsertPN_ApplyLeave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN">
+      <soap:operation soapAction="http://tempuri.org/InsertPN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ILeave_workflowPNSoap12" type="tns:ILeave_workflowPNSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertPN_ApplyLeave">
+      <soap12:operation soapAction="http://tempuri.org/InsertPN_ApplyLeave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN">
+      <soap12:operation soapAction="http://tempuri.org/InsertPN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ILeave_workflowPNHttpPost" type="tns:ILeave_workflowPNHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="InsertPN_ApplyLeave">
+      <http:operation location="/InsertPN_ApplyLeave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN">
+      <http:operation location="/InsertPN" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ILeave_workflowPN">
+    <wsdl:port name="ILeave_workflowPNSoap" binding="tns:ILeave_workflowPNSoap">
+      <soap:address location="http://192.168.66.100:9000/bll/ILeave_workflowPN.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ILeave_workflowPNSoap12" binding="tns:ILeave_workflowPNSoap12">
+      <soap12:address location="http://192.168.66.100:9000/bll/ILeave_workflowPN.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ILeave_workflowPNHttpPost" binding="tns:ILeave_workflowPNHttpPost">
+      <http:address location="http://192.168.66.100:9000/bll/ILeave_workflowPN.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

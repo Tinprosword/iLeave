@@ -213,6 +213,9 @@ namespace BLL
                     {
                         errorMsg = "No Apply Group";
                     }
+
+                    //insert pn
+                    List<int> pnids = BLL.WorkflowPN.InsertPN_ApplyLeave(insertResult);
                 }
                 else
                 {

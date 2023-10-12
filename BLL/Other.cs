@@ -531,4 +531,12 @@ namespace BLL
             return MyWebService.GlobalWebServices.ws_Ileave_Other.Attachment_GetFileName(filePath);
         }
     }
+
+    public class WorkflowPN
+    {
+        public static List<int> InsertPN_ApplyLeave(int requestid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_workflowPN.InsertPN_ApplyLeave(requestid).ToList();
+        }
+    }
 }
