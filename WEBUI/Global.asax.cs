@@ -24,7 +24,7 @@ namespace WEBUI
         {
             LSLibrary.logHelper.WriteFILEToWebLOG("Application_Start: shedule:", patherror);
             patherror=Server.MapPath("~/ErrorLogs/");
-            int periodMilliSeconds = 1000 * 40;//10s
+            int periodMilliSeconds = 1000 * 62;//10s
             //new System.Threading.Thread(FindShedules);
             g_schuduleCheck_1min = new System.Threading.Timer(new System.Threading.TimerCallback(FindShedules), 2, 0,periodMilliSeconds);
         }

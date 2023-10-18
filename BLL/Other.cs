@@ -112,6 +112,39 @@ namespace BLL
                     }
                 }
             }
+
+            PushWorkflowNotice(theServer);
+        }
+
+        public static void PushWorkflowNotice(HttpServerUtility theServer)
+        {
+            //1.get pending workflow pn. 2 get all deviceid 3. send pending and make sended if has ref deviceid otherwise do nothing 
+            var pendingpn = WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_workflowPN.GetPendingPn();
+            foreach (var thependingPN in pendingpn)
+            {
+                var devicesinfo = thependingPN.mobileinfo;
+                var devicesinfo_android = devicesinfo.Where(x => x.devicetype == 0).ToList();
+                var devicesinfo_ios= devicesinfo.Where(x => x.devicetype == 1).ToList();
+
+                foreach (var themobileinfo in devicesinfo_ios)
+                {
+                    pushIOSNotice(thependingPN.commonKeyValue.Remark, thependingPN.commonKeyValue.ValueStr,theServer);
+                    WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_workflowPN.SetPendingPnSend(thependingPN.commonKeyValue.ID);
+                }
+
+                foreach (var themobileinfo in devicesinfo_android)
+                {
+                    int tempReuslt= pushAndroidNotice(thependingPN.commonKeyValue.Remark, thependingPN.commonKeyValue.ValueStr);
+                    if (tempReuslt == -1)//timeout 超时的话，下面的也不做。
+                    {
+                        break;
+                    }
+                    else//其他错误，跳过，做下一个。
+                    {
+                        continue;
+                    }
+                }
+            }
         }
 
         public static void pushIOSNotice(string title, string deviceid, HttpServerUtility theServer)
@@ -537,6 +570,11 @@ namespace BLL
         public static List<int> InsertPN_ApplyLeave(int requestid)
         {
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_workflowPN.InsertPN_ApplyLeave(requestid).ToList();
+        }
+
+        public static List<int> InsertPN_ApproveLeave(int requestid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_workflowPN.InsertPN_ApproveLeave(requestid).ToList();
         }
     }
 }

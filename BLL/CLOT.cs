@@ -145,6 +145,8 @@ namespace BLL
                 if (requestid > 0)
                 {
                     result.Add(requestid);
+                    // push notice
+                    WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_workflowPN.InsertPN_ApplyCLOT(requestid);
                 }
                 else
                 {

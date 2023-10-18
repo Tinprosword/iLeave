@@ -21,25 +21,159 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
         </s:sequence>
       </s:complexType>
-      <s:element name="InsertPN">
+      <s:element name="InsertPN_ApproveLeave">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="applicationType" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="ReceiverUID" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="InsertPNResponse">
+      <s:element name="InsertPN_ApproveLeaveResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="InsertPNResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="InsertPN_ApproveLeaveResult" type="tns:ArrayOfInt" />
           </s:sequence>
         </s:complexType>
+      </s:element>
+      <s:element name="InsertPN_CancelLeave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPN_CancelLeaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertPN_CancelLeaveResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPN_ApproveCancelLeave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPN_ApproveCancelLeaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertPN_ApproveCancelLeaveResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPN_ApplyCLOT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPN_ApplyCLOTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertPN_ApplyCLOTResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPN_ApproveRejectCLOT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPN_ApproveRejectCLOTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertPN_ApproveRejectCLOTResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPN_CancelCLOT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPN_CancelCLOTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertPN_CancelCLOTResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPN_ApproveRejectCancelCLOT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPN_ApproveRejectCancelCLOTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertPN_ApproveRejectCancelCLOTResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPendingPn">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPendingPnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPendingPnResult" type="tns:ArrayOfT_commonKeyValue_workflow" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfT_commonKeyValue_workflow">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="t_commonKeyValue_workflow" nillable="true" type="tns:t_commonKeyValue_workflow" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="t_commonKeyValue_workflow">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="mobileinfo" type="tns:ArrayOfMobileDeviceInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="commonKeyValue" type="tns:t_commonKeyValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMobileDeviceInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MobileDeviceInfo" nillable="true" type="tns:MobileDeviceInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MobileDeviceInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="deviceid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="uname" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="devicetype" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="t_commonKeyValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="KeyStr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ValueStr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetPendingPnSend">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pnid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetPendingPnSendResponse">
+        <s:complexType />
       </s:element>
       <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
-      <s:element name="int" type="s:int" />
+      <s:element name="ArrayOfT_commonKeyValue_workflow" nillable="true" type="tns:ArrayOfT_commonKeyValue_workflow" />
     </s:schema>
   </wsdl:types>
   <wsdl:message name="InsertPN_ApplyLeaveSoapIn">
@@ -48,11 +182,59 @@
   <wsdl:message name="InsertPN_ApplyLeaveSoapOut">
     <wsdl:part name="parameters" element="tns:InsertPN_ApplyLeaveResponse" />
   </wsdl:message>
-  <wsdl:message name="InsertPNSoapIn">
-    <wsdl:part name="parameters" element="tns:InsertPN" />
+  <wsdl:message name="InsertPN_ApproveLeaveSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPN_ApproveLeave" />
   </wsdl:message>
-  <wsdl:message name="InsertPNSoapOut">
-    <wsdl:part name="parameters" element="tns:InsertPNResponse" />
+  <wsdl:message name="InsertPN_ApproveLeaveSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPN_ApproveLeaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_CancelLeaveSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPN_CancelLeave" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_CancelLeaveSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPN_CancelLeaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApproveCancelLeaveSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPN_ApproveCancelLeave" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApproveCancelLeaveSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPN_ApproveCancelLeaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApplyCLOTSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPN_ApplyCLOT" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApplyCLOTSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPN_ApplyCLOTResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApproveRejectCLOTSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPN_ApproveRejectCLOT" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApproveRejectCLOTSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPN_ApproveRejectCLOTResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_CancelCLOTSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPN_CancelCLOT" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_CancelCLOTSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPN_CancelCLOTResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApproveRejectCancelCLOTSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPN_ApproveRejectCancelCLOT" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApproveRejectCancelCLOTSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPN_ApproveRejectCancelCLOTResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPendingPnSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPendingPn" />
+  </wsdl:message>
+  <wsdl:message name="GetPendingPnSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPendingPnResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetPendingPnSendSoapIn">
+    <wsdl:part name="parameters" element="tns:SetPendingPnSend" />
+  </wsdl:message>
+  <wsdl:message name="SetPendingPnSendSoapOut">
+    <wsdl:part name="parameters" element="tns:SetPendingPnSendResponse" />
   </wsdl:message>
   <wsdl:message name="InsertPN_ApplyLeaveHttpPostIn">
     <wsdl:part name="requestid" type="s:string" />
@@ -60,23 +242,96 @@
   <wsdl:message name="InsertPN_ApplyLeaveHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfInt" />
   </wsdl:message>
-  <wsdl:message name="InsertPNHttpPostIn">
-    <wsdl:part name="applicationType" type="s:string" />
+  <wsdl:message name="InsertPN_ApproveLeaveHttpPostIn">
     <wsdl:part name="requestid" type="s:string" />
-    <wsdl:part name="ReceiverUID" type="s:string" />
-    <wsdl:part name="MessageBody" type="s:string" />
   </wsdl:message>
-  <wsdl:message name="InsertPNHttpPostOut">
-    <wsdl:part name="Body" element="tns:int" />
+  <wsdl:message name="InsertPN_ApproveLeaveHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfInt" />
   </wsdl:message>
+  <wsdl:message name="InsertPN_CancelLeaveHttpPostIn">
+    <wsdl:part name="requestid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_CancelLeaveHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApproveCancelLeaveHttpPostIn">
+    <wsdl:part name="requestid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApproveCancelLeaveHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApplyCLOTHttpPostIn">
+    <wsdl:part name="requestid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApplyCLOTHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApproveRejectCLOTHttpPostIn">
+    <wsdl:part name="requestid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApproveRejectCLOTHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_CancelCLOTHttpPostIn">
+    <wsdl:part name="requestid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_CancelCLOTHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApproveRejectCancelCLOTHttpPostIn">
+    <wsdl:part name="requestid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="InsertPN_ApproveRejectCancelCLOTHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfInt" />
+  </wsdl:message>
+  <wsdl:message name="GetPendingPnHttpPostIn" />
+  <wsdl:message name="GetPendingPnHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfT_commonKeyValue_workflow" />
+  </wsdl:message>
+  <wsdl:message name="SetPendingPnSendHttpPostIn">
+    <wsdl:part name="pnid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SetPendingPnSendHttpPostOut" />
   <wsdl:portType name="ILeave_workflowPNSoap">
     <wsdl:operation name="InsertPN_ApplyLeave">
       <wsdl:input message="tns:InsertPN_ApplyLeaveSoapIn" />
       <wsdl:output message="tns:InsertPN_ApplyLeaveSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="InsertPN">
-      <wsdl:input message="tns:InsertPNSoapIn" />
-      <wsdl:output message="tns:InsertPNSoapOut" />
+    <wsdl:operation name="InsertPN_ApproveLeave">
+      <wsdl:input message="tns:InsertPN_ApproveLeaveSoapIn" />
+      <wsdl:output message="tns:InsertPN_ApproveLeaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_CancelLeave">
+      <wsdl:input message="tns:InsertPN_CancelLeaveSoapIn" />
+      <wsdl:output message="tns:InsertPN_CancelLeaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApproveCancelLeave">
+      <wsdl:input message="tns:InsertPN_ApproveCancelLeaveSoapIn" />
+      <wsdl:output message="tns:InsertPN_ApproveCancelLeaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApplyCLOT">
+      <wsdl:input message="tns:InsertPN_ApplyCLOTSoapIn" />
+      <wsdl:output message="tns:InsertPN_ApplyCLOTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApproveRejectCLOT">
+      <wsdl:input message="tns:InsertPN_ApproveRejectCLOTSoapIn" />
+      <wsdl:output message="tns:InsertPN_ApproveRejectCLOTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_CancelCLOT">
+      <wsdl:input message="tns:InsertPN_CancelCLOTSoapIn" />
+      <wsdl:output message="tns:InsertPN_CancelCLOTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApproveRejectCancelCLOT">
+      <wsdl:input message="tns:InsertPN_ApproveRejectCancelCLOTSoapIn" />
+      <wsdl:output message="tns:InsertPN_ApproveRejectCancelCLOTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingPn">
+      <wsdl:input message="tns:GetPendingPnSoapIn" />
+      <wsdl:output message="tns:GetPendingPnSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPendingPnSend">
+      <wsdl:input message="tns:SetPendingPnSendSoapIn" />
+      <wsdl:output message="tns:SetPendingPnSendSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILeave_workflowPNHttpPost">
@@ -84,9 +339,41 @@
       <wsdl:input message="tns:InsertPN_ApplyLeaveHttpPostIn" />
       <wsdl:output message="tns:InsertPN_ApplyLeaveHttpPostOut" />
     </wsdl:operation>
-    <wsdl:operation name="InsertPN">
-      <wsdl:input message="tns:InsertPNHttpPostIn" />
-      <wsdl:output message="tns:InsertPNHttpPostOut" />
+    <wsdl:operation name="InsertPN_ApproveLeave">
+      <wsdl:input message="tns:InsertPN_ApproveLeaveHttpPostIn" />
+      <wsdl:output message="tns:InsertPN_ApproveLeaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_CancelLeave">
+      <wsdl:input message="tns:InsertPN_CancelLeaveHttpPostIn" />
+      <wsdl:output message="tns:InsertPN_CancelLeaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApproveCancelLeave">
+      <wsdl:input message="tns:InsertPN_ApproveCancelLeaveHttpPostIn" />
+      <wsdl:output message="tns:InsertPN_ApproveCancelLeaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApplyCLOT">
+      <wsdl:input message="tns:InsertPN_ApplyCLOTHttpPostIn" />
+      <wsdl:output message="tns:InsertPN_ApplyCLOTHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApproveRejectCLOT">
+      <wsdl:input message="tns:InsertPN_ApproveRejectCLOTHttpPostIn" />
+      <wsdl:output message="tns:InsertPN_ApproveRejectCLOTHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_CancelCLOT">
+      <wsdl:input message="tns:InsertPN_CancelCLOTHttpPostIn" />
+      <wsdl:output message="tns:InsertPN_CancelCLOTHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApproveRejectCancelCLOT">
+      <wsdl:input message="tns:InsertPN_ApproveRejectCancelCLOTHttpPostIn" />
+      <wsdl:output message="tns:InsertPN_ApproveRejectCancelCLOTHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingPn">
+      <wsdl:input message="tns:GetPendingPnHttpPostIn" />
+      <wsdl:output message="tns:GetPendingPnHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPendingPnSend">
+      <wsdl:input message="tns:SetPendingPnSendHttpPostIn" />
+      <wsdl:output message="tns:SetPendingPnSendHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ILeave_workflowPNSoap" type="tns:ILeave_workflowPNSoap">
@@ -100,8 +387,80 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="InsertPN">
-      <soap:operation soapAction="http://tempuri.org/InsertPN" style="document" />
+    <wsdl:operation name="InsertPN_ApproveLeave">
+      <soap:operation soapAction="http://tempuri.org/InsertPN_ApproveLeave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_CancelLeave">
+      <soap:operation soapAction="http://tempuri.org/InsertPN_CancelLeave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApproveCancelLeave">
+      <soap:operation soapAction="http://tempuri.org/InsertPN_ApproveCancelLeave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApplyCLOT">
+      <soap:operation soapAction="http://tempuri.org/InsertPN_ApplyCLOT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApproveRejectCLOT">
+      <soap:operation soapAction="http://tempuri.org/InsertPN_ApproveRejectCLOT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_CancelCLOT">
+      <soap:operation soapAction="http://tempuri.org/InsertPN_CancelCLOT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApproveRejectCancelCLOT">
+      <soap:operation soapAction="http://tempuri.org/InsertPN_ApproveRejectCancelCLOT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingPn">
+      <soap:operation soapAction="http://tempuri.org/GetPendingPn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPendingPnSend">
+      <soap:operation soapAction="http://tempuri.org/SetPendingPnSend" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -121,8 +480,80 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="InsertPN">
-      <soap12:operation soapAction="http://tempuri.org/InsertPN" style="document" />
+    <wsdl:operation name="InsertPN_ApproveLeave">
+      <soap12:operation soapAction="http://tempuri.org/InsertPN_ApproveLeave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_CancelLeave">
+      <soap12:operation soapAction="http://tempuri.org/InsertPN_CancelLeave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApproveCancelLeave">
+      <soap12:operation soapAction="http://tempuri.org/InsertPN_ApproveCancelLeave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApplyCLOT">
+      <soap12:operation soapAction="http://tempuri.org/InsertPN_ApplyCLOT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApproveRejectCLOT">
+      <soap12:operation soapAction="http://tempuri.org/InsertPN_ApproveRejectCLOT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_CancelCLOT">
+      <soap12:operation soapAction="http://tempuri.org/InsertPN_CancelCLOT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApproveRejectCancelCLOT">
+      <soap12:operation soapAction="http://tempuri.org/InsertPN_ApproveRejectCancelCLOT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingPn">
+      <soap12:operation soapAction="http://tempuri.org/GetPendingPn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPendingPnSend">
+      <soap12:operation soapAction="http://tempuri.org/SetPendingPnSend" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -142,14 +573,84 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="InsertPN">
-      <http:operation location="/InsertPN" />
+    <wsdl:operation name="InsertPN_ApproveLeave">
+      <http:operation location="/InsertPN_ApproveLeave" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
       <wsdl:output>
         <mime:mimeXml part="Body" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_CancelLeave">
+      <http:operation location="/InsertPN_CancelLeave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApproveCancelLeave">
+      <http:operation location="/InsertPN_ApproveCancelLeave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApplyCLOT">
+      <http:operation location="/InsertPN_ApplyCLOT" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApproveRejectCLOT">
+      <http:operation location="/InsertPN_ApproveRejectCLOT" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_CancelCLOT">
+      <http:operation location="/InsertPN_CancelCLOT" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPN_ApproveRejectCancelCLOT">
+      <http:operation location="/InsertPN_ApproveRejectCancelCLOT" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPendingPn">
+      <http:operation location="/GetPendingPn" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPendingPnSend">
+      <http:operation location="/SetPendingPnSend" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ILeave_workflowPN">

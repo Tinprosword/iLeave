@@ -627,7 +627,6 @@ namespace WEBUI.Pages
             div_error.Visible = true;
         }
 
-
         protected void btn_Click_clot(object sender, EventArgs e)
         {
             string errormsg = "";
@@ -754,14 +753,10 @@ namespace WEBUI.Pages
             }
         }
 
-
-        
-
         protected void DropDownList1_TextChanged(object sender, EventArgs e)
         {
             SetupRepeater();
         }
-
 
         protected void Approvalpending_ServerClick(object sender, EventArgs e)
         {

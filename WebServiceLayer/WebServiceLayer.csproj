@@ -291,6 +291,9 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Web References\WebReference_WorkflowPN\t_commonKeyValue_workflow.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\WebReference_leave\LeaveManagementV2.disco" />

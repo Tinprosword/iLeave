@@ -55,6 +55,7 @@ namespace BLL
             {
                 string baseurl = GetTestBaseUrl();
                 WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_leave(requestid, HandlerUID,remark, baseurl);
+                List<int> pnids = WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_workflowPN.InsertPN_ApproveLeave(requestid).ToList();
                 result = true;
             }
             else
@@ -74,6 +75,7 @@ namespace BLL
             {
                 string baseurl = GetTestBaseUrl();
                 WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_leave(requestid, HandlerUID, remarks, baseurl);
+                List<int> pnids = WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_workflowPN.InsertPN_ApproveLeave(requestid).ToList();
                 result = true;
             }
             else
@@ -117,6 +119,8 @@ namespace BLL
                 {
                     result.mResult = cancelRequestID;
                     result.mMessage = "";
+
+                    WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_workflowPN.InsertPN_CancelLeave(cancelRequestID);
                 }
                 else
                 {
@@ -141,6 +145,8 @@ namespace BLL
             {
                 string baseurl = GetTestBaseUrl();
                 WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveCancelRequest_leave(requestid, HandlerUID, remark, baseurl);
+
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_workflowPN.InsertPN_ApproveCancelLeave(requestid);
                 result = true;
             }
             else
@@ -162,6 +168,8 @@ namespace BLL
                 string baseurl = GetTestBaseUrl();
                 WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectCancelRequest_leave(requestid, HandlerUID,remark, baseurl);
                 result = true;
+
+                WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_workflowPN.InsertPN_ApproveCancelLeave(requestid);
             }
             else
             {
@@ -264,6 +272,7 @@ namespace BLL
             {
                 string baseurl = GetTestBaseUrl();
                 WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_clotv2(requestid, HandlerUID, remark,baseurl);
+                List<int> pnids = WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_workflowPN.InsertPN_ApproveRejectCLOT(requestid).ToList();
                 result = true;
             }
             else
@@ -283,6 +292,7 @@ namespace BLL
             {
                 string baseurl = GetTestBaseUrl();
                 WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_clotv2(requestid, HandlerUID, remarks,baseurl);
+                List<int> pnids = WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_workflowPN.InsertPN_ApproveRejectCLOT(requestid).ToList();
                 result = true;
             }
             else
@@ -324,6 +334,7 @@ namespace BLL
             {
                 string baseurl = GetTestBaseUrl();
                 WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CancelCLOT(requestid, remark, HandlerUID, baseurl);
+                List<int> pnids = WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_workflowPN.InsertPN_CancelCLOT(requestid).ToList();
                 result = true;
             }
             else
@@ -343,6 +354,8 @@ namespace BLL
             {
                 string baseurl = GetTestBaseUrl();
                 WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.ApproveRequest_Cancelclot(requestid, HandlerUID, remark, baseurl);
+                List<int> pns = WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_workflowPN.InsertPN_ApproveRejectCancelCLOT(requestid).ToList();
+
                 result = true;
             }
             else
@@ -362,6 +375,8 @@ namespace BLL
             {
                 string baseurl = GetTestBaseUrl();
                 WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.RejectRequest_Cancelclot(requestid, HandlerUID, remark,baseurl);
+
+                List<int> pns = WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_workflowPN.InsertPN_ApproveRejectCancelCLOT(requestid).ToList();
                 result = true;
             }
             else

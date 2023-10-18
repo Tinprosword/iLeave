@@ -31,7 +31,23 @@ namespace WebServiceLayer.WebReference_WorkflowPN {
         
         private System.Threading.SendOrPostCallback InsertPN_ApplyLeaveOperationCompleted;
         
-        private System.Threading.SendOrPostCallback InsertPNOperationCompleted;
+        private System.Threading.SendOrPostCallback InsertPN_ApproveLeaveOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InsertPN_CancelLeaveOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InsertPN_ApproveCancelLeaveOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InsertPN_ApplyCLOTOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InsertPN_ApproveRejectCLOTOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InsertPN_CancelCLOTOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InsertPN_ApproveRejectCancelCLOTOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetPendingPnOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SetPendingPnSendOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -75,7 +91,31 @@ namespace WebServiceLayer.WebReference_WorkflowPN {
         public event InsertPN_ApplyLeaveCompletedEventHandler InsertPN_ApplyLeaveCompleted;
         
         /// <remarks/>
-        public event InsertPNCompletedEventHandler InsertPNCompleted;
+        public event InsertPN_ApproveLeaveCompletedEventHandler InsertPN_ApproveLeaveCompleted;
+        
+        /// <remarks/>
+        public event InsertPN_CancelLeaveCompletedEventHandler InsertPN_CancelLeaveCompleted;
+        
+        /// <remarks/>
+        public event InsertPN_ApproveCancelLeaveCompletedEventHandler InsertPN_ApproveCancelLeaveCompleted;
+        
+        /// <remarks/>
+        public event InsertPN_ApplyCLOTCompletedEventHandler InsertPN_ApplyCLOTCompleted;
+        
+        /// <remarks/>
+        public event InsertPN_ApproveRejectCLOTCompletedEventHandler InsertPN_ApproveRejectCLOTCompleted;
+        
+        /// <remarks/>
+        public event InsertPN_CancelCLOTCompletedEventHandler InsertPN_CancelCLOTCompleted;
+        
+        /// <remarks/>
+        public event InsertPN_ApproveRejectCancelCLOTCompletedEventHandler InsertPN_ApproveRejectCancelCLOTCompleted;
+        
+        /// <remarks/>
+        public event GetPendingPnCompletedEventHandler GetPendingPnCompleted;
+        
+        /// <remarks/>
+        public event SetPendingPnSendCompletedEventHandler SetPendingPnSendCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertPN_ApplyLeave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -107,37 +147,260 @@ namespace WebServiceLayer.WebReference_WorkflowPN {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertPN", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int InsertPN(int applicationType, int requestid, int ReceiverUID, string MessageBody) {
-            object[] results = this.Invoke("InsertPN", new object[] {
-                        applicationType,
-                        requestid,
-                        ReceiverUID,
-                        MessageBody});
-            return ((int)(results[0]));
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertPN_ApproveLeave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int[] InsertPN_ApproveLeave(int requestid) {
+            object[] results = this.Invoke("InsertPN_ApproveLeave", new object[] {
+                        requestid});
+            return ((int[])(results[0]));
         }
         
         /// <remarks/>
-        public void InsertPNAsync(int applicationType, int requestid, int ReceiverUID, string MessageBody) {
-            this.InsertPNAsync(applicationType, requestid, ReceiverUID, MessageBody, null);
+        public void InsertPN_ApproveLeaveAsync(int requestid) {
+            this.InsertPN_ApproveLeaveAsync(requestid, null);
         }
         
         /// <remarks/>
-        public void InsertPNAsync(int applicationType, int requestid, int ReceiverUID, string MessageBody, object userState) {
-            if ((this.InsertPNOperationCompleted == null)) {
-                this.InsertPNOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertPNOperationCompleted);
+        public void InsertPN_ApproveLeaveAsync(int requestid, object userState) {
+            if ((this.InsertPN_ApproveLeaveOperationCompleted == null)) {
+                this.InsertPN_ApproveLeaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertPN_ApproveLeaveOperationCompleted);
             }
-            this.InvokeAsync("InsertPN", new object[] {
-                        applicationType,
-                        requestid,
-                        ReceiverUID,
-                        MessageBody}, this.InsertPNOperationCompleted, userState);
+            this.InvokeAsync("InsertPN_ApproveLeave", new object[] {
+                        requestid}, this.InsertPN_ApproveLeaveOperationCompleted, userState);
         }
         
-        private void OnInsertPNOperationCompleted(object arg) {
-            if ((this.InsertPNCompleted != null)) {
+        private void OnInsertPN_ApproveLeaveOperationCompleted(object arg) {
+            if ((this.InsertPN_ApproveLeaveCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.InsertPNCompleted(this, new InsertPNCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.InsertPN_ApproveLeaveCompleted(this, new InsertPN_ApproveLeaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertPN_CancelLeave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int[] InsertPN_CancelLeave(int requestid) {
+            object[] results = this.Invoke("InsertPN_CancelLeave", new object[] {
+                        requestid});
+            return ((int[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsertPN_CancelLeaveAsync(int requestid) {
+            this.InsertPN_CancelLeaveAsync(requestid, null);
+        }
+        
+        /// <remarks/>
+        public void InsertPN_CancelLeaveAsync(int requestid, object userState) {
+            if ((this.InsertPN_CancelLeaveOperationCompleted == null)) {
+                this.InsertPN_CancelLeaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertPN_CancelLeaveOperationCompleted);
+            }
+            this.InvokeAsync("InsertPN_CancelLeave", new object[] {
+                        requestid}, this.InsertPN_CancelLeaveOperationCompleted, userState);
+        }
+        
+        private void OnInsertPN_CancelLeaveOperationCompleted(object arg) {
+            if ((this.InsertPN_CancelLeaveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsertPN_CancelLeaveCompleted(this, new InsertPN_CancelLeaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertPN_ApproveCancelLeave", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int[] InsertPN_ApproveCancelLeave(int requestid) {
+            object[] results = this.Invoke("InsertPN_ApproveCancelLeave", new object[] {
+                        requestid});
+            return ((int[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsertPN_ApproveCancelLeaveAsync(int requestid) {
+            this.InsertPN_ApproveCancelLeaveAsync(requestid, null);
+        }
+        
+        /// <remarks/>
+        public void InsertPN_ApproveCancelLeaveAsync(int requestid, object userState) {
+            if ((this.InsertPN_ApproveCancelLeaveOperationCompleted == null)) {
+                this.InsertPN_ApproveCancelLeaveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertPN_ApproveCancelLeaveOperationCompleted);
+            }
+            this.InvokeAsync("InsertPN_ApproveCancelLeave", new object[] {
+                        requestid}, this.InsertPN_ApproveCancelLeaveOperationCompleted, userState);
+        }
+        
+        private void OnInsertPN_ApproveCancelLeaveOperationCompleted(object arg) {
+            if ((this.InsertPN_ApproveCancelLeaveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsertPN_ApproveCancelLeaveCompleted(this, new InsertPN_ApproveCancelLeaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertPN_ApplyCLOT", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int[] InsertPN_ApplyCLOT(int requestid) {
+            object[] results = this.Invoke("InsertPN_ApplyCLOT", new object[] {
+                        requestid});
+            return ((int[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsertPN_ApplyCLOTAsync(int requestid) {
+            this.InsertPN_ApplyCLOTAsync(requestid, null);
+        }
+        
+        /// <remarks/>
+        public void InsertPN_ApplyCLOTAsync(int requestid, object userState) {
+            if ((this.InsertPN_ApplyCLOTOperationCompleted == null)) {
+                this.InsertPN_ApplyCLOTOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertPN_ApplyCLOTOperationCompleted);
+            }
+            this.InvokeAsync("InsertPN_ApplyCLOT", new object[] {
+                        requestid}, this.InsertPN_ApplyCLOTOperationCompleted, userState);
+        }
+        
+        private void OnInsertPN_ApplyCLOTOperationCompleted(object arg) {
+            if ((this.InsertPN_ApplyCLOTCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsertPN_ApplyCLOTCompleted(this, new InsertPN_ApplyCLOTCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertPN_ApproveRejectCLOT", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int[] InsertPN_ApproveRejectCLOT(int requestid) {
+            object[] results = this.Invoke("InsertPN_ApproveRejectCLOT", new object[] {
+                        requestid});
+            return ((int[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsertPN_ApproveRejectCLOTAsync(int requestid) {
+            this.InsertPN_ApproveRejectCLOTAsync(requestid, null);
+        }
+        
+        /// <remarks/>
+        public void InsertPN_ApproveRejectCLOTAsync(int requestid, object userState) {
+            if ((this.InsertPN_ApproveRejectCLOTOperationCompleted == null)) {
+                this.InsertPN_ApproveRejectCLOTOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertPN_ApproveRejectCLOTOperationCompleted);
+            }
+            this.InvokeAsync("InsertPN_ApproveRejectCLOT", new object[] {
+                        requestid}, this.InsertPN_ApproveRejectCLOTOperationCompleted, userState);
+        }
+        
+        private void OnInsertPN_ApproveRejectCLOTOperationCompleted(object arg) {
+            if ((this.InsertPN_ApproveRejectCLOTCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsertPN_ApproveRejectCLOTCompleted(this, new InsertPN_ApproveRejectCLOTCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertPN_CancelCLOT", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int[] InsertPN_CancelCLOT(int requestid) {
+            object[] results = this.Invoke("InsertPN_CancelCLOT", new object[] {
+                        requestid});
+            return ((int[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsertPN_CancelCLOTAsync(int requestid) {
+            this.InsertPN_CancelCLOTAsync(requestid, null);
+        }
+        
+        /// <remarks/>
+        public void InsertPN_CancelCLOTAsync(int requestid, object userState) {
+            if ((this.InsertPN_CancelCLOTOperationCompleted == null)) {
+                this.InsertPN_CancelCLOTOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertPN_CancelCLOTOperationCompleted);
+            }
+            this.InvokeAsync("InsertPN_CancelCLOT", new object[] {
+                        requestid}, this.InsertPN_CancelCLOTOperationCompleted, userState);
+        }
+        
+        private void OnInsertPN_CancelCLOTOperationCompleted(object arg) {
+            if ((this.InsertPN_CancelCLOTCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsertPN_CancelCLOTCompleted(this, new InsertPN_CancelCLOTCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertPN_ApproveRejectCancelCLOT", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int[] InsertPN_ApproveRejectCancelCLOT(int requestid) {
+            object[] results = this.Invoke("InsertPN_ApproveRejectCancelCLOT", new object[] {
+                        requestid});
+            return ((int[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsertPN_ApproveRejectCancelCLOTAsync(int requestid) {
+            this.InsertPN_ApproveRejectCancelCLOTAsync(requestid, null);
+        }
+        
+        /// <remarks/>
+        public void InsertPN_ApproveRejectCancelCLOTAsync(int requestid, object userState) {
+            if ((this.InsertPN_ApproveRejectCancelCLOTOperationCompleted == null)) {
+                this.InsertPN_ApproveRejectCancelCLOTOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertPN_ApproveRejectCancelCLOTOperationCompleted);
+            }
+            this.InvokeAsync("InsertPN_ApproveRejectCancelCLOT", new object[] {
+                        requestid}, this.InsertPN_ApproveRejectCancelCLOTOperationCompleted, userState);
+        }
+        
+        private void OnInsertPN_ApproveRejectCancelCLOTOperationCompleted(object arg) {
+            if ((this.InsertPN_ApproveRejectCancelCLOTCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsertPN_ApproveRejectCancelCLOTCompleted(this, new InsertPN_ApproveRejectCancelCLOTCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetPendingPn", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_commonKeyValue_workflow[] GetPendingPn() {
+            object[] results = this.Invoke("GetPendingPn", new object[0]);
+            return ((t_commonKeyValue_workflow[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetPendingPnAsync() {
+            this.GetPendingPnAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetPendingPnAsync(object userState) {
+            if ((this.GetPendingPnOperationCompleted == null)) {
+                this.GetPendingPnOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPendingPnOperationCompleted);
+            }
+            this.InvokeAsync("GetPendingPn", new object[0], this.GetPendingPnOperationCompleted, userState);
+        }
+        
+        private void OnGetPendingPnOperationCompleted(object arg) {
+            if ((this.GetPendingPnCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetPendingPnCompleted(this, new GetPendingPnCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SetPendingPnSend", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void SetPendingPnSend(int pnid) {
+            this.Invoke("SetPendingPnSend", new object[] {
+                        pnid});
+        }
+        
+        /// <remarks/>
+        public void SetPendingPnSendAsync(int pnid) {
+            this.SetPendingPnSendAsync(pnid, null);
+        }
+        
+        /// <remarks/>
+        public void SetPendingPnSendAsync(int pnid, object userState) {
+            if ((this.SetPendingPnSendOperationCompleted == null)) {
+                this.SetPendingPnSendOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSetPendingPnSendOperationCompleted);
+            }
+            this.InvokeAsync("SetPendingPnSend", new object[] {
+                        pnid}, this.SetPendingPnSendOperationCompleted, userState);
+        }
+        
+        private void OnSetPendingPnSendOperationCompleted(object arg) {
+            if ((this.SetPendingPnSendCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SetPendingPnSendCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -157,6 +420,165 @@ namespace WebServiceLayer.WebReference_WorkflowPN {
                 return true;
             }
             return false;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class t_commonKeyValue_workflow {
+        
+        private MobileDeviceInfo[] mobileinfoField;
+        
+        private t_commonKeyValue commonKeyValueField;
+        
+        /// <remarks/>
+        public MobileDeviceInfo[] mobileinfo {
+            get {
+                return this.mobileinfoField;
+            }
+            set {
+                this.mobileinfoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public t_commonKeyValue commonKeyValue {
+            get {
+                return this.commonKeyValueField;
+            }
+            set {
+                this.commonKeyValueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class MobileDeviceInfo {
+        
+        private string deviceidField;
+        
+        private string unameField;
+        
+        private int devicetypeField;
+        
+        /// <remarks/>
+        public string deviceid {
+            get {
+                return this.deviceidField;
+            }
+            set {
+                this.deviceidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string uname {
+            get {
+                return this.unameField;
+            }
+            set {
+                this.unameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int devicetype {
+            get {
+                return this.devicetypeField;
+            }
+            set {
+                this.devicetypeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class t_commonKeyValue {
+        
+        private int idField;
+        
+        private string typeCodeField;
+        
+        private string keyStrField;
+        
+        private string valueStrField;
+        
+        private string remarkField;
+        
+        private System.DateTime createDateField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string TypeCode {
+            get {
+                return this.typeCodeField;
+            }
+            set {
+                this.typeCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string KeyStr {
+            get {
+                return this.keyStrField;
+            }
+            set {
+                this.keyStrField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ValueStr {
+            get {
+                return this.valueStrField;
+            }
+            set {
+                this.valueStrField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Remark {
+            get {
+                return this.remarkField;
+            }
+            set {
+                this.remarkField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
         }
     }
     
@@ -188,29 +610,215 @@ namespace WebServiceLayer.WebReference_WorkflowPN {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void InsertPNCompletedEventHandler(object sender, InsertPNCompletedEventArgs e);
+    public delegate void InsertPN_ApproveLeaveCompletedEventHandler(object sender, InsertPN_ApproveLeaveCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class InsertPNCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class InsertPN_ApproveLeaveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal InsertPNCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal InsertPN_ApproveLeaveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public int Result {
+        public int[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((int)(this.results[0]));
+                return ((int[])(this.results[0]));
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void InsertPN_CancelLeaveCompletedEventHandler(object sender, InsertPN_CancelLeaveCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsertPN_CancelLeaveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsertPN_CancelLeaveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void InsertPN_ApproveCancelLeaveCompletedEventHandler(object sender, InsertPN_ApproveCancelLeaveCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsertPN_ApproveCancelLeaveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsertPN_ApproveCancelLeaveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void InsertPN_ApplyCLOTCompletedEventHandler(object sender, InsertPN_ApplyCLOTCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsertPN_ApplyCLOTCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsertPN_ApplyCLOTCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void InsertPN_ApproveRejectCLOTCompletedEventHandler(object sender, InsertPN_ApproveRejectCLOTCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsertPN_ApproveRejectCLOTCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsertPN_ApproveRejectCLOTCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void InsertPN_CancelCLOTCompletedEventHandler(object sender, InsertPN_CancelCLOTCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsertPN_CancelCLOTCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsertPN_CancelCLOTCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void InsertPN_ApproveRejectCancelCLOTCompletedEventHandler(object sender, InsertPN_ApproveRejectCancelCLOTCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsertPN_ApproveRejectCancelCLOTCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsertPN_ApproveRejectCancelCLOTCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetPendingPnCompletedEventHandler(object sender, GetPendingPnCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetPendingPnCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetPendingPnCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_commonKeyValue_workflow[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_commonKeyValue_workflow[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void SetPendingPnSendCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591
