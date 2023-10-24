@@ -296,10 +296,19 @@ namespace BLL
             return   time + " (" + hours + " h)";
         }
 
-        public static float CalculateNumberofHours(int fromhour, int tohour, int frommin, int tominute,DateTime day)
+        public static float CalculateNumberofHours(int fromhour, int tohour, int frommin, int tominute)
         {
             int h = tohour - fromhour;
             int m = tominute - frommin;
+            int totalmin = h * 60 + m;
+            float result = (float)(Math.Round((double)((double)totalmin / 60), 2));
+            return result;
+        }
+
+        public static float CalculateNumberofHoursToDayEnd(int fromhour, int frommin)
+        {
+            int h = 24 - fromhour;
+            int m = 0 - frommin;
             int totalmin = h * 60 + m;
             float result = (float)(Math.Round((double)((double)totalmin / 60), 2));
             return result;

@@ -352,34 +352,61 @@ namespace BLL
         {
             DateTime theday = System.DateTime.Now;
             double totalHours = 0;
-            totalHours = BLL.CLOT.CalculateNumberofHours(fromh, toh, fromm, tom, theday);
 
-            var einfo = BLL.User_wsref.getEmploymentByid(eid);
-            if (einfo != null)
+            if (toh < fromh || (toh == fromh && tom < fromm))//over right.
             {
-                var shift = BLL.CodeSetting.GetShiftbyid(einfo.ShiftID);
-                if (shift != null)
+                double totalHours1 = BLL.CLOT.CalculateNumberofHoursToDayEnd(fromh, fromm);
+                double totalHours2 = BLL.CLOT.CalculateNumberofHours(0, toh, 0, tom);
+
+                var einfo = BLL.User_wsref.getEmploymentByid(eid);
+                if (einfo != null)
                 {
-                    //1.用shift 修正一次:去除午餐時間。
-                    DateTime f1 = new DateTime(1900, 1, 1, fromh, fromm, 0);
-                    DateTime t1 = new DateTime(1900, 1, 1, toh, tom, 0);
-                    DateTime f2 = new DateTime(1900, 1, 1, shift.LunchIn.Hour, shift.LunchIn.Minute, 0);
-                    DateTime t2 = new DateTime(1900, 1, 1, shift.LunchOut.Hour, shift.LunchOut.Minute, 0);
-                    totalHours = BLL.CodeSetting.GetRealTotal(f1, t1, f2, t2);
+                    var shift = BLL.CodeSetting.GetShiftbyid(einfo.ShiftID);
+
+                    if (shift != null)
+                    {//少了一个夜班的吃中饭。因为代码不好修改。就漏了这个处理，也是因为夜班，不太可能吃夜班开始那天的午饭。
+                        DateTime f1v = new DateTime(1900, 1, 1, 0, 0, 0);
+                        DateTime t1v = new DateTime(1900, 1, 1, toh, tom, 0);
+
+                        DateTime f2 = new DateTime(1900, 1, 1, shift.LunchIn.Hour, shift.LunchIn.Minute, 0);
+                        DateTime t2 = new DateTime(1900, 1, 1, shift.LunchOut.Hour, shift.LunchOut.Minute, 0);
+                        totalHours2 = BLL.CodeSetting.GetRealTotal(f1v, t1v, f2, t2);
+                    }
+                }
+
+                totalHours = totalHours1 + totalHours2;
+            }
+            else
+            {
+                totalHours = BLL.CLOT.CalculateNumberofHours(fromh, toh, fromm, tom);
+
+                var einfo = BLL.User_wsref.getEmploymentByid(eid);
+                if (einfo != null)
+                {
+                    var shift = BLL.CodeSetting.GetShiftbyid(einfo.ShiftID);
+                    if (shift != null)
+                    {
+                        //1.用shift 修正一次:去除午餐時間。
+                        DateTime f1 = new DateTime(1900, 1, 1, fromh, fromm, 0);
+                        DateTime t1 = new DateTime(1900, 1, 1, toh, tom, 0);
+                        DateTime f2 = new DateTime(1900, 1, 1, shift.LunchIn.Hour, shift.LunchIn.Minute, 0);
+                        DateTime t2 = new DateTime(1900, 1, 1, shift.LunchOut.Hour, shift.LunchOut.Minute, 0);
+                        totalHours = BLL.CodeSetting.GetRealTotal(f1, t1, f2, t2);
 
 
-                    //2.如果是am,pm ,fullday, 要另外修正： am,pm 固定為totalWorkHours 的一半.
-                    if (section == 0)
-                    {
-                        totalHours = shift.TotalWorkHour;
-                    }
-                    else if (section == 1)
-                    {
-                        totalHours = shift.TotalWorkHour / 2f;
-                    }
-                    else if (section == 2)
-                    {
-                        totalHours = shift.TotalWorkHour / 2f;
+                        //2.如果是am,pm ,fullday, 要另外修正： am,pm 固定為totalWorkHours 的一半.
+                        if (section == 0)
+                        {
+                            totalHours = shift.TotalWorkHour;
+                        }
+                        else if (section == 1)
+                        {
+                            totalHours = shift.TotalWorkHour / 2f;
+                        }
+                        else if (section == 2)
+                        {
+                            totalHours = shift.TotalWorkHour / 2f;
+                        }
                     }
                 }
             }

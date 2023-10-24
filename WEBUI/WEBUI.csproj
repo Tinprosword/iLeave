@@ -1412,6 +1412,7 @@
     </None>
     <Content Include="temp\ajaxpage.aspx" />
     <Content Include="temp\demo2.aspx" />
+    <Content Include="temp\JavaScript.js" />
     <Content Include="temp\template.aspx" />
     <Content Include="temp\template2.aspx" />
     <Content Include="temp\test.aspx" />
