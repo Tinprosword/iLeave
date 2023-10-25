@@ -27,13 +27,13 @@ namespace BLL
         }
 
         /// <summary>
-        /// 0:ok -1:empty .-2 same apply day or section,-3 sp error -4 other error,-5 block.
+        /// 0:ok -1:empty .-2 same apply day or section,-3 sp error -4 other error,-5 block.-6 overlap with clot.
         /// </summary>
         /// <param name="originDetail"></param>
         /// <param name="message"></param>
         /// <param name="eid"></param>
         /// <returns> 0:ok -1:empty .-2 same apply day or section,-3 sp error</returns>
-        private static int CheckBeforeApply(List<MODEL.Apply.apply_LeaveData> originDetail, ref string message, int eid, int? staffid,List<WebServiceLayer.WebReference_codesettings.LeaveInfo> allLeaveInfo,bool hasAttachment)
+        private static int CheckBeforeApply(List<MODEL.Apply.apply_LeaveData> originDetail, ref string message, int eid, int? staffid,List<WebServiceLayer.WebReference_codesettings.LeaveInfo> allLeaveInfo,bool hasAttachment,int myUID)
         {
             //check all logic.once fail skip.
             int result = 0;
@@ -135,6 +135,20 @@ namespace BLL
                 }
             }
 
+            //overlap with clot
+            if (result == 0)//byDaybyHour ,0 day, 1 hour.
+            {
+                var approvedAndWaitingCLOT = BLL.CLOT.GetMyCLOT_ApprovedAndWaitingByUID(myUID);
+                var theShift = BLL.CodeSetting.GetShiftbyEid(eid);
+                string errorMsg = CheckBeforeApply_overlapCLOT(approvedAndWaitingCLOT, originDetail, theShift);
+
+                if (!string.IsNullOrEmpty(errorMsg))
+                {
+                    result = -6;
+                    message = errorMsg;
+                }
+            }
+
             //check block date. can not apply earlier today except sl.
             if (result == 0)
             {
@@ -155,6 +169,44 @@ namespace BLL
             }
 
             return result;
+        }
+
+        private static string CheckBeforeApply_overlapCLOT(List<StaffCLOTRequest> tobeCheckedCLOTs, List<MODEL.Apply.apply_LeaveData> tobeCheckLeave, WebServiceLayer.WebReference_codesettings.Shift EmployShift)
+        {
+            string errorMSG = "";
+            //检查每一个。1.section,section 2.section hours 3. hour section . 4.hour hour ,有一个错误，那么马上出错。跳出循环。
+            //1.正常。2，section转为hours. 无法转那么就冲突。3 section转为hours. 无法转那么就冲突， 4.hour ,hour 不能重叠。
+            //CLOT,2023-01-01 1:1:1 , time is override.
+            //string tempError = "{0} ," + BLL.MultiLanguageHelper.GetLanguagePacket().common_msg_overlap;
+
+            foreach (var theLeave in tobeCheckLeave)
+            {
+                foreach (var theCLOT in tobeCheckedCLOTs)
+                {
+                    bool isOverLap = false;
+                    if (isOverLap)
+                    {
+                        errorMSG = "";
+                        break;
+                    }
+                }
+            }
+
+            //var sameDayLeave = originDetail.Where(x => x.LeaveDate == tobeCheckCLOT.Date).ToList();
+            //if (sameDayLeave != null && sameDayLeave.Count() > 0)
+            //{
+            //    bool isOverlapWithclot = false;
+
+            //    if (isOverlapWithclot)
+            //    {
+            //        result = -6;
+            //        string tempCLOTINFO = "CLOT," + tobeCheckCLOT.Date.ToString("yyyy-MM-dd") + " " + tobeCheckCLOT.TimeFrom.Value.ToString("HH:mm") + "-" + tobeCheckCLOT.TimeTo.Value.ToString("HH:mm") + " .";
+            //        message += string.Format(tempError, tempCLOTINFO);
+            //        break;
+            //    }
+            //}
+
+            return errorMSG;
         }
 
         public static bool isContainEarlierToday(List<DateTime> leaveTime)
@@ -196,7 +248,7 @@ namespace BLL
             int result = -1;
 
             List<WebServiceLayer.WebReference_codesettings.LeaveInfo> allLeaveInfo = BLL.CodeSetting.GetAllLeaveInfo().ToList();
-            int checkResult = CheckBeforeApply(originDetail, ref errorMsg, employmentid,staffid,allLeaveInfo, hasAttachment);
+            int checkResult = CheckBeforeApply(originDetail, ref errorMsg, employmentid, staffid, allLeaveInfo, hasAttachment, userid);
             if (checkResult >= 0)
             {
                 WebServiceLayer.WebReference_leave.StaffLeaveRequest[] details;

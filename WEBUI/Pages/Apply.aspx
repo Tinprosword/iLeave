@@ -10,9 +10,7 @@
             <li id="myTabapply_history" runat="server"><a style="padding-top:4px; padding-bottom:4px;padding-left:10px; padding-right:10px; " data-toggle="tab" onclick="<%=showhisEvent()%>"><asp:Literal ID="lt_myhistory" runat="server" Text="History"/></a></li>
             <li id="myTabapply_es" runat="server" style="padding-left:0px;margin-left:0px;"><a style="padding-top:4px; padding-left:10px; padding-right:10px; padding-bottom:4px;" data-toggle="tab" onclick="<%=showesEvent()%>"><asp:Literal ID="lt_estimation" runat="server" Text="Estimation"/></a></li>
         </ul>
-        <a href="Apply_Upload.aspx">Apply_Upload.aspx</a>
     </div>
-
     <div class="row" id="mainpage">
         <div class ="col-xs-12" style="height:2px; padding:0px">&nbsp</div>
         <table class="col-xs-12 lsu-tablem1">

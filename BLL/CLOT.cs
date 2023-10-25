@@ -39,6 +39,20 @@ namespace BLL
             return result;
         }
 
+        public static List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> GetMyCLOT_ApprovedAndWaitingByUID(int UID)
+        {
+            List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> result = new List<StaffCLOTRequest>();
+
+            var result_waiting = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetMyWaitingCLOT(UID).ToList();
+            var result_BeyondWaiting = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.GetMyBeyondWaitingCLOT(UID).ToList();
+            var result_approved = result_BeyondWaiting.Where(x => x.Status == 2).ToList();
+
+            result.AddRange(result_waiting);
+            result.AddRange(result_approved);
+
+            return result;
+        }
+
         public static List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> GetMyClOT_AllByUID(int firstEID, GlobalVariate.LeaveBigRangeStatus status, DateTime? from, DateTime? to)
         {
             List<WebServiceLayer.WebReference_leave.StaffCLOTRequest> result = new List<StaffCLOTRequest>();
