@@ -18,6 +18,7 @@ namespace WEBUI.Pages
         //發現ViewStateHelper.SetValue 要放到 PageLoad_InitUIOnFirstLoad4。否則會失效. 但是apply.aspx又可以， 
         //沒有找出原因。看了下流程，是因為page事件並沒有按照自己想像中的走，好想是因為變量引用問題，導致.net 需要這些變量，在前一個page 事件還沒走完，丟先調用了後一個頁面事件。
         //看來自己寫的page 框架，有問題。！！！！！有空要仔細測試下為什麼。
+        //2023.10.31 好像上面的已经修复了。模板中的事件流程好像问题，修改了模板了应该，记得是。
 
         private static string m_CheckinActionName = "Check";
         private static string m_ForceChekinActonName = "ForceCheck";
@@ -63,6 +64,8 @@ namespace WEBUI.Pages
             var rpdate = BLL.calendar.GetRoster(System.DateTime.Today, new List<int> { loginer.userInfo.employID ?? 0 }).OrderBy(x => x.Time);
             this.rp_shifts.DataSource = rpdate;
             this.rp_shifts.DataBind();
+
+
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()

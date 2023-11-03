@@ -13,6 +13,24 @@ namespace WEBUI.Pages {
     public partial class Check {
         
         /// <summary>
+        /// hf_loaction 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf_loaction;
+        
+        /// <summary>
+        /// hf_loactionName 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf_loactionName;
+        
+        /// <summary>
         /// lb_day 控件。
         /// </summary>
         /// <remarks>
@@ -110,5 +128,14 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lt_jsConfirmForce;
+        
+        /// <summary>
+        /// lt_jsTimerRequestMobileLocation 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_jsTimerRequestMobileLocation;
     }
 }

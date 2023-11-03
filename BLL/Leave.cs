@@ -171,41 +171,207 @@ namespace BLL
             return result;
         }
 
+        private static bool isOverright_clot(StaffCLOTRequest tobeCheckItem)
+        {
+            bool result = false;
+            if (tobeCheckItem.TimeTo != null && tobeCheckItem.TimeFrom != null)
+            {
+                if(tobeCheckItem.TimeTo<tobeCheckItem.TimeFrom)
+                {
+                    result = true;
+                }
+            }
+
+            return result;
+        }
+
         private static string CheckBeforeApply_overlapCLOT(List<StaffCLOTRequest> tobeCheckedCLOTs, List<MODEL.Apply.apply_LeaveData> tobeCheckLeave, WebServiceLayer.WebReference_codesettings.Shift EmployShift)
         {
             string errorMSG = "";
             //检查每一个。1.section,section 2.section hours 3. hour section . 4.hour hour ,有一个错误，那么马上出错。跳出循环。
             //1.正常。2，section转为hours. 无法转那么就冲突。3 section转为hours. 无法转那么就冲突， 4.hour ,hour 不能重叠。
-            //CLOT,2023-01-01 1:1:1 , time is override.
+            //[CLOT] 2023-01-01 1:1:1 , time is override.
             //string tempError = "{0} ," + BLL.MultiLanguageHelper.GetLanguagePacket().common_msg_overlap;
+
+            bool isOverLap = false;
+            //1900-01-01 00:00:00.000
+            DateTime defaultInvalidDate = new DateTime(1900, 1, 1, 0, 0, 0);
 
             foreach (var theLeave in tobeCheckLeave)
             {
                 foreach (var theCLOT in tobeCheckedCLOTs)
                 {
-                    bool isOverLap = false;
+                    bool ishour_clot = theCLOT.Section == -1 ? true : false;
+                    bool ishour_leave = theLeave.byDaybyHour == 0 ? false : true;
+
+                    if (!ishour_clot && !ishour_leave)//1.section and section.
+                    {
+                        //same day. -> 1.same section 2.one of is full.
+                        if (theCLOT.Date.Date == theLeave.LeaveDate.Date)
+                        {
+                            if ((theCLOT.Section == theLeave.sectionid) || (theCLOT.Section==0 || theLeave.sectionid==0))
+                            {
+                                isOverLap = true;
+                            }
+                        }
+                    }
+                    else if (ishour_clot && ishour_leave)//hour and hour
+                    {
+                        if (theCLOT.Date.Date == theLeave.LeaveDate.Date)
+                        {
+                            if (theCLOT.TimeFrom != null && theCLOT.TimeTo != null && theLeave.LeaveHourFrom != null && theLeave.LeaveHourTo != null)
+                            {
+                                if ((theCLOT.TimeFrom.Value == theCLOT.TimeTo.Value && theCLOT.Hour != 0) || (theLeave.LeaveHourFrom.Value == theLeave.LeaveHourTo.Value && theLeave.totalHours!=0))
+                                {
+                                    isOverLap = true;
+                                }
+                                else
+                                {
+                                    //fix overright
+                                    bool isovernightclot = isOverright_clot(theCLOT);
+                                    if (!isovernightclot)
+                                    {
+                                        isOverLap = LSLibrary.MyDateTime.IsOverlap(theLeave.LeaveHourFrom.Value, theLeave.LeaveHourTo.Value, theCLOT.TimeFrom.Value, theCLOT.TimeTo.Value);
+                                    }
+                                    else
+                                    {
+                                        DateTime tempCLOTFrom = new DateTime(theCLOT.TimeFrom.Value.Year, theCLOT.TimeFrom.Value.Month, theCLOT.TimeFrom.Value.Day, 0, 0, 1);
+                                        isOverLap = LSLibrary.MyDateTime.IsOverlap(theLeave.LeaveHourFrom.Value, theLeave.LeaveHourTo.Value, tempCLOTFrom, theCLOT.TimeTo.Value);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else//hour and section.
+                    {
+                        if (theLeave.LeaveDate.Date == theCLOT.Date.Date)
+                        {
+                            bool isValidShift = false;
+                            if (EmployShift != null)
+                            {
+                                if (EmployShift.BankOnTime != defaultInvalidDate && EmployShift.BankOffTime != defaultInvalidDate && EmployShift.LunchIn != defaultInvalidDate && EmployShift.LunchOut != defaultInvalidDate)
+                                {
+                                    isValidShift = true;
+                                }
+                            }
+
+                            if (isValidShift)
+                            {
+                                if (ishour_clot && theLeave.sectionid == 0)
+                                {
+                                    isOverLap = true;
+                                }
+                                else if (ishour_leave && theCLOT.Section == 0)
+                                {
+                                    isOverLap = true;
+                                }
+                                else
+                                {
+                                    DateTime dateLeaveF = DateTime.Now;
+                                    DateTime dateLeaveT = DateTime.Now;
+                                    DateTime dateCLOTF = DateTime.Now;
+                                    DateTime dateclotT = DateTime.Now;
+
+                                    if (ishour_clot)
+                                    {
+                                        if (theCLOT.TimeFrom == null || theCLOT.TimeTo == null)
+                                        {
+                                            isOverLap = true;
+                                        }
+                                        else
+                                        {
+                                            if (theLeave.sectionid == 1)
+                                            {
+                                                dateLeaveF = new DateTime(theLeave.LeaveDate.Year, theLeave.LeaveDate.Month, theLeave.LeaveDate.Day, EmployShift.BankOnTime.Hour, EmployShift.BankOnTime.Minute, 0);
+                                                dateLeaveT = new DateTime(theLeave.LeaveDate.Year, theLeave.LeaveDate.Month, theLeave.LeaveDate.Day, EmployShift.LunchIn.Hour, EmployShift.LunchIn.Minute, 0);
+                                            }
+                                            else if (theLeave.sectionid == 2)
+                                            {
+                                                dateLeaveF = new DateTime(theLeave.LeaveDate.Year, theLeave.LeaveDate.Month, theLeave.LeaveDate.Day, EmployShift.LunchOut.Hour, EmployShift.LunchOut.Minute, 0);
+                                                dateLeaveT = new DateTime(theLeave.LeaveDate.Year, theLeave.LeaveDate.Month, theLeave.LeaveDate.Day, EmployShift.BankOffTime.Hour, EmployShift.BankOffTime.Minute, 0);
+                                            }
+                                            else
+                                            {
+                                                dateLeaveF = new DateTime(theLeave.LeaveDate.Year, theLeave.LeaveDate.Month, theLeave.LeaveDate.Day, 0,0, 1);
+                                                dateLeaveT = new DateTime(theLeave.LeaveDate.Year, theLeave.LeaveDate.Month, theLeave.LeaveDate.Day, 23, 59, 0);
+                                            }
+
+                                            dateCLOTF = theCLOT.TimeFrom.Value;
+                                            dateclotT = theCLOT.TimeTo.Value;
+
+                                            bool isovernightclot = isOverright_clot(theCLOT);
+                                            if (!isovernightclot)
+                                            {
+                                                isOverLap =  LSLibrary.MyDateTime.IsOverlap(dateLeaveF, dateLeaveT, dateCLOTF, dateclotT);
+                                            }
+                                            else
+                                            {
+                                                DateTime tempCLOTFrom = new DateTime(dateCLOTF.Year, dateCLOTF.Month, dateCLOTF.Day, 0, 0, 1);
+                                                isOverLap =  LSLibrary.MyDateTime.IsOverlap(dateLeaveF, dateLeaveT, tempCLOTFrom, dateclotT);
+                                            }
+                                        }
+                                    }
+                                    else//leave is hour.
+                                    {
+                                        if (theLeave.LeaveHourFrom == null || theCLOT.TimeTo == null)
+                                        {
+                                            isOverLap = true;
+                                        }
+                                        else
+                                        {
+                                            dateLeaveF = theLeave.LeaveHourFrom.Value;
+                                            dateLeaveT = theLeave.LeaveHourTo.Value;
+
+                                            if (theCLOT.Section == 1)
+                                            {
+                                                dateCLOTF = new DateTime(theCLOT.Date.Year, theCLOT.Date.Month, theCLOT.Date.Day, EmployShift.BankOnTime.Hour, EmployShift.BankOnTime.Minute, 0);
+                                                dateclotT = new DateTime(theCLOT.Date.Year, theCLOT.Date.Month, theCLOT.Date.Day, EmployShift.LunchIn.Hour, EmployShift.LunchIn.Minute, 0);
+                                            }
+                                            else if (theCLOT.Section == 2)
+                                            {
+                                                dateCLOTF = new DateTime(theCLOT.Date.Year, theCLOT.Date.Month, theCLOT.Date.Day, EmployShift.LunchOut.Hour, EmployShift.LunchOut.Minute, 0);
+                                                dateclotT = new DateTime(theCLOT.Date.Year, theCLOT.Date.Month, theCLOT.Date.Day, EmployShift.BankOffTime.Hour, EmployShift.BankOffTime.Minute, 0);
+                                            }
+                                            else
+                                            {
+                                                dateCLOTF = new DateTime(theCLOT.Date.Year, theCLOT.Date.Month, theCLOT.Date.Day, 0, 0, 0);
+                                                dateclotT = new DateTime(theCLOT.Date.Year, theCLOT.Date.Month, theCLOT.Date.Day, 23, 59, 0);
+                                            }
+
+                                            isOverLap = LSLibrary.MyDateTime.IsOverlap(dateLeaveF, dateLeaveT, dateCLOTF, dateclotT);
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (theCLOT.Date.Date == theLeave.LeaveDate.Date)
+                                {
+                                    isOverLap = true;
+                                }
+                            }
+                        }
+                    }
                     if (isOverLap)
                     {
-                        errorMSG = "";
+                        string CLOrOTStr = "[CLOT]";
+                        if (theCLOT.Type == 0)
+                        {
+                            CLOrOTStr = "[OT]";
+                        }
+                        else if (theCLOT.Type == 1)
+                        {
+                            CLOrOTStr = "[CL]";
+                        }
+                        errorMSG = BLL.MultiLanguageHelper.GetLanguagePacket().common_msg_overlapWith + CLOrOTStr + " " + theCLOT.Date.ToString("yyyy-MM-dd") + " " + theCLOT.TimeFrom.Value.ToString("HH:mm") + "-" + theCLOT.TimeTo.Value.ToString("HH:mm") + " .";
                         break;
                     }
                 }
+                if (isOverLap)
+                {
+                    break;
+                }
             }
-
-            //var sameDayLeave = originDetail.Where(x => x.LeaveDate == tobeCheckCLOT.Date).ToList();
-            //if (sameDayLeave != null && sameDayLeave.Count() > 0)
-            //{
-            //    bool isOverlapWithclot = false;
-
-            //    if (isOverlapWithclot)
-            //    {
-            //        result = -6;
-            //        string tempCLOTINFO = "CLOT," + tobeCheckCLOT.Date.ToString("yyyy-MM-dd") + " " + tobeCheckCLOT.TimeFrom.Value.ToString("HH:mm") + "-" + tobeCheckCLOT.TimeTo.Value.ToString("HH:mm") + " .";
-            //        message += string.Format(tempError, tempCLOTINFO);
-            //        break;
-            //    }
-            //}
-
             return errorMSG;
         }
 

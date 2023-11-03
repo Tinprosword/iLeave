@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="Check.aspx.cs" Inherits="WEBUI.Pages.Check"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Res/App/check.css" rel="stylesheet" />
+    <asp:HiddenField ID="hf_loaction" runat="server" Value="a"/>
+    <asp:HiddenField ID="hf_loactionName" runat="server" Value="b"/>
     <div class="row" id="div_buttons">
         <div class ="col-xs-12" style="padding:0px; padding-top:5px;">
             <div class="col-xs-12" style="height:45px">&nbsp;</div>
@@ -80,5 +82,7 @@
     <asp:Literal ID="lt_jsModelWindow" runat="server"></asp:Literal>
     <asp:Literal ID="lt_jsmobileGps" runat="server"></asp:Literal>
     <asp:Literal ID="lt_jsConfirmForce" runat="server"></asp:Literal>
+    <asp:Literal ID="lt_jsTimerRequestMobileLocation" runat="server"></asp:Literal>
+    <%--setTimeout("document.location = 'js://webview?msgtype=GPS&value1=0';", 5000);--%>
     <script src="../Res/App/check.js?lastmodify=<%=BLL.GlobalVariate.checkjsLastmodify %>"></script>
 </asp:Content>

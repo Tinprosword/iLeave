@@ -128,15 +128,16 @@ namespace BLL
 
                 foreach (var themobileinfo in devicesinfo_ios)
                 {
-                    pushIOSNotice(thependingPN.commonKeyValue.Remark, thependingPN.commonKeyValue.ValueStr,theServer);
+                    pushIOSNotice(thependingPN.commonKeyValue.Remark, themobileinfo.deviceid,theServer);
                     WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_workflowPN.SetPendingPnSend(thependingPN.commonKeyValue.ID);
                 }
 
                 foreach (var themobileinfo in devicesinfo_android)
                 {
-                    int tempReuslt= pushAndroidNotice(thependingPN.commonKeyValue.Remark, thependingPN.commonKeyValue.ValueStr);
+                    int tempReuslt = pushAndroidNotice(thependingPN.commonKeyValue.Remark, themobileinfo.deviceid);
                     if (tempReuslt == -1)//timeout 超时的话，下面的也不做。
                     {
+                        BLL.common.WriteLog("PN:Android time out.");
                         break;
                     }
                     else//其他错误，跳过，做下一个。

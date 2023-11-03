@@ -240,7 +240,6 @@ function SetSroll(leftbtn, rightbtn, content, offsetleft) {
 }
 
 
-
 function ConfirmAndLocation(msg,locationUrl)
 {
     if (msg != "")
