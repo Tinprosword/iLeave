@@ -239,6 +239,16 @@ function SetSroll(leftbtn, rightbtn, content, offsetleft) {
     );
 }
 
+function Mobile_CheckIsMyJsFunction(towhichpage) {
+    theurl = window.location.href;
+    if (theurl.includes(towhichpage)) {
+        return true;
+    }
+    else {
+        return false;
+        }
+}
+
 
 function ConfirmAndLocation(msg,locationUrl)
 {

@@ -1030,6 +1030,7 @@
     <Content Include="Res\App\applywait.js" />
     <Content Include="Res\App\check.css" />
     <Content Include="Res\App\check.js" />
+    <Content Include="Res\App\check_timerLocation.js" />
     <Content Include="Res\images\back01_03.png" />
     <Content Include="Res\images\back3.png" />
     <Content Include="Res\images\back4.png" />

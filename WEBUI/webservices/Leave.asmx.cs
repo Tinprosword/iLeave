@@ -40,6 +40,29 @@ namespace WEBUI.webservices
             return rr;
         }
 
+        [WebMethod]
+        public string GetMapLocationName(double lat,double lon)
+        {
+            string result = "";
+            if (lat == 0.1 && lon == 0.1)
+            {
+                return "Location A";
+            }
+            else
+            {
+                string mGoolgeKey = "";
+                string url_map = "";
+
+                url_map = BLL.Checkin.GetLocationUrl_Google(lat, lon, mGoolgeKey, LSLibrary.WebAPP.LanguageType.tc);
+                result = BLL.Checkin.GetAddFromUrl_Google(url_map);
+                if (string.IsNullOrEmpty(result))
+                {
+                    result= BLL.Checkin.GetAddFromUrl_Bingo(url_map);
+                }
+            }
+            return result;
+        }
+
         private string GetWSBaseURI(string url)
         {
             string result = url;

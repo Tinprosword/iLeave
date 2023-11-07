@@ -58,6 +58,7 @@
     <Compile Include="Page\common.cs" />
     <Compile Include="Page\MyCookie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemEnviroment.cs" />
     <Compile Include="SystemParameter.cs" />
     <Compile Include="User_wsref.cs" />
     <Compile Include="workflow.cs" />

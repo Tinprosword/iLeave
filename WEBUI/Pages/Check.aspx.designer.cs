@@ -13,22 +13,67 @@ namespace WEBUI.Pages {
     public partial class Check {
         
         /// <summary>
-        /// hf_loaction 控件。
+        /// hf_nowifi 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hf_loaction;
+        protected global::System.Web.UI.WebControls.HiddenField hf_nowifi;
         
         /// <summary>
-        /// hf_loactionName 控件。
+        /// hf_nogps 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hf_loactionName;
+        protected global::System.Web.UI.WebControls.HiddenField hf_nogps;
+        
+        /// <summary>
+        /// hf_cantconvertGps 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf_cantconvertGps;
+        
+        /// <summary>
+        /// hf_back_invaliddata 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf_back_invaliddata;
+        
+        /// <summary>
+        /// hf_back_wifiname 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf_back_wifiname;
+        
+        /// <summary>
+        /// hf_back_gpslatlon 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf_back_gpslatlon;
+        
+        /// <summary>
+        /// hf_back_gpsDecode 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf_back_gpsDecode;
         
         /// <summary>
         /// lb_day 控件。
@@ -49,6 +94,51 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Label lb_time;
         
         /// <summary>
+        /// panel_appmsg 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panel_appmsg;
+        
+        /// <summary>
+        /// lb_LOCATIONPRE 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_LOCATIONPRE;
+        
+        /// <summary>
+        /// lb_locationname 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_locationname;
+        
+        /// <summary>
+        /// LB_WIFIPRE 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LB_WIFIPRE;
+        
+        /// <summary>
+        /// lb_wifi 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_wifi;
+        
+        /// <summary>
         /// bt_checkin 控件。
         /// </summary>
         /// <remarks>
@@ -58,22 +148,31 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Button bt_checkin;
         
         /// <summary>
-        /// lb_msg 控件。
+        /// lb_commonmsg 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_msg;
+        protected global::System.Web.UI.WebControls.Label lb_commonmsg;
         
         /// <summary>
-        /// lb_msg2 控件。
+        /// lb_msg_current 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_msg2;
+        protected global::System.Web.UI.WebControls.Label lb_msg_current;
+        
+        /// <summary>
+        /// lb_msg2_pre 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_msg2_pre;
         
         /// <summary>
         /// rp_shifts 控件。
@@ -112,22 +211,13 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Literal lt_jsModelWindow;
         
         /// <summary>
-        /// lt_jsmobileGps 控件。
+        /// lt_jsmsg 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_jsmobileGps;
-        
-        /// <summary>
-        /// lt_jsConfirmForce 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lt_jsConfirmForce;
+        protected global::System.Web.UI.WebControls.Literal lt_jsmsg;
         
         /// <summary>
         /// lt_jsTimerRequestMobileLocation 控件。

@@ -28,6 +28,7 @@ namespace BLL.Page
         private static readonly string COOKIE_WST = "COOKIE_WST";
 
 
+
         public static MyCookie GetCookie()
         {
             //get each value .if contain null . init cookie  other return value
@@ -77,6 +78,7 @@ namespace BLL.Page
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_pass, myCookie.loginpsw, 360);
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_ISAPP, myCookie.isAppLogin, 360);
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_WST, myCookie.wait_scrollTop, 360);
+
         }
 
 

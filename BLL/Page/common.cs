@@ -173,7 +173,7 @@ namespace BLL
         }
 
 
-        public static string GetFormatTime(LSLibrary.WebAPP.LanguageType language)
+        public static string GetFormatTime_currentTime(LSLibrary.WebAPP.LanguageType language)
         {
             DateTime date = System.DateTime.Now;
             var ampm = date.Hour >= 12 ? "PM" : "AM";
@@ -182,7 +182,7 @@ namespace BLL
             return strTime;
         }
 
-        public static string GetFormatTime2(LSLibrary.WebAPP.LanguageType language, DateTime datetime)
+        public static string GetFormatTime(LSLibrary.WebAPP.LanguageType language, DateTime datetime)
         {
             var ampm = datetime.Hour >= 12 ? "PM" : "AM";
             string strTime = datetime.ToString("hh:mm") + " " + ampm + " " + datetime.ToString("yyyy-MM-dd");

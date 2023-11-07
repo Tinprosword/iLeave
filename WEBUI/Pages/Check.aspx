@@ -1,26 +1,38 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Controls/leave.Master" AutoEventWireup="true" CodeBehind="Check.aspx.cs" Inherits="WEBUI.Pages.Check"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Res/App/check.css" rel="stylesheet" />
-    <asp:HiddenField ID="hf_loaction" runat="server" Value="a"/>
-    <asp:HiddenField ID="hf_loactionName" runat="server" Value="b"/>
+    <asp:HiddenField ID="hf_nowifi" Value="no wifi" runat="server" />
+    <asp:HiddenField ID="hf_nogps" Value="no gps" runat="server" />
+    <asp:HiddenField ID="hf_cantconvertGps" Value="can not convert gps" runat="server" />
+
+    <asp:HiddenField ID="hf_back_invaliddata" Value="" runat="server" />
+    <asp:HiddenField ID="hf_back_wifiname" Value="" runat="server" />
+    <asp:HiddenField ID="hf_back_gpslatlon" Value="" runat="server" />
+    <asp:HiddenField ID="hf_back_gpsDecode" Value="" runat="server" />
+
     <div class="row" id="div_buttons">
         <div class ="col-xs-12" style="padding:0px; padding-top:5px;">
             <div class="col-xs-12" style="height:45px">&nbsp;</div>
-            <div class="col-xs-12 MaintTextColor_new" style="font-size:34px; text-align:center;">
+            <div class="col-xs-12 MaintTextColor_new" style="font-size:18px; text-align:center;">
                 <asp:Label ID="lb_day" runat="server" Text="2021-01-02"></asp:Label>
+                &nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lb_time" runat="server" Text="09:01 PM"></asp:Label>
             </div>
             <div class="col-xs-12" style="height:15px">&nbsp;</div>
-            <div class="col-xs-12 MaintTextColor_new" style="font-size:24px; text-align:center;">
-                <asp:Label ID="lb_time" runat="server" Text="09:01 PM"></asp:Label>
+            <div class="col-xs-12 MaintTextColor_new" style="font-size:18px; text-align:center;">
+                <asp:Panel id="panel_appmsg" runat="server" Visible="false">
+                    <asp:Label ID="lb_LOCATIONPRE" runat="server" Text="GPS:"/><asp:Label ID="lb_locationname" runat="server" Text="--Waiting--"></asp:Label>
+                    <br/><asp:Label ID="LB_WIFIPRE" runat="server" Text="WIFI:"/><asp:Label ID="lb_wifi" runat="server"    Text="--Waiting--"></asp:Label>
+                </asp:Panel>
             </div>
-            <div class="col-xs-12" style="height:50px">&nbsp;</div>
+            <div class="col-xs-12" style="height:20px">&nbsp;</div>
             <div class="col-xs-12" style="text-align:center"><%-->OnClick_In--%>
                 <asp:Button ID="bt_checkin" OnClick="OnClick_In" runat="server" Text="Button" style="width:280px; height:280px; border:0px red solid; border-radius:140px; background-color:#06468c; color:#ffffff;font-size:37px" />
             </div>
             <div class="col-xs-12" style="height:5px">&nbsp;</div>
             <div class="col-xs-12 MaintTextColor_new" style="text-align:center;">
-                <asp:Label ID="lb_msg" runat="server" Text="打卡：09:01 PM" Visible="false"></asp:Label><br />
-                <asp:Label ID="lb_msg2" runat="server" Text="last 打卡：09:01 PM" Visible="false"></asp:Label><br />
+                <asp:Label ID="lb_commonmsg" runat="server" Text="數據錯誤。" Visible="false"></asp:Label>
+                <asp:Label ID="lb_msg_current" runat="server" Text="本次打卡：09:01 PM" Visible="false"></asp:Label><br />
+                <asp:Label ID="lb_msg2_pre" runat="server" Text="上次打卡：09:01 PM" Visible="false"></asp:Label><br />
             </div>
         </div>
     </div>
@@ -71,18 +83,11 @@
             })  
             rbtn1.checked = true;  
         }
-
-        function forceCheckint(msg,action,value) {
-            if (confirm(msg)) {
-                MyPostBack(action, value);
-            }
-
-        }
     </script>
+
+
     <asp:Literal ID="lt_jsModelWindow" runat="server"></asp:Literal>
-    <asp:Literal ID="lt_jsmobileGps" runat="server"></asp:Literal>
-    <asp:Literal ID="lt_jsConfirmForce" runat="server"></asp:Literal>
-    <asp:Literal ID="lt_jsTimerRequestMobileLocation" runat="server"></asp:Literal>
-    <%--setTimeout("document.location = 'js://webview?msgtype=GPS&value1=0';", 5000);--%>
+    <asp:Literal ID="lt_jsmsg" runat="server"></asp:Literal>
     <script src="../Res/App/check.js?lastmodify=<%=BLL.GlobalVariate.checkjsLastmodify %>"></script>
+    <asp:Literal ID="lt_jsTimerRequestMobileLocation" runat="server"></asp:Literal>
 </asp:Content>
