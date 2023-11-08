@@ -49,6 +49,21 @@ namespace WEBUI.Pages
                 this.panel_changeServer.Visible = false;
             }
 
+            //zone
+            this.lb_ddlcheckzone_prefix.Text = BLL.MultiLanguageHelper.GetLanguagePacket().setting_localzone;
+
+            var AllZone = BLL.CodeSetting.CodeSetting_GetAllZone();
+            var userinfo = BLL.User_wsref.UserInfo_GetUserInfoByUID(loginer.userInfo.u_id);
+            if (userinfo != null && userinfo.MobileUserLevel == 2)
+            {
+                this.ddl_check_zone.DataSource = AllZone;
+                ddl_check_zone.DataTextField = "ZoneDescription";
+                ddl_check_zone.DataValueField = "ZoneCode";
+                ddl_check_zone.DataBind();
+            }
+            ddl_check_zone.Items.Insert(0, new ListItem("--- Please Select Zone ---", "0"));
+            this.ddl_check_zone.SelectedValue = myCookie.LocalPCzodeCode;
+
             BLL.common.setDivMinHeight("sh", this.maindiv);
         }
 
@@ -151,6 +166,14 @@ namespace WEBUI.Pages
         {
             string url = string.Format("article_pripary.aspx");
             Response.Redirect(url);
+        }
+
+        protected void ddl_check_zone_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string zoneCode = this.ddl_check_zone.SelectedValue;
+            var mycookie= BLL.Page.MyCookieManage.GetCookie();
+            mycookie.LocalPCzodeCode = zoneCode;
+            BLL.Page.MyCookieManage.SetCookie(mycookie);
         }
     }
 }

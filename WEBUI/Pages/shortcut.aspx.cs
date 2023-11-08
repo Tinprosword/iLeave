@@ -65,7 +65,7 @@ namespace WEBUI.Pages
                     else
                     {
 
-                        if (uid == loginer.userInfo.id)
+                        if (uid == loginer.userInfo.u_id)
                         {
                             var tempLink = GenearetLink(uid, manageormy, leaveorclot, requestid);
                             if (!string.IsNullOrEmpty(tempLink))

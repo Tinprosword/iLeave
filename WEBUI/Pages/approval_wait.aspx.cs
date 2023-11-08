@@ -207,7 +207,7 @@ namespace WEBUI.Pages
                 {
                     if (dataType_myselfOrMyManage == 0)
                     {
-                        ds = BLL.Leave.GetMyManageLeaveMasterByRequestid(loginer.userInfo.id, currentBigRange,mRequestid);
+                        ds = BLL.Leave.GetMyManageLeaveMasterByRequestid(loginer.userInfo.u_id, currentBigRange,mRequestid);
                     }
                     else
                     {
@@ -223,7 +223,7 @@ namespace WEBUI.Pages
                 {
                     if (dataType_myselfOrMyManage == 0)
                     {
-                        ds = BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.id, currentBigRange, year, name);
+                        ds = BLL.Leave.GetMyManageLeaveMaster(loginer.userInfo.u_id, currentBigRange, year, name);
                     }
                     else
                     {
@@ -246,11 +246,11 @@ namespace WEBUI.Pages
                 {
                     if (dataType_myselfOrMyManage == 1)
                     {
-                        ds = BLL.CLOT.GetMyClOTByRequestidUID(loginer.userInfo.id, currentBigRange, mRequestid);
+                        ds = BLL.CLOT.GetMyClOTByRequestidUID(loginer.userInfo.u_id, currentBigRange, mRequestid);
                     }
                     else if (dataType_myselfOrMyManage == 0)
                     {
-                        ds = BLL.CLOT.GetMyManageClOTByRequestid(loginer.userInfo.id, currentBigRange, mRequestid);
+                        ds = BLL.CLOT.GetMyManageClOTByRequestid(loginer.userInfo.u_id, currentBigRange, mRequestid);
                     }
 
                     if (ds.Count() == 0)
@@ -262,11 +262,11 @@ namespace WEBUI.Pages
                 {
                     if (dataType_myselfOrMyManage == 1)
                     {
-                        ds = BLL.CLOT.GetMyCLOTUID(loginer.userInfo.id, currentBigRange, year);
+                        ds = BLL.CLOT.GetMyCLOTUID(loginer.userInfo.u_id, currentBigRange, year);
                     }
                     else if (dataType_myselfOrMyManage == 0)
                     {
-                        ds = BLL.CLOT.GetMyManageClOT(loginer.userInfo.id, currentBigRange, year, name);
+                        ds = BLL.CLOT.GetMyManageClOT(loginer.userInfo.u_id, currentBigRange, year, name);
                     }
                 }
 
@@ -508,7 +508,7 @@ namespace WEBUI.Pages
 
             if (btntype == 1)//approve apply
             {
-                callResult = BLL.workflow.ApproveRequest_leave(requestId, loginer.userInfo.id, remarks1, out errormsg);
+                callResult = BLL.workflow.ApproveRequest_leave(requestId, loginer.userInfo.u_id, remarks1, out errormsg);
                 successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproveok);
             }
             else if (btntype == 2)//reject apply
@@ -521,24 +521,24 @@ namespace WEBUI.Pages
                 else
                 {
 
-                    callResult = BLL.workflow.RejectRequest_leave(requestId, loginer.userInfo.id, remarks1, out errormsg);
+                    callResult = BLL.workflow.RejectRequest_leave(requestId, loginer.userInfo.u_id, remarks1, out errormsg);
                     successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproverej);
                 }
             }
             else if (btntype == 3)//approve cancel
             {
-                callResult = BLL.workflow.ApprovalCancelRequest_leave(requestId, loginer.userInfo.id, remarks2, out errormsg);
+                callResult = BLL.workflow.ApprovalCancelRequest_leave(requestId, loginer.userInfo.u_id, remarks2, out errormsg);
                 successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproveok);
             }
             else if (btntype == 4)//reject cancel
             {
-                callResult = BLL.workflow.RejectCancelRequest_leave(requestId, loginer.userInfo.id, remarks2, out errormsg);
+                callResult = BLL.workflow.RejectCancelRequest_leave(requestId, loginer.userInfo.u_id, remarks2, out errormsg);
                 successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproverej);
             }
 
             else if (btntype == 5)//withdraw
             {
-                callResult = BLL.workflow.WithDrawRequest_leave(requestId, loginer.userInfo.id, "", out errormsg);
+                callResult = BLL.workflow.WithDrawRequest_leave(requestId, loginer.userInfo.u_id, "", out errormsg);
                 successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgwithdraw);
             }
             else if (btntype == 6)//cancel
@@ -556,7 +556,7 @@ namespace WEBUI.Pages
 
                     if (posibalCancelID == 0)
                     {
-                        var tempResult = BLL.workflow.CancelRequest_leave(requestId, loginer.userInfo.id, "");
+                        var tempResult = BLL.workflow.CancelRequest_leave(requestId, loginer.userInfo.u_id, "");
                         int rid = tempResult.mResult;
                         callResult = rid <= 0 ? false : true;
                         if (callResult)
@@ -650,7 +650,7 @@ namespace WEBUI.Pages
 
             if (btntype == 1)//approve apply
             {
-                callResult = BLL.workflow.ApproveRequest_leave_clot(requestId, loginer.userInfo.id, remarks1, out errormsg);
+                callResult = BLL.workflow.ApproveRequest_leave_clot(requestId, loginer.userInfo.u_id, remarks1, out errormsg);
                 successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproveok);
             }
             else if (btntype == 2)//reject apply
@@ -662,14 +662,14 @@ namespace WEBUI.Pages
                 }
                 else
                 {
-                    callResult = BLL.workflow.RejectRequest_leave_clot(requestId, loginer.userInfo.id, remarks1, out errormsg);
+                    callResult = BLL.workflow.RejectRequest_leave_clot(requestId, loginer.userInfo.u_id, remarks1, out errormsg);
                     successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproverej);
                 }
 
             }
             else if (btntype == 3)//approve cancel
             {
-                callResult = BLL.workflow.ApprovalCancelRequest_leave_clot(requestId, loginer.userInfo.id, remarks2, out errormsg);
+                callResult = BLL.workflow.ApprovalCancelRequest_leave_clot(requestId, loginer.userInfo.u_id, remarks2, out errormsg);
                 successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproveok);
             }
             else if (btntype == 4)//reject cancel
@@ -681,14 +681,14 @@ namespace WEBUI.Pages
                 }
                 else
                 {
-                    callResult = BLL.workflow.RejectCancelRequest_leave_clot(requestId, loginer.userInfo.id, remarks2, out errormsg);
+                    callResult = BLL.workflow.RejectCancelRequest_leave_clot(requestId, loginer.userInfo.u_id, remarks2, out errormsg);
                     successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgapproverej);
                 }
             }
 
             else if (btntype == 5)//withdraw
             {
-                callResult = BLL.workflow.WithDrawRequest_leave_clot(requestId, loginer.userInfo.id, "", out errormsg);
+                callResult = BLL.workflow.WithDrawRequest_leave_clot(requestId, loginer.userInfo.u_id, "", out errormsg);
                 successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgwithdraw);
             }
             else if (btntype == 6)//cancel
@@ -702,7 +702,7 @@ namespace WEBUI.Pages
                 }
                 else
                 {
-                    callResult = BLL.workflow.CancelRequest_leave_clot(requestId, loginer.userInfo.id, "", out errormsg);
+                    callResult = BLL.workflow.CancelRequest_leave_clot(requestId, loginer.userInfo.u_id, "", out errormsg);
                     successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_msgcancel);
                 }
             }

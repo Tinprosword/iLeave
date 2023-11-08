@@ -71,8 +71,35 @@ namespace WEBUI.Pages
 
             panel_appmsg.Visible = isApp;
 
+            //local zone
+            var myCookie = BLL.Page.MyCookieManage.GetCookie();
+            var localZone = myCookie.LocalPCzodeCode;
+            if (!isApp && !string.IsNullOrEmpty(localZone) && localZone!="0")
+            {
+                panel_LocalZone.Visible = true;
+                var allzone = BLL.CodeSetting.CodeSetting_GetAllZone();
+                var thezone = allzone.Where(x => x.ZoneCode == localZone).FirstOrDefault();
+                if (thezone != null)
+                {
+                    this.lb_localzoneDesc.Text = thezone.ZoneDescription;
+                    this.lb_localzoneDesc.ToolTip = thezone.ZoneCode;
+                }
+                else
+                {
+                    this.lb_localzoneDesc.Text = "invalid zone,please modify zone in setting.";
+                    this.lb_localzoneDesc.ToolTip = "";
+                }
+            }
+            else
+            {
+                panel_LocalZone.Visible = false;
+            }
+            
+
             ShowCurrentCheckTime(false, null,"","");
             ShowLastTimeCheckTime(false);
+
+
 
             if (isApp)
             {
@@ -229,12 +256,16 @@ namespace WEBUI.Pages
                 deviceid = "000";
             }
 
+            if (this.panel_LocalZone.Visible && !string.IsNullOrEmpty(this.lb_localzoneDesc.ToolTip))//zone 打卡
+            {
+                zoneCode = this.lb_localzoneDesc.ToolTip;
+            }
 
             WebServiceLayer.WebReference_leave.AttendanceRawData tempModer = null;
 
             if (!isapp)// click on pc or browser
             {
-                tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.staffNumber, centerfaceid, interfaceid, 1, loginer.userInfo.surname, deviceid, zoneCode, "", "", "", "");
+                tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.u_id, "IN", loginer.userInfo.staffNumber, centerfaceid, interfaceid, 1, loginer.userInfo.surname, deviceid, zoneCode, "", "", "", "");
             }
             else//click on app
             {
@@ -243,7 +274,7 @@ namespace WEBUI.Pages
                 {
                     strlocation = lat.ToString() + "|" + lon.ToString();
                 }
-                tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.id, "IN", loginer.userInfo.staffNumber, centerfaceid, interfaceid, 1, loginer.userInfo.surname, deviceid, zoneCode, strlocation, gpsLocationName, wifiname, "");
+                tempModer = BLL.Other.GenerateModel(System.DateTime.Now, loginer.userInfo.u_id, "IN", loginer.userInfo.staffNumber, centerfaceid, interfaceid, 1, loginer.userInfo.surname, deviceid, zoneCode, strlocation, gpsLocationName, wifiname, "");
             }
 
             if (tempModer != null)
@@ -256,6 +287,7 @@ namespace WEBUI.Pages
             this.bt_checkin.Enabled = true;
         }
 
+
         //load->empty.  btn->now.
         private void ShowCurrentCheckTime(bool isClickCheck,DateTime? date,string locationname,string wifiname)
         {
@@ -267,7 +299,7 @@ namespace WEBUI.Pages
                 this.lb_msg_current.Text = lb_msg_msg;
 
                 
-                string info = check_gspwifiinfo(locationname, wifiname);
+                string info = check_gspwifiinfo(BLL.common.isLocalZone(), locationname, wifiname,BLL.common.GetLocalZone());
                 if (!string.IsNullOrEmpty(info))
                 {
                     this.lb_msg_current_gpswifi.Visible = true;
@@ -316,7 +348,7 @@ namespace WEBUI.Pages
                 this.lb_msg2_pre.Visible = true;
                 this.lb_msg2_pre.Text = BLL.MultiLanguageHelper.GetLanguagePacket().CommonLastcheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose(), checkTime);
 
-                string info = check_gspwifiinfo(gpslocationName, wifiname);
+                string info = check_gspwifiinfo(BLL.common.isLocalZone(), gpslocationName, wifiname, BLL.common.GetLocalZone());
                 if (!string.IsNullOrEmpty(info))
                 {
                     this.lb_msg2_pregpswifi.Visible = true;
@@ -330,11 +362,35 @@ namespace WEBUI.Pages
             }
         }
 
-        private string check_gspwifiinfo(string gpslocationname, string wifi)
+        private string check_gspwifiinfo(bool iszone, string gpslocationname, string wifi,string zone)
         {
             string result = "";
-
-
+            if (iszone)
+            {
+                return BLL.MultiLanguageHelper.GetLanguagePacket().setting_localzone + ": " + zone;
+            }
+            else
+            {
+                string formatStrboth = "{0},WIFI:{1}";
+                string formatStrlocation = "{0}";
+                string formatStrwifi = "WIFI:{0}";
+                if (!string.IsNullOrEmpty(gpslocationname) && !string.IsNullOrEmpty(wifi))
+                {
+                    result = string.Format(formatStrboth, gpslocationname, wifi);
+                }
+                else if (!string.IsNullOrEmpty(gpslocationname))
+                {
+                    result = string.Format(formatStrlocation, gpslocationname);
+                }
+                else if (!string.IsNullOrEmpty(wifi))
+                {
+                    result = string.Format(formatStrwifi, wifi);
+                }
+                else
+                {
+                    result = "";
+                }
+            }
             return result;
         }
 

@@ -23,6 +23,9 @@
                     <asp:Label ID="lb_LOCATIONPRE" runat="server" Text="GPS:"/><asp:Label ID="lb_locationname" runat="server" Text="--Waiting--"></asp:Label>
                     <br/><asp:Label ID="LB_WIFIPRE" runat="server" Text="WIFI:"/><asp:Label ID="lb_wifi" runat="server"    Text="--Waiting--"></asp:Label>
                 </asp:Panel>
+                <asp:Panel ID="panel_LocalZone" runat="server" Visible="false" CssClass="lsu-litterBlue">
+                    <asp:Label ID="lb_localzonePrefix" runat="server" Text="Zone:"/><asp:Label ID="lb_localzoneDesc" runat="server" Text="Team A"></asp:Label>
+                </asp:Panel>
             </div>
             <div class="col-xs-12" style="height:20px">&nbsp;</div>
             <div class="col-xs-12" style="text-align:center"><%-->OnClick_In--%>
@@ -81,8 +84,8 @@
             $("input[type=radio]").each(function (i) {  
                 if (this.name.substring(this.name.length - GroupName.length) == GroupName) {  
                     this.checked = false;  
-                }  
-            })  
+                }
+            })
             rbtn1.checked = true;  
         }
 

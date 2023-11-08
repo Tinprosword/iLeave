@@ -9,6 +9,20 @@
 .lsu-table-xs tr {height: 30px}
 .lsu-table-xs td {padding-left: 2px !important;padding-right: 2px !important;}*/
 
+/*
+    #588da7 淺藍 一般做字體。
+    #2573a4 深藍 一般做背景
+*/
+.lsu-litterBlue
+{
+    color:#588da7
+}
+
+.lsu-MoreBlue
+{
+    color:#2573a4
+}
+
 .lsu-table-xs {font-size: 15px; }
 .lsu-table-xs tr {height: 30px}
 .lsu-table-xs td {padding-left: 2px !important;padding-right: 2px !important;border:1px solid aliceblue}

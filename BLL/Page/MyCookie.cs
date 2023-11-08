@@ -15,6 +15,7 @@ namespace BLL.Page
         public string loginpsw;
         public string isAppLogin;
         public string wait_scrollTop;
+        public string LocalPCzodeCode;
     }
 
     public class MyCookieManage
@@ -26,6 +27,7 @@ namespace BLL.Page
         private static readonly string COOKIE_pass = "COOKIE_pass";
         private static readonly string COOKIE_ISAPP = "COOKIE_ISAPP";
         private static readonly string COOKIE_WST = "COOKIE_WST";
+        private static readonly string COOKIE_LocalPCzodeCode = "COOKIE_LocalPCzodeCode";
 
 
 
@@ -39,6 +41,7 @@ namespace BLL.Page
             string pass = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_pass);
             string isapp = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_ISAPP);
             string wst = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_WST);
+            string localzone= LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_LocalPCzodeCode);
 
 
             MyCookie mycookie = new MyCookie();
@@ -51,6 +54,7 @@ namespace BLL.Page
                 mycookie.loginpsw = "";
                 mycookie.isAppLogin = "0";
                 mycookie.wait_scrollTop = "0|0|0|0";
+                mycookie.LocalPCzodeCode = "0";
             }
             else
             {
@@ -61,6 +65,7 @@ namespace BLL.Page
                 mycookie.loginpsw = pass;
                 mycookie.isAppLogin = isapp;
                 mycookie.wait_scrollTop = wst;
+                mycookie.LocalPCzodeCode = localzone;
             }
 
            // SetCookie(mycookie);
@@ -78,7 +83,7 @@ namespace BLL.Page
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_pass, myCookie.loginpsw, 360);
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_ISAPP, myCookie.isAppLogin, 360);
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_WST, myCookie.wait_scrollTop, 360);
-
+            LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_LocalPCzodeCode, myCookie.LocalPCzodeCode, 360);
         }
 
 

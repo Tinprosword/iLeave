@@ -344,7 +344,7 @@ namespace WEBUI.Pages
             bool validData = string.IsNullOrEmpty(errorMsg);
             if (validData)
             {
-                List<int> requestidArray = BLL.CLOT.InsertCLOTRequests(dataview.items, loginer.userInfo.id, loginer.userInfo.employID ?? 0);
+                List<int> requestidArray = BLL.CLOT.InsertCLOTRequests(dataview.items, loginer.userInfo.u_id, loginer.userInfo.employID ?? 0);
 
                 bool hasError = requestidArray.Where(x => x <= 0).ToList().Count() > 0 ? true : false;
                 if (hasError)
@@ -363,7 +363,7 @@ namespace WEBUI.Pages
                 }
                 for (int i = 0; i < requestidArray.Count; i++)
                 {
-                    BLL.Leave.InsertAttachment(pics, loginer.userInfo.id, loginer.userInfo.personid, requestidArray[i], BLL.GlobalVariate.AttachmentUploadType.LEAVE_CERTIFICATE, BLL.GlobalVariate.WorkflowTypeID.CLOT_APPLICATION);
+                    BLL.Leave.InsertAttachment(pics, loginer.userInfo.u_id, loginer.userInfo.personid, requestidArray[i], BLL.GlobalVariate.AttachmentUploadType.LEAVE_CERTIFICATE, BLL.GlobalVariate.WorkflowTypeID.CLOT_APPLICATION);
                 }
 
                 string successMsg = LSLibrary.WebAPP.httpHelper.WaitDiv_EndShow(BLL.MultiLanguageHelper.GetLanguagePacket().apply_msgapplyok);

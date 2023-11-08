@@ -8,7 +8,7 @@ namespace MODEL
 {
     public class UserInfo
     {
-        public int id;
+        public int u_id;
         public string loginName;
         public string nickname;
         public string sessionid;
@@ -31,7 +31,7 @@ namespace MODEL
 
         public UserInfo(int id, string loginName, string nickname, string sessionid, int? employID, string employNnumber, int? staffid, string staffNumber, int personid,string surname,string firstname,string ch,int sh,int sw,bool more,List<int> eidsRefFirsteid, List<string> eNoRefFirsteid,int? _firstid,int? _cid,string _companyDeployCode)
         {
-            this.id = id;
+            this.u_id = id;
             this.loginName = loginName;
             this.nickname = nickname;
             this.sessionid = sessionid;

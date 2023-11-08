@@ -19,6 +19,10 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_codesetting.GetAllLeaveInfo();
         }
 
+        public static List<WebServiceLayer.WebReference_Ileave_Other.t_Contract_Zone> CodeSetting_GetAllZone()
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_Other.CodeSetting_GetAllZone().ToList();
+        }
 
         public static List<string> GetCompanyDeployCode()
         {

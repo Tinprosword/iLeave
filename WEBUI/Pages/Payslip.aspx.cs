@@ -116,14 +116,14 @@ namespace WEBUI.Pages
             string taxpdfname = "Payslip";
 
             int companyid = 0;
-            var employee= BLL.User_wsref.GetPersonBaseInfoByUid(loginer.userInfo.id).FirstOrDefault();
+            var employee= BLL.User_wsref.GetPersonBaseInfoByUid(loginer.userInfo.u_id).FirstOrDefault();
             if (employee != null)
             {
                 companyid=employee.s_CompanyID??0;
             }
             int selectedYear = int.Parse(this.DropDownList1.SelectedValue.Substring(0,4));
             int selectMonth= int.Parse(this.DropDownList1.SelectedValue.Substring(4, 2));
-            var data= BLL.Other.GetPayslipReportData(loginer.userInfo.staffid??0, selectedYear, selectMonth,loginer.userInfo.id);
+            var data= BLL.Other.GetPayslipReportData(loginer.userInfo.staffid??0, selectedYear, selectMonth,loginer.userInfo.u_id);
             if (data != null && data.ReportDocumentArray != null && data.ReportDocumentArray.Length > 0)
             {
                 string agent = HttpContext.Current.Request.UserAgent;

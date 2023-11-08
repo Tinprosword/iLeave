@@ -125,7 +125,7 @@ namespace WEBUI.Pages
                 if (pEmployment != null)
                 {
                     int pEmploymentID = pEmployment.EmploymentID;
-                    var data = BLL.Other.GetTextationReportData(selectedYear, pEmploymentID, loginer.userInfo.id,replace);
+                    var data = BLL.Other.GetTextationReportData(selectedYear, pEmploymentID, loginer.userInfo.u_id,replace);
 
                     if (data != null && data.reportData != null && data.reportData.Length > 0 && data.msgtype == 1)
                     {

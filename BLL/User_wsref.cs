@@ -12,6 +12,13 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_user.Test_ADD(a, b);
         }
 
+
+        public static WebServiceLayer.WebReference_Ileave_Other.t_User UserInfo_GetUserInfoByUID(int uid)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_Other.UserInfo_GetUserInfoByUID(uid);
+        }
+
+
         public static WebServiceLayer.WebReference_user.LoginResult CheckLogin(string uid, string password)
         {
             WebServiceLayer.WebReference_user.LoginResult result = new WebServiceLayer.WebReference_user.LoginResult();

@@ -267,6 +267,28 @@ namespace BLL
             return result;
         }
 
+        public static bool isLocalZone()
+        {
+            bool result = false;
+            var myCooike = BLL.Page.MyCookieManage.GetCookie();
+            if (myCooike != null && !string.IsNullOrEmpty(myCooike.LocalPCzodeCode) && myCooike.LocalPCzodeCode != "0")
+            {
+                result = true;
+            }
+            return result;
+        }
+
+        public static string GetLocalZone()
+        {
+            string result = "";
+            var myCooike = BLL.Page.MyCookieManage.GetCookie();
+            if (myCooike != null && !string.IsNullOrEmpty(myCooike.LocalPCzodeCode) && myCooike.LocalPCzodeCode != "0")
+            {
+                result = myCooike.LocalPCzodeCode;
+            }
+            return result;
+        }
+
         public static double roundDown_halforint(double value, float roundupValue)
         {
             double result = value;

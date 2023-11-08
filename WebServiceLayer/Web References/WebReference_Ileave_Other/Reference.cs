@@ -33,6 +33,10 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         
         private System.Threading.SendOrPostCallback Test_GetList2OperationCompleted;
         
+        private System.Threading.SendOrPostCallback CodeSetting_GetAllZoneOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UserInfo_GetUserInfoByUIDOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetPushedAnnounceIDs_AndroidLocalOperationCompleted;
         
         private System.Threading.SendOrPostCallback Notice_ClearInvalidOperationCompleted;
@@ -110,6 +114,12 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         
         /// <remarks/>
         public event Test_GetList2CompletedEventHandler Test_GetList2Completed;
+        
+        /// <remarks/>
+        public event CodeSetting_GetAllZoneCompletedEventHandler CodeSetting_GetAllZoneCompleted;
+        
+        /// <remarks/>
+        public event UserInfo_GetUserInfoByUIDCompletedEventHandler UserInfo_GetUserInfoByUIDCompleted;
         
         /// <remarks/>
         public event GetPushedAnnounceIDs_AndroidLocalCompletedEventHandler GetPushedAnnounceIDs_AndroidLocalCompleted;
@@ -213,6 +223,62 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
             if ((this.Test_GetList2Completed != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.Test_GetList2Completed(this, new Test_GetList2CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CodeSetting_GetAllZone", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_Contract_Zone[] CodeSetting_GetAllZone() {
+            object[] results = this.Invoke("CodeSetting_GetAllZone", new object[0]);
+            return ((t_Contract_Zone[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CodeSetting_GetAllZoneAsync() {
+            this.CodeSetting_GetAllZoneAsync(null);
+        }
+        
+        /// <remarks/>
+        public void CodeSetting_GetAllZoneAsync(object userState) {
+            if ((this.CodeSetting_GetAllZoneOperationCompleted == null)) {
+                this.CodeSetting_GetAllZoneOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCodeSetting_GetAllZoneOperationCompleted);
+            }
+            this.InvokeAsync("CodeSetting_GetAllZone", new object[0], this.CodeSetting_GetAllZoneOperationCompleted, userState);
+        }
+        
+        private void OnCodeSetting_GetAllZoneOperationCompleted(object arg) {
+            if ((this.CodeSetting_GetAllZoneCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CodeSetting_GetAllZoneCompleted(this, new CodeSetting_GetAllZoneCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UserInfo_GetUserInfoByUID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public t_User UserInfo_GetUserInfoByUID(int uid) {
+            object[] results = this.Invoke("UserInfo_GetUserInfoByUID", new object[] {
+                        uid});
+            return ((t_User)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UserInfo_GetUserInfoByUIDAsync(int uid) {
+            this.UserInfo_GetUserInfoByUIDAsync(uid, null);
+        }
+        
+        /// <remarks/>
+        public void UserInfo_GetUserInfoByUIDAsync(int uid, object userState) {
+            if ((this.UserInfo_GetUserInfoByUIDOperationCompleted == null)) {
+                this.UserInfo_GetUserInfoByUIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUserInfo_GetUserInfoByUIDOperationCompleted);
+            }
+            this.InvokeAsync("UserInfo_GetUserInfoByUID", new object[] {
+                        uid}, this.UserInfo_GetUserInfoByUIDOperationCompleted, userState);
+        }
+        
+        private void OnUserInfo_GetUserInfoByUIDOperationCompleted(object arg) {
+            if ((this.UserInfo_GetUserInfoByUIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UserInfo_GetUserInfoByUIDCompleted(this, new UserInfo_GetUserInfoByUIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -734,61 +800,22 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public enum enum_CommonKeyValueTypeCode {
-        
-        /// <remarks/>
-        ANCR,
-        
-        /// <remarks/>
-        IOSDEVICEID,
-        
-        /// <remarks/>
-        ANDROIDDEVICEID,
-        
-        /// <remarks/>
-        Push_Already_ios,
-        
-        /// <remarks/>
-        Push_Already_android,
-        
-        /// <remarks/>
-        Push_Already_Localandroid,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
-    [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class t_Announcement {
+    public partial class t_Contract_Zone {
         
         private int idField;
         
-        private int typeIDField;
+        private int contractIDField;
         
-        private string subjectField;
+        private string zoneCodeField;
         
-        private string contentField;
+        private string zoneDescriptionField;
         
-        private System.DateTime validDateFromField;
+        private string stationCodeField;
         
-        private System.DateTime validDateToField;
-        
-        private int sortSeqField;
-        
-        private bool isOnTopField;
-        
-        private byte statusField;
-        
-        private System.DateTime createDateField;
-        
-        private int createUserField;
-        
-        private System.DateTime modifiedDateField;
-        
-        private int modifiedUserField;
+        private string accountCodeField;
         
         /// <remarks/>
         public int ID {
@@ -801,122 +828,52 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         }
         
         /// <remarks/>
-        public int TypeID {
+        public int ContractID {
             get {
-                return this.typeIDField;
+                return this.contractIDField;
             }
             set {
-                this.typeIDField = value;
+                this.contractIDField = value;
             }
         }
         
         /// <remarks/>
-        public string Subject {
+        public string ZoneCode {
             get {
-                return this.subjectField;
+                return this.zoneCodeField;
             }
             set {
-                this.subjectField = value;
+                this.zoneCodeField = value;
             }
         }
         
         /// <remarks/>
-        public string Content {
+        public string ZoneDescription {
             get {
-                return this.contentField;
+                return this.zoneDescriptionField;
             }
             set {
-                this.contentField = value;
+                this.zoneDescriptionField = value;
             }
         }
         
         /// <remarks/>
-        public System.DateTime ValidDateFrom {
+        public string StationCode {
             get {
-                return this.validDateFromField;
+                return this.stationCodeField;
             }
             set {
-                this.validDateFromField = value;
+                this.stationCodeField = value;
             }
         }
         
         /// <remarks/>
-        public System.DateTime ValidDateTo {
+        public string AccountCode {
             get {
-                return this.validDateToField;
+                return this.accountCodeField;
             }
             set {
-                this.validDateToField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int SortSeq {
-            get {
-                return this.sortSeqField;
-            }
-            set {
-                this.sortSeqField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool IsOnTop {
-            get {
-                return this.isOnTopField;
-            }
-            set {
-                this.isOnTopField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte Status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime CreateDate {
-            get {
-                return this.createDateField;
-            }
-            set {
-                this.createDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int CreateUser {
-            get {
-                return this.createUserField;
-            }
-            set {
-                this.createUserField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime ModifiedDate {
-            get {
-                return this.modifiedDateField;
-            }
-            set {
-                this.modifiedDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int ModifiedUser {
-            get {
-                return this.modifiedUserField;
-            }
-            set {
-                this.modifiedUserField = value;
+                this.accountCodeField = value;
             }
         }
     }
@@ -1128,6 +1085,500 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class t_Announcement {
+        
+        private int idField;
+        
+        private int typeIDField;
+        
+        private string subjectField;
+        
+        private string contentField;
+        
+        private System.DateTime validDateFromField;
+        
+        private System.DateTime validDateToField;
+        
+        private int sortSeqField;
+        
+        private bool isOnTopField;
+        
+        private byte statusField;
+        
+        private System.DateTime createDateField;
+        
+        private int createUserField;
+        
+        private System.DateTime modifiedDateField;
+        
+        private int modifiedUserField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int TypeID {
+            get {
+                return this.typeIDField;
+            }
+            set {
+                this.typeIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Subject {
+            get {
+                return this.subjectField;
+            }
+            set {
+                this.subjectField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Content {
+            get {
+                return this.contentField;
+            }
+            set {
+                this.contentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ValidDateFrom {
+            get {
+                return this.validDateFromField;
+            }
+            set {
+                this.validDateFromField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ValidDateTo {
+            get {
+                return this.validDateToField;
+            }
+            set {
+                this.validDateToField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int SortSeq {
+            get {
+                return this.sortSeqField;
+            }
+            set {
+                this.sortSeqField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsOnTop {
+            get {
+                return this.isOnTopField;
+            }
+            set {
+                this.isOnTopField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public byte Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CreateUser {
+            get {
+                return this.createUserField;
+            }
+            set {
+                this.createUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ModifiedDate {
+            get {
+                return this.modifiedDateField;
+            }
+            set {
+                this.modifiedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ModifiedUser {
+            get {
+                return this.modifiedUserField;
+            }
+            set {
+                this.modifiedUserField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class t_User {
+        
+        private int idField;
+        
+        private string usernameField;
+        
+        private string passwordHashField;
+        
+        private string fullnameField;
+        
+        private int userGroupIDField;
+        
+        private string phoneField;
+        
+        private string emailField;
+        
+        private string remarksField;
+        
+        private byte statusField;
+        
+        private System.DateTime modifiedDateField;
+        
+        private int modifiedUserField;
+        
+        private System.DateTime createDateField;
+        
+        private int createUserField;
+        
+        private System.Nullable<int> supervisorIDField;
+        
+        private int specialRightField;
+        
+        private string languageCodeField;
+        
+        private string domainUserField;
+        
+        private int failAttemptField;
+        
+        private System.DateTime lastLoginDateField;
+        
+        private System.DateTime expiryDateField;
+        
+        private bool isLockField;
+        
+        private string tokenKeyField;
+        
+        private int mobileUserLevelField;
+        
+        private bool isUnreadMsgOnlyField;
+        
+        /// <remarks/>
+        public int ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Username {
+            get {
+                return this.usernameField;
+            }
+            set {
+                this.usernameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PasswordHash {
+            get {
+                return this.passwordHashField;
+            }
+            set {
+                this.passwordHashField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Fullname {
+            get {
+                return this.fullnameField;
+            }
+            set {
+                this.fullnameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int UserGroupID {
+            get {
+                return this.userGroupIDField;
+            }
+            set {
+                this.userGroupIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Phone {
+            get {
+                return this.phoneField;
+            }
+            set {
+                this.phoneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Remarks {
+            get {
+                return this.remarksField;
+            }
+            set {
+                this.remarksField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public byte Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ModifiedDate {
+            get {
+                return this.modifiedDateField;
+            }
+            set {
+                this.modifiedDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ModifiedUser {
+            get {
+                return this.modifiedUserField;
+            }
+            set {
+                this.modifiedUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CreateUser {
+            get {
+                return this.createUserField;
+            }
+            set {
+                this.createUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> SupervisorID {
+            get {
+                return this.supervisorIDField;
+            }
+            set {
+                this.supervisorIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int SpecialRight {
+            get {
+                return this.specialRightField;
+            }
+            set {
+                this.specialRightField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string LanguageCode {
+            get {
+                return this.languageCodeField;
+            }
+            set {
+                this.languageCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DomainUser {
+            get {
+                return this.domainUserField;
+            }
+            set {
+                this.domainUserField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int FailAttempt {
+            get {
+                return this.failAttemptField;
+            }
+            set {
+                this.failAttemptField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime LastLoginDate {
+            get {
+                return this.lastLoginDateField;
+            }
+            set {
+                this.lastLoginDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ExpiryDate {
+            get {
+                return this.expiryDateField;
+            }
+            set {
+                this.expiryDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsLock {
+            get {
+                return this.isLockField;
+            }
+            set {
+                this.isLockField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string TokenKey {
+            get {
+                return this.tokenKeyField;
+            }
+            set {
+                this.tokenKeyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int MobileUserLevel {
+            get {
+                return this.mobileUserLevelField;
+            }
+            set {
+                this.mobileUserLevelField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsUnreadMsgOnly {
+            get {
+                return this.isUnreadMsgOnlyField;
+            }
+            set {
+                this.isUnreadMsgOnlyField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1055.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public enum enum_CommonKeyValueTypeCode {
+        
+        /// <remarks/>
+        ANCR,
+        
+        /// <remarks/>
+        IOSDEVICEID,
+        
+        /// <remarks/>
+        ANDROIDDEVICEID,
+        
+        /// <remarks/>
+        Push_Already_ios,
+        
+        /// <remarks/>
+        Push_Already_android,
+        
+        /// <remarks/>
+        Push_Already_Localandroid,
+        
+        /// <remarks/>
+        Push_WorkFlow_Notice,
+        
+        /// <remarks/>
+        Push_WorkFlow_Notice_REF,
+    }
+    
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void Test_GetListCompletedEventHandler(object sender, Test_GetListCompletedEventArgs e);
     
@@ -1175,6 +1626,58 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void CodeSetting_GetAllZoneCompletedEventHandler(object sender, CodeSetting_GetAllZoneCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CodeSetting_GetAllZoneCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CodeSetting_GetAllZoneCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_Contract_Zone[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_Contract_Zone[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void UserInfo_GetUserInfoByUIDCompletedEventHandler(object sender, UserInfo_GetUserInfoByUIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UserInfo_GetUserInfoByUIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UserInfo_GetUserInfoByUIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public t_User Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((t_User)(this.results[0]));
             }
         }
     }

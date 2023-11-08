@@ -27,6 +27,13 @@
                     <tr style="height:80px;">
                         <td>&nbsp;</td>
                         <td><img src="../Res/images/setting_loginout.png" class="setting_img" /></td>
+                        <td class="whitea setting_link">
+                            <asp:Label ID="lb_ddlcheckzone_prefix" runat="server" Text="Zone" style="color:white" ></asp:Label>&nbsp;<asp:DropDownList ID="ddl_check_zone" runat="server" OnSelectedIndexChanged="ddl_check_zone_SelectedIndexChanged" AutoPostBack="true" Width="60%" ></asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr style="height:80px;">
+                        <td>&nbsp;</td>
+                        <td><img src="../Res/images/setting_loginout.png" class="setting_img" /></td>
                         <td class="whitea setting_link"><asp:LinkButton ID="lb_out" runat="server" OnClick="lb_out_Click">Login Out</asp:LinkButton></td>
                     </tr>
                     <asp:Panel ID="panel_changeServer" runat="server" Visible="true">
