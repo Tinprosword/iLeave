@@ -50,7 +50,7 @@ namespace WEBUI.webservices
             }
             else
             {
-                string mGoolgeKey = "";
+                string mGoolgeKey = "AIzaSyBct1Ksb5gAqLQMZREgskseovJW6RVYTWs";
                 string url_map = "";
 
                 url_map = BLL.Checkin.GetLocationUrl_Google(lat, lon, mGoolgeKey, LSLibrary.WebAPP.LanguageType.tc);

@@ -48,6 +48,8 @@ namespace WEBUI.Pages
             this.lt_jsModelWindow.Text = "";
             this.lb_commonmsg.Visible = false;
             this.lb_commonmsg.Text = "";
+            this.lb_msg_current_gpswifi.Visible = false;
+            this.lb_msg2_pregpswifi.Visible = false;
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
@@ -69,7 +71,7 @@ namespace WEBUI.Pages
 
             panel_appmsg.Visible = isApp;
 
-            ShowCurrentCheckTime(false, null);
+            ShowCurrentCheckTime(false, null,"","");
             ShowLastTimeCheckTime(false);
 
             if (isApp)
@@ -247,7 +249,7 @@ namespace WEBUI.Pages
             if (tempModer != null)
             {
                 BLL.Other.InsertAttendanceRawData(new WebServiceLayer.WebReference_leave.AttendanceRawData[] { tempModer });
-                ShowCurrentCheckTime(true, System.DateTime.Now);
+                ShowCurrentCheckTime(true, tempModer.CreateDate,tempModer.GpsLocationName,tempModer.WifiAddress);
                 ShowLastTimeCheckTime(true);
             }
             //enalbe btn again
@@ -255,7 +257,7 @@ namespace WEBUI.Pages
         }
 
         //load->empty.  btn->now.
-        private void ShowCurrentCheckTime(bool isClickCheck,DateTime? date)
+        private void ShowCurrentCheckTime(bool isClickCheck,DateTime? date,string locationname,string wifiname)
         {
             if (isClickCheck && date!=null)
             {
@@ -263,11 +265,26 @@ namespace WEBUI.Pages
 
                 this.lb_msg_current.Visible = true;
                 this.lb_msg_current.Text = lb_msg_msg;
+
+                
+                string info = check_gspwifiinfo(locationname, wifiname);
+                if (!string.IsNullOrEmpty(info))
+                {
+                    this.lb_msg_current_gpswifi.Visible = true;
+                    this.lb_msg_current_gpswifi.Text = info;
+                }
+                else
+                {
+                    this.lb_msg_current_gpswifi.Visible = false;
+                    this.lb_msg_current_gpswifi.Text = "";
+                }
             }
             else
             {
                 this.lb_msg_current.Visible = false;
                 this.lb_msg_current.Text = "";
+                this.lb_msg_current_gpswifi.Visible = false;
+                this.lb_msg_current_gpswifi.Text = "";
             }
         }
 
@@ -292,9 +309,33 @@ namespace WEBUI.Pages
             }
             if (lastItem != null)
             {
+                DateTime checkTime = lastItem.CreateDate;
+                string gpslocationName = lastItem.GpsLocationName;
+                string wifiname = lastItem.WifiAddress;
+
                 this.lb_msg2_pre.Visible = true;
-                this.lb_msg2_pre.Text = BLL.MultiLanguageHelper.GetLanguagePacket().CommonLastcheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose(), lastItem.CreateDate);
+                this.lb_msg2_pre.Text = BLL.MultiLanguageHelper.GetLanguagePacket().CommonLastcheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose(), checkTime);
+
+                string info = check_gspwifiinfo(gpslocationName, wifiname);
+                if (!string.IsNullOrEmpty(info))
+                {
+                    this.lb_msg2_pregpswifi.Visible = true;
+                    this.lb_msg2_pregpswifi.Text = info;
+                }
+                else
+                {
+                    this.lb_msg2_pregpswifi.Visible = false;
+                    this.lb_msg2_pregpswifi.Text = "";
+                }
             }
+        }
+
+        private string check_gspwifiinfo(string gpslocationname, string wifi)
+        {
+            string result = "";
+
+
+            return result;
         }
 
         #region storeProcedure to check .not use
@@ -498,9 +539,10 @@ namespace WEBUI.Pages
         //always insert .so the result is true always now.
         #endregion
 
-        private bool isValaidCheckin()
+
+        public string clickConfirmMsg()
         {
-            return true;
+            return BLL.MultiLanguageHelper.GetLanguagePacket().check_clickmsg;
         }
 
         private void SetupmultipleLanguage()

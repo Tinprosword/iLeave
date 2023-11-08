@@ -53,7 +53,7 @@ namespace BLL
 
             try
             {
-                System.Net.WebClient webClient = new LSLibrary.WebClientPro(2000);
+                System.Net.WebClient webClient = new LSLibrary.WebClientPro(1000);
                 webClient.Encoding = System.Text.Encoding.UTF8;
                 string jsonstr = webClient.DownloadString(url);
 

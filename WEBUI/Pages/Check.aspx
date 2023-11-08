@@ -26,13 +26,15 @@
             </div>
             <div class="col-xs-12" style="height:20px">&nbsp;</div>
             <div class="col-xs-12" style="text-align:center"><%-->OnClick_In--%>
-                <asp:Button ID="bt_checkin" OnClick="OnClick_In" runat="server" Text="Button" style="width:280px; height:280px; border:0px red solid; border-radius:140px; background-color:#06468c; color:#ffffff;font-size:37px" />
+                <asp:Button ID="bt_checkin" OnClick="OnClick_In" runat="server" Text="Button" style="width:280px; height:280px; border:0px red solid; border-radius:140px; background-color:#06468c; color:#ffffff;font-size:37px" OnClientClick="if(confirm(onclickCheck())){return true;}else{return false;}"/>
             </div>
             <div class="col-xs-12" style="height:5px">&nbsp;</div>
             <div class="col-xs-12 MaintTextColor_new" style="text-align:center;">
                 <asp:Label ID="lb_commonmsg" runat="server" Text="數據錯誤。" Visible="false"></asp:Label>
                 <asp:Label ID="lb_msg_current" runat="server" Text="本次打卡：09:01 PM" Visible="false"></asp:Label><br />
+                <asp:Label ID="lb_msg_current_gpswifi" runat="server" Text="中國，wifi:abc" Visible="false"></asp:Label><br />
                 <asp:Label ID="lb_msg2_pre" runat="server" Text="上次打卡：09:01 PM" Visible="false"></asp:Label><br />
+                <asp:Label ID="lb_msg2_pregpswifi" runat="server" Text="中國，wifi:abc" Visible="false"></asp:Label><br />
             </div>
         </div>
     </div>
@@ -82,6 +84,11 @@
                 }  
             })  
             rbtn1.checked = true;  
+        }
+
+        function onclickCheck() {
+            var msg = '<%=clickConfirmMsg()%>';
+            return msg;
         }
     </script>
 
