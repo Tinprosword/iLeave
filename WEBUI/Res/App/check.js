@@ -4,6 +4,15 @@
 }
 startClock();
 
+
+function ShowMsgAndLogout(msg)
+{
+    //alert("abc");
+    confirm(msg);
+    document.location.href = "../login.aspx?action=userloginout";
+}
+
+
 function formatDate(date)
 {
     var hours = date.getHours();
@@ -43,6 +52,7 @@ function Mobile_UpdateLocation(towhichpage,actionname, data)
 
         if (dataisvalid)
         {
+
             var hasLocation = true;
             var hasWifi = true;
             var wifiName = dataArray[2];
@@ -89,7 +99,22 @@ function Mobile_UpdateLocation(towhichpage,actionname, data)
             }
 
             if (hasLocation) {
-                SingleResult('../webservices/leave.asmx/GetMapLocationName', { lat: lata, lon: lona }, 'string', Mobile_UpdateLocation_onGetLocationName);
+                //如果gps lat ,lon 沒有變化，那麼不解析。
+                var oldgps = $(label_id_back_gpslatlon).val();
+                var oldlat = 0;//默認值設置為0.而且不能隨意更改。因為NeedToGetGPSAddress，會使用這個值，來判斷是否是第一次，第一次必須解析地址。
+                var oldlon = 0;//默認值設置為0.而且不能隨意更改。因為NeedToGetGPSAddress，會使用這個值，來判斷是否是第一次，第一次必須解析地址。
+                if (oldgps != "") {
+                    var oldgpsarray = oldgps.split("|");
+                    if (oldgpsarray.length == 2) {
+                        oldlat = oldgpsarray[0];
+                        oldlon = oldgpsarray[1];
+                    }
+                }
+
+                var needdecodegps = NeedToGetGPSAddress(lata, lona, oldlat, oldlon);
+                if (needdecodegps) {
+                    SingleResult('../webservices/leave.asmx/GetMapLocationName', { lat: lata, lon: lona }, 'string', Mobile_UpdateLocation_onGetLocationName);
+                }
             }
             else {
                 $(label_id_front_gpslocationName).html(label_nogps);
@@ -126,6 +151,26 @@ function Mobile_UpdateLocation(towhichpage,actionname, data)
             $(label_id_back_decodeGps).val("");
         }
     }
+}
+
+//0.00001 距離相差大概1米。 3米之內就不重新計算了。
+function NeedToGetGPSAddress(nowlat, nowlon, prelat, prelon) {
+    //alert(nowlat + ".  " + nowlon + ".  " + prelat + ".  " +  prelon);
+    var result = true;
+    var latoffset = Math.abs(nowlat - prelat);
+    var lonoffset = Math.abs(nowlon - prelon);
+
+    if (prelat == 0 && prelon == 0) {
+        result = true;
+    }
+    else {
+        if (latoffset <= 0.00003 && lonoffset <= 0.00003) {
+            result = false;
+        }
+    }
+    
+    //alert(result + "....." + nowlat + ".  " + nowlon + ".  " + prelat + ".  " + prelon);
+    return result;
 }
 
 function Mobile_UpdateLocation_onGetLocationName(obj)

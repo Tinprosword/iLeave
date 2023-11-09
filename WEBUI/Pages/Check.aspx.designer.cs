@@ -220,6 +220,24 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.Label lb_msg2_pregpswifi;
         
         /// <summary>
+        /// lb_msg2_pre2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_msg2_pre2;
+        
+        /// <summary>
+        /// lb_msg2_pregpswifi2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_msg2_pregpswifi2;
+        
+        /// <summary>
         /// rp_shifts 控件。
         /// </summary>
         /// <remarks>
@@ -272,5 +290,14 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lt_jsTimerRequestMobileLocation;
+        
+        /// <summary>
+        /// lt_jsLoginout 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lt_jsLoginout;
     }
 }

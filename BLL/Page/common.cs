@@ -267,11 +267,22 @@ namespace BLL
             return result;
         }
 
-        public static bool isLocalZone()
+        public static bool cooike_isLocalZone()
         {
             bool result = false;
             var myCooike = BLL.Page.MyCookieManage.GetCookie();
             if (myCooike != null && !string.IsNullOrEmpty(myCooike.LocalPCzodeCode) && myCooike.LocalPCzodeCode != "0")
+            {
+                result = true;
+            }
+            return result;
+        }
+
+        public static bool cookie_isautologinout()
+        {
+            bool result = false;
+            var myCooike = BLL.Page.MyCookieManage.GetCookie();
+            if (myCooike != null && !string.IsNullOrEmpty(myCooike.LocalPCzodeAutoLogout) && myCooike.LocalPCzodeAutoLogout == "1")
             {
                 result = true;
             }

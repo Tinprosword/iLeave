@@ -54,7 +54,7 @@ namespace WEBUI.Pages
 
             var AllZone = BLL.CodeSetting.CodeSetting_GetAllZone();
             var userinfo = BLL.User_wsref.UserInfo_GetUserInfoByUID(loginer.userInfo.u_id);
-            if (userinfo != null && userinfo.MobileUserLevel == 2)
+            if (userinfo != null && userinfo.MobileUserLevel == 3 && BLL.SystemEnviroment.isFromMobilApp(Request, BLL.Page.MyCookieManage.GetCookie())==false)
             {
                 this.ddl_check_zone.DataSource = AllZone;
                 ddl_check_zone.DataTextField = "ZoneDescription";
@@ -63,6 +63,7 @@ namespace WEBUI.Pages
             }
             ddl_check_zone.Items.Insert(0, new ListItem("--- Please Select Zone ---", "0"));
             this.ddl_check_zone.SelectedValue = myCookie.LocalPCzodeCode;
+            this.cb_autologinout.Checked = BLL.common.cookie_isautologinout();
 
             BLL.common.setDivMinHeight("sh", this.maindiv);
         }
@@ -70,10 +71,7 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
         {
-
         }
-
-
 
         private void MultipleLanguage(LSLibrary.WebAPP.BaseLanguage language)
         {
@@ -85,10 +83,10 @@ namespace WEBUI.Pages
             this.lb_versionname.Text = language.setting_ver;
             this.lb_info.Text = language.setting_appinfo;
             this.lb_privary.Text = language.setting_appprivary;
+            this.cb_autologinout.Text = language.setting_autologinout;
         }
 
 
-       
 
         private static void ChangeSettingSendNotice(int languagetype,Literal literal)
         {
@@ -175,5 +173,14 @@ namespace WEBUI.Pages
             mycookie.LocalPCzodeCode = zoneCode;
             BLL.Page.MyCookieManage.SetCookie(mycookie);
         }
+
+        protected void cb_autologinout_CheckedChanged(object sender, EventArgs e)
+        {
+            bool checkeda = this.cb_autologinout.Checked;
+            var mycookie = BLL.Page.MyCookieManage.GetCookie();
+            mycookie.LocalPCzodeAutoLogout = checkeda == true ? "1" : "0";
+            BLL.Page.MyCookieManage.SetCookie(mycookie);
+        }
+
     }
 }

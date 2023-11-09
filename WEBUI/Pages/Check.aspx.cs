@@ -13,6 +13,8 @@ namespace WEBUI.Pages
     {
         //页面不需要任何成员变量，唯一的user info 变量，由session提供。
         //页面就2个按钮事件，和一个展示数据方法。 并且按钮事件后都需要调用。所以展示数据方法必须复用。
+        //https://maps.googleapis.com/maps/api/geocode/json?latlng=22.365126,114.133894&key=AIzaSyBct1Ksb5gAqLQMZREgskseovJW6RVYTWs&language=zh-HK
+        //快速測試gps,地址。
 
         private static string ViewState_PageName = "ViewState_PageNameaaa";
 
@@ -285,6 +287,14 @@ namespace WEBUI.Pages
             }
             //enalbe btn again
             this.bt_checkin.Enabled = true;
+
+            bool islocalzone = BLL.common.cooike_isLocalZone();
+            bool isautologout = BLL.common.cookie_isautologinout();
+            if (!isapp && islocalzone && isautologout)
+            {
+                string msg = BLL.MultiLanguageHelper.GetLanguagePacket().Commonsuccess + " " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose(), tempModer.CreateDate) + ". " + BLL.MultiLanguageHelper.GetLanguagePacket().Common_Zone +": " + tempModer.Zone;
+                lt_jsLoginout.Text = "<script>ShowMsgAndLogout('"+msg+"');</script>";
+            }
         }
 
 
@@ -299,7 +309,7 @@ namespace WEBUI.Pages
                 this.lb_msg_current.Text = lb_msg_msg;
 
                 
-                string info = check_gspwifiinfo(BLL.common.isLocalZone(), locationname, wifiname,BLL.common.GetLocalZone());
+                string info = check_gspwifiinfo(BLL.common.cooike_isLocalZone(), locationname, wifiname,BLL.common.GetLocalZone());
                 if (!string.IsNullOrEmpty(info))
                 {
                     this.lb_msg_current_gpswifi.Visible = true;
@@ -325,11 +335,16 @@ namespace WEBUI.Pages
         {
             var allitem = BLL.Other.GetAttendanceList(new string[] { loginer.userInfo.staffNumber }).OrderByDescending(x => x.CreateDate).ToList();
             WebServiceLayer.WebReference_leave.AttendanceRawData lastItem = null;
+            WebServiceLayer.WebReference_leave.AttendanceRawData lastItem2 = null;
             if (isClickCheck)
             {
                 if (allitem != null && allitem.Count() >= 2)
                 {
                     lastItem = allitem[1];
+                }
+                if (allitem != null && allitem.Count() >= 3)
+                {
+                    lastItem2 = allitem[2];
                 }
             }
             else
@@ -338,26 +353,36 @@ namespace WEBUI.Pages
                 {
                     lastItem = allitem[0];
                 }
+                if (allitem != null && allitem.Count() >= 2)
+                {
+                    lastItem2 = allitem[1];
+                }
             }
+            ShowLastTimeCheckTime_display(lastItem, lb_msg2_pre, lb_msg2_pregpswifi);
+            ShowLastTimeCheckTime_display(lastItem2, lb_msg2_pre2, lb_msg2_pregpswifi2);
+        }
+
+        private void ShowLastTimeCheckTime_display(WebServiceLayer.WebReference_leave.AttendanceRawData lastItem, Label lb_prefix,Label lb_info)
+        {
             if (lastItem != null)
             {
                 DateTime checkTime = lastItem.CreateDate;
                 string gpslocationName = lastItem.GpsLocationName;
                 string wifiname = lastItem.WifiAddress;
 
-                this.lb_msg2_pre.Visible = true;
-                this.lb_msg2_pre.Text = BLL.MultiLanguageHelper.GetLanguagePacket().CommonLastcheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose(), checkTime);
+                lb_prefix.Visible = true;
+                lb_prefix.Text = BLL.MultiLanguageHelper.GetLanguagePacket().CommonLastcheckin + " : " + BLL.common.GetFormatTime(BLL.MultiLanguageHelper.GetChoose(), checkTime);
 
-                string info = check_gspwifiinfo(BLL.common.isLocalZone(), gpslocationName, wifiname, BLL.common.GetLocalZone());
+                string info = check_gspwifiinfo(BLL.common.cooike_isLocalZone(), gpslocationName, wifiname, lastItem.Zone);
                 if (!string.IsNullOrEmpty(info))
                 {
-                    this.lb_msg2_pregpswifi.Visible = true;
-                    this.lb_msg2_pregpswifi.Text = info;
+                    lb_info.Visible = true;
+                    lb_info.Text = info;
                 }
                 else
                 {
-                    this.lb_msg2_pregpswifi.Visible = false;
-                    this.lb_msg2_pregpswifi.Text = "";
+                    lb_info.Visible = false;
+                    lb_info.Text = "";
                 }
             }
         }

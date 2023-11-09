@@ -16,6 +16,7 @@ namespace BLL.Page
         public string isAppLogin;
         public string wait_scrollTop;
         public string LocalPCzodeCode;
+        public string LocalPCzodeAutoLogout;
     }
 
     public class MyCookieManage
@@ -28,6 +29,8 @@ namespace BLL.Page
         private static readonly string COOKIE_ISAPP = "COOKIE_ISAPP";
         private static readonly string COOKIE_WST = "COOKIE_WST";
         private static readonly string COOKIE_LocalPCzodeCode = "COOKIE_LocalPCzodeCode";
+        private static readonly string COOKIE_LocalPCzodeAutoLogout = "COOKIE_LocalPCzodeAutoLogout";
+        
 
 
 
@@ -42,6 +45,7 @@ namespace BLL.Page
             string isapp = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_ISAPP);
             string wst = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_WST);
             string localzone= LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_LocalPCzodeCode);
+            string AutoLogout = LSLibrary.WebAPP.CookieHelper.GetCookie(COOKIE_LocalPCzodeAutoLogout);
 
 
             MyCookie mycookie = new MyCookie();
@@ -55,6 +59,7 @@ namespace BLL.Page
                 mycookie.isAppLogin = "0";
                 mycookie.wait_scrollTop = "0|0|0|0";
                 mycookie.LocalPCzodeCode = "0";
+                mycookie.LocalPCzodeAutoLogout = "0";
             }
             else
             {
@@ -66,6 +71,7 @@ namespace BLL.Page
                 mycookie.isAppLogin = isapp;
                 mycookie.wait_scrollTop = wst;
                 mycookie.LocalPCzodeCode = localzone;
+                mycookie.LocalPCzodeAutoLogout = AutoLogout;
             }
 
            // SetCookie(mycookie);
@@ -84,6 +90,7 @@ namespace BLL.Page
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_ISAPP, myCookie.isAppLogin, 360);
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_WST, myCookie.wait_scrollTop, 360);
             LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_LocalPCzodeCode, myCookie.LocalPCzodeCode, 360);
+            LSLibrary.WebAPP.CookieHelper.SetCookie(COOKIE_LocalPCzodeAutoLogout, myCookie.LocalPCzodeAutoLogout, 360);
         }
 
 

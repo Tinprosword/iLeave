@@ -4,7 +4,7 @@
                 <table class="col-xs-12 lsf-maringTop3px lsu-bigtable">
                     <tr style="height:1px;"><td ></td><td ></td><td style="text-align:right;color:white; font-size:15px;"><asp:Label ID="lb_versionname" runat="server" Text="Ver."></asp:Label>
                         <%--X 表示主版本号，当 API 的兼容性变化时，X 需递增。Y 表示次版本号，当增加功能时(不影响 API 的兼容性)，Y 需递增。Z 表示修订号，当做 Bug 修复时(不影响 API 的兼容性)，Z 需递增。--%>
-                        <asp:Label ID="lb_version" runat="server">1.7.1</asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+                        <asp:Label ID="lb_version" runat="server">1.8.1</asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
                     <%--<tr style="height:80px;">
                         <td style="width:25px;">&nbsp;</td>
                         <td style="width:80px;"><img src="../Res/images/settingAccount.png" class="setting_img" /></td>
@@ -26,9 +26,11 @@
                     </tr>--%>
                     <tr style="height:80px;">
                         <td>&nbsp;</td>
-                        <td><img src="../Res/images/setting_loginout.png" class="setting_img" /></td>
+                        <td><img src="../Res/images/setting2.png" class="setting_img" /></td>
                         <td class="whitea setting_link">
-                            <asp:Label ID="lb_ddlcheckzone_prefix" runat="server" Text="Zone" style="color:white" ></asp:Label>&nbsp;<asp:DropDownList ID="ddl_check_zone" runat="server" OnSelectedIndexChanged="ddl_check_zone_SelectedIndexChanged" AutoPostBack="true" Width="60%" ></asp:DropDownList>
+                            <asp:Label ID="lb_ddlcheckzone_prefix" runat="server" Text="Zone" style="color:white" ></asp:Label>&nbsp;<asp:DropDownList ID="ddl_check_zone" runat="server" OnSelectedIndexChanged="ddl_check_zone_SelectedIndexChanged" AutoPostBack="true" Width="70%" Font-Size="15px" ></asp:DropDownList>
+                            <br />
+                            <asp:CheckBox ID="cb_autologinout" Style="color:white;  font-size:12px;" runat="server" Text="Auto Loginout" ToolTip="When check,sys will auto loginout after check in." OnCheckedChanged="cb_autologinout_CheckedChanged" AutoPostBack="true"/>
                         </td>
                     </tr>
                     <tr style="height:80px;">
