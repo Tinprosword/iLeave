@@ -207,3 +207,11 @@ function Mobile_UpdateLocation_onGetLocationName(obj)
         $(label_id_back_decodeGps).val(obj);
     }
 }
+
+function ClickCheckin()
+{
+    //pop model window
+    $('#modal_shifts').modal();
+
+
+}

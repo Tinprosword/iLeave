@@ -9,6 +9,8 @@
     <asp:HiddenField ID="hf_back_wifiname" Value="" runat="server" />
     <asp:HiddenField ID="hf_back_gpslatlon" Value="" runat="server" />
     <asp:HiddenField ID="hf_back_gpsDecode" Value="" runat="server" />
+    <asp:HiddenField ID="hf_back_time1" Value="" runat="server" />
+    <asp:HiddenField ID="hf_back_time2" Value="" runat="server" />
 
     <div class="row" id="div_buttons">
         <div class ="col-xs-12" style="padding:0px; padding-top:5px;">
@@ -29,7 +31,7 @@
             </div>
             <div class="col-xs-12" style="height:20px">&nbsp;</div>
             <div class="col-xs-12" style="text-align:center"><%-->OnClick_In--%>
-                <asp:Button ID="bt_checkin" OnClick="OnClick_In" runat="server" Text="Button" style="width:280px; height:280px; border:0px red solid; border-radius:140px; background-color:#06468c; color:#ffffff;font-size:37px" /><%--OnClientClick="if(confirm(onclickCheck())){return true;}else{return false;}"--%>
+                <asp:Button ID="bt_checkin" OnClientClick="ClickCheckin()"  runat="server" Text="Button" style="width:280px; height:280px; border:0px red solid; border-radius:140px; background-color:#06468c; color:#ffffff;font-size:37px" /><%--OnClientClick="if(confirm(onclickCheck())){return true;}else{return false;}"--%>
             </div>
             <div class="col-xs-12" style="height:5px">&nbsp;</div>
             <div class="col-xs-12 MaintTextColor_new" style="text-align:center;">
@@ -79,6 +81,27 @@
 	        </div>
         </div>
     <!-- /.modal -->
+<%--<div class="modal fade col-xs-12" style="position:absolute; margin-top:20px;" id="modal_location" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:200px;display:inline">
+        <div class="modal-content">
+	        <div class="modal-body">
+                <div id="abc">
+                    <div class="col-xs-12">
+                        <asp:Label ID="lb_model_location_gps" runat="server" Text="中国 深圳"></asp:Label>
+                    </div>
+                    <div class="col-xs-12">
+                        <asp:Label ID="lb_model_location_wifi" runat="server" Text="WIFI:中国"></asp:Label>
+                    </div>
+                </div>
+	        </div>
+	        <div class="modal-footer">
+                <asp:Button ID="btn_model_location_ok" runat="server"  Text="OK" OnClick="btn_model_location_ok_click"/>
+                <asp:Button ID="btn_model_location_cancel" runat="server"  Text="cancel"  data-dismiss="modal" />
+	        </div>
+        </div>
+    </div>
+</div>--%>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
     <script>

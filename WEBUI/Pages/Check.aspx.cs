@@ -151,6 +151,13 @@ namespace WEBUI.Pages
             ProgressCheckIn_PreData(sender, e);
         }
 
+        protected void btn_model_location_ok_click(object sender, EventArgs e)
+        {
+            
+        }
+
+        
+
         private void ProgressCheckIn_PreData(object sender, EventArgs e)
         {
 

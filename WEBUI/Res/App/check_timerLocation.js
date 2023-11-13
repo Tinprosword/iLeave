@@ -4,8 +4,9 @@
 //上面的语句，如果不放到文件中。就再调用Mobile_UpdateLocation，会调用不到。
 //可能是 app 的JS 调用会破坏 页面的JS，所以必须 放入到单独的文件中。
 
-function startTimerLocation() {
+function startTimerLocation()
+{
     document.location.href = "js://webview?msgtype=GPS&value1=0";
-    setInterval("document.location = 'js://webview?msgtype=GPS&value1=0';", 7000);
+    //setInterval("document.location = 'js://webview?msgtype=GPS&value1=0';", 7000);
 }
 startTimerLocation();
