@@ -40,6 +40,24 @@ namespace WEBUI.Pages {
         protected global::System.Web.UI.WebControls.HiddenField hf_cantconvertGps;
         
         /// <summary>
+        /// hf_back_isapp 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf_back_isapp;
+        
+        /// <summary>
+        /// hf_back_iszone 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf_back_iszone;
+        
+        /// <summary>
         /// hf_back_invaliddata 控件。
         /// </summary>
         /// <remarks>
@@ -281,6 +299,42 @@ namespace WEBUI.Pages {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_model2_cancel;
+        
+        /// <summary>
+        /// lb_model_location_gps 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_model_location_gps;
+        
+        /// <summary>
+        /// lb_model_location_wifi 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_model_location_wifi;
+        
+        /// <summary>
+        /// btn_model_location_ok 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_model_location_ok;
+        
+        /// <summary>
+        /// btn_model_location_cancel 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_model_location_cancel;
         
         /// <summary>
         /// lt_jsModelWindow 控件。

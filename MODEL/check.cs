@@ -12,12 +12,16 @@ namespace MODEL
         [Serializable]
         public class ViewState_page
         {
-            
+            public bool isapp { get; set; }
+            public bool iszone { get; set; }
 
-            public ViewState_page()
+            public ViewState_page(bool _isapp, bool _iszone)
             {
-                
+                isapp = _isapp;
+                iszone = _iszone;
             }
+
+
         }
     }
 }

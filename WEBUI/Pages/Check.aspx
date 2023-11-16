@@ -5,6 +5,8 @@
     <asp:HiddenField ID="hf_nogps" Value="no gps" runat="server" />
     <asp:HiddenField ID="hf_cantconvertGps" Value="can not convert gps" runat="server" />
 
+    <asp:HiddenField ID="hf_back_isapp" Value="" runat="server" />
+    <asp:HiddenField ID="hf_back_iszone" Value="" runat="server" />
     <asp:HiddenField ID="hf_back_invaliddata" Value="" runat="server" />
     <asp:HiddenField ID="hf_back_wifiname" Value="" runat="server" />
     <asp:HiddenField ID="hf_back_gpslatlon" Value="" runat="server" />
@@ -31,7 +33,7 @@
             </div>
             <div class="col-xs-12" style="height:20px">&nbsp;</div>
             <div class="col-xs-12" style="text-align:center"><%-->OnClick_In--%>
-                <asp:Button ID="bt_checkin" OnClientClick="ClickCheckin()"  runat="server" Text="Button" style="width:280px; height:280px; border:0px red solid; border-radius:140px; background-color:#06468c; color:#ffffff;font-size:37px" /><%--OnClientClick="if(confirm(onclickCheck())){return true;}else{return false;}"--%>
+                <asp:Button ID="bt_checkin" OnClientClick="ClickCheckin();return false;"  runat="server" Text="Button" style="width:280px; height:280px; border:0px red solid; border-radius:140px; background-color:#06468c; color:#ffffff;font-size:37px" /><%--OnClientClick="if(confirm(onclickCheck())){return true;}else{return false;}"--%>
             </div>
             <div class="col-xs-12" style="height:5px">&nbsp;</div>
             <div class="col-xs-12 MaintTextColor_new" style="text-align:center;">
@@ -81,7 +83,7 @@
 	        </div>
         </div>
     <!-- /.modal -->
-<%--<div class="modal fade col-xs-12" style="position:absolute; margin-top:20px;" id="modal_location" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade col-xs-12" style="position:absolute; margin-top:20px;" id="modal_location" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="width:200px;display:inline">
         <div class="modal-content">
 	        <div class="modal-body">
@@ -95,12 +97,12 @@
                 </div>
 	        </div>
 	        <div class="modal-footer">
-                <asp:Button ID="btn_model_location_ok" runat="server"  Text="OK" OnClick="btn_model_location_ok_click"/>
+                <asp:Button ID="btn_model_location_ok" runat="server"  Text="OK"/>
                 <asp:Button ID="btn_model_location_cancel" runat="server"  Text="cancel"  data-dismiss="modal" />
 	        </div>
         </div>
     </div>
-</div>--%>
+</div>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentjs" runat="server">
@@ -121,7 +123,6 @@
     </script>
 
     <asp:Literal ID="lt_jsModelWindow" runat="server"></asp:Literal>
-    
     <asp:Literal ID="lt_jsmsg" runat="server"></asp:Literal>
     <script src="../Res/App/check.js?lastmodify=<%=BLL.GlobalVariate.checkjsLastmodify %>"></script>
     <asp:Literal ID="lt_jsTimerRequestMobileLocation" runat="server"></asp:Literal>

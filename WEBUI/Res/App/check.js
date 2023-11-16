@@ -211,7 +211,13 @@ function Mobile_UpdateLocation_onGetLocationName(obj)
 function ClickCheckin()
 {
     //pop model window
-    $('#modal_shifts').modal();
+    //給後端的數據。
+    var label_id_back_isapp = "#ContentPlaceHolder1_hf_back_isapp";
+    var label_id_back_iszone = "#ContentPlaceHolder1_hf_back_iszone";
+
+    var ispp = $(label_id_back_isapp).val();
+    var iszone = $(label_id_back_iszone).val();
 
 
+    $('#modal_location').modal();
 }

@@ -40,8 +40,7 @@ namespace WEBUI.Pages
         { }
 
         protected override void InitPage_OnFirstLoad2()
-        {
-        }
+        {}
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
@@ -56,13 +55,15 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
-            LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, new MODEL.Check.ViewState_page(), this.ViewState);
+            bool iszone = BLL.common.cooike_isLocalZone();
+            bool isApp = BLL.SystemEnviroment.isFromMobilApp(Request, BLL.Page.MyCookieManage.GetCookie());
+            LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, new MODEL.Check.ViewState_page(isApp, iszone), this.ViewState);
 
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().main_check, "~/pages/main.aspx", true);
 
             SetupmultipleLanguage();
 
-            bool isApp = BLL.SystemEnviroment.isFromMobilApp(Request, BLL.Page.MyCookieManage.GetCookie());
+            
 
             this.lb_day.Text = System.DateTime.Today.ToString("yyyy-MM-dd");
             this.lb_time.Text = BLL.common.GetFormatTime_currentTime(BLL.MultiLanguageHelper.GetChoose());
@@ -112,6 +113,10 @@ namespace WEBUI.Pages
                     this.lt_jsTimerRequestMobileLocation.Text = "<script src=\"../Res/App/check_timerLocation.js\"></script>";
                 }
             }
+
+            var vs = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Check.ViewState_page>(ViewState_PageName, this.ViewState);
+            this.hf_back_isapp.Value = vs.isapp == true ? "1" : "0";
+            this.hf_back_iszone.Value = vs.iszone == true ? "1" : "0";
         }
 
         protected override void PageLoad_Reset_ReInitUIOnEachLoad5()
@@ -242,6 +247,8 @@ namespace WEBUI.Pages
 
         private void ProgressCheckIn(bool isapp, enum_checkActionCode actionCode, string wifiname, double lat, double lon, string gpsLocationName)
         {
+            //打卡有2大情况。1 app, 2 pc 。  pc ,又分1.normal 和 zone.
+            //1. isapp, 来区分是否要处理gps,wifi .2. 如果不是app, 那么通过 panel_LocalZone.Visible来区分，是否zone.
             string zoneCode = GetShiftcodeFromRepeater();
             if (string.IsNullOrEmpty(zoneCode))
             {
