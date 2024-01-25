@@ -10,6 +10,7 @@ namespace WEBUI
     public partial class Login :BLL.CustomCommonTemplate
     {
         private string queryAction = "";
+        private int timeoutCode = 60 * 2;
         protected override void InitPage_OnBeforeF5RegisterEvent()
         {}
 
@@ -42,6 +43,7 @@ namespace WEBUI
         protected override void PageLoad_Reset_ReInitUIOnEachLoad3()
         {
             this.tb_p1.Attributes.Add("value", Request.Form[tb_p1.ClientID]);
+            this.lt_js.Text = "";
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
@@ -131,6 +133,8 @@ namespace WEBUI
             }
             this.tb_u1.Attributes.Add("placeholder", BLL.MultiLanguageHelper.GetLanguagePacket(tt).Common_user);
             this.tb_p1.Attributes.Add("placeholder", BLL.MultiLanguageHelper.GetLanguagePacket(tt).Common_password);
+            this.tb_code.Attributes.Add("placeholder", BLL.MultiLanguageHelper.GetLanguagePacket(tt).login_code);
+            this.btn_ReSendCode.Text = BLL.MultiLanguageHelper.GetLanguagePacket(tt).login_resend;
         }
 
         private void ProgressLogin(string userid,string password)
@@ -141,17 +145,74 @@ namespace WEBUI
                 bool isLogin = loginResult.Result > 0 ? true : false;
                 if (isLogin)
                 {
-
-                    BLL.Other.UpdateCookieAfterLoginByIsRemeber(this.cb_remember.Checked, userid, password);
-
-                    MODEL.UserInfo userInfo= BLL.User_wsref.GetAndSaveInfoToSession(userid, loginResult);
-                    if (userInfo != null)
+                    bool Need2FA = true;//todo fun_2fa get from systemParameter.
+                    bool Is2FAOK = false;
+                    if (Need2FA)
                     {
-                        gotoNextPage(userInfo.personid);
+                        if (!tr_2fa.Visible)
+                        {
+                            tr_2fa.Visible = true;
+                            String code = "11111";//todo fun_2fa .genereate code.
+                            string timestr = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                            this.hf_code.Value = code + "|" + timestr;
+                        }
+                        else
+                        {
+                            string code_textbox = this.tb_code.Text.Trim();
+                            string code_hf = this.hf_code.Value;
+
+                            bool codeIsOK = false;
+                            bool codeNotExprire = false;
+                            string code_hf_code= LSLibrary.StringUtil.SplitExtentString(code_hf, '|', 0);
+                            string code_hf_time= LSLibrary.StringUtil.SplitExtentString(code_hf, '|', 1);
+                            if (code_hf_code != null && code_hf_code == code_textbox)
+                            {
+                                codeIsOK = true;
+                                DateTime preSendTime = System.DateTime.Now;
+                                if (DateTime.TryParse(code_hf_time, out preSendTime))
+                                {
+                                    if (preSendTime.AddSeconds(timeoutCode) >= System.DateTime.Now)
+                                    {
+                                        codeNotExprire = true;
+                                    }
+                                }
+                            }
+
+                            if (codeIsOK && codeNotExprire)
+                            {
+                                Is2FAOK = true;
+                            }
+                            else
+                            {
+                                Is2FAOK = false;
+
+                                BLL.Page.MyCookie data = BLL.Page.MyCookieManage.GetCookie();
+                                LSLibrary.WebAPP.LanguageType tt = data.language;
+
+                                string label_msg = BLL.MultiLanguageHelper.GetLanguagePacket(tt).login_errorEmailCode;
+                                if (codeIsOK && !codeNotExprire)
+                                {
+                                    label_msg = BLL.MultiLanguageHelper.GetLanguagePacket(tt).login_ExpiredEmailCode;
+                                }
+                                this.lt_js.Text= LSLibrary.JavasScriptHelper.AlertMessage(label_msg);
+                            }
+                        }
                     }
-                    else
+
+                    //login.
+                    if (!Need2FA || (Need2FA && Is2FAOK))
                     {
-                        this.lt_js.Text = LSLibrary.JavasScriptHelper.AlertMessage("No employment.");
+                        BLL.Other.UpdateCookieAfterLoginByIsRemeber(this.cb_remember.Checked, userid, password);
+
+                        MODEL.UserInfo userInfo = BLL.User_wsref.GetAndSaveInfoToSession(userid, loginResult);
+                        if (userInfo != null)
+                        {
+                            gotoNextPage(userInfo.personid);
+                        }
+                        else
+                        {
+                            this.lt_js.Text = LSLibrary.JavasScriptHelper.AlertMessage("No employment.");
+                        }
                     }
                 }
                 else
@@ -190,6 +251,7 @@ namespace WEBUI
             //this.lt_password.Text = baseLanguage.login_password;
             this.Button1.Text= baseLanguage.login_loginbtn;
             this.lt_remember2.Text = baseLanguage.login_remember;
+            //this.tb_code.p
         }
 
 
