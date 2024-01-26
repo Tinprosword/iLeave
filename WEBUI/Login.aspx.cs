@@ -10,7 +10,7 @@ namespace WEBUI
     public partial class Login :BLL.CustomCommonTemplate
     {
         private string queryAction = "";
-        private int timeoutCode = 60 * 2;
+        private int timeoutCode = 60 * 1;
         protected override void InitPage_OnBeforeF5RegisterEvent()
         {}
 
@@ -137,6 +137,40 @@ namespace WEBUI
             this.btn_ReSendCode.Text = BLL.MultiLanguageHelper.GetLanguagePacket(tt).login_resend;
         }
 
+        private void Code_SendAndSaveToViewstatus()
+        {
+            String code = "11111";//todo fun_2fa .genereate code.
+            string timestr = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            this.hf_code.Value = code + "|" + timestr;
+            //todo fun_2fa send via email.
+        }
+
+        private bool Code_GetCodeAndGeneraterTime(out string code, out DateTime? generaterDate)
+        {
+            bool result = false;
+
+            code = null;
+            generaterDate = null;
+
+            string code_hf = this.hf_code.Value;
+
+            string code_hf_code = LSLibrary.StringUtil.SplitExtentString(code_hf, '|', 0);
+            string code_hf_time = LSLibrary.StringUtil.SplitExtentString(code_hf, '|', 1);
+
+            if (!string.IsNullOrEmpty(code_hf_code) && !string.IsNullOrEmpty(code_hf_time))
+            {
+                DateTime preSendTime = System.DateTime.Now;
+                if (DateTime.TryParse(code_hf_time, out preSendTime))
+                {
+                    code = code_hf_code;
+                    generaterDate = preSendTime;
+                    result = true;
+                }
+            }
+            return result;
+        }
+
+
         private void ProgressLogin(string userid,string password)
         {
             if (string.IsNullOrWhiteSpace(userid) == false && string.IsNullOrWhiteSpace(password) == false)
@@ -152,9 +186,7 @@ namespace WEBUI
                         if (!tr_2fa.Visible)
                         {
                             tr_2fa.Visible = true;
-                            String code = "11111";//todo fun_2fa .genereate code.
-                            string timestr = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                            this.hf_code.Value = code + "|" + timestr;
+                            Code_SendAndSaveToViewstatus();
                         }
                         else
                         {
@@ -163,18 +195,17 @@ namespace WEBUI
 
                             bool codeIsOK = false;
                             bool codeNotExprire = false;
-                            string code_hf_code= LSLibrary.StringUtil.SplitExtentString(code_hf, '|', 0);
-                            string code_hf_time= LSLibrary.StringUtil.SplitExtentString(code_hf, '|', 1);
-                            if (code_hf_code != null && code_hf_code == code_textbox)
+
+                            string validCode = null; DateTime? codeGenerateDatetime = null;
+                            bool tempHF_OK = Code_GetCodeAndGeneraterTime(out validCode, out codeGenerateDatetime);
+
+                            if (tempHF_OK && validCode == code_textbox)
                             {
                                 codeIsOK = true;
-                                DateTime preSendTime = System.DateTime.Now;
-                                if (DateTime.TryParse(code_hf_time, out preSendTime))
+                                
+                                if (codeGenerateDatetime.Value.AddSeconds(timeoutCode) >= System.DateTime.Now)
                                 {
-                                    if (preSendTime.AddSeconds(timeoutCode) >= System.DateTime.Now)
-                                    {
-                                        codeNotExprire = true;
-                                    }
+                                    codeNotExprire = true;
                                 }
                             }
 
@@ -307,6 +338,31 @@ namespace WEBUI
             BLL.Page.MyCookieManage.SetCookie(myc);
         }
 
-       
+        protected void btn_ReSendCode_Click(object sender, EventArgs e)
+        {
+            bool canResend = true;//todo fun_2fa 前端加上Enable countdown.
+            string code = null;DateTime? generateTime = null;
+            bool temp_getCode = Code_GetCodeAndGeneraterTime(out code, out generateTime);
+            if (temp_getCode == false)
+            {
+                canResend = true;
+            }
+            else
+            {
+                if (generateTime.Value.AddMinutes(1) < System.DateTime.Now)
+                {
+                    canResend = true;
+                }
+            }
+
+            if (canResend)
+            {
+                Code_SendAndSaveToViewstatus();
+            }
+            else
+            {
+                lt_js.Text = "too often";//todo fun_2fa message
+            }
+        }
     }
 }

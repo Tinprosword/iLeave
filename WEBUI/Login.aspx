@@ -41,7 +41,7 @@
                             <table style="width:90%">
                                 <tr>
                                     <td><asp:TextBox ID="tb_code" runat="server" Width="99%" placeholder="Verification Code" CssClass="lsu-input_line" AutoCompleteType="Disabled"/></td>
-                                    <td style="width:110px" class="fontsizes1"><asp:Button ID="btn_ReSendCode" runat="server" Text="Resend(99)" /></td>
+                                    <td style="width:110px" class="fontsizes1"><asp:Button ID="btn_ReSendCode" runat="server" Text="Resend(99)" OnClick="btn_ReSendCode_Click" /></td>
                                 </tr>
                             </table>
                         </td>
