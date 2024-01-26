@@ -143,6 +143,7 @@ namespace WEBUI
             string timestr = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             this.hf_code.Value = code + "|" + timestr;
             //todo fun_2fa send via email.
+
         }
 
         private bool Code_GetCodeAndGeneraterTime(out string code, out DateTime? generaterDate)
@@ -340,7 +341,7 @@ namespace WEBUI
 
         protected void btn_ReSendCode_Click(object sender, EventArgs e)
         {
-            bool canResend = true;//todo fun_2fa 前端加上Enable countdown.
+            bool canResend = false;//todo fun_2fa 前端加上Enable countdown.
             string code = null;DateTime? generateTime = null;
             bool temp_getCode = Code_GetCodeAndGeneraterTime(out code, out generateTime);
             if (temp_getCode == false)
@@ -361,7 +362,8 @@ namespace WEBUI
             }
             else
             {
-                lt_js.Text = "too often";//todo fun_2fa message
+                this.lt_js.Text = LSLibrary.JavasScriptHelper.AlertMessage("too often");
+                //lt_js.Text = "too often";//todo fun_2fa message
             }
         }
     }
