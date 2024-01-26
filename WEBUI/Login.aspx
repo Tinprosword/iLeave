@@ -48,7 +48,7 @@
                     </tr>
                     <tr style="height:30px"><td></td>
                         <td colspan="2" >
-                            <asp:Label ID="lb_CommonMsg" runat="server" Text="" class="lsf-fontsizes1" style="color:#c8c8c8"></asp:Label><%--style="color:#c8c8c8"--%>
+                            <asp:Label ID="lb_CommonMsg" runat="server" Text="" class="lsf-fontsizes1" style="color:#ffffff"></asp:Label><%--style="color:#c8c8c8"--%>
                         </td>
                     </tr>
                     <tr><td colspan="1"></td>
