@@ -39,8 +39,6 @@ namespace BLL
             return WebServiceLayer.MyWebService.GlobalWebServices.ws_codesetting.GetSystemParameter(name);
         }
 
-      
-
         public static bool AllowHourly(int leaveid, int position)
         {
             bool result = false;

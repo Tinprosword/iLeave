@@ -11,6 +11,8 @@ namespace WEBUI
     {
         private string queryAction = "";
         private int timeoutCode_Minutes = 2;
+        private BLL.SystemParameters mSystemParameters = null;
+
         protected override void InitPage_OnBeforeF5RegisterEvent()
         {}
 
@@ -47,6 +49,7 @@ namespace WEBUI
             this.lb_CommonMsg.Text = "";
 
             timeoutCode_Minutes= LSLibrary.WebAPP.WebConfig.getValue_Int("VarifyCode_ExpiryInMinute",timeoutCode_Minutes);
+            mSystemParameters = BLL.SystemParameters.GetSysParameters();
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
@@ -142,7 +145,7 @@ namespace WEBUI
 
         private void Code_SendAndSaveToViewstatus()
         {
-            String code = "11111";//todo fun_2fa .genereate code.
+            String code = LSLibrary.UnicodeHelper.RandomNumSupplier.GetCode_int(6);
             string timestr = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             this.hf_code.Value = code + "|" + timestr;
             //todo fun_2fa send via email.
@@ -183,7 +186,7 @@ namespace WEBUI
                 bool isLogin = loginResult.Result > 0 ? true : false;
                 if (isLogin)
                 {
-                    bool Need2FA = true;//todo fun_2fa get from systemParameter.
+                    bool Need2FA = mSystemParameters.mENABLE_LOGIN_2FA;
                     bool Is2FAOK = false;
                     if (Need2FA)
                     {
@@ -350,7 +353,7 @@ namespace WEBUI
 
         protected void btn_ReSendCode_Click(object sender, EventArgs e)
         {
-            bool canResend = false;//todo fun_2fa 前端加上Enable countdown.
+            bool canResend = false;
             string code = null;DateTime? generateTime = null;
             bool temp_getCode = Code_GetCodeAndGeneraterTime(out code, out generateTime);
             if (temp_getCode == false)

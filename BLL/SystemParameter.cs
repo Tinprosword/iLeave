@@ -26,6 +26,7 @@ namespace BLL
         public const string MONTHLY_WORKING_FIXDAY = "MONTHLY_WORKING_FIXDAY";
         public const string ADDITION_TYPE = "ADDITION_TYPE";
         public const string DEDUCTION_TYPE = "DEDUCTION_TYPE";
+        public const string ENABLE_LOGIN_2FA = "ENABLE_LOGIN_2FA";
 
         //v1.4.0 2013-04-15 Kitty add minimum wages for 28
         public const string MIN_COMMITTED_WAGES_LAW_28 = "MIN_COMMITTED_WAGES_LAW_28";
@@ -905,6 +906,7 @@ namespace BLL
         public int mLEAVE_DATEFROM_Control = 1;
         public int mLeaveHourUnit = -1;
         public int mILEAVE_UPLOADFILE_MAXSIZE = 5;
+        public bool mENABLE_LOGIN_2FA = false;
         #endregion
 
         //single mode. 因為對於所有用戶來說，sys是同樣的數據，所以可以用single 模式。但是後面發現，用戶會切換Services(Database),導致systemParameter不會變。
@@ -956,6 +958,7 @@ namespace BLL
             data.mBLOCK_BACKDATE_WITHDRAW = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BLOCK_BACKDATE_WITHDRAWAL) == "1" ? true : false;
             data.mLeaveHourUnit = LSLibrary.ConvertHelper.ToInt32(BLL.CodeSetting.GetSystemParameter(SystemParameters.HOURLY_LEAVE_MINUTES_UNIT), -1);
             data.mILEAVE_UPLOADFILE_MAXSIZE = LSLibrary.ConvertHelper.ToInt32(BLL.CodeSetting.GetSystemParameter(SystemParameters.ILEAVE_ATTACHMENT_SIZE), 5);
+            data.mENABLE_LOGIN_2FA = BLL.CodeSetting.GetSystemParameter(SystemParameters.ENABLE_LOGIN_2FA) == "1" ? true : false;
 
             return data;
         }
