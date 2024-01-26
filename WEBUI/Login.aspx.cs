@@ -10,7 +10,7 @@ namespace WEBUI
     public partial class Login :BLL.CustomCommonTemplate
     {
         private string queryAction = "";
-        private int timeoutCode = 60 * 1;
+        private int timeoutCode_Minutes = 2;
         protected override void InitPage_OnBeforeF5RegisterEvent()
         {}
 
@@ -44,6 +44,9 @@ namespace WEBUI
         {
             this.tb_p1.Attributes.Add("value", Request.Form[tb_p1.ClientID]);
             this.lt_js.Text = "";
+            this.lb_CommonMsg.Text = "";
+
+            timeoutCode_Minutes= LSLibrary.WebAPP.WebConfig.getValue_Int("VarifyCode_ExpiryInMinute",timeoutCode_Minutes);
         }
 
         protected override void PageLoad_InitUIOnFirstLoad4()
@@ -143,7 +146,7 @@ namespace WEBUI
             string timestr = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             this.hf_code.Value = code + "|" + timestr;
             //todo fun_2fa send via email.
-
+            this.lb_CommonMsg.Text = BLL.MultiLanguageHelper.GetLanguagePacket(getLanguage()).login_codesendAlreadly;
         }
 
         private bool Code_GetCodeAndGeneraterTime(out string code, out DateTime? generaterDate)
@@ -204,7 +207,7 @@ namespace WEBUI
                             {
                                 codeIsOK = true;
                                 
-                                if (codeGenerateDatetime.Value.AddSeconds(timeoutCode) >= System.DateTime.Now)
+                                if (codeGenerateDatetime.Value.AddMinutes(timeoutCode_Minutes) >= System.DateTime.Now)
                                 {
                                     codeNotExprire = true;
                                 }
@@ -226,7 +229,7 @@ namespace WEBUI
                                 {
                                     label_msg = BLL.MultiLanguageHelper.GetLanguagePacket(tt).login_ExpiredEmailCode;
                                 }
-                                this.lt_js.Text= LSLibrary.JavasScriptHelper.AlertMessage(label_msg);
+                                this.lb_CommonMsg.Text = label_msg;
                             }
                         }
                     }
@@ -339,6 +342,12 @@ namespace WEBUI
             BLL.Page.MyCookieManage.SetCookie(myc);
         }
 
+        private LSLibrary.WebAPP.LanguageType getLanguage()
+        {
+            BLL.Page.MyCookie data = BLL.Page.MyCookieManage.GetCookie();
+            return data.language;
+        }
+
         protected void btn_ReSendCode_Click(object sender, EventArgs e)
         {
             bool canResend = false;//todo fun_2fa 前端加上Enable countdown.
@@ -362,8 +371,9 @@ namespace WEBUI
             }
             else
             {
-                this.lt_js.Text = LSLibrary.JavasScriptHelper.AlertMessage("too often");
+                //this.lt_js.Text = LSLibrary.JavasScriptHelper.AlertMessage("too often");
                 //lt_js.Text = "too often";//todo fun_2fa message
+                this.lb_CommonMsg.Text = BLL.MultiLanguageHelper.GetLanguagePacket(getLanguage()).login_codeToofen;
             }
         }
     }

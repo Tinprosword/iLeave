@@ -37,16 +37,20 @@
                     </tr>
                     <tr id="tr_2fa" runat="server" visible="false">
                         <td></td>
-                        <td colspan="2">
+                        <td colspan="2" style="padding:0px;">
                             <table style="width:90%">
                                 <tr>
-                                    <td><asp:TextBox ID="tb_code" runat="server" Width="99%" placeholder="Verification Code" CssClass="lsu-input_line" AutoCompleteType="Disabled"/></td>
-                                    <td style="width:110px" class="fontsizes1"><asp:Button ID="btn_ReSendCode" runat="server" Text="Resend(99)" OnClick="btn_ReSendCode_Click" /></td>
+                                    <td style="padding:0px !important;"><asp:TextBox ID="tb_code" runat="server" Width="99%" placeholder="Verification Code" CssClass="lsu-input_line" AutoCompleteType="Disabled"/></td>
+                                    <td style="width:80px" class="lsf-fontsizes1"><asp:Button ID="btn_ReSendCode" runat="server" Text="Resend(99)" OnClick="btn_ReSendCode_Click" ForeColor="White" BackColor="#0ee180" BorderWidth="0"/></td>
                                 </tr>
                             </table>
                         </td>
                     </tr>
-                    <tr style="height:30px"><td></td></tr>
+                    <tr style="height:30px"><td></td>
+                        <td colspan="2" >
+                            <asp:Label ID="lb_CommonMsg" runat="server" Text="" class="lsf-fontsizes1" style="color:#c8c8c8"></asp:Label><%--style="color:#c8c8c8"--%>
+                        </td>
+                    </tr>
                     <tr><td colspan="1"></td>
                         <td colspan="2" style=""><asp:Button ID="Button1" runat="server" Text="Login"  Width="90%" ForeColor="White" BackColor="#0ee180" Height="40px" BorderWidth="0" OnClick="Button1_Click"/></td>
                     </tr>
