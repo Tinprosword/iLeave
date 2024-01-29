@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s1="http://tempuri.org/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:element name="Test_GetList">
@@ -92,6 +92,62 @@
           <s:element minOccurs="0" maxOccurs="1" name="TokenKey" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="MobileUserLevel" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="IsUnreadMsgOnly" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UserInfo_GetByUsername">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserInfo_GetByUsernameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserInfo_GetByUsernameResult" type="tns:v_Person_User_Staff_Employment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="v_Person_User_Staff_Employment">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="p_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="p_Surname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="p_Othername" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="p_Nickname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="p_NameCH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="p_IDNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="p_Sex" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="p_email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="u_id" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="u_Username" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_id" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="s_StaffNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_status" nillable="true" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_CompanyID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_DepartmentID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_PositionID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_LeaveClass" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_PayrollType" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="s_SecurityGroupID" nillable="true" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="e_id" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="e_CommenceDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="e_TerminateDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="e_EmploymentNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="e_contractid" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="e_ZoneCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="e_ShiftID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="e_AreaID" nillable="true" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="e_IsMain" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="e_status" nillable="true" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="e_FirstEmploymentID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="e_ApprovalGroupID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="e_PositionID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="e_StationCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="e_zoneid" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="c_contractGroupid" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="e_contractCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="e_stationID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="extendInfo" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetPushedAnnounceIDs_AndroidLocal">
@@ -377,9 +433,130 @@
       <s:element name="DeviceID_InsertOrUpdateDeviceIDResponse">
         <s:complexType />
       </s:element>
+      <s:element name="InsertAttendance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data" type="tns:ArrayOfT_AttendanceRawData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfT_AttendanceRawData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="t_AttendanceRawData" nillable="true" type="tns:t_AttendanceRawData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="t_AttendanceRawData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LogDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LogTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExternalRef" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="InterfaceID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AttendanceInterfaceCenterID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RemoteIdent" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="StaffName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StaffNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Department" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OTMinute" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LateMinute" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EarlyLeaveMinute" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PairNo" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ImportID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GpsLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GpsLocationName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PositionID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sequence" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remarks" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GPSLat" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="GPSLng" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeaveDocumentPath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeaveDocument2Path" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WifiAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WifiInfo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertAttendanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertAttendanceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAttendanceList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="refInfo" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAttendanceListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAttendanceListResult" type="tns:ArrayOfT_AttendanceRawData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EstimationSickLeave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="firsteid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="asoffdate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EstimationSickLeaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EstimationSickLeaveResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertEmailAlertInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmailInfo" type="tns:t_EmailAlert" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="t_EmailAlert">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntityTypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EntityID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AttachmentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TargetSendDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="To" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bcc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Body" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusID" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetryCount" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedUser" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateUser" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrentValue" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ConditionID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TargetValue" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertEmailAlertInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertEmailAlertInfoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
       <s:element name="ArrayOfT_Contract_Zone" nillable="true" type="tns:ArrayOfT_Contract_Zone" />
       <s:element name="t_User" nillable="true" type="tns:t_User" />
+      <s:element name="v_Person_User_Staff_Employment" nillable="true" type="tns:v_Person_User_Staff_Employment" />
       <s:element name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
       <s:element name="ArrayOfT_Announcement" nillable="true" type="tns:ArrayOfT_Announcement" />
       <s:element name="t_Announcement" nillable="true" type="tns:t_Announcement" />
@@ -387,6 +564,20 @@
       <s:element name="base64Binary" nillable="true" type="s:base64Binary" />
       <s:element name="t_Attachment" nillable="true" type="tns:t_Attachment" />
       <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="ArrayOfT_AttendanceRawData" nillable="true" type="tns:ArrayOfT_AttendanceRawData" />
+      <s:element name="double" type="s:double" />
+    </s:schema>
+    <s:schema targetNamespace="http://tempuri.org/AbstractTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="Test_GetListSoapIn">
@@ -412,6 +603,12 @@
   </wsdl:message>
   <wsdl:message name="UserInfo_GetUserInfoByUIDSoapOut">
     <wsdl:part name="parameters" element="tns:UserInfo_GetUserInfoByUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserInfo_GetByUsernameSoapIn">
+    <wsdl:part name="parameters" element="tns:UserInfo_GetByUsername" />
+  </wsdl:message>
+  <wsdl:message name="UserInfo_GetByUsernameSoapOut">
+    <wsdl:part name="parameters" element="tns:UserInfo_GetByUsernameResponse" />
   </wsdl:message>
   <wsdl:message name="GetPushedAnnounceIDs_AndroidLocalSoapIn">
     <wsdl:part name="parameters" element="tns:GetPushedAnnounceIDs_AndroidLocal" />
@@ -515,6 +712,30 @@
   <wsdl:message name="DeviceID_InsertOrUpdateDeviceIDSoapOut">
     <wsdl:part name="parameters" element="tns:DeviceID_InsertOrUpdateDeviceIDResponse" />
   </wsdl:message>
+  <wsdl:message name="InsertAttendanceSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertAttendance" />
+  </wsdl:message>
+  <wsdl:message name="InsertAttendanceSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertAttendanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAttendanceListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAttendanceList" />
+  </wsdl:message>
+  <wsdl:message name="GetAttendanceListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAttendanceListResponse" />
+  </wsdl:message>
+  <wsdl:message name="EstimationSickLeaveSoapIn">
+    <wsdl:part name="parameters" element="tns:EstimationSickLeave" />
+  </wsdl:message>
+  <wsdl:message name="EstimationSickLeaveSoapOut">
+    <wsdl:part name="parameters" element="tns:EstimationSickLeaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertEmailAlertInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertEmailAlertInfo" />
+  </wsdl:message>
+  <wsdl:message name="InsertEmailAlertInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertEmailAlertInfoResponse" />
+  </wsdl:message>
   <wsdl:message name="Test_GetListHttpPostIn" />
   <wsdl:message name="Test_GetListHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfString" />
@@ -532,6 +753,12 @@
   </wsdl:message>
   <wsdl:message name="UserInfo_GetUserInfoByUIDHttpPostOut">
     <wsdl:part name="Body" element="tns:t_User" />
+  </wsdl:message>
+  <wsdl:message name="UserInfo_GetByUsernameHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserInfo_GetByUsernameHttpPostOut">
+    <wsdl:part name="Body" element="tns:v_Person_User_Staff_Employment" />
   </wsdl:message>
   <wsdl:message name="GetPushedAnnounceIDs_AndroidLocalHttpPostIn">
     <wsdl:part name="androidLocalUID" type="s:string" />
@@ -628,6 +855,19 @@
     <wsdl:part name="uid" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DeviceID_InsertOrUpdateDeviceIDHttpPostOut" />
+  <wsdl:message name="GetAttendanceListHttpPostIn">
+    <wsdl:part name="refInfo" type="s1:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="GetAttendanceListHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfT_AttendanceRawData" />
+  </wsdl:message>
+  <wsdl:message name="EstimationSickLeaveHttpPostIn">
+    <wsdl:part name="firsteid" type="s:string" />
+    <wsdl:part name="asoffdate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EstimationSickLeaveHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
   <wsdl:portType name="ILeave_OtherSoap">
     <wsdl:operation name="Test_GetList">
       <wsdl:input message="tns:Test_GetListSoapIn" />
@@ -644,6 +884,10 @@
     <wsdl:operation name="UserInfo_GetUserInfoByUID">
       <wsdl:input message="tns:UserInfo_GetUserInfoByUIDSoapIn" />
       <wsdl:output message="tns:UserInfo_GetUserInfoByUIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserInfo_GetByUsername">
+      <wsdl:input message="tns:UserInfo_GetByUsernameSoapIn" />
+      <wsdl:output message="tns:UserInfo_GetByUsernameSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetPushedAnnounceIDs_AndroidLocal">
       <wsdl:input message="tns:GetPushedAnnounceIDs_AndroidLocalSoapIn" />
@@ -713,6 +957,22 @@
       <wsdl:input message="tns:DeviceID_InsertOrUpdateDeviceIDSoapIn" />
       <wsdl:output message="tns:DeviceID_InsertOrUpdateDeviceIDSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="InsertAttendance">
+      <wsdl:input message="tns:InsertAttendanceSoapIn" />
+      <wsdl:output message="tns:InsertAttendanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAttendanceList">
+      <wsdl:input message="tns:GetAttendanceListSoapIn" />
+      <wsdl:output message="tns:GetAttendanceListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EstimationSickLeave">
+      <wsdl:input message="tns:EstimationSickLeaveSoapIn" />
+      <wsdl:output message="tns:EstimationSickLeaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmailAlertInfo">
+      <wsdl:input message="tns:InsertEmailAlertInfoSoapIn" />
+      <wsdl:output message="tns:InsertEmailAlertInfoSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILeave_OtherHttpPost">
     <wsdl:operation name="Test_GetList">
@@ -730,6 +990,10 @@
     <wsdl:operation name="UserInfo_GetUserInfoByUID">
       <wsdl:input message="tns:UserInfo_GetUserInfoByUIDHttpPostIn" />
       <wsdl:output message="tns:UserInfo_GetUserInfoByUIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserInfo_GetByUsername">
+      <wsdl:input message="tns:UserInfo_GetByUsernameHttpPostIn" />
+      <wsdl:output message="tns:UserInfo_GetByUsernameHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="GetPushedAnnounceIDs_AndroidLocal">
       <wsdl:input message="tns:GetPushedAnnounceIDs_AndroidLocalHttpPostIn" />
@@ -799,6 +1063,14 @@
       <wsdl:input message="tns:DeviceID_InsertOrUpdateDeviceIDHttpPostIn" />
       <wsdl:output message="tns:DeviceID_InsertOrUpdateDeviceIDHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAttendanceList">
+      <wsdl:input message="tns:GetAttendanceListHttpPostIn" />
+      <wsdl:output message="tns:GetAttendanceListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EstimationSickLeave">
+      <wsdl:input message="tns:EstimationSickLeaveHttpPostIn" />
+      <wsdl:output message="tns:EstimationSickLeaveHttpPostOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ILeave_OtherSoap" type="tns:ILeave_OtherSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -831,6 +1103,15 @@
     </wsdl:operation>
     <wsdl:operation name="UserInfo_GetUserInfoByUID">
       <soap:operation soapAction="http://tempuri.org/UserInfo_GetUserInfoByUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserInfo_GetByUsername">
+      <soap:operation soapAction="http://tempuri.org/UserInfo_GetByUsername" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -991,6 +1272,42 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="InsertAttendance">
+      <soap:operation soapAction="http://tempuri.org/InsertAttendance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttendanceList">
+      <soap:operation soapAction="http://tempuri.org/GetAttendanceList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstimationSickLeave">
+      <soap:operation soapAction="http://tempuri.org/EstimationSickLeave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmailAlertInfo">
+      <soap:operation soapAction="http://tempuri.org/InsertEmailAlertInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ILeave_OtherSoap12" type="tns:ILeave_OtherSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1023,6 +1340,15 @@
     </wsdl:operation>
     <wsdl:operation name="UserInfo_GetUserInfoByUID">
       <soap12:operation soapAction="http://tempuri.org/UserInfo_GetUserInfoByUID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserInfo_GetByUsername">
+      <soap12:operation soapAction="http://tempuri.org/UserInfo_GetByUsername" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1183,6 +1509,42 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="InsertAttendance">
+      <soap12:operation soapAction="http://tempuri.org/InsertAttendance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAttendanceList">
+      <soap12:operation soapAction="http://tempuri.org/GetAttendanceList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstimationSickLeave">
+      <soap12:operation soapAction="http://tempuri.org/EstimationSickLeave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEmailAlertInfo">
+      <soap12:operation soapAction="http://tempuri.org/InsertEmailAlertInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ILeave_OtherHttpPost" type="tns:ILeave_OtherHttpPost">
     <http:binding verb="POST" />
@@ -1215,6 +1577,15 @@
     </wsdl:operation>
     <wsdl:operation name="UserInfo_GetUserInfoByUID">
       <http:operation location="/UserInfo_GetUserInfoByUID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserInfo_GetByUsername">
+      <http:operation location="/UserInfo_GetByUsername" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -1366,6 +1737,24 @@
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
       <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetAttendanceList">
+      <http:operation location="/GetAttendanceList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EstimationSickLeave">
+      <http:operation location="/EstimationSickLeave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ILeave_Other">

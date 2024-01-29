@@ -168,10 +168,16 @@
     <None Include="Web References\WebReference_Ileave_Other\t_Attachment.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\WebReference_Ileave_Other\t_AttendanceRawData.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\WebReference_Ileave_Other\t_Contract_Zone.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebReference_Ileave_Other\t_User.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebReference_Ileave_Other\v_Person_User_Staff_Employment.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WebReference_leave\AttachmentInfo.datasource">

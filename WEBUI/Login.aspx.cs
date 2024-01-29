@@ -148,7 +148,21 @@ namespace WEBUI
             String code = LSLibrary.UnicodeHelper.RandomNumSupplier.GetCode_int(6);
             string timestr = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             this.hf_code.Value = code + "|" + timestr;
-            //todo fun_2fa send via email.
+
+            //send email
+            string username = this.tb_u1.Text.Trim();
+            var VPersonInfo= BLL.User_wsref.VPersonInfo_GetFirstEinfoByUserName(username);
+            if (VPersonInfo != null)
+            {
+                var userinfo = BLL.User_wsref.UserInfo_GetUserInfoByUID(VPersonInfo.u_id??0);
+                if (userinfo != null)
+                {
+                    string emailTitle = BLL.Other.Login_VerifyCode_EmailTitle;
+                    string emailContent = String.Format(BLL.Other.Login_VerifyCode_EmailContent, code);
+                    int temp_emailid= BLL.Other.SendEmail_VerifyCode(userinfo.Email, emailTitle, emailContent, userinfo.ID);
+                }
+            }
+            
             this.lb_CommonMsg.Text = BLL.MultiLanguageHelper.GetLanguagePacket(getLanguage()).login_codesendAlreadly;
         }
 
