@@ -153,12 +153,12 @@ namespace WEBUI.webservices
 
                 List<MyPushnotiece> notices = new List<MyPushnotiece>();
 
-                var myloaclpush= BLL.Announcement.GetAndroidLocalPush(uid);
+                var myloaclpush = BLL.Announcement.GetAndroidLocalPush(uid);
                 if (myloaclpush != null && myloaclpush.Count() > 0)
                 {
                     foreach (int theid in myloaclpush)
                     {
-                        var theAnounce= BLL.Announcement.GetAnouncementByID(theid);
+                        var theAnounce = BLL.Announcement.GetAnouncementByID(theid);
                         if (theAnounce != null)
                         {
                             string title = theAnounce.Subject;
@@ -176,6 +176,37 @@ namespace WEBUI.webservices
                 Response.Write(ttresult);
 
 
+                Response.End();
+            }
+            else if (actionType == "systemparameter")
+            {
+                BLL.SystemParameters systemParameters = BLL.SystemParameters.GetSysParameters();
+                if (systemParameters.mENABLE_LOGIN_2FA)
+                {
+                    Response.Write("1");
+                    Response.End();
+                }
+                else
+                {
+                    Response.Write("0");
+                    Response.End();
+                }
+            }
+            else if (actionType == "getemailcode")
+            {
+                string code = LSLibrary.UnicodeHelper.RandomNumSupplier.GetCode_int(6);
+                Response.Write(code);
+                Response.End();
+            }
+            else if (actionType == "sendemail")
+            {
+                int result= BLL.Other.SendEmail_VerifyCode(actionKey, actionValue);
+                Response.Write(result.ToString());
+                Response.End();
+            }
+            else
+            {
+                Response.Write("");
                 Response.End();
             }
         }

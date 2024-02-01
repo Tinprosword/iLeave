@@ -22,7 +22,26 @@ namespace BLL
 
 
         #region email send.
-        public static int SendEmail_VerifyCode(string to, string title, string content, int to_uid)
+        public static int SendEmail_VerifyCode(string username, string code)
+        {
+            int result = -1;
+            var VPersonInfo = BLL.User_wsref.VPersonInfo_GetFirstEinfoByUserName(username);
+            if (VPersonInfo != null)
+            {
+                var userinfo = BLL.User_wsref.UserInfo_GetUserInfoByUID(VPersonInfo.u_id ?? 0);
+                if (userinfo != null)
+                {
+                    string emailTitle = BLL.Other.Login_VerifyCode_EmailTitle;
+                    string emailContent = String.Format(BLL.Other.Login_VerifyCode_EmailContent, code);
+                    result = BLL.Other.SendEmail_VerifyCode(userinfo.Email, emailTitle, emailContent, userinfo.ID);
+                }
+            }
+
+            return result;
+        }
+
+
+        private static int SendEmail_VerifyCode(string to, string title, string content, int to_uid)
         {
             int result = -1;
             WebServiceLayer.WebReference_Ileave_Other.t_EmailAlert tempItem = SendEmail_GenerateDefaultSimpleEmail(to, title, "", content, 9, to_uid);
