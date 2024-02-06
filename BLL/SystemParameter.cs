@@ -26,7 +26,14 @@ namespace BLL
         public const string MONTHLY_WORKING_FIXDAY = "MONTHLY_WORKING_FIXDAY";
         public const string ADDITION_TYPE = "ADDITION_TYPE";
         public const string DEDUCTION_TYPE = "DEDUCTION_TYPE";
+
         public const string ENABLE_LOGIN_2FA = "ENABLE_LOGIN_2FA";
+        public const string USEGOOGLEACCOUNT = "USEGOOGLEACCOUNT";
+        public const string GOOGLESMTP = "GOOGLESMTP";
+        public const string GOOGlESSL = "GOOGLESSL";
+        public const string GOOGLESMTPPORT = "GOOGLESMTPPORT";
+        public const string GOOGLEACCOUNT = "GOOGLEACCOUNT";
+        public const string GOOGLEPASSWORD = "GOOGLEPASSWORD";
 
         //v1.4.0 2013-04-15 Kitty add minimum wages for 28
         public const string MIN_COMMITTED_WAGES_LAW_28 = "MIN_COMMITTED_WAGES_LAW_28";
@@ -966,14 +973,18 @@ namespace BLL
             data.mBLOCK_BACKDATE_WITHDRAW = BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_BLOCK_BACKDATE_WITHDRAWAL) == "1" ? true : false;
             data.mLeaveHourUnit = LSLibrary.ConvertHelper.ToInt32(BLL.CodeSetting.GetSystemParameter(SystemParameters.HOURLY_LEAVE_MINUTES_UNIT), -1);
             data.mILEAVE_UPLOADFILE_MAXSIZE = LSLibrary.ConvertHelper.ToInt32(BLL.CodeSetting.GetSystemParameter(SystemParameters.ILEAVE_ATTACHMENT_SIZE), 5);
+
+
             data.mENABLE_LOGIN_2FA = BLL.CodeSetting.GetSystemParameter(SystemParameters.ENABLE_LOGIN_2FA) == "1" ? true : false;
 
-            data.mCode_UseGoogleAccount = true;
-            data.mGoogleAccount = "DW.iHR.email@gmail.com";
-            data.mGooglePassword = "lrdbkvuvcaharkxj";//"lrdbkvuvcaharkxj";
-            data.mGoogleSSL = true;//smtp default Port:24 .ssl:465 tsl:587.
-            data.mGoogleSMTP = "smtp.gmail.com";
-            data.mGoogleSMTPPort = 587;
+            data.mCode_UseGoogleAccount = BLL.CodeSetting.GetSystemParameter(SystemParameters.USEGOOGLEACCOUNT) == "1" ? true : false;
+            data.mGoogleSMTP = BLL.CodeSetting.GetSystemParameter(SystemParameters.GOOGLESMTP) == "" ? "smtp.gmail.com" : BLL.CodeSetting.GetSystemParameter(SystemParameters.GOOGLESMTP);
+            data.mGoogleSSL = BLL.CodeSetting.GetSystemParameter(SystemParameters.GOOGlESSL) == "0" ? false : true;//smtp default Port:24 .ssl:465 tsl:587.
+            data.mGoogleSMTPPort = LSLibrary.ConvertHelper.ToInt32(BLL.CodeSetting.GetSystemParameter(SystemParameters.GOOGLESMTPPORT), 587);
+            data.mGoogleAccount = BLL.CodeSetting.GetSystemParameter(SystemParameters.GOOGLEACCOUNT) == "" ? "DW.iHR.email@gmail.com" : BLL.CodeSetting.GetSystemParameter(SystemParameters.GOOGLEACCOUNT);
+            data.mGooglePassword = BLL.CodeSetting.GetSystemParameter(SystemParameters.GOOGLEPASSWORD) == "" ? "lrdbkvuvcaharkxj" : BLL.CodeSetting.GetSystemParameter(SystemParameters.GOOGLEPASSWORD);
+
+            
 
             return data;
         }

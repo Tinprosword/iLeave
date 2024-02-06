@@ -36,7 +36,13 @@ namespace BLL
 
         public static string GetSystemParameter(string name)
         {
-            return WebServiceLayer.MyWebService.GlobalWebServices.ws_codesetting.GetSystemParameter(name);
+            string result = "";
+            result= WebServiceLayer.MyWebService.GlobalWebServices.ws_codesetting.GetSystemParameter(name);
+            if (string.IsNullOrEmpty(result))
+            {
+                result = "";
+            }
+            return result;
         }
 
         public static bool AllowHourly(int leaveid, int position)
