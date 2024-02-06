@@ -907,6 +907,14 @@ namespace BLL
         public int mLeaveHourUnit = -1;
         public int mILEAVE_UPLOADFILE_MAXSIZE = 5;
         public bool mENABLE_LOGIN_2FA = false;
+
+        public bool mCode_UseGoogleAccount = false;
+        public string mGoogleAccount = "";
+        public string mGooglePassword = "";
+        public bool mGoogleSSL = false;
+        public string mGoogleSMTP = "";
+        public int mGoogleSMTPPort = 0;
+
         #endregion
 
         //single mode. 因為對於所有用戶來說，sys是同樣的數據，所以可以用single 模式。但是後面發現，用戶會切換Services(Database),導致systemParameter不會變。
@@ -959,6 +967,13 @@ namespace BLL
             data.mLeaveHourUnit = LSLibrary.ConvertHelper.ToInt32(BLL.CodeSetting.GetSystemParameter(SystemParameters.HOURLY_LEAVE_MINUTES_UNIT), -1);
             data.mILEAVE_UPLOADFILE_MAXSIZE = LSLibrary.ConvertHelper.ToInt32(BLL.CodeSetting.GetSystemParameter(SystemParameters.ILEAVE_ATTACHMENT_SIZE), 5);
             data.mENABLE_LOGIN_2FA = BLL.CodeSetting.GetSystemParameter(SystemParameters.ENABLE_LOGIN_2FA) == "1" ? true : false;
+
+            data.mCode_UseGoogleAccount = true;
+            data.mGoogleAccount = "DW.iHR.email@gmail.com";
+            data.mGooglePassword = "lrdbkvuvcaharkxj";//"lrdbkvuvcaharkxj";
+            data.mGoogleSSL = true;//smtp default Port:24 .ssl:465 tsl:587.
+            data.mGoogleSMTP = "smtp.gmail.com";
+            data.mGoogleSMTPPort = 587;
 
             return data;
         }

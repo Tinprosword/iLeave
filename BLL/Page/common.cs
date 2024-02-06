@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -104,8 +105,7 @@ namespace BLL
             }
         }
 
-
-        public static void WriteLog(System.Diagnostics.StackFrame sf, string log)
+        public static void WriteLog_Diagnostics_StackFrame(System.Diagnostics.StackFrame sf, string log)
         {
             if (isdbug)
             {
@@ -113,7 +113,7 @@ namespace BLL
             }
         }
 
-        public static void WriteLog(string log)
+        public static void WriteLog_Diagnostics_StackFrame(string log)
         {
             if (isdbug)
             {

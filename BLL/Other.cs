@@ -10,8 +10,8 @@ namespace BLL
 {
     public class Other
     {
-        public static string Login_VerifyCode_EmailTitle = "Check Your Code";
-        public static string Login_VerifyCode_EmailContent = "Your Code is {0}";
+        public static string Login_VerifyCode_EmailTitle = "DW-iHR - Login Verification Code";
+        public static string Login_VerifyCode_EmailContent = "Your verification code is: {0}";
 
         #region anncount
 
@@ -22,9 +22,10 @@ namespace BLL
 
 
         #region email send.
-        public static int SendEmail_VerifyCode(string username, string code)
+        public static int SendEmail_VerifyCode(string username, string code,BLL.SystemParameters sysParameters)
         {
             int result = -1;
+
             var VPersonInfo = BLL.User_wsref.VPersonInfo_GetFirstEinfoByUserName(username);
             if (VPersonInfo != null)
             {
@@ -33,7 +34,47 @@ namespace BLL
                 {
                     string emailTitle = BLL.Other.Login_VerifyCode_EmailTitle;
                     string emailContent = String.Format(BLL.Other.Login_VerifyCode_EmailContent, code);
-                    result = BLL.Other.SendEmail_VerifyCode(userinfo.Email, emailTitle, emailContent, userinfo.ID);
+
+                    bool useGoogleAccount = sysParameters.mCode_UseGoogleAccount;
+                    if (!useGoogleAccount)
+                    {
+                        result = BLL.Other.SendEmail_VerifyCode(userinfo.Email, emailTitle, emailContent, userinfo.ID);
+                    }
+                    else
+                    {
+                        //1.all info must ok. 2.save log to local
+                        bool SMTPIsOK = false;
+
+                        string googleSmtpServer = sysParameters.mGoogleSMTP;
+                        int googlePort = sysParameters.mGoogleSMTPPort;
+                        string googleAccount = sysParameters.mGoogleAccount;
+                        string googlePW = sysParameters.mGooglePassword;
+                        bool googleSSL = sysParameters.mGoogleSSL;
+
+                        SMTPIsOK = (!string.IsNullOrEmpty(googleAccount)) && (!string.IsNullOrEmpty(googlePW)) && (!string.IsNullOrEmpty(userinfo.Email) && (!string.IsNullOrEmpty(googleSmtpServer)) && googlePort>0);
+
+                        try
+                        {
+                            if (SMTPIsOK)
+                            {
+                                string errorMsg = "";
+                                int temp_Result= LSLibrary.Email.SendEmail(googleSmtpServer, googlePort, googleSSL, googleAccount, googlePW, googleAccount, googleAccount, userinfo.Email, emailTitle, emailContent, out errorMsg);
+                                if (temp_Result==-1)
+                                {
+                                    LSLibrary.LogUtil.WriteLog_CommonWebApp_DefaultToIISLocalFloder("send email_google error:" + errorMsg);
+                                }
+                            }
+                            else
+                            {
+                                LSLibrary.LogUtil.WriteLog_CommonWebApp_DefaultToIISLocalFloder("smtp info is invalid.");
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            LSLibrary.LogUtil.WriteLog_CommonWebApp_DefaultToIISLocalFloder("google send error1:" + e.Message);
+                            LSLibrary.LogUtil.WriteLog_CommonWebApp_DefaultToIISLocalFloder("google send error2:" + e.ToString());
+                        }
+                    }
                 }
             }
 
@@ -374,7 +415,7 @@ namespace BLL
                         }
                         catch (Exception exxx)
                         {
-                            BLL.common.WriteLog(exxx.Message);
+                            BLL.common.WriteLog_Diagnostics_StackFrame(exxx.Message);
                         }
                     }
                 }
@@ -404,7 +445,7 @@ namespace BLL
                             }
                             catch (Exception exxx)
                             {
-                                BLL.common.WriteLog(exxx.Message);
+                                BLL.common.WriteLog_Diagnostics_StackFrame(exxx.Message);
                             }
                         }
                     }
@@ -435,7 +476,7 @@ namespace BLL
                     int tempReuslt = pushAndroidNotice(thependingPN.commonKeyValue.Remark, themobileinfo.deviceid);
                     if (tempReuslt == -1)//timeout 超时的话，下面的也不做。
                     {
-                        BLL.common.WriteLog("PN:Android time out.");
+                        BLL.common.WriteLog_Diagnostics_StackFrame("PN:Android time out.");
                         break;
                     }
                     else//其他错误，跳过，做下一个。

@@ -23,9 +23,12 @@ namespace WEBUI.webservices
             public string title { get; set; }
         }
 
+        private BLL.SystemParameters mSystemParameters;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            mSystemParameters = BLL.SystemParameters.GetSysParameters();
+            if (!IsPostBack)
             {
                 if (!string.IsNullOrEmpty(Request.QueryString["Action"]))
                 {
@@ -200,7 +203,7 @@ namespace WEBUI.webservices
             }
             else if (actionType == "sendemail")
             {
-                int result= BLL.Other.SendEmail_VerifyCode(actionKey, actionValue);
+                int result = BLL.Other.SendEmail_VerifyCode(actionKey, actionValue, mSystemParameters);
                 Response.Write(result.ToString());
                 Response.End();
             }

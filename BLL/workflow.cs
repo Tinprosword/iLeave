@@ -37,7 +37,7 @@ namespace BLL
             {
                 baseUrl=GetTestBaseUrl();
 
-                common.WriteLog("getrooturl:" + baseUrl);
+                common.WriteLog_Diagnostics_StackFrame("getrooturl:" + baseUrl);
             }
             
             result = WebServiceLayer.MyWebService.GlobalWebServices.ws_leave.CreateNewWorkflow(null, WebServiceLayer.WebReference_leave.WorkflowTypeID.LEAVE_APPLICATION, details, uid, "", "",baseUrl  , "", requestLeaveID, employMentID);

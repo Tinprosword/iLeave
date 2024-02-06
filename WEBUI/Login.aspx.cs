@@ -151,7 +151,7 @@ namespace WEBUI
 
             //send email
             string username = this.tb_u1.Text.Trim();
-            BLL.Other.SendEmail_VerifyCode(username, code);
+            BLL.Other.SendEmail_VerifyCode(username, code, mSystemParameters);
             
             this.lb_CommonMsg.Text = BLL.MultiLanguageHelper.GetLanguagePacket(getLanguage()).login_codesendAlreadly;
         }
