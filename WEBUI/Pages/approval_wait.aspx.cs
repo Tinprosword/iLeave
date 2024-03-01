@@ -111,6 +111,26 @@ namespace WEBUI.Pages
         {
         }
 
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            int tempBatchNum = -1;
+
+            int.TryParse(this.lb_checkedNumber.Text, out tempBatchNum);
+
+            if (tempBatchNum == 0)
+            {
+                this.btn_batchApprover.Enabled = false;
+                this.btn_batchApprover.Attributes.CssStyle.Remove("background-color");
+                this.btn_batchApprover.BackColor = System.Drawing.Color.LightGray;
+            }
+            else if (tempBatchNum > 0)
+            {
+                this.btn_batchApprover.Enabled = true;
+                this.btn_batchApprover.Attributes.CssStyle.Remove("background-color");
+                this.btn_batchApprover.BackColor = System.Drawing.Color.White;
+            }
+        }
+
         private void MultplayLanguage()
         {
             this.lt_new.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_new;
@@ -125,11 +145,6 @@ namespace WEBUI.Pages
             this.btn_batchApprover.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approvalWait_CLOT_batchApprove;
             this.lb_batchSelected.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approvalWait_CLOT_batchSelected;
 
-            //if (this.rbl_sourceType.Items.Count >= 2)
-            //{
-            //    this.rbl_sourceType.Items[0].Text= BLL.MultiLanguageHelper.GetLanguagePacket().apply_op_leave;
-            //    this.rbl_sourceType.Items[1].Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_op_CLOT;
-            //}
             foreach (ListItem theItem in this.rbl_sourceType.Items)
             {
                 if (theItem.Value == "0")
@@ -141,7 +156,6 @@ namespace WEBUI.Pages
                     theItem.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_op_CLOT;
                 }
             }
-
         }
 
         protected void ddl_year_SelectedIndexChanged(object sender, EventArgs e)
