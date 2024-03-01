@@ -99,7 +99,6 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
-            
             SetupNavinigation();
             SetupSearchAndTab();
             SetupRepeater();
@@ -121,6 +120,10 @@ namespace WEBUI.Pages
 
             this.lt_pending.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_pending;
             this.lt_processed.Text = BLL.MultiLanguageHelper.GetLanguagePacket().apply_processed;
+
+            this.cb_batch.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approvalWait_CLOT_batchCheck;
+            this.btn_batchApprover.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approvalWait_CLOT_batchApprove;
+            this.lb_batchSelected.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approvalWait_CLOT_batchSelected;
 
             //if (this.rbl_sourceType.Items.Count >= 2)
             //{
@@ -145,6 +148,7 @@ namespace WEBUI.Pages
         {
             SetupRepeater();
             this.lt_jsscrolltop.Text = "<script>var vv=setCookie('st',0);";
+            UI_ClearApproveBatch();
         }
 
 
@@ -398,9 +402,27 @@ namespace WEBUI.Pages
                     
                 }
             }
+
+            //approve batch
+            this.div_batchApprove.Visible = false;
+            if (dataType_myselfOrMyManage == 0 && GetBigRange() == GlobalVariate.LeaveBigRangeStatus.waitapproval)
+            {
+                this.div_batchApprove.Visible = true;
+            }
         }
 
         #region leave panel
+        public bool BShow_BatchApprove(GlobalVariate.LeaveBigRangeStatus myBigRange,  int action)
+        {
+            bool result = false;
+
+            if (myBigRange == GlobalVariate.LeaveBigRangeStatus.waitapproval && action == 0)
+            {
+                result = true;
+            }
+            return result;
+        }
+
         public bool BShow_WaitApplyPanel(GlobalVariate.LeaveBigRangeStatus myBigRange, byte states,int action)
         {
             bool result = false;
@@ -776,6 +798,7 @@ namespace WEBUI.Pages
         protected void ib_search_Click(object sender, ImageClickEventArgs e)
         {
             SetupRepeater();
+            UI_ClearApproveBatch();
         }
 
         public string GetStaffName(WebServiceLayer.WebReference_leave.LeaveRequestMaster leaveRequestMaster)
@@ -856,6 +879,7 @@ namespace WEBUI.Pages
         {
             setrdlvalue(Session, int.Parse(this.rbl_sourceType.SelectedValue));
             SetupRepeater();
+            UI_ClearApproveBatch();
         }
 
         protected void rp_list_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -984,6 +1008,282 @@ namespace WEBUI.Pages
             }
         }
 
-        
+        protected void cb_batch_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.cb_batch.Checked==false)
+            {
+                List<CheckBox> cbs_leave = UI_GetAllLeaveCheckBox("cb_leave", this.rp_list);
+                List<CheckBox> cbs_clot = UI_GetAllLeaveCheckBox("cb_clot", this.rp_clot);
+
+                foreach (CheckBox theItem in cbs_leave)
+                {
+                    theItem.Checked = false;
+                }
+                foreach (CheckBox theItem in cbs_clot)
+                {
+                    theItem.Checked = false;
+                }
+
+                this.lb_checkedNumber.Text = "0";
+                this.cb_batch.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approvalWait_CLOT_batchCheck;
+            }
+            else
+            {
+                List<CheckBox> cbs_leave = UI_GetAllLeaveCheckBox("cb_leave",this.rp_list);
+                List<CheckBox> cbs_clot = UI_GetAllLeaveCheckBox("cb_clot",this.rp_clot);
+
+                if (rbl_sourceType.SelectedIndex == 0)
+                {
+                    foreach (CheckBox theItem in cbs_leave)
+                    {
+                        theItem.Checked = true;
+                    }
+                    foreach (CheckBox theItem in cbs_clot)
+                    {
+                        theItem.Checked = false;
+                    }
+                    this.lb_checkedNumber.Text = cbs_leave.Count.ToString();
+                }
+                else
+                {
+                    foreach (CheckBox theItem in cbs_leave)
+                    {
+                        theItem.Checked = false;
+                    }
+                    foreach (CheckBox theItem in cbs_clot)
+                    {
+                        theItem.Checked = true;
+                    }
+                    this.lb_checkedNumber.Text = cbs_clot.Count.ToString();
+                }
+
+                this.cb_batch.Text = BLL.MultiLanguageHelper.GetLanguagePacket().approvalWait_CLOT_batchUnCheck;
+            }
+        }
+
+        private void UI_ClearApproveBatch()
+        {
+            this.cb_batch.Checked = false;
+            cb_batch_CheckedChanged(this.cb_batch, new EventArgs());
+        }
+
+        private List<CheckBox> UI_GetAllLeaveCheckBox(string checkboxid,Repeater rp)
+        {
+            List<CheckBox> result = new List<CheckBox>();
+            foreach (RepeaterItem theitem in rp.Items)
+            {
+                CheckBox cb = ((CheckBox)theitem.FindControl(checkboxid));
+                if (cb != null)
+                {
+                    result.Add(cb);
+                }
+            }
+            
+            return result;
+        }
+
+        protected void cb_leave_CheckedChanged(object sender, EventArgs e)
+        {
+            cb_itemChanged((CheckBox)sender);
+        }
+
+        protected void cb_clot_CheckedChanged(object sender, EventArgs e)
+        {
+            cb_itemChanged((CheckBox)sender);
+        }
+
+        private void cb_itemChanged(CheckBox cb)
+        {
+            bool checkeda = cb.Checked;
+            int numberNow = -1;
+            int.TryParse(this.lb_checkedNumber.Text, out numberNow);
+            if (numberNow >= 0)
+            {
+                if (checkeda)
+                {
+                    numberNow++;
+                }
+                else
+                {
+                    numberNow--;
+                }
+                if (numberNow >= 0)
+                {
+                    this.lb_checkedNumber.Text = numberNow.ToString();
+                }
+            }
+            this.lt_jsscrolltop.Text = "<script>var vv=getCookie('st'); $('#maindata').scrollTop(vv);</script>";
+        }
+
+        protected void btn_batchApprover_Click(object sender, EventArgs e)
+        {
+            //1.get leave or clot type. 2.get item index-> get selected requestid. 3 approve all  one by one.
+            int LeaveOrCLOT = this.rbl_sourceType.SelectedIndex;
+
+            string ErrorMsg = "";
+
+            string waitDiv = LSLibrary.WebAPP.httpHelper.WaitDiv_show(BLL.MultiLanguageHelper.GetLanguagePacket().Commonsubmit_success);
+            Response.Write(waitDiv);
+            Response.Flush();
+
+            if (LeaveOrCLOT == 0)//leave
+            {
+                List<int> requestids = new List<int>();
+                List<int> statuss = new List<int>();
+                UI_GetSelectedLeave(out requestids, out statuss);
+
+                if (requestids != null && statuss != null && requestids.Count == statuss.Count)
+                {
+                    for (int i = 0; i < requestids.Count; i++)
+                    {
+                        int requestId = requestids[i];
+                        int theStatus = statuss[i];
+                        int approveOrCancel = -1;//0 approve 1.approve cancel
+                        if (theStatus == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE)
+                        {
+                            approveOrCancel = 0;
+                        }
+                        else if (theStatus == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL)
+                        {
+                            approveOrCancel = 1;
+                        }
+
+                        string errormsg = "";
+                        bool callResult = true;
+                        if (approveOrCancel == 0)
+                        {
+                            callResult = BLL.workflow.ApproveRequest_leave(requestId, loginer.userInfo.u_id, "", out errormsg);
+                        }
+                        else if (approveOrCancel == 1)
+                        {
+                            callResult = BLL.workflow.ApprovalCancelRequest_leave(requestId, loginer.userInfo.u_id, "", out errormsg);
+                        }
+                        if (!callResult)
+                        {
+                            ErrorMsg += errormsg + "\r\n";
+                        }
+                    }
+                }
+            }
+            else
+            {
+                List<int> requestids = new List<int>();
+                List<int> statuss = new List<int>();
+
+                UI_GetSelectedCLOT(out requestids, out statuss);
+
+                if (requestids != null && statuss != null && requestids.Count == statuss.Count)
+                {
+                    for (int i = 0; i < requestids.Count; i++)
+                    {
+                        int requestId = requestids[i];
+                        int theStatus = statuss[i];
+                        int approveOrCancel = -1;//0 approve 1.approve cancel
+
+                        if (theStatus == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_APPROVE)
+                        {
+                            approveOrCancel = 0;
+                        }
+                        else if (theStatus == (int)BLL.GlobalVariate.ApprovalRequestStatus.WAIT_FOR_CANCEL)
+                        {
+                            approveOrCancel = 1;
+                        }
+
+                        string errormsg = "";
+                        bool callResult = true;
+                        if (approveOrCancel == 0)
+                        {
+                            callResult = BLL.workflow.ApproveRequest_leave_clot(requestId, loginer.userInfo.u_id, "", out errormsg);
+                        }
+                        else if (approveOrCancel == 1)
+                        {
+                            callResult = BLL.workflow.ApprovalCancelRequest_leave_clot(requestId, loginer.userInfo.u_id, "", out errormsg);
+                        }
+                        if (!callResult)
+                        {
+                            ErrorMsg += errormsg + "\r\n";
+                        }
+                    }
+                }
+            }
+
+            SetupRepeater();
+            UI_ClearApproveBatch();
+            if (!string.IsNullOrEmpty(ErrorMsg))
+            {
+                Response.Flush();
+                System.Threading.Thread.Sleep(50);//休眠2秒,获得较好显示体验
+                this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
+            }
+            else
+            {
+                Response.Flush();
+                System.Threading.Thread.Sleep(50);//休眠2秒,获得较好显示体验
+                ShowErrorMsgInUI(ErrorMsg);
+                this.js_waitdiv.Text = LSLibrary.WebAPP.httpHelper.WaitDiv_close();
+            }
+        }
+
+        private void UI_GetSelectedLeave(out List<int> requestid,out List<int> status)
+        {
+            requestid = new List<int>();
+            status = new List<int>();
+
+            foreach (RepeaterItem theitem in this.rp_list.Items)
+            {
+                CheckBox cb = ((CheckBox)theitem.FindControl("cb_leave"));
+                if (cb != null)
+                {
+                    if (cb.Checked)
+                    {
+                        HiddenField HFRequestID = ((HiddenField)theitem.FindControl("hf_leave_requestid"));
+                        HiddenField HFStatus = ((HiddenField)theitem.FindControl("hf_leave_requeststatus"));
+
+                        int tempid = -1; int tempstatus = -1;
+                        int.TryParse(HFRequestID.Value, out tempid);
+                        int.TryParse(HFStatus.Value, out tempstatus);
+
+                        if (tempid > 0 && tempstatus > 0)
+                        {
+                            requestid.Add(tempid);
+                            status.Add(tempstatus);
+                        }
+                    }
+                }
+            }
+
+        }
+
+
+        private void UI_GetSelectedCLOT(out List<int> requestid, out List<int> status)
+        {
+            requestid = new List<int>();
+            status = new List<int>();
+
+            foreach (RepeaterItem theitem in this.rp_clot.Items)
+            {
+                CheckBox cb = ((CheckBox)theitem.FindControl("cb_clot"));
+                if (cb != null)
+                {
+                    if (cb.Checked)
+                    {
+                        HiddenField HFRequestID = ((HiddenField)theitem.FindControl("hf_clot_requestid"));
+                        HiddenField HFStatus = ((HiddenField)theitem.FindControl("hf_clot_requeststatus"));
+
+                        int tempid = -1; int tempstatus = -1;
+                        int.TryParse(HFRequestID.Value, out tempid);
+                        int.TryParse(HFStatus.Value, out tempstatus);
+
+                        if (tempid > 0 && tempstatus > 0)
+                        {
+                            requestid.Add(tempid);
+                            status.Add(tempstatus);
+                        }
+                    }
+                }
+            }
+        }
+
+
     }
 }

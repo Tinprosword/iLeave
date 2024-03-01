@@ -31,6 +31,16 @@
             <asp:TextBox ID="tb_staff" Width="100%"  runat="server"></asp:TextBox>
         </div>
         <div class="col-xs-1 lsf-clearPadding" style="width:30px;"><asp:ImageButton ID="ib_search" OnClick="ib_search_Click"  ImageUrl="~/Res/images/search.png" runat="server" Width="28px" Height="26px" /></div>
+        <div class="col-xs-12" runat="server" visible="false" id="div_batchApprove">
+            <div class="col-xs-4 lsf-clearPadding">
+                <asp:CheckBox ID="cb_batch" runat="server" Text="Select All" OnCheckedChanged="cb_batch_CheckedChanged" AutoPostBack="true" class="radioFontNormal"/>
+            </div>
+            <div class="col-xs-8 lsf-clearPadding">
+                <asp:Label ID="lb_batchSelected" runat="server" Text="Selected"></asp:Label>:<asp:Label ID="lb_checkedNumber" runat="server" Text="0" style="font-weight:600"></asp:Label>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="btn_batchApprover" runat="server" Text="Batch Approve" OnClick="btn_batchApprover_Click" style="border:2px solid #8da9cd;background-color:white; width:110px;"/>
+            </div>
+        </div>
         <div class="col-xs-12" style="" id="div_error" runat="server" visible="false">
             <asp:Label ID="lb_errormsg" runat="server" class="col-xs-12" style="color:red;">hiabc</asp:Label>
         </div>
@@ -38,10 +48,13 @@
     <div class="row" style="padding-bottom:0px;margin-top:1px; height:500px;overflow-y:scroll" id="maindata" onscroll="setScrollTop()">
         <asp:Repeater ID="rp_list" runat="server" OnItemDataBound="rp_list_ItemDataBound">
             <ItemTemplate>
+                <asp:HiddenField ID="hf_leave_requestid" runat="server"  Value=<%#((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>/>
+                <asp:HiddenField ID="hf_leave_requeststatus" runat="server"  Value=<%#((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status.ToString()%>/>
                 <div class="col-xs-12" style=" line-height:8px;text-align:center;padding:0px;  margin:0px; padding-top:1px; padding-bottom:4px" onclick="MyPostBack('detail',<%#((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID %>)">
                     <label class="lsf-clearPadding" style="padding:0px;  margin:0px;height:1px;background-color:dimgray; width:90%; padding-left:3px; padding-right:3px;"></label>
                 </div>
                 <div class="col-xs-12 divheighter">
+                    <asp:CheckBox ID="cb_leave" runat="server" Text="" Visible="<%#BShow_BatchApprove(GetBigRange(),dataType_myselfOrMyManage) %>" OnCheckedChanged="cb_leave_CheckedChanged" AutoPostBack="true"/>
                     <asp:Label ID="lb_name" runat="server"><%#GetStaffName((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem)%></asp:Label>
                     <div style="float:right">
                         <asp:Label ID="lb_status" runat="server"><%#GetLeaveStatus((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem)%></asp:Label> &nbsp; <a title="<%#((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>" style="cursor:pointer;color:White;background-color:#2573A4;font-size:16px;height:34px; padding:4px;" onclick="SingleResult('../webservices/leave.asmx/GetLeaveDetail_html',{requestID:<%#((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>,leaveid:<%#((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).MinLeaveID%>,staff:<%# GetStaffid((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem)%>,employmentNo:<%#((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).employmentID%>,lan:<%#(int)BLL.MultiLanguageHelper.GetChoose()%>},'string',onGetData)"><%=BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_link_detail %></a>
@@ -116,10 +129,14 @@
 
         <asp:Repeater ID="rp_clot" runat="server" OnItemDataBound="rp_clot_list_ItemDataBound">
             <ItemTemplate>
+                <asp:HiddenField ID="hf_clot_requestid" runat="server"  Value=<%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).ID.ToString()%>/>
+                <asp:HiddenField ID="hf_clot_requeststatus" runat="server"  Value=<%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Status.ToString()%>/>
                 <div class="col-xs-12" style=" line-height:8px;text-align:center;padding:0px;  margin:0px; padding-top:1px; padding-bottom:4px">
                     <label class="lsf-clearPadding" style="padding:0px;  margin:0px;height:1px;background-color:dimgray; width:90%; padding-left:3px; padding-right:3px;"></label>
                 </div>
-                <div class="col-xs-12 divheighter"><asp:Label ID="lb_name" runat="server"><%# GetStaffName((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem) %></asp:Label>
+                <div class="col-xs-12 divheighter">
+                    <asp:CheckBox ID="cb_clot" runat="server" Text="" Visible="<%#BShow_BatchApprove(GetBigRange(),dataType_myselfOrMyManage) %>" OnCheckedChanged="cb_clot_CheckedChanged" AutoPostBack="true"/>
+                    <asp:Label ID="lb_name" runat="server"><%# GetStaffName((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem) %></asp:Label>
                     <div style="float:right">
                         <%#ShowClotStatus((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem)%>
                          &nbsp; <a style="cursor:pointer;color:White;background-color:#2573A4;font-size:16px;height:34px; padding:4px;" onclick="SingleResult('../webservices/leave.asmx/GetCLOTDetail_html',{requestID:<%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).ID%>,leaveid:<%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).ActualID%>,staff:<%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).StaffID%>,employmentNo:<%#((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).EmploymentID%>,lan:<%#(int)BLL.MultiLanguageHelper.GetChoose()%>},'string',onGetData)"><%=BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_link_detail %></a>

@@ -526,3 +526,12 @@ textarea::-webkit-input-placeholder {
     overflow: hidden ;
     border:0px;
     }
+
+.radioFontNormal
+{
+}
+
+.radioFontNormal label
+{
+    font-weight:400;
+}
