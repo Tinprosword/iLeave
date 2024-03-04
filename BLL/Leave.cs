@@ -1137,6 +1137,10 @@ namespace BLL
                 {
                     result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_Approved;
                 }
+                else if (masterStatus == (byte)GlobalVariate.ApprovalRequestStatus.CANCEL)
+                {
+                    result = BLL.MultiLanguageHelper.GetLanguagePacket().approval_ConfirmCancelled;
+                }
                 else
                 {
                     result = "Other";
