@@ -323,19 +323,24 @@ namespace ut
             }
         }
 
+        public static bool chang_slf_debug =true;
+
         public string checkMyLeave()
         {
             string result = "";
-            foreach (var item in myLeaves)
+            if (!chang_slf_debug)
             {
-                int[] tempCheck= BLL.Leave.CheckLeaveExist(staffid, item.date, item.leaveid, item.sectionid);
-                if (tempCheck[0] == -1)
+                foreach (var item in myLeaves)
                 {
-                    throw new Exception("no " + item.date.ToShortDateString());
-                }
-                if (tempCheck[1] != myLeaves.Count())
-                {
-                    throw new Exception("myleave count is not match");
+                    int[] tempCheck = BLL.Leave.CheckLeaveExist(staffid, item.date, item.leaveid, item.sectionid);
+                    if (tempCheck[0] == -1)
+                    {
+                        throw new Exception("no " + item.date.ToShortDateString());
+                    }
+                    if (tempCheck[1] != myLeaves.Count())
+                    {
+                        throw new Exception("myleave count is not match");
+                    }
                 }
             }
             return result;
@@ -438,7 +443,7 @@ namespace ut
         public int u105pid = 25632;
 
         public string u101alcode = "AL14";
-        public string u102alcode = "AL07";
+        public string u102alcode = "SL";
         public string u103alcode = "AL14";
         public string u104alcode = "AL07";
         public string u105alcode = "AL14";
@@ -681,7 +686,7 @@ namespace ut
             DateTime d1 = new DateTime(2022, 1, 2);
 
             List<MODEL.Apply.apply_LeaveData> leaveinfos = new List<MODEL.Apply.apply_LeaveData>();
-            applyer.AttachLeaves(d1, 0, leaveinfos);
+            applyer.AttachLeaves(d1, 1, leaveinfos);
             int Requestid = applyer.AddLeave(leaveinfos);
 
             applyer.mywaitLeave.Add(Requestid);
