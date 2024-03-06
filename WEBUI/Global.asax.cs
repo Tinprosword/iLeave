@@ -32,7 +32,14 @@ namespace WEBUI
         private void FindShedules(object obj)
         {
             LSLibrary.logHelper.WriteFILEToWebLOG("loop: shedule:",patherror);
-            BLL.Announcement.PushNotice(BLL.GlobalVariate.pageServer);
+            try
+            {
+                BLL.Announcement.PushNotice(BLL.GlobalVariate.pageServer);
+            }
+            catch(Exception ex)
+            {
+                LSLibrary.logHelper.WriteFILEToWebLOG("PushNotice:"+ex.Message, patherror);
+            }
         }
 
         protected void Session_Start(object sender, EventArgs e)
