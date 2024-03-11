@@ -418,10 +418,10 @@ namespace WEBUI.Pages
             }
 
             //approve batch
-            this.div_batchApprove.Visible = false;
+            this.div_batchApprovea.Visible = false;
             if (dataType_myselfOrMyManage == 0 && GetBigRange() == GlobalVariate.LeaveBigRangeStatus.waitapproval)
             {
-                this.div_batchApprove.Visible = true;
+                this.div_batchApprovea.Visible = true;
             }
         }
 
