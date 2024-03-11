@@ -16,31 +16,35 @@
     </div>
     <div id="ajaxContainer" class="col-xs-12 lsf-clearPadding"></div>
     <div class ="col-xs-12" style="height:10px; padding:0px">&nbsp</div>
-    <div class="row" style="margin-top:10px;">
-        <div class="col-xs-4" style="padding-left:14px; width:74px">
-            <asp:DropDownList ID="ddl_year" runat="server"  Height="26px" OnSelectedIndexChanged="ddl_year_SelectedIndexChanged" AutoPostBack="true">
-            </asp:DropDownList>
-        </div>
-        <div class="col-xs-4" style="width:136px; padding-right:1px; padding-left:2px; font-size:unset; font-weight:normal">
-            <asp:RadioButtonList ID="rbl_sourceType" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" Width="99%" Font-Bold="false" AutoPostBack="true" OnSelectedIndexChanged="rbl_sourceType_SelectedIndexChanged" CssClass="overlableSize14">
-                <asp:ListItem Text="Leave" Value="0" Selected="True"></asp:ListItem>
-                <asp:ListItem Text="CL/OT" Value="1"></asp:ListItem>
-            </asp:RadioButtonList>
-        </div>
-        <div class="col-xs-3" style=" padding-right:1px;padding-left:2px;">
-            <asp:TextBox ID="tb_staff" Width="100%"  runat="server"></asp:TextBox>
-        </div>
-        <div class="col-xs-1 lsf-clearPadding" style="width:30px;"><asp:ImageButton ID="ib_search" OnClick="ib_search_Click"  ImageUrl="~/Res/images/search.png" runat="server" Width="28px" Height="26px" /></div>
-        <div class="col-xs-12" runat="server" visible="false" id="div_batchApprove">
-            <div class="col-xs-4 lsf-clearPadding">
+    <table class ="col-xs-12 lsf-clearPadding" >
+        <tr>
+            <td class="col-xs-7 lsf-clearPadding">
+                <asp:DropDownList ID="ddl_year" runat="server"  Height="26px" Width="54px" OnSelectedIndexChanged="ddl_year_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                <asp:RadioButtonList ID="rbl_sourceType" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" Width="130px" Font-Bold="false" AutoPostBack="true" OnSelectedIndexChanged="rbl_sourceType_SelectedIndexChanged" CssClass="overlableSize14">
+                    <asp:ListItem Text="Leave" Value="0" Selected="True"></asp:ListItem>
+                    <asp:ListItem Text="CL/OT" Value="1"></asp:ListItem>
+                </asp:RadioButtonList>
+            </td>
+            <td class="col-xs-5 lsf-clearPadding">
+                <div class="col-xs-9 lsf-clearPadding">
+                    <asp:TextBox ID="tb_staff" Width="100%"  runat="server"></asp:TextBox>
+                </div>
+                <div class="col-xs-3 lsf-clearPadding">
+                    <asp:ImageButton ID="ib_search" OnClick="ib_search_Click"  ImageUrl="~/Res/images/search.png" runat="server" Width="28px" Height="26px" />
+                </div>
+            </td>
+        </tr>
+        <tr runat="server" visible="false" id="div_batchApprovea">
+            <td class="col-xs-7 lsf-clearPadding">
                 <asp:CheckBox ID="cb_batch" runat="server" Text="Select All" OnCheckedChanged="cb_batch_CheckedChanged" AutoPostBack="true" class="radioFontNormal"/>
-            </div>
-            <div class="col-xs-8 lsf-clearPadding">
-                <asp:Label ID="lb_batchSelected" runat="server" Text="Selected"></asp:Label>:<asp:Label ID="lb_checkedNumber" runat="server" Text="0" style="font-weight:600"></asp:Label>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Button ID="btn_batchApprover" runat="server" Text="Batch Approve" OnClick="btn_batchApprover_Click" style="border:2px solid #8da9cd;background-color:white; width:110px;"/>
-            </div>
-        </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lb_batchSelected" runat="server" Text="Selected"></asp:Label>:<asp:Label ID="lb_checkedNumber" runat="server" Text="0" style="font-weight:600"></asp:Label>
+            </td>
+            <td class="col-xs-5 lsf-clearPadding" style="padding-right:15px;">
+                <asp:Button ID="btn_batchApprover" runat="server" Text="Batch Approve" OnClick="btn_batchApprover_Click" style="border:2px solid #8da9cd;background-color:white; width:100%;"/>
+            </td>
+        </tr>
+    </table>
+    <div class="row" style="margin-top:10px;">
         <div class="col-xs-12" style="" id="div_error" runat="server" visible="false">
             <asp:Label ID="lb_errormsg" runat="server" class="col-xs-12" style="color:red;">hiabc</asp:Label>
         </div>
