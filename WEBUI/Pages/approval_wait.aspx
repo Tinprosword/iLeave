@@ -19,7 +19,7 @@
     <table class ="col-xs-12 lsf-clearPadding" >
         <tr>
             <td class="col-xs-7 lsf-clearPadding">
-                <asp:DropDownList ID="ddl_year" runat="server"  Height="26px" Width="54px" OnSelectedIndexChanged="ddl_year_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                <asp:DropDownList ID="ddl_year" runat="server"  Height="26px" Width="58px" OnSelectedIndexChanged="ddl_year_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                 <asp:RadioButtonList ID="rbl_sourceType" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" Width="130px" Font-Bold="false" AutoPostBack="true" OnSelectedIndexChanged="rbl_sourceType_SelectedIndexChanged" CssClass="overlableSize14">
                     <asp:ListItem Text="Leave" Value="0" Selected="True"></asp:ListItem>
                     <asp:ListItem Text="CL/OT" Value="1"></asp:ListItem>
