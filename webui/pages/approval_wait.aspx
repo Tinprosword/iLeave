@@ -88,13 +88,13 @@
                 <asp:Panel ID="panel_admin_waitingApprove" runat="server" Visible="<%#BShow_WaitApplyPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,dataType_myselfOrMyManage) %>">
                     <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_approverRemark %>:</div>
                     <div class="col-xs-12">
-                        <asp:TextBox ID="tb_waitapproveRemark" runat="server" TextMode="MultiLine" Width="98%" Height="40px"></asp:TextBox>
+                        <asp:TextBox ID="tb_waitapproveRemark" runat="server" TextMode="MultiLine" Width="100%" Height="40px"></asp:TextBox>
                     </div>
                     <div class="col-xs-12">
-                        <div class="col-xs-5" style="float:left; padding-left:5px;">
+                        <div class="col-xs-5 lsf-clearPadding" style="float:left;">
                             <asp:Button ID="btn_approve_approve" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_approve %>" style="border:2px solid #8da9cd;background-color:white; width:100px;" OnClick="btn_Click" CommandArgument=<%#"1|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>/>
                         </div>
-                        <div class="col-xs-5" style="float:right; text-align:right;padding-left:5px;">
+                        <div class="col-xs-5 lsf-clearPadding" style="float:right; text-align:right;">
                             <asp:Button ID="btn_approve_reject" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_reject %>" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClick="btn_Click" CommandArgument=<%#"2|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>/>
                         </div>
                     </div>
@@ -102,25 +102,29 @@
                 <asp:Panel ID="panel_admin_waitingCancel" runat="server" Visible="<%#BShow_WaitCancelPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,dataType_myselfOrMyManage) %>">
                     <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_approverRemark %>:</div>
                     <div class="col-xs-12">
-                        <asp:TextBox ID="tb_waitcancelRemark" runat="server" TextMode="MultiLine" Width="98%" Height="40px"></asp:TextBox>
+                        <asp:TextBox ID="tb_waitcancelRemark" runat="server" TextMode="MultiLine" Width="100%" Height="40px"></asp:TextBox>
                     </div>
                     <div class="col-xs-12">
-                        <div class="col-xs-5" style="float:left; padding-left:5px;">
+                        <div class="col-xs-5 lsf-clearPadding" style="float:left; ">
                             <asp:Button ID="btn_cancel_approve" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_approve %>" style="border:2px solid #8da9cd;background-color:white; width:100px;" OnClick="btn_Click"  CommandArgument=<%#"3|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>/>
                         </div>
-                        <div class="col-xs-5" style="float:right; text-align:right;padding-left:5px;">
+                        <div class="col-xs-5 lsf-clearPadding" style="float:right; text-align:right;">
                             <asp:Button ID="btn_cancel_reject" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_reject %>" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClick="btn_Click" CommandArgument=<%#"4|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>/>
                         </div>
                     </div>
                 </asp:Panel>
                 <asp:Panel ID="panel_user_waiting" runat="server" Visible="<%#BShow_UserWaitingPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,dataType_myselfOrMyManage) %>">
-                    <div class="col-xs-5" style="float:left; padding-left:15px;">
-                        <asp:Button ID="Button2" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_withdraw %>" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClick="btn_Click" CommandArgument=<%#"5|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>/>
+                    <div class="col-xs-12">
+                        <div class="col-xs-5 lsf-clearPadding" style="float:left;">
+                            <asp:Button ID="Button2" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_withdraw %>" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClick="btn_Click" CommandArgument=<%#"5|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>/>
+                        </div>
                     </div>
                 </asp:Panel>
                 <asp:Panel ID="panel_user_approved" runat="server" Visible="<%#BShow_UserApprovedPanel(GetBigRange(),((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).Status,dataType_myselfOrMyManage) %>">
-                    <div class="col-xs-5" style="float:left; padding-left:15px;">
-                        <asp:Button ID="Button1" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_cancel %>" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClick="btn_Click" CommandArgument=<%#"6|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>/>
+                    <div class="col-xs-12">
+                        <div class="col-xs-5 lsf-clearPadding" style="float:left;">
+                            <asp:Button ID="Button1" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_cancel %>" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClick="btn_Click" CommandArgument=<%#"6|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.LeaveRequestMaster)Container.DataItem).RequestID%>/>
+                        </div>
                     </div>
                 </asp:Panel>
                 <div class="col-xs-12" style="height:5px;">&nbsp;</div>
@@ -172,13 +176,13 @@
                 <asp:Panel ID="panel_admin_waitingApprove" runat="server" Visible="<%#BShow_WaitApplyPanel_clot(GetBigRange(),((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Status,dataType_myselfOrMyManage) %>">
                     <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_approverRemark %>:</div>
                     <div class="col-xs-12">
-                        <asp:TextBox ID="tb_waitapproveRemark" runat="server" TextMode="MultiLine" Width="98%" Height="40px"></asp:TextBox>
+                        <asp:TextBox ID="tb_waitapproveRemark" runat="server" TextMode="MultiLine" Width="100%" Height="40px"></asp:TextBox>
                     </div>
                     <div class="col-xs-12">
-                        <div class="col-xs-5" style="float:left; padding-left:5px;">
+                        <div class="col-xs-5 lsf-clearPadding" style="float:left; ">
                             <asp:Button ID="btn_approve_approve" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_approve %>" style="border:2px solid #8da9cd;background-color:white; width:100px;" OnClick="btn_Click_clot" CommandArgument=<%#"1|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).ID%>/>
                         </div>
-                        <div class="col-xs-5" style="float:right; text-align:right;padding-left:5px;">
+                        <div class="col-xs-5 lsf-clearPadding" style="float:right; text-align:right;">
                             <asp:Button ID="btn_approve_reject" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_reject %>" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClick="btn_Click_clot" CommandArgument=<%#"2|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).ID%>/>
                         </div>
                     </div>
@@ -186,28 +190,31 @@
                 <asp:Panel ID="panel_admin_waitingCancel" runat="server" Visible="<%#BShow_WaitCancelPanel_clot(GetBigRange(),((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Status,dataType_myselfOrMyManage) %>">
                     <div class="col-xs-12 divheighter"><%=BLL.MultiLanguageHelper.GetLanguagePacket().approval_approverRemark %>:</div>
                     <div class="col-xs-12">
-                        <asp:TextBox ID="tb_waitcancelRemark" runat="server" TextMode="MultiLine" Width="98%" Height="40px"></asp:TextBox>
+                        <asp:TextBox ID="tb_waitcancelRemark" runat="server" TextMode="MultiLine" Width="100%" Height="40px"></asp:TextBox>
                     </div>
                     <div class="col-xs-12">
-                        <div class="col-xs-5" style="float:left; padding-left:5px;">
+                        <div class="col-xs-5 lsf-clearPadding" style="float:left;">
                             <asp:Button ID="btn_cancel_approve" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_approve %>" style="border:2px solid #8da9cd;background-color:white; width:100px;" OnClick="btn_Click_clot"  CommandArgument=<%#"3|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).ID%>/>
                         </div>
-                        <div class="col-xs-5" style="float:right; text-align:right;padding-left:5px;">
+                        <div class="col-xs-5 lsf-clearPadding" style="float:right; text-align:right;">
                             <asp:Button ID="btn_cancel_reject" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_reject %>" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClick="btn_Click_clot" CommandArgument=<%#"4|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).ID%>/>
                         </div>
                     </div>
                 </asp:Panel>
                 <asp:Panel ID="panel_user_waiting" runat="server" Visible="<%#BShow_UserWaitingPanel_clot(GetBigRange(),((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Status,dataType_myselfOrMyManage) %>">
-                    <div class="col-xs-5" style="float:left; padding-left:15px;">
-                        <asp:Button ID="Button2" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_withdraw %>" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClick="btn_Click_clot" CommandArgument=<%#"5|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).ID%>/>
+                    <div class="col-xs-12">
+                        <div class="col-xs-5 lsf-clearPadding" style="float:left;">
+                            <asp:Button ID="Button2" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_withdraw %>" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClick="btn_Click_clot" CommandArgument=<%#"5|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).ID%>/>
+                        </div>
                     </div>
                 </asp:Panel>
                 <asp:Panel ID="panel_user_approved" runat="server" Visible="<%#BShow_UserApprovedPanel_clot(GetBigRange(),((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).Status,dataType_myselfOrMyManage) %>">
-                    <div class="col-xs-5" style="float:left; padding-left:15px;">
-                        <asp:Button ID="Button1" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_cancel %>" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClick="btn_Click_clot" CommandArgument=<%#"6|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).ID%>/>
+                    <div class="col-xs-12">
+                        <div class="col-xs-5 lsf-clearPadding" style="float:left;">
+                            <asp:Button ID="Button1" runat="server" Text="<%#BLL.MultiLanguageHelper.GetLanguagePacket().application_detail_btn_cancel %>" style="border:2px solid #cd7a7a;background-color:white;width:100px;" OnClick="btn_Click_clot" CommandArgument=<%#"6|"+Container.ItemIndex+"|"+((WebServiceLayer.WebReference_leave.StaffCLOTRequest)Container.DataItem).ID%>/>
+                        </div>
                     </div>
                 </asp:Panel>
-                
                 <div class="col-xs-12" style="height:5px;">&nbsp;</div>
             </ItemTemplate>
         </asp:Repeater>
