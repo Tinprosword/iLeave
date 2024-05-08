@@ -12,7 +12,7 @@ namespace WEBUI.Pages
         private static string ViewState_PageName = "PageView";
         //repeater 中的leave section.因為不固定，所以，，，不記得為什麼要作為一個全局變量了。謹慎添加單獨的頁面全局變量，盡可能放入到ViewState_PageName中。保持程序簡潔性!!!!!!!
         public List<LSLibrary.WebAPP.ValueText<int>> RPITEM_LeaveListSections;
-
+        public BLL.SystemParameters msystemParameters;
 
         #region [page event]
         protected override void InitPage_OnEachLoadAfterCheckSessionAndF5_1()
@@ -36,6 +36,7 @@ namespace WEBUI.Pages
             this.literal_errormsga.Visible = false;
             this.repeater_leave.ItemDataBound += Repeater_leave_ItemDataBound;
             this.lt_js_prg.Text = "";
+            msystemParameters = BLL.SystemParameters.GetSysParameters();
         }
 
         protected override void InitPage_OnNotFirstLoad2()
@@ -51,6 +52,7 @@ namespace WEBUI.Pages
 
         protected override void PageLoad_InitUIOnFirstLoad4()
         {
+            
             if (Request.QueryString["action"] != null && (Request.QueryString["action"] == "back" || Request.QueryString["action"] == "backCalendar"))
             {
                 //1.get prepage's viewstate 2.set viewstate 3.loadUi.
@@ -66,7 +68,7 @@ namespace WEBUI.Pages
                 LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, preViewState, ViewState);
                 MODEL.Apply.ViewState_page applypage = LSLibrary.WebAPP.ViewStateHelper.GetValue<MODEL.Apply.ViewState_page>(ViewState_PageName, this.ViewState);
                 applypage.LeaveList = applypage.LeaveList.ToList();
-                LoadUI(applypage.leavetype, applypage.LeaveTypeSelectValue, applypage.ddlsectionSelectvalue, applypage.remarks, applypage.LeaveList, applypage.GetAttachment().Count(), applypage.hasHour, applypage.bydayorHour, applypage.from, applypage.to, applypage.totalHours);
+                LoadUI(applypage.leavetype, applypage.LeaveTypeSelectValue, applypage.ddlsectionSelectvalue, applypage.remarks, applypage.LeaveList, applypage.GetAttachment().Count(), applypage.hasHour, applypage.bydayorHour, applypage.from, applypage.to, applypage.totalHours, applypage.DisplayEntitle, applypage.EntilteValue);
                 IsLeaveTypeEnable();
                 this.lt_js_prg.Text = LSLibrary.WebAPP.MyJSHelper.CustomPost("", "");//避免有害刷新，所以手动post,引导无害刷新。
             }
@@ -74,7 +76,7 @@ namespace WEBUI.Pages
             {
                 List<WebServiceLayer.WebReference_leave.t_Leave> res = BLL.Leave.GetLeavesByStaffID((int)loginer.userInfo.staffid);
                 List<LSLibrary.WebAPP.ValueText<int>> typedata = BLL.Leave.ConvertLeaveInfo2DropDownList(res);
-                LoadUI(typedata, "0", "-1", "", new List<MODEL.Apply.apply_LeaveData>(), 0, false, 0, null, null, 0);
+                LoadUI(typedata, "0", "-1", "", new List<MODEL.Apply.apply_LeaveData>(), 0, false, 0, null, null, 0,false,-1);
                 //set viewstate
                 SavePageDataToViewState(false, true, false, null, typedata, null);
             }
@@ -86,7 +88,7 @@ namespace WEBUI.Pages
         {
         }
 
-        private void LoadUI(List<LSLibrary.WebAPP.ValueText<int>> leveTypeData, string leaveTypeSelectedValue, string ddlSectionSelected, string remarks, List<MODEL.Apply.apply_LeaveData> leaveDays, int numberofAttachment, bool hashour, int bydayorbyhout, DateTime? f, DateTime? t, double totalH)
+        private void LoadUI(List<LSLibrary.WebAPP.ValueText<int>> leveTypeData, string leaveTypeSelectedValue, string ddlSectionSelected, string remarks, List<MODEL.Apply.apply_LeaveData> leaveDays, int numberofAttachment, bool hashour, int bydayorbyhout, DateTime? f, DateTime? t, double totalH,bool displayEntitle,double entitle)
         {
             ((WEBUI.Controls.leave)this.Master).SetupNaviagtion(true, BLL.MultiLanguageHelper.GetLanguagePacket().CommonBack, BLL.MultiLanguageHelper.GetLanguagePacket().apply_menu_current, "~/pages/main.aspx", true);
 
@@ -111,12 +113,10 @@ namespace WEBUI.Pages
             this.repeater_leave.DataSource = leaveDays;
             this.repeater_leave.DataBind();
 
-            //this.button_apply.OnClientClick = "return ShowMessage('" + BLL.MultiLanguageHelper.GetLanguagePacket().submit_success + "','aa')";//OnClientClick='return ShowMessage(<%=BLL.GlobalVariate.submit_success%>,"aa")'
+
+            this.tr_CurrentALEntilte.Visible = displayEntitle;
+            this.lb_CurrentALEntilteValue.Text = entitle.ToString();
         }
-
-
-
-
 
         private void Repeater_leave_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
@@ -267,6 +267,37 @@ namespace WEBUI.Pages
                 LoadLeaveSectionAndTime(leaveid, 0, null, null, 0, "0");
             }
             RefleshApplyBalance(leaveid);
+
+            //show current
+            bool isAL = false;
+            var leaveinfo = BLL.CodeSetting.GetAllLeaveInfo();
+            var theLeaveInfo= leaveinfo.Where(x => x.ID == leaveid).FirstOrDefault();
+            if (theLeaveInfo != null)
+            {
+                string LeaveCode = theLeaveInfo.Code;
+                if (LeaveCode.ToUpper().StartsWith("AL"))
+                {
+                    isAL = true;
+                }
+            }
+            if (isAL && msystemParameters.mdisplayEntitle)
+            {
+                this.tr_CurrentALEntilte.Visible = true;
+                //todo entile:可以從緩存中拿。
+                double entitle = BLL.Leave.GetYearEntitle(loginer.userInfo.firsteid??0, System.DateTime.Now);
+                if (entitle != -1)
+                {
+                    this.lb_CurrentALEntilteValue.Text = entitle.ToString();
+                }
+                else
+                {
+                    this.tr_CurrentALEntilte.Visible = false;
+                }
+            }
+            else
+            {
+                this.tr_CurrentALEntilte.Visible = false;
+            }
         }
 
         private void LoadTime_init()
@@ -536,7 +567,10 @@ namespace WEBUI.Pages
                 applyPage.SetAttachment(uploadPics);
             }
 
-
+            applyPage.DisplayEntitle = this.tr_CurrentALEntilte.Visible;
+            double tempEntitle = -1;
+            double.TryParse(this.lb_CurrentALEntilteValue.Text, out tempEntitle);
+            applyPage.EntilteValue = tempEntitle;
 
             LSLibrary.WebAPP.ViewStateHelper.SetValue(ViewState_PageName, applyPage, ViewState);
         }

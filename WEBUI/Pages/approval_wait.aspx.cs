@@ -291,8 +291,6 @@ namespace WEBUI.Pages
                 ds = ds.OrderByDescending(x => x.Date).ThenByDescending(x => x.TimeFrom==null?0:x.TimeFrom.Value.Hour).ToList();
                 this.rp_clot.DataSource = ds;
                 this.rp_clot.DataBind();
-
-                
             }
         }
 

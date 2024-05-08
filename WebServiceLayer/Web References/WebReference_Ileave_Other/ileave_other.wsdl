@@ -516,6 +516,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="LEAVE_AL_GetYearEntitle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="cutoffday" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LEAVE_AL_GetYearEntitleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LEAVE_AL_GetYearEntitleResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="InsertEmailAlertInfo">
         <s:complexType>
           <s:sequence>
@@ -730,6 +745,12 @@
   <wsdl:message name="EstimationSickLeaveSoapOut">
     <wsdl:part name="parameters" element="tns:EstimationSickLeaveResponse" />
   </wsdl:message>
+  <wsdl:message name="LEAVE_AL_GetYearEntitleSoapIn">
+    <wsdl:part name="parameters" element="tns:LEAVE_AL_GetYearEntitle" />
+  </wsdl:message>
+  <wsdl:message name="LEAVE_AL_GetYearEntitleSoapOut">
+    <wsdl:part name="parameters" element="tns:LEAVE_AL_GetYearEntitleResponse" />
+  </wsdl:message>
   <wsdl:message name="InsertEmailAlertInfoSoapIn">
     <wsdl:part name="parameters" element="tns:InsertEmailAlertInfo" />
   </wsdl:message>
@@ -868,6 +889,13 @@
   <wsdl:message name="EstimationSickLeaveHttpPostOut">
     <wsdl:part name="Body" element="tns:double" />
   </wsdl:message>
+  <wsdl:message name="LEAVE_AL_GetYearEntitleHttpPostIn">
+    <wsdl:part name="eid" type="s:string" />
+    <wsdl:part name="cutoffday" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LEAVE_AL_GetYearEntitleHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
   <wsdl:portType name="ILeave_OtherSoap">
     <wsdl:operation name="Test_GetList">
       <wsdl:input message="tns:Test_GetListSoapIn" />
@@ -968,6 +996,10 @@
     <wsdl:operation name="EstimationSickLeave">
       <wsdl:input message="tns:EstimationSickLeaveSoapIn" />
       <wsdl:output message="tns:EstimationSickLeaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LEAVE_AL_GetYearEntitle">
+      <wsdl:input message="tns:LEAVE_AL_GetYearEntitleSoapIn" />
+      <wsdl:output message="tns:LEAVE_AL_GetYearEntitleSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="InsertEmailAlertInfo">
       <wsdl:input message="tns:InsertEmailAlertInfoSoapIn" />
@@ -1070,6 +1102,10 @@
     <wsdl:operation name="EstimationSickLeave">
       <wsdl:input message="tns:EstimationSickLeaveHttpPostIn" />
       <wsdl:output message="tns:EstimationSickLeaveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LEAVE_AL_GetYearEntitle">
+      <wsdl:input message="tns:LEAVE_AL_GetYearEntitleHttpPostIn" />
+      <wsdl:output message="tns:LEAVE_AL_GetYearEntitleHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ILeave_OtherSoap" type="tns:ILeave_OtherSoap">
@@ -1292,6 +1328,15 @@
     </wsdl:operation>
     <wsdl:operation name="EstimationSickLeave">
       <soap:operation soapAction="http://tempuri.org/EstimationSickLeave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LEAVE_AL_GetYearEntitle">
+      <soap:operation soapAction="http://tempuri.org/LEAVE_AL_GetYearEntitle" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1536,6 +1581,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LEAVE_AL_GetYearEntitle">
+      <soap12:operation soapAction="http://tempuri.org/LEAVE_AL_GetYearEntitle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="InsertEmailAlertInfo">
       <soap12:operation soapAction="http://tempuri.org/InsertEmailAlertInfo" style="document" />
       <wsdl:input>
@@ -1749,6 +1803,15 @@
     </wsdl:operation>
     <wsdl:operation name="EstimationSickLeave">
       <http:operation location="/EstimationSickLeave" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LEAVE_AL_GetYearEntitle">
+      <http:operation location="/LEAVE_AL_GetYearEntitle" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

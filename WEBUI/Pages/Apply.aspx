@@ -25,7 +25,14 @@
                 <td colspan="2">
                     <asp:DropDownList style="height:24px" ID="ddl_leavetype" runat="server" Width="90%" AutoPostBack="true" jqname="ddl_leavetype" OnSelectedIndexChanged="ddl_leavetype_SelectedIndexChanged"></asp:DropDownList>
                 </td>
-                
+            </tr>
+            <tr style="height:28px" id="tr_CurrentALEntilte" runat="server">
+                <td></td>
+                <td colspan="2">
+                    <asp:Label ID="lb_CurrentALEntilteName" runat="server" Text="Current Entitlement:"></asp:Label>
+                    <asp:Label ID="lb_CurrentALEntilteValue" runat="server" Text="27"></asp:Label>
+                    &nbsp;&nbsp;<asp:Label ID="lb_CurrentALEntiltedays" runat="server" Text="D"></asp:Label>
+                </td>
             </tr>
             <tr>
                 <td><asp:Literal ID="lt_apply" runat="server">Apply</asp:Literal></td>

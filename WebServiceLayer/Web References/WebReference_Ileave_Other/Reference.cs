@@ -79,6 +79,8 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         
         private System.Threading.SendOrPostCallback EstimationSickLeaveOperationCompleted;
         
+        private System.Threading.SendOrPostCallback LEAVE_AL_GetYearEntitleOperationCompleted;
+        
         private System.Threading.SendOrPostCallback InsertEmailAlertInfoOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
@@ -193,6 +195,9 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         
         /// <remarks/>
         public event EstimationSickLeaveCompletedEventHandler EstimationSickLeaveCompleted;
+        
+        /// <remarks/>
+        public event LEAVE_AL_GetYearEntitleCompletedEventHandler LEAVE_AL_GetYearEntitleCompleted;
         
         /// <remarks/>
         public event InsertEmailAlertInfoCompletedEventHandler InsertEmailAlertInfoCompleted;
@@ -918,6 +923,37 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
             if ((this.EstimationSickLeaveCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.EstimationSickLeaveCompleted(this, new EstimationSickLeaveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/LEAVE_AL_GetYearEntitle", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double LEAVE_AL_GetYearEntitle(int eid, System.DateTime cutoffday) {
+            object[] results = this.Invoke("LEAVE_AL_GetYearEntitle", new object[] {
+                        eid,
+                        cutoffday});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void LEAVE_AL_GetYearEntitleAsync(int eid, System.DateTime cutoffday) {
+            this.LEAVE_AL_GetYearEntitleAsync(eid, cutoffday, null);
+        }
+        
+        /// <remarks/>
+        public void LEAVE_AL_GetYearEntitleAsync(int eid, System.DateTime cutoffday, object userState) {
+            if ((this.LEAVE_AL_GetYearEntitleOperationCompleted == null)) {
+                this.LEAVE_AL_GetYearEntitleOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLEAVE_AL_GetYearEntitleOperationCompleted);
+            }
+            this.InvokeAsync("LEAVE_AL_GetYearEntitle", new object[] {
+                        eid,
+                        cutoffday}, this.LEAVE_AL_GetYearEntitleOperationCompleted, userState);
+        }
+        
+        private void OnLEAVE_AL_GetYearEntitleOperationCompleted(object arg) {
+            if ((this.LEAVE_AL_GetYearEntitleCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.LEAVE_AL_GetYearEntitleCompleted(this, new LEAVE_AL_GetYearEntitleCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3413,6 +3449,32 @@ namespace WebServiceLayer.WebReference_Ileave_Other {
         private object[] results;
         
         internal EstimationSickLeaveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void LEAVE_AL_GetYearEntitleCompletedEventHandler(object sender, LEAVE_AL_GetYearEntitleCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class LEAVE_AL_GetYearEntitleCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal LEAVE_AL_GetYearEntitleCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

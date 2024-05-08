@@ -15,7 +15,7 @@ namespace WEBUI
             if(action=="login")
             {
                 
-                string loginID = Request["Uid"];//login id
+                string loginID = Request["Uid"];//login idC:\Users\Administrator\source\repos\WebIleave\WEBUI\MobilLogin.aspx
                 string id = Request["id"];
                 int intID = int.Parse(id);
                 string language = Request["language"];

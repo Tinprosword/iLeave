@@ -884,6 +884,13 @@ namespace BLL
 
         #endregion
 
+        #region common
+        public static double GetYearEntitle(int eid, DateTime cutoffday)
+        {
+            return WebServiceLayer.MyWebService.GlobalWebServices.ws_Ileave_Other.LEAVE_AL_GetYearEntitle(eid, cutoffday);
+        }
+
+        #endregion
 
         #region unity
 

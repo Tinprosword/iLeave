@@ -10,10 +10,10 @@ namespace BLL
     public class SystemParameters
     {
         #region pname
+        public const string LEAVE_DISPLAYCURRENTALENTITLE = "LEAVE_DISPLAYCURRENTALENTITLE";
         public const string MIN_COMMITTED_WAGES_GOV = "MIN_COMMITTED_WAGES_GOV";
         public const string MIN_COMMITTED_WAGES_LAW = "MIN_COMMITTED_WAGES_LAW";
         public const string ENFORCE_MIN_COMMITTED_WAGES_LAW = "ENFORCE_MIN_COMMITTED_WAGES_LAW";
-
         public const string ADDITION_DECIMAL = "ADDITION_DECIMAL";
         public const string ADDITION_FIXDAY = "ADDITION_FIXDAY";
         public const string DEDUCTION_DECIMAL = "DEDUCTION_DECIMAL";
@@ -921,6 +921,7 @@ namespace BLL
         public bool mGoogleSSL = false;
         public string mGoogleSMTP = "";
         public int mGoogleSMTPPort = 0;
+        public bool mdisplayEntitle = false;
 
         #endregion
 
@@ -983,8 +984,7 @@ namespace BLL
             data.mGoogleSMTPPort = LSLibrary.ConvertHelper.ToInt32(BLL.CodeSetting.GetSystemParameter(SystemParameters.GOOGLESMTPPORT), 587);
             data.mGoogleAccount = BLL.CodeSetting.GetSystemParameter(SystemParameters.GOOGLEACCOUNT) == "" ? "DW.iHR.email@gmail.com" : BLL.CodeSetting.GetSystemParameter(SystemParameters.GOOGLEACCOUNT);
             data.mGooglePassword = BLL.CodeSetting.GetSystemParameter(SystemParameters.GOOGLEPASSWORD) == "" ? "lrdbkvuvcaharkxj" : BLL.CodeSetting.GetSystemParameter(SystemParameters.GOOGLEPASSWORD);
-
-            
+            data.mdisplayEntitle= BLL.CodeSetting.GetSystemParameter(SystemParameters.LEAVE_DISPLAYCURRENTALENTITLE) == "1" ? true : false;
 
             return data;
         }

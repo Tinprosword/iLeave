@@ -30,12 +30,16 @@ namespace MODEL
             private List<App_AttachmentInfo> uploadpic;
             public List<apply_LeaveData> LeaveList;
             public List<LSLibrary.WebAPP.ValueText<int>> leavetype;
+            public bool DisplayEntitle;
+            public double EntilteValue;
 
             public ViewState_page()
             {
                 LeaveList = new List<MODEL.Apply.apply_LeaveData>();
                 uploadpic = new List<MODEL.App_AttachmentInfo>();
                 leavetype = new List<LSLibrary.WebAPP.ValueText<int>>();
+                DisplayEntitle = false;
+                EntilteValue = -1;
             }
 
             public static double getDayfromSectionsByDay(int sectionsValue)
