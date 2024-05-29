@@ -218,6 +218,6 @@ function ClickCheckin()
     var ispp = $(label_id_back_isapp).val();
     var iszone = $(label_id_back_iszone).val();
 
-
-    $('#modal_location').modal();
+    //2024.05.29 no point to show hardcoded GPS location
+    //$('#modal_location').modal();
 }
